@@ -157,6 +157,16 @@
         "shadow50pct"
       ],
       "why_new": "No indexed repository has a MASS dose above 30% or any credit-blind control. The FIFO-order doses were probed and rejected as region-isolated (IR90-15); the 50% shadow dose was rejected because the greedy starts emptying whole regions (IR90-17)."
+    },
+    {
+      "session": "2026-10-23d RELIEF tercile reallocation (GEMSDOE90)",
+      "axis": "RELIEF",
+      "value_family": "landform-scale det_elev (0.85) + 3km-smoothed det_elev_slope (0.15) equal-area terciles; fixed-count H19-5 DTI greedy drop/add",
+      "selected_values": [
+        "r2p12p5pct",
+        "r2b10pct",
+        "p2r15pct"
+      ]
     }
   ],
   "mass_high_dose": {
@@ -192,6 +202,22 @@
       "shadow50pct"
     ],
     "rejection_reason": "Built/probed once on 2026-10-23 and rejected before any submission, rasters and ledger rows removed: (a) fifo 10/20/40% -- the parent's stored 8-connected FIFO-BFS order deletes one south-east corner; at 40% it empties 41% of 5 km blocks in a single contiguous 632-block hole, i.e. a region-isolated file under Hard Constraint #5 that confounds dose with geography; (b) shadow 50% -- the deepest shadow dose starts emptying whole contiguous regions (largest emptied cluster 17 blocks = 425 km2). The deep arm therefore stops at 48%, the largest shadow dose whose candidate passes the region-evenness gate. The same FIFO defect applies to any sibling MASS dose built with that stored order."
+  },
+  "relief_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "RELIEF",
+    "parent": "h33-h33-2-b2",
+    "occupied_tags": [
+      "r2p12p5pct",
+      "r2b10pct",
+      "p2r15pct"
+    ],
+    "occupied_values": [
+      "tag=r2p12p5pct; shift 12.5% R0 mass (4707 dots) range_front->piedmont; fixed count 37654; added d_cat>=3px",
+      "tag=r2b10pct; shift 10% R0 mass (3766 dots) range_front->basin; fixed count 37654; added d_cat>=3px",
+      "tag=p2r15pct; shift 15% R0 mass (5648 dots) piedmont->range_front; fixed count 37654; added d_cat>=3px"
+    ],
+    "note": "Checked against ledger/submissions.csv (0 prior RELIEF rows). Repeat builds of these (RELIEF, value) pairs fail closed."
   },
   "mass_dose_ladder_20261023": {
     "checked_utc": "2026-10-23",

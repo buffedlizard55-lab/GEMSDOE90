@@ -69,6 +69,16 @@ sit at a median 2.8–3.2 px **across** strike. Full hashes, collar diagnostics 
 dots. Receipt: `evidence/build_receipt.json`. These are the comparator for the along-strike-exemption question,
 not the first choice for a slot.
 
+## 4. Landform-relief tercile reallocation (`AXIS=RELIEF`, session 2026-10-23d)
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (`<=140` chars) |
+|---|---|---|---|---|
+| **12.5% Range→Piedmont** (4,707d; 25.001% diff) | `releases/h33-h33-2-b2-RELIEFr2p12p5pct-20261023-5e64d01f.tif` | `…-5e64d01f-zeros.tif` | `5e64d01f26b6687f…` / `c50e5a8b98b0f6c3…` | `h33-h33-2-b2; RELIEF 12.5% (4707d) range->piedmont; pred +0.004 DTI MODEL` |
+| **10.0% Range→Basin** (3,766d; 20.003% diff) | `releases/h33-h33-2-b2-RELIEFr2b10pct-20261023-9e7b5e17.tif` | `…-9e7b5e17-zeros.tif` | `9e7b5e17ad3b27dd…` / `870a92b2cfb98c78…` | `h33-h33-2-b2; RELIEF 10% (3766d) range->basin; pred +0.003 DTI MODEL` |
+| **15.0% Piedmont→Range** (5,648d; 29.999% diff) | `releases/h33-h33-2-b2-RELIEFp2r15pct-20261023-ad95e30f.tif` | `…-ad95e30f-zeros.tif` | `ad95e30f857011f9…` / `66d1abb217ce9cfb…` | `h33-h33-2-b2; RELIEF 15% (5648d) piedmont->range; pred -0.004 DTI MODEL` |
+
+Count held at **37,654 unit-mass dots** on `H19-5`; zero catalogue mass; **100% of newly added dots enforce `d_cat >= 3.0 px` strictly** (untouched R0 dots inherit R0's `2.236 px` floor without confounding `RELIEF` with `PRUNE`; IR90-18). Full hashes, parent-diff stats, and report-only `PROXY` diagnostics: `evidence/relief_build_receipt.json`. Re-emit and verify via `.venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_relief_variants.py --verify`.
+
 ## Format gate (every file, re-read from disk after writing)
 
 | Property | Value |
