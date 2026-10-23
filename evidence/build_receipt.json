@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_utc": "2026-10-23T19:41:08Z",
-  "git_sha": "e22b4fa3a7734ec410079135d69196315678f9b0",
+  "git_sha": "98d15895b2408e06c097a0513a4515f9d28931c6",
   "axis": "PRUNE",
   "parent": {
     "id": "h33-h33-2-b2",
@@ -416,13 +416,13 @@
   ],
   "elapsed_s": 26.47,
   "no_live_submission": true,
-  "verified_utc": "2026-10-23T19:57:02Z",
+  "verified_utc": "2026-10-23T21:34:11Z",
   "self_check": {
     "variant_files_re_read_and_validated": true,
     "variant_bytes_reproduced_exactly": true,
     "r0_rebuilt_byte_identically": true,
     "d28_ranking_reproduced_pixel_exactly": true
   },
-  "verification_git_sha": "e22b4fa3a7734ec410079135d69196315678f9b0",
-  "generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615"
+  "verification_git_sha": "98d15895b2408e06c097a0513a4515f9d28931c6",
+  "generator_script_sha256": "e4db27b6be038ac593850b49510859a27ba787e7d64a20c25fedda00031e6c26"
 }
