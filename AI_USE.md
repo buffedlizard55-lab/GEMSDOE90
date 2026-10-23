@@ -38,3 +38,30 @@ AI added `scripts/restore_releases.py`, which re-emits the three already-recorde
 ## Update 2026-10-23b (MASS shadow-dose session)
 
 AI authored `src/mass.py`, `scripts/build_mass_shadow.py`, `tests/test_mass_shadow.py`, the three MASS candidates, `evidence/mass_build_receipt.json` and the MASS documentation. The three PRUNE candidates from the earlier session are unchanged and remain in `releases/` and in the ledger.
+
+## Update 2026-10-23c (high-dose MASS session)
+
+**AI wrote:** `scripts/build_mass_high_dose.py` (the 40 % / 48 % shadow arms and the seeded random 40 %
+control, the 5 km-block region-evenness gate, the report-only strand/continuity and rejected-probe
+analysis), `tests/test_mass_high_dose.py`, the `mass_high_dose` block of
+`ledger/experiment_reservations.json`, `evidence/mass_high_dose_receipt.json`, the three ledger rows, and
+the related text in `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/MECHANISM_CARDS.md`, `IRREGULARITIES.md`
+(IR90-07…10) and the `README.md` CURRENT STATE block. AI also made one line-level change to
+`scripts/build_mass_shadow.py`: its ledger writer now replaces only its own row ids instead of dropping
+every `axis=MASS` row, so a later MASS session's rows cannot be deleted by a rebuild. That changed the
+recorded generator hash of that script, so it was re-run with `--verify`, which reproduced its three
+pairs byte-identically and re-pinned the hash.
+
+**AI decided (agent-selected axis, not assigned):** MASS. It chose to continue the in-repo shadow ladder
+above 30 % because that ladder is the only mechanism in the ledger with a recorded positive prior, and to
+spend the third arm on a credit-blind random control because no repository has one and the session rule
+treats a sub-0.01 change as no evidence. It rejected two arms before any submission — FIFO-order drops
+(region-isolated; IR90-07) and a 50 % shadow drop (IR90-10) — and deleted the one raster it had already
+built for the first. It did **not** contact DrivenData, scrape anything, submit a file, or claim a score;
+no `TOP_PUBLIC`, quota or deadline figure was invented.
+
+**Human must decide/supply:** whether these arms are worth a slot, the dated `TOP_PUBLIC`, quota state,
+deadline confirmation, submission receipts, and whether the final submission may repeat an already
+scored file. Human should also review the competing prediction: the shadow ranking deletes all 838 of
+R0's ≥ 1 km strands while the random control keeps 136.
+

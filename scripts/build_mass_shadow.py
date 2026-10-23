@@ -310,10 +310,10 @@ def write_ledger(result: dict) -> None:
     existing = []
     if path.exists():
         with path.open(newline="", encoding="utf-8") as f:
-            # Keep every historical and previously-built row; replace only this axis's own rows
-            # so that a rebuild is idempotent instead of appending duplicates.
-            existing = [r for r in csv.DictReader(f)
-                        if r.get("id") not in new_ids and (r.get("axis") or "").upper() != AXIS]
+            # Keep every historical and previously-built row; replace only this script's own rows
+            # (matched by id) so that a rebuild is idempotent without deleting rows that a later
+            # MASS session owns (e.g. scripts/build_mass_high_dose.py).
+            existing = [r for r in csv.DictReader(f) if r.get("id") not in new_ids]
     rows = existing
     for v in result["variants"]:
         rows.append({

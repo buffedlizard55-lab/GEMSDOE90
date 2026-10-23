@@ -5,30 +5,65 @@
     {
       "repo": "buffedlizard55-lab/GEMSDOE84",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE84/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 1.5, 2.0, 2.5, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE85",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE85/blob/main/ledger/submissions.csv",
-      "values_px": [2.0, 2.25, 2.85, 3.0, 3.61, 4.0, 5.0]
+      "values_px": [
+        2.0,
+        2.25,
+        2.85,
+        3.0,
+        3.61,
+        4.0,
+        5.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE86",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE86/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 2.0, 2.2361, 2.8284, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        2.0,
+        2.2361,
+        2.8284,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE87",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE87/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE88",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE88/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 2.85, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        2.85,
+        3.0,
+        4.0
+      ]
     }
   ],
-  "available_selected_values_px": [3.5, 4.5, 5.5],
+  "available_selected_values_px": [
+    3.5,
+    4.5,
+    5.5
+  ],
   "mass_axis": {
     "sibling_values": [
       "GEMSDOE84: +10pct, -10pct, -20pct",
@@ -37,9 +72,47 @@
       "GEMSDOE87: m10minus, m10plus, m20minus",
       "GEMSDOE88: m10minus, m10plus, m20minus"
     ],
-    "selected_values": ["shadow10pct", "shadow20pct", "shadow30pct"],
+    "selected_values": [
+      "shadow10pct",
+      "shadow20pct",
+      "shadow30pct"
+    ],
     "why_distinct": "Every sibling MASS value changes the count by a round percentage using the parent's stored 8-connected FIFO-BFS order or a plain 'lowest rank' truncation. The selected values use a different ranking (ascending exclusive 300 m kernel credit, recomputed after each deletion) and are the only MASS doses that delete dots without adding or moving any. The recorded values are exact string labels and do not collide; the 30% dose is also a magnitude no sibling built.",
     "matched_count_check": "At the same 3,765 removals the shadow order destroys 35% less exclusive kernel credit than the stored FIFO order (see evidence/mass_build_receipt.json ranking.matched_count_comparison_at_10pct). The sibling 10% doses therefore are not the same experiment."
   },
-  "interpretation": "The selected PRUNE cutoffs are absent from all five fetched ledgers. This is a best-effort owner-repo audit of the five sibling ledgers available on 2026-10-23, not proof of every submission ever made by the entity; other unindexed repositories or private submission history may exist."
+  "interpretation": "The selected PRUNE cutoffs are absent from all five fetched ledgers. This is a best-effort owner-repo audit of the five sibling ledgers available on 2026-10-23, not proof of every submission ever made by the entity; other unindexed repositories or private submission history may exist.",
+  "mass_high_dose": {
+    "checked_utc": "2026-10-23",
+    "scope": "Every MASS row in this repository's ledger plus a read-only audit of the ledger of every public buffedlizard55-lab GEMSDOE* repository reachable on 2026-10-23 (gh api, read-only, no DrivenData access). Exact (AXIS, value) reuse prohibited; a dose at a new percentage is a new pair, a different selection rule at the same percentage is also a new pair.",
+    "in_repo_values": [
+      "shadow10pct",
+      "shadow20pct",
+      "shadow30pct"
+    ],
+    "sibling_values": [
+      "GEMSDOE84: MASS +10pct / -10pct / -20pct (parent FIFO-BFS order, counts 41419 / 33889 / 30123)",
+      "GEMSDOE85: MASS m10e / m10u / p10 (10% each, counts 33889 / 33889 / 41419)",
+      "GEMSDOE86: MASS minus10pct / plus10pct",
+      "GEMSDOE87: MASS m10minus / m10plus / m20minus (10% / 10% / 20%)",
+      "GEMSDOE88: MASS m10minus / m10plus / m20minus (10% / 10% / 20%)",
+      "GEMSDOE89: MASS +10pct / -10pct / -20pct (copy of the GEMSDOE84 block)",
+      "GEMSDOE91: MASS m10minus / m10plus / m20minus (copy)",
+      "GEMSDOE92: MASS_D10 (drop 10% by H19-5 rank) / MASS_A10 (add 10%) / MASS_SWAP10 (swap 10%)",
+      "GEMSDOE93-101: no MASS rows found"
+    ],
+    "selected_values": [
+      "shadow40pct",
+      "shadow48pct",
+      "rand40pct"
+    ],
+    "why_distinct": "No indexed repository has any MASS dose above 30%, and none has a credit-blind control at any dose. 40% and 48% extend the in-repo shadow ladder the way 20% extended 10%; rand40 reuses the 40% dose with a seeded uniform subset so that selection quality is separated from dose for the first time.",
+    "cross_repo_caveat": "This is a best-effort audit of public repositories, not proof of every submission the entity has ever made. If any sibling repository is the same DrivenData entity, the campaign as a whole exceeds the 3-scored-submissions-per-week quota; see IRREGULARITIES IR90-08.",
+    "rejected_values": [
+      "fifo10pct",
+      "fifo20pct",
+      "fifo40pct",
+      "shadow50pct"
+    ],
+    "rejection_reason": "Built/probed once on 2026-10-23 and rejected before any submission, rasters and ledger rows removed: (a) fifo 10/20/40% -- the parent's stored 8-connected FIFO-BFS order deletes one south-east corner; at 40% it empties 41% of 5 km blocks in a single contiguous 632-block hole, i.e. a region-isolated file under Hard Constraint #5 that confounds dose with geography; (b) shadow 50% -- the deepest shadow dose starts emptying whole contiguous regions (largest emptied cluster 17 blocks = 425 km2). The deep arm therefore stops at 48%, the largest shadow dose whose candidate passes the region-evenness gate. The same FIFO defect applies to any sibling MASS dose built with that stored order."
+  }
 }
