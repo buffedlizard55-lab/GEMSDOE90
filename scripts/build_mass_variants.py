@@ -239,7 +239,7 @@ def mechanism_card(value: str, rule: str, n_drop: int, n_keep: int, credit_drop:
 # --------------------------------------------------------------------------- #
 # build / verify
 # --------------------------------------------------------------------------- #
-def build_variants(do_emit: bool = True) -> tuple[dict, dict, dict]:
+def build_variants(do_emit: bool = True, guard_ledger: bool = True) -> tuple[dict, dict, dict]:
     t0 = time.time()
     input_receipt = B0.verify_manifest_inputs()
     template, foot, cat, r0, parent_stats = B0.exact_parent_rebuild()
@@ -348,9 +348,9 @@ def build_variants(do_emit: bool = True) -> tuple[dict, dict, dict]:
                     ledger_pairs.add((row.get("parent"), row.get("value")))
     for v in results:
         for sha in (v["sha256"], v["sha256_zeros"]):
-            if sha in ledger_hashes:
+            if guard_ledger and sha in ledger_hashes:
                 raise ValueError(f"duplicate hash already in ledger: {sha}")
-        if (PARENT, v["value"]) in ledger_pairs:
+        if guard_ledger and (PARENT, v["value"]) in ledger_pairs:
             raise ValueError(f"(AXIS, value) already reserved: {(AXIS, v['value'])}")
     if len({v["sha256"] for v in results}) != len(results):
         raise ValueError("two variants share a hash")
@@ -397,7 +397,9 @@ def main() -> int:
     args = ap.parse_args()
 
     OUT.mkdir(parents=True, exist_ok=True)
-    receipt, _masks, _ctx = build_variants(do_emit=args.build)
+    # --verify re-derives the same files as an already-recorded experiment, so the
+    # ledger duplicate guard must not reject its own rows; --build still runs it.
+    receipt, _masks, _ctx = build_variants(do_emit=args.build, guard_ledger=args.build)
     path = ROOT / "evidence" / "build_receipt_mass.json"
 
     if args.build:
