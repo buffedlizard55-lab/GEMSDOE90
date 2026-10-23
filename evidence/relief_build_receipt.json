@@ -786,8 +786,8 @@
   "elapsed_s": 83.28,
   "no_live_submission": true,
   "not_committed_to_git": true,
-  "verified_utc": "2026-10-23T22:06:53Z",
-  "verification_git_sha": "e7452e6792ae4db50527a02529e8bd936e65f0f7",
+  "verified_utc": "2026-10-23T22:12:43Z",
+  "verification_git_sha": "04e6374a4c3b3bf9de1e41b4a90d477170b62aa1",
   "self_check": {
     "all_26_manifest_pins_verified": true,
     "r0_rebuilt_byte_identically": true,
