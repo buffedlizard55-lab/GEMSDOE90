@@ -93,3 +93,26 @@ parent's ranking *budgeted per 5 km block* (each block's next-ranked suppressed 
   credit model says the ranked file is better; the structure says it may not be. That is why the control
   gets a slot instead of a sixth dose (IR90-17).
 - **No prediction here is a score.** R0's 0.2778 is a CLAIM, all predictions are MODEL, the canary is a PROXY.
+
+## Session 2026-10-23f (this branch): placement contrast for the add ladder — swap-in, not a 4th candidate
+
+The merged add ladder (`MASSadd5pctq50` / `add10pctq50` / `add20pctq50`, PR #16) ranks candidates by **marginal kernel
+credit**. This session built the same doses and the same region-even quotas but ranked by the **parent's own FIFO-BFS
+order** — the brief's literal "next-ranked" recipe, with its geography repaired. Two live files:
+`MASSadd10pctBlocknext` (41,419 dots, pred **+0.0044 MODEL** [+0.0003…+0.0107]) and `MASSadd20pctBlocknext` (45,185,
+pred **+0.0084 MODEL** [+0.0005…+0.0205]). A third arm, `MASSadd10pctGapmax`, was withdrawn as a duplicate of
+`MASSadd10pctq50` (IR90-24).
+
+**How to use it.** It is a *control*, so it should not displace the ladder's first two slots. Insert
+`MASSadd10pctBlocknext` as the third slot in either of these cases:
+- `MASSadd5pctq50` and `MASSadd10pctq50` both land in `Δ >= +0.010` → the sign is settled, and the open question becomes
+  *which placement earns it*. blocknext10 shares dose and geography with q50-10 and differs only in ranking, so the pair
+  measures the ranking directly. `blocknext` ≥ +0.010 means plain mass addition pays and the credit ranking is
+  second-order (cheaper to scale); `blocknext` ≈ 0 while q50 ≥ +0.010 means kernel-room placement is the whole effect,
+  and every future add must be gap-ranked.
+- `MASSadd5pctq50` and `MASSadd10pctq50` are both null (`|Δ| < 0.010`) → the ladder's own placement is not the issue and
+  the cheaper check is whether *any* placement adds: blocknext10 answers it at the same dose.
+
+If the ladder's first two slots are negative (`Δ <= −0.010`), do not slot blocknext: R0 is at or past its mass optimum
+and the next slot belongs to the drop direction (`MASSshadow20pct`), not to a third add file.
+`MASSadd20pctBlocknext` is only worth a slot if the 10 % contrast has already shown that placement matters.

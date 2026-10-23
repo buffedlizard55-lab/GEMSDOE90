@@ -280,5 +280,22 @@
     ],
     "why_distinct": "Every recorded MASS add rung (this repo's withdrawn add5pct-next/add20pct-next and the sibling plus10pct family) selects additions by the parent's stored FIFO-BFS traversal rank, which IR90-20 measured to be geographic (rank-head adds land in a northern grid strip). This family selects by exact marginal kernel credit under block-proportional quotas, so it is the first MASS add rung that is region-even by construction.",
     "checked_utc": "2026-10-23"
+  },
+  "mass_add_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "MASS",
+    "direction": "ADD",
+    "parent": "h33-h33-2-b2",
+    "occupied_tags": [
+      "add10pctBlocknext",
+      "add20pctBlocknext",
+      "add10pctGapmax"
+    ],
+    "occupied_values": [
+      "tag=add10pctBlocknext; add 3765 dots (+9.999% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+      "tag=add20pctBlocknext; add 7531 dots (+20% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+      "tag=add10pctGapmax; add 3765 dots (+9.999% of R0) on H19-5; max marginal R=3px kernel credit per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px"
+    ],
+    "note": "No prior MASS add row exists in this ledger (the three FIFO add/drop rungs are WITHDRAWN, IR90-20). Sibling GEMSDOE84/86/87 'MASS +10%/+20%' rows use the global FIFO order and are not region-even; these values are string- and mechanism-distinct (per-block quotas propto R0 count). Repeat builds of these (MASS, tag) pairs fail closed. Superseded in part by IR90-24: add10pctGapmax duplicates main's MASSadd10pctq50 and is WITHDRAWN; blocknext tags remain live."
   }
 }

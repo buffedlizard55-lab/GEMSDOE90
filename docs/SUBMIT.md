@@ -124,3 +124,26 @@ isotropic PRUNE files are the only ones whose minimum is ≥ 3 px. Independent r
 5. A decision on data-use terms before any of these rasters leave the private workspace, and a check that
    `releases/` was restored from pinned inputs (`scripts/restore_data.py`, `scripts/restore_releases.py`) rather
    than assumed to exist (IR90-10).
+
+## 6. MASS add — placement contrast, `blocknext` (session 2026-10-23f)
+
+Two live files, add-only edits of exact R0, **0 dots removed**, region-even per-5 km-block quotas proportional to the
+parent's own dot count (cap +50 %/block, zero where R0 has none), all on the H19-5 support and all at Euclidean
+`d_cat >= 3.0 px`. They exist to answer one question the gapmax ladder cannot: **does the ranking matter at all?**
+Same doses, same geography, same pool as `MASSadd10pctq50` / `MASSadd20pctq50` — the cells are chosen by the parent's
+own FIFO-BFS rank instead of by kernel credit. Receipt: `evidence/mass_add_receipt.json`.
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | Form note (`<= 140` chars) |
+|---|---|---|---|
+| **blocknext +10 %** (3,765 added; 41,419 dots) | `releases/h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16.tif` | `…-89d16c16-zeros.tif` | `h33-h33-2-b2; MASS add 10% (3765d) blocknext; pred +0.004 DTI MODEL` |
+| **blocknext +20 %** (7,531 added; 45,185 dots) | `releases/h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e.tif` | `…-260d987e-zeros.tif` | `h33-h33-2-b2; MASS add 20% (7531d) blocknext; pred +0.008 DTI MODEL` |
+
+SHA-256 (NaN / zeros): `89d16c16bcd336f5…` / `6108f696a660ec28…`; `260d987e0a89a945…` / `d59ccf7744eca41e…`.
+Format receipt: `src/validate.py` PASS on all four files, `n_dots` 41,419 / 45,185, `catalogue_mass` 0.0, min distance
+of added dots exactly 3.0 px, 0 added dots below 3 px, inherited R0 collar untouched (1,611 dots at 2.236–3.0 px,
+IR90-21 on main). Re-emit with `.venv/bin/python scripts/build_mass_add_variants.py --build --rebuild-reserved` after
+`scripts/restore_data.py`, confirm the SHA-256, then re-check with `--verify`. Upload **one** encoding.
+
+**WITHDRAWN — do not upload:** `MASSadd10pctGapmax` (`98408334…`). It is the same experiment as the already-merged
+`MASSadd10pctq50` (`5edc84de…`): identical 62,556-px eligible pool, identical gapmax ranking, identical block quotas,
+differing only in tie-breaks. Rasters are in `.cache/withdrawn/`; the ledger row is an occupancy guard (IR90-24).
