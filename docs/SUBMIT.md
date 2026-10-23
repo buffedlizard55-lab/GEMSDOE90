@@ -108,3 +108,26 @@ isotropic PRUNE files are the only ones whose minimum is ≥ 3 px. Independent r
 5. A decision on data-use terms before any of these rasters leave the private workspace, and a check that
    `releases/` was restored from pinned inputs (`scripts/restore_data.py`, `scripts/restore_releases.py`) rather
    than assumed to exist (IR90-10).
+
+## 5. MASS add rungs, region-even block-budgeted (`AXIS=MASS`, session 2026-10-23e)
+
+Add-only edits of exact R0: 0 dots removed, additions quota-proportional to the parent's own 5 km block counts
+(cap +50 %/block, zero where R0 has no dots), all on the H19-5 support and all at Euclidean `d_cat >= 3.0 px`.
+Receipt: `evidence/mass_add_receipt.json`. Re-emit after `scripts/restore_data.py` with
+`.venv/bin/python scripts/build_mass_add_variants.py --build --rebuild-reserved` (the flag refuses to create a new
+experiment under a used tag — it asserts the raster is byte-identical to the receipt), confirm the SHA-256, then
+re-check with `--verify`.
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | Form note (`<= 140` chars) |
+|---|---|---|---|
+| **gapmax +10 %** (3,765 added; 41,419 dots) | `releases/h33-h33-2-b2-MASSadd10pctGapmax-20261023-98408334.tif` | `…-98408334-zeros.tif` | `h33-h33-2-b2; MASS add 10% (3765d) gapmax; pred +0.011 DTI MODEL` |
+| **blocknext +10 %** (3,765 added; 41,419 dots) | `releases/h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16.tif` | `…-89d16c16-zeros.tif` | `h33-h33-2-b2; MASS add 10% (3765d) blocknext; pred +0.004 DTI MODEL` |
+| **blocknext +20 %** (7,531 added; 45,185 dots) | `releases/h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e.tif` | `…-260d987e-zeros.tif` | `h33-h33-2-b2; MASS add 20% (7531d) blocknext; pred +0.008 DTI MODEL` |
+
+SHA-256 (NaN / zeros): `98408334e625e358…` / `ca173bff75844dac…`; `89d16c16bcd336f5…` / `6108f696a660ec28…`;
+`260d987e0a89a945…` / `d59ccf7744eca41e…`. Format receipt: `src/validate.py` PASS on all six files, `n_dots`
+41,419 / 41,419 / 45,185, `catalogue_mass` 0.0, min distance of added dots exactly 3.0 px, parent collar inherited
+(1,611 dots at 2.236–3.0 px, IR90-18). Upload **one** encoding, never both.
+
+**Do not upload** the WITHDRAWN `MASSadd20pct-next` (`63954e89…`): it has the same dot count but is the
+region-isolated FIFO file (IR90-20). The `add20pctBlocknext` file here differs in every added cell.

@@ -1,0 +1,744 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T23:45:51Z",
+  "git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "generator_script": "scripts/build_mass_add_variants.py",
+  "generator_script_sha256": "d0e0cd8532aea0910032612760656d0f9fa76271c64e2b63e5b1609cbfde1a15",
+  "axis": "MASS",
+  "axis_direction": "ADD (region-even block-budgeted)",
+  "session_note": "AXIS chosen by the agent as MASS/ADD: the only untested half of the dose curve in this ledger, and the only arm whose failure mode is bounded by the mass penalty alone (T is a max over dots).",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py",
+    "block_density_cv_5km": 0.901143,
+    "block_density_cv_10km": 0.635265
+  },
+  "operator": {
+    "block_px": 50,
+    "block_km": 5.0,
+    "cap_fraction_per_block": 0.5,
+    "quota_rule": "quota_b = n_add * r0_dots_b / R0_DOTS, largest remainder, capped at min(capacity_b, 0.5*r0_dots_b); zero where r0_dots_b = 0",
+    "eligibility": "H19-5 support & footprint & ~catalogue & Euclidean d_cat >= 3.0 px & unoccupied",
+    "blocknext_rule": "ascending parent FIFO-BFS visit rank within each block quota",
+    "gapmax_rule": "greedy maximum marginal R=3 px triangular-kernel credit on the support within each block quota",
+    "model": {
+      "algebra": "dDTI_i = [E_i(D-0.2T) - 0.2T(1-c_i)]/D^2 with E_i = precision * marginal_support_credit_i, c_i = precision * full_support_credit_i",
+      "support_precision_note": "precision = P(a support pixel is a new-fault truth pixel); point 0.20 is the value implied by T/(support_px*0.7) under the point parent fit, bracketed 0.10-0.35",
+      "point_fit": {
+        "T": 16535.8853,
+        "D": 59524.4251,
+        "S": 37654,
+        "M": 16567.76,
+        "G": 65000
+      }
+    }
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "verified_count": 26,
+    "all_pins_rechecked": true,
+    "files": {
+      "training_features": {
+        "path": "training_features.tif",
+        "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+        "bytes": 418912844
+      },
+      "labels": {
+        "path": "labels.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "existing_faults": {
+        "path": "existing_faults.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "sample_submission": {
+        "path": "sample_submission.tif",
+        "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "bytes": 1599597
+      },
+      "ext_lidar_scarp_features_u8": {
+        "path": "external/lidar_scarp_features_u8.tif",
+        "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+        "bytes": 36943606
+      },
+      "ext_geodawn_rad_u8": {
+        "path": "external/geodawn_rad_u8.tif",
+        "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+        "bytes": 26612970
+      },
+      "ext_geodawn_extensions_u8": {
+        "path": "external/geodawn_extensions_u8.tif",
+        "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+        "bytes": 27132925
+      },
+      "ext_derived_sgmc_faults_100m_u8": {
+        "path": "external/derived_sgmc_faults_100m_u8.tif",
+        "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+        "bytes": 198602
+      },
+      "ext_gdr_wellspring_in_footprint": {
+        "path": "external/gdr_wellspring_in_footprint.csv",
+        "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+        "bytes": 2146771
+      },
+      "ext_gdr_qfaults_traces": {
+        "path": "external/gdr_qfaults_traces.csv",
+        "sha256": "9702f2e5c382a4f472ae834d22b94990983b059677a37adfafd51c50f75e643c",
+        "bytes": 126177
+      },
+      "ext_gdr_volcanic_vents_in_footprint": {
+        "path": "external/gdr_volcanic_vents_in_footprint.csv",
+        "sha256": "f91bafbaccaaf2754e71d60434fc0f9eb2c7b880c6e714883f4974542ff6a0bf",
+        "bytes": 672
+      },
+      "scored_h19_5": {
+        "path": "scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+        "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+        "bytes": 1712322
+      },
+      "scored_h19_4": {
+        "path": "scored/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+        "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+        "bytes": 1716768
+      },
+      "scored_h16_1": {
+        "path": "scored/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+        "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+        "bytes": 1718028
+      },
+      "scored_d15_scored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+        "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+        "bytes": 1632732
+      },
+      "scored_d28_unscored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+        "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+        "bytes": 1603424
+      },
+      "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou": {
+        "path": "scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+        "bytes": 1706456
+      },
+      "calib_8GEMSDOE_Hedge-v2_submission": {
+        "path": "scored/8GEMSDOE_Hedge-v2_submission.tif",
+        "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+        "bytes": 736494
+      },
+      "calib_gems10-h25-ctx-ridge-20260927T2329477041": {
+        "path": "scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+        "sha256": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+        "bytes": 1772935
+      },
+      "calib_gems10-h28-dotted-ridge-20260928T0202562": {
+        "path": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+        "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+        "bytes": 1620739
+      },
+      "calib_gemsdoe-ens12-adopted-7f00890a": {
+        "path": "scored/gemsdoe-ens12-adopted-7f00890a.tif",
+        "sha256": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15",
+        "bytes": 570890
+      },
+      "calib_gemsdoe9-PLACEHOLDER-2314b599": {
+        "path": "scored/gemsdoe9-PLACEHOLDER-2314b599.tif",
+        "sha256": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+        "bytes": 439456
+      },
+      "scored_gems27_tgc_v2_d15": {
+        "path": "scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+        "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+        "bytes": 1635084
+      },
+      "scored_h27_4_solo_d28": {
+        "path": "scored/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+        "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+        "bytes": 1595850
+      },
+      "parent_r0_zeros": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+        "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+        "bytes": 219065
+      },
+      "parent_r0_nan": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+        "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+        "bytes": 355443
+      }
+    }
+  },
+  "proxies": {
+    "catalogue_hide_recover": "analytically zero for additions (d_cat >= 3 px, R = 3 px) - REPORT ONLY",
+    "sgmc_control_r0_credit": 1527.9343,
+    "leakage_canary": "not re-run this session: no new feature was introduced (additions are placed on the existing H19-5 support)"
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16",
+      "tag": "add10pctBlocknext",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "tag=add10pctBlocknext; add 3765 dots (+9.999% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+      "selection_rule": "blocknext",
+      "dose_fraction": 0.1,
+      "n_added": 3765,
+      "n_dots": 41419,
+      "pct_changed": 9.998937695862326,
+      "sha256": "89d16c16bcd336f56999e6cbf08346641faa267c84e00af2a5670f99f94f44d2",
+      "sha256_zeros": "6108f696a660ec2827e6cb397cfbcb07b8a5ac02d9777c0da8af27b7fa39b19d",
+      "status": "BUILT",
+      "predicted_change": "+0.0044 DTI (MODEL; bracket +0.0003 to +0.0107; not a score)",
+      "predicted_model": {
+        "point": 0.004441,
+        "low": 0.000335,
+        "high": 0.0107,
+        "grid": {
+          "truth_px": [
+            60988,
+            65000,
+            90000
+          ],
+          "mean_mass_credit": [
+            0.2,
+            0.44,
+            0.6
+          ],
+          "support_precision": [
+            0.1,
+            0.2,
+            0.35
+          ],
+          "point": {
+            "truth_px": 65000,
+            "mean_mass_credit": 0.44,
+            "support_precision": 0.2
+          }
+        },
+        "fit_point": {
+          "T": 16535.885280589555,
+          "D": 59524.425056117914,
+          "S": 37654,
+          "M": 16567.76,
+          "G": 65000
+        }
+      },
+      "form_note": "h33-h33-2-b2; MASS add 10% (3765d) blocknext; pred +0.004 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16.tif",
+          "sha256": "89d16c16bcd336f56999e6cbf08346641faa267c84e00af2a5670f99f94f44d2",
+          "bytes": 365839,
+          "encoding": "nan",
+          "n_dots": 41419,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "added_dots_below_3px": 0,
+          "inherited_r0_dots_below_3px": 1611,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "added_dots_on_h19_support": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16-zeros.tif",
+          "sha256": "6108f696a660ec2827e6cb397cfbcb07b8a5ac02d9777c0da8af27b7fa39b19d",
+          "bytes": 230376,
+          "encoding": "zeros",
+          "n_dots": 41419,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "added_dots_below_3px": 0,
+          "inherited_r0_dots_below_3px": 1611,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "added_dots_on_h19_support": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "n_added": 3765,
+        "n_removed": 0,
+        "retained_dots": 37654,
+        "symmetric_difference_px": 3765,
+        "pct_changed_symmetric": 9.998937695862326,
+        "mean_marginal_support_credit_per_added_dot": 0.4863,
+        "median_marginal_support_credit_per_added_dot": 0.4714,
+        "sum_marginal_support_credit": 1830.85,
+        "mean_full_support_credit_per_added_dot": 3.0554,
+        "min_catalogue_distance_added_px": 3.0,
+        "added_below_3px": 0,
+        "block_density_cv_5km_before": 0.901143,
+        "block_density_cv_5km_after": 0.90324,
+        "block_density_cv_10km_before": 0.635265,
+        "block_density_cv_10km_after": 0.636142
+      },
+      "addition_report": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "nominal_dose": 0.099989,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_20plus_dots": 848,
+        "blocks_receiving_additions": 1499,
+        "blocks_with_zero_additions_among_20plus": 0,
+        "add_share_p05": 0.087,
+        "add_share_median": 0.1,
+        "add_share_p95": 0.1154,
+        "add_share_max": 0.12,
+        "adds_into_blocks_with_zero_parent_dots": 0,
+        "added_bbox_y": [
+          0,
+          3700
+        ],
+        "added_bbox_x": [
+          17,
+          3288
+        ],
+        "added_centroid_yx": [
+          1243.6,
+          1473.63
+        ],
+        "parent_centroid_yx": [
+          1273.25,
+          1478.13
+        ],
+        "passes_addition_evenness_gate": true
+      },
+      "proxy_reports": {
+        "sgmc_off_catalogue_credit": {
+          "evidence_class": "PROXY",
+          "status": "REPORT ONLY (never a gate, never a live score)",
+          "r0_credit": 1527.9343,
+          "candidate_credit": 1567.0966,
+          "delta": 39.1622,
+          "n_pixels": 62122
+        },
+        "catalogue_hide_recover": {
+          "evidence_class": "PROXY",
+          "status": "REPORT ONLY (never a gate, never a live score)",
+          "delta_vs_r0": 0.0,
+          "reason": "Analytic, not measured: every added dot has Euclidean d_cat >= 3.0 px and the kernel radius is 3 px, so additions supply exactly zero kernel credit to any known catalogue pixel. The instrument is blind to this axis by construction (same caveat as IR90-19)."
+        }
+      },
+      "mechanism_card": {
+        "hypothesis": "R0 is under-massed, not over-massed, at the margin: 3765 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the parent's own thinning rank (the cells its d2.8 recipe suppressed, earliest visit first) inside a per-block quota.",
+        "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+        "predicted_live_change": "+0.0044 DTI point (MODEL; bracket +0.0003 to +0.0107; not a score)",
+        "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+        "structural_geologist_note": "Additions are 10.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.087, max 0.120). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e",
+      "tag": "add20pctBlocknext",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "tag=add20pctBlocknext; add 7531 dots (+20% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+      "selection_rule": "blocknext",
+      "dose_fraction": 0.2,
+      "n_added": 7531,
+      "n_dots": 45185,
+      "pct_changed": 20.000531152068838,
+      "sha256": "260d987e0a89a9456eabc80072ffc0228fe785568a766310d0f921fdc317d557",
+      "sha256_zeros": "d59ccf7744eca41e2041748eabd71a0c7fec438fea3497d2bf05f693af21a9e1",
+      "status": "BUILT",
+      "predicted_change": "+0.0084 DTI (MODEL; bracket +0.0005 to +0.0205; not a score)",
+      "predicted_model": {
+        "point": 0.008415,
+        "low": 0.000501,
+        "high": 0.020451,
+        "grid": {
+          "truth_px": [
+            60988,
+            65000,
+            90000
+          ],
+          "mean_mass_credit": [
+            0.2,
+            0.44,
+            0.6
+          ],
+          "support_precision": [
+            0.1,
+            0.2,
+            0.35
+          ],
+          "point": {
+            "truth_px": 65000,
+            "mean_mass_credit": 0.44,
+            "support_precision": 0.2
+          }
+        },
+        "fit_point": {
+          "T": 16535.885280589555,
+          "D": 59524.425056117914,
+          "S": 37654,
+          "M": 16567.76,
+          "G": 65000
+        }
+      },
+      "form_note": "h33-h33-2-b2; MASS add 20% (7531d) blocknext; pred +0.008 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e.tif",
+          "sha256": "260d987e0a89a9456eabc80072ffc0228fe785568a766310d0f921fdc317d557",
+          "bytes": 374517,
+          "encoding": "nan",
+          "n_dots": 45185,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "added_dots_below_3px": 0,
+          "inherited_r0_dots_below_3px": 1611,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "added_dots_on_h19_support": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e-zeros.tif",
+          "sha256": "d59ccf7744eca41e2041748eabd71a0c7fec438fea3497d2bf05f693af21a9e1",
+          "bytes": 239845,
+          "encoding": "zeros",
+          "n_dots": 45185,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "added_dots_below_3px": 0,
+          "inherited_r0_dots_below_3px": 1611,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "added_dots_on_h19_support": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "n_added": 7531,
+        "n_removed": 0,
+        "retained_dots": 37654,
+        "symmetric_difference_px": 7531,
+        "pct_changed_symmetric": 20.000531152068838,
+        "mean_marginal_support_credit_per_added_dot": 0.464,
+        "median_marginal_support_credit_per_added_dot": 0.3333,
+        "sum_marginal_support_credit": 3494.65,
+        "mean_full_support_credit_per_added_dot": 3.1011,
+        "min_catalogue_distance_added_px": 3.0,
+        "added_below_3px": 0,
+        "block_density_cv_5km_before": 0.901143,
+        "block_density_cv_5km_after": 0.903998,
+        "block_density_cv_10km_before": 0.635265,
+        "block_density_cv_10km_after": 0.637322
+      },
+      "addition_report": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "nominal_dose": 0.200005,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_20plus_dots": 848,
+        "blocks_receiving_additions": 1635,
+        "blocks_with_zero_additions_among_20plus": 0,
+        "add_share_p05": 0.1852,
+        "add_share_median": 0.2,
+        "add_share_p95": 0.2143,
+        "add_share_max": 0.2174,
+        "adds_into_blocks_with_zero_parent_dots": 0,
+        "added_bbox_y": [
+          0,
+          3700
+        ],
+        "added_bbox_x": [
+          16,
+          3288
+        ],
+        "added_centroid_yx": [
+          1252.91,
+          1477.33
+        ],
+        "parent_centroid_yx": [
+          1273.25,
+          1478.13
+        ],
+        "passes_addition_evenness_gate": true
+      },
+      "proxy_reports": {
+        "sgmc_off_catalogue_credit": {
+          "evidence_class": "PROXY",
+          "status": "REPORT ONLY (never a gate, never a live score)",
+          "r0_credit": 1527.9343,
+          "candidate_credit": 1601.0012,
+          "delta": 73.0669,
+          "n_pixels": 62122
+        },
+        "catalogue_hide_recover": {
+          "evidence_class": "PROXY",
+          "status": "REPORT ONLY (never a gate, never a live score)",
+          "delta_vs_r0": 0.0,
+          "reason": "Analytic, not measured: every added dot has Euclidean d_cat >= 3.0 px and the kernel radius is 3 px, so additions supply exactly zero kernel credit to any known catalogue pixel. The instrument is blind to this axis by construction (same caveat as IR90-19)."
+        }
+      },
+      "mechanism_card": {
+        "hypothesis": "R0 is under-massed, not over-massed, at the margin: 7531 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the parent's own thinning rank (the cells its d2.8 recipe suppressed, earliest visit first) inside a per-block quota.",
+        "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+        "predicted_live_change": "+0.0084 DTI point (MODEL; bracket +0.0005 to +0.0205; not a score)",
+        "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+        "structural_geologist_note": "Additions are 20.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.185, max 0.217). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSadd10pctGapmax-20261023-98408334",
+      "tag": "add10pctGapmax",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "tag=add10pctGapmax; add 3765 dots (+9.999% of R0) on H19-5; max marginal R=3px kernel credit per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+      "selection_rule": "gapmax",
+      "dose_fraction": 0.1,
+      "n_added": 3765,
+      "n_dots": 41419,
+      "pct_changed": 9.998937695862326,
+      "sha256": "98408334e625e35870b0ba8c0311dc600ed961369037271c42804dab1bdda4b0",
+      "sha256_zeros": "ca173bff75844dacd7a26fc364763dacf647a049899a76a5a379dc4f494ddb67",
+      "status": "BUILT",
+      "predicted_change": "+0.0107 DTI (MODEL; bracket +0.0026 to +0.0226; not a score)",
+      "predicted_model": {
+        "point": 0.010723,
+        "low": 0.002598,
+        "high": 0.022596,
+        "grid": {
+          "truth_px": [
+            60988,
+            65000,
+            90000
+          ],
+          "mean_mass_credit": [
+            0.2,
+            0.44,
+            0.6
+          ],
+          "support_precision": [
+            0.1,
+            0.2,
+            0.35
+          ],
+          "point": {
+            "truth_px": 65000,
+            "mean_mass_credit": 0.44,
+            "support_precision": 0.2
+          }
+        },
+        "fit_point": {
+          "T": 16535.885280589555,
+          "D": 59524.425056117914,
+          "S": 37654,
+          "M": 16567.76,
+          "G": 65000
+        }
+      },
+      "form_note": "h33-h33-2-b2; MASS add 10% (3765d) gapmax; pred +0.011 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSadd10pctGapmax-20261023-98408334.tif",
+          "sha256": "98408334e625e35870b0ba8c0311dc600ed961369037271c42804dab1bdda4b0",
+          "bytes": 367715,
+          "encoding": "nan",
+          "n_dots": 41419,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "added_dots_below_3px": 0,
+          "inherited_r0_dots_below_3px": 1611,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "added_dots_on_h19_support": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSadd10pctGapmax-20261023-98408334-zeros.tif",
+          "sha256": "ca173bff75844dacd7a26fc364763dacf647a049899a76a5a379dc4f494ddb67",
+          "bytes": 231946,
+          "encoding": "zeros",
+          "n_dots": 41419,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "added_dots_below_3px": 0,
+          "inherited_r0_dots_below_3px": 1611,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "added_dots_on_h19_support": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "n_added": 3765,
+        "n_removed": 0,
+        "retained_dots": 37654,
+        "symmetric_difference_px": 3765,
+        "pct_changed_symmetric": 9.998937695862326,
+        "mean_marginal_support_credit_per_added_dot": 1.013,
+        "median_marginal_support_credit_per_added_dot": 0.8834,
+        "sum_marginal_support_credit": 3813.89,
+        "mean_full_support_credit_per_added_dot": 3.0416,
+        "min_catalogue_distance_added_px": 3.0,
+        "added_below_3px": 0,
+        "block_density_cv_5km_before": 0.901143,
+        "block_density_cv_5km_after": 0.90324,
+        "block_density_cv_10km_before": 0.635265,
+        "block_density_cv_10km_after": 0.636142
+      },
+      "addition_report": {
+        "block_px": 50,
+        "block_km": 5.0,
+        "nominal_dose": 0.099989,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_20plus_dots": 848,
+        "blocks_receiving_additions": 1499,
+        "blocks_with_zero_additions_among_20plus": 0,
+        "add_share_p05": 0.087,
+        "add_share_median": 0.1,
+        "add_share_p95": 0.1154,
+        "add_share_max": 0.12,
+        "adds_into_blocks_with_zero_parent_dots": 0,
+        "added_bbox_y": [
+          1,
+          3700
+        ],
+        "added_bbox_x": [
+          17,
+          3287
+        ],
+        "added_centroid_yx": [
+          1261.19,
+          1473.71
+        ],
+        "parent_centroid_yx": [
+          1273.25,
+          1478.13
+        ],
+        "passes_addition_evenness_gate": true
+      },
+      "proxy_reports": {
+        "sgmc_off_catalogue_credit": {
+          "evidence_class": "PROXY",
+          "status": "REPORT ONLY (never a gate, never a live score)",
+          "r0_credit": 1527.9343,
+          "candidate_credit": 1580.9596,
+          "delta": 53.0253,
+          "n_pixels": 62122
+        },
+        "catalogue_hide_recover": {
+          "evidence_class": "PROXY",
+          "status": "REPORT ONLY (never a gate, never a live score)",
+          "delta_vs_r0": 0.0,
+          "reason": "Analytic, not measured: every added dot has Euclidean d_cat >= 3.0 px and the kernel radius is 3 px, so additions supply exactly zero kernel credit to any known catalogue pixel. The instrument is blind to this axis by construction (same caveat as IR90-19)."
+        }
+      },
+      "mechanism_card": {
+        "hypothesis": "R0 is under-massed, not over-massed, at the margin: 3765 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the cells with the largest remaining R=3 px kernel credit inside a per-block quota.",
+        "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+        "predicted_live_change": "+0.0107 DTI point (MODEL; bracket +0.0026 to +0.0226; not a score)",
+        "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+        "structural_geologist_note": "Additions are 10.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.087, max 0.120). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+      }
+    }
+  ],
+  "elapsed_s": 38.78,
+  "no_live_submission": true,
+  "not_committed_to_git": true,
+  "verified_utc": "2026-10-23T23:46:40Z",
+  "verification_git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "self_check": {
+    "variant_files_re_read_and_validated": true,
+    "variant_bytes_reproduced_exactly": true,
+    "r0_rebuilt_byte_identically": true
+  }
+}
