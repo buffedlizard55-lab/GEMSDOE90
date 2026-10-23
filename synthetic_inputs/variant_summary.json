@@ -1,0 +1,54 @@
+{
+  "parent": "h33-h33-2-b2",
+  "axis": "CONCENTRATION",
+  "block_px": 10,
+  "block_km": 1.0,
+  "cv_before": 1.196736209409449,
+  "variants": [
+    {
+      "pct": 0.1,
+      "label": "10",
+      "n_move": 3765,
+      "cv_before": 1.196736209409449,
+      "cv_after": 2.9696322742600323,
+      "final_name": "h33-h33-2-b2-CONC10-20261023-41a772a7.tif",
+      "final_zeros": "h33-h33-2-b2-CONC10-20261023-41a772a7-zeros.tif",
+      "sha": "41a772a78f3aa4bce570ac5cc1d6d7232accea5f008bff98b6889c617d62eeaf",
+      "sha8": "41a772a7",
+      "sha_zeros": "d78d38fbcc76c64affc749a7b1bac9d9851bc4930f33c00830b57c211f5ff7d8",
+      "pct_changed": 10.0,
+      "diff_px": 7530
+    },
+    {
+      "pct": 0.15,
+      "label": "15",
+      "n_move": 5648,
+      "cv_before": 1.196736209409449,
+      "cv_after": 3.6353125134245055,
+      "final_name": "h33-h33-2-b2-CONC15-20261023-e81f5ae6.tif",
+      "final_zeros": "h33-h33-2-b2-CONC15-20261023-e81f5ae6-zeros.tif",
+      "sha": "e81f5ae6d92b4547dea29ad4d39fe2de666d1e734f0bb49e4ed956d674c8a477",
+      "sha8": "e81f5ae6",
+      "sha_zeros": "5fb0e39034f0efcee46c69130fa587e1673e0ac149e45c7b9853176f7c0e9326",
+      "pct_changed": 15.0,
+      "diff_px": 11296
+    },
+    {
+      "pct": 0.2,
+      "label": "20",
+      "n_move": 7530,
+      "cv_before": 1.196736209409449,
+      "cv_after": 4.163209485868503,
+      "final_name": "h33-h33-2-b2-CONC20-20261023-a1d6a0ce.tif",
+      "final_zeros": "h33-h33-2-b2-CONC20-20261023-a1d6a0ce-zeros.tif",
+      "sha": "a1d6a0ce4f78958cef774a7523d91c31a62722478855d15284d689526664be4f",
+      "sha8": "a1d6a0ce",
+      "sha_zeros": "9e4c3932cda4c14390ae0793d772481aba664120230a399281b9d007e227c764",
+      "pct_changed": 20.0,
+      "diff_px": 15060
+    }
+  ],
+  "n_dots": 37654,
+  "catalogue_buffer_variant_px": 3,
+  "note": "SYNTHETIC stand-in, see IRREGULARITIES.md"
+}

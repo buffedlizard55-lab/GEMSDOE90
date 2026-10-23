@@ -1,0 +1,57 @@
+{
+  "version": "v2-2026-10-23",
+  "note": "UNVERIFIED — original GEMSDOE90 manifest not present in initial commit 7e61faa. All entries below are PLACEHOLDERS reconstructed from brief v2. Do not use for scoring without verifying sha256 against pinned competition sources.",
+  "inputs_pinned": [],
+  "expected_inputs": [
+    {
+      "id": "sample_submission",
+      "filename": "sample_submission.tif",
+      "description": "Reference raster defining CRS (EPSG:32611), transform, shape, bounds, footprint mask. One band, float32, 100m.",
+      "url": "https://www.drivendata.org/competitions/306/data/ — download via logged-in account (automated fetch banned per ToS)",
+      "sha256": "UNVERIFIED — human must fill after manual download",
+      "license": "Competition data-use terms — keep out of public repos"
+    },
+    {
+      "id": "catalogue_mask",
+      "filename": "catalogue_mask.tif",
+      "description": "Binary raster of known USGS/INGENIOUS fault pixels (1=known, 0=unknown). Enforce zero catalogue mass and >=3px exclusion (2px for R0). Pixel-exact per forum 11516.",
+      "url": "Derived from training labels — DO NOT scrape; human must supply from pinned source",
+      "sha256": "UNVERIFIED",
+      "license": "USGS public domain where applicable"
+    },
+    {
+      "id": "parent_R0",
+      "filename": "h33-h33-2-b2.tif",
+      "description": "Parent R0: 37,654 unit-mass dots, none within 2px of catalogue. CLAIM 0.2778 (no receipt in ledger). GEMSDOE32.",
+      "url": "Local ledger — not yet recovered",
+      "sha256": "UNVERIFIED — rebuild required before any variant is valid",
+      "license": "Internal"
+    },
+    {
+      "id": "tmi_gradient",
+      "filename": "tmi_hgrad.tif",
+      "description": "TMI horizontal gradient for SNAP axis (GeoDAWN Area 2, 400m line spacing, 150-200m AGL).",
+      "url": "https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7",
+      "sha256": "UNVERIFIED",
+      "license": "USGS public domain"
+    },
+    {
+      "id": "detrended_elevation",
+      "filename": "detrended_elevation.tif",
+      "description": "Detrended elevation terciles for RELIEF axis (basin/piedmont/range-front).",
+      "url": "USGS 3DEP / NBMG — human to pin exact tile",
+      "sha256": "UNVERIFIED",
+      "license": "USGS public domain"
+    }
+  ],
+  "generated_footprint_synthetic": {
+    "note": "Synthetic footprint for validator CI only — 2000 cols x 2585 rows = 5170000 px, 100m, EPSG:32611. Transform origin 360000E, 4450000N. NOT competition footprint.",
+    "cols": 2000,
+    "rows": 2585,
+    "crs": "EPSG:32611",
+    "transform": [100, 0, 360000, 0, -100, 4450000],
+    "bounds": [360000, 4191500, 560000, 4450000],
+    "dtype": "float32",
+    "nodata_outside": null
+  }
+}
