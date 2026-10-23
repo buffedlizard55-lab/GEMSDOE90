@@ -38,6 +38,62 @@
         "falsifier": "A paired, same-week live receipt against R0 with \u0394<=-0.010 falsifies the proposed positive collar effect for this cutoff/refill policy. Any |\u0394|<0.010 is no evidence under the session rule.",
         "structural_geologist_note": "Interpret this as a positional-uncertainty/collar experiment, not as a claim that faults do not continue near mapped traces. Review both removed flanks and FIFO-ranked refill ridges on geology."
       }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2",
+      "value": "collar across<=4px, along<=2px (strike-aligned); fixed-count H19-5 refill",
+      "mechanism_card": {
+        "hypothesis": "R0's isotropic 2 px collar removes across-strike flank mass and along-strike continuation with equal force. Widening the collar to 4 px across strike only, at fixed dot count, should raise DTI if near-catalogue flank dots are predominantly false mass while along-strike continuations are predominantly real unmapped geometry.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly while new-fault truth can sit within 300 m of a known trace, so the collar trades false-positive mass against adjacent true credit. The parent's 2 px collar is direction-free: it removes flank mass and along-strike continuation alike. On a 400 m-spacing survey the positional error that matters is cross-strike, and along-strike continuation of a mapped trace is real (unmapped geometry of existing systems is explicitly scored). This family therefore widens the collar only across strike, holding the parent's 2 px radius along strike, at fixed dot count.",
+        "non_fault_confounder": "A dot a few pixels across strike from a mapped trace may be a real parallel strand, a step-over, or the surface expression of a steeply dipping strand whose surface trace is offset from the mapped line; the refill pixels are H19-5 thinning-order picks, which are lithologic contacts or drainage lineaments as often as faults.",
+        "predicted_live_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.010; not a score)",
+        "prediction_decomposition": "collar term +0.004 to +0.006 (2632 dots at median 2.8 px across strike removed), refill dilution -0.001 to -0.003 (2632 dots added a median 1.0 px from a retained dot), net +0.003",
+        "refill_confound": "99.5% of the 2632 refill dots sit within 3 px of a retained dot (median 1.00 px), so the fixed-count refill adds mostly penalty, little fresh kernel credit. The removed dots are non-local replacements (median displaced 888 px). Both terms are inherited from the parent lineage's refill policy, not from the collar geometry under test.",
+        "falsifier": "A paired, same-week live receipt against R0 with delta <= -0.010 falsifies the across-strike-only collar at this dose; any |delta| < 0.010 is no evidence under the session rule. A monotone decline across A = 4, 5, 6 would additionally reject the dose-response implied by the mechanism.",
+        "structural_geologist_note": "Read the removed set as two populations: flank dots at 2-3 px across strike from mapped traces (the predicted false mass) and along-strike continuations beyond mapped tips (which this edit deliberately keeps). Check whether the kept continuations look like real projections of the mapped geometry or like an artefact of the structure-tensor window.",
+        "information_value": "Separates 'wider collar pays' from 'along-strike collateral costs' only together with the isotropic rungs; on its own it says whether the across-strike-only collar moves the live score at all."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061",
+      "value": "collar across<=5px, along<=2px (strike-aligned); fixed-count H19-5 refill",
+      "mechanism_card": {
+        "hypothesis": "R0's isotropic 2 px collar removes across-strike flank mass and along-strike continuation with equal force. Widening the collar to 5 px across strike only, at fixed dot count, should raise DTI if near-catalogue flank dots are predominantly false mass while along-strike continuations are predominantly real unmapped geometry.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly while new-fault truth can sit within 300 m of a known trace, so the collar trades false-positive mass against adjacent true credit. The parent's 2 px collar is direction-free: it removes flank mass and along-strike continuation alike. On a 400 m-spacing survey the positional error that matters is cross-strike, and along-strike continuation of a mapped trace is real (unmapped geometry of existing systems is explicitly scored). This family therefore widens the collar only across strike, holding the parent's 2 px radius along strike, at fixed dot count.",
+        "non_fault_confounder": "A dot a few pixels across strike from a mapped trace may be a real parallel strand, a step-over, or the surface expression of a steeply dipping strand whose surface trace is offset from the mapped line; the refill pixels are H19-5 thinning-order picks, which are lithologic contacts or drainage lineaments as often as faults.",
+        "predicted_live_change": "+0.002 DTI (MODEL; plausible -0.010 to +0.010; not a score)",
+        "prediction_decomposition": "collar term +0.005 to +0.007 (3663 removed, median 3.0 px across strike), refill dilution -0.002 to -0.004 (3663 added a median 1.0 px from a retained dot), net +0.002",
+        "refill_confound": "98.8% of the 3663 refill dots sit within 3 px of a retained dot (median 1.00 px), so the fixed-count refill adds mostly penalty, little fresh kernel credit. The removed dots are non-local replacements (median displaced 845 px). Both terms are inherited from the parent lineage's refill policy, not from the collar geometry under test.",
+        "falsifier": "A paired, same-week live receipt against R0 with delta <= -0.010 falsifies the across-strike-only collar at this dose; any |delta| < 0.010 is no evidence under the session rule. A monotone decline across A = 4, 5, 6 would additionally reject the dose-response implied by the mechanism.",
+        "structural_geologist_note": "Read the removed set as two populations: flank dots at 2-3 px across strike from mapped traces (the predicted false mass) and along-strike continuations beyond mapped tips (which this edit deliberately keeps). Check whether the kept continuations look like real projections of the mapped geometry or like an artefact of the structure-tensor window.",
+        "information_value": "Separates 'wider collar pays' from 'along-strike collateral costs' only together with the isotropic rungs; on its own it says whether the across-strike-only collar moves the live score at all."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3",
+      "value": "collar across<=6px, along<=2px (strike-aligned); fixed-count H19-5 refill",
+      "mechanism_card": {
+        "hypothesis": "R0's isotropic 2 px collar removes across-strike flank mass and along-strike continuation with equal force. Widening the collar to 6 px across strike only, at fixed dot count, should raise DTI if near-catalogue flank dots are predominantly false mass while along-strike continuations are predominantly real unmapped geometry.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly while new-fault truth can sit within 300 m of a known trace, so the collar trades false-positive mass against adjacent true credit. The parent's 2 px collar is direction-free: it removes flank mass and along-strike continuation alike. On a 400 m-spacing survey the positional error that matters is cross-strike, and along-strike continuation of a mapped trace is real (unmapped geometry of existing systems is explicitly scored). This family therefore widens the collar only across strike, holding the parent's 2 px radius along strike, at fixed dot count.",
+        "non_fault_confounder": "A dot a few pixels across strike from a mapped trace may be a real parallel strand, a step-over, or the surface expression of a steeply dipping strand whose surface trace is offset from the mapped line; the refill pixels are H19-5 thinning-order picks, which are lithologic contacts or drainage lineaments as often as faults.",
+        "predicted_live_change": "+0.000 DTI (MODEL; plausible -0.010 to +0.010; not a score)",
+        "prediction_decomposition": "collar term +0.006 to +0.008 (4625 removed, median 3.2 px across strike), refill dilution -0.003 to -0.005, plus first-order loss of genuine adjacent truth; net +0.000",
+        "refill_confound": "98.7% of the 4625 refill dots sit within 3 px of a retained dot (median 1.00 px), so the fixed-count refill adds mostly penalty, little fresh kernel credit. The removed dots are non-local replacements (median displaced 846 px). Both terms are inherited from the parent lineage's refill policy, not from the collar geometry under test.",
+        "falsifier": "A paired, same-week live receipt against R0 with delta <= -0.010 falsifies the across-strike-only collar at this dose; any |delta| < 0.010 is no evidence under the session rule. A monotone decline across A = 4, 5, 6 would additionally reject the dose-response implied by the mechanism.",
+        "structural_geologist_note": "Read the removed set as two populations: flank dots at 2-3 px across strike from mapped traces (the predicted false mass) and along-strike continuations beyond mapped tips (which this edit deliberately keeps). Check whether the kept continuations look like real projections of the mapped geometry or like an artefact of the structure-tensor window.",
+        "information_value": "Separates 'wider collar pays' from 'along-strike collateral costs' only together with the isotropic rungs; on its own it says whether the across-strike-only collar moves the live score at all."
+      }
     }
-  ]
+  ],
+  "aniso_prune": {
+    "schema_version": 1,
+    "parent": "h33-h33-2-b2",
+    "axis": "PRUNE",
+    "value_family": "strike-aligned (anisotropic) collar: along held at the parent's 2 px, across = A",
+    "variants": [
+      "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2",
+      "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061",
+      "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3"
+    ]
+  }
 }

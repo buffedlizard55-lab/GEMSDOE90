@@ -31,10 +31,18 @@ independently checked (IR90-02).
 
 AI added `scripts/restore_releases.py`, which re-emits the three already-recorded PRUNE candidates from the pinned inputs and fails closed unless the bytes match the SHA-256 in `evidence/build_receipt.json` and `ledger/submissions.csv`; AI also added two ledger-consistency tests and this note. No new (AXIS, value) pair was created, no candidate was altered, and `scripts/build_r0_variants.py` was left byte-identical (SHA-256 `06f667c1…`, still pinned in both receipts) so the recorded generator hash stays valid. AI re-verified 26/26 input pins, rebuilt R0 byte-identically, reproduced the d2.8 ranking with 0 px difference, re-ran the format gate on all six files and the full test suite. AI did not contact DrivenData, submit, or claim any score.
 
-## Update 2026-10-23 (reproducibility pass, clean sandbox)
-
-AI added `scripts/restore_releases.py`, which re-emits the three already-recorded PRUNE candidates from the pinned inputs and fails closed unless the bytes match the SHA-256 in `evidence/build_receipt.json` and `ledger/submissions.csv`; AI also added two ledger-consistency tests and this note. No new (AXIS, value) pair was created, no candidate was altered, and `scripts/build_r0_variants.py` was left byte-identical (SHA-256 `06f667c1…`, still pinned in both receipts) so the recorded generator hash stays valid. AI re-verified 26/26 input pins, rebuilt R0 byte-identically, reproduced the d2.8 ranking with 0 px difference, re-ran the format gate on all six files and the full test suite. AI did not contact DrivenData, submit, or claim any score.
-
 ## Update 2026-10-23b (MASS shadow-dose session)
 
 AI authored `src/mass.py`, `scripts/build_mass_shadow.py`, `tests/test_mass_shadow.py`, the three MASS candidates, `evidence/mass_build_receipt.json` and the MASS documentation. The three PRUNE candidates from the earlier session are unchanged and remain in `releases/` and in the ledger.
+
+## Session 2026-10-23 (2) — strike-aligned PRUNE collar
+
+AI wrote `scripts/aniso_prune.py`, `scripts/build_aniso_prune_variants.py`, `tests/test_aniso_prune.py`, the
+mechanism cards, the ledger/reservation rows, the slot plan and this disclosure. It restored and sha256-verified
+all 26 pinned inputs, rebuilt R0 byte-identically, ran the format gate and the report-only leakage canary, and
+built three unscored candidates. The agent selected the axis (PRUNE) and the value family (anisotropic collar)
+itself, after reading the sibling ledgers to avoid rebuilding an existing (axis, value); no human approved that
+choice in advance. It did not contact DrivenData or any leaderboard, did not submit, and holds no score: R0's
+0.2778 remains a CLAIM and every predicted change is a MODEL. Competition rasters stay in ignored
+`.cache/gems_data/` and `releases/`; nothing competition-derived is in this commit or any release. The human
+still owns the slot decision, the receipt, the data-use review and the live target.
