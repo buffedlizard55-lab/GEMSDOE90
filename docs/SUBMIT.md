@@ -32,6 +32,22 @@ catalogue mass. **These three rasters are not present in this sandbox** (they we
 `.venv/bin/python scripts/build_mass_shadow.py --verify`. These files inherit R0's 2.236 px collar exactly
 (IR90-07): a MASS-only edit must not also move the collar.
 
+## 1c. MASS add-direction infill (session 2026-10-23e, this branch)
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin | Form note (< 140 chars) |
+|---|---|---|---|
+| +5 % → 39,537 dots | `releases/h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c.tif` | `…-c4e6144c-zeros.tif` | `h33-h33-2-b2; MASS add 1883d (5%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.008 DTI MODEL` |
+| +10 % → 41,419 dots | `releases/h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de.tif` | `…-5edc84de-zeros.tif` | `h33-h33-2-b2; MASS add 3765d (10%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.014 DTI MODEL` |
+| +20 % → 45,185 dots | `releases/h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4.tif` | `…-f94efff4-zeros.tif` | `h33-h33-2-b2; MASS add 7531d (20%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.022 DTI MODEL` |
+
+Every parent dot is retained; no dot is moved; all values are 1.0; the 1,883 / 3,765 / 7,531 additions sit on
+H19-5 support, are **>= 3 px** from the catalogue (median 2.3 px from an existing dot: this is mid-strand infill,
+not reach into new ground), and are apportioned over 5 km blocks in proportion to the parent's own dot counts.
+Zero catalogue mass. Rebuild with `.venv/bin/python scripts/build_mass_infill.py --build` after
+`scripts/restore_data.py`; check with `--verify` (re-emits byte-identically). Receipt and gates:
+`evidence/mass_infill_receipt.json`. Note these are **supersets** of R0, so they inherit R0's 2.236 px floor on
+untouched dots (IR90-21) and they are the only candidates in this repo that add mass.
+
 ## 1b. MASS high-dose arms + credit-blind control (session 2026-10-23c)
 
 | Candidate | Preferred file (NaN outside footprint) | Fallback twin | Form note (< 140 chars) |
