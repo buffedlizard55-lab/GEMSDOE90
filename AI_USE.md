@@ -46,3 +46,9 @@ choice in advance. It did not contact DrivenData or any leaderboard, did not sub
 0.2778 remains a CLAIM and every predicted change is a MODEL. Competition rasters stay in ignored
 `.cache/gems_data/` and `releases/`; nothing competition-derived is in this commit or any release. The human
 still owns the slot decision, the receipt, the data-use review and the live target.
+
+## Update 2026-10-23 (SNAP vertical-gradient session)
+
+AI selected SNAP after auditing the local and six sibling ledgers, authored `src/snap.py` and `scripts/build_snap_vertical.py`, built three exact-distinct gain-gated variants, added synthetic and receipt-consistency tests, and wrote their mechanism cards, ledger rows and submission/slot documentation. AI used only manifest-pinned inputs, verified all 26 SHA-256 pins and exact R0, used seed 20261023 only for the report-only canary sample, and computed the SGMC report under the repository's stated DTI assumptions. AI did not contact DrivenData, submit, scrape a leaderboard, or claim a score.
+
+The human's brief supplied the axis rules and constraints. The human has not approved these slot choices. AI marked all three outputs LOCAL ONLY because the inherited R0 collar fails the general ≥3 px rule; a human must decide eligibility, review the structural-geology confounders, and supply current leaderboard/quota/deployment controls and any receipts. Competition rasters remain ignored and are not part of the Git diff.

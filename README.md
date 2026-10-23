@@ -2,16 +2,12 @@
 
 <!-- CURRENT STATE (edit only this block) -->
 ## CURRENT STATE
-- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically in a clean sandbox (`c55bafc4…` zeros / `baeae321…` NaN), 26/26 input pins re-verified by sha256.
-- Best receipt: **none on file**. Best CLAIM: 0.2778 (R0, owner-reported, no submission-page receipt in `ledger/submissions.csv`).
-- TOP_PUBLIC: ____ (human fills from the leaderboard, with date: ____)
-- Slots left this week: __ / 3 (one entity) · total used: __ · Deadline: 2026-12-03 (UNVERIFIED, human confirms)
-- Built and unscored (9 candidates, all count-held or nested from R0, none submitted):
-  · MASS shadow ladder 10/20/30 % — 33,889 / 30,123 / 26,358 dots, predicted +0.005 / +0.009 / +0.012 (MODEL)
-  · PRUNE isotropic collar 3.5 / 4.5 / 5.5 px — 37,654 dots, predicted +0.002 / +0.000 / −0.003 (MODEL)
-  · PRUNE strike-aligned collar across 4 / 5 / 6 px, along held at 2 px — 37,654 dots, predicted +0.003 / +0.002 / +0.000 (MODEL)
-- Next 3 slots (human decides; one mechanism per slot): 1) `MASSshadow10pct` 2) `PRUNEanisoA4` 3) escalation on whichever receipt cleared +0.010, else hold — see `SLOT_PLAN.md`.
-- Reproducibility: `scripts/restore_data.py` → `scripts/restore_releases.py` → `scripts/build_mass_shadow.py --build` / `scripts/build_aniso_prune_variants.py --build`; every candidate re-emits to its recorded SHA-256.
+- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 dots; exact two-encoding rebuild, 26/26 pins verified.
+- Best receipt: none. Best CLAIM: 0.2778 (R0, owner-reported). TOP_PUBLIC: ____ (dated: ____).
+- Slots left this week: __ / 3 · total used: __ · Deadline: 2026-12-03 (UNVERIFIED, human confirms).
+- Built, unscored (12): MASS shadow 10/20/30%; isotropic PRUNE 3.5/4.5/5.5 px; anisotropic PRUNE A4/A5/A6; SNAP TMI-VG/gravity-VG/VG-mean. SNAP is LOCAL ONLY (inherited collar; IR90-15).
+- Next 3 slots: 1) MASSshadow10pct 2) PRUNEanisoA4L2 3) escalate a ≥+0.010 winner, else hold. SNAP is not queued (sub-0.01 MODELs, negative SGMC PROXY deltas).
+- Reproduce: `scripts/restore_data.py`; use each receipt's verifier. SNAP: `scripts/build_snap_vertical.py --restore` then `--verify`; six rasters passed disk/format/hash/count/spacing checks.
 <!-- /CURRENT STATE -->
 
 Layout: `src/` gated pipeline (manifest verify → exact R0 rebuild → build →

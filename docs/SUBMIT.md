@@ -1,4 +1,4 @@
-# Human submission packet — 2026-10-23 sessions (MASS ladder + strike-aligned PRUNE collar)
+# Human submission packet — 2026-10-23 sessions (MASS + PRUNE + SNAP)
 
 **The agent does not submit and cannot see the leaderboard.** Every GeoTIFF below is local and Git-ignored on
 purpose: this repository is public and competition rasters must not be committed or released
@@ -71,3 +71,31 @@ Independent re-check (exit 0 = pass):
 5. A decision on data-use terms before any of these rasters leave the private workspace, and a check that
    `releases/` was restored from pinned inputs (`scripts/restore_data.py`, `scripts/restore_releases.py`) rather
    than assumed to exist (IR90-10).
+
+## 4. SNAP vertical-gradient gain gate — LOCAL ONLY, not queued
+
+**DO NOT UPLOAD without a human collar-eligibility decision.** These inherit R0's 1,611 sub-3 px dots exactly and add no new sub-3 px mass, but fail the general ≥3 px rule (`IR90-15`). Literal ≤2 px SNAP cannot clear that inherited collar without adding a PRUNE/MASS edit.
+
+| Candidate | Preferred file in `releases/` | Moved / mean displacement |
+|---|---|---:|
+| VG mean | `h33-h33-2-b2-SNAPvgmean2g10s2p8-20261023-33bbe8f2.tif` | 8,010 (21.272640%) / 0.385331 px |
+| TMI VG | `h33-h33-2-b2-SNAPtmivg2g10s2p8-20261023-64011c73.tif` | 13,443 (35.701386%) / 0.632965 px |
+| Gravity VG | `h33-h33-2-b2-SNAPgravvg2g10s2p8-20261023-332ab617.tif` | 2,999 (7.964625%) / 0.150466 px |
+
+Each fallback is the same base name plus `-zeros.tif`. Form notes (≤140 chars):
+
+- VG mean: `h33-h33-2-b2; SNAP <=2px to gated TMI+gravity VG mean edge, 2.8px spacing; predicted +0.002 DTI MODEL`
+- TMI VG: `h33-h33-2-b2; SNAP <=2px to gated |TMI VG| edge, 2.8px spacing; predicted +0.001 DTI MODEL`
+- Gravity VG: `h33-h33-2-b2; SNAP <=2px to gated |gravity VG| edge, 2.8px spacing; predicted -0.002 DTI MODEL`
+
+All six files passed disk re-read, sample grid/dtype/band/range/outside encoding, exact mask, 37,654 count, zero catalogue mass, hash uniqueness and ≥2.828 px spacing; maximum displacement is 2 px. The general ≥3 px check is **FAIL_INHERITED_FROM_R0**, not a pass. Full hashes and parent diffs: `evidence/snap_build_receipt.json`; cards: `docs/MECHANISM_CARDS_SNAP.md`.
+
+Restore and verify before any authorized use:
+
+```bash
+.venv/bin/python scripts/restore_data.py
+.venv/bin/python scripts/build_snap_vertical.py --restore
+.venv/bin/python scripts/build_snap_vertical.py --verify
+```
+
+The SNAP default is HOLD: every MODEL centre is below 0.01 and SGMC PROXY deltas are slightly negative. Human must additionally supply the collar decision and any candidate receipt.

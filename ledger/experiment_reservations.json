@@ -1,6 +1,6 @@
 {
   "checked_utc": "2026-10-23",
-  "scope": "Cross-session experiment reservations. Exact (AXIS, value) reuse is prohibited. Numeric PRUNE cutoffs with any refill policy are treated as occupied, a stricter rule than literal string matching. The MASS block below lists every MASS value already BUILT by the five sibling sessions that were fetched on 2026-10-23, so the shadow doses stay distinguishable by value and by mechanism.",
+  "scope": "Cross-session experiment reservations. Exact (AXIS, value) reuse is prohibited. Numeric PRUNE cutoffs with any refill policy are treated as occupied, a stricter rule than literal string matching. The MASS block below lists every MASS value already BUILT by the five sibling sessions that were fetched on 2026-10-23, so the shadow doses stay distinguishable by value and by mechanism. SNAP audit additionally checked GEMSDOE84-89 for vertical-gradient, gain-gated, spacing-preserving values.",
   "sources": [
     {
       "repo": "buffedlizard55-lab/GEMSDOE84",
@@ -141,5 +141,76 @@
         "residual_risk": "if the human applies the stricter numeric rule (any cutoff number already used, regardless of geometry), A=4 collides with PRUNE 4 and A=5 with PRUNE 5; the mechanism, removed set and refill pool still differ. Flagged in IRREGULARITIES.md instead of silently reconciled."
       }
     }
-  ]
+  ],
+  "snap_axis": {
+    "sources": [
+      {
+        "repo": "buffedlizard55-lab/GEMSDOE84",
+        "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE84/blob/main/ledger/submissions.csv"
+      },
+      {
+        "repo": "buffedlizard55-lab/GEMSDOE85",
+        "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE85/blob/main/ledger/submissions.csv"
+      },
+      {
+        "repo": "buffedlizard55-lab/GEMSDOE86",
+        "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE86/blob/main/ledger/submissions.csv"
+      },
+      {
+        "repo": "buffedlizard55-lab/GEMSDOE87",
+        "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE87/blob/main/ledger/submissions.csv"
+      },
+      {
+        "repo": "buffedlizard55-lab/GEMSDOE88",
+        "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE88/blob/main/ledger/submissions.csv"
+      },
+      {
+        "repo": "buffedlizard55-lab/GEMSDOE89",
+        "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE89/blob/main/ledger/submissions.csv"
+      }
+    ],
+    "occupied_values": [
+      "1",
+      "1p4px-g0p02",
+      "2",
+      "2-grav",
+      "2p0px-g0p01",
+      "2p0px-g0p02",
+      "2px",
+      "comb2",
+      "cons2",
+      "d1f35",
+      "d2f35",
+      "edge=det_elev_slope|max_px=2.0|margin=0.05|min_sep=2.0",
+      "edge=iso_grav_anom_hg|max_px=2.0|margin=0.05|min_sep=2.0",
+      "edge=tmi_hg|max_px=2.0|margin=0.05|min_sep=2.0",
+      "free window (brief-literal), cap 2 px, lidar scarp",
+      "g2f35",
+      "grav-argmax",
+      "grav2",
+      "hg2",
+      "on-ridge (dest subset of parent skeleton), cap 2 px, TMI edge",
+      "on-ridge (dest subset of parent skeleton), cap 2 px, lidar scarp",
+      "pot2px",
+      "r1",
+      "r2",
+      "r2g10",
+      "ridge2px",
+      "scarp",
+      "scarp2px",
+      "tmi-hg",
+      "tmi2",
+      "vg2",
+      "w2E1",
+      "w2E2",
+      "w2S2"
+    ],
+    "selected_values": [
+      "abs(tmi_vg) percentile; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed",
+      "abs(iso_grav_anom_vg) percentile; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed",
+      "mean abs(TMI/gravity VG) percentiles; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed"
+    ],
+    "why_distinct": "The selected values use provided raster bands 9 and 11 with an exact footprint-percentile transform, a 0.10 realised-gain gate and a strict 2.8 px final separation floor. GEMSDOE86 vg2 already tested smoothed |tmi_vg| with spacing control, so the TMI arm is an incremental gain-gated recipe, not a virgin signal; the gravity-VG and cross-field VG-mean arms use different responses. No exact sibling value string is reused.",
+    "caveat": "Best-effort audit of six sibling main-branch ledgers, not a complete entity-wide submission history. R0 inherited sub-3px pixels make all three outputs LOCAL ONLY pending human resolution of the collar conflict. Prior SNAP overlap and sub-0.01 predictions mean the default decision is to preserve slots."
+  }
 }
