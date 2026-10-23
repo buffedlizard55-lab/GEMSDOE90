@@ -9,3 +9,7 @@ Competition rasters remain under ignored `.cache/gems_data/` and local ignored `
 ## Update 2026-10-23 (reproducibility pass, clean sandbox)
 
 AI added `scripts/restore_releases.py`, which re-emits the three already-recorded PRUNE candidates from the pinned inputs and fails closed unless the bytes match the SHA-256 in `evidence/build_receipt.json` and `ledger/submissions.csv`; AI also added two ledger-consistency tests and this note. No new (AXIS, value) pair was created, no candidate was altered, and `scripts/build_r0_variants.py` was left byte-identical (SHA-256 `06f667c1…`, still pinned in both receipts) so the recorded generator hash stays valid. AI re-verified 26/26 input pins, rebuilt R0 byte-identically, reproduced the d2.8 ranking with 0 px difference, re-ran the format gate on all six files and the full test suite. AI did not contact DrivenData, submit, or claim any score.
+
+## Current branch audit — 2026-10-23
+
+AI restored and SHA-256 verified all 26 pinned files in this sandbox, rebuilt R0 exactly, re-emitted only the three already-ledgered PRUNE pairs and independently validated their disk bytes. All 22 tests passed. No new axis/value was built or ledger row added. AI identified the inherited cutoff deviation from brief v2 (IR90-07), marked the packet conditional on human approval, and updated CI's push trigger for this session branch. No human approval, live receipt, submission, or current quota is implied by this audit.

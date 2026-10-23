@@ -4,7 +4,9 @@
 
 **Mechanism.** Known-catalogue pixels are masked pixel-exactly; a nearby new fault can still be scored. The PRUNE dose asks whether R0's >2 px catalogue collar is too narrow. At each cutoff, remove all R0 dots at or inside the cutoff and refill the exact count from the H19-5 support, outside the new collar, in its deterministically reconstructed FIFO-BFS d2.8 visit order. That order is a thinning tie-break, not a geological probability. This preserves count and isolates collar radius/refill policy. The candidates all have minimum catalogue distance >3.5 px and zero catalogue mass.
 
-## Next three slots (conditional on human slot count; one entity only)
+## Next three slots (conditional on quota AND human acceptance of legacy cutoffs)
+
+**Audit hold (IR90-07):** the existing 3.5/4.5/5.5 px treatments depart from brief v2’s 1/2/3 px specification. This turn reproduced existing bytes only, with no new ledger entries. Retain R0 unless the human accepts these legacy treatments.
 
 | Order | Candidate | Prediction (MODEL, not a score) | What its receipt changes |
 |---|---|---|---|
