@@ -1,69 +1,91 @@
-# SLOT PLAN — high-dose MASS + credit-blind control (2026-10-23c)
+# SLOT PLAN — merged state after the 2026-10-23 sessions (MASS ladder incl. high doses, both PRUNE collars)
 
-**Agent-selected axis: MASS.** Parent R0 `h33-h33-2-b2`, 37,654 unit dots, claimed live **0.2778
-(CLAIM — no receipt on file)**. This session BUILT three new, unclaimed `(MASS, value)` pairs; none was
-submitted. All are strict subsets: **no additions, no moves, no collar change**.
+Two mechanisms were built today against the same parent, `h33-h33-2-b2` (R0: 37,654 unit dots, **CLAIM** 0.2778,
+no submission-page receipt on file). **Twelve candidates, none submitted, none scored.** `TOP_PUBLIC`, the dated
+leaderboard target and the weekly quota are still unknown — the human confirms them before any slot is used.
+This file merges the MASS shadow-dose ladder and the strike-aligned PRUNE collar into one ordered plan.
 
-| Built | Dots | Change vs R0 | Selection |
+## What exists and what each result would tell us
+
+| Candidate | Change from R0 | Prediction (MODEL) | Falsifier / what the receipt changes |
 |---|---|---|---|
-| `…MASSshadow40pct-20261023-e2546fbe` | 22,592 | −40.0011 % (15,062 removed) | ascending exclusive 300 m kernel credit |
-| `…MASSshadow48pct-20261023-88a2e8cc` | 19,580 | −48.0002 % (18,074 removed) | same, deeper |
-| `…MASSrandom40pct-20261023-894b5b4a` | 22,592 | −40.0011 % (15,062 removed) | seeded uniform random (`rng(20261023)`), credit-blind |
+| `MASSshadow10pct` (33,889 dots) | drop the 10 % of dots with least exclusive kernel credit | **+0.005** (−0.010…+0.015) | Δ ≤ −0.005 → stop the ladder; Δ ≥ +0.010 → the mass direction is real, take the top rung next. |
+| `MASSshadow20pct` / `30pct` (30,123 / 26,358) | same ranking, deeper | **+0.009** / **+0.012** | Nested rungs: a monotone rise supports "R0 is over-massed"; a peak at 10 % says the tail still earns credit. |
+| `MASSshadow40pct` / `48pct` (22,592 / 19,580) | same ranking, deepest doses that stay spatially uniform | **+0.014** / **+0.015** | Δ ≤ 0 while 20/30 % were positive puts the turnover between 30 % and 48 %; Δ ≤ −0.005 ends the direction. 48 % is the ceiling: at 50 % the greedy starts emptying whole regions (IR90-17). |
+| `MASSrandom40pct` (22,592) | identical dose, **credit-blind** seeded subset | **+0.013** | The control for the whole ladder: within 0.005 of `shadow40` ⇒ the ranking adds nothing, only dose matters; ≥ 0.005 better ⇒ the ranking is wrong. It also keeps 136 of R0's 838 ≥ 1 km strands, which `shadow40` destroys entirely. |
+| `PRUNEanisoA4L2` (`…0bf248e2`) | strike-aligned collar, 4 px across / 2 px along, count held | **+0.003** (−0.010…+0.010) | Δ ≤ −0.010 → the collar direction is exhausted; \|Δ\| < 0.010 → no evidence, do not buy A5. |
+| `PRUNEanisoA5L2` / `A6L2` | wider across-strike collar, 19.5 % / 24.6 % of dots changed | **+0.002** / **+0.000** | A monotone decline over A4→A6 rejects the dose response the mechanism implies. |
+| `PRUNE3p5px` / `4p5px` / `5p5px` (earlier session) | isotropic collar, count held | **+0.002** / **+0.000** / **−0.003** | The isotropic comparator: with A4 it separates "wider collar" from "along-strike exemption". |
 
-**Why MASS.** Every recorded step down the mass ladder on this lineage gained: 121k px 0.1922 → 44k dots
-0.2477/0.2600 → 37.6k 0.2708 → R0 0.2778 (all CLAIM except the d2.8 0.2600). The in-repo 10/20/30 %
-shadow doses are still unscored; 40 % and 48 % are the only new doses above them, and `rand40` is the
-control the ladder never had.
+Why these two mechanisms and nothing else: the collar is the only step in the ledger with a live gradient behind
+it (parent's own 2 px rung, 0.2708 → 0.2778 **CLAIM**), and mass is the only lever with a closed-form prediction
+from the metric algebra — removing a dot with no exclusive credit lowers `0.2·(S−M)` and leaves `T` untouched.
+Every field-replacement lane (radon, hydro-conduit, Euler, tensor, basement step, SAR/EM, tilt ring) scored
+0.00–0.19 and is closed. Every allowed axis has already been built elsewhere with no receipt (GEMSDOE84–88:
+117 axis rows, one scored), so novelty alone is no longer a reason to build.
 
-**Two arms were probed and rejected before submission** (recorded, not built — `evidence/mass_high_dose_receipt.json`):
-*FIFO-order drops* 10/20/40 % (the parent's stored BFS order, used by the sibling MASS doses) delete one
-south-east corner and at 40 % empty 41 % of 5 km blocks in a single 632-block hole — region-isolated,
-Hard Constraint #5; *shadow 50 %* starts emptying whole regions (largest emptied cluster 17 blocks =
-425 km²), which is why the deep arm stops at 48 %.
+## Next three slots, in order
 
-## Next three slots (conditional on the human's remaining quota; one entity)
-
-| Order | Candidate | Prediction (MODEL, not a score) | What its receipt changes |
+| Order | File | Why here | If the receipt says |
 |---|---|---|---|
-| 1 | `MASSshadow40pct` | **+0.014** (bracket +0.004 to +0.025) | Δ ≥ +0.010: the deep direction is real → slot 2 = `shadow48pct`; Δ ≤ −0.005: mass reduction is finished, slot 2 = `shadow10pct` or a PRUNE file, and stop spending slots on dose; \|Δ\| < 0.010 = no evidence → slot 2 = `shadow20pct` (milder dose, same ranking). |
-| 2 | `shadow48pct` **if** slot 1 ≥ +0.010, else `shadow20pct` | +0.015 (+0.002 to +0.030) / +0.009 | A second positive dose with a smaller increment locates the turnover between 40 % and 48 %. A decline at 48 % while 40 % was positive puts the optimum at 30–40 %. |
-| 3 | `MASSrandom40pct` (same week as slot 1 if possible) | +0.013 (+0.004 to +0.023) | Same dose, credit-blind. If rand40 lands within 0.005 of shadow40, the exclusive-credit ranking adds nothing and the ladder is a pure mass effect — then the next session should spend no effort on ranking. If rand40 beats shadow40 by ≥ 0.005, the ranking is wrong (see the continuity finding below) and must be abandoned. |
+| 1 | `MASSshadow20pct` (30,123 dots) | The mild rung: 20 % of dots gone, a strict subset of R0, no new geometry. Buying the cheap end first keeps a slot in reserve if the direction is wrong. | ≥ +0.010 → slot 2 goes deep (`MASSshadow40pct`). +0.005…+0.010 → slot 2 stays on the ladder (`MASSshadow30pct`). ≤ −0.005 → stop the ladder; slot 2 becomes `PRUNEanisoA4L2`. |
+| 2 | `MASSshadow40pct` (22,592) | The deep rung with the largest predicted gain, and the only dose above 30 % that stays spatially uniform. | ≥ +0.010 → slot 3 = `MASSshadow48pct` (next week) and keep `MASSrandom40pct` for the ranking test. ≤ −0.005 → the ladder is a pure low-dose effect: slot 3 = `MASSrandom40pct` to see whether ranking or mass caused it. |
+| 3 | `MASSrandom40pct` (22,592) | Same dose as slot 2, credit-blind. Three receipts (0 % anchor, ranked 40 %, random 40 %) separate dose from selection in one week. | Beats `shadow40` by ≥ 0.005 → abandon the exclusive-credit ranking and build the continuity-aware variant proposed below. Within ±0.005 → ranking adds nothing; spend later slots on the collar. |
 
-Pair every candidate against a *same-week* R0 receipt. R0's 0.2778 is a CLAIM, so a paired delta is the
-only measurement that counts. One encoding per slot: `-zeros.tif` is a fallback twin, never a second
-experiment. A live change below 0.01 is **no evidence** (public chunks only).
+`PRUNEanisoA4L2` is the reserve: it is the only other lever with a prior (the parent's own 2 px rung,
+0.2708 → 0.2778 CLAIM) and it is a different mechanism on the same parent, so it is the slot to take if the
+mass ladder goes null in both directions. Never take two mechanisms in one week when one receipt would
+explain both.
 
-**Structural warning that competes with the prediction.** At 5 px linking, R0 has 838 strands ≥ 1 km;
-`shadow40` keeps **0** of them (mean dot spacing 3.74 → 6.19 px, 100 % of dots beyond the kernel radius),
-while `rand40` keeps 136 (spacing 4.70 px). The ranking removes densely sampled stretches and leaves
-isolated singletons. If new-fault truth is line-like, the credit argument can lose to lost along-strike
-continuity and `shadow40` may score *below* `rand40`. Both predictions are recorded; the paired receipts
-decide. That is exactly why `rand40` deserves a slot.
-
-## Calendar to the supplied deadline (2026-12-03, UNVERIFIED — human confirms)
-
-Deadline and the 3-scored-submissions-per-week rule come from the brief; automated access to DrivenData
-is prohibited, so neither is re-checked here. Confirm both on the competition page and in the rules PDF
-(https://docs.nlr.gov/docs/fy26osti/96647.pdf).
-
-- **Wk 1 (Oct 23–29):** slot 1 = `shadow40`, slot 3 = `rand40` (the pair is the experiment); slot 2 only if
-  two slots are free.
-- **Wk 2 (Oct 30–Nov 5):** the conditional second dose, plus one PRUNE file (`PRUNE3p5px`) as the
-  independent lever — it is the only other mechanism with a recorded positive prior.
-- **Wk 3–4 (Nov 6–19):** combine the two best axes **only after** both receipts are ≥ +0.010; keep `rand40`
-  as the ranking control.
-- **Wk 5–6 (Nov 20–Dec 3):** confirm the best verified pair, choose the final file and one fallback blind,
-  re-validate both against `sample_submission.tif`, and keep one slot in reserve. Ask the organisers
-  whether the final submission may repeat an already-scored file — that changes the week-6 arithmetic.
+A live change under **0.01** is no evidence: the public leaderboard covers only part of the region and the private
+score may differ. Never let a local diagnostic promote a file — the leakage canary and the hide-and-recover proxy
+rank nothing.
 
 ## Better axes, proposed only (not built this session)
 
-- **CONTINUITY_AWARE_DOSE.** Same dose as `shadow40`, but the greedy may not delete a dot whose removal
-  splits a ≥ 1 km strand at 5 px linking. *Mechanism:* keeps the mass saving while preserving the
-  line-like coverage that T is paid for. *Confounder:* strand linking at 5 px is a geometric choice, not
-  evidence the strand is a fault; preserving a false strand keeps false mass. *Falsifier:* paired Δ ≤ −0.010
-  against `shadow40`, or no gain on untouched spatial folds.
-- **KERNEL_ORACLE_DOSE.** Re-space the surviving dots to a distance-6 px anti-cluster (just outside the
-  kernel, where exclusive credit equals the isolated-dot maximum 9.42) instead of deleting them.
-  *Mechanism:* maximises ΣE per retained dot. *Confounder:* 600 m spacing cannot trace a 300 m-offset
-  strand pair. *Falsifier:* paired Δ ≤ −0.010 versus `shadow48`.
+- **CONTINUITY_AWARE_DOSE.** Same 40 % dose, but the greedy may not delete a dot whose removal splits a
+  ≥ 1 km strand at 5 px linking. *Mechanism:* keeps the mass saving while preserving the line-like coverage
+  `T` is paid for. *Confounder:* 5 px linking is a geometric choice, not evidence the strand is a fault, so
+  it can preserve false mass. *Falsifier:* paired Δ ≤ −0.010 against `shadow40`.
+- **KERNEL_ORACLE_DOSE.** Re-space survivors to a ~6 px anti-cluster (just outside the kernel, where
+  exclusive credit equals the isolated maximum 9.42) instead of deleting. *Mechanism:* maximises ΣE per
+  retained dot. *Confounder:* 600 m spacing cannot trace a 300 m-offset strand pair. *Falsifier:* paired
+  Δ ≤ −0.010 against `shadow48`.
+
+## Calendar to the supplied deadline
+
+Deadline `2026-12-03` and the 3-scored-submissions-per-rolling-week rule come from the brief, not a fresh check
+(automated access to DrivenData is prohibited by its terms). Confirm both, plus current quota, from
+https://www.drivendata.org/competitions/306/competition-doe-gems/ and
+https://docs.nlr.gov/docs/fy26osti/96647.pdf.
+
+- **Week 1 (Oct 23–29):** slots = `MASSshadow20pct`, `MASSshadow40pct`, `MASSrandom40pct` if three slots are
+  free; if only one, `MASSshadow20pct`. Request the submission-page receipts and dates.
+- **Week 2 (Oct 30–Nov 5):** `PRUNEanisoA4L2` (or `MASSshadow48pct` if slot 2 cleared +0.010), only with the
+  week-1 receipts in hand.
+- **Weeks 3–4 (Nov 6–19):** slot 3 = escalation or hold, per the table. Do not build more variants: nine
+  unscored candidates for three weekly slots is already the bottleneck.
+- **Weeks 5–6 (Nov 20–Dec 3):** choose the final file and a fallback **blind**, re-run `src.validate` on both,
+  confirm neither sha256 was ever submitted (at least 8 historical slots were exact repeats), and check the quota.
+
+## Confounds stated, not hidden
+
+- **The count-held refills are dilutive.** 98.7–99.5 % of the collar variants' refill dots land within 3 px of a
+  retained dot (median 1.00 px) and replace a dot a median 845–888 px away: mostly penalty, little fresh credit.
+  That is why the collar predictions net to ≈ 0 (IR90-12). If a collar receipt is null, the next test is the same
+  collar **without** refill — not a wider collar.
+- **Both ladders share one parent and one 2026-10-23 build.** A positive receipt on slot 1 does not validate the
+  collar, and vice versa; only the paired receipts compare.
+- **The deep ladder trades continuity for credit.** At 5 px linking `shadow40` keeps 0 of R0's 838 ≥ 1 km
+  strands and pushes mean dot spacing to 6.19 px (beyond the 300 m kernel); `rand40` keeps 136. The
+  credit model says the ranked file is better; the structure says it may not be. That is why the control
+  gets a slot instead of a sixth dose (IR90-17).
+- **No prediction here is a score.** R0's 0.2778 is a CLAIM, all predictions are MODEL, the canary is a PROXY.
+
+## Proposed next axes (not built this session)
+
+- **COLLAR_NOREFILL:** strike-aligned collar, mass allowed to fall. *Confounder:* mass and geometry move together.
+  *Falsifier:* paired live Δ ≤ −0.010, or a gain no larger than the isotropic no-refill rungs.
+- **REDUNDANCY_BUDGET:** drop dots whose 300 m kernel disk is ≥ 90 % covered by neighbours, no refill.
+  *Mechanism:* `T` is a max-credit sum, so fully covered mass is pure penalty. *Confounder:* real parallel strands
+  legitimately overlap. *Falsifier:* paired live Δ ≤ −0.010.
