@@ -1,32 +1,81 @@
-# SLOT PLAN — R0 PRUNE collar dose (2026-10-23)
+# SLOT PLAN — strike-aligned PRUNE collar (session 2026-10-23, axis PRUNE)
 
-**Agent-selected session axis: PRUNE.** Parent R0 is `h33-h33-2-b2`, 37,654 unit dots. Its `0.2778` live value is a **CLAIM**, not a receipt. Exact R0 rebuild and input hashes are in `evidence/r0_rebuild_receipt.json`; three fixed-count candidates are local under ignored `releases/`. No submission was made. `TOP_PUBLIC`, dated leaderboard target and weekly slots used/remaining are unknown; human confirmation required before allocating any slot.
+**One line.** Parent R0 `h33-h33-2-b2` (37,654 unit dots, **CLAIM** 0.2778, no receipt on file) gets three
+fixed-count variants whose only difference is the *shape* of the catalogue collar: the parent's 2 px Euclidean
+collar is replaced by a strike-aligned ellipse that keeps 2 px along strike and widens **across** strike to
+4 / 5 / 6 px. Built locally, format-gated, **not submitted**. `TOP_PUBLIC`, dated leaderboard target and weekly
+quota remain unknown; a human must confirm them on the competition page before allocating a slot.
 
-**Mechanism.** Known-catalogue pixels are masked pixel-exactly; a nearby new fault can still be scored. The PRUNE dose asks whether R0's >2 px catalogue collar is too narrow. At each cutoff, remove all R0 dots at or inside the cutoff and refill the exact count from the H19-5 support, outside the new collar, in its deterministically reconstructed FIFO-BFS d2.8 visit order. That order is a thinning tie-break, not a geological probability. This preserves count and isolates collar radius/refill policy. The candidates all have minimum catalogue distance >3.5 px and zero catalogue mass.
+## Why this is the dose worth spending on
 
-## Next three slots (conditional on human slot count; one entity only)
+The only empirically positive step in the whole ledger is the parent's own collar: solo-d2.8 0.2708 → prune
+≤2 px 0.2778 (**CLAIM**, owner-reported, no receipt). Every field-replacement lane scored 0.00–0.19. So the
+collar is the one mechanism with a live gradient behind it, and the isotropic ladder above 2 px is already
+built (GEMSDOE87 `PRUNE3/4`, GEMSDOE88 `p3px/p3.2/p3.7/p4.3`, GEMSDOE90 `3.5/4.5/5.5`) — none scored.
+What has never been built is a collar that distinguishes the two directions of positional error. On a 400 m
+line-spacing survey ([USGS GeoDAWN Area 2](https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7))
+the error that matters is cross-strike; along strike a dot near a mapped trace is more plausibly the unmapped
+continuation of that system, which the organiser states is scored
+([where do you draw the line](https://community.drivendata.org/t/where-do-you-draw-the-line/11536)).
 
-| Order | Candidate | Prediction (MODEL, not a score) | What its receipt changes |
+Built files (NaN primary, `-zeros` fallback), parent-diff vs R0:
+
+| # | File (sha8) | Removed / refilled | % of R0 changed | Along-strike dots kept that an isotropic collar of the same radius would delete | Prediction (MODEL) |
+|---|---|---|---|---|---|
+| A4 | `h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2` | 2,632 | 13.98 % | 1,193 | **+0.003**, plausible −0.010 to +0.010 |
+| A5 | `h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061` | 3,663 | 19.46 % | 1,974 | **+0.002**, plausible −0.010 to +0.010 |
+| A6 | `h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3` | 4,625 | 24.57 % | 2,176 | **+0.000**, plausible −0.010 to +0.010 |
+
+Removed dots sit at a median 2.8–3.2 px **across** strike and 0.5 px along strike: the edit really is a
+flank edit, not a wholesale re-thinning.
+
+## Next three slots, in order (conditional on the human's quota)
+
+| Order | File | Submit when | What the receipt changes |
 |---|---|---|---|
-| 1 | `h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891.tif` | +0.002 DTI; plausible -0.010 to +0.010 | A paired live Δ≥+0.010 supports widening just beyond the 3 px kernel collar. Δ≤-0.010 rejects this cutoff/refill policy. |
-| 2 | `h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217.tif` | +0.000 DTI; same plausible interval | Tests a wider exclusion only if slot 1 leaves the PRUNE question unresolved or is positive. If both are within ±0.010, no evidence: do not promote on a proxy. |
-| 3 | `h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif` | -0.003 DTI; same plausible interval | Wide-collar counterpoint. A Δ≤-0.010 supports retaining nearby predictions and closes widening; Δ≥+0.010 supports a broader collar. |
+| 1 | **A4** (`...PRUNEanisoA4L2...0bf248e2.tif`) | Now, if a weekly slot is free | Smallest dose, closest to the one rung that already paid. Δ ≥ +0.010 → the across-strike collar direction is real; go to slot 2. \|Δ\| < 0.010 → no evidence under the session rule; do **not** buy the A5 rung, use slot 2 for the control below. Δ ≤ −0.010 → close the collar line for this phase. |
+| 2 | **A6** if slot 1 ≥ +0.010, else the isotropic comparator `GEMSDOE87 PRUNE4` (3,825 removed, same fixed-count refill policy) | After slot 1's receipt | A6 answers "does more collar keep paying?"; the isotropic rung answers the sharper question, "was the along-strike exemption worth anything?", against a nearly equal removed count. |
+| 3 | Hold — reserve for the final submission and its fallback | Weeks 5–6 | Nothing new is learned; this protects the one final blind submission and the re-validation of both files. |
 
-Under the session rule, **any absolute live change below 0.01 is no evidence**; public-chunk effects may not transfer to private chunks. Predictions are deliberately uncertain. Each comparison should use a human-copied submission receipt for R0 and the candidate, preferably in the same rolling week. Upload at most one candidate per available slot. Use only one encoding per slot; `-zeros.tif` is the fallback twin, not a second experiment.
+A live change below **0.01** is no evidence: the public chunks are a subset of the region and the private
+score may differ. Do not promote a candidate on the local diagnostics; they rank nothing.
 
-## Calendar to supplied deadline
+## Honest confound, stated up front
 
-Deadline `2026-12-03` and the 3-submissions-per-rolling-week rule are supplied by the brief, not freshly checked (automated access to DrivenData is prohibited). Human must confirm exact cutoff and current quota from the official page/rules: https://www.drivendata.org/competitions/306/competition-doe-gems/ and https://docs.nlr.gov/docs/fy26osti/96647.pdf.
+The refill is inherited from the parent lineage and is **dilutive**: 98.7–99.5 % of refill dots land within
+3 px of a retained dot (median 1.00 px), i.e. mostly redundant mass that adds penalty and little fresh kernel
+credit, and the replacements are non-local (median 845–888 px from the dot they replace). The predicted live
+change therefore nets a positive collar term against a negative refill term, which is why all three doses
+predict ≈ 0. If a receipt shows a null, the correct next test is the same collar **without** refill
+(mass allowed to fall, as the parent's own 2 px rung did) — not a wider collar. That rung is *not* built here.
 
-- **Weeks 1–2 (Oct 23–Nov 5):** at most the first candidate if a weekly slot is available; request receipt and date.
-- **Weeks 3–4 (Nov 6–19):** consider candidate 2 only if the first receipt is ≥+0.01 or the first result is below the evidence threshold and the collar question remains worth testing.
-- **Weeks 5–6 (Nov 20–Dec 3):** candidate 3 only if earlier receipts warrant it; otherwise preserve slots. Choose the final file and fallback blind, then revalidate both. One final submission only.
+## Calendar to the supplied deadline
 
-## Report-only diagnostics
+Deadline `2026-12-03` and the 3-scored-submissions-per-rolling-week rule come from the brief, not from a fresh
+check (automated access to DrivenData is prohibited by its terms). The human must confirm both, plus the
+current quota, from https://www.drivendata.org/competitions/306/competition-doe-gems/ and the rules document
+https://docs.nlr.gov/docs/fy26osti/96647.pdf.
 
-Catalogue hide-and-recover PROXY and SGMC control: **not run**; there is no fold-clean, calibrated instrument validated for this refill comparison, and neither is a gate or score. Leakage canary: report-only, 19 supplied feature bands, all 60,988 known-catalogue positives plus a seeded sample of 250,000 off-catalogue footprint pixels; sentinel values median-filled after masking. Maximum symmetric AUC 0.5700 (`geod_2ndinv`), so no single-feature >0.90 trigger. This canary is not evidence of live performance.
+- **Week 1 (Oct 23–29):** slot 1 = A4. Request the submission-page receipt and its date.
+- **Week 2 (Oct 30–Nov 5):** slot 2 only with slot 1's receipt in hand, per the table above.
+- **Weeks 3–4 (Nov 6–19):** combine the two best *evidenced* axes only if at least one receipt clears ±0.010.
+  With no receipt above the threshold, spend nothing: three unscored builds already exist per axis.
+- **Weeks 5–6 (Nov 20–Dec 3):** choose the final file and a fallback blind, re-run `src.validate` on both,
+  and check no duplicate sha256 is being re-submitted (at least 8 historical slots were exact repeats).
 
-## Better axes proposed only (not built)
+## Report-only diagnostics (never gates, never scores)
 
-- **EDGE_COHERENCE:** require multi-scale linear-gradient persistence to favor fault-like edges. *Confounder:* unfaulted lithologic contacts and drainage scarps are also coherent. *Falsifier:* paired live Δ≤-0.010 or no repeatable improvement on untouched spatial folds.
-- **KERNEL_BUDGET:** re-space nearby R0 dots at fixed mass to reduce redundant 300 m kernel coverage. *Confounder:* close parallel strands and step-overs can be real faults. *Falsifier:* paired live Δ≤-0.010.
+- Leakage canary (this session, 19 supplied feature bands, all 60,988 catalogue positives + 250,000 seeded
+  off-catalogue footprint pixels): max symmetric AUC **0.5695** (band 4). No single feature above 0.90, so no
+  stop-and-investigate trigger. This says nothing about live performance.
+- Catalogue hide-and-recover and SGMC control: **not run** — no fold-clean instrument calibrated for a collar
+  geometry; neither can rank these three files.
+
+## Better axes proposed, not built this session
+
+- **COLLAR_NOREFILL:** same strike-aligned collar, mass allowed to fall (≈ −10 % at A5). *Mechanism:* removes
+  the dilution term above. *Confounder:* mass and geometry move together, so a gain cannot be attributed to
+  either. *Falsifier:* paired live Δ ≤ −0.010, or a gain no larger than the isotropic no-refill rungs.
+- **REDUNDANCY_BUDGET:** drop the dots whose 300 m kernel disk is already ≥ 90 % covered by neighbours, no
+  refill, count free. *Mechanism:* T is a max-credit sum, so fully covered mass is pure penalty. *Confounder:*
+  close parallel strands are real faults and their kernels overlap legitimately. *Falsifier:* paired live Δ ≤ −0.010.
