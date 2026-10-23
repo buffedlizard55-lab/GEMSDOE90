@@ -1,4 +1,3 @@
-# Python virtual environments & bytecode
 .venv/
 __pycache__/
 *.py[cod]
@@ -6,11 +5,12 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 
-# Local competition data & unpacked rasters (Hard Constraint #2:
-# NEVER commit competition rasters to public Git repos or GitHub Releases)
+# Competition rasters/data are local only; this repository is public.
 .cache/
 data/
 raw_parts/
-
-# Competition submission rasters are local-only; never publish through public Git/GitHub Releases.
-releases/
+*.tif
+*.tiff
+releases/*.tif
+releases/*.tiff
+!releases/.gitkeep

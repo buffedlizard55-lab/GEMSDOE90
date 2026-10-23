@@ -1,6 +1,6 @@
 # AI use disclosure — 2026-10-23
 
-AI assistance authored the session's reproducibility code (`scripts/restore_data.py`, `scripts/build_r0_variants.py`), unit tests, experiment metadata, mechanism cards, ledger rows derived from the supplied owner raw-paste ledger, and planning/submission documentation. AI also performed the pinned-file integrity checks and the deterministic PRUNE builds described in `evidence/build_receipt.json`.
+AI assistance authored the prior blocked pipeline now retained under `src/` and the current reproducibility code (`scripts/restore_data.py`, `scripts/build_r0_variants.py`), unit tests, experiment metadata, mechanism cards, ledger rows derived from the historical owner raw-paste ledger, and planning/submission documentation. AI also performed pinned-file integrity checks, exact R0 rebuild validation, and deterministic PRUNE builds described in `evidence/build_receipt.json`. The earlier pipeline's missing-input blocker is superseded by the complete pinned-manifest workflow; the old `src.build_prune` inputs are not used for these built candidates.
 
 The human's brief supplied the objective, constraints, parent, quota rules, deadline, metric algebra, and allowed experiment axes. The agent selected PRUNE and the unused 3.5 / 4.5 / 5.5 px values after checking the available sibling ledgers; these are not human-approved slot choices. The agent did not contact DrivenData, submit a file, or claim a score. A human must review geology, provide current leaderboard/slot information and any portal receipts, and choose whether to submit.
 
