@@ -1,6 +1,6 @@
 {
   "checked_utc": "2026-10-23",
-  "scope": "Cross-session PRUNE collar values manually checked against the five sibling ledgers available on 2026-10-23. Exact (AXIS, value) reuse prohibited. Numeric cutoff values with any refill policy are treated as occupied, a stricter rule than literal string matching.",
+  "scope": "Cross-session experiment reservations. Exact (AXIS, value) reuse is prohibited. Numeric PRUNE cutoffs with any refill policy are treated as occupied, a stricter rule than literal string matching. The MASS block below lists every MASS value already BUILT by the five sibling sessions that were fetched on 2026-10-23, so the shadow doses stay distinguishable by value and by mechanism.",
   "sources": [
     {
       "repo": "buffedlizard55-lab/GEMSDOE84",
@@ -64,7 +64,23 @@
     4.5,
     5.5
   ],
-  "interpretation": "The selected numerical cutoffs are absent from all five fetched ledgers; all three are PRUNE tests with fixed count and the same FIFO-BFS H19-5 refill rule. Existing 3.61/4/5 no-refill and 3.0 refill are distinct values and are not recreated. This is a best-effort owner-repo audit, not proof of every submission ever made by the entity.",
+  "mass_axis": {
+    "sibling_values": [
+      "GEMSDOE84: +10pct, -10pct, -20pct",
+      "GEMSDOE85: m10e, m10u, p10",
+      "GEMSDOE86: minus10pct, plus10pct",
+      "GEMSDOE87: m10minus, m10plus, m20minus",
+      "GEMSDOE88: m10minus, m10plus, m20minus"
+    ],
+    "selected_values": [
+      "shadow10pct",
+      "shadow20pct",
+      "shadow30pct"
+    ],
+    "why_distinct": "Every sibling MASS value changes the count by a round percentage using the parent's stored 8-connected FIFO-BFS order or a plain 'lowest rank' truncation. The selected values use a different ranking (ascending exclusive 300 m kernel credit, recomputed after each deletion) and are the only MASS doses that delete dots without adding or moving any. The recorded values are exact string labels and do not collide; the 30% dose is also a magnitude no sibling built.",
+    "matched_count_check": "At the same 3,765 removals the shadow order destroys 35% less exclusive kernel credit than the stored FIFO order (see evidence/mass_build_receipt.json ranking.matched_count_comparison_at_10pct). The sibling 10% doses therefore are not the same experiment."
+  },
+  "interpretation": "The selected PRUNE cutoffs are absent from all five fetched ledgers. This is a best-effort owner-repo audit of the five sibling ledgers available on 2026-10-23, not proof of every submission ever made by the entity; other unindexed repositories or private submission history may exist.",
   "sessions": [
     {
       "session": "2026-10-23 aniso-PRUNE (GEMSDOE90)",
