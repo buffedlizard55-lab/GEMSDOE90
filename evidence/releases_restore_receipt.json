@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "note": "Local, gitignored candidate rasters re-emitted from pinned inputs. This is a reproduction of already-recorded (PRUNE, value) pairs, not a new experiment. Each file must equal the SHA-256 recorded in evidence/build_receipt.json and ledger/submissions.csv.",
+  "generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615",
+  "restore_script_sha256": "28be89a814e1db0a0f94f8dabe9cf01a43b17b80275f5a6bb1af62f34663f15a",
+  "git_sha": "3ac20c24e6e3800aca17e6dbb9cb4dd515fa9253",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "r0_dots": 37654,
+    "r0_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "min_d_cat_px": 2.23606797749979,
+    "below_3px": 1611
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891",
+      "threshold_px": 3.5,
+      "n_dots": 37654,
+      "pct_changed": 14.351729,
+      "min_catalogue_distance_px": 3.605551275463989,
+      "sha256": "8b96d8913b97b8849f867a212052ef5cf19f71cfc62e4a8a5c44baee471d121e",
+      "sha256_zeros": "0ee15b48805fdb4bb148e8fdb2dee0930c635594836f60f18466caf86edeb3a4",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891.tif",
+        "releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217",
+      "threshold_px": 4.5,
+      "n_dots": 37654,
+      "pct_changed": 25.750252,
+      "min_catalogue_distance_px": 5.0,
+      "sha256": "be7a1217907a8019a9df275c3139be32266e4039b5a8a57a1a801b005b8b615b",
+      "sha256_zeros": "729b02c1aa71bc2fb2e193dd27298fbeab8cb7a35407ece630c56028dcc2813b",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217.tif",
+        "releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7",
+      "threshold_px": 5.5,
+      "n_dots": 37654,
+      "pct_changed": 32.559622,
+      "min_catalogue_distance_px": 5.656854249492381,
+      "sha256": "a69816c73b148933434cb25ea5761cc69158303539974c87d468ecf452f72fd4",
+      "sha256_zeros": "d811f35093f2b076b5bfbb3662703541c731f406ebf443e7976775d5227e5625",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif",
+        "releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7-zeros.tif"
+      ]
+    }
+  ],
+  "no_live_submission": true,
+  "not_committed_to_git": true
+}
