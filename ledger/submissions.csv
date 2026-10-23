@@ -1,0 +1,4 @@
+id,parent,axis,value,n_dots,pct_changed,sha256,sha8,status,predicted_change,receipt_score,receipt_date,notes,git_sha,block_cv_before,block_cv_after
+h33-h33-2-b2-CONC10-20261023-41a772a7,h33-h33-2-b2,CONCENTRATION,10,37654,10.00,41a772a78f3aa4bce570ac5cc1d6d7232accea5f008bff98b6889c617d62eeaf,41a772a7,BUILT,+0.001 MODEL,,,synthetic prior 1km block CV 1.197->2.970,7e61faa83e157a08ff32ced31e74de2c28e0bc37,1.197,2.970
+h33-h33-2-b2-CONC15-20261023-e81f5ae6,h33-h33-2-b2,CONCENTRATION,15,37654,15.00,e81f5ae6d92b4547dea29ad4d39fe2de666d1e734f0bb49e4ed956d674c8a477,e81f5ae6,BUILT,+0.002 MODEL,,,synthetic prior 1km block CV 1.197->3.635,7e61faa83e157a08ff32ced31e74de2c28e0bc37,1.197,3.635
+h33-h33-2-b2-CONC20-20261023-a1d6a0ce,h33-h33-2-b2,CONCENTRATION,20,37654,20.00,a1d6a0ce4f78958cef774a7523d91c31a62722478855d15284d689526664be4f,a1d6a0ce,BUILT,+0.003 MODEL,,,synthetic prior 1km block CV 1.197->4.163,7e61faa83e157a08ff32ced31e74de2c28e0bc37,1.197,4.163

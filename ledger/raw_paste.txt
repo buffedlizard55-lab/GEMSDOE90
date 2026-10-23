@@ -1,0 +1,11 @@
+site,name,score,encoding,n_dots,sha8,parent,receipt
+# Reconstructed from brief v2 §3 ledger summary — no live receipts in initial commit 7e61faa
+# The climb: per brief
+incumbent,H19-5 continuous field,0.1922,continuous,121000,unverified,none,N
+incumbent,thinned to dots v1,0.2477,dots,44000,unverified,H19-5,N
+incumbent,thinned to dots v2,0.2600,dots,43000,unverified,H19-5,N
+incumbent,solo-d28,0.2708,dots,37654,unverified,thinned,N
+incumbent,h33-h33-2-b2 (R0),0.2778,dots,37654,unverified,solo-d28,CLAIM
+# Lanes that replaced the field with one physical signal (radon, hydro, Euler, tensor, basement step, strain gauge, SAR/EM, tilt ring) — all failed per brief
+incumbent,GEMSDOE76-81 best,0.2343,dots,40000,unverified,various,N
+# This session synthetic stand-ins (SYNTHETIC prior, not competition-scored)

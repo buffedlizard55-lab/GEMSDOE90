@@ -1,0 +1,9 @@
+# AI_USE.md — Generative-AI disclosure (required by competition rules)
+# https://docs.nlr.gov/docs/fy26osti/96647.pdf — reproducible code + AI disclosure
+
+## Session 2026-10-23 — AXIS=CONCENTRATION (agent: Arena AI assistant on branch arena/d87364fd-gemsdoe90)
+- **Human decisions:** Chose to delegate AXIS selection to agent; provided brief v2; holds submission slots (3/week, one final, deadline 2026-12-03 to confirm on competition page). Human must fill TOP_PUBLIC, slots-left, receipt scores, and supply pinned inputs (sample_submission.tif, catalogue, parent R0 rebuild).
+- **AI wrote:** `scripts/dti.py` (DTI metric + triangular kernel + unit tests), `scripts/validate.py` (format/CRS/dtype/NaN/catalogue/sha256/re-read gates), `scripts/build_r0_and_variants.py` (synthetic footprint prior and 3 concentration variants), `scripts/make_reference.py`, `registry/data_manifest.json` placeholder, all docs, ledger, and releases (synthetic stand-ins).
+- **AI did not decide:** Whether to submit any file (human submits from registered account; agent never contacts dropbox.com or drivendata.org). No leaderboard scrape. Final submission choice remains human.
+- **Reproducibility:** Seed 42, git SHA 7e61faa83e157a08ff32ced31e74de2c28e0bc37 (checked in IRREGULARITIES.md). Synthetic run: `python3 scripts/build_r0_and_variants.py` then `python3 scripts/make_reference.py` then `python3 scripts/validate.py <tif> synthetic_inputs/sample_submission.tif synthetic_inputs/catalogue.tif`. For real run, replace `synthetic_inputs/` sources with pinned manifests and verify sha256 before use.
+- **External data:** No external raster used for scoring. Synthetic prior derived from random field + synthetic catalogue density only for pipeline proof. Real prior must be licensed for challenge + shareable with sponsor (prefer USGS public domain, e.g., 3DEP, GeoDAWN https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7).

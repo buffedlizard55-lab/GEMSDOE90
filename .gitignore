@@ -1,0 +1,10 @@
+# Keep competition rasters out of public repos per brief §4.2 — if they already are, flag it
+# For this branch, releases are intentionally tracked as controlled experiment artifacts (ONE change per variant)
+# External pinned inputs (large, private) — do not commit if they appear
+data/
+competition_data/
+# Python
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv/
