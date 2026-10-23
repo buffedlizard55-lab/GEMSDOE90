@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - arena/bfdb587e-gemsdoe90
+      - 'arena/**'
   pull_request:
 
 permissions:

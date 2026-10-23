@@ -1,6 +1,6 @@
 {
   "checked_utc": "2026-10-23",
-  "scope": "Cross-session PRUNE collar values manually checked against the five sibling ledgers available on 2026-10-23. Exact (AXIS, value) reuse prohibited. Numeric cutoff values with any refill policy are treated as occupied, a stricter rule than literal string matching. SNAP audit refreshed on 2026-10-23 against GEMSDOE84-89; exact value strings and mechanism were checked before selecting vertical-gradient, gain-gated, spacing-preserving recipes.",
+  "scope": "Cross-session experiment reservations. Exact (AXIS, value) reuse is prohibited. Numeric PRUNE cutoffs with any refill policy are treated as occupied, a stricter rule than literal string matching. The MASS block below lists every MASS value already BUILT by the five sibling sessions that were fetched on 2026-10-23, so the shadow doses stay distinguishable by value and by mechanism. SNAP audit additionally checked GEMSDOE84-89 for vertical-gradient, gain-gated, spacing-preserving values.",
   "sources": [
     {
       "repo": "buffedlizard55-lab/GEMSDOE84",
@@ -64,7 +64,84 @@
     4.5,
     5.5
   ],
-  "interpretation": "The selected numerical cutoffs are absent from all five fetched ledgers; all three are PRUNE tests with fixed count and the same FIFO-BFS H19-5 refill rule. Existing 3.61/4/5 no-refill and 3.0 refill are distinct values and are not recreated. This is a best-effort owner-repo audit, not proof of every submission ever made by the entity.",
+  "mass_axis": {
+    "sibling_values": [
+      "GEMSDOE84: +10pct, -10pct, -20pct",
+      "GEMSDOE85: m10e, m10u, p10",
+      "GEMSDOE86: minus10pct, plus10pct",
+      "GEMSDOE87: m10minus, m10plus, m20minus",
+      "GEMSDOE88: m10minus, m10plus, m20minus"
+    ],
+    "selected_values": [
+      "shadow10pct",
+      "shadow20pct",
+      "shadow30pct"
+    ],
+    "why_distinct": "Every sibling MASS value changes the count by a round percentage using the parent's stored 8-connected FIFO-BFS order or a plain 'lowest rank' truncation. The selected values use a different ranking (ascending exclusive 300 m kernel credit, recomputed after each deletion) and are the only MASS doses that delete dots without adding or moving any. The recorded values are exact string labels and do not collide; the 30% dose is also a magnitude no sibling built.",
+    "matched_count_check": "At the same 3,765 removals the shadow order destroys 35% less exclusive kernel credit than the stored FIFO order (see evidence/mass_build_receipt.json ranking.matched_count_comparison_at_10pct). The sibling 10% doses therefore are not the same experiment."
+  },
+  "interpretation": "The selected PRUNE cutoffs are absent from all five fetched ledgers. This is a best-effort owner-repo audit of the five sibling ledgers available on 2026-10-23, not proof of every submission ever made by the entity; other unindexed repositories or private submission history may exist.",
+  "sessions": [
+    {
+      "session": "2026-10-23 aniso-PRUNE (GEMSDOE90)",
+      "axis": "PRUNE",
+      "value_family": "strike-aligned (anisotropic) collar, along held at the parent 2 px, across = A",
+      "values": [
+        {
+          "across_px": 4.0,
+          "along_px": 2.0,
+          "id": "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2",
+          "pct_changed": 13.9799,
+          "sha256": "0bf248e2d69be3068992192d54cbc1fd7e643d3472a3222653e905cf8434de7f",
+          "sha256_zeros": "bdbc0e1865dd7a3f8b981ee5429cbd0282b3764632cc5189e4bfabbf9441fd35"
+        },
+        {
+          "across_px": 5.0,
+          "along_px": 2.0,
+          "id": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061",
+          "pct_changed": 19.4561,
+          "sha256": "15218061d01614f42d5aaf350fad46728a749680dbea3dccc2c15307b77f4ca8",
+          "sha256_zeros": "62e259dad61925e1dc3708507c105208654c6d720fd8cdd0a561f4c8766592a2"
+        },
+        {
+          "across_px": 6.0,
+          "along_px": 2.0,
+          "id": "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3",
+          "pct_changed": 24.5658,
+          "sha256": "72dcdbd314a804b3766c74096562ea9a3d302a903197780d20f81bd525dddab3",
+          "sha256_zeros": "406e38b3d7bae8571d13ea13b28513cbef168c8df32a88af5357f44126292743"
+        }
+      ],
+      "collision_analysis": {
+        "sibling_ledgers_checked": [
+          "buffedlizard55-lab/GEMSDOE84",
+          "GEMSDOE85",
+          "GEMSDOE86",
+          "GEMSDOE87",
+          "GEMSDOE88"
+        ],
+        "isotropic_single_radius_values_seen": [
+          1.0,
+          1.5,
+          2.0,
+          2.25,
+          2.5,
+          2.8284,
+          2.85,
+          3.0,
+          3.2,
+          3.61,
+          3.7,
+          4.0,
+          4.3,
+          5.0
+        ],
+        "anisotropic_pairs_seen": 0,
+        "rule_applied": "the numeric-collision convention in this file governs isotropic single-radius cutoffs; no sibling ledger contains a collar with along != across, so the (A, L=2.0) pair is a new (AXIS, value)",
+        "residual_risk": "if the human applies the stricter numeric rule (any cutoff number already used, regardless of geometry), A=4 collides with PRUNE 4 and A=5 with PRUNE 5; the mechanism, removed set and refill pool still differ. Flagged in IRREGULARITIES.md instead of silently reconciled."
+      }
+    }
+  ],
   "snap_axis": {
     "sources": [
       {
