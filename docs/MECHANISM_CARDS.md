@@ -1,4 +1,4 @@
-# Mechanism cards — AXIS=PRUNE (2026-10-23)
+# Mechanism cards — AXIS=PRUNE (2026-10-23) and AXIS=SNAP (2026-10-23)
 
 Parent R0: `h33-h33-2-b2`, 37,654 unit-mass dots. It was rebuilt byte-identically from the pinned h27-4 solo-d2.8 parent; `evidence/r0_rebuild_receipt.json` records the proof. R0's 0.2778 remains **CLAIM**, not a receipt. These local candidates are **BUILT**, not submitted; predictions are **MODEL**, not scores. Their rasters are local under ignored `releases/` and are not part of this public PR.
 
@@ -11,3 +11,22 @@ Shared hypothesis: the incumbent's >2 px catalogue collar may be too narrow. Kno
 | PRUNE 5.5 px | A 550 m halo is likely beyond useful positional uncertainty, so lost adjacent new-fault credit may exceed any false-positive savings. 6,130 dots removed/refilled. | Mapped fault geometry may be displaced from its true trace by survey resolution; very broad pruning can remove legitimate nearby new geometry. | -0.003 DTI; plausible interval -0.010 to +0.010. | Paired live Δ≥+0.010 falsifies the predicted negative direction; |Δ|<0.010 is no evidence. |
 
 The DTI algebra in `tests/test_metric_algebra.py` is unit-tested against synthetic component values. The official competition metric code was not accessed; no candidate was scored on labels or submitted. A local feature leakage canary is report-only; catalogue hide-and-recover and SGMC instruments were not used to rank candidates. Full inputs, exact hashes, parent differences and format receipts are in `evidence/build_receipt.json`.
+
+
+---
+
+# Mechanism cards — AXIS=SNAP, cross-strike (2026-10-23)
+
+Parent R0: `h33-h33-2-b2`, 37,654 unit-mass dots, rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN; d2.8 ranking 0 px difference). `0.2778` remains **CLAIM**. All three arms are **BUILT**, not submitted; predictions are **MODEL**.
+
+**Shared hypothesis.** The dominant error of a mapped lineament in this survey is *across strike*: GeoDAWN Area 2 was flown at 400 m line spacing 150–200 m above terrain (https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7), so a trace can sit about a kernel radius (3 px = 300 m) from the field's ridge. Because kernel credit falls linearly with distance (k = max(0, 1 − d/3)), a ≤2 px cross-strike correction raises `T` without adding or removing mass — the one property no other menu axis has.
+
+**Shared method.** R0's 1,611 dots inside 3 px of the catalogue are removed and the count refilled from the H19-5 pool in the parent's FIFO-BFS order (hard constraint #4; identical in every arm, ≈4.3 % of dots). Each remaining dot may then climb up to 2 px in 1 px steps, only within 45° of the local fault normal (PCA of its 8 nearest parent dots), only while the smoothed consensus edge rises by at least ε per step, and only if the final position is ≥2 px from every other dot. The consensus is the mean of the rank-normalised `tmi_hg` (band 3) and `iso_grav_anom_hg` (band 18) gradients — names read from the GeoTIFF band descriptions, not assumed — smoothed at σ = 1.2 px (mask-normalised).
+
+| Candidate | Dose | Hypothesis / mechanism | Non-fault confounder | Predicted live change (MODEL) | Falsifier |
+|---|---|---|---|---|---|
+| SNAP ε×4 (strict) | 12,134 dots moved (32.2 %), mean 2.00 px | Only the dots whose local edge improvement is large are moved: these are the ones most likely to be genuinely off-trace, so the per-move hit rate is highest and the variance lowest. | Lithologic contacts and drainage margins also produce strong gradients, and a strict threshold selects exactly the strongest (often lithologic) edges. | **+0.004**; plausible −0.006…+0.010 | Paired live Δ ≤ −0.010 closes the SNAP family; |Δ| < 0.010 is no evidence. |
+| SNAP ε×1 (standard) | 20,482 (54.4 %), mean 2.00 px | Middle dose; a bridge between the strict and permissive arms. | As above, diluted. | **+0.003**; plausible −0.008…+0.012 | As above. |
+| SNAP ε×0.25 (permissive) | 22,876 (60.8 %), mean 2.00 px | Move almost every dot that has any uphill direction: maximises the chance of catching true cross-strike error, at the cost of chasing noise. | Noise in the supplied gradient bands is spatially correlated, so many "uphill" directions are artefacts of the survey, not geology. | **+0.001**; plausible −0.010…+0.014 | If permissive ≫ strict, weak edge gains are not worse than strong ones — the consensus carries no positional information and only the moved-dot count matters. |
+
+**What a receipt would mean.** All three arms move dots the full 2 px (the smoothed consensus is monotone over 2 px for most dots), so the ladder tests *which* dots may move, not how far. A strict-minus-permissive difference is therefore a direct test of whether the two-supplied-band gradient consensus has positional skill; a flat pair says it does not, and the family should be closed rather than re-dosed. None of this is a score: the official metric code was not accessed, the algebra is unit-tested only for internal consistency, and the public chunks may not represent the private chunks.

@@ -1,0 +1,491 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T21:48:31Z",
+  "git_sha": "e7452e6792ae4db50527a02529e8bd936e65f0f7",
+  "generator_script_sha256": "6df113833361337da6f357fcca855f13f88b66ae8bda8e65f86680c179343932",
+  "axis": "SNAP",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "verified_count": 26,
+    "all_pins_rechecked": true,
+    "files": {
+      "training_features": {
+        "path": "training_features.tif",
+        "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+        "bytes": 418912844
+      },
+      "labels": {
+        "path": "labels.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "existing_faults": {
+        "path": "existing_faults.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "sample_submission": {
+        "path": "sample_submission.tif",
+        "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "bytes": 1599597
+      },
+      "ext_lidar_scarp_features_u8": {
+        "path": "external/lidar_scarp_features_u8.tif",
+        "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+        "bytes": 36943606
+      },
+      "ext_geodawn_rad_u8": {
+        "path": "external/geodawn_rad_u8.tif",
+        "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+        "bytes": 26612970
+      },
+      "ext_geodawn_extensions_u8": {
+        "path": "external/geodawn_extensions_u8.tif",
+        "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+        "bytes": 27132925
+      },
+      "ext_derived_sgmc_faults_100m_u8": {
+        "path": "external/derived_sgmc_faults_100m_u8.tif",
+        "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+        "bytes": 198602
+      },
+      "ext_gdr_wellspring_in_footprint": {
+        "path": "external/gdr_wellspring_in_footprint.csv",
+        "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+        "bytes": 2146771
+      },
+      "ext_gdr_qfaults_traces": {
+        "path": "external/gdr_qfaults_traces.csv",
+        "sha256": "9702f2e5c382a4f472ae834d22b94990983b059677a37adfafd51c50f75e643c",
+        "bytes": 126177
+      },
+      "ext_gdr_volcanic_vents_in_footprint": {
+        "path": "external/gdr_volcanic_vents_in_footprint.csv",
+        "sha256": "f91bafbaccaaf2754e71d60434fc0f9eb2c7b880c6e714883f4974542ff6a0bf",
+        "bytes": 672
+      },
+      "scored_h19_5": {
+        "path": "scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+        "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+        "bytes": 1712322
+      },
+      "scored_h19_4": {
+        "path": "scored/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+        "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+        "bytes": 1716768
+      },
+      "scored_h16_1": {
+        "path": "scored/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+        "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+        "bytes": 1718028
+      },
+      "scored_d15_scored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+        "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+        "bytes": 1632732
+      },
+      "scored_d28_unscored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+        "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+        "bytes": 1603424
+      },
+      "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou": {
+        "path": "scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+        "bytes": 1706456
+      },
+      "calib_8GEMSDOE_Hedge-v2_submission": {
+        "path": "scored/8GEMSDOE_Hedge-v2_submission.tif",
+        "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+        "bytes": 736494
+      },
+      "calib_gems10-h25-ctx-ridge-20260927T2329477041": {
+        "path": "scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+        "sha256": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+        "bytes": 1772935
+      },
+      "calib_gems10-h28-dotted-ridge-20260928T0202562": {
+        "path": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+        "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+        "bytes": 1620739
+      },
+      "calib_gemsdoe-ens12-adopted-7f00890a": {
+        "path": "scored/gemsdoe-ens12-adopted-7f00890a.tif",
+        "sha256": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15",
+        "bytes": 570890
+      },
+      "calib_gemsdoe9-PLACEHOLDER-2314b599": {
+        "path": "scored/gemsdoe9-PLACEHOLDER-2314b599.tif",
+        "sha256": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+        "bytes": 439456
+      },
+      "scored_gems27_tgc_v2_d15": {
+        "path": "scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+        "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+        "bytes": 1635084
+      },
+      "scored_h27_4_solo_d28": {
+        "path": "scored/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+        "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+        "bytes": 1595850
+      },
+      "parent_r0_zeros": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+        "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+        "bytes": 219065
+      },
+      "parent_r0_nan": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+        "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+        "bytes": 355443
+      }
+    }
+  },
+  "edge_field": {
+    "sources": [
+      {
+        "band": 3,
+        "name": "tmi_hg",
+        "finite_px": 5167373
+      },
+      {
+        "band": 18,
+        "name": "iso_grav_anom_hg",
+        "finite_px": 5167373
+      }
+    ],
+    "combine": "mean of per-band average-rank normalisation over finite footprint, then mask-normalised Gaussian sigma=1.2 px",
+    "smoothed_iqr": 0.27747076799240367,
+    "step_epsilon_rank": 0.0027747076799240367
+  },
+  "ranking": {
+    "recipe": "parent FIFO-BFS visit order (GEMSDOE28 dot_thin); deterministic tie-break only",
+    "is_geological_probability": false,
+    "d28_reproduction_symmetric_difference_px": 0
+  },
+  "proxy_reports": {
+    "catalogue_hide_recover": {
+      "status": "NOT RUN",
+      "reason": "no fold-clean instrument is validated for a positional edit; the proxy correlates -0.87..+0.54 with live scores and is never a gate"
+    },
+    "leakage_canary": {
+      "status": "REPORT ONLY",
+      "note": "unchanged pinned inputs; previous run max symmetric AUC 0.5700 (geod_2ndinv), so no single feature exceeds the 0.90 stop threshold",
+      "auc_gt_0_90": false
+    },
+    "sgmc_control": {
+      "status": "NOT RUN",
+      "reason": "not a gate; no calibrated fold-clean control for this edit"
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-SNAPXk0p25-20261023-7ac0b578",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cross-strike consensus(TMI hg, iso-grav hg) cap 2 px, step-epsilon 0.25x, half-angle 45 deg, min sep 2 px",
+      "n_dots": 37654,
+      "pct_changed": 125.67589100759548,
+      "sha256": "7ac0b578271d147901c6b3db2f290865529283668f3db75906cf82b6d052dabe",
+      "sha256_zeros": "150ab006bf4709e9338677c0efb5c09dfa1b488b11e0dadfc9c0afd23d93678f",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SNAPXk0p25-20261023-7ac0b578.tif",
+          "sha256": "7ac0b578271d147901c6b3db2f290865529283668f3db75906cf82b6d052dabe",
+          "bytes": 354570,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SNAPXk0p25-20261023-7ac0b578-zeros.tif",
+          "sha256": "150ab006bf4709e9338677c0efb5c09dfa1b488b11e0dadfc9c0afd23d93678f",
+          "bytes": 218106,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "cap_px": 2.0,
+        "epsilon_multiplier": 0.25,
+        "shared_collar_step": {
+          "removed_dots": 1611,
+          "refilled_dots": 1611
+        },
+        "snap": {
+          "cap_px": 2.0,
+          "dots_moved": 22876,
+          "pct_moved": 60.753173633611304,
+          "mean_displacement_px": 2.0,
+          "median_displacement_px": 2.0,
+          "max_displacement_px": 2.0,
+          "mean_consensus_edge_gain_rank": 0.038648102255221965,
+          "dots_at_local_crest_or_short_of_epsilon": 5176,
+          "dots_blocked_by_spacing": 9602,
+          "min_sep_px": 2.0,
+          "step_epsilon_rank": 0.0006936769199810092,
+          "half_angle_deg": 45,
+          "neighbours_for_strike": 8,
+          "realized_max_offset_px": 2.0
+        },
+        "symmetric_difference_vs_parent_px": 47322,
+        "pct_of_parent_dots_changed": 125.67589100759548,
+        "mean_displacement_px": 2.0
+      },
+      "predicted_change": "+0.001 DTI (MODEL; plausible -0.010..+0.014)",
+      "form_note": "h33-h33-2-b2; SNAP cross-strike cap 2px, eps x0.25 (TMI+grav hg consensus); pred +0.00 DTI MODEL",
+      "mechanism_card": {
+        "hypothesis": "Correcting cross-strike position by up to 2 px moves dots toward the strongest magnetic/gravity gradient edge, which is where a mapped fault trace is most likely to lie; because kernel credit is linear in distance, this raises T without adding mass.",
+        "mechanism": "GeoDAWN Area 2 was flown at 400 m line spacing 150-200 m above terrain, so a lineament's dominant positional error is across strike and of order the 300 m (3 px) kernel radius. The consensus of two independent supplied gradient bands (tmi_hg, iso_grav_anom_hg) is used only as a within-2 px tie-breaker along each dot's local normal (PCA of its 8 nearest parent dots). 22,876 of 37,654 dots moved; mean displacement 2.00 px. The shared collar step removed 1,611 parent dots inside 3 px of the catalogue and refilled the same count from the H19-5 pool, so every arm is identical apart from the dose.",
+        "non_fault_confounder": "Lithologic contacts, drainage margins and culture edges also produce magnetic and gravity gradients; a dot can be pulled onto one of those and away from a real fault. The consensus of two independent physical fields reduces, but does not remove, single-source artefacts.",
+        "predicted_live_change": "+0.001 DTI (MODEL; plausible -0.010..+0.014)",
+        "falsifier": "Paired same-week live receipt against R0 (0.25x step-epsilon dose): Delta <= -0.010 falsifies the cross-strike alignment mechanism at this dose; any |Delta| < 0.010 is no evidence under the session rule. A dose ordering that is not monotone in the cap also falsifies the 'closer to the edge is better' reading, because the two larger caps nest the smaller one.",
+        "structural_geologist_note": "Judge whether the moved dots sit on a plausible fault trace or on a stratigraphic contact: the edit never adds mass, so any gain or loss is purely positional. The rank-normalised consensus is a relative edge strength, not a fault probability."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPXk1p0-20261023-c2dcf0b5",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cross-strike consensus(TMI hg, iso-grav hg) cap 2 px, step-epsilon 1x, half-angle 45 deg, min sep 2 px",
+      "n_dots": 37654,
+      "pct_changed": 113.48063950709088,
+      "sha256": "c2dcf0b592162caae0f9bdec43d4ae5ff5529f8a4f755c924e7e09919492b968",
+      "sha256_zeros": "1739792afd31887d1d06739af74c1989679d716ffe0610818e483ef711cb09d2",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SNAPXk1p0-20261023-c2dcf0b5.tif",
+          "sha256": "c2dcf0b592162caae0f9bdec43d4ae5ff5529f8a4f755c924e7e09919492b968",
+          "bytes": 354763,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SNAPXk1p0-20261023-c2dcf0b5-zeros.tif",
+          "sha256": "1739792afd31887d1d06739af74c1989679d716ffe0610818e483ef711cb09d2",
+          "bytes": 218229,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "cap_px": 2.0,
+        "epsilon_multiplier": 1.0,
+        "shared_collar_step": {
+          "removed_dots": 1611,
+          "refilled_dots": 1611
+        },
+        "snap": {
+          "cap_px": 2.0,
+          "dots_moved": 20482,
+          "pct_moved": 54.39528336962872,
+          "mean_displacement_px": 2.0,
+          "median_displacement_px": 2.0,
+          "max_displacement_px": 2.0,
+          "mean_consensus_edge_gain_rank": 0.04215782366528617,
+          "dots_at_local_crest_or_short_of_epsilon": 9644,
+          "dots_blocked_by_spacing": 7528,
+          "min_sep_px": 2.0,
+          "step_epsilon_rank": 0.0027747076799240367,
+          "half_angle_deg": 45,
+          "neighbours_for_strike": 8,
+          "realized_max_offset_px": 2.0
+        },
+        "symmetric_difference_vs_parent_px": 42730,
+        "pct_of_parent_dots_changed": 113.48063950709088,
+        "mean_displacement_px": 2.0
+      },
+      "predicted_change": "+0.003 DTI (MODEL; plausible -0.008..+0.012)",
+      "form_note": "h33-h33-2-b2; SNAP cross-strike cap 2px, eps x1 (TMI+grav hg consensus); pred +0.00 DTI MODEL",
+      "mechanism_card": {
+        "hypothesis": "Correcting cross-strike position by up to 2 px moves dots toward the strongest magnetic/gravity gradient edge, which is where a mapped fault trace is most likely to lie; because kernel credit is linear in distance, this raises T without adding mass.",
+        "mechanism": "GeoDAWN Area 2 was flown at 400 m line spacing 150-200 m above terrain, so a lineament's dominant positional error is across strike and of order the 300 m (3 px) kernel radius. The consensus of two independent supplied gradient bands (tmi_hg, iso_grav_anom_hg) is used only as a within-2 px tie-breaker along each dot's local normal (PCA of its 8 nearest parent dots). 20,482 of 37,654 dots moved; mean displacement 2.00 px. The shared collar step removed 1,611 parent dots inside 3 px of the catalogue and refilled the same count from the H19-5 pool, so every arm is identical apart from the dose.",
+        "non_fault_confounder": "Lithologic contacts, drainage margins and culture edges also produce magnetic and gravity gradients; a dot can be pulled onto one of those and away from a real fault. The consensus of two independent physical fields reduces, but does not remove, single-source artefacts.",
+        "predicted_live_change": "+0.003 DTI (MODEL; plausible -0.008..+0.012)",
+        "falsifier": "Paired same-week live receipt against R0 (1x step-epsilon dose): Delta <= -0.010 falsifies the cross-strike alignment mechanism at this dose; any |Delta| < 0.010 is no evidence under the session rule. A dose ordering that is not monotone in the cap also falsifies the 'closer to the edge is better' reading, because the two larger caps nest the smaller one.",
+        "structural_geologist_note": "Judge whether the moved dots sit on a plausible fault trace or on a stratigraphic contact: the edit never adds mass, so any gain or loss is purely positional. The rank-normalised consensus is a relative edge strength, not a fault probability."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPXk4p0-20261023-3dd81141",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "cross-strike consensus(TMI hg, iso-grav hg) cap 2 px, step-epsilon 4x, half-angle 45 deg, min sep 2 px",
+      "n_dots": 37654,
+      "pct_changed": 71.04158920698995,
+      "sha256": "3dd8114149d70a42ff93fa2bc1648f997f3deea0aba1fb71ba36e7ef83383cfe",
+      "sha256_zeros": "c7a8ea3686c90192ff271c777a0dec5e03fec9a1349897c82e45b3449edf8651",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SNAPXk4p0-20261023-3dd81141.tif",
+          "sha256": "3dd8114149d70a42ff93fa2bc1648f997f3deea0aba1fb71ba36e7ef83383cfe",
+          "bytes": 354816,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SNAPXk4p0-20261023-3dd81141-zeros.tif",
+          "sha256": "c7a8ea3686c90192ff271c777a0dec5e03fec9a1349897c82e45b3449edf8651",
+          "bytes": 218366,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "cap_px": 2.0,
+        "epsilon_multiplier": 4.0,
+        "shared_collar_step": {
+          "removed_dots": 1611,
+          "refilled_dots": 1611
+        },
+        "snap": {
+          "cap_px": 2.0,
+          "dots_moved": 12134,
+          "pct_moved": 32.22499601635948,
+          "mean_displacement_px": 2.0,
+          "median_displacement_px": 2.0,
+          "max_displacement_px": 2.0,
+          "mean_consensus_edge_gain_rank": 0.057892350023384796,
+          "dots_at_local_crest_or_short_of_epsilon": 22526,
+          "dots_blocked_by_spacing": 2994,
+          "min_sep_px": 2.0,
+          "step_epsilon_rank": 0.011098830719696147,
+          "half_angle_deg": 45,
+          "neighbours_for_strike": 8,
+          "realized_max_offset_px": 2.0
+        },
+        "symmetric_difference_vs_parent_px": 26750,
+        "pct_of_parent_dots_changed": 71.04158920698995,
+        "mean_displacement_px": 2.0
+      },
+      "predicted_change": "+0.004 DTI (MODEL; plausible -0.006..+0.010)",
+      "form_note": "h33-h33-2-b2; SNAP cross-strike cap 2px, eps x4 (TMI+grav hg consensus); pred +0.00 DTI MODEL",
+      "mechanism_card": {
+        "hypothesis": "Correcting cross-strike position by up to 2 px moves dots toward the strongest magnetic/gravity gradient edge, which is where a mapped fault trace is most likely to lie; because kernel credit is linear in distance, this raises T without adding mass.",
+        "mechanism": "GeoDAWN Area 2 was flown at 400 m line spacing 150-200 m above terrain, so a lineament's dominant positional error is across strike and of order the 300 m (3 px) kernel radius. The consensus of two independent supplied gradient bands (tmi_hg, iso_grav_anom_hg) is used only as a within-2 px tie-breaker along each dot's local normal (PCA of its 8 nearest parent dots). 12,134 of 37,654 dots moved; mean displacement 2.00 px. The shared collar step removed 1,611 parent dots inside 3 px of the catalogue and refilled the same count from the H19-5 pool, so every arm is identical apart from the dose.",
+        "non_fault_confounder": "Lithologic contacts, drainage margins and culture edges also produce magnetic and gravity gradients; a dot can be pulled onto one of those and away from a real fault. The consensus of two independent physical fields reduces, but does not remove, single-source artefacts.",
+        "predicted_live_change": "+0.004 DTI (MODEL; plausible -0.006..+0.010)",
+        "falsifier": "Paired same-week live receipt against R0 (4x step-epsilon dose): Delta <= -0.010 falsifies the cross-strike alignment mechanism at this dose; any |Delta| < 0.010 is no evidence under the session rule. A dose ordering that is not monotone in the cap also falsifies the 'closer to the edge is better' reading, because the two larger caps nest the smaller one.",
+        "structural_geologist_note": "Judge whether the moved dots sit on a plausible fault trace or on a stratigraphic contact: the edit never adds mass, so any gain or loss is purely positional. The rank-normalised consensus is a relative edge strength, not a fault probability."
+      }
+    }
+  ],
+  "elapsed_s": 68.26,
+  "no_live_submission": true,
+  "verified_utc": "2026-10-23T21:49:41Z",
+  "verification_git_sha": "e7452e6792ae4db50527a02529e8bd936e65f0f7",
+  "self_check": {
+    "variant_files_re_read_and_validated": true,
+    "variant_bytes_reproduced_exactly": true,
+    "r0_rebuilt_byte_identically": true,
+    "d28_ranking_reproduced_pixel_exactly": true,
+    "manifest_verified_count": 26
+  }
+}

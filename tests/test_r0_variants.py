@@ -58,12 +58,17 @@ def test_submission_notes_are_under_140_chars() -> None:
 
 
 def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
+    """Session-scoped: every PRUNE variant of this receipt is in the ledger with its hashes.
+
+    The ledger is cumulative across sessions (SNAP arms were added later), so equality of the
+    whole BUILT set is asserted separately in test_snap_and_prune_ledger_is_complete.
+    """
     import csv
 
     receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
     with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
         built = {row["id"]: row for row in csv.DictReader(fh) if row["status"] == "BUILT"}
-    assert set(built) == {v["id"] for v in receipt["variants"]}
+    assert {v["id"] for v in receipt["variants"]} <= set(built)
     for v in receipt["variants"]:
         row = built[v["id"]]
         assert row["sha256"] == v["files"]["nan"]["sha256"]

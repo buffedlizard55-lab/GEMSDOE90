@@ -43,9 +43,12 @@ def ledger_hashes() -> dict[str, tuple[str, str]]:
 
 def main() -> int:
     receipt = json.loads(RECEIPT.read_text(encoding="utf-8"))
+    # The ledger is cumulative across sessions: this script owns the PRUNE rows of build_receipt.json
+    # only, so it requires those rows to be present and matching, not to be the whole BUILT set.
     expected_ledger = ledger_hashes()
-    if set(expected_ledger) != {v["id"] for v in receipt["variants"]}:
-        raise SystemExit("STOP: ledger BUILT rows and build_receipt variants disagree")
+    missing = {v["id"] for v in receipt["variants"]} - set(expected_ledger)
+    if missing:
+        raise SystemExit(f"STOP: ledger is missing this receipt's variants: {sorted(missing)}")
 
     build.verify_manifest_inputs()  # rechecks all 26 pins, aborts on any mismatch
     template, foot, cat, r0, parent_stats = build.exact_parent_rebuild()
