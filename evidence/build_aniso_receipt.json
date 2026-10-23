@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-23T21:34:31Z",
-  "git_sha": "3ac20c24e6e3800aca17e6dbb9cb4dd515fa9253",
+  "generated_utc": "2026-10-23T21:37:39Z",
+  "git_sha": "cdf63365535bf09a61435f8067d735c298a259c2",
   "axis": "PRUNE",
   "value_family": "strike-aligned (anisotropic) collar: along held at the parent's 2 px, across = A",
   "parent": {
@@ -572,7 +572,7 @@
       }
     }
   ],
-  "elapsed_s": 83.91,
+  "elapsed_s": 86.49,
   "no_live_submission": true,
   "agent_never_submits": true
 }
