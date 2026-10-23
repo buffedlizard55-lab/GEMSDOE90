@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "parent": "h33-h33-2-b2",
+  "axis": "SNAP",
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-SNAPtmivg2g10s2p8-20261023-64011c73",
+      "value": "abs(tmi_vg) percentile; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed",
+      "mechanism_card": {
+        "hypothesis": "A small subset of R0 dots is displaced from shallow magnetic-source edges; a decisive vertical-gradient gain can re-centre those dots without the wholesale movement and spacing loss of earlier SNAP recipes.",
+        "mechanism": "Response = footprint percentile of abs(tmi_vg). Only a dot whose Euclidean <=2 px window contains a currently admissible destination at least 0.10 response percentile higher can move. Proposals are gain-ordered; every destination must be in-footprint, off-catalogue, at least 3 px from the catalogue, finite, and no closer than 2.8 px to another final dot. R0's inherited sub-3 px pixels remain fixed. Unit mass and 37,654-dot count are unchanged, so this is a position experiment rather than MASS, PRUNE or CONCENTRATION.",
+        "non_fault_process_that_could_mimic": "Vertical derivatives also amplify shallow dikes, volcanic or lithologic contacts, cultural ferrous sources and gridding noise; a dipping contact's gradient maximum need not coincide with its surface fault trace.",
+        "predicted_live_change": "+0.001 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired live receipt \u0394<=-0.010 versus R0 falsifies the positive magnetic re-centring hypothesis; |\u0394|<0.010 is no evidence.",
+        "structural_geologist_note": "A vertical-derivative maximum is a potential-field source-edge locator, not direct evidence of brittle faulting. Review relocated dots against mapped geology, dipping contacts and non-fault shallow sources before interpreting any receipt."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPgravvg2g10s2p8-20261023-332ab617",
+      "value": "abs(iso_grav_anom_vg) percentile; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed",
+      "mechanism_card": {
+        "hypothesis": "Shallow density contrasts could locate a minority of misregistered dots, but gravity vertical-gradient maxima are expected to be less fault-specific than the incumbent's multiband support.",
+        "mechanism": "Response = footprint percentile of abs(iso_grav_anom_vg). Only a dot whose Euclidean <=2 px window contains a currently admissible destination at least 0.10 response percentile higher can move. Proposals are gain-ordered; every destination must be in-footprint, off-catalogue, at least 3 px from the catalogue, finite, and no closer than 2.8 px to another final dot. R0's inherited sub-3 px pixels remain fixed. Unit mass and 37,654-dot count are unchanged, so this is a position experiment rather than MASS, PRUNE or CONCENTRATION.",
+        "non_fault_process_that_could_mimic": "Basin-fill thickness changes, intrusive or lava margins, density layering and gravity processing can produce the same vertical-gradient crest without any fault; source dip and depth can displace the crest.",
+        "predicted_live_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired live receipt \u0394>=+0.010 falsifies the predicted negative direction; |\u0394|<0.010 is no evidence.",
+        "structural_geologist_note": "A vertical-derivative maximum is a potential-field source-edge locator, not direct evidence of brittle faulting. Review relocated dots against mapped geology, dipping contacts and non-fault shallow sources before interpreting any receipt."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPvgmean2g10s2p8-20261023-33bbe8f2",
+      "value": "mean abs(TMI/gravity VG) percentiles; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed",
+      "mechanism_card": {
+        "hypothesis": "Requiring a decisive gain in the average of magnetic and gravity vertical-gradient ranks suppresses single-field noise and isolates the most defensible shallow-contrast relocations while preserving R0's spacing and mass.",
+        "mechanism": "Response = equal mean of the abs(tmi_vg) and abs(iso_grav_anom_vg) footprint percentiles. Only a dot whose Euclidean <=2 px window contains a currently admissible destination at least 0.10 response percentile higher can move. Proposals are gain-ordered; every destination must be in-footprint, off-catalogue, at least 3 px from the catalogue, finite, and no closer than 2.8 px to another final dot. R0's inherited sub-3 px pixels remain fixed. Unit mass and 37,654-dot count are unchanged, so this is a position experiment rather than MASS, PRUNE or CONCENTRATION.",
+        "non_fault_process_that_could_mimic": "Magnetic and gravity edges are not independent when both express the same basin or lithologic boundary; correlated survey gridding and dipping-source offsets can still move dots away from brittle surface faults.",
+        "predicted_live_change": "+0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired live receipt \u0394<=-0.010 falsifies the positive consensus hypothesis; |\u0394|<0.010 is no evidence.",
+        "structural_geologist_note": "A vertical-derivative maximum is a potential-field source-edge locator, not direct evidence of brittle faulting. Review relocated dots against mapped geology, dipping contacts and non-fault shallow sources before interpreting any receipt."
+      }
+    }
+  ]
+}

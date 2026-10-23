@@ -2,13 +2,13 @@
 
 <!-- CURRENT STATE (edit only this block) -->
 ## CURRENT STATE
-- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (see evidence/r0_rebuild_receipt.json)
+- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically in both encodings (`c55bafc4…`, `baeae321…`)
 - Best receipt: none on file. Best CLAIM: 0.2778 (R0, owner-reported, no receipt in ledger/submissions.csv)
 - TOP_PUBLIC: ____ (human fills from leaderboard, with date: ____)
 - Slots left this week: __ / 3 (one entity) · total used: __ · Deadline: 2026-12-03 (UNVERIFIED, human confirms)
-- Session axis (2026-10-23, agent-selected PRUNE): 3 fixed-count variants BUILT locally, not submitted; rasters are gitignored (see docs/SUBMIT.md)
-- Reproducibility (2026-10-23, clean sandbox): all 26 pins re-verified, R0 rebuilt byte-identically (`c55bafc4…`), d2.8 ranking reproduced with 0 px difference, and all 3 candidate pairs re-emitted byte-identically to their recorded SHA-256 — `evidence/releases_restore_receipt.json`. Re-run: `.venv/bin/python scripts/restore_data.py && .venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_r0_variants.py --verify`
-- Next 3 slots (conditional on human quota/receipts): 1) PRUNE dcat<=3.5 px 2) PRUNE dcat<=4.5 px 3) PRUNE dcat<=5.5 px — see SLOT_PLAN.md
+- Session axis (2026-10-23, agent-selected SNAP): 3 vertical-gradient, gain-gated, 2.8 px-spacing variants BUILT locally; none submitted. All are LOCAL ONLY because R0's inherited sub-3 px collar remains (see IRREGULARITIES.md)
+- Reproducibility: 26/26 pins verified; exact R0 and d2.8 ranking reproduced; six SNAP rasters passed disk/format/hash/count/spacing checks in `evidence/snap_build_receipt.json`. Restore: `.venv/bin/python scripts/restore_data.py && .venv/bin/python scripts/build_snap_vertical.py --restore && .venv/bin/python scripts/build_snap_vertical.py --verify`
+- Next 3 slots (default HOLD; human must resolve collar and quota): 1) VG mean 2) TMI VG, only after ≥+0.010 for VG mean 3) gravity VG control, reserved — see SLOT_PLAN.md
 <!-- /CURRENT STATE -->
 
 Layout: `src/` gated pipeline (manifest verify → exact R0 rebuild → build →

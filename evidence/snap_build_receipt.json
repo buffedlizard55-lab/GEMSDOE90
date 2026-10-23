@@ -1,0 +1,409 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T21:43:04Z",
+  "git_sha_at_build": "e7452e6792ae4db50527a02529e8bd936e65f0f7",
+  "generator_script_sha256": "00feadd1c4555b287ad51068eff405401714a3f944b73261d482a14288cece89",
+  "snap_module_sha256": "6923165e49ac24a6e986d4dcbc36cd7858591f2a3841de82468c3d918d7a126e",
+  "axis": "SNAP",
+  "recipe": {
+    "radius_px": 2.0,
+    "minimum_response_gain_percentile": 0.1,
+    "minimum_nearest_neighbour_separation_px": 2.8,
+    "seed_for_canary_only": 20261023,
+    "count": 37654,
+    "assignment": "gain-descending deterministic greedy; unprocessed origins reserved; response/displacement/raster tie-breaks",
+    "collar_policy": "R0 d_cat<3 px pixels fixed; all moved origins and destinations d_cat>=3 px; every final dot retains R0's d_cat>2 px exclusion"
+  },
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "manifest": {
+    "path": "registry/data_manifest.json",
+    "verified_count": 26,
+    "all_sha256_matched": true
+  },
+  "edge_bands": {
+    "iso_grav_anom_vg": {
+      "rasterio_band": 11,
+      "description": "iso_grav_anom_vg - Isostatic gravity anomaly vertical gradient - vertical rate of change",
+      "valid_footprint_pixels": 5164312,
+      "missing_or_sentinel_footprint_pixels": 3061,
+      "missing_value_policy": "no fill; missing origins stay fixed and missing destinations are inadmissible",
+      "response_transform": "absolute value, then exact average-tie footprint percentile over valid pixels"
+    },
+    "tmi_vg": {
+      "rasterio_band": 9,
+      "description": "tmi_vg - Total magnetic intensity vertical gradient - rate of change in vertical direction",
+      "valid_footprint_pixels": 5164312,
+      "missing_or_sentinel_footprint_pixels": 3061,
+      "missing_value_policy": "no fill; missing origins stay fixed and missing destinations are inadmissible",
+      "response_transform": "absolute value, then exact average-tie footprint percentile over valid pixels"
+    }
+  },
+  "hard_constraint_status": {
+    "format_and_zero_catalogue_mass": "PASS",
+    "general_minimum_3px_from_catalogue": "FAIL_INHERITED_FROM_R0",
+    "near_catalogue_dot_count": 1611,
+    "new_near_catalogue_mass": 0,
+    "upload_eligible": false,
+    "reason": "Literal SNAP cap 2 px cannot move every inherited sub-3 px dot to a legal destination; no PRUNE/refill edit was silently added."
+  },
+  "proxy_reports": {
+    "catalogue_hide_recover": {
+      "status": "NOT RUN",
+      "reason": "R0 was pruned using the full catalogue; no fold-clean recovery instrument is validated for this positional comparison. Never a gate or score."
+    },
+    "leakage_canary": {
+      "status": "REPORT ONLY",
+      "seed": 20261023,
+      "bands": {
+        "iso_grav_anom_vg": {
+          "symmetric_auc": 0.5087170191608724,
+          "n_catalogue_positive": 60894,
+          "n_seeded_off_catalogue_negative": 249845,
+          "threshold": 0.9,
+          "triggered": false,
+          "evidence_class": "REPORT ONLY; catalogue canary, not live performance"
+        },
+        "tmi_vg": {
+          "symmetric_auc": 0.5226751427018524,
+          "n_catalogue_positive": 60894,
+          "n_seeded_off_catalogue_negative": 249845,
+          "threshold": 0.9,
+          "triggered": false,
+          "evidence_class": "REPORT ONLY; catalogue canary, not live performance"
+        }
+      }
+    },
+    "sgmc_control": {
+      "status": "REPORT ONLY PROXY under src/dti.py assumptions; not a live score",
+      "truth": "pinned USGS SGMC proxy pixels outside catalogue and >3 px from it",
+      "n_truth_pixels": 62122,
+      "parent_proxy": 0.09538611460482531
+    }
+  },
+  "no_live_submission": true,
+  "competition_rasters_committed_to_git": false,
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-SNAPtmivg2g10s2p8-20261023-64011c73",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "abs(tmi_vg) percentile; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed",
+      "response": "footprint percentile of abs(tmi_vg)",
+      "bands": [
+        "tmi_vg"
+      ],
+      "n_dots": 37654,
+      "pct_changed": 35.701386306899664,
+      "parent_diff": {
+        "n_dots": 37654,
+        "n_proposals": 16594,
+        "n_moved": 13443,
+        "pct_changed": 35.701386306899664,
+        "removed_from_parent": 13443,
+        "added_to_parent": 13443,
+        "retained_parent": 24211,
+        "mean_displacement_px_all_dots": 0.6329647113020026,
+        "mean_displacement_px_moved": 1.7729415487142457,
+        "max_displacement_px": 2.0,
+        "mean_response_gain_moved": 0.26914970298596136,
+        "median_response_gain_moved": 0.21132499572547048,
+        "mean_response_before": 0.5646755453394324,
+        "mean_response_after": 0.6608065686998734,
+        "minimum_nearest_neighbour_distance_px": 2.8284271247461903
+      },
+      "sha256": "64011c732952f56529ffad642680b108abd9b452359d710cae24d5165de60f8e",
+      "sha256_zeros": "be7cf429b7885dd1c351dfec47819aaea2dc3285c288239df439504b6f0acb5e",
+      "status": "BUILT",
+      "upload_eligible": false,
+      "predicted_change": "+0.001 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+      "form_note": "h33-h33-2-b2; SNAP <=2px to gated |TMI VG| edge, 2.8px spacing; predicted +0.001 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SNAPtmivg2g10s2p8-20261023-64011c73.tif",
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "near_catalogue_dots_below_3px": 1611,
+          "general_3px_hard_constraint_passed": false,
+          "upload_eligible": false,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "count_matches_parent": true,
+            "parent_exclusion_d_cat_gt_2px": true,
+            "near_collar_exactly_inherited_no_new_mass": true,
+            "minimum_separation_ge_2p8px": true,
+            "file_re_read_from_disk": true
+          },
+          "sha256": "64011c732952f56529ffad642680b108abd9b452359d710cae24d5165de60f8e",
+          "bytes": 356088
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SNAPtmivg2g10s2p8-20261023-64011c73-zeros.tif",
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "near_catalogue_dots_below_3px": 1611,
+          "general_3px_hard_constraint_passed": false,
+          "upload_eligible": false,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "count_matches_parent": true,
+            "parent_exclusion_d_cat_gt_2px": true,
+            "near_collar_exactly_inherited_no_new_mass": true,
+            "minimum_separation_ge_2p8px": true,
+            "file_re_read_from_disk": true
+          },
+          "sha256": "be7cf429b7885dd1c351dfec47819aaea2dc3285c288239df439504b6f0acb5e",
+          "bytes": 219531
+        }
+      },
+      "mechanism_card": {
+        "hypothesis": "A small subset of R0 dots is displaced from shallow magnetic-source edges; a decisive vertical-gradient gain can re-centre those dots without the wholesale movement and spacing loss of earlier SNAP recipes.",
+        "mechanism": "Response = footprint percentile of abs(tmi_vg). Only a dot whose Euclidean <=2 px window contains a currently admissible destination at least 0.10 response percentile higher can move. Proposals are gain-ordered; every destination must be in-footprint, off-catalogue, at least 3 px from the catalogue, finite, and no closer than 2.8 px to another final dot. R0's inherited sub-3 px pixels remain fixed. Unit mass and 37,654-dot count are unchanged, so this is a position experiment rather than MASS, PRUNE or CONCENTRATION.",
+        "non_fault_process_that_could_mimic": "Vertical derivatives also amplify shallow dikes, volcanic or lithologic contacts, cultural ferrous sources and gridding noise; a dipping contact's gradient maximum need not coincide with its surface fault trace.",
+        "predicted_live_change": "+0.001 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired live receipt \u0394<=-0.010 versus R0 falsifies the positive magnetic re-centring hypothesis; |\u0394|<0.010 is no evidence.",
+        "structural_geologist_note": "A vertical-derivative maximum is a potential-field source-edge locator, not direct evidence of brittle faulting. Review relocated dots against mapped geology, dipping contacts and non-fault shallow sources before interpreting any receipt."
+      },
+      "sgmc_control_proxy": 0.09524099951844965,
+      "sgmc_control_delta_proxy": -0.00014511508637565784
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPgravvg2g10s2p8-20261023-332ab617",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "abs(iso_grav_anom_vg) percentile; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed",
+      "response": "footprint percentile of abs(iso_grav_anom_vg)",
+      "bands": [
+        "iso_grav_anom_vg"
+      ],
+      "n_dots": 37654,
+      "pct_changed": 7.964625272215435,
+      "parent_diff": {
+        "n_dots": 37654,
+        "n_proposals": 4697,
+        "n_moved": 2999,
+        "pct_changed": 7.964625272215435,
+        "removed_from_parent": 2999,
+        "added_to_parent": 2999,
+        "retained_parent": 34655,
+        "mean_displacement_px_all_dots": 0.1504661108265744,
+        "mean_displacement_px_moved": 1.8891800390342888,
+        "max_displacement_px": 2.0,
+        "mean_response_gain_moved": 0.15552258155241874,
+        "median_response_gain_moved": 0.13619745208993028,
+        "mean_response_before": 0.506457549505626,
+        "mean_response_after": 0.5188496059931043,
+        "minimum_nearest_neighbour_distance_px": 2.8284271247461903
+      },
+      "sha256": "332ab6177307cc2a5ad62ae4a3a7e367be72729cb151b078a766ebd884b4ece8",
+      "sha256_zeros": "71ea37f53c81c45493e08848a01048283d6fdd5712e4ab13e49c73c3df22990a",
+      "status": "BUILT",
+      "upload_eligible": false,
+      "predicted_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+      "form_note": "h33-h33-2-b2; SNAP <=2px to gated |gravity VG| edge, 2.8px spacing; predicted -0.002 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SNAPgravvg2g10s2p8-20261023-332ab617.tif",
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "near_catalogue_dots_below_3px": 1611,
+          "general_3px_hard_constraint_passed": false,
+          "upload_eligible": false,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "count_matches_parent": true,
+            "parent_exclusion_d_cat_gt_2px": true,
+            "near_collar_exactly_inherited_no_new_mass": true,
+            "minimum_separation_ge_2p8px": true,
+            "file_re_read_from_disk": true
+          },
+          "sha256": "332ab6177307cc2a5ad62ae4a3a7e367be72729cb151b078a766ebd884b4ece8",
+          "bytes": 355499
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SNAPgravvg2g10s2p8-20261023-332ab617-zeros.tif",
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "near_catalogue_dots_below_3px": 1611,
+          "general_3px_hard_constraint_passed": false,
+          "upload_eligible": false,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "count_matches_parent": true,
+            "parent_exclusion_d_cat_gt_2px": true,
+            "near_collar_exactly_inherited_no_new_mass": true,
+            "minimum_separation_ge_2p8px": true,
+            "file_re_read_from_disk": true
+          },
+          "sha256": "71ea37f53c81c45493e08848a01048283d6fdd5712e4ab13e49c73c3df22990a",
+          "bytes": 219172
+        }
+      },
+      "mechanism_card": {
+        "hypothesis": "Shallow density contrasts could locate a minority of misregistered dots, but gravity vertical-gradient maxima are expected to be less fault-specific than the incumbent's multiband support.",
+        "mechanism": "Response = footprint percentile of abs(iso_grav_anom_vg). Only a dot whose Euclidean <=2 px window contains a currently admissible destination at least 0.10 response percentile higher can move. Proposals are gain-ordered; every destination must be in-footprint, off-catalogue, at least 3 px from the catalogue, finite, and no closer than 2.8 px to another final dot. R0's inherited sub-3 px pixels remain fixed. Unit mass and 37,654-dot count are unchanged, so this is a position experiment rather than MASS, PRUNE or CONCENTRATION.",
+        "non_fault_process_that_could_mimic": "Basin-fill thickness changes, intrusive or lava margins, density layering and gravity processing can produce the same vertical-gradient crest without any fault; source dip and depth can displace the crest.",
+        "predicted_live_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired live receipt \u0394>=+0.010 falsifies the predicted negative direction; |\u0394|<0.010 is no evidence.",
+        "structural_geologist_note": "A vertical-derivative maximum is a potential-field source-edge locator, not direct evidence of brittle faulting. Review relocated dots against mapped geology, dipping contacts and non-fault shallow sources before interpreting any receipt."
+      },
+      "sgmc_control_proxy": 0.09519484313838059,
+      "sgmc_control_delta_proxy": -0.00019127146644472293
+    },
+    {
+      "id": "h33-h33-2-b2-SNAPvgmean2g10s2p8-20261023-33bbe8f2",
+      "parent": "h33-h33-2-b2",
+      "axis": "SNAP",
+      "value": "mean abs(TMI/gravity VG) percentiles; cap2px; gain>=0.10; sep>=2.8px; inherited collar fixed",
+      "response": "equal mean of the abs(tmi_vg) and abs(iso_grav_anom_vg) footprint percentiles",
+      "bands": [
+        "tmi_vg",
+        "iso_grav_anom_vg"
+      ],
+      "n_dots": 37654,
+      "pct_changed": 21.27264035693419,
+      "parent_diff": {
+        "n_dots": 37654,
+        "n_proposals": 10238,
+        "n_moved": 8010,
+        "pct_changed": 21.27264035693419,
+        "removed_from_parent": 8010,
+        "added_to_parent": 8010,
+        "retained_parent": 29644,
+        "mean_displacement_px_all_dots": 0.38533078691780875,
+        "mean_displacement_px_moved": 1.8113914420228678,
+        "max_displacement_px": 2.0,
+        "mean_response_gain_moved": 0.18821776551440222,
+        "median_response_gain_moved": 0.1632912405933725,
+        "mean_response_before": 0.5355665474225293,
+        "mean_response_after": 0.5756224563914001,
+        "minimum_nearest_neighbour_distance_px": 2.8284271247461903
+      },
+      "sha256": "33bbe8f25c64b2d45470a0e6277cd68f694b845df1dabe53041ad2505dfdd77e",
+      "sha256_zeros": "1276e1159099aa1a41baa450cf9130f710ed141f6635112c080734b6ee5dc0aa",
+      "status": "BUILT",
+      "upload_eligible": false,
+      "predicted_change": "+0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+      "form_note": "h33-h33-2-b2; SNAP <=2px to gated TMI+gravity VG mean edge, 2.8px spacing; predicted +0.002 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SNAPvgmean2g10s2p8-20261023-33bbe8f2.tif",
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "near_catalogue_dots_below_3px": 1611,
+          "general_3px_hard_constraint_passed": false,
+          "upload_eligible": false,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "count_matches_parent": true,
+            "parent_exclusion_d_cat_gt_2px": true,
+            "near_collar_exactly_inherited_no_new_mass": true,
+            "minimum_separation_ge_2p8px": true,
+            "file_re_read_from_disk": true
+          },
+          "sha256": "33bbe8f25c64b2d45470a0e6277cd68f694b845df1dabe53041ad2505dfdd77e",
+          "bytes": 355852
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SNAPvgmean2g10s2p8-20261023-33bbe8f2-zeros.tif",
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "near_catalogue_dots_below_3px": 1611,
+          "general_3px_hard_constraint_passed": false,
+          "upload_eligible": false,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "count_matches_parent": true,
+            "parent_exclusion_d_cat_gt_2px": true,
+            "near_collar_exactly_inherited_no_new_mass": true,
+            "minimum_separation_ge_2p8px": true,
+            "file_re_read_from_disk": true
+          },
+          "sha256": "1276e1159099aa1a41baa450cf9130f710ed141f6635112c080734b6ee5dc0aa",
+          "bytes": 219461
+        }
+      },
+      "mechanism_card": {
+        "hypothesis": "Requiring a decisive gain in the average of magnetic and gravity vertical-gradient ranks suppresses single-field noise and isolates the most defensible shallow-contrast relocations while preserving R0's spacing and mass.",
+        "mechanism": "Response = equal mean of the abs(tmi_vg) and abs(iso_grav_anom_vg) footprint percentiles. Only a dot whose Euclidean <=2 px window contains a currently admissible destination at least 0.10 response percentile higher can move. Proposals are gain-ordered; every destination must be in-footprint, off-catalogue, at least 3 px from the catalogue, finite, and no closer than 2.8 px to another final dot. R0's inherited sub-3 px pixels remain fixed. Unit mass and 37,654-dot count are unchanged, so this is a position experiment rather than MASS, PRUNE or CONCENTRATION.",
+        "non_fault_process_that_could_mimic": "Magnetic and gravity edges are not independent when both express the same basin or lithologic boundary; correlated survey gridding and dipping-source offsets can still move dots away from brittle surface faults.",
+        "predicted_live_change": "+0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired live receipt \u0394<=-0.010 falsifies the positive consensus hypothesis; |\u0394|<0.010 is no evidence.",
+        "structural_geologist_note": "A vertical-derivative maximum is a potential-field source-edge locator, not direct evidence of brittle faulting. Review relocated dots against mapped geology, dipping contacts and non-fault shallow sources before interpreting any receipt."
+      },
+      "sgmc_control_proxy": 0.09536493348118492,
+      "sgmc_control_delta_proxy": -2.1181123640384714e-05
+    }
+  ]
+}

@@ -1,41 +1,47 @@
-# Human submission packet — GEMSDOE90 PRUNE candidates
+# Human submission packet — GEMSDOE90 SNAP candidates
 
-**Agent does not submit.** These local GeoTIFFs are ignored by Git to keep competition rasters out of this public repository and any public release. Only pick one candidate per scored slot; do not submit both encodings.
+**DO NOT UPLOAD YET.** These are LOCAL-ONLY experiments. R0 contains 1,611 dots at 2.236–3 px from the catalogue; literal ≤2 px SNAP cannot clear all of them without adding a PRUNE edit. The candidates inherit those exact pixels and add no new sub-3 px mass, but fail the brief's general ≥3 px rule. A human must resolve that conflict before any upload. The agent never submits.
 
-## Files and form notes
+## Files, names and form notes
 
-| Candidate | Preferred file (NaN outside footprint) | Fallback twin (zeros outside) | Form note (under 140 chars) |
-|---|---|---|---|
-| PRUNE 3.5 px | `releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891.tif` | `releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=3.5px, fixed-count refill; predicted +0.002 DTI MODEL` |
-| PRUNE 4.5 px | `releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217.tif` | `releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=4.5px, fixed-count refill; predicted +0.000 DTI MODEL` |
-| PRUNE 5.5 px | `releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif` | `releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=5.5px, fixed-count refill; predicted -0.003 DTI MODEL` |
+Use only one candidate per authorized slot and only one encoding. The NaN file is preferred by spec; `-zeros.tif` is its fallback twin, not another experiment.
 
-SHA-256 and detailed format receipts: `evidence/build_receipt.json`. Parent byte-rebuild receipt: `evidence/r0_rebuild_receipt.json`. Each primary is NaN outside the supplied sample footprint; each `-zeros.tif` fallback has 0 outside. The portal's handling of these encodings is not inferred here; choose the one the human has previously confirmed.
+| Candidate | NaN-outside file in `releases/` |
+|---|---|
+| VG mean | `h33-h33-2-b2-SNAPvgmean2g10s2p8-20261023-33bbe8f2.tif` |
+| TMI VG | `h33-h33-2-b2-SNAPtmivg2g10s2p8-20261023-64011c73.tif` |
+| Gravity VG | `h33-h33-2-b2-SNAPgravvg2g10s2p8-20261023-332ab617.tif` |
 
-## Validation summary
+Each fallback is the same base filename plus `-zeros.tif`. Copy these form notes exactly (each ≤140 chars):
 
-All three have 37,654 unit-mass pixels (same count as R0), zero catalogue mass, and minimum Euclidean distance to the catalogue greater than 3 px. CRS, dimensions, transform, float32/single band, in-footprint finite/range, outside-footprint encoding, parent diff and file SHA are checked after re-reading from disk. Exact parent R0 hashes and H19-5→d2.8 ranking reproduction are in the receipts. The binary ranking is FIFO-BFS visit order, not a geological confidence score.
+- VG mean: `h33-h33-2-b2; SNAP <=2px to gated TMI+gravity VG mean edge, 2.8px spacing; predicted +0.002 DTI MODEL`
+- TMI VG: `h33-h33-2-b2; SNAP <=2px to gated |TMI VG| edge, 2.8px spacing; predicted +0.001 DTI MODEL`
+- Gravity VG: `h33-h33-2-b2; SNAP <=2px to gated |gravity VG| edge, 2.8px spacing; predicted -0.002 DTI MODEL`
 
-No candidate has a live score. Predictions in the ledger are **MODEL**, and R0's 0.2778 remains **CLAIM** until a submission-page receipt is supplied. A live change below 0.01 is no evidence. The human must supply: current TOP_PUBLIC and date; weekly/total slots used and remaining; confirmed deadline/cutoff; and submission-page score receipts (R0 plus any candidate). Never submit more than the entity's quota.
+Full SHA-256, both encodings, file sizes and per-check receipts are in `evidence/snap_build_receipt.json`; ledger rows contain the same hashes. No candidate has a receipt or live score. R0's 0.2778 remains **CLAIM**; predictions are **MODEL**.
 
-## Regenerating the local rasters (do this first on a fresh clone)
+## Format receipt and parent diff
 
-`releases/*.tif` is gitignored — this repository is public and competition rasters must not be committed — so the candidate files do **not** travel with the repo. Regenerate them from the pinned inputs, then check the bytes against the recorded hashes:
+All six files were re-read from disk and passed: sample CRS/transform/shape, one float32 band, finite values in [0,1] inside the footprint, correct outside encoding, exact expected mask, 37,654 unit dots, zero catalogue mass, and ≥2.828 px nearest-neighbour spacing. Maximum displacement is 2 px. The general ≥3 px catalogue check is explicitly **FAIL_INHERITED_FROM_R0**, not a pass.
+
+| Candidate | Dots moved (% R0) | Mean displacement, all dots | NaN SHA-256 |
+|---|---:|---:|---|
+| VG mean | 8,010 (21.272640%) | 0.385331 px | `33bbe8f25c64b2d45470a0e6277cd68f694b845df1dabe53041ad2505dfdd77e` |
+| TMI VG | 13,443 (35.701386%) | 0.632965 px | `64011c732952f56529ffad642680b108abd9b452359d710cae24d5165de60f8e` |
+| Gravity VG | 2,999 (7.964625%) | 0.150466 px | `332ab6177307cc2a5ad62ae4a3a7e367be72729cb151b078a766ebd884b4ece8` |
+
+## Regenerate and verify (required before any authorized use)
+
+Competition rasters are gitignored and must not be committed to this public repository or attached to a public release.
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python scripts/restore_data.py          # 26 pins, SHA-256 verified, -> .cache/gems_data/
-.venv/bin/python scripts/restore_releases.py      # re-emits the 3 pairs; stops on any hash mismatch
-.venv/bin/python scripts/build_r0_variants.py --verify   # independent re-read + re-emit check
-.venv/bin/python -m pytest -q                     # 22 tests
+.venv/bin/python scripts/restore_data.py
+.venv/bin/python scripts/build_snap_vertical.py --restore
+.venv/bin/python scripts/build_snap_vertical.py --verify
+.venv/bin/python -m pytest -q
 ```
 
-`scripts/restore_releases.py` reproduces the already-recorded (PRUNE, value) pairs; it is not a new experiment, and it refuses to write a file whose SHA-256 differs from `evidence/build_receipt.json` and `ledger/submissions.csv`. `--build` remains blocked by the (AXIS, value) reservation guard.
+`--build` is intentionally blocked after registration; `--restore` reproduces the recorded axis/value pairs and fails on any byte mismatch. Match the on-disk SHA-256 to the ledger before upload.
 
-| Candidate | n_dots | % of R0 changed | min distance to catalogue | SHA-256 (NaN encoding) |
-|---|---|---|---|---|
-| PRUNE 3.5 px | 37,654 | 14.352% | 3.606 px | `8b96d8913b97b884…` |
-| PRUNE 4.5 px | 37,654 | 25.750% | 5.000 px | `be7a1217907a8019…` |
-| PRUNE 5.5 px | 37,654 | 32.560% | 5.657 px | `a69816c73b148933…` |
-
-Full hashes and per-file gate results: `evidence/releases_restore_receipt.json`; the zero-catalogue-mass, in-footprint range/finiteness, CRS/shape/transform/dtype and outside-footprint encoding checks were re-run against the files on disk after writing.
+Human must supply: collar-eligibility decision; R0 submission-page receipt and date; dated TOP_PUBLIC; weekly/total slots used and remaining; confirmed official deadline/cutoff; and any candidate receipt. Default slot decision is HOLD (see `SLOT_PLAN.md`).
