@@ -55,3 +55,37 @@ def test_submission_notes_are_under_140_chars() -> None:
     receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
     assert len(receipt["variants"]) == 3
     assert all(len(row["form_note"]) <= 140 for row in receipt["variants"])
+
+
+def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
+    import csv
+
+    receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
+    with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
+        # Session-scoped: this receipt only covers the PRUNE axis; the MASS ladder has its own
+        # receipt (evidence/mass_build_receipt.json) and its own consistency test.
+        built = {row["id"]: row for row in csv.DictReader(fh)
+                 if row["status"] == "BUILT" and (row.get("axis") or "").upper() == "PRUNE"}
+    assert set(built) == {v["id"] for v in receipt["variants"]}
+    for v in receipt["variants"]:
+        row = built[v["id"]]
+        assert row["sha256"] == v["files"]["nan"]["sha256"]
+        assert row["sha256_zeros"] == v["files"]["zeros"]["sha256"]
+        assert float(row["pct_changed"]) == pytest.approx(v["pct_changed"], abs=1e-6)
+        assert 1.0 <= v["pct_changed"] <= 50.0
+
+
+def test_built_hashes_are_not_reused_from_any_other_ledger_row() -> None:
+    import csv
+
+    receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
+    with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+    built_ids = {v["id"] for v in receipt["variants"]}
+    others = [r for r in rows if r["id"] not in built_ids]
+    other_hashes = {r["sha256"] for r in others if r["sha256"]} | {r["sha256_zeros"] for r in others if r["sha256_zeros"]}
+    ours = set()
+    for v in receipt["variants"]:
+        ours |= {v["files"]["nan"]["sha256"], v["files"]["zeros"]["sha256"]}
+    assert len(ours) == 2 * len(receipt["variants"])  # no repeat among our own variants either
+    assert not ours & other_hashes

@@ -25,6 +25,13 @@ Submit at most one candidate per rolling-week slot, in order, and copy the submi
 (score + date) back into `ledger/submissions.csv` (`receipt_score`, `date`, `receipt` = Y). The
 `-zeros.tif` twin is a fallback encoding for the *same* experiment, never a second slot.
 
+**Pre-slot step (required).** The candidate rasters are gitignored and do not survive a clone. Run
+`scripts/restore_data.py`, then `scripts/build_mass_shadow.py --build --verify` for this ladder (or
+`scripts/restore_releases.py` for the PRUNE pairs) and match the SHA-256 on disk to the ledger row
+before any upload. Both paths fail closed on a hash mismatch; the 2026-10-23 clean-sandbox run
+reproduced every recorded hash (`evidence/releases_restore_receipt.json`, `evidence/mass_build_receipt.json`).
+Any absolute live change below 0.01 is no evidence; use only one encoding per slot.
+
 ## Calendar to the supplied deadline (2026-12-03, UNVERIFIED)
 
 - **Wk 1 (Oct 23–29):** slot 1. If Δ ≥ +0.010, the mass term is exploitable → slot 2 next week.
@@ -58,3 +65,8 @@ full catalogue, so a catalogue holdout cannot separate real new-fault credit fro
 would only reward mass. The leakage canary is **not applicable** to a mass-only subset edit (no
 feature band, no label). Measured structural report instead: removed sets hold 6.5 / 14.7 / 24.7 % of
 R0's total exclusive credit at 10 / 20 / 30 % of its mass.
+
+The three PRUNE collar candidates from the earlier session (`-8b96d891`, `-be7a1217`, `-a69816c7`)
+remain built and unsubmitted. If the MASS ladder dies at slot 1, spend the next slot on PRUNE 3.5 px
+instead of on dose 2 — the two axes ask different questions (mass vs near-catalogue mass) and only one
+of them can be resolved per week.

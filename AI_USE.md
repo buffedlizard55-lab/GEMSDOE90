@@ -10,6 +10,8 @@ axis and the 10 / 20 / 30 % doses, and re-ran the format gate and the unit tests
 Prior sessions authored `src/`, `scripts/restore_data.py`, `scripts/build_r0_variants.py`, the PRUNE
 candidates and their documentation; that work is retained unchanged.
 
+Competition rasters remain under ignored `.cache/gems_data/` and local ignored `releases/`; they are not included in this public Git diff or any release. The owner-supplied mirror provenance and competition data-use terms have not been independently authenticated.
+
 **What the human decided / must decide:** the brief supplied the objective, constraints, parent, quota
 rules, deadline, metric algebra and the list of allowed axes. The human has not approved an axis or a
 dose, and the agent chose MASS and its three doses after checking the five sibling ledgers for
@@ -24,3 +26,15 @@ brief's algebra, not a measurement.
 rasters stay under ignored `releases/`. Neither is in this Git diff or any release. The input mirrors
 are owner-supplied and not organizer-authenticated; the competition's data-use terms have not been
 independently checked (IR90-02).
+
+## Update 2026-10-23 (reproducibility pass, clean sandbox)
+
+AI added `scripts/restore_releases.py`, which re-emits the three already-recorded PRUNE candidates from the pinned inputs and fails closed unless the bytes match the SHA-256 in `evidence/build_receipt.json` and `ledger/submissions.csv`; AI also added two ledger-consistency tests and this note. No new (AXIS, value) pair was created, no candidate was altered, and `scripts/build_r0_variants.py` was left byte-identical (SHA-256 `06f667c1…`, still pinned in both receipts) so the recorded generator hash stays valid. AI re-verified 26/26 input pins, rebuilt R0 byte-identically, reproduced the d2.8 ranking with 0 px difference, re-ran the format gate on all six files and the full test suite. AI did not contact DrivenData, submit, or claim any score.
+
+## Update 2026-10-23 (reproducibility pass, clean sandbox)
+
+AI added `scripts/restore_releases.py`, which re-emits the three already-recorded PRUNE candidates from the pinned inputs and fails closed unless the bytes match the SHA-256 in `evidence/build_receipt.json` and `ledger/submissions.csv`; AI also added two ledger-consistency tests and this note. No new (AXIS, value) pair was created, no candidate was altered, and `scripts/build_r0_variants.py` was left byte-identical (SHA-256 `06f667c1…`, still pinned in both receipts) so the recorded generator hash stays valid. AI re-verified 26/26 input pins, rebuilt R0 byte-identically, reproduced the d2.8 ranking with 0 px difference, re-ran the format gate on all six files and the full test suite. AI did not contact DrivenData, submit, or claim any score.
+
+## Update 2026-10-23b (MASS shadow-dose session)
+
+AI authored `src/mass.py`, `scripts/build_mass_shadow.py`, `tests/test_mass_shadow.py`, the three MASS candidates, `evidence/mass_build_receipt.json` and the MASS documentation. The three PRUNE candidates from the earlier session are unchanged and remain in `releases/` and in the ledger.
