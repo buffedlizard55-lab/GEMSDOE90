@@ -294,7 +294,7 @@ def mechanism_card(across: float, removed: int, remaining: int) -> dict:
 def build() -> dict:
     t0 = time.time()
     if RECEIPT.is_file() and json.loads(RECEIPT.read_text(encoding="utf-8")).get("withdrawal"):
-        raise RuntimeError("IR90-22: this delete-only family is WITHDRAWN; do not re-emit it into releases/")
+        raise RuntimeError("IR90-27: this delete-only family is WITHDRAWN; do not re-emit it into releases/")
     reservation = check_reservations()
     manifest = R0.verify_manifest_inputs()
     template, foot, cat, r0, parent_stats = R0.exact_parent_rebuild()

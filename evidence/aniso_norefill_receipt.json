@@ -716,7 +716,7 @@
   "agent_never_submits": true,
   "withdrawal": {
     "status": "WITHDRAWN BEFORE SUBMISSION",
-    "irregularity": "IR90-22",
+    "irregularity": "IR90-27",
     "reason": "Brief section 5 PRUNE recipe requires fixed-count refill; delete-only variants change count and are not compliant slot candidates.",
     "rasters_moved_to": ".cache/withdrawn_aniso_norefill/",
     "live_submission": false

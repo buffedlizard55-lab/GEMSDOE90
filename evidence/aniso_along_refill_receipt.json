@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_utc": "2026-10-23T23:54:03Z",
   "git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
-  "generator_script_sha256": "eaeb26a5494d810b356ba53c405a3aaf0bc4db7a5438df020bba710139649680",
+  "generator_script_sha256": "ea49727f308f3e31a2f3e011ffc3ca0a341202e7e276adb8ccd282865d3a128f",
   "aniso_module_sha256": "df9fec4ac69cd88d9ce5ece3cc4edee6f51494922edf4c53bee32c236bb444cb",
   "axis": "PRUNE",
   "value_family": "A5 fixed across strike; L=1.5/1.0/0.5 along strike; fixed-count H19-5 FIFO refill",
@@ -60,7 +60,7 @@
     "parent_isotropic_gt_2px_floor_preserved_on_every_final_dot": true,
     "n_dots_each": 37654,
     "withdrawn_delete_only_receipt": "evidence/aniso_norefill_receipt.json",
-    "withdrawn_delete_only_irregularity": "IR90-22"
+    "withdrawn_delete_only_irregularity": "IR90-27"
   },
   "predictions_frozen_before_proxy": true,
   "proxy_reports": {
@@ -705,8 +705,8 @@
   "elapsed_s": 92.83,
   "no_live_submission": true,
   "agent_never_submits": true,
-  "verified_utc": "2026-10-23T23:56:11Z",
-  "verification_git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "verified_utc": "2026-10-23T23:59:13Z",
+  "verification_git_sha": "215538590b8f820ec8c102c79db198d889b540de",
   "self_check": {
     "all_26_manifest_pins_verified": true,
     "r0_rebuilt_byte_identically": true,

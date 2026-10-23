@@ -93,7 +93,7 @@ def test_ledger_cards_and_hashes_are_consistent() -> None:
     for v in receipt["variants"]:
         row = by_id[v["id"]]
         assert row["status"] == "WITHDRAWN"
-        assert "IR90-22" in row["notes"] and "do not upload" in row["notes"]
+        assert "IR90-27" in row["notes"] and "do not upload" in row["notes"]
         assert row["axis"] == "PRUNE"
         assert int(row["n_dots"]) == v["n_dots"]
         assert float(row["pct_changed"]) == pytest.approx(v["pct_changed"], abs=1e-6)

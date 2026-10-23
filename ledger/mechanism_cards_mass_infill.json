@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "session": "arena/c3061751-gemsdoe90",
+  "parent": "h33-h33-2-b2",
+  "axis": "MASS",
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c",
+      "value": "add5pctq50",
+      "mechanism_card": {
+        "hypothesis": "R0 leaves a 300 m-kernel coverage deficit along its own strands, so adding 1883 unit dots (5% of the parent count) at the mid-strand gaps of the H19-5 support raises kernel credit T under the metric's max-over-dots rule more than it raises the mass penalty, and live DTI rises.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T = sum over truth pixels of the best dot's credit. R0's thinning recipe enforces a 2.8 px minimum spacing while the kernel is 3 px, so any strand pixel midway between two consecutive dots can only reach ~0.53 credit; a dot placed there lifts it to 1.0. The price of an addition is only 0.2/D (its mass share) whenever it supplies no credit, i.e. five times smaller than the 1/D a landed dot earns, so the add direction is the higher-ceiling half of MASS. Dots are chosen by exact marginal credit against the H19-5 support proxy and apportioned over 5 km blocks in proportion to the parent's own dot counts.",
+        "non_fault_confounder": "The H19-5 support is not truth: it also carries drainage lines, lithologic contacts and pluvial shoreline segments. More insidiously, the residual credit deficit is concentrated where the lineage's own thinning and catalogue collar removed dots, i.e. where it was least confident - so the additions preferentially densify the support's weakest parts. Dense mid-strand infill can also manufacture false along-strike continuity.",
+        "predicted_live_change": "+0.008 DTI (MODEL; plausible -0.004 to +0.030; not a score)",
+        "model_bracket": "raw first-order model: |G|=20000 px -> +0.0695, |G|=55000 px -> +0.0908, |G|=100000 px -> +0.0982 DTI; adopted prediction applies a 0.10 transfer discount (see receipt)",
+        "falsifier": "Paired same-week receipt vs R0. Delta <= -0.010 falsifies the coverage-deficit mechanism and closes the add direction (mass then behaves as pure penalty, matching the deployed drop ladder's positive model predictions). Delta >= +0.010 opens deeper infill and, crucially, licenses adding mass in the same week as a thinned file. |Delta| < 0.010 is no evidence.",
+        "structural_geologist_note": "Read this as a resampling-density test on your own traces, not as new fault evidence: the 1883 added dots are all within ~3 px (300 m) of a dot R0 already had, and 495 of them are within 2 px. If the score rises, the truth is line-like and under-sampled rather than diffuse; if it does not, the parent's spacing is already adequate and the remaining error is positional, not densification."
+      },
+      "diagnostics": {
+        "block_px": 50,
+        "block_density_cv_before": 0.7261,
+        "block_density_cv_after": 0.7279,
+        "occupied_blocks_before": 1788,
+        "occupied_blocks_after": 1788,
+        "blocks_with_additions": 1294,
+        "max_additions_in_one_block": 4,
+        "p05_add_share_of_block_mass": 0.0,
+        "p50_add_share_of_block_mass": 0.04762,
+        "largest_contiguous_block_run_with_additions": 1286,
+        "additions_within_2px_of_parent_dot": 495,
+        "additions_fraction_in_zero_credit_gap": 0.0637,
+        "mean_parent_distance_px": 2.318,
+        "parent_dots_deleted": 0,
+        "note_continuity": "every parent dot is retained, so no parent strand can be lost; infill can only merge strands"
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de",
+      "value": "add10pctq50",
+      "mechanism_card": {
+        "hypothesis": "R0 leaves a 300 m-kernel coverage deficit along its own strands, so adding 3765 unit dots (10% of the parent count) at the mid-strand gaps of the H19-5 support raises kernel credit T under the metric's max-over-dots rule more than it raises the mass penalty, and live DTI rises.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T = sum over truth pixels of the best dot's credit. R0's thinning recipe enforces a 2.8 px minimum spacing while the kernel is 3 px, so any strand pixel midway between two consecutive dots can only reach ~0.53 credit; a dot placed there lifts it to 1.0. The price of an addition is only 0.2/D (its mass share) whenever it supplies no credit, i.e. five times smaller than the 1/D a landed dot earns, so the add direction is the higher-ceiling half of MASS. Dots are chosen by exact marginal credit against the H19-5 support proxy and apportioned over 5 km blocks in proportion to the parent's own dot counts.",
+        "non_fault_confounder": "The H19-5 support is not truth: it also carries drainage lines, lithologic contacts and pluvial shoreline segments. More insidiously, the residual credit deficit is concentrated where the lineage's own thinning and catalogue collar removed dots, i.e. where it was least confident - so the additions preferentially densify the support's weakest parts. Dense mid-strand infill can also manufacture false along-strike continuity.",
+        "predicted_live_change": "+0.014 DTI (MODEL; plausible -0.008 to +0.045; not a score)",
+        "model_bracket": "raw first-order model: |G|=20000 px -> +0.1282, |G|=55000 px -> +0.1681, |G|=100000 px -> +0.1818 DTI; adopted prediction applies a 0.10 transfer discount (see receipt)",
+        "falsifier": "Paired same-week receipt vs R0. Delta <= -0.010 falsifies the coverage-deficit mechanism and closes the add direction (mass then behaves as pure penalty, matching the deployed drop ladder's positive model predictions). Delta >= +0.010 opens deeper infill and, crucially, licenses adding mass in the same week as a thinned file. |Delta| < 0.010 is no evidence.",
+        "structural_geologist_note": "Read this as a resampling-density test on your own traces, not as new fault evidence: the 3765 added dots are all within ~3 px (300 m) of a dot R0 already had, and 1563 of them are within 2 px. If the score rises, the truth is line-like and under-sampled rather than diffuse; if it does not, the parent's spacing is already adequate and the remaining error is positional, not densification."
+      },
+      "diagnostics": {
+        "block_px": 50,
+        "block_density_cv_before": 0.7261,
+        "block_density_cv_after": 0.7261,
+        "occupied_blocks_before": 1788,
+        "occupied_blocks_after": 1788,
+        "blocks_with_additions": 1535,
+        "max_additions_in_one_block": 9,
+        "p05_add_share_of_block_mass": 0.0,
+        "p50_add_share_of_block_mass": 0.1,
+        "largest_contiguous_block_run_with_additions": 1534,
+        "additions_within_2px_of_parent_dot": 1563,
+        "additions_fraction_in_zero_credit_gap": 0.0385,
+        "mean_parent_distance_px": 2.128,
+        "parent_dots_deleted": 0,
+        "note_continuity": "every parent dot is retained, so no parent strand can be lost; infill can only merge strands"
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4",
+      "value": "add20pctq50",
+      "mechanism_card": {
+        "hypothesis": "R0 leaves a 300 m-kernel coverage deficit along its own strands, so adding 7531 unit dots (20% of the parent count) at the mid-strand gaps of the H19-5 support raises kernel credit T under the metric's max-over-dots rule more than it raises the mass penalty, and live DTI rises.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T = sum over truth pixels of the best dot's credit. R0's thinning recipe enforces a 2.8 px minimum spacing while the kernel is 3 px, so any strand pixel midway between two consecutive dots can only reach ~0.53 credit; a dot placed there lifts it to 1.0. The price of an addition is only 0.2/D (its mass share) whenever it supplies no credit, i.e. five times smaller than the 1/D a landed dot earns, so the add direction is the higher-ceiling half of MASS. Dots are chosen by exact marginal credit against the H19-5 support proxy and apportioned over 5 km blocks in proportion to the parent's own dot counts.",
+        "non_fault_confounder": "The H19-5 support is not truth: it also carries drainage lines, lithologic contacts and pluvial shoreline segments. More insidiously, the residual credit deficit is concentrated where the lineage's own thinning and catalogue collar removed dots, i.e. where it was least confident - so the additions preferentially densify the support's weakest parts. Dense mid-strand infill can also manufacture false along-strike continuity.",
+        "predicted_live_change": "+0.022 DTI (MODEL; plausible -0.015 to +0.070; not a score)",
+        "model_bracket": "raw first-order model: |G|=20000 px -> +0.2229, |G|=55000 px -> +0.2941, |G|=100000 px -> +0.3187 DTI; adopted prediction applies a 0.10 transfer discount (see receipt)",
+        "falsifier": "Paired same-week receipt vs R0. Delta <= -0.010 falsifies the coverage-deficit mechanism and closes the add direction (mass then behaves as pure penalty, matching the deployed drop ladder's positive model predictions). Delta >= +0.010 opens deeper infill and, crucially, licenses adding mass in the same week as a thinned file. |Delta| < 0.010 is no evidence.",
+        "structural_geologist_note": "Read this as a resampling-density test on your own traces, not as new fault evidence: the 7531 added dots are all within ~3 px (300 m) of a dot R0 already had, and 4441 of them are within 2 px. If the score rises, the truth is line-like and under-sampled rather than diffuse; if it does not, the parent's spacing is already adequate and the remaining error is positional, not densification."
+      },
+      "diagnostics": {
+        "block_px": 50,
+        "block_density_cv_before": 0.7261,
+        "block_density_cv_after": 0.7299,
+        "occupied_blocks_before": 1788,
+        "occupied_blocks_after": 1788,
+        "blocks_with_additions": 1635,
+        "max_additions_in_one_block": 18,
+        "p05_add_share_of_block_mass": 0.0,
+        "p50_add_share_of_block_mass": 0.2,
+        "largest_contiguous_block_run_with_additions": 1634,
+        "additions_within_2px_of_parent_dot": 4441,
+        "additions_fraction_in_zero_credit_gap": 0.0206,
+        "mean_parent_distance_px": 1.858,
+        "parent_dots_deleted": 0,
+        "note_continuity": "every parent dot is retained, so no parent strand can be lost; infill can only merge strands"
+      }
+    }
+  ]
+}

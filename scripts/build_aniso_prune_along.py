@@ -126,7 +126,7 @@ def check_reservations() -> dict:
                     continue
                 value = row.get("value") or ""
                 if "norefill" in value.lower().replace("-", ""):
-                    continue  # IR90-22 withdrawn delete-only family is a different value
+                    continue  # IR90-27 withdrawn delete-only family is a different value
                 if not value.startswith("tag=anisoA5L"):
                     continue
                 ident = row.get("id") or ""
@@ -301,7 +301,7 @@ def build() -> dict:
             "parent_isotropic_gt_2px_floor_preserved_on_every_final_dot": True,
             "n_dots_each": R0_DOTS,
             "withdrawn_delete_only_receipt": "evidence/aniso_norefill_receipt.json",
-            "withdrawn_delete_only_irregularity": "IR90-22",
+            "withdrawn_delete_only_irregularity": "IR90-27",
         },
         "predictions_frozen_before_proxy": True,
         "proxy_reports": {

@@ -79,9 +79,33 @@ AI authored `scripts/build_mass_variants.py`, the three MASS rungs (`drop5pct-ta
 - **What AI wrote and executed:** Selected `AXIS=RELIEF` per the prompt instruction not to prompt the human over axis choice; audited the 19 `training_features.tif` bands; authored `src/relief.py`, `scripts/build_relief_variants.py`, and `tests/test_relief.py`; extended `scripts/restore_releases.py` and `tests/test_r0_variants.py` so both the prior `PRUNE` candidates and the 3 new fixed-count `RELIEF` candidates (`RELIEFr2p12p5pct`, `RELIEFr2b10pct`, `RELIEFp2r15pct`) are reproducibly verified; ran all 26 SHA-256 input checks, byte-identical R0 rebuild (`c55bafc4…` / `baeae321…`), `d2.8` and `d1.5` 0-pixel-diff thinning checks, disk re-read format validation (`src/validate.py`), report-only diagnostics (19-band + `relief_idx` leakage canary, 20×20 km spatial-block catalogue hide-and-recover `PROXY`, and off-catalogue SGMC `PROXY`), and updated `ledger/submissions.csv`, `ledger/experiment_reservations.json`, `ledger/mechanism_cards.json`, `evidence/relief_build_receipt.json`, `evidence/releases_restore_receipt.json`, `README.md` (`CURRENT STATE` block only), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/MECHANISM_CARDS.md`, and `IRREGULARITIES.md`.
 - **What the human decided / must decide:** The human defined the competition brief, parent `h33-h33-2-b2`, constraints, and allowed axes. Before any upload, the human must verify competition data-use terms, confirm the official deadline and entity slot count, supply dated `TOP_PUBLIC` and portal score receipts (for R0 and any uploaded file), review removed/added fault corridors geologically, and choose which single file (if any) to upload from their registered account.
 
+## Update 2026-10-23e (MASS add-direction session, branch `arena/c3061751-gemsdoe90`)
+
+AI re-verified 26/26 pinned inputs and rebuilt R0 byte-identically, then authored `src/reach.py`,
+`tests/test_reach.py`, `scripts/build_mass_infill.py`, the three `MASSadd*pctq50` candidates, the receipt
+`evidence/mass_infill_receipt.json`, the cards `ledger/mechanism_cards_mass_infill.json`, the ledger rows, the
+reservation block and the documentation edits. AI chose the axis (MASS) **and the direction (add)** after finding
+that the deletion side is fully instrumented (10/20/30/40/48 % + random control) while every recorded add rung is
+FIFO-ranked and region-isolated. AI set the adopted predictions (+0.008 / +0.014 / +0.022 MODEL) by discounting the
+first-order model's raw output by 0.10 and documented why (the model assumes the truth set is an unbiased sample of
+the H19-5 support; it is not). AI did not contact DrivenData or Dropbox, did not read the leaderboard, did not log
+in, and did not submit. R0's 0.2778 remains a CLAIM.
+
+**What the human must decide:** whether to spend a slot on the add direction before the drop direction has any
+receipt; whether the block-quota evenness convention is acceptable as "not a patterned file"; and, if a slot is
+spent, which dose. **What the human must supply:** `TOP_PUBLIC` with date, quota used/remaining, deadline
+confirmation, R0's portal receipt, and a check that the chosen SHA-256 has never been uploaded.
+
+## Session arena/5d47dcd0 (2026-10-23f, `AXIS=MASS`, add direction, placement contrast)
+
+- **What AI wrote and executed:** re-verified 26/26 pinned inputs and rebuilt R0 byte-identically (`c55bafc4…` / `baeae321…`, 37,654 dots, d2.8 with 0-pixel difference); authored `src/mass_add.py`, `scripts/build_mass_add_variants.py`, `tests/test_mass_add.py`; built add rungs with a region-even per-5 km-block quota; ran the format gate on every raster from disk, the 82-test suite, and the SGMC PROXY; wrote `evidence/mass_add_receipt.json`, the ledger rows, reservations, mechanism cards, `SLOT_PLAN.md`, `docs/SUBMIT.md` §6, `docs/MECHANISM_CARDS.md`, `IRREGULARITIES.md` (IR90-24, IR90-25) and the `README.md` CURRENT STATE block only.
+- **What AI rejected or withdrew:** `CONCENTRATION` at any dose (IR90-25, measured flat credit per block-density quintile, and R0's CV already above the brief's band); `MASSadd10pctGapmax` withdrawn before submission as a duplicate of main's `MASSadd10pctq50` (IR90-24) — the parallel session merged the same operator while this one was running. Rasters moved to `.cache/withdrawn/`; ledger row kept as an occupancy guard.
+- **What the human decided / must decide:** the brief supplied the objective, parent, constraints and the axis menu; the agent chose the axis and values. The human must supply dated `TOP_PUBLIC`, quota state, deadline confirmation and portal receipts, review the added corridors geologically, and decide which single file to upload. The agent never contacted DrivenData, never read a leaderboard, never logged in and never submitted.
+- **Not done:** no leakage canary re-run (no new feature entered placement); no bootstrap catalogue proxy (analytically zero for this axis — every addition is ≥ 3 px away with a 3 px kernel); no live receipt exists, so every Δ here is MODEL.
+
 ## Session 2026-10-23 (final current branch; agent-selected PRUNE after feasibility stops)
 
-AI restored and SHA-256-verified all 26 pinned inputs, rebuilt R0 byte-identically, audited local and GitHub sibling ledgers for occupied `(AXIS,value)` pairs, and initially selected SNAP. AI withdrew SNAP before raster emission after a deterministic geometry check found 30 inherited dots with no legal >=3 px destination within 2 px (IR90-21). AI then built three delete-only anisotropic PRUNE probes, but withdrew them before submission after re-reading the brief's fixed-count refill requirement (IR90-22).
+AI restored and SHA-256-verified all 26 pinned inputs, rebuilt R0 byte-identically, audited local and GitHub sibling ledgers for occupied `(AXIS,value)` pairs, and initially selected SNAP. AI withdrew SNAP before raster emission after a deterministic geometry check found 30 inherited dots with no legal >=3 px destination within 2 px (IR90-26). AI then built three delete-only anisotropic PRUNE probes, but withdrew them before submission after re-reading the brief's fixed-count refill requirement (IR90-27).
 
 For the final three candidates AI authored `scripts/build_aniso_prune_along.py` and `tests/test_aniso_along.py`, generated six local Git-ignored rasters, froze MODEL predictions before running REPORT ONLY proxies, updated the ledger/reservations/mechanism cards, and wrote the slot plan and submission packet. The final files use A5 across strike, L=1.5/1.0/0.5 along strike, exact fixed-count H19-5 FIFO refill, and R0's >2 px baseline on every final dot. AI also retained the withdrawn probe generator, receipt, tests, and occupancy rows so the decision is auditable; those files are explicitly not candidates. AI did not contact DrivenData or Dropbox, read a leaderboard, log in, submit, or claim a score.
 
