@@ -1,0 +1,23 @@
+# Keep competition rasters out of public repos per data-use terms — but releases/*.tif are intentionally tracked for this private harness per brief §7
+# Uncomment next line if repo becomes public:
+# releases/*.tif
+# releases/*-zeros.tif
+
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.env
+.DS_Store
+data/*.npy
+# large aux not needed in repo but kept for reproducibility:
+data/score_field.tif
+data/elev_norm.tif
+data/hidden_truth.tif
+# Do not ignore manifest / sample / catalogue — they are pinned inputs
+!data/sample_submission.tif
+!data/catalogue_mask.tif
+!data/footprint_mask.tif
+# ledger raw_paste is plain text, safe
+# model artifacts
+*.log

@@ -1,0 +1,8 @@
+site	name	score	encoding	n_dots	sha8	parent	receipt
+GEMSDOE32	h33-h33-2-b2	0.2778 dots 37654 01bbbb5b - N CLAIM
+GEMSDOE32	h33-h33-2-b2-CONC2000M10PCT-20261023-e3d0073c	BUILT dots 37654 e3d0073c h33-h33-2-b2 N CONC 2000m 10% cv 4.09->4.89
+GEMSDOE32	h33-h33-2-b2-CONC1000M15PCT-20261023-5af456e3	BUILT dots 37654 5af456e3 h33-h33-2-b2 N CONC 1000m 15% cv 5.45->5.90
+GEMSDOE32	h33-h33-2-b2-CONC5000M20PCT-20261023-9502239f	BUILT dots 37654 9502239f h33-h33-2-b2 N CONC 5000m 20% cv 2.89->5.14
+# Ledger collapsed from ledger/submissions.csv 2026-10-23. Receipt Y/N indicates submission-page receipt in ledger/; CLAIM=owner-reported no receipt.
+# TOP_PUBLIC = ____ (human fills from leaderboard with date); No other target number is valid per brief §1.
+# Slots left this week: __ / total: __ (human tracks 3/week/entity)

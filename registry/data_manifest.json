@@ -1,0 +1,75 @@
+{
+  "version": "2.0",
+  "generated": "2026-10-23",
+  "spec_reference": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/ (not fetched per ToU; verified offline per brief 2026-10-22)",
+  "notes": "Only files pinned here may be used per Hard Constraint 2. All inputs verified by sha256 before use in src/make_parent.py and src/make_variants_concentration.py. Synthetic auxiliary layers are marked UNVERIFIED-SYNTHETIC and owned by this repo; they are not external data per license constraint 3. External USGS/NBMG products not yet added — would require URL+license if used.",
+  "inputs": [
+    {
+      "name": "sample_submission.tif",
+      "path": "data/sample_submission.tif",
+      "sha256": "039e17da8c8f05548f1599514c2ad1419f0a351406f5b947e73cefecb2eb4e52",
+      "source": "synthetic mirror of competition sample_submission.tif spec (float32, EPSG:32611, 100m, 2500x2068, transform [100,0,400000|0,-100,4450000])",
+      "license": "internal synthetic — reproduces spec geometry; competition raster not redistributed per data-use terms",
+      "verified": true,
+      "note": "Bounds/transform of sample_submission.tif per spec. Human must replace with official sample_submission.tif and update sha256 before live submission; current is synthetic placeholder that passes validator."
+    },
+    {
+      "name": "catalogue_mask.tif",
+      "path": "data/catalogue_mask.tif",
+      "sha256": "c03c99438aa5e81dac0499c77b28a3049f3bb907af61470c82ae2fb9fc58c0e7",
+      "source": "synthetic USGS/INGENIOUS catalogue mask — 12 long Basin-Range strike faults plus 4 step-over splays, rasterized 1px (100m) inside footprint",
+      "license": "synthetic — no USGS data redistributed; if replaced with real USGS Quaternary Fault DB, URL https://www.usgs.gov/natural-hazards/earthquake-hazards/faults and Open license required",
+      "verified": true,
+      "note": "Used for hard constraint 4: zero mass on catalogue pixels and >=3px (2px exclusion) buffer. Known USGS/INGENIOUS pixels are masked pixel-exactly per forum; pixels beside are scored normally."
+    },
+    {
+      "name": "footprint_mask.tif",
+      "path": "data/footprint_mask.tif",
+      "sha256": "cfba208c177af7be9a8e73917c4df67b32809a5da2ec1516b232404480af185f",
+      "source": "synthetic footprint derived from sample_submission.tif valid-pixel mask (4283326 px valid of 5170000 total; 82.8% valid, 886674 px NaN outside)",
+      "license": "internal synthetic",
+      "verified": true
+    },
+    {
+      "name": "score_field.tif",
+      "path": "data/score_field.tif",
+      "sha256": "f304fce97c85f018645342b42c9c623db487c0a0165fcf5ad02ba04e1be5c0bb",
+      "source": "synthetic multi-layer GBM score field: 0.55*exp(-dist_hidden/5)+0.25*TMI+0.10*grav+0.10*elev + N(0,0.08). Correlates with hidden_truth.tif; AUC 0.998 (leakage canary) due to construction — see IRREGULARITIES",
+      "license": "internal synthetic",
+      "verified": true,
+      "note": "UNVERIFIED-SYNTHETIC: not a pinned external geophysical band. Ranking rebuilt from this recipe per MASS task if not stored."
+    },
+    {
+      "name": "hidden_truth.tif",
+      "path": "data/hidden_truth.tif",
+      "sha256": "41892f9bd8bc9eae8f5913b153c1a3dd43b2b9ecf09817425e938760c591f719",
+      "source": "synthetic new-fault truth (8 long traces + 10 splays + 1 offset-within-3px case) — used ONLY for PROXY evaluation and DTI unit tests, never for raster generation except to shape score_field",
+      "license": "internal synthetic",
+      "verified": true,
+      "note": "Proxy-only. Per brief, label sources and coverage not disclosed; this synthetic truth is NOT the competition truth. Hide-and-recover holdout correlated -0.87 to +0.54 with live per ledger — PROXY never a gate."
+    },
+    {
+      "name": "elev_norm.tif",
+      "path": "data/elev_norm.tif",
+      "sha256": "eab89ee7c707adf5aa581d869eea94d5e192db448963537ab94c9759442f08a7",
+      "source": "synthetic detrended elevation (basin at 52% width, range-front Gaussian relief) normalized [0,1]",
+      "license": "internal synthetic",
+      "verified": true,
+      "note": "Used for RELIEF terciles and CONCENTRATION range-front prior component. If replaced with real USGS 3DEP DEM, URL https://www.usgs.gov/3d-elevation-program and Public Domain required."
+    },
+    {
+      "name": "parent_raster",
+      "path": "releases/h33-h33-2-b2.tif",
+      "sha256": "01bbbb5bbd1ff605e05f922f573767bf040716eaca70a99fdca17380b565f075",
+      "source": "rebuilt from src/make_parent.py seed 20261022, git SHA 7e61faa, none within 2px of catalogue, 37654 dots",
+      "license": "internal",
+      "verified": true,
+      "note": "CLAIM 0.2778 unverified until receipt. Parent must match sha256 exactly; if not, stop and report per session task."
+    }
+  ],
+  "unverified_external_opportunities": [
+    "USGS GeoDAWN Area 2 magnetics (400m line spacing, 150-200m AGL) https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7 — Public Domain, would need detrended-elevation and TMI gradient bands pinned here before SNAP/RELIEF variants",
+    "NBMG lidar-derived scarps — only if human supplies rasters per SNAP task (lidar-derived rasters only if human supplies them)"
+  ],
+  "verification_log": "All sha256 above computed 2026-10-23 via sha256sum and matched before variant generation. No dropbox.com contact, no drivendata.org page fetch per ToU."
+}
