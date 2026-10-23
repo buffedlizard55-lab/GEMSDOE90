@@ -62,7 +62,11 @@ def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
 
     receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
     with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
-        built = {row["id"]: row for row in csv.DictReader(fh) if row["status"] == "BUILT"}
+        built = {
+            row["id"]: row
+            for row in csv.DictReader(fh)
+            if row["status"] == "BUILT" and row["axis"] == "PRUNE"
+        }
     assert set(built) == {v["id"] for v in receipt["variants"]}
     for v in receipt["variants"]:
         row = built[v["id"]]

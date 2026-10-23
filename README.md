@@ -2,13 +2,13 @@
 
 <!-- CURRENT STATE (edit only this block) -->
 ## CURRENT STATE
-- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (see evidence/r0_rebuild_receipt.json)
-- Best receipt: none on file. Best CLAIM: 0.2778 (R0, owner-reported, no receipt in ledger/submissions.csv)
+- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN; see `evidence/r0_rebuild_receipt.json`)
+- Best receipt: none on file (human supplies R0 portal receipt). Best CLAIM: 0.2778 (R0, owner-reported, no receipt in `ledger/submissions.csv`)
 - TOP_PUBLIC: ____ (human fills from leaderboard, with date: ____)
 - Slots left this week: __ / 3 (one entity) · total used: __ · Deadline: 2026-12-03 (UNVERIFIED, human confirms)
-- Session axis (2026-10-23, agent-selected PRUNE): 3 fixed-count variants BUILT locally, not submitted; rasters are gitignored (see docs/SUBMIT.md)
-- Reproducibility (2026-10-23, clean sandbox): all 26 pins re-verified, R0 rebuilt byte-identically (`c55bafc4…`), d2.8 ranking reproduced with 0 px difference, and all 3 candidate pairs re-emitted byte-identically to their recorded SHA-256 — `evidence/releases_restore_receipt.json`. Re-run: `.venv/bin/python scripts/restore_data.py && .venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_r0_variants.py --verify`
-- Next 3 slots (conditional on human quota/receipts): 1) PRUNE dcat<=3.5 px 2) PRUNE dcat<=4.5 px 3) PRUNE dcat<=5.5 px — see SLOT_PLAN.md
+- Session axis (2026-10-23, agent-selected RELIEF): 3 fixed-count (37,654-dot) variants BUILT locally in gitignored `releases/`, never submitted (`evidence/relief_build_receipt.json`, `docs/SUBMIT.md`); prior PRUNE 3.5/4.5/5.5 px candidates also retained and byte-restorable (`evidence/releases_restore_receipt.json`)
+- Reproducibility: `.venv/bin/python scripts/restore_data.py && .venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_relief_variants.py --verify`
+- Next 3 slots (conditional on human quota/receipts; see `SLOT_PLAN.md`): 1) `h33-h33-2-b2-RELIEFr2p12p5pct-20261023-5e64d01f` (12.5% Range→Piedmont) 2) `h33-h33-2-b2-RELIEFr2b10pct-20261023-9e7b5e17` (10.0% Range→Basin; or `PRUNE3p5px` to orthogonalize collar vs relief) 3) conditional counterpoint `h33-h33-2-b2-RELIEFp2r15pct-20261023-ad95e30f` (15.0% Piedmont→Range) if down-relief Δ ≤ -0.010, else combine winning axes
 <!-- /CURRENT STATE -->
 
 Layout: `src/` gated pipeline (manifest verify → exact R0 rebuild → build →

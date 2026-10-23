@@ -5,29 +5,80 @@
     {
       "repo": "buffedlizard55-lab/GEMSDOE84",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE84/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 1.5, 2.0, 2.5, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE85",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE85/blob/main/ledger/submissions.csv",
-      "values_px": [2.0, 2.25, 2.85, 3.0, 3.61, 4.0, 5.0]
+      "values_px": [
+        2.0,
+        2.25,
+        2.85,
+        3.0,
+        3.61,
+        4.0,
+        5.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE86",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE86/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 2.0, 2.2361, 2.8284, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        2.0,
+        2.2361,
+        2.8284,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE87",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE87/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE88",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE88/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 2.85, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        2.85,
+        3.0,
+        4.0
+      ]
     }
   ],
-  "available_selected_values_px": [3.5, 4.5, 5.5],
-  "interpretation": "The selected numerical cutoffs are absent from all five fetched ledgers; all three are PRUNE tests with fixed count and the same FIFO-BFS H19-5 refill rule. Existing 3.61/4/5 no-refill and 3.0 refill are distinct values and are not recreated. This is a best-effort owner-repo audit, not proof of every submission ever made by the entity."
+  "available_selected_values_px": [
+    3.5,
+    4.5,
+    5.5
+  ],
+  "interpretation": "The selected numerical cutoffs are absent from all five fetched ledgers; all three are PRUNE tests with fixed count and the same FIFO-BFS H19-5 refill rule. Existing 3.61/4/5 no-refill and 3.0 refill are distinct values and are not recreated. This is a best-effort owner-repo audit, not proof of every submission ever made by the entity.",
+  "relief_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "RELIEF",
+    "parent": "h33-h33-2-b2",
+    "occupied_tags": [
+      "r2p12p5pct",
+      "r2b10pct",
+      "p2r15pct"
+    ],
+    "occupied_values": [
+      "tag=r2p12p5pct; shift 12.5% R0 mass (4707 dots) range_front->piedmont; fixed count 37654; added d_cat>=3px",
+      "tag=r2b10pct; shift 10% R0 mass (3766 dots) range_front->basin; fixed count 37654; added d_cat>=3px",
+      "tag=p2r15pct; shift 15% R0 mass (5648 dots) piedmont->range_front; fixed count 37654; added d_cat>=3px"
+    ],
+    "note": "Checked against ledger/submissions.csv (0 prior RELIEF rows). Repeat builds of these (RELIEF, value) pairs fail closed."
+  }
 }

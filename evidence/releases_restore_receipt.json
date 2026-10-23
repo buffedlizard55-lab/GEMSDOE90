@@ -1,9 +1,10 @@
 {
   "schema_version": 1,
-  "note": "Local, gitignored candidate rasters re-emitted from pinned inputs. This is a reproduction of already-recorded (PRUNE, value) pairs, not a new experiment. Each file must equal the SHA-256 recorded in evidence/build_receipt.json and ledger/submissions.csv.",
-  "generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615",
-  "restore_script_sha256": "28be89a814e1db0a0f94f8dabe9cf01a43b17b80275f5a6bb1af62f34663f15a",
-  "git_sha": "3ac20c24e6e3800aca17e6dbb9cb4dd515fa9253",
+  "note": "Local, gitignored candidate rasters re-emitted from pinned inputs. This is a reproduction of already-recorded (PRUNE, value) and (RELIEF, value) pairs, not a new experiment. Each file must equal the SHA-256 recorded in its build receipt and ledger/submissions.csv.",
+  "prune_generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615",
+  "relief_generator_script_sha256": "4a1ccfe3d0c9e946e9388a502d2fda244080b24b9e0345a3068048f0a35cb3b1",
+  "restore_script_sha256": "881fe61450689471256ec9200abcc158c2de497afbddffaead971600cdddca55",
+  "git_sha": "e7452e6792ae4db50527a02529e8bd936e65f0f7",
   "parent": {
     "id": "h33-h33-2-b2",
     "r0_dots": 37654,
@@ -16,6 +17,7 @@
   "variants": [
     {
       "id": "h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891",
+      "axis": "PRUNE",
       "threshold_px": 3.5,
       "n_dots": 37654,
       "pct_changed": 14.351729,
@@ -31,6 +33,7 @@
     },
     {
       "id": "h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217",
+      "axis": "PRUNE",
       "threshold_px": 4.5,
       "n_dots": 37654,
       "pct_changed": 25.750252,
@@ -46,6 +49,7 @@
     },
     {
       "id": "h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7",
+      "axis": "PRUNE",
       "threshold_px": 5.5,
       "n_dots": 37654,
       "pct_changed": 32.559622,
@@ -57,6 +61,57 @@
       "paths": [
         "releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif",
         "releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-RELIEFr2p12p5pct-20261023-5e64d01f",
+      "axis": "RELIEF",
+      "tag": "r2p12p5pct",
+      "n_dots": 37654,
+      "pct_changed": 25.001328,
+      "min_catalogue_distance_all_dots_px": 2.236068,
+      "min_catalogue_distance_added_dots_px": 3.0,
+      "sha256": "5e64d01f26b6687f69751785cf21063b441609282c5267345074c4ca495e5065",
+      "sha256_zeros": "c50e5a8b98b0f6c3ccc987f41b656a990a5ee6c0deef0a60cb6dda038d23aefc",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-RELIEFr2p12p5pct-20261023-5e64d01f.tif",
+        "releases/h33-h33-2-b2-RELIEFr2p12p5pct-20261023-5e64d01f-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-RELIEFr2b10pct-20261023-9e7b5e17",
+      "axis": "RELIEF",
+      "tag": "r2b10pct",
+      "n_dots": 37654,
+      "pct_changed": 20.003187,
+      "min_catalogue_distance_all_dots_px": 2.236068,
+      "min_catalogue_distance_added_dots_px": 3.0,
+      "sha256": "9e7b5e17ad3b27ddd3164a77ce89c22e77fe1d72891d8e8be9a7f9746adf9f06",
+      "sha256_zeros": "870a92b2cfb98c786309b5fe73078648b8c58c478e93f24e2b29524ae885ad2a",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-RELIEFr2b10pct-20261023-9e7b5e17.tif",
+        "releases/h33-h33-2-b2-RELIEFr2b10pct-20261023-9e7b5e17-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-RELIEFp2r15pct-20261023-ad95e30f",
+      "axis": "RELIEF",
+      "tag": "p2r15pct",
+      "n_dots": 37654,
+      "pct_changed": 29.999469,
+      "min_catalogue_distance_all_dots_px": 2.236068,
+      "min_catalogue_distance_added_dots_px": 3.0,
+      "sha256": "ad95e30f857011f9f8580053bbb60abdba46bc5046aeaafd996e09ff920749b3",
+      "sha256_zeros": "66d1abb217ce9cfba3a45aab0ba44fbb64f8957319163999923e1403cb967db6",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-RELIEFp2r15pct-20261023-ad95e30f.tif",
+        "releases/h33-h33-2-b2-RELIEFp2r15pct-20261023-ad95e30f-zeros.tif"
       ]
     }
   ],
