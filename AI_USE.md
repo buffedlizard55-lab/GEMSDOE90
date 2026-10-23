@@ -46,3 +46,27 @@ choice in advance. It did not contact DrivenData or any leaderboard, did not sub
 0.2778 remains a CLAIM and every predicted change is a MODEL. Competition rasters stay in ignored
 `.cache/gems_data/` and `releases/`; nothing competition-derived is in this commit or any release. The human
 still owns the slot decision, the receipt, the data-use review and the live target.
+
+## Update 2026-10-23c (high-dose MASS session, GEMSDOE90)
+
+**AI wrote:** `scripts/build_mass_high_dose.py` (40 % / 48 % shadow arms and the seeded random 40 % control,
+the 5 km-block region-evenness gate, the report-only strand-continuity and rejected-probe analysis),
+`tests/test_mass_high_dose.py`, the `mass_high_dose` block of `ledger/experiment_reservations.json`,
+`evidence/mass_high_dose_receipt.json`, three ledger rows, and the matching text in `SLOT_PLAN.md`,
+`docs/SUBMIT.md`, `docs/MECHANISM_CARDS.md`, `IRREGULARITIES.md` (IR90-15…17) and the `README.md`
+CURRENT STATE block. AI also changed one line of `scripts/build_mass_shadow.py` so its ledger writer replaces
+only its own row ids instead of dropping every `axis=MASS` row (a later MASS session's rows can no longer be
+deleted by a rebuild); that script was then re-run with `--verify`, which reproduced its three pairs
+byte-identically and re-pinned its generator hash.
+
+**AI decided (agent-selected axis, not assigned):** MASS. It continued the in-repo shadow ladder above 30 %
+because that ladder is the only mechanism in the ledger with a recorded positive prior, and spent the third
+arm on a credit-blind random control because no indexed repository has one and the session rule treats a
+sub-0.01 change as no evidence. It rejected two arms before any submission — FIFO-order drops
+(region-isolated, IR90-15) and a 50 % shadow drop (IR90-17) — and deleted the one raster it had already built
+for the first. It did not contact DrivenData, scrape anything, submit a file, or claim a score; no
+`TOP_PUBLIC`, quota or deadline figure was invented.
+
+**Human must decide/supply:** the dated `TOP_PUBLIC`, quota state, deadline confirmation, submission-page
+receipts, whether the final submission may repeat an already-scored file, and a review of the competing
+prediction — the shadow ranking deletes all 838 of R0's ≥ 1 km strands while the random control keeps 136.

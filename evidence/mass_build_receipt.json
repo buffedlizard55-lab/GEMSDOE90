@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-23T21:31:01Z",
-  "git_sha": "3ac20c24e6e3800aca17e6dbb9cb4dd515fa9253",
+  "generated_utc": "2026-10-23T21:39:15Z",
+  "git_sha": "edd467a7e9b2bbe050008268e9f0b12911b5296f",
   "axis": "MASS",
   "ranking": {
     "used": "exclusive kernel credit, ascending, recomputed after each deletion (src/mass.py)",
@@ -506,12 +506,12 @@
     }
   ],
   "hard_constraint_note": "Brief s4 asks >=3 px from the catalogue. R0's own minimum is 2.236 px (1,611 dots, IR90-01); these variants inherit that collar unchanged because changing it is a second axis. They add no mass at all and emit zero catalogue mass.",
-  "elapsed_s": 21.9,
+  "elapsed_s": 25.0,
   "no_live_submission": true,
   "agent_did_not_submit": true,
-  "verified_utc": "2026-10-23T21:32:36Z",
-  "verification_git_sha": "3ac20c24e6e3800aca17e6dbb9cb4dd515fa9253",
-  "generator_script_sha256": "8f8b5ac7b1c3386800136f459f9e71ab10de674f9608bf52991b9ea897881427",
+  "verified_utc": "2026-10-23T21:48:18Z",
+  "verification_git_sha": "edd467a7e9b2bbe050008268e9f0b12911b5296f",
+  "generator_script_sha256": "fd6122dc052728216f2449d54883a13a005f8822ece374a371e5b4cfa4eb5702",
   "self_check": {
     "variant_files_re_read_and_validated": true,
     "variant_bytes_reproduced_exactly": true,

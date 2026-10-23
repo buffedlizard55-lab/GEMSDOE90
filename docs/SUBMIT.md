@@ -1,4 +1,4 @@
-# Human submission packet — 2026-10-23 sessions (MASS ladder + strike-aligned PRUNE collar)
+# Human submission packet — 2026-10-23 sessions (MASS ladder incl. high doses + both PRUNE collars)
 
 **The agent does not submit and cannot see the leaderboard.** Every GeoTIFF below is local and Git-ignored on
 purpose: this repository is public and competition rasters must not be committed or released
@@ -22,6 +22,23 @@ catalogue mass. **These three rasters are not present in this sandbox** (they we
 `scripts/restore_data.py`, and confirm the SHA-256 against `evidence/mass_build_receipt.json` before uploading. SHA-256, checks and parent-diff statistics: `evidence/mass_build_receipt.json`; re-run with
 `.venv/bin/python scripts/build_mass_shadow.py --verify`. These files inherit R0's 2.236 px collar exactly
 (IR90-07): a MASS-only edit must not also move the collar.
+
+## 1b. MASS high-dose arms + credit-blind control (session 2026-10-23c)
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin | Form note (< 140 chars) |
+|---|---|---|---|
+| 40 % → 22,592 dots | `releases/h33-h33-2-b2-MASSshadow40pct-20261023-e2546fbe.tif` | `…-e2546fbe-zeros.tif` | `h33-h33-2-b2; MASS shadow-drop 40% -> 22592 dots; predicted +0.014 MODEL` |
+| 48 % → 19,580 dots | `releases/h33-h33-2-b2-MASSshadow48pct-20261023-88a2e8cc.tif` | `…-88a2e8cc-zeros.tif` | `h33-h33-2-b2; MASS shadow-drop 48% -> 19580 dots; predicted +0.015 MODEL` |
+| random 40 % → 22,592 dots | `releases/h33-h33-2-b2-MASSrandom40pct-20261023-894b5b4a.tif` | `…-894b5b4a-zeros.tif` | `h33-h33-2-b2; MASS random-drop 40% -> 22592 dots; predicted +0.013 MODEL` |
+
+Strict subsets of R0 again: 40.0011 / 48.0002 / 40.0011 % of dots removed, no additions, no moves, zero
+catalogue mass, 2.236 px inherited collar (IR90-14). The random arm is `numpy default_rng(20261023)` and is
+**spatially even by construction** (p05 removal share 0.25 per 5 km block). Re-emit with
+`.venv/bin/python scripts/build_mass_high_dose.py --build` after `scripts/restore_data.py`, confirm the
+SHA-256 against `evidence/mass_high_dose_receipt.json`, and re-check with `--verify`.
+
+**Do not upload** any FIFO-order drop (none was built: the probe is region-isolated, IR90-15) or a 50 %
+shadow drop (region-isolated at depth, IR90-17). The 48 % arm is the deepest spatially uniform dose.
 
 ## 2. Strike-aligned PRUNE collar (session 2026-10-23, new value family)
 
@@ -54,7 +71,8 @@ not the first choice for a slot.
 | catalogue mass | **0.0** on every file |
 | ledger | no sha256 repeated |
 
-Independent re-check (exit 0 = pass):
+Min catalogue distance is inherited from R0 (2.236 px) on every MASS arm and on the aniso collar; the
+isotropic PRUNE files are the only ones whose minimum is ≥ 3 px. Independent re-check (exit 0 = pass):
 
 ```
 .venv/bin/python -m src.validate releases/<file>.tif .cache/gems_data/sample_submission.tif \

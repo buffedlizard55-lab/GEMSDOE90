@@ -140,6 +140,57 @@
         "rule_applied": "the numeric-collision convention in this file governs isotropic single-radius cutoffs; no sibling ledger contains a collar with along != across, so the (A, L=2.0) pair is a new (AXIS, value)",
         "residual_risk": "if the human applies the stricter numeric rule (any cutoff number already used, regardless of geometry), A=4 collides with PRUNE 4 and A=5 with PRUNE 5; the mechanism, removed set and refill pool still differ. Flagged in IRREGULARITIES.md instead of silently reconciled."
       }
+    },
+    {
+      "session": "2026-10-23c high-dose MASS (GEMSDOE90)",
+      "axis": "MASS",
+      "value_family": "dose above 30% plus a credit-blind control",
+      "selected_values": [
+        "shadow40pct",
+        "shadow48pct",
+        "rand40pct"
+      ],
+      "rejected_values": [
+        "fifo10pct",
+        "fifo20pct",
+        "fifo40pct",
+        "shadow50pct"
+      ],
+      "why_new": "No indexed repository has a MASS dose above 30% or any credit-blind control. The FIFO-order doses were probed and rejected as region-isolated (IR90-15); the 50% shadow dose was rejected because the greedy starts emptying whole regions (IR90-17)."
     }
-  ]
+  ],
+  "mass_high_dose": {
+    "checked_utc": "2026-10-23",
+    "scope": "Every MASS row in this repository's ledger plus a read-only audit of the ledger of every public buffedlizard55-lab GEMSDOE* repository reachable on 2026-10-23 (gh api, read-only, no DrivenData access). Exact (AXIS, value) reuse prohibited; a dose at a new percentage is a new pair, a different selection rule at the same percentage is also a new pair.",
+    "in_repo_values": [
+      "shadow10pct",
+      "shadow20pct",
+      "shadow30pct"
+    ],
+    "sibling_values": [
+      "GEMSDOE84: MASS +10pct / -10pct / -20pct (parent FIFO-BFS order, counts 41419 / 33889 / 30123)",
+      "GEMSDOE85: MASS m10e / m10u / p10 (10% each, counts 33889 / 33889 / 41419)",
+      "GEMSDOE86: MASS minus10pct / plus10pct",
+      "GEMSDOE87: MASS m10minus / m10plus / m20minus (10% / 10% / 20%)",
+      "GEMSDOE88: MASS m10minus / m10plus / m20minus (10% / 10% / 20%)",
+      "GEMSDOE89: MASS +10pct / -10pct / -20pct (copy of the GEMSDOE84 block)",
+      "GEMSDOE91: MASS m10minus / m10plus / m20minus (copy)",
+      "GEMSDOE92: MASS_D10 (drop 10% by H19-5 rank) / MASS_A10 (add 10%) / MASS_SWAP10 (swap 10%)",
+      "GEMSDOE93-101: no MASS rows found"
+    ],
+    "selected_values": [
+      "shadow40pct",
+      "shadow48pct",
+      "rand40pct"
+    ],
+    "why_distinct": "No indexed repository has any MASS dose above 30%, and none has a credit-blind control at any dose. 40% and 48% extend the in-repo shadow ladder the way 20% extended 10%; rand40 reuses the 40% dose with a seeded uniform subset so that selection quality is separated from dose for the first time.",
+    "cross_repo_caveat": "This is a best-effort audit of public repositories, not proof of every submission the entity has ever made. If any sibling repository is the same DrivenData entity, the campaign as a whole exceeds the 3-scored-submissions-per-week quota; see IRREGULARITIES IR90-08.",
+    "rejected_values": [
+      "fifo10pct",
+      "fifo20pct",
+      "fifo40pct",
+      "shadow50pct"
+    ],
+    "rejection_reason": "Built/probed once on 2026-10-23 and rejected before any submission, rasters and ledger rows removed: (a) fifo 10/20/40% -- the parent's stored 8-connected FIFO-BFS order deletes one south-east corner; at 40% it empties 41% of 5 km blocks in a single contiguous 632-block hole, i.e. a region-isolated file under Hard Constraint #5 that confounds dose with geography; (b) shadow 50% -- the deepest shadow dose starts emptying whole contiguous regions (largest emptied cluster 17 blocks = 425 km2). The deep arm therefore stops at 48%, the largest shadow dose whose candidate passes the region-evenness gate. The same FIFO defect applies to any sibling MASS dose built with that stored order."
+  }
 }

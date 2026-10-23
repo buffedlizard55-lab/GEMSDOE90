@@ -1,5 +1,4 @@
 # Mechanism cards
-# Mechanism cards
 
 
 ## Session 2026-10-23 (2): AXIS = PRUNE, value family = strike-aligned (anisotropic) collar
@@ -106,6 +105,47 @@ order — an algorithmic tie-break, **not** a geological probability.
 | PRUNE 5.5 px | A 550 m halo is likely beyond useful positional uncertainty, so lost adjacent new-fault credit may exceed any false-positive saving. 6,130 removed/refilled. | Possibly real displacement of mapped geometry from its true trace. | −0.003 (−0.010 to +0.010) | Paired Δ ≥ +0.010. |
 
 Full inputs, hashes, parent diffs and format receipts: `evidence/build_receipt.json`.
+
+---
+
+## Session 2026-10-23c — AXIS = MASS (high dose + credit-blind control)
+
+**Shared mechanism.** `DTI = T / (0.2T + 0.2(S − M) + 0.8|G|)`. The mass term is paid per dot; `T` is a
+*max* over dots inside the 300 m kernel. A dot whose disk is covered by closer neighbours pays its full
+`0.2` share and supplies almost no `T`, so deleting it lowers the denominator. Exclusive credit `E_j`
+(exact, truth-free, `src/mass.py`) is the cheapest available ordering. These arms continue the
+10/20/30 % ladder to 40 % and 48 %, and add the control the ladder never had: the same 40 % dose with a
+seeded uniform random subset, which is blind to credit but keeps R0's spatial distribution in expectation.
+
+**Two dose/ordering choices were probed and rejected before submission**, and both probes are recorded in
+the receipt. (1) The parent's *stored* 8-connected FIFO-BFS order — the ordering the sibling `MASS ±10 %`
+doses use — deletes one south-east corner: at 10 % of R0 it already empties 162 contiguous 5 km blocks,
+at 40 % it empties 632 (41 % of all blocks holding ≥ 20 dots). That is a region-isolated file under Hard
+Constraint #5 and confounds dose with geography. (2) A 50 % shadow drop is the deepest dose, and there the
+greedy starts emptying whole contiguous regions too (largest emptied cluster 17 blocks = 425 km²). The
+deep arm therefore stops at **48 %**, the largest shadow dose whose every candidate passes the
+region-evenness gate.
+
+**Structural finding that competes with the predicted sign.** At 5 px linking R0 carries 838 strands of
+≥ 10 dots (≥ 1 km). `shadow40` keeps **none** of them and pushes mean dot spacing from 3.74 px to
+6.19 px, so every surviving dot is farther than the kernel radius from its nearest neighbour. `rand40`
+keeps 136 of those strands at 4.70 px spacing. The exclusive-credit greedy preferentially deletes densely
+sampled stretches — the parts of a trace that are best observed — and keeps isolated singletons. If new
+faults are line-like, that can cost more `T` than the mass saving is worth.
+
+| Candidate | Hypothesis / mechanism | Non-fault confounder | Predicted live change (MODEL) | Falsifier |
+|---|---|---|---|---|
+| `MASSshadow40pct` → 22,592 dots | Deletes 15,062 dots (mean E 6.15 of an isolated dot's 9.42), 36.2 % of R0's total exclusive credit, in ascending-E order recomputed after each deletion. | Low-E dots can still be the only dot over a genuine new strand shadowed by a mapped one; contacts, drainage margins and topographic lineaments behave identically. Deletes 401 of R0's 1,611 sub-3 px collar dots as a side effect. | **+0.014** (bracket +0.004 to +0.025); competing prediction: could fall *below* `rand40` because it destroys all 838 long strands | Paired Δ ≤ −0.005 vs R0 ends the direction. `rand40` within 0.005 of this file ⇒ ranking adds nothing. \|Δ\| < 0.010 = no evidence. |
+| `MASSshadow48pct` → 19,580 dots | Deletes 18,074 dots (mean E 6.61), 46.7 % of total exclusive credit. The deepest dose that keeps the file spatially even; locates the turnover. | As above, plus: at 48 % the file is a different sampling design (0.38 % of the footprint), so a drop may reflect lost trace continuity rather than mass. | **+0.015** (+0.002 to +0.030) | Δ ≤ 0 while 40 % was ≥ +0.010 puts the optimum between 30 % and 48 %. Δ ≤ −0.005 at any dose ends this direction. |
+| `MASSrandom40pct` → 22,592 dots | Credit-blind control: 15,062 dots drawn uniformly at random, seed 20261023. At matched count it destroys 10.6 % more exclusive credit than `shadow40` (E 102,441 vs 92,598 of 255,848 total) but keeps 136 long strands. | Random deletion has no geological content at all; its score measures what *any* 40 % thinning does, which is exactly what makes it the control. | **+0.013** (+0.004 to +0.023) | If it beats `shadow40` by ≥ 0.005 the exclusive-credit ranking is wrong and must be abandoned; within 0.005 of it, ranking adds nothing and only dose matters. |
+
+**Collar note.** Brief §4 asks for ≥ 3 px from the catalogue; R0's own minimum is 2.236 px (1,611 dots,
+IR90-01). These arms only delete, so no new near-catalogue mass is created, but the inherited collar is
+unchanged. Moving it is a second axis and was not done here.
+
+**Reproduce.** `scripts/build_mass_high_dose.py --build` then `--verify`; receipt
+`evidence/mass_high_dose_receipt.json`; ledger rows in `ledger/submissions.csv` (`status=BUILT`,
+`receipt=N`, `receipt_score` empty — the agent never submits).
 
 ---
 
