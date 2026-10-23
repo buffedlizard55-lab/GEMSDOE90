@@ -2,6 +2,13 @@
 
 **Agent does not submit.** These local GeoTIFFs are ignored by Git to keep competition rasters out of this public repository and any public release. Only pick one candidate per scored slot; do not submit both encodings.
 
+On a clean checkout, restore only the three exact pairs already marked `BUILT` in the ledger, then verify them (this does not reserve or create another experiment):
+
+```sh
+.venv/bin/python scripts/build_r0_variants.py --restore-recorded
+.venv/bin/python scripts/build_r0_variants.py --verify
+```
+
 ## Files and form notes
 
 | Candidate | Preferred file (NaN outside footprint) | Fallback twin (zeros outside) | Form note (under 140 chars) |

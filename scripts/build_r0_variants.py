@@ -7,7 +7,9 @@ reconstructed FIFO-BFS priority order, with every final dot strictly farther tha
 No public-test labels or score endpoints are used. Local TIFFs are written under ignored
 `releases/`; do not add them to public Git or any GitHub release.
 
-Run: `.venv/bin/python scripts/build_r0_variants.py --build`
+Run once: `.venv/bin/python scripts/build_r0_variants.py --build`
+Restore only the exact pairs already recorded in the ledger after a clean checkout:
+`.venv/bin/python scripts/build_r0_variants.py --restore-recorded`
 Verify written files: `.venv/bin/python scripts/build_r0_variants.py --verify`
 """
 from __future__ import annotations
@@ -464,12 +466,116 @@ def write_ledgers(result: dict) -> None:
     (ROOT / "ledger" / "mechanism_cards.json").write_text(json.dumps(cards, indent=2) + "\n", encoding="utf-8")
 
 
+def recorded_pairs_match_ledger(receipt: dict) -> bool:
+    """Require restoration specs to match already-built ledger rows exactly."""
+    ledger_path = ROOT / "ledger" / "submissions.csv"
+    with ledger_path.open(newline="", encoding="utf-8") as stream:
+        rows = {row["id"]: row for row in csv.DictReader(stream)}
+    seen: set[tuple[str, str]] = set()
+    for variant in receipt.get("variants", []):
+        pair = (variant.get("axis", ""), variant.get("value", ""))
+        if pair in seen:
+            raise ValueError(f"duplicate recorded experiment pair in receipt: {pair}")
+        seen.add(pair)
+        row = rows.get(variant.get("id", ""))
+        if row is None:
+            raise ValueError(f"cannot restore unrecorded variant: {variant.get('id')}")
+        expected = {
+            "parent": variant.get("parent"),
+            "axis": variant.get("axis"),
+            "value": variant.get("value"),
+            "sha256": variant.get("sha256"),
+            "sha256_zeros": variant.get("sha256_zeros"),
+            "status": "BUILT",
+        }
+        mismatches = [key for key, value in expected.items() if row.get(key, "") != str(value)]
+        if mismatches:
+            raise ValueError(f"ledger/receipt mismatch for {variant.get('id')}: {mismatches}")
+    if not seen:
+        raise ValueError("no recorded variants available to restore")
+    return True
+
+
+def restore_recorded_variants() -> list[str]:
+    """Materialize only ledgered candidates; never creates or reserves a new experiment."""
+    verify_manifest_inputs()
+    receipt_path = ROOT / "evidence" / "build_receipt.json"
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    if receipt.get("axis") != AXIS or receipt.get("parent", {}).get("id") != PARENT:
+        raise ValueError("build receipt does not describe the recorded R0 PRUNE session")
+    recorded_pairs_match_ledger(receipt)
+
+    template, footprint, catalogue, r0, _parent_stats = exact_parent_rebuild()
+    distance = ndi.distance_transform_edt(~catalogue)
+    h19 = read_binary(DATA / PIN_PATHS["h19_5"], footprint)
+    rank = fifo_bfs_visit_rank(h19)
+    expected_thresholds = {round(float(value), 8) for value in THRESHOLDS}
+    receipt_thresholds = {round(float(v["threshold_px"]), 8) for v in receipt["variants"]}
+    if receipt_thresholds != expected_thresholds:
+        raise ValueError("receipt threshold set does not match the recorded PRUNE build recipe")
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    restored = []
+    for variant in receipt["variants"]:
+        cutoff = float(variant["threshold_px"])
+        value = f"d_cat<={cutoff:g}px; fixed-count FIFO-BFS H19-5 refill; min d_cat>{cutoff:g}px"
+        if variant.get("value") != value:
+            raise ValueError(f"unexpected PRUNE value in receipt for {variant.get('id')}")
+        kept = r0 & (distance > cutoff)
+        removed = r0 & ~kept
+        n_refill = int(removed.sum())
+        eligible = h19 & footprint & ~catalogue & (distance > cutoff) & ~kept
+        ey, ex = np.nonzero(eligible)
+        if len(ey) < n_refill:
+            raise ValueError(f"insufficient refill support for recorded cutoff {cutoff:g}px")
+        order = np.argsort(rank[ey, ex], kind="stable")[:n_refill]
+        expected = kept.copy()
+        expected[ey[order], ex[order]] = True
+        changed = int(np.count_nonzero(expected ^ r0))
+        pct_changed = 100.0 * changed / R0_DOTS
+        if (int(expected.sum()) != R0_DOTS or changed != int(variant["parent_diff"]["symmetric_difference_px"])
+                or abs(pct_changed - float(variant["pct_changed"])) > 1e-9):
+            raise ValueError(f"parent-diff mismatch for recorded variant {variant.get('id')}")
+
+        for mode_name in ("nan", "zeros"):
+            file_record = variant["files"][mode_name]
+            relative = Path(file_record["path"])
+            if relative.is_absolute() or ".." in relative.parts:
+                raise ValueError(f"unsafe recorded output path: {relative}")
+            target = (ROOT / relative).resolve()
+            if not target.is_relative_to(OUT.resolve()):
+                raise ValueError(f"recorded output is outside releases/: {relative}")
+            expected_name = f"{variant['id']}.tif" if mode_name == "nan" else f"{variant['id']}-zeros.tif"
+            if target.name != expected_name:
+                raise ValueError(f"unexpected output name for {variant['id']} {mode_name}")
+            if not target.is_file():
+                temporary = target.with_name(f".{target.name}.restore.tmp.tif")
+                temporary.unlink(missing_ok=True)
+                emit(expected, footprint, template, variant["id"], mode_name, temporary)
+                if sha256_file(temporary) != file_record["sha256"]:
+                    temporary.unlink(missing_ok=True)
+                    raise ValueError(f"deterministic restore SHA mismatch for {variant['id']} {mode_name}")
+                temporary.replace(target)
+            audit = validate_file(target, expected, footprint, catalogue, template, mode_name)
+            if audit["sha256"] != file_record["sha256"]:
+                raise ValueError(f"restored file SHA mismatch for {variant['id']} {mode_name}")
+        restored.append(variant["id"])
+    return restored
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     mode = ap.add_mutually_exclusive_group(required=True)
     mode.add_argument("--build", action="store_true")
+    mode.add_argument("--restore-recorded", action="store_true")
     mode.add_argument("--verify", action="store_true")
     args = ap.parse_args()
+    if args.restore_recorded:
+        restored = restore_recorded_variants()
+        print(f"Restored {len(restored)} already-recorded variants; no new pair or ledger row was created.")
+        for ident in restored:
+            print(f"  {ident}")
+        return 0
     if args.build:
         result = build()
         evidence = ROOT / "evidence" / "build_receipt.json"

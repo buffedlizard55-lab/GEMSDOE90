@@ -55,3 +55,11 @@ def test_submission_notes_are_under_140_chars() -> None:
     receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
     assert len(receipt["variants"]) == 3
     assert all(len(row["form_note"]) <= 140 for row in receipt["variants"])
+
+
+def test_restore_specs_are_already_built_and_match_ledger() -> None:
+    receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
+    assert build.recorded_pairs_match_ledger(receipt)
+    # Restoration is not permission to run the same experiment a second time.
+    with pytest.raises(ValueError, match="duplicate experiment reservation"):
+        build.check_pair_reservations()
