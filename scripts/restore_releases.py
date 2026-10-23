@@ -36,8 +36,15 @@ LEDGER = ROOT / "ledger" / "submissions.csv"
 
 
 def ledger_hashes() -> dict[str, tuple[str, str]]:
+    """BUILT ledger rows for this receipt's axis only.
+
+    Other sessions record their own BUILT rows (MASS ladder -> evidence/mass_build_receipt.json);
+    they must not make the PRUNE restore path fail closed for the wrong reason.
+    """
+    axis = json.loads(RECEIPT.read_text(encoding="utf-8")).get("axis", "").upper()
     with LEDGER.open(newline="", encoding="utf-8") as fh:
-        rows = [row for row in csv.DictReader(fh) if row.get("status") == "BUILT"]
+        rows = [row for row in csv.DictReader(fh)
+                if row.get("status") == "BUILT" and (row.get("axis") or "").upper() == axis]
     return {row["id"]: (row["sha256"], row["sha256_zeros"]) for row in rows}
 
 
