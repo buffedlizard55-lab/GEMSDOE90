@@ -1,0 +1,3 @@
+Paste submission-page receipts here verbatim (one block per receipt), then move
+score+date into submissions.csv (receipt_score, receipt_date) and set evidence=RECEIPT.
+Nothing pasted yet. R0's 0.2778 remains CLAIM.
