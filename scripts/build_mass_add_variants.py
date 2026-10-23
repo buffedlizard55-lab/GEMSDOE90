@@ -59,6 +59,10 @@ R0_NAN_SHA = base_build.R0_NAN_SHA
 R0_ZEROS_SHA = base_build.R0_ZEROS_SHA
 SGMC_PIN = "external/derived_sgmc_faults_100m_u8.tif"
 
+# IR90-24: add10pctGapmax duplicated main's MASSadd10pctq50 (same pool, ranking and quotas), so it was withdrawn
+# before submission and is skipped by both build and verify. Its record lives in the ledger row and the receipt.
+WITHDRAWN_TAGS = {"add10pctGapmax"}
+
 # (tag, dose fraction, selection rule)
 VARIANT_SPECS = (
     ("add10pctBlocknext", 0.10, "blocknext"),
@@ -134,6 +138,8 @@ def check_reservations(allow_rebuild: bool = False) -> dict[str, str]:
         if RECEIPT.is_file():
             reserved = {v["tag"]: v["sha256"] for v in json.loads(RECEIPT.read_text(encoding="utf-8"))["variants"]}
         for tag, _dose, _rule in VARIANT_SPECS:
+            if tag in WITHDRAWN_TAGS:
+                continue
             if tag in taken and not (allow_rebuild and tag in reserved):
                 raise ValueError(f"duplicate experiment reservation: (MASS, {tag}) already reserved")
     ledger_path = ROOT / "ledger" / "submissions.csv"
@@ -282,6 +288,8 @@ def build(allow_rebuild: bool = False) -> dict:
     variants = []
     candidate_masks = {"R0": r0}
     for tag, dose, rule in VARIANT_SPECS:
+        if tag in WITHDRAWN_TAGS:
+            continue
         n_add = n_add_for(dose)
         quotas = mass_add.allocate_quotas(counts, capacity, n_add)
         if int(quotas.sum()) != n_add:
@@ -568,6 +576,8 @@ def verify_all() -> int:
     sample_path = DATA / base_build.PIN_PATHS["sample_submission"]
     cat_path = DATA / base_build.PIN_PATHS["catalogue"]
     for v in receipt["variants"]:
+        if v.get("status") == "WITHDRAWN":
+            continue
         doses = dict((t, d) for t, d, _r in VARIANT_SPECS)
         rule = v["selection_rule"]
         quotas = mass_add.allocate_quotas(counts, capacity, n_add_for(doses[v["tag"]]))
@@ -609,7 +619,8 @@ def verify_all() -> int:
         "r0_rebuilt_byte_identically": True,
     }
     RECEIPT.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
-    print(f"Verified {len(receipt['variants'])} MASS-add pairs from disk; R0 rebuilt byte-identically to {R0_ZEROS_SHA}")
+    live = [v for v in receipt["variants"] if v.get("status") != "WITHDRAWN"]
+    print(f"Verified {len(live)} live MASS-add pairs from disk ({len(receipt['variants']) - len(live)} withdrawn skipped); R0 rebuilt byte-identically to {R0_ZEROS_SHA}")
     return 0
 
 

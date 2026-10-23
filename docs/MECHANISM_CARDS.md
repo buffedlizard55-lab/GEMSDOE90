@@ -200,7 +200,7 @@ What survives for the entity: the measurement that **any** global-FIFO dose edit
 
 ---
 
-## Session 2026-10-23e — AXIS = MASS, direction = ADD (region-even block budget)
+## Session 2026-10-23f — AXIS = MASS, direction = ADD (region-even block budget, placement contrast)
 
 **Shared hypothesis (structural geologist's version).** R0's field was thinned to 37,654 unit-mass dots at the
 lineage's own 2.8 px spacing and then collared at 2 px from mapped traces. If that thinning went past the mass
@@ -215,7 +215,7 @@ claimed 0.2778. `T` is a **max** over dots, so an addition can never remove cred
 the mass penalty alone. That asymmetry is the reason an ADD rung is worth a slot: every deletion rung risks a
 credit loss as well as a mass saving.
 
-**Placement (the only things that differ between the three files).** Eligibility: H19-5 support, in footprint, not
+**Placement (the only things that differ between the two live files).** Eligibility: H19-5 support, in footprint, not
 catalogue, Euclidean `d_cat ≥ 3.0 px`, unoccupied. Quota per 5 km block is proportional to that block's own R0 count,
 capped at +50 %, zero where R0 has no dots. `blocknext` takes the parent's own FIFO-ranked suppressed cells inside
 each quota; `gapmax` takes the cells with the largest remaining `R = 3 px` kernel credit (global coverage updated after
@@ -223,7 +223,7 @@ every pick, so neighbouring blocks see each other). Nothing else changes: 0 dots
 
 | Variant | Dots | Change | Mean marginal support credit / dot | Predicted (MODEL) | Non-fault confounder | Falsifier |
 |---|---|---|---|---|---|---|
-| `…add10pctGapmax-…98408334` | 41,419 | +3,765 (10.0 %) | **1.013** | **+0.0107** (+0.0026 … +0.0226) | The H19-5 field is a ridge response, not a fault map: lithologic contacts, resistant beds, drainage margins and shorelines carry the same signature. If the field is under ~11 % precise for new faults, the model flips negative. | Paired live `Δ ≤ −0.010` vs R0 rejects the under-massed hypothesis at this dose; `|Δ| < 0.010` is no evidence. |
+| ~~`…add10pctGapmax-…98408334`~~ **WITHDRAWN** | 41,419 | +3,765 (10.0 %) | 1.013 | *withdrawn (IR90-24)*: same eligible pool, ranking and quotas as the merged `MASSadd10pctq50`, so it is one experiment expressed twice. | — | — |
 | `…add10pctBlocknext-…89d16c16` | 41,419 | +3,765 (10.0 %) | 0.486 | **+0.0044** (+0.0003 … +0.0107) | Same, plus: the FIFO-ranked suppressed cells sit 1–2.8 px from existing dots, so most of their kernel is already covered — this arm tests the brief's literal recipe, not the best placement. | `Δ ≤ −0.010` while gapmax is positive would mean the "next-ranked" recipe is actively harmful and should be dropped from the brief's defaults. |
 | `…add20pctBlocknext-…260d987e` | 45,185 | +7,531 (20.0 %) | 0.464 | **+0.0084** (+0.0005 … +0.0205) | Same; the deeper dose also pushes into the second ring around each existing dot, where kernel room is thinner. | A null here while the 10 % arm is ≥ +0.010 would mean the add gradient saturates before +20 %. |
 

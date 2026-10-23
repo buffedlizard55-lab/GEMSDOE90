@@ -251,6 +251,36 @@
     },
     "interpretation": "Any future FIFO-ranked dose rung must pass the region-evenness gate before it is emitted to releases/; a region-even replacement (per-5km-block local rank quotas) is proposed in SLOT_PLAN.md and was not built this session."
   },
+  "mass_add_infill_20261023": {
+    "session": "arena/c3061751-gemsdoe90",
+    "axis": "MASS",
+    "value_family": "add-direction coverage infill, per-5 km-block quotas proportional to parent dots",
+    "values": [
+      {
+        "value": "add5pctq50",
+        "n_added": 1883,
+        "id": "h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c",
+        "sha256": "c4e6144c202cd5539d008976949a3fa55f364df9a43be554bdf54bdb4b519d2c",
+        "sha256_zeros": "b1faddaae550f34f506b01ba8212eff38f0d7e22b4bdc2ac65b0c67ba09c614e"
+      },
+      {
+        "value": "add10pctq50",
+        "n_added": 3765,
+        "id": "h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de",
+        "sha256": "5edc84de0ace710765e169b4bd7f06ddc8af30871762fce6586ef31052684d37",
+        "sha256_zeros": "342872ef139c5b0938ce6d2b1ca28c5bdf1785a7d66562e7df9da90123b8464d"
+      },
+      {
+        "value": "add20pctq50",
+        "n_added": 7531,
+        "id": "h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4",
+        "sha256": "f94efff407086eecc6ef0808d8b3f2a57d8d6f35ef51fe689427b4c1a7aede59",
+        "sha256_zeros": "2d397c3dcfa370858d8f4d2b93f22c03e9f36bf6d4a99bbc29bf567680405238"
+      }
+    ],
+    "why_distinct": "Every recorded MASS add rung (this repo's withdrawn add5pct-next/add20pct-next and the sibling plus10pct family) selects additions by the parent's stored FIFO-BFS traversal rank, which IR90-20 measured to be geographic (rank-head adds land in a northern grid strip). This family selects by exact marginal kernel credit under block-proportional quotas, so it is the first MASS add rung that is region-even by construction.",
+    "checked_utc": "2026-10-23"
+  },
   "mass_add_reservations": {
     "checked_utc": "2026-10-23",
     "axis": "MASS",
@@ -266,6 +296,6 @@
       "tag=add20pctBlocknext; add 7531 dots (+20% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
       "tag=add10pctGapmax; add 3765 dots (+9.999% of R0) on H19-5; max marginal R=3px kernel credit per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px"
     ],
-    "note": "No prior MASS add row exists in this ledger (the three FIFO add/drop rungs are WITHDRAWN, IR90-20). Sibling GEMSDOE84/86/87 'MASS +10%/+20%' rows use the global FIFO order and are not region-even; these values are string- and mechanism-distinct (per-block quotas propto R0 count). Repeat builds of these (MASS, tag) pairs fail closed."
+    "note": "No prior MASS add row exists in this ledger (the three FIFO add/drop rungs are WITHDRAWN, IR90-20). Sibling GEMSDOE84/86/87 'MASS +10%/+20%' rows use the global FIFO order and are not region-even; these values are string- and mechanism-distinct (per-block quotas propto R0 count). Repeat builds of these (MASS, tag) pairs fail closed. Superseded in part by IR90-24: add10pctGapmax duplicates main's MASSadd10pctq50 and is WITHDRAWN; blocknext tags remain live."
   }
 }

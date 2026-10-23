@@ -32,6 +32,22 @@ catalogue mass. **These three rasters are not present in this sandbox** (they we
 `.venv/bin/python scripts/build_mass_shadow.py --verify`. These files inherit R0's 2.236 px collar exactly
 (IR90-07): a MASS-only edit must not also move the collar.
 
+## 1c. MASS add-direction infill (session 2026-10-23e, this branch)
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin | Form note (< 140 chars) |
+|---|---|---|---|
+| +5 % → 39,537 dots | `releases/h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c.tif` | `…-c4e6144c-zeros.tif` | `h33-h33-2-b2; MASS add 1883d (5%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.008 DTI MODEL` |
+| +10 % → 41,419 dots | `releases/h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de.tif` | `…-5edc84de-zeros.tif` | `h33-h33-2-b2; MASS add 3765d (10%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.014 DTI MODEL` |
+| +20 % → 45,185 dots | `releases/h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4.tif` | `…-f94efff4-zeros.tif` | `h33-h33-2-b2; MASS add 7531d (20%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.022 DTI MODEL` |
+
+Every parent dot is retained; no dot is moved; all values are 1.0; the 1,883 / 3,765 / 7,531 additions sit on
+H19-5 support, are **>= 3 px** from the catalogue (median 2.3 px from an existing dot: this is mid-strand infill,
+not reach into new ground), and are apportioned over 5 km blocks in proportion to the parent's own dot counts.
+Zero catalogue mass. Rebuild with `.venv/bin/python scripts/build_mass_infill.py --build` after
+`scripts/restore_data.py`; check with `--verify` (re-emits byte-identically). Receipt and gates:
+`evidence/mass_infill_receipt.json`. Note these are **supersets** of R0, so they inherit R0's 2.236 px floor on
+untouched dots (IR90-21) and they are the only candidates in this repo that add mass.
+
 ## 1b. MASS high-dose arms + credit-blind control (session 2026-10-23c)
 
 | Candidate | Preferred file (NaN outside footprint) | Fallback twin | Form note (< 140 chars) |
@@ -109,25 +125,25 @@ isotropic PRUNE files are the only ones whose minimum is ≥ 3 px. Independent r
    `releases/` was restored from pinned inputs (`scripts/restore_data.py`, `scripts/restore_releases.py`) rather
    than assumed to exist (IR90-10).
 
-## 5. MASS add rungs, region-even block-budgeted (`AXIS=MASS`, session 2026-10-23e)
+## 6. MASS add — placement contrast, `blocknext` (session 2026-10-23f)
 
-Add-only edits of exact R0: 0 dots removed, additions quota-proportional to the parent's own 5 km block counts
-(cap +50 %/block, zero where R0 has no dots), all on the H19-5 support and all at Euclidean `d_cat >= 3.0 px`.
-Receipt: `evidence/mass_add_receipt.json`. Re-emit after `scripts/restore_data.py` with
-`.venv/bin/python scripts/build_mass_add_variants.py --build --rebuild-reserved` (the flag refuses to create a new
-experiment under a used tag — it asserts the raster is byte-identical to the receipt), confirm the SHA-256, then
-re-check with `--verify`.
+Two live files, add-only edits of exact R0, **0 dots removed**, region-even per-5 km-block quotas proportional to the
+parent's own dot count (cap +50 %/block, zero where R0 has none), all on the H19-5 support and all at Euclidean
+`d_cat >= 3.0 px`. They exist to answer one question the gapmax ladder cannot: **does the ranking matter at all?**
+Same doses, same geography, same pool as `MASSadd10pctq50` / `MASSadd20pctq50` — the cells are chosen by the parent's
+own FIFO-BFS rank instead of by kernel credit. Receipt: `evidence/mass_add_receipt.json`.
 
 | Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | Form note (`<= 140` chars) |
 |---|---|---|---|
-| **gapmax +10 %** (3,765 added; 41,419 dots) | `releases/h33-h33-2-b2-MASSadd10pctGapmax-20261023-98408334.tif` | `…-98408334-zeros.tif` | `h33-h33-2-b2; MASS add 10% (3765d) gapmax; pred +0.011 DTI MODEL` |
 | **blocknext +10 %** (3,765 added; 41,419 dots) | `releases/h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16.tif` | `…-89d16c16-zeros.tif` | `h33-h33-2-b2; MASS add 10% (3765d) blocknext; pred +0.004 DTI MODEL` |
 | **blocknext +20 %** (7,531 added; 45,185 dots) | `releases/h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e.tif` | `…-260d987e-zeros.tif` | `h33-h33-2-b2; MASS add 20% (7531d) blocknext; pred +0.008 DTI MODEL` |
 
-SHA-256 (NaN / zeros): `98408334e625e358…` / `ca173bff75844dac…`; `89d16c16bcd336f5…` / `6108f696a660ec28…`;
-`260d987e0a89a945…` / `d59ccf7744eca41e…`. Format receipt: `src/validate.py` PASS on all six files, `n_dots`
-41,419 / 41,419 / 45,185, `catalogue_mass` 0.0, min distance of added dots exactly 3.0 px, parent collar inherited
-(1,611 dots at 2.236–3.0 px, IR90-18). Upload **one** encoding, never both.
+SHA-256 (NaN / zeros): `89d16c16bcd336f5…` / `6108f696a660ec28…`; `260d987e0a89a945…` / `d59ccf7744eca41e…`.
+Format receipt: `src/validate.py` PASS on all four files, `n_dots` 41,419 / 45,185, `catalogue_mass` 0.0, min distance
+of added dots exactly 3.0 px, 0 added dots below 3 px, inherited R0 collar untouched (1,611 dots at 2.236–3.0 px,
+IR90-21 on main). Re-emit with `.venv/bin/python scripts/build_mass_add_variants.py --build --rebuild-reserved` after
+`scripts/restore_data.py`, confirm the SHA-256, then re-check with `--verify`. Upload **one** encoding.
 
-**Do not upload** the WITHDRAWN `MASSadd20pct-next` (`63954e89…`): it has the same dot count but is the
-region-isolated FIFO file (IR90-20). The `add20pctBlocknext` file here differs in every added cell.
+**WITHDRAWN — do not upload:** `MASSadd10pctGapmax` (`98408334…`). It is the same experiment as the already-merged
+`MASSadd10pctq50` (`5edc84de…`): identical 62,556-px eligible pool, identical gapmax ranking, identical block quotas,
+differing only in tie-breaks. Rasters are in `.cache/withdrawn/`; the ledger row is an occupancy guard (IR90-24).
