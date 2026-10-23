@@ -1,0 +1,719 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T23:54:03Z",
+  "git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "generator_script_sha256": "eaeb26a5494d810b356ba53c405a3aaf0bc4db7a5438df020bba710139649680",
+  "aniso_module_sha256": "df9fec4ac69cd88d9ce5ece3cc4edee6f51494922edf4c53bee32c236bb444cb",
+  "axis": "PRUNE",
+  "value_family": "A5 fixed across strike; L=1.5/1.0/0.5 along strike; fixed-count H19-5 FIFO refill",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "manifest_sha256": "814a863da01e06ae0a462edef77f309087c4924d2ea4af2a0c9027dea4db2e85",
+    "verified_count": 26,
+    "all_pins_rechecked": true
+  },
+  "reservation": {
+    "local_ledger_checked": true,
+    "sibling_ledgers_checked_2026_10_23": [
+      "GEMSDOE84",
+      "GEMSDOE85",
+      "GEMSDOE86",
+      "GEMSDOE87",
+      "GEMSDOE88",
+      "GEMSDOE89",
+      "GEMSDOE90",
+      "GEMSDOE91",
+      "GEMSDOE92"
+    ],
+    "selected_values": [
+      "tag=anisoA5L0p5; collar across<=5px, along<=0.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag=anisoA5L1; collar across<=5px, along<=1px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag=anisoA5L1p5; collar across<=5px, along<=1.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill"
+    ],
+    "foreign_duplicates": [],
+    "own_reproduction_rows_present": 3,
+    "distinctness": "No audited sibling contains an anisotropic A5 collar with L=1.5, 1.0, or 0.5; prior anisotropic rows use L=2."
+  },
+  "compliance": {
+    "fixed_count_required_and_satisfied": true,
+    "parent_isotropic_gt_2px_floor_preserved_on_every_final_dot": true,
+    "n_dots_each": 37654,
+    "withdrawn_delete_only_receipt": "evidence/aniso_norefill_receipt.json",
+    "withdrawn_delete_only_irregularity": "IR90-22"
+  },
+  "predictions_frozen_before_proxy": true,
+  "proxy_reports": {
+    "leakage_canary": {
+      "status": "REPORT ONLY",
+      "seed": 20261023,
+      "n_positive": 60988,
+      "n_negative_sampled": 250000,
+      "features_tested": 19,
+      "sentinel_handling": "non-finite and <= -1e30 masked out per band before ranking",
+      "max_symmetric_auc": 0.5695,
+      "max_feature_band": 4,
+      "auc_gt_0_90": false,
+      "per_band": [
+        {
+          "band": 1,
+          "auc": 0.4912,
+          "symmetric_auc": 0.5088
+        },
+        {
+          "band": 2,
+          "auc": 0.4975,
+          "symmetric_auc": 0.5025
+        },
+        {
+          "band": 3,
+          "auc": 0.5271,
+          "symmetric_auc": 0.5271
+        },
+        {
+          "band": 4,
+          "auc": 0.5695,
+          "symmetric_auc": 0.5695
+        },
+        {
+          "band": 5,
+          "auc": 0.5338,
+          "symmetric_auc": 0.5338
+        },
+        {
+          "band": 6,
+          "auc": 0.4478,
+          "symmetric_auc": 0.5522
+        },
+        {
+          "band": 7,
+          "auc": 0.5546,
+          "symmetric_auc": 0.5546
+        },
+        {
+          "band": 8,
+          "auc": 0.5237,
+          "symmetric_auc": 0.5237
+        },
+        {
+          "band": 9,
+          "auc": 0.4866,
+          "symmetric_auc": 0.5134
+        },
+        {
+          "band": 10,
+          "auc": 0.5498,
+          "symmetric_auc": 0.5498
+        },
+        {
+          "band": 11,
+          "auc": 0.527,
+          "symmetric_auc": 0.527
+        },
+        {
+          "band": 12,
+          "auc": 0.4848,
+          "symmetric_auc": 0.5152
+        },
+        {
+          "band": 13,
+          "auc": 0.4596,
+          "symmetric_auc": 0.5404
+        },
+        {
+          "band": 14,
+          "auc": 0.4885,
+          "symmetric_auc": 0.5115
+        },
+        {
+          "band": 15,
+          "auc": 0.5117,
+          "symmetric_auc": 0.5117
+        },
+        {
+          "band": 16,
+          "auc": 0.5681,
+          "symmetric_auc": 0.5681
+        },
+        {
+          "band": 17,
+          "auc": 0.4824,
+          "symmetric_auc": 0.5176
+        },
+        {
+          "band": 18,
+          "auc": 0.5002,
+          "symmetric_auc": 0.5002
+        },
+        {
+          "band": 19,
+          "auc": 0.5579,
+          "symmetric_auc": 0.5579
+        }
+      ],
+      "note": "Single-feature separability on the known catalogue only; no live-score inference."
+    },
+    "catalogue_hide_recover": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 38,
+      "n_withheld_positives": 13920,
+      "bootstrap_replicates": 1000,
+      "seed": 20261023,
+      "r0_proxy_value": 0.007191,
+      "r0_proxy_ci95": [
+        0.005765,
+        0.0088
+      ],
+      "variants": {
+        "h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6": {
+          "proxy_value": 0.001115,
+          "proxy_ci95": [
+            0.000804,
+            0.00148
+          ],
+          "delta_vs_r0_proxy": -0.006076,
+          "delta_vs_r0_ci95": [
+            -0.007606,
+            -0.00474
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce": {
+          "proxy_value": 0.00204,
+          "proxy_ci95": [
+            0.001566,
+            0.002563
+          ],
+          "delta_vs_r0_proxy": -0.005152,
+          "delta_vs_r0_ci95": [
+            -0.006584,
+            -0.003902
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771": {
+          "proxy_value": 0.004635,
+          "proxy_ci95": [
+            0.003594,
+            0.005875
+          ],
+          "delta_vs_r0_proxy": -0.002557,
+          "delta_vs_r0_ci95": [
+            -0.003425,
+            -0.00174
+          ]
+        }
+      },
+      "caveat": "PROXY only: known catalogue labels are live-masked and this holdout has collar blind spots; never a gate or score."
+    },
+    "sgmc_control": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 162,
+      "bootstrap_replicates": 1000,
+      "seed": 20261023,
+      "r0_proxy_value": 0.095386,
+      "r0_proxy_ci95": [
+        0.084171,
+        0.106989
+      ],
+      "variants": {
+        "h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6": {
+          "proxy_value": 0.09098,
+          "proxy_ci95": [
+            0.079949,
+            0.101551
+          ],
+          "delta_vs_r0_proxy": -0.004407,
+          "delta_vs_r0_ci95": [
+            -0.006154,
+            -0.003081
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce": {
+          "proxy_value": 0.091945,
+          "proxy_ci95": [
+            0.081096,
+            0.102549
+          ],
+          "delta_vs_r0_proxy": -0.003441,
+          "delta_vs_r0_ci95": [
+            -0.004952,
+            -0.002356
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771": {
+          "proxy_value": 0.093537,
+          "proxy_ci95": [
+            0.08258,
+            0.104702
+          ],
+          "delta_vs_r0_proxy": -0.001849,
+          "delta_vs_r0_ci95": [
+            -0.002763,
+            -0.001146
+          ]
+        }
+      },
+      "n_positives_evaluated": 62122,
+      "caveat": "PROXY only: SGMC has bedrock/mapping bias and is not undisclosed test truth; never a gate or score."
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "tag=anisoA5L1p5; collar across<=5px, along<=1.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag": "anisoA5L1p5",
+      "across_px": 5.0,
+      "along_px": 1.5,
+      "n_dots": 37654,
+      "pct_changed": 16.625059754607744,
+      "sha256": "9486c7e6e3a1e6cea7c483c4d23f5746f43311432b475747ffba86e624272ad1",
+      "sha256_zeros": "0daafb5bf2dfc4183409cd69717293eaa7bb55ddbbe91fe4cd10d4a0671608d8",
+      "status": "BUILT",
+      "predicted_change": "+0.004 DTI (MODEL; plausible -0.008 to +0.012; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE A5/L1.5, fixed-count refill; pred +0.004 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6.tif",
+          "sha256": "9486c7e6e3a1e6cea7c483c4d23f5746f43311432b475747ffba86e624272ad1",
+          "bytes": 349461,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6-zeros.tif",
+          "sha256": "0daafb5bf2dfc4183409cd69717293eaa7bb55ddbbe91fe4cd10d4a0671608d8",
+          "bytes": 213349,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 3130,
+        "n_added": 3130,
+        "n_retained_parent": 34524,
+        "symmetric_difference_px": 6260,
+        "pct_changed_of_parent": 16.625059754607744,
+        "removed_along_abs_median_px": 0.47712457180023193,
+        "removed_across_abs_median_px": 2.9609656631946564,
+        "removed_coherence_median": 0.8622445464134216,
+        "removed_dist_median_px": 3.0,
+        "removed_dist_max_px": 5.0,
+        "added_dist_median_px": 21.02379604162864,
+        "added_dist_min_px": 2.23606797749979,
+        "removed_to_nearest_added_median_px": 839.4813838429657,
+        "removed_to_nearest_added_max_px": 3614.6641614401747,
+        "removed_outside_kernel_of_any_added": 3026
+      },
+      "removed_mask_sha256_packbits": "36e632f064010aa99c919a9c0235debefb9eac2931061d020b0cf22c68fc87df",
+      "refill_mask_sha256_packbits": "a68b8117bf6fe7215fbe02f77371362e44e46524035898b96369a9032f1959d9",
+      "collar_diagnostics": {
+        "across_px": 5.0,
+        "along_px": 1.5,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 3130,
+        "n_inside_coherent_ellipse": 3055,
+        "n_inside_incoherent_fallback": 75,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 5.0,
+        "along_abs_median_inside": 0.47712457180023193,
+        "across_abs_median_inside": 2.9609656631946564
+      },
+      "refill": {
+        "n_refill": 3130,
+        "pool_size": 59745,
+        "ordering": "recovered H19-5 8-connected FIFO-BFS visitation order",
+        "pool_rule": "H19-5 & footprint & d_cat>2px (R0 baseline) & outside ellipse & not retained"
+      },
+      "refill_diagnostics": {
+        "n_refill": 3130,
+        "refill_dist_to_nearest_retained_median_px": 1.0,
+        "refill_dist_to_nearest_retained_max_px": 21.93171219946131,
+        "refill_within_3px_of_retained_pct": 98.30670926517571,
+        "refill_within_kernel_of_retained_pct": 98.30670926517571,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "interpretation": "High 'within 3 px of retained' means refills are largely redundant mass (penalty, little fresh kernel credit). It is a property of the inherited refill policy, not of the collar geometry under test; there is no live score behind it."
+      },
+      "removed_geometry": {
+        "below_3px_removed": 1304,
+        "below_3px_in_final": 336,
+        "note": "PRUNE is the brief's explicit exception to the >=3 px rule; zero catalogue mass remains mandatory."
+      },
+      "mechanism_card": {
+        "hypothesis": "The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 1.5 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.",
+        "mechanism": "The ellipse removes 3,130 R0 dots where (along/1.5)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.",
+        "non_fault_confounder": "A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.",
+        "predicted_live_change": "+0.004 DTI (MODEL; plausible -0.008 to +0.012; not a score)",
+        "prediction_decomposition": "MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 98.3% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.",
+        "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L1.5 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.",
+        "structural_geologist_note": "Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.",
+        "predicted_short_for_form": "+0.004"
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "tag=anisoA5L1; collar across<=5px, along<=1px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag": "anisoA5L1",
+      "across_px": 5.0,
+      "along_px": 1.0,
+      "n_dots": 37654,
+      "pct_changed": 12.673288362458171,
+      "sha256": "cd2c60ce045a914b3421538333a7c5beb3585cf12dbc4aba05d6d42c62fc4cdb",
+      "sha256_zeros": "fcc218c8e78fc391a863d01041df48754e94e55fe72eaa682e1b782ebb3590dc",
+      "status": "BUILT",
+      "predicted_change": "+0.005 DTI (MODEL; plausible -0.008 to +0.014; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE A5/L1, fixed-count refill; pred +0.005 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce.tif",
+          "sha256": "cd2c60ce045a914b3421538333a7c5beb3585cf12dbc4aba05d6d42c62fc4cdb",
+          "bytes": 351132,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce-zeros.tif",
+          "sha256": "fcc218c8e78fc391a863d01041df48754e94e55fe72eaa682e1b782ebb3590dc",
+          "bytes": 214921,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 2386,
+        "n_added": 2386,
+        "n_retained_parent": 35268,
+        "symmetric_difference_px": 4772,
+        "pct_changed_of_parent": 12.673288362458171,
+        "removed_along_abs_median_px": 0.35504212975502014,
+        "removed_across_abs_median_px": 2.9681629836559296,
+        "removed_coherence_median": 0.872471958398819,
+        "removed_dist_median_px": 3.0,
+        "removed_dist_max_px": 5.0,
+        "added_dist_median_px": 18.439088914585774,
+        "added_dist_min_px": 2.23606797749979,
+        "removed_to_nearest_added_median_px": 917.4836718938757,
+        "removed_to_nearest_added_max_px": 3647.0604601514356,
+        "removed_outside_kernel_of_any_added": 2328
+      },
+      "removed_mask_sha256_packbits": "3e1240ea255f9fdd755c6b4772ec38ae1de7477a40f9fca53eb4654b4cac4df1",
+      "refill_mask_sha256_packbits": "0b9317cb2b652fcb602086ba7e19ed940c43a9fb293ce049d1a7afbd13f601bc",
+      "collar_diagnostics": {
+        "across_px": 5.0,
+        "along_px": 1.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 2386,
+        "n_inside_coherent_ellipse": 2311,
+        "n_inside_incoherent_fallback": 75,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 5.0,
+        "along_abs_median_inside": 0.35504212975502014,
+        "across_abs_median_inside": 2.9681629836559296
+      },
+      "refill": {
+        "n_refill": 2386,
+        "pool_size": 61257,
+        "ordering": "recovered H19-5 8-connected FIFO-BFS visitation order",
+        "pool_rule": "H19-5 & footprint & d_cat>2px (R0 baseline) & outside ellipse & not retained"
+      },
+      "refill_diagnostics": {
+        "n_refill": 2386,
+        "refill_dist_to_nearest_retained_median_px": 1.0,
+        "refill_dist_to_nearest_retained_max_px": 16.64331697709324,
+        "refill_within_3px_of_retained_pct": 97.98826487845767,
+        "refill_within_kernel_of_retained_pct": 97.98826487845767,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "interpretation": "High 'within 3 px of retained' means refills are largely redundant mass (penalty, little fresh kernel credit). It is a property of the inherited refill policy, not of the collar geometry under test; there is no live score behind it."
+      },
+      "removed_geometry": {
+        "below_3px_removed": 1042,
+        "below_3px_in_final": 623,
+        "note": "PRUNE is the brief's explicit exception to the >=3 px rule; zero catalogue mass remains mandatory."
+      },
+      "mechanism_card": {
+        "hypothesis": "The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 1 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.",
+        "mechanism": "The ellipse removes 2,386 R0 dots where (along/1)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.",
+        "non_fault_confounder": "A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.",
+        "predicted_live_change": "+0.005 DTI (MODEL; plausible -0.008 to +0.014; not a score)",
+        "prediction_decomposition": "MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 98.0% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.",
+        "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L1 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.",
+        "structural_geologist_note": "Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.",
+        "predicted_short_for_form": "+0.005"
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "tag=anisoA5L0p5; collar across<=5px, along<=0.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag": "anisoA5L0p5",
+      "across_px": 5.0,
+      "along_px": 0.5,
+      "n_dots": 37654,
+      "pct_changed": 7.080257077601317,
+      "sha256": "91ff37719b126c9253b1bae0c6c6eb127710c04910a47ab6dd3b93dd89dffa6b",
+      "sha256_zeros": "d2741f40650fd849c1250c57d9d20fe5fab8166e39f64d421ab220f8ab9013c6",
+      "status": "BUILT",
+      "predicted_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE A5/L0.5, fixed-count refill; pred +0.003 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771.tif",
+          "sha256": "91ff37719b126c9253b1bae0c6c6eb127710c04910a47ab6dd3b93dd89dffa6b",
+          "bytes": 353125,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771-zeros.tif",
+          "sha256": "d2741f40650fd849c1250c57d9d20fe5fab8166e39f64d421ab220f8ab9013c6",
+          "bytes": 216726,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 1333,
+        "n_added": 1333,
+        "n_retained_parent": 36321,
+        "symmetric_difference_px": 2666,
+        "pct_changed_of_parent": 7.080257077601317,
+        "removed_along_abs_median_px": 0.1868959665298462,
+        "removed_across_abs_median_px": 2.9847750663757324,
+        "removed_coherence_median": 0.8692488074302673,
+        "removed_dist_median_px": 3.0,
+        "removed_dist_max_px": 5.0,
+        "added_dist_median_px": 16.0312195418814,
+        "added_dist_min_px": 2.23606797749979,
+        "removed_to_nearest_added_median_px": 898.2633244210742,
+        "removed_to_nearest_added_max_px": 3671.05448066356,
+        "removed_outside_kernel_of_any_added": 1309
+      },
+      "removed_mask_sha256_packbits": "286170f56c34ef0fd785073b20c861b691ed30b684f65cc62ff0acf1832e6dec",
+      "refill_mask_sha256_packbits": "54927a5b360ceb150362eea12a24fa348bbf41a42187f2f72e532a0610f3b275",
+      "collar_diagnostics": {
+        "across_px": 5.0,
+        "along_px": 0.5,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 1333,
+        "n_inside_coherent_ellipse": 1258,
+        "n_inside_incoherent_fallback": 75,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 5.0,
+        "along_abs_median_inside": 0.1868959665298462,
+        "across_abs_median_inside": 2.9847750663757324
+      },
+      "refill": {
+        "n_refill": 1333,
+        "pool_size": 63399,
+        "ordering": "recovered H19-5 8-connected FIFO-BFS visitation order",
+        "pool_rule": "H19-5 & footprint & d_cat>2px (R0 baseline) & outside ellipse & not retained"
+      },
+      "refill_diagnostics": {
+        "n_refill": 1333,
+        "refill_dist_to_nearest_retained_median_px": 1.0,
+        "refill_dist_to_nearest_retained_max_px": 31.240998703626616,
+        "refill_within_3px_of_retained_pct": 97.89947486871718,
+        "refill_within_kernel_of_retained_pct": 97.89947486871718,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "interpretation": "High 'within 3 px of retained' means refills are largely redundant mass (penalty, little fresh kernel credit). It is a property of the inherited refill policy, not of the collar geometry under test; there is no live score behind it."
+      },
+      "removed_geometry": {
+        "below_3px_removed": 605,
+        "below_3px_in_final": 1064,
+        "note": "PRUNE is the brief's explicit exception to the >=3 px rule; zero catalogue mass remains mandatory."
+      },
+      "mechanism_card": {
+        "hypothesis": "The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 0.5 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.",
+        "mechanism": "The ellipse removes 1,333 R0 dots where (along/0.5)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.",
+        "non_fault_confounder": "A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.",
+        "predicted_live_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+        "prediction_decomposition": "MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 97.9% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.",
+        "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L0.5 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.",
+        "structural_geologist_note": "Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.",
+        "predicted_short_for_form": "+0.003"
+      }
+    }
+  ],
+  "elapsed_s": 92.83,
+  "no_live_submission": true,
+  "agent_never_submits": true,
+  "verified_utc": "2026-10-23T23:56:11Z",
+  "verification_git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "self_check": {
+    "all_26_manifest_pins_verified": true,
+    "r0_rebuilt_byte_identically": true,
+    "variant_files_re_read_and_validated": true,
+    "variant_bytes_reproduced_exactly": true,
+    "fixed_37654_dot_count": true,
+    "zero_catalogue_mass": true,
+    "sha256_unique_against_ledger": true
+  }
+}

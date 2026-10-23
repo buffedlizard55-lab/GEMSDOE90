@@ -1,0 +1,724 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T23:47:34Z",
+  "git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "generator_script_sha256": "535119239976b9583752065b9513431d65f602fbb32ee54e8e05675626f66302",
+  "aniso_module_sha256": "df9fec4ac69cd88d9ce5ece3cc4edee6f51494922edf4c53bee32c236bb444cb",
+  "matched_receipt_sha256": "620766a99885c070ef87e8c4ad36a38cada8b76e3573e472b8f912e86a3dea7c",
+  "axis": "PRUNE",
+  "value_family": "matched strike-aligned A4/A5/A6, L=2 collar; delete only, no refill",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "manifest_sha256": "814a863da01e06ae0a462edef77f309087c4924d2ea4af2a0c9027dea4db2e85",
+    "verified_count": 26,
+    "all_pins_rechecked": true
+  },
+  "reservation": {
+    "checked_local_ledger": "ledger/submissions.csv",
+    "sibling_ledgers_checked_2026_10_23": [
+      "GEMSDOE84",
+      "GEMSDOE85",
+      "GEMSDOE86",
+      "GEMSDOE87",
+      "GEMSDOE88",
+      "GEMSDOE89",
+      "GEMSDOE90",
+      "GEMSDOE91",
+      "GEMSDOE92"
+    ],
+    "selected_values": [
+      "tag=anisoA4L2-norefill; collar across<=4px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag=anisoA5L2-norefill; collar across<=5px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag=anisoA6L2-norefill; collar across<=6px, along<=2px (strike-aligned); strict R0 subset; no refill"
+    ],
+    "foreign_duplicates": [],
+    "own_reproduction_rows_present": 0,
+    "distinctness": "Sibling no-refill PRUNE rows are isotropic; these are strike-aligned A4/A5/A6, L=2 collars matched to the recorded refill family."
+  },
+  "snap_feasibility_pivot": {
+    "proposed_axis": "SNAP (withdrawn before raster emission)",
+    "constraint_triplet": "same 37,654 count; every move <=2 px; every final dot >=3 px from catalogue",
+    "inherited_R0_dots_below_3px": 1611,
+    "dots_with_no_on_support_H19_5_legal_destination_within_2px": 822,
+    "dots_with_no_in_footprint_legal_destination_within_2px": 30,
+    "decision": "SNAP is infeasible for 30 dots even off H19-5; pivot to PRUNE, whose brief collar exception applies. Zero SNAP rasters emitted.",
+    "label_or_score_information_used": false
+  },
+  "predictions_frozen_before_proxy": true,
+  "proxy_reports": {
+    "leakage_canary": {
+      "status": "REPORT ONLY",
+      "seed": 20261023,
+      "n_positive": 60988,
+      "n_negative_sampled": 250000,
+      "features_tested": 19,
+      "sentinel_handling": "non-finite and <= -1e30 masked out per band before ranking",
+      "max_symmetric_auc": 0.5695,
+      "max_feature_band": 4,
+      "auc_gt_0_90": false,
+      "per_band": [
+        {
+          "band": 1,
+          "auc": 0.4912,
+          "symmetric_auc": 0.5088
+        },
+        {
+          "band": 2,
+          "auc": 0.4975,
+          "symmetric_auc": 0.5025
+        },
+        {
+          "band": 3,
+          "auc": 0.5271,
+          "symmetric_auc": 0.5271
+        },
+        {
+          "band": 4,
+          "auc": 0.5695,
+          "symmetric_auc": 0.5695
+        },
+        {
+          "band": 5,
+          "auc": 0.5338,
+          "symmetric_auc": 0.5338
+        },
+        {
+          "band": 6,
+          "auc": 0.4478,
+          "symmetric_auc": 0.5522
+        },
+        {
+          "band": 7,
+          "auc": 0.5546,
+          "symmetric_auc": 0.5546
+        },
+        {
+          "band": 8,
+          "auc": 0.5237,
+          "symmetric_auc": 0.5237
+        },
+        {
+          "band": 9,
+          "auc": 0.4866,
+          "symmetric_auc": 0.5134
+        },
+        {
+          "band": 10,
+          "auc": 0.5498,
+          "symmetric_auc": 0.5498
+        },
+        {
+          "band": 11,
+          "auc": 0.527,
+          "symmetric_auc": 0.527
+        },
+        {
+          "band": 12,
+          "auc": 0.4848,
+          "symmetric_auc": 0.5152
+        },
+        {
+          "band": 13,
+          "auc": 0.4596,
+          "symmetric_auc": 0.5404
+        },
+        {
+          "band": 14,
+          "auc": 0.4885,
+          "symmetric_auc": 0.5115
+        },
+        {
+          "band": 15,
+          "auc": 0.5117,
+          "symmetric_auc": 0.5117
+        },
+        {
+          "band": 16,
+          "auc": 0.5681,
+          "symmetric_auc": 0.5681
+        },
+        {
+          "band": 17,
+          "auc": 0.4824,
+          "symmetric_auc": 0.5176
+        },
+        {
+          "band": 18,
+          "auc": 0.5002,
+          "symmetric_auc": 0.5002
+        },
+        {
+          "band": 19,
+          "auc": 0.5579,
+          "symmetric_auc": 0.5579
+        }
+      ],
+      "note": "Single-feature separability on the known catalogue only; no live-score inference."
+    },
+    "catalogue_hide_recover": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 38,
+      "n_withheld_positives": 13920,
+      "bootstrap_replicates": 1000,
+      "seed": 20261023,
+      "r0_proxy_value": 0.007191,
+      "r0_proxy_ci95": [
+        0.005765,
+        0.0088
+      ],
+      "variants": {
+        "h33-h33-2-b2-PRUNEanisoA4L2nr-20261023-9471ac67": {
+          "proxy_value": 0.000686,
+          "proxy_ci95": [
+            0.000433,
+            0.000969
+          ],
+          "delta_vs_r0_proxy": -0.006505,
+          "delta_vs_r0_ci95": [
+            -0.008,
+            -0.005142
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8": {
+          "proxy_value": 0.000603,
+          "proxy_ci95": [
+            0.00037,
+            0.000869
+          ],
+          "delta_vs_r0_proxy": -0.006589,
+          "delta_vs_r0_ci95": [
+            -0.008128,
+            -0.005205
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA6L2nr-20261023-d992f6f6": {
+          "proxy_value": 0.00058,
+          "proxy_ci95": [
+            0.000363,
+            0.00083
+          ],
+          "delta_vs_r0_proxy": -0.006611,
+          "delta_vs_r0_ci95": [
+            -0.008138,
+            -0.005224
+          ]
+        }
+      },
+      "caveat": "Known catalogue pixels are masked in live scoring; hide-and-recover is a PROXY with known collar blind spots, never a gate or score."
+    },
+    "sgmc_control": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 162,
+      "bootstrap_replicates": 1000,
+      "seed": 20261023,
+      "r0_proxy_value": 0.095386,
+      "r0_proxy_ci95": [
+        0.084171,
+        0.106989
+      ],
+      "variants": {
+        "h33-h33-2-b2-PRUNEanisoA4L2nr-20261023-9471ac67": {
+          "proxy_value": 0.092587,
+          "proxy_ci95": [
+            0.081376,
+            0.104015
+          ],
+          "delta_vs_r0_proxy": -0.002799,
+          "delta_vs_r0_ci95": [
+            -0.003754,
+            -0.002057
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8": {
+          "proxy_value": 0.089621,
+          "proxy_ci95": [
+            0.078802,
+            0.100333
+          ],
+          "delta_vs_r0_proxy": -0.005765,
+          "delta_vs_r0_ci95": [
+            -0.007897,
+            -0.004278
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA6L2nr-20261023-d992f6f6": {
+          "proxy_value": 0.087277,
+          "proxy_ci95": [
+            0.07662,
+            0.097831
+          ],
+          "delta_vs_r0_proxy": -0.00811,
+          "delta_vs_r0_ci95": [
+            -0.011272,
+            -0.005983
+          ]
+        }
+      },
+      "n_positives_evaluated": 62122,
+      "caveat": "SGMC is an off-catalogue external proxy with a bedrock/mapping bias, not undisclosed test truth; never a gate or score."
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA4L2nr-20261023-9471ac67",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "tag=anisoA4L2-norefill; collar across<=4px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag": "anisoA4L2-norefill",
+      "across_px": 4.0,
+      "along_px": 2.0,
+      "n_dots": 35022,
+      "pct_changed": 6.989961225898975,
+      "sha256": "9471ac67bb8b32ad7b271ab8e7511e46020dd2b14d80b1ab59551516884bb381",
+      "sha256_zeros": "5e1abfc796831fc810801856ff668ecd6f9aae40d35442d902cf726d441988c1",
+      "status": "WITHDRAWN",
+      "predicted_change": "+0.005 DTI (MODEL; plausible -0.005 to +0.012; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE A4/L2 collar, no refill -> 35022 dots; pred +0.005 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA4L2nr-20261023-9471ac67.tif",
+          "sha256": "9471ac67bb8b32ad7b271ab8e7511e46020dd2b14d80b1ab59551516884bb381",
+          "bytes": 344951,
+          "encoding": "nan",
+          "n_dots": 35022,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "catalogue_mass": 0.0,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "strict_subset_of_R0": true,
+            "no_dot_inside_collar": true,
+            "expected_delete_only_count": true,
+            "file_re_read_from_disk": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA4L2nr-20261023-9471ac67.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 35022,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA4L2nr-20261023-9471ac67-zeros.tif",
+          "sha256": "5e1abfc796831fc810801856ff668ecd6f9aae40d35442d902cf726d441988c1",
+          "bytes": 208504,
+          "encoding": "zeros",
+          "n_dots": 35022,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "catalogue_mass": 0.0,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "strict_subset_of_R0": true,
+            "no_dot_inside_collar": true,
+            "expected_delete_only_count": true,
+            "file_re_read_from_disk": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA4L2nr-20261023-9471ac67-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 35022,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 35022,
+        "n_removed": 2632,
+        "n_added": 0,
+        "n_retained_parent": 35022,
+        "symmetric_difference_px": 2632,
+        "pct_changed_of_parent": 6.989961225898975,
+        "removed_along_abs_median_px": 0.5356935784220695,
+        "removed_across_abs_median_px": 2.803236484527588,
+        "removed_coherence_median": 0.8579442799091339,
+        "removed_dist_median_px": 2.8284271247461903,
+        "removed_dist_max_px": 4.0,
+        "added_dist_median_px": null,
+        "added_dist_min_px": null,
+        "removed_outside_kernel_of_any_added": null,
+        "strict_subset_of_R0": true
+      },
+      "removed_mask_sha256_packbits": "a04e99d3a21080852466a7447f139430b52b230a0c08e0ffb2368b7bcb68dc4f",
+      "retained_mask_sha256_packbits": "574e0c0b2440eece11f5b74eb903a6b4b2cbc8ecc102066fc931fdf5ddbe329d",
+      "collar_diagnostics": {
+        "across_px": 4.0,
+        "along_px": 2.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 2632,
+        "n_inside_coherent_ellipse": 2585,
+        "n_inside_incoherent_fallback": 47,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 4.0,
+        "along_abs_median_inside": 0.5356935784220695,
+        "across_abs_median_inside": 2.803236484527588
+      },
+      "removed_geometry": {
+        "along_abs_median_px": 0.5356935784220695,
+        "across_abs_median_px": 2.803236484527588,
+        "coherence_median": 0.8579442799091339,
+        "below_3px_removed": 1428,
+        "below_3px_retained": 183
+      },
+      "matched_refill_control": {
+        "id": "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2",
+        "receipt": "evidence/build_aniso_receipt.json",
+        "same_r0_same_strike_field_same_collar_parameters": true,
+        "removed_count_matches": true,
+        "refill_dots_omitted": 2632,
+        "matched_refill_n_dots": 37654
+      },
+      "mechanism_card": {
+        "hypothesis": "If the A4/L2 strike-aligned collar mostly removes non-fault flank mass, deleting its 2,632 dots without adding FIFO-refill penalty should raise DTI. The matched refill file provides the controlled comparison.",
+        "mechanism": "Known USGS/INGENIOUS pixels are masked pixel-exactly, while adjacent new-fault pixels remain scoreable. The ellipse removes across-strike flank dots but preserves coherent along-strike continuations. Unlike the matched parent experiment, S (emitted mass) falls to 35,022; no distant H19-5 pixels are introduced, so the measured refill dilution cannot offset the collar gain.",
+        "non_fault_confounder": "Across-strike dots can be real parallel strands, relay splays, step-overs, or offset surface traces of dipping faults. Conversely, unfaulted lithologic contacts, drainage margins, shorelines, and cultural lineaments can occupy the retained off-collar population. Catalogue-strike estimates can also rotate near intersections and terminations.",
+        "predicted_live_change": "+0.005 DTI (MODEL; plausible -0.005 to +0.012; not a score)",
+        "prediction_decomposition": "matched collar term +0.004 to +0.006; refill term removed (prior estimate -0.001 to -0.003); net +0.005",
+        "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies a beneficial A4/L2 delete-only collar; |delta| < 0.010 is no evidence. If the matched refill file outscores this file by >=0.010, the refill-dilution mechanism is falsified even if both beat or lose to R0.",
+        "structural_geologist_note": "Review removed across-strike segments for genuine parallel fault strands and retained mapped-tip continuations for structural consistency. This is not a claim that faults stop at the catalogue collar; it is a test of whether their emitted unit-mass dots earn enough new-fault credit to pay their metric penalty.",
+        "predicted_short_for_form": "+0.005"
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "tag=anisoA5L2-norefill; collar across<=5px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag": "anisoA5L2-norefill",
+      "across_px": 5.0,
+      "along_px": 2.0,
+      "n_dots": 33991,
+      "pct_changed": 9.728050140755299,
+      "sha256": "dd7761e88a5b564da62eee2c00dcd1606772e67fb379aba211d6886ed9faf704",
+      "sha256_zeros": "cb28c3723266d1f60388fd738bce0366398cfeaf0f475456bd5960d8b95aac72",
+      "status": "WITHDRAWN",
+      "predicted_change": "+0.006 DTI (MODEL; plausible -0.006 to +0.014; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE A5/L2 collar, no refill -> 33991 dots; pred +0.006 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8.tif",
+          "sha256": "dd7761e88a5b564da62eee2c00dcd1606772e67fb379aba211d6886ed9faf704",
+          "bytes": 340673,
+          "encoding": "nan",
+          "n_dots": 33991,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "catalogue_mass": 0.0,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "strict_subset_of_R0": true,
+            "no_dot_inside_collar": true,
+            "expected_delete_only_count": true,
+            "file_re_read_from_disk": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 33991,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8-zeros.tif",
+          "sha256": "cb28c3723266d1f60388fd738bce0366398cfeaf0f475456bd5960d8b95aac72",
+          "bytes": 204204,
+          "encoding": "zeros",
+          "n_dots": 33991,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "catalogue_mass": 0.0,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "strict_subset_of_R0": true,
+            "no_dot_inside_collar": true,
+            "expected_delete_only_count": true,
+            "file_re_read_from_disk": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 33991,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 33991,
+        "n_removed": 3663,
+        "n_added": 0,
+        "n_retained_parent": 33991,
+        "symmetric_difference_px": 3663,
+        "pct_changed_of_parent": 9.728050140755299,
+        "removed_along_abs_median_px": 0.5677251219749451,
+        "removed_across_abs_median_px": 2.968604564666748,
+        "removed_coherence_median": 0.8487628102302551,
+        "removed_dist_median_px": 3.0,
+        "removed_dist_max_px": 5.0,
+        "added_dist_median_px": null,
+        "added_dist_min_px": null,
+        "removed_outside_kernel_of_any_added": null,
+        "strict_subset_of_R0": true
+      },
+      "removed_mask_sha256_packbits": "df84a09c5b823c6ab4a9c09d55b5bc8c17456f483cf359b241bdb96ea2e80760",
+      "retained_mask_sha256_packbits": "07280ed740f410e99aac8355630cdd6dc9a56e713d71db84b36c289145f746b9",
+      "collar_diagnostics": {
+        "across_px": 5.0,
+        "along_px": 2.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 3663,
+        "n_inside_coherent_ellipse": 3588,
+        "n_inside_incoherent_fallback": 75,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 5.0,
+        "along_abs_median_inside": 0.5677251219749451,
+        "across_abs_median_inside": 2.968604564666748
+      },
+      "removed_geometry": {
+        "along_abs_median_px": 0.5677251219749451,
+        "across_abs_median_px": 2.968604564666748,
+        "coherence_median": 0.8487628102302551,
+        "below_3px_removed": 1455,
+        "below_3px_retained": 156
+      },
+      "matched_refill_control": {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061",
+        "receipt": "evidence/build_aniso_receipt.json",
+        "same_r0_same_strike_field_same_collar_parameters": true,
+        "removed_count_matches": true,
+        "refill_dots_omitted": 3663,
+        "matched_refill_n_dots": 37654
+      },
+      "mechanism_card": {
+        "hypothesis": "If the A5/L2 strike-aligned collar mostly removes non-fault flank mass, deleting its 3,663 dots without adding FIFO-refill penalty should raise DTI. The matched refill file provides the controlled comparison.",
+        "mechanism": "Known USGS/INGENIOUS pixels are masked pixel-exactly, while adjacent new-fault pixels remain scoreable. The ellipse removes across-strike flank dots but preserves coherent along-strike continuations. Unlike the matched parent experiment, S (emitted mass) falls to 33,991; no distant H19-5 pixels are introduced, so the measured refill dilution cannot offset the collar gain.",
+        "non_fault_confounder": "Across-strike dots can be real parallel strands, relay splays, step-overs, or offset surface traces of dipping faults. Conversely, unfaulted lithologic contacts, drainage margins, shorelines, and cultural lineaments can occupy the retained off-collar population. Catalogue-strike estimates can also rotate near intersections and terminations.",
+        "predicted_live_change": "+0.006 DTI (MODEL; plausible -0.006 to +0.014; not a score)",
+        "prediction_decomposition": "matched collar term +0.005 to +0.007; refill term removed (prior estimate -0.002 to -0.004); net +0.006",
+        "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies a beneficial A5/L2 delete-only collar; |delta| < 0.010 is no evidence. If the matched refill file outscores this file by >=0.010, the refill-dilution mechanism is falsified even if both beat or lose to R0.",
+        "structural_geologist_note": "Review removed across-strike segments for genuine parallel fault strands and retained mapped-tip continuations for structural consistency. This is not a claim that faults stop at the catalogue collar; it is a test of whether their emitted unit-mass dots earn enough new-fault credit to pay their metric penalty.",
+        "predicted_short_for_form": "+0.006"
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA6L2nr-20261023-d992f6f6",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "tag=anisoA6L2-norefill; collar across<=6px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag": "anisoA6L2-norefill",
+      "across_px": 6.0,
+      "along_px": 2.0,
+      "n_dots": 33029,
+      "pct_changed": 12.28289159186275,
+      "sha256": "d992f6f6d4554307ad7e6d6b2acca64aa5d113b31f275a35f1a7311bfa3e789c",
+      "sha256_zeros": "529d9dcf5f9cf09e2e5753177343f67c030dba746ede5308873d51c8b383e699",
+      "status": "WITHDRAWN",
+      "predicted_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE A6/L2 collar, no refill -> 33029 dots; pred +0.003 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA6L2nr-20261023-d992f6f6.tif",
+          "sha256": "d992f6f6d4554307ad7e6d6b2acca64aa5d113b31f275a35f1a7311bfa3e789c",
+          "bytes": 336856,
+          "encoding": "nan",
+          "n_dots": 33029,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "catalogue_mass": 0.0,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "strict_subset_of_R0": true,
+            "no_dot_inside_collar": true,
+            "expected_delete_only_count": true,
+            "file_re_read_from_disk": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA6L2nr-20261023-d992f6f6.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 33029,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA6L2nr-20261023-d992f6f6-zeros.tif",
+          "sha256": "529d9dcf5f9cf09e2e5753177343f67c030dba746ede5308873d51c8b383e699",
+          "bytes": 200292,
+          "encoding": "zeros",
+          "n_dots": 33029,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "catalogue_mass": 0.0,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "strict_subset_of_R0": true,
+            "no_dot_inside_collar": true,
+            "expected_delete_only_count": true,
+            "file_re_read_from_disk": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA6L2nr-20261023-d992f6f6-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 33029,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 33029,
+        "n_removed": 4625,
+        "n_added": 0,
+        "n_retained_parent": 33029,
+        "symmetric_difference_px": 4625,
+        "pct_changed_of_parent": 12.28289159186275,
+        "removed_along_abs_median_px": 0.5722525715827942,
+        "removed_across_abs_median_px": 3.1573721170425415,
+        "removed_coherence_median": 0.8466607332229614,
+        "removed_dist_median_px": 3.1622776601683795,
+        "removed_dist_max_px": 6.0,
+        "added_dist_median_px": null,
+        "added_dist_min_px": null,
+        "removed_outside_kernel_of_any_added": null,
+        "strict_subset_of_R0": true
+      },
+      "removed_mask_sha256_packbits": "a9380ab14dcdb4e5a0eed10db972668691a2cffb1e342916614e1b58c3a77e41",
+      "retained_mask_sha256_packbits": "0f0c9dc1af5de78006cac849fe5e787db3e22b0887ae02d6850a9108a9dc4a36",
+      "collar_diagnostics": {
+        "across_px": 6.0,
+        "along_px": 2.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 4625,
+        "n_inside_coherent_ellipse": 4525,
+        "n_inside_incoherent_fallback": 100,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 6.0,
+        "along_abs_median_inside": 0.5722525715827942,
+        "across_abs_median_inside": 3.1573721170425415
+      },
+      "removed_geometry": {
+        "along_abs_median_px": 0.5722525715827942,
+        "across_abs_median_px": 3.1573721170425415,
+        "coherence_median": 0.8466607332229614,
+        "below_3px_removed": 1461,
+        "below_3px_retained": 150
+      },
+      "matched_refill_control": {
+        "id": "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3",
+        "receipt": "evidence/build_aniso_receipt.json",
+        "same_r0_same_strike_field_same_collar_parameters": true,
+        "removed_count_matches": true,
+        "refill_dots_omitted": 4625,
+        "matched_refill_n_dots": 37654
+      },
+      "mechanism_card": {
+        "hypothesis": "If the A6/L2 strike-aligned collar mostly removes non-fault flank mass, deleting its 4,625 dots without adding FIFO-refill penalty should raise DTI. The matched refill file provides the controlled comparison.",
+        "mechanism": "Known USGS/INGENIOUS pixels are masked pixel-exactly, while adjacent new-fault pixels remain scoreable. The ellipse removes across-strike flank dots but preserves coherent along-strike continuations. Unlike the matched parent experiment, S (emitted mass) falls to 33,029; no distant H19-5 pixels are introduced, so the measured refill dilution cannot offset the collar gain.",
+        "non_fault_confounder": "Across-strike dots can be real parallel strands, relay splays, step-overs, or offset surface traces of dipping faults. Conversely, unfaulted lithologic contacts, drainage margins, shorelines, and cultural lineaments can occupy the retained off-collar population. Catalogue-strike estimates can also rotate near intersections and terminations.",
+        "predicted_live_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+        "prediction_decomposition": "matched collar term +0.006 to +0.008, less genuine adjacent-continuation loss; refill term removed; net +0.003",
+        "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies a beneficial A6/L2 delete-only collar; |delta| < 0.010 is no evidence. If the matched refill file outscores this file by >=0.010, the refill-dilution mechanism is falsified even if both beat or lose to R0.",
+        "structural_geologist_note": "Review removed across-strike segments for genuine parallel fault strands and retained mapped-tip continuations for structural consistency. This is not a claim that faults stop at the catalogue collar; it is a test of whether their emitted unit-mass dots earn enough new-fault credit to pay their metric penalty.",
+        "predicted_short_for_form": "+0.003"
+      }
+    }
+  ],
+  "elapsed_s": 92.92,
+  "no_live_submission": true,
+  "agent_never_submits": true,
+  "withdrawal": {
+    "status": "WITHDRAWN BEFORE SUBMISSION",
+    "irregularity": "IR90-22",
+    "reason": "Brief section 5 PRUNE recipe requires fixed-count refill; delete-only variants change count and are not compliant slot candidates.",
+    "rasters_moved_to": ".cache/withdrawn_aniso_norefill/",
+    "live_submission": false
+  }
+}
