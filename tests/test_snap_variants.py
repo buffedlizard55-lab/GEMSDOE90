@@ -94,11 +94,29 @@ def test_receipt_has_three_arms_with_distinct_hashes_and_a_dose_ladder() -> None
         assert v["parent_diff"]["snap"]["min_sep_px"] >= 2.0
 
 
+def _all_receipt_variants() -> dict[str, dict]:
+    """Union of every session receipt in evidence/ that records built variants."""
+    out: dict[str, dict] = {}
+    for path in sorted((ROOT / "evidence").glob("*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        for variant in data.get("variants", []) if isinstance(data, dict) else []:
+            if isinstance(variant, dict) and "id" in variant and "files" in variant:
+                out[variant["id"]] = variant
+    return out
+
+
 def test_snap_ledger_rows_match_the_receipt_and_the_ledger_is_complete() -> None:
+    """The ledger is cumulative: every BUILT row must belong to some session receipt.
+
+    Sibling sessions merge their own receipts into the same repository, so equality against
+    this session's receipt alone would break on any merge; the union is the correct invariant.
+    """
     receipt = _receipt()
     rows = {r["id"]: r for r in _ledger_rows() if r["status"] == "BUILT"}
-    prn = json.loads((ROOT / "evidence" / "build_receipt.json").read_text(encoding="utf-8"))
-    expected = {v["id"] for v in receipt["variants"]} | {v["id"] for v in prn["variants"]}
+    expected = set(_all_receipt_variants())
     assert expected == set(rows), "every BUILT row must belong to a recorded session receipt"
     for v in receipt["variants"]:
         row = rows[v["id"]]
