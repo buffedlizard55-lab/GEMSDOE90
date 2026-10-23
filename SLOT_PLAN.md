@@ -59,3 +59,11 @@ identically zero. That is construction, not quality — this proxy cannot separa
   *Falsifier:* live Δ ≤ −0.010 while `uniq20` is positive ⇒ coverage, not sparsity, is the binding constraint.
 - **KERNEL_RADIUS audit:** re-space *retained* dots so no two sit < 1.5 px apart (a spacing, not mass, edit).
   *Confounder:* real parallel strands and step-overs. *Falsifier:* live Δ ≤ −0.010 at matched count.
+
+## Dedupe note against `main` (2026-10-23, after PR #9 merged)
+
+`main` now carries a parallel MASS ladder from the same site: `MASSshadow10pct/20pct/30pct` (exclusive-credit
+greedy drop on the *un-collared* 37,654-dot R0). No hash or (parent, axis, value) collision with this session's
+files. Treat the six MASS files as one block: `shadow*` price the dose on a constraint-4-violating parent,
+`uniq20/uniq30` price it on the compliant base, `fifo20` is the selection-rule control. If only three slots
+exist, take `shadow20`, `uniq20`, `fifo20` — that set separates the collar term from the mass term.
