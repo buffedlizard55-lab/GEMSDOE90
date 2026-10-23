@@ -1,0 +1,938 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T23:49:27Z",
+  "git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "generator_script": "scripts/build_mass_continuity.py",
+  "generator_script_sha256": "6b293e6d16d02999b2b96e6936e05807b108c7f12dead673ed32cf56ad0f696a",
+  "continuity_module_sha256": "e5bce94f3538c4fa8dca272bd5cd0dc1e9d80ce4e35ec8de62c7927ea9d74f00",
+  "axis": "MASS",
+  "session": "2026-10-23 continuity-aware MASS (GEMSDOE90, branch arena/0e9b3fd9-gemsdoe90)",
+  "axis_choice": "Agent-selected MASS under the human's delegation. Fresh 2026-10-23 read-only sibling audit (GEMSDOE84-92 ledgers via gh api): all seven brief axes already built, zero receipts anywhere; brief-literal CONCENTRATION-up built at 0.8/1/5 km and 10/50 px, 10/15/20%, with every upward arm <= 0 on GEMSDOE86's SGMC MODEL reconciliation and GEMSDOE84 holding its CONCENTRATION files for collar breaches. No indexed repository has a continuity-protected MASS removal, which is also the CONTINUITY_AWARE_DOSE rung this repo's SLOT_PLAN proposed and no session built. SNAP (58 sibling rows, three sessions reading negative in GEMSDOE86's reconciliation) and SPACING (brief: lowest priority) were passed over on the same evidence.",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "verified_count": 26,
+    "all_pins_rechecked": true,
+    "files": {
+      "training_features": {
+        "path": "training_features.tif",
+        "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+        "bytes": 418912844
+      },
+      "labels": {
+        "path": "labels.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "existing_faults": {
+        "path": "existing_faults.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "sample_submission": {
+        "path": "sample_submission.tif",
+        "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "bytes": 1599597
+      },
+      "ext_lidar_scarp_features_u8": {
+        "path": "external/lidar_scarp_features_u8.tif",
+        "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+        "bytes": 36943606
+      },
+      "ext_geodawn_rad_u8": {
+        "path": "external/geodawn_rad_u8.tif",
+        "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+        "bytes": 26612970
+      },
+      "ext_geodawn_extensions_u8": {
+        "path": "external/geodawn_extensions_u8.tif",
+        "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+        "bytes": 27132925
+      },
+      "ext_derived_sgmc_faults_100m_u8": {
+        "path": "external/derived_sgmc_faults_100m_u8.tif",
+        "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+        "bytes": 198602
+      },
+      "ext_gdr_wellspring_in_footprint": {
+        "path": "external/gdr_wellspring_in_footprint.csv",
+        "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+        "bytes": 2146771
+      },
+      "ext_gdr_qfaults_traces": {
+        "path": "external/gdr_qfaults_traces.csv",
+        "sha256": "9702f2e5c382a4f472ae834d22b94990983b059677a37adfafd51c50f75e643c",
+        "bytes": 126177
+      },
+      "ext_gdr_volcanic_vents_in_footprint": {
+        "path": "external/gdr_volcanic_vents_in_footprint.csv",
+        "sha256": "f91bafbaccaaf2754e71d60434fc0f9eb2c7b880c6e714883f4974542ff6a0bf",
+        "bytes": 672
+      },
+      "scored_h19_5": {
+        "path": "scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+        "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+        "bytes": 1712322
+      },
+      "scored_h19_4": {
+        "path": "scored/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+        "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+        "bytes": 1716768
+      },
+      "scored_h16_1": {
+        "path": "scored/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+        "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+        "bytes": 1718028
+      },
+      "scored_d15_scored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+        "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+        "bytes": 1632732
+      },
+      "scored_d28_unscored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+        "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+        "bytes": 1603424
+      },
+      "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou": {
+        "path": "scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+        "bytes": 1706456
+      },
+      "calib_8GEMSDOE_Hedge-v2_submission": {
+        "path": "scored/8GEMSDOE_Hedge-v2_submission.tif",
+        "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+        "bytes": 736494
+      },
+      "calib_gems10-h25-ctx-ridge-20260927T2329477041": {
+        "path": "scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+        "sha256": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+        "bytes": 1772935
+      },
+      "calib_gems10-h28-dotted-ridge-20260928T0202562": {
+        "path": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+        "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+        "bytes": 1620739
+      },
+      "calib_gemsdoe-ens12-adopted-7f00890a": {
+        "path": "scored/gemsdoe-ens12-adopted-7f00890a.tif",
+        "sha256": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15",
+        "bytes": 570890
+      },
+      "calib_gemsdoe9-PLACEHOLDER-2314b599": {
+        "path": "scored/gemsdoe9-PLACEHOLDER-2314b599.tif",
+        "sha256": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+        "bytes": 439456
+      },
+      "scored_gems27_tgc_v2_d15": {
+        "path": "scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+        "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+        "bytes": 1635084
+      },
+      "scored_h27_4_solo_d28": {
+        "path": "scored/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+        "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+        "bytes": 1595850
+      },
+      "parent_r0_zeros": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+        "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+        "bytes": 219065
+      },
+      "parent_r0_nan": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+        "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+        "bytes": 355443
+      }
+    }
+  },
+  "footprint_px": 5167373,
+  "proxy_seed": 20261023,
+  "ranking": {
+    "used": "exclusive kernel credit ascending, recomputed after each deletion (src/mass.py), gated by strand eligibility (src/continuity.py): link graph <= 6.0 px, protected strands = R0 components with >= 10 dots, articulation + 10-dot floor",
+    "link_px": 6.0,
+    "min_strand_dots": 10,
+    "r0_link_components_6px": 6591,
+    "r0_protected_strands_6px": 857,
+    "r0_protected_dots_6px": 24203,
+    "largest_r0_component_dots_6px": 325,
+    "continuity_capacity_max_removable": 29084,
+    "eligibility_blocks_during_greedy_to_40pct": {
+      "articulation": 75265,
+      "floor": 4097
+    },
+    "truth_used": false,
+    "catalogue_used_in_ranking": false,
+    "feature_band_used": false,
+    "score_used": false,
+    "kernel_radius_px": 3.0,
+    "matched_count_comparison": {
+      "20": {
+        "shadowcont_exclusive_credit_sum": 38675.6586,
+        "shadow_exclusive_credit_sum": 37664.6528,
+        "shadow_recorded_id": "h33-h33-2-b2-MASSshadow20pct-20261023-c4ce118b",
+        "shadowcont_excess_fraction_vs_shadow": 0.026842
+      },
+      "30": {
+        "shadowcont_exclusive_credit_sum": 66815.9243,
+        "shadow_exclusive_credit_sum": 63143.0697,
+        "shadow_recorded_id": "h33-h33-2-b2-MASSshadow30pct-20261023-9d64151a",
+        "shadowcont_excess_fraction_vs_shadow": 0.058167
+      },
+      "40": {
+        "shadowcont_exclusive_credit_sum": 99483.1675,
+        "shadow_exclusive_credit_sum": 92598.1618,
+        "shadow_recorded_id": "h33-h33-2-b2-MASSshadow40pct-20261023-e2546fbe",
+        "shadowcont_excess_fraction_vs_shadow": 0.074354
+      },
+      "random40_exclusive_credit_sum": 102441.3187,
+      "note": "REPORT ONLY: exclusive credit destroyed at identical removal counts. shadowcont-40 destroys less credit than the credit-blind random-40 control while keeping every protected strand whole at 6 px."
+    }
+  },
+  "region_evenness_gate": {
+    "block_px": 50,
+    "max_fraction_of_blocks_90pct_emptied": 0.02,
+    "max_emptied_cluster_blocks": 4,
+    "min_p05_share_fraction_of_dose": 0.25,
+    "why": "Hard Constraint #5 forbids region-isolated files; the same fail-closed gate the high-dose MASS session applied is applied here per dose."
+  },
+  "experiment_reservation_audit": {
+    "checked_utc": "2026-10-23",
+    "method": "read-only gh api fetch of ledger/submissions.csv from buffedlizard55-lab/GEMSDOE84..GEMSDOE92 (GEMSDOE93-101 have no ledger file) plus this repo's ledger and reservations; no DrivenData or Dropbox contact",
+    "axis_row_counts_all_siblings": {
+      "PRUNE": 68,
+      "SNAP": 58,
+      "MASS": 44,
+      "CONCENTRATION": 33,
+      "RELIEF": 27,
+      "SPACING": 16,
+      "TRACKB": 9
+    },
+    "receipt_scores_found_anywhere": 0,
+    "distinct_mass_values_found": [
+      "+10pct",
+      "-10pct",
+      "-20pct",
+      "MASS_A10",
+      "MASS_D10",
+      "MASS_SWAP10",
+      "add20pct-next",
+      "add5pct-next",
+      "cons1drop",
+      "cons2drop",
+      "cons3add",
+      "drop5pct-tail",
+      "m10e",
+      "m10minus",
+      "m10plus",
+      "m10rand",
+      "m10u",
+      "m10uniq",
+      "m20minus",
+      "m20uniq",
+      "minus10pct",
+      "minus10pct-marginal",
+      "p10",
+      "plus10pct",
+      "plus10pct-extend",
+      "plus10pct-extend-rand",
+      "r10minus",
+      "r10plus",
+      "r10swap",
+      "random-drop 40% (seeded 20261023, credit-blind, no additions)",
+      "shadow-drop 10% (exclusive-credit greedy, no additions)",
+      "shadow-drop 20% (exclusive-credit greedy, no additions)",
+      "shadow-drop 30% (exclusive-credit greedy, no additions)",
+      "shadow-drop 40% (exclusive-credit greedy, no additions)",
+      "shadow-drop 48% (exclusive-credit greedy, no additions)"
+    ],
+    "selected_values": [
+      "shadowcont-drop 20% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "shadowcont-drop 30% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "shadowcont-drop 40% (exclusive-credit greedy + 6px strand protection, no additions)"
+    ],
+    "why_new": "No indexed MASS value carries a continuity, strand, backbone or articulation rule. The doses (20/30/40%) deliberately match the recorded shadow ladder's removal counts -- the (AXIS, value) pair differs by ranking, the same distinction this repo already records for shadow vs FIFO vs random at identical percentages -- so each new file has a matched-count twin whose only difference is strand protection.",
+    "cross_repo_caveat": "Best-effort audit of public owner repositories, not proof of every submission the entity has made (IR90-04/IR90-11)."
+  },
+  "proxy_reports": {
+    "leakage_canary": {
+      "status": "NOT APPLICABLE",
+      "reason": "No feature band and no label is read: the ranking is a deterministic function of the parent's own dot coordinates, so no single feature exists whose AUC could exceed 0.90. On the identical pinned inputs the RELIEF session's 19-band canary maxed at symmetric AUC 0.5700 (evidence/relief_build_receipt.json)."
+    },
+    "catalogue_hide_recover": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 38,
+      "n_withheld_positives": 13920,
+      "bootstrap_replicates": 1000,
+      "seed": 20261023,
+      "r0_proxy_value": 0.007191,
+      "r0_proxy_ci95": [
+        0.005765,
+        0.0088
+      ],
+      "variants": {
+        "h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba": {
+          "proxy_value": 0.006682,
+          "proxy_ci95": [
+            0.005433,
+            0.008034
+          ],
+          "delta_vs_r0_proxy": -0.000509,
+          "delta_vs_r0_ci95": [
+            -0.00092,
+            -0.000181
+          ]
+        },
+        "h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee": {
+          "proxy_value": 0.006169,
+          "proxy_ci95": [
+            0.005019,
+            0.00746
+          ],
+          "delta_vs_r0_proxy": -0.001023,
+          "delta_vs_r0_ci95": [
+            -0.001541,
+            -0.000585
+          ]
+        },
+        "h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121": {
+          "proxy_value": 0.005488,
+          "proxy_ci95": [
+            0.004471,
+            0.006572
+          ],
+          "delta_vs_r0_proxy": -0.001703,
+          "delta_vs_r0_ci95": [
+            -0.002483,
+            -0.001057
+          ]
+        }
+      },
+      "caveat": "R0 was pruned at d_cat > 2 px against the FULL catalogue, so withheld catalogue positives can only earn credit from the 1,611 inherited 2-3 px flank dots; the instrument mostly rewards retaining near-catalogue mass, which a deletion ladder removes only incidentally. Ledger history: this holdout correlated -0.87 to +0.54 with live scores (n = 12-14). PROXY ONLY -- reported because the brief requires it, never a gate, never a ranking, never called a score."
+    },
+    "sgmc_control": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 162,
+      "n_withheld_positives": 62122,
+      "bootstrap_replicates": 1000,
+      "seed": 20261023,
+      "r0_proxy_value": 0.095386,
+      "r0_proxy_ci95": [
+        0.084171,
+        0.106989
+      ],
+      "variants": {
+        "h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba": {
+          "proxy_value": 0.08433,
+          "proxy_ci95": [
+            0.074657,
+            0.094004
+          ],
+          "delta_vs_r0_proxy": -0.011056,
+          "delta_vs_r0_ci95": [
+            -0.012912,
+            -0.009273
+          ]
+        },
+        "h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee": {
+          "proxy_value": 0.076117,
+          "proxy_ci95": [
+            0.067405,
+            0.085662
+          ],
+          "delta_vs_r0_proxy": -0.019269,
+          "delta_vs_r0_ci95": [
+            -0.021997,
+            -0.016538
+          ]
+        },
+        "h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121": {
+          "proxy_value": 0.067833,
+          "proxy_ci95": [
+            0.06024,
+            0.07634
+          ],
+          "delta_vs_r0_proxy": -0.027553,
+          "delta_vs_r0_ci95": [
+            -0.031221,
+            -0.023707
+          ]
+        }
+      },
+      "caveat": "Off-catalogue USGS SGMC geologic-map faults (d_cat > 3 px) over-represent exposed bedrock (65.7% range-front tercile in the RELIEF session's audit) and under-represent concealed basin faults; a mass-only subset edit also moves this proxy mechanically with dot count. PROXY ONLY -- never a gate, never a ranking, never called a score."
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "shadowcont-drop 20% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "selection_rule": "shadowcont",
+      "dose_pct": 20,
+      "ranking": "ascending exclusive 300 m kernel credit, recomputed after each deletion (src/mass.py), with 6 px articulation + 10-dot strand-floor eligibility (src/continuity.py)",
+      "seed": null,
+      "n_dots": 30123,
+      "pct_changed": 20.000531152068838,
+      "removed_dots": 7531,
+      "added_dots": 0,
+      "moved_dots": 0,
+      "retained_dots": 30123,
+      "sha256": "66d961ba325f3830ff6d799ad83f112df03262fbb71a48bfe4a899692463d0ee",
+      "sha256_zeros": "038844cd736085988d4fb91cdee4b3148aa5b27ea1f4c00c38e20ac44e5371d1",
+      "status": "BUILT",
+      "evidence_class": "MODEL (predicted change only)",
+      "predicted_change": "+0.009 DTI (MODEL; bracket +0.001 to +0.048; not a score)",
+      "point_prediction_dti": 0.0088,
+      "model_bracket": {
+        "low": 0.0009,
+        "high": 0.048,
+        "formula_bracket": {
+          "low": 0.0009,
+          "high": 0.048,
+          "c_bracket": [
+            0.15,
+            0.45
+          ],
+          "truth_px_bracket": [
+            20000,
+            100000
+          ]
+        },
+        "basis": "recorded shadow point scaled by matched-count credit ratio; bracket from the first-order credit term over unobservable c and |G|. Assumptions, not measurements."
+      },
+      "form_note": "h33-h33-2-b2; MASS shadowcont-drop 20% -> 30123 dots, all >=1km strands kept; predicted +0.009 MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba.tif",
+          "sha256": "66d961ba325f3830ff6d799ad83f112df03262fbb71a48bfe4a899692463d0ee",
+          "bytes": 329757,
+          "encoding": "nan",
+          "n_dots": 30123,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_new_mass_within_3px": true,
+            "subset_of_R0_no_additions_no_moves": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba-zeros.tif",
+          "sha256": "038844cd736085988d4fb91cdee4b3148aa5b27ea1f4c00c38e20ac44e5371d1",
+          "bytes": 192758,
+          "encoding": "zeros",
+          "n_dots": 30123,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_new_mass_within_3px": true,
+            "subset_of_R0_no_additions_no_moves": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 7531,
+        "added": 0,
+        "moved": 0,
+        "retained_parent": 30123,
+        "symmetric_difference_px": 7531,
+        "pct_changed_of_R0": 20.000531152068838
+      },
+      "removal_statistics": {
+        "exclusive_credit_sum": 38675.65857269986,
+        "exclusive_credit_mean": 5.135527628827495,
+        "exclusive_credit_max": 6.8426213483334735,
+        "unconstrained_shadow_credit_sum_same_count": 37664.65276713703,
+        "credit_ratio_vs_shadow": 1.026842297254495,
+        "r0_total_exclusive_credit": 255847.8707714352,
+        "share_of_r0_credit_removed": 0.1511666227906631,
+        "min_catalogue_distance_px_inherited": 2.23606797749979,
+        "sub3px_dots_removed": 141,
+        "sub3px_dots_in_parent": 1611
+      },
+      "spatial_removal": {
+        "block_px": 50,
+        "blocks_with_20plus_dots": 848,
+        "removed_share_mean": 0.2077,
+        "removed_share_p05": 0.0909,
+        "removed_share_p95": 0.3333,
+        "removed_share_max": 0.4667,
+        "fraction_blocks_90pct_emptied": 0.0,
+        "fraction_blocks_10pct_or_less": 0.0943,
+        "emptied_block_clusters": 0,
+        "largest_emptied_cluster_blocks": 0,
+        "bbox_y": [
+          0,
+          3720
+        ],
+        "bbox_x": [
+          3,
+          3289
+        ],
+        "nominal_dose": 0.2,
+        "passes_region_evenness_gate": true
+      },
+      "structure_report_only": {
+        "parent_strand_report_5px": {
+          "dots": 37654,
+          "link_px": 5.0,
+          "strands": 8605,
+          "strands_ge_10dots": 838,
+          "largest_strand_dots": 228,
+          "mean_nearest_neighbour_px": 3.7351,
+          "median_nearest_neighbour_px": 3.0,
+          "fraction_nn_beyond_kernel": 0.495
+        },
+        "candidate_strand_report_5px": {
+          "dots": 30123,
+          "link_px": 5.0,
+          "strands": 14494,
+          "strands_ge_10dots": 196,
+          "largest_strand_dots": 26,
+          "mean_nearest_neighbour_px": 4.4878,
+          "median_nearest_neighbour_px": 4.0,
+          "fraction_nn_beyond_kernel": 0.8193
+        },
+        "strand_survival_6px": {
+          "protected_strands": 857,
+          "strands_surviving_whole": 857,
+          "min_alive_dots_in_a_strand": 10,
+          "max_alive_pieces_in_a_strand": 1,
+          "alive_dots_in_protected_strands": 18468
+        },
+        "unconstrained_shadow_strand_survival_6px": {
+          "protected_strands": 857,
+          "strands_surviving_whole": 234,
+          "min_alive_dots_in_a_strand": 6,
+          "max_alive_pieces_in_a_strand": 14,
+          "alive_dots_in_protected_strands": 17994
+        }
+      },
+      "mechanism_card": {
+        "hypothesis": "Deleting the 20% lowest-exclusive-credit dots of R0 under a rule that forbids splitting any >= 1 km kernel-continuous strand keeps the shadow ladder's mass saving while preserving the along-strike coverage line-like truth is paid for, so live DTI should match or beat the unconstrained shadow arm at the same count.",
+        "mechanism": "DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) charges 0.2 per dot but credits T once per truth pixel (max over dots inside the 300 m triangular kernel). The shadow ranking removes dots whose disks neighbours already cover -- but those are disproportionately the interior dots of densely sampled strands, so at 40% it keeps 0 of R0's 838 strands of >= 10 dots at 5 px linking and pushes mean spacing to 6.19 px, beyond the kernel. For line-like truth the brief's own algebra lowers the per-dot bar (a dot pays iff its credit exceeds ~0.2*DTI, less for lines), so a strand sampled every ~5-6 px still covers every truth pixel while paying roughly half the mass of R0's ~2.8-3 px sampling. This arm keeps the identical credit ranking and dose, but a dot inside an R0 strand of >= 10 dots linked at <= 6 px (kernel diameter: linked disks touch) is ineligible while it is an articulation point of the strand or the strand is at its 10-dot floor. All 857 strands survive whole at 6 px; the measured price is +2.7% exclusive credit vs the unconstrained arm at matched count (E=38676 vs 37665).",
+        "non_fault_confounder": "Continuity is geometric, not geological: unfaulted dikes, resistant stratigraphic hogbacks, drainage divides and Lake Lahontan shoreline berms also form >= 1 km corridors in the H19-5 support, and protection preserves their mass with the same force as a real fault's. Conversely the dots protection forces out instead -- short fragments and isolated dots -- may be the sole coverage of short genuine strands (relay tips, step-over splays shorter than 1 km). A negative receipt cannot by itself separate 'strands were non-fault lineaments' from 'short fragments were real'.",
+        "competing_prediction": "The credit model alone ranks this arm strictly below its unconstrained twin: it destroys +2.7% more exclusive credit at the same count, hence the point prediction is scaled down to +0.009 from the shadow arm's +0.009 (both MODEL). The structural reading points the other way: on the legacy 5 px instrument this arm keeps 196 strands of >= 10 dots (unconstrained shadow keeps 0 at 40%, random keeps 136) and on the 6 px kernel-continuity instrument it keeps all 857 strands connected. If new-fault truth is line-like, the continuity term can outweigh a single-digit credit penalty; if truth is effectively point-like at 100 m sampling, it cannot. Both readings are recorded before any receipt; |delta| < 0.010 on public chunks is no evidence either way.",
+        "predicted_live_change": "+0.009 DTI (MODEL; bracket +0.001 to +0.048; not a score)",
+        "model_bracket": "first-order bracket +0.0009 to +0.0480 DTI over removed-dot credit c in [0.15, 0.45] and truth pixels in [20000, 100000] (src/mass.predicted_removal_delta); point = recorded shadow point scaled by the matched-count credit ratio. Assumptions, not measurements.",
+        "falsifier": "Paired same-week live receipts decide, with |delta| < 0.010 = no evidence throughout: (i) delta vs R0 <= -0.010 falsifies the dose direction for the protected ranking; (ii) at matched count, shadowcont minus shadow >= +0.010 shows continuity pays beyond credit and the protected ranking replaces the ladder; shadowcont minus shadow <= -0.010 shows the credit term is all there is and protection is abandoned; (iii) if the credit-blind random-40 control beats both ranked arms by >= 0.010, every exclusive-credit ranking in this repo is wrong, not just this one.",
+        "structural_geologist_note": "Map the survivors, not just the deletions. By construction every >= 1 km R0 strand remains a single kernel-continuous trace (gaps <= 600 m); what left is strand-interior redundancy, short < 1 km fragments and isolated dots. Where a surviving strand follows a mappable range-front or a step-over between catalogue traces, the protection did geological work; where it follows a shoreline, a contact or a drainage divide for kilometres, it preserved false mass and a negative receipt should be believed. Check also the deleted short fragments at fault tips: if they systematically sit in 0.3-2.5 km along-strike cones ahead of mapped terminations, the 10-dot floor is mis-set for relay geometry, which is a different (unbuilt) axis."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "shadowcont-drop 30% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "selection_rule": "shadowcont",
+      "dose_pct": 30,
+      "ranking": "ascending exclusive 300 m kernel credit, recomputed after each deletion (src/mass.py), with 6 px articulation + 10-dot strand-floor eligibility (src/continuity.py)",
+      "seed": null,
+      "n_dots": 26358,
+      "pct_changed": 29.999468847931162,
+      "removed_dots": 11296,
+      "added_dots": 0,
+      "moved_dots": 0,
+      "retained_dots": 26358,
+      "sha256": "885f6feed41a50b1526b3a1dad1d3834e92c4f4c5639f0a54c7fd3210fe9b659",
+      "sha256_zeros": "c2b21dd19c0b698acb80a3b0638ee3d88bdc76f2a76f63d67630e36185623eed",
+      "status": "BUILT",
+      "evidence_class": "MODEL (predicted change only)",
+      "predicted_change": "+0.011 DTI (MODEL; bracket -0.001 to +0.071; not a score)",
+      "point_prediction_dti": 0.0113,
+      "model_bracket": {
+        "low": -0.0006,
+        "high": 0.0706,
+        "formula_bracket": {
+          "low": -0.0006,
+          "high": 0.0706,
+          "c_bracket": [
+            0.15,
+            0.45
+          ],
+          "truth_px_bracket": [
+            20000,
+            100000
+          ]
+        },
+        "basis": "recorded shadow point scaled by matched-count credit ratio; bracket from the first-order credit term over unobservable c and |G|. Assumptions, not measurements."
+      },
+      "form_note": "h33-h33-2-b2; MASS shadowcont-drop 30% -> 26358 dots, all >=1km strands kept; predicted +0.011 MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee.tif",
+          "sha256": "885f6feed41a50b1526b3a1dad1d3834e92c4f4c5639f0a54c7fd3210fe9b659",
+          "bytes": 314840,
+          "encoding": "nan",
+          "n_dots": 26358,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_new_mass_within_3px": true,
+            "subset_of_R0_no_additions_no_moves": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee-zeros.tif",
+          "sha256": "c2b21dd19c0b698acb80a3b0638ee3d88bdc76f2a76f63d67630e36185623eed",
+          "bytes": 177467,
+          "encoding": "zeros",
+          "n_dots": 26358,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_new_mass_within_3px": true,
+            "subset_of_R0_no_additions_no_moves": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 11296,
+        "added": 0,
+        "moved": 0,
+        "retained_parent": 26358,
+        "symmetric_difference_px": 11296,
+        "pct_changed_of_R0": 29.999468847931162
+      },
+      "removal_statistics": {
+        "exclusive_credit_sum": 66815.92434590898,
+        "exclusive_credit_mean": 5.9150074668828765,
+        "exclusive_credit_max": 8.247339863672027,
+        "unconstrained_shadow_credit_sum_same_count": 63143.06974835468,
+        "credit_ratio_vs_shadow": 1.0581671846521208,
+        "r0_total_exclusive_credit": 255847.8707714352,
+        "share_of_r0_credit_removed": 0.26115489702706884,
+        "min_catalogue_distance_px_inherited": 2.23606797749979,
+        "sub3px_dots_removed": 339,
+        "sub3px_dots_in_parent": 1611
+      },
+      "spatial_removal": {
+        "block_px": 50,
+        "blocks_with_20plus_dots": 848,
+        "removed_share_mean": 0.3052,
+        "removed_share_p05": 0.1739,
+        "removed_share_p95": 0.4275,
+        "removed_share_max": 0.5455,
+        "fraction_blocks_90pct_emptied": 0.0,
+        "fraction_blocks_10pct_or_less": 0.0118,
+        "emptied_block_clusters": 0,
+        "largest_emptied_cluster_blocks": 0,
+        "bbox_y": [
+          0,
+          3722
+        ],
+        "bbox_x": [
+          1,
+          3289
+        ],
+        "nominal_dose": 0.3,
+        "passes_region_evenness_gate": true
+      },
+      "structure_report_only": {
+        "parent_strand_report_5px": {
+          "dots": 37654,
+          "link_px": 5.0,
+          "strands": 8605,
+          "strands_ge_10dots": 838,
+          "largest_strand_dots": 228,
+          "mean_nearest_neighbour_px": 3.7351,
+          "median_nearest_neighbour_px": 3.0,
+          "fraction_nn_beyond_kernel": 0.495
+        },
+        "candidate_strand_report_5px": {
+          "dots": 26358,
+          "link_px": 5.0,
+          "strands": 15481,
+          "strands_ge_10dots": 105,
+          "largest_strand_dots": 16,
+          "mean_nearest_neighbour_px": 5.1633,
+          "median_nearest_neighbour_px": 4.4721,
+          "fraction_nn_beyond_kernel": 0.8956
+        },
+        "strand_survival_6px": {
+          "protected_strands": 857,
+          "strands_surviving_whole": 857,
+          "min_alive_dots_in_a_strand": 10,
+          "max_alive_pieces_in_a_strand": 1,
+          "alive_dots_in_protected_strands": 16532
+        },
+        "unconstrained_shadow_strand_survival_6px": {
+          "protected_strands": 857,
+          "strands_surviving_whole": 26,
+          "min_alive_dots_in_a_strand": 6,
+          "max_alive_pieces_in_a_strand": 29,
+          "alive_dots_in_protected_strands": 15367
+        }
+      },
+      "mechanism_card": {
+        "hypothesis": "Deleting the 30% lowest-exclusive-credit dots of R0 under a rule that forbids splitting any >= 1 km kernel-continuous strand keeps the shadow ladder's mass saving while preserving the along-strike coverage line-like truth is paid for, so live DTI should match or beat the unconstrained shadow arm at the same count.",
+        "mechanism": "DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) charges 0.2 per dot but credits T once per truth pixel (max over dots inside the 300 m triangular kernel). The shadow ranking removes dots whose disks neighbours already cover -- but those are disproportionately the interior dots of densely sampled strands, so at 40% it keeps 0 of R0's 838 strands of >= 10 dots at 5 px linking and pushes mean spacing to 6.19 px, beyond the kernel. For line-like truth the brief's own algebra lowers the per-dot bar (a dot pays iff its credit exceeds ~0.2*DTI, less for lines), so a strand sampled every ~5-6 px still covers every truth pixel while paying roughly half the mass of R0's ~2.8-3 px sampling. This arm keeps the identical credit ranking and dose, but a dot inside an R0 strand of >= 10 dots linked at <= 6 px (kernel diameter: linked disks touch) is ineligible while it is an articulation point of the strand or the strand is at its 10-dot floor. All 857 strands survive whole at 6 px; the measured price is +5.8% exclusive credit vs the unconstrained arm at matched count (E=66816 vs 63143).",
+        "non_fault_confounder": "Continuity is geometric, not geological: unfaulted dikes, resistant stratigraphic hogbacks, drainage divides and Lake Lahontan shoreline berms also form >= 1 km corridors in the H19-5 support, and protection preserves their mass with the same force as a real fault's. Conversely the dots protection forces out instead -- short fragments and isolated dots -- may be the sole coverage of short genuine strands (relay tips, step-over splays shorter than 1 km). A negative receipt cannot by itself separate 'strands were non-fault lineaments' from 'short fragments were real'.",
+        "competing_prediction": "The credit model alone ranks this arm strictly below its unconstrained twin: it destroys +5.8% more exclusive credit at the same count, hence the point prediction is scaled down to +0.011 from the shadow arm's +0.012 (both MODEL). The structural reading points the other way: on the legacy 5 px instrument this arm keeps 105 strands of >= 10 dots (unconstrained shadow keeps 0 at 40%, random keeps 136) and on the 6 px kernel-continuity instrument it keeps all 857 strands connected. If new-fault truth is line-like, the continuity term can outweigh a single-digit credit penalty; if truth is effectively point-like at 100 m sampling, it cannot. Both readings are recorded before any receipt; |delta| < 0.010 on public chunks is no evidence either way.",
+        "predicted_live_change": "+0.011 DTI (MODEL; bracket -0.001 to +0.071; not a score)",
+        "model_bracket": "first-order bracket -0.0006 to +0.0706 DTI over removed-dot credit c in [0.15, 0.45] and truth pixels in [20000, 100000] (src/mass.predicted_removal_delta); point = recorded shadow point scaled by the matched-count credit ratio. Assumptions, not measurements.",
+        "falsifier": "Paired same-week live receipts decide, with |delta| < 0.010 = no evidence throughout: (i) delta vs R0 <= -0.010 falsifies the dose direction for the protected ranking; (ii) at matched count, shadowcont minus shadow >= +0.010 shows continuity pays beyond credit and the protected ranking replaces the ladder; shadowcont minus shadow <= -0.010 shows the credit term is all there is and protection is abandoned; (iii) if the credit-blind random-40 control beats both ranked arms by >= 0.010, every exclusive-credit ranking in this repo is wrong, not just this one.",
+        "structural_geologist_note": "Map the survivors, not just the deletions. By construction every >= 1 km R0 strand remains a single kernel-continuous trace (gaps <= 600 m); what left is strand-interior redundancy, short < 1 km fragments and isolated dots. Where a surviving strand follows a mappable range-front or a step-over between catalogue traces, the protection did geological work; where it follows a shoreline, a contact or a drainage divide for kilometres, it preserved false mass and a negative receipt should be believed. Check also the deleted short fragments at fault tips: if they systematically sit in 0.3-2.5 km along-strike cones ahead of mapped terminations, the 10-dot floor is mis-set for relay geometry, which is a different (unbuilt) axis."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "shadowcont-drop 40% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "selection_rule": "shadowcont",
+      "dose_pct": 40,
+      "ranking": "ascending exclusive 300 m kernel credit, recomputed after each deletion (src/mass.py), with 6 px articulation + 10-dot strand-floor eligibility (src/continuity.py)",
+      "seed": null,
+      "n_dots": 22592,
+      "pct_changed": 40.001062304137676,
+      "removed_dots": 15062,
+      "added_dots": 0,
+      "moved_dots": 0,
+      "retained_dots": 22592,
+      "sha256": "92be4121610708eb542bf86974836f8df8767ce2148e8ed4dda5dfceeab5811c",
+      "sha256_zeros": "dce335c5b91f4f41c71759ea3f09ffafa31232e52c04cfb6902ec21a4499cea8",
+      "status": "BUILT",
+      "evidence_class": "MODEL (predicted change only)",
+      "predicted_change": "+0.013 DTI (MODEL; bracket -0.003 to +0.092; not a score)",
+      "point_prediction_dti": 0.013,
+      "model_bracket": {
+        "low": -0.0031,
+        "high": 0.0925,
+        "formula_bracket": {
+          "low": -0.0031,
+          "high": 0.0925,
+          "c_bracket": [
+            0.15,
+            0.45
+          ],
+          "truth_px_bracket": [
+            20000,
+            100000
+          ]
+        },
+        "basis": "recorded shadow point scaled by matched-count credit ratio; bracket from the first-order credit term over unobservable c and |G|. Assumptions, not measurements."
+      },
+      "form_note": "h33-h33-2-b2; MASS shadowcont-drop 40% -> 22592 dots, all >=1km strands kept; predicted +0.013 MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121.tif",
+          "sha256": "92be4121610708eb542bf86974836f8df8767ce2148e8ed4dda5dfceeab5811c",
+          "bytes": 299025,
+          "encoding": "nan",
+          "n_dots": 22592,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_new_mass_within_3px": true,
+            "subset_of_R0_no_additions_no_moves": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121-zeros.tif",
+          "sha256": "dce335c5b91f4f41c71759ea3f09ffafa31232e52c04cfb6902ec21a4499cea8",
+          "bytes": 161443,
+          "encoding": "zeros",
+          "n_dots": 22592,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_new_mass_within_3px": true,
+            "subset_of_R0_no_additions_no_moves": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 15062,
+        "added": 0,
+        "moved": 0,
+        "retained_parent": 22592,
+        "symmetric_difference_px": 15062,
+        "pct_changed_of_R0": 40.001062304137676
+      },
+      "removal_statistics": {
+        "exclusive_credit_sum": 99483.16747497758,
+        "exclusive_credit_mean": 6.604910866749275,
+        "exclusive_credit_max": 9.323106852090245,
+        "unconstrained_shadow_credit_sum_same_count": 92598.16184700724,
+        "credit_ratio_vs_shadow": 1.074353588566325,
+        "r0_total_exclusive_credit": 255847.8707714352,
+        "share_of_r0_credit_removed": 0.3888371913161321,
+        "min_catalogue_distance_px_inherited": 2.23606797749979,
+        "sub3px_dots_removed": 493,
+        "sub3px_dots_in_parent": 1611
+      },
+      "spatial_removal": {
+        "block_px": 50,
+        "blocks_with_20plus_dots": 848,
+        "removed_share_mean": 0.4077,
+        "removed_share_p05": 0.25,
+        "removed_share_p95": 0.5556,
+        "removed_share_max": 0.6957,
+        "fraction_blocks_90pct_emptied": 0.0,
+        "fraction_blocks_10pct_or_less": 0.0,
+        "emptied_block_clusters": 0,
+        "largest_emptied_cluster_blocks": 0,
+        "bbox_y": [
+          0,
+          3724
+        ],
+        "bbox_x": [
+          1,
+          3289
+        ],
+        "nominal_dose": 0.4,
+        "passes_region_evenness_gate": true
+      },
+      "structure_report_only": {
+        "parent_strand_report_5px": {
+          "dots": 37654,
+          "link_px": 5.0,
+          "strands": 8605,
+          "strands_ge_10dots": 838,
+          "largest_strand_dots": 228,
+          "mean_nearest_neighbour_px": 3.7351,
+          "median_nearest_neighbour_px": 3.0,
+          "fraction_nn_beyond_kernel": 0.495
+        },
+        "candidate_strand_report_5px": {
+          "dots": 22592,
+          "link_px": 5.0,
+          "strands": 15350,
+          "strands_ge_10dots": 70,
+          "largest_strand_dots": 15,
+          "mean_nearest_neighbour_px": 5.6659,
+          "median_nearest_neighbour_px": 5.099,
+          "fraction_nn_beyond_kernel": 0.8908
+        },
+        "strand_survival_6px": {
+          "protected_strands": 857,
+          "strands_surviving_whole": 857,
+          "min_alive_dots_in_a_strand": 10,
+          "max_alive_pieces_in_a_strand": 1,
+          "alive_dots_in_protected_strands": 13920
+        },
+        "unconstrained_shadow_strand_survival_6px": {
+          "protected_strands": 857,
+          "strands_surviving_whole": 0,
+          "min_alive_dots_in_a_strand": 4,
+          "max_alive_pieces_in_a_strand": 55,
+          "alive_dots_in_protected_strands": 13007
+        },
+        "random40_strand_survival_6px": {
+          "protected_strands": 857,
+          "strands_surviving_whole": 34,
+          "min_alive_dots_in_a_strand": 2,
+          "max_alive_pieces_in_a_strand": 43,
+          "alive_dots_in_protected_strands": 14605
+        },
+        "random40_strand_report_5px_note": "recorded in evidence/mass_high_dose_receipt.json: 136 strands >= 10 dots at 5 px"
+      },
+      "mechanism_card": {
+        "hypothesis": "Deleting the 40% lowest-exclusive-credit dots of R0 under a rule that forbids splitting any >= 1 km kernel-continuous strand keeps the shadow ladder's mass saving while preserving the along-strike coverage line-like truth is paid for, so live DTI should match or beat the unconstrained shadow arm at the same count.",
+        "mechanism": "DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) charges 0.2 per dot but credits T once per truth pixel (max over dots inside the 300 m triangular kernel). The shadow ranking removes dots whose disks neighbours already cover -- but those are disproportionately the interior dots of densely sampled strands, so at 40% it keeps 0 of R0's 838 strands of >= 10 dots at 5 px linking and pushes mean spacing to 6.19 px, beyond the kernel. For line-like truth the brief's own algebra lowers the per-dot bar (a dot pays iff its credit exceeds ~0.2*DTI, less for lines), so a strand sampled every ~5-6 px still covers every truth pixel while paying roughly half the mass of R0's ~2.8-3 px sampling. This arm keeps the identical credit ranking and dose, but a dot inside an R0 strand of >= 10 dots linked at <= 6 px (kernel diameter: linked disks touch) is ineligible while it is an articulation point of the strand or the strand is at its 10-dot floor. All 857 strands survive whole at 6 px; the measured price is +7.4% exclusive credit vs the unconstrained arm at matched count (E=99483 vs 92598).",
+        "non_fault_confounder": "Continuity is geometric, not geological: unfaulted dikes, resistant stratigraphic hogbacks, drainage divides and Lake Lahontan shoreline berms also form >= 1 km corridors in the H19-5 support, and protection preserves their mass with the same force as a real fault's. Conversely the dots protection forces out instead -- short fragments and isolated dots -- may be the sole coverage of short genuine strands (relay tips, step-over splays shorter than 1 km). A negative receipt cannot by itself separate 'strands were non-fault lineaments' from 'short fragments were real'.",
+        "competing_prediction": "The credit model alone ranks this arm strictly below its unconstrained twin: it destroys +7.4% more exclusive credit at the same count, hence the point prediction is scaled down to +0.013 from the shadow arm's +0.014 (both MODEL). The structural reading points the other way: on the legacy 5 px instrument this arm keeps 70 strands of >= 10 dots (unconstrained shadow keeps 0 at 40%, random keeps 136) and on the 6 px kernel-continuity instrument it keeps all 857 strands connected. If new-fault truth is line-like, the continuity term can outweigh a single-digit credit penalty; if truth is effectively point-like at 100 m sampling, it cannot. Both readings are recorded before any receipt; |delta| < 0.010 on public chunks is no evidence either way.",
+        "predicted_live_change": "+0.013 DTI (MODEL; bracket -0.003 to +0.092; not a score)",
+        "model_bracket": "first-order bracket -0.0031 to +0.0925 DTI over removed-dot credit c in [0.15, 0.45] and truth pixels in [20000, 100000] (src/mass.predicted_removal_delta); point = recorded shadow point scaled by the matched-count credit ratio. Assumptions, not measurements.",
+        "falsifier": "Paired same-week live receipts decide, with |delta| < 0.010 = no evidence throughout: (i) delta vs R0 <= -0.010 falsifies the dose direction for the protected ranking; (ii) at matched count, shadowcont minus shadow >= +0.010 shows continuity pays beyond credit and the protected ranking replaces the ladder; shadowcont minus shadow <= -0.010 shows the credit term is all there is and protection is abandoned; (iii) if the credit-blind random-40 control beats both ranked arms by >= 0.010, every exclusive-credit ranking in this repo is wrong, not just this one.",
+        "structural_geologist_note": "Map the survivors, not just the deletions. By construction every >= 1 km R0 strand remains a single kernel-continuous trace (gaps <= 600 m); what left is strand-interior redundancy, short < 1 km fragments and isolated dots. Where a surviving strand follows a mappable range-front or a step-over between catalogue traces, the protection did geological work; where it follows a shoreline, a contact or a drainage divide for kilometres, it preserved false mass and a negative receipt should be believed. Check also the deleted short fragments at fault tips: if they systematically sit in 0.3-2.5 km along-strike cones ahead of mapped terminations, the 10-dot floor is mis-set for relay geometry, which is a different (unbuilt) axis."
+      }
+    }
+  ],
+  "hard_constraint_note": "Brief s4 asks >= 3 px from the catalogue unless AXIS=PRUNE. R0's own minimum is 2.236 px (1,611 dots, IR90-01/IR90-07); these deletion-only variants inherit that collar unchanged (moving it would be a second axis), add no mass at all, and emit zero catalogue mass. The gate enforced is no_new_mass_within_3px + subset_of_R0_no_additions_no_moves, as in every prior MASS session.",
+  "deadline_note": "Deadline 2026-12-03, TOP_PUBLIC and quota state are not re-verified here: automated access to DrivenData is prohibited. The human confirms all three on the competition page before any upload.",
+  "elapsed_s": 32.1,
+  "no_live_submission": true,
+  "agent_did_not_submit": true,
+  "not_committed_to_git": true,
+  "verified_utc": "2026-10-23T23:50:05Z",
+  "verification_git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "self_check": {
+    "variant_files_re_read_and_validated": true,
+    "variant_bytes_reproduced_exactly": true,
+    "r0_rebuilt_byte_identically": true,
+    "no_additions_no_moves": true,
+    "strand_guarantee_rechecked": true,
+    "region_evenness_gate_rechecked": true,
+    "sha256_absent_from_ledger_before_write": true
+  }
+}
