@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+# Competition rasters/data must never enter this PUBLIC repo (brief s4.2).
+data/
+*.tif
+*.tiff
+releases/*.tif
+releases/*.tiff
+!releases/.gitkeep

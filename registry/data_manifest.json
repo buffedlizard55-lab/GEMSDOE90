@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "note": "Every input must be pinned here with a sha256 BEFORE any build (brief s4.2). The agent may not fetch drivendata.org or dropbox.com; the human downloads from their own registered account and drops files under data/ (gitignored), then fills sha256 via: .venv/bin/python -m src.manifest --fill",
+  "files": {
+    "sample_submission": {
+      "path": "data/sample_submission.tif",
+      "sha256": null,
+      "status": "MISSING",
+      "required_for": "format gate (CRS/shape/transform/dtype/footprint) and output profile"
+    },
+    "r0_raster": {
+      "path": "data/h33-h33-2-b2.tif",
+      "sha256": null,
+      "status": "MISSING",
+      "required_for": "parent R0 (GEMSDOE32). Its recorded sha256 is the rebuild target; never approximate the parent."
+    },
+    "catalogue_raster": {
+      "path": "data/catalogue_labels.tif",
+      "sha256": null,
+      "status": "MISSING",
+      "required_for": "USGS/INGENIOUS known-fault pixels (training labels): distance field + zero-mass gate"
+    },
+    "preprune_dots": {
+      "path": "data/preprune_dots.tif",
+      "sha256": null,
+      "status": "MISSING",
+      "required_for": "dot set BEFORE the <=2px prune that produced R0 (solo-d28 lineage). PRUNE dose-response and R0 rebuild check are impossible without it."
+    },
+    "ranked_candidates": {
+      "path": "data/ranked_candidates.csv",
+      "sha256": null,
+      "status": "MISSING",
+      "required_for": "refill / drop-lowest ranking. CSV columns: row,col,rank (rank 1 = best). Must rank every preprune dot AND the next-best candidate dots beyond that set (from the parent field/recipe)."
+    },
+    "metric_code": {
+      "path": "data/metric_code.py",
+      "sha256": null,
+      "status": "MISSING",
+      "required_for": "official DTI code if the human can supply it; until then src/dti.py is an UNVERIFIED implementation of the brief's algebra only."
+    }
+  }
+}
