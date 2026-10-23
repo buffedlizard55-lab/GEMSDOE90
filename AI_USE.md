@@ -78,3 +78,20 @@ AI authored `scripts/build_mass_variants.py`, the three MASS rungs (`drop5pct-ta
 
 - **What AI wrote and executed:** Selected `AXIS=RELIEF` per the prompt instruction not to prompt the human over axis choice; audited the 19 `training_features.tif` bands; authored `src/relief.py`, `scripts/build_relief_variants.py`, and `tests/test_relief.py`; extended `scripts/restore_releases.py` and `tests/test_r0_variants.py` so both the prior `PRUNE` candidates and the 3 new fixed-count `RELIEF` candidates (`RELIEFr2p12p5pct`, `RELIEFr2b10pct`, `RELIEFp2r15pct`) are reproducibly verified; ran all 26 SHA-256 input checks, byte-identical R0 rebuild (`c55bafc4…` / `baeae321…`), `d2.8` and `d1.5` 0-pixel-diff thinning checks, disk re-read format validation (`src/validate.py`), report-only diagnostics (19-band + `relief_idx` leakage canary, 20×20 km spatial-block catalogue hide-and-recover `PROXY`, and off-catalogue SGMC `PROXY`), and updated `ledger/submissions.csv`, `ledger/experiment_reservations.json`, `ledger/mechanism_cards.json`, `evidence/relief_build_receipt.json`, `evidence/releases_restore_receipt.json`, `README.md` (`CURRENT STATE` block only), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/MECHANISM_CARDS.md`, and `IRREGULARITIES.md`.
 - **What the human decided / must decide:** The human defined the competition brief, parent `h33-h33-2-b2`, constraints, and allowed axes. Before any upload, the human must verify competition data-use terms, confirm the official deadline and entity slot count, supply dated `TOP_PUBLIC` and portal score receipts (for R0 and any uploaded file), review removed/added fault corridors geologically, and choose which single file (if any) to upload from their registered account.
+
+## Update 2026-10-23e (MASS add-direction session, branch `arena/c3061751-gemsdoe90`)
+
+AI re-verified 26/26 pinned inputs and rebuilt R0 byte-identically, then authored `src/reach.py`,
+`tests/test_reach.py`, `scripts/build_mass_infill.py`, the three `MASSadd*pctq50` candidates, the receipt
+`evidence/mass_infill_receipt.json`, the cards `ledger/mechanism_cards_mass_infill.json`, the ledger rows, the
+reservation block and the documentation edits. AI chose the axis (MASS) **and the direction (add)** after finding
+that the deletion side is fully instrumented (10/20/30/40/48 % + random control) while every recorded add rung is
+FIFO-ranked and region-isolated. AI set the adopted predictions (+0.008 / +0.014 / +0.022 MODEL) by discounting the
+first-order model's raw output by 0.10 and documented why (the model assumes the truth set is an unbiased sample of
+the H19-5 support; it is not). AI did not contact DrivenData or Dropbox, did not read the leaderboard, did not log
+in, and did not submit. R0's 0.2778 remains a CLAIM.
+
+**What the human must decide:** whether to spend a slot on the add direction before the drop direction has any
+receipt; whether the block-quota evenness convention is acceptable as "not a patterned file"; and, if a slot is
+spent, which dose. **What the human must supply:** `TOP_PUBLIC` with date, quota used/remaining, deadline
+confirmation, R0's portal receipt, and a check that the chosen SHA-256 has never been uploaded.
