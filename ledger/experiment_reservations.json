@@ -218,5 +218,37 @@
       "tag=p2r15pct; shift 15% R0 mass (5648 dots) piedmont->range_front; fixed count 37654; added d_cat>=3px"
     ],
     "note": "Checked against ledger/submissions.csv (0 prior RELIEF rows). Repeat builds of these (RELIEF, value) pairs fail closed."
+  },
+  "mass_dose_ladder_20261023": {
+    "checked_utc": "2026-10-23",
+    "scope": "Session arena/307b04fc-gemsdoe90: MASS dose-ladder rungs on the parent's own recorded FIFO-BFS ranking. Cross-session values checked against sibling ledgers GEMSDOE84-92 (api.github.com, 2026-10-23; GEMSDOE93-101 have no ledger file) and, after merging main, against this repository's shadow/random ladder.",
+    "occupied_values_before_build": [
+      "+10pct",
+      "-10pct",
+      "-20pct",
+      "m10e",
+      "m10u",
+      "p10",
+      "m10minus",
+      "m10plus",
+      "m20minus",
+      "minus10pct",
+      "plus10pct",
+      "MASS_D10",
+      "MASS_A10",
+      "MASS_SWAP10"
+    ],
+    "selected_values": [
+      "drop5pct-tail",
+      "add5pct-next",
+      "add20pct-next"
+    ],
+    "final_status": "All three built, then WITHDRAWN before submission (IR90-20): the parent's global FIFO-BFS rank is geographic, so rank-tail drops are region-isolated deletions (5% dose: 81-block 2025 km2 SE hole; fails the region-evenness gate of scripts/build_mass_high_dose.py) and rank-head adds are patterned northern-strip files (+5%: all cells y<=101; +20%: y<=288). Rows kept as occupancy guards; rasters moved to .cache/region_probes/; do not upload.",
+    "rejected_pairs": {
+      "drop5pct-tail": "region-isolated FIFO tail (IR90-20)",
+      "add5pct-next": "patterned FIFO head (IR90-20)",
+      "add20pct-next": "patterned FIFO head (IR90-20)"
+    },
+    "interpretation": "Any future FIFO-ranked dose rung must pass the region-evenness gate before it is emitted to releases/; a region-even replacement (per-5km-block local rank quotas) is proposed in SLOT_PLAN.md and was not built this session."
   }
 }

@@ -156,6 +156,17 @@ correlated −0.87 to +0.54 with live scores (n = 12–14 files) in the ledger, 
 ±0.01 question. The leakage canary is not applicable to the MASS ladder: its ranking uses no feature
 band and no label — only the parent's own dot coordinates.
 
+# Mechanism cards — AXIS=MASS, FIFO-ranked dose rungs (2026-10-23d) — WITHDRAWN before submission
+
+**Status: all three candidates withdrawn (IR90-20).** They were built from exact R0 on the parent's own recorded ranking (H19-5 8-connected FIFO-BFS traversal, pixel-exact reproduction in `evidence/r0_rebuild_receipt.json`) and passed every §6 gate (format, zero catalogue mass, fresh hashes, parent-diff, re-read + byte re-emit). Post-merge they were measured against the region-evenness gate (Hard Constraint #5) and failed: the global FIFO rank is geographic, so a rank-tail drop deletes one SE corner and rank-head adds land in northern strips. The cards remain as the record of the hypothesis that was tested and the diagnostics that falsified it *before* any slot was spent. Predictions below are **MODEL** records, not promotions; the rasters live in `.cache/region_probes/`, not `releases/`.
+
+| Candidate | Hypothesis / mechanism | Non-fault confounder | Predicted live change (MODEL, record) | Outcome |
+|---|---|---|---|---|
+| MASS drop5pct-tail (`ce48329b`, n=35,771) | Traversal-tail dots (visit ranks 114,510–121,128) still carry unique kernel credit on short late-visited strands, so removing 1,883 of them lowers DTI slightly. Dropping saves 0.2(S−M) per dot but deletes max-kernel credit where the dot was the best coverer. | FIFO-BFS order is a raster convention, not geological confidence; tail dots are late components and far ends, where drainage divides and lithologic contacts mimic fault strands. Report-only PROXYs leaned negative (catalogue Δ−0.0003; SGMC Δ−0.008). | −0.002 (−0.010…+0.003) | **WITHDRAWN:** region-isolated deletion — 3.89 % of 20+-dot blocks ≥90 % emptied, p05 block share 0.0, largest contiguous hole 81 blocks (2,025 km²); fails the gate on all three clauses. |
+| MASS add5pct-next (`46f0886b`, n=39,537) | The next-ranked cells suppressed by the parent's 2.8 px thinning are kernel-redundant (99.5 % sit <2.8 px from an existing dot, median 1.0 px), so their max-operator credit is largely pre-claimed while each grows S. | Dense ridge corridors populate suppressed cells; damage-zone width is the opposing confounder (real strand pairs inside the 300 m kernel). PROXYs ≈0, split signs. | −0.002 (−0.009…+0.005) | **WITHDRAWN:** patterned file — all 1,883 added cells lie in grid rows y≤101 (northern strip). |
+| MASS add20pct-next (`63954e89`, n=45,185) | Same redundancy mechanism at 4× dose; the second tranche is strictly worse-ranked, so the penalty grows faster than any coverage gain. | Same as add5; at 45,185 dots the file also exits the ledger's 37–44k band. | −0.008 (−0.020…+0.004) | **WITHDRAWN:** patterned file — all 7,531 cells lie in rows y≤288. |
+
+What survives for the entity: the measurement that **any** global-FIFO dose edit is geographic (this also indicts the sibling `MASS ±10%`/`plus10pct` FIFO-family candidates as submission hazards), the catalogue hide-and-recover and SGMC control PROXY tables in `evidence/mass_dose_ladder_receipt.json` (n = 60,988 / 79,615 withheld positives, 64-px paired tile bootstrap, seed 20261023 — REPORT ONLY, never scores), and the proposed region-even add rung in `SLOT_PLAN.md`.
 ---
 
 ## Session 2026-10-23d: `AXIS=RELIEF` (2026-10-23, `evidence/relief_build_receipt.json`)
