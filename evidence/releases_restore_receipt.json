@@ -3,8 +3,8 @@
   "note": "Local, gitignored candidate rasters re-emitted from pinned inputs. This is a reproduction of already-recorded (PRUNE, value) and (RELIEF, value) pairs, not a new experiment. Each file must equal the SHA-256 recorded in its build receipt and ledger/submissions.csv.",
   "prune_generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615",
   "relief_generator_script_sha256": "4a1ccfe3d0c9e946e9388a502d2fda244080b24b9e0345a3068048f0a35cb3b1",
-  "restore_script_sha256": "881fe61450689471256ec9200abcc158c2de497afbddffaead971600cdddca55",
-  "git_sha": "e7452e6792ae4db50527a02529e8bd936e65f0f7",
+  "restore_script_sha256": "c35e82e7d94ac53cfb79c4280551a247ca4a7a0e81bb0732c8c9bcc3e1d43ae7",
+  "git_sha": "04e6374a4c3b3bf9de1e41b4a90d477170b62aa1",
   "parent": {
     "id": "h33-h33-2-b2",
     "r0_dots": 37654,

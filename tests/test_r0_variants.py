@@ -60,15 +60,18 @@ def test_submission_notes_are_under_140_chars() -> None:
 def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
     import csv
 
-    receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
+    # The PRUNE axis now has two receipts: the isotropic collar rungs and the strike-aligned
+    # (anisotropic) collar family. The MASS ladder has its own receipt and its own test.
+    receipts = [json.loads((ROOT / "evidence" / "build_receipt.json").read_text())]
+    aniso_receipt = ROOT / "evidence" / "build_aniso_receipt.json"
+    if aniso_receipt.exists():
+        receipts.append(json.loads(aniso_receipt.read_text()))
+    variants = [v for receipt in receipts for v in receipt["variants"]]
     with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
-        built = {
-            row["id"]: row
-            for row in csv.DictReader(fh)
-            if row["status"] == "BUILT" and row["axis"] == "PRUNE"
-        }
-    assert set(built) == {v["id"] for v in receipt["variants"]}
-    for v in receipt["variants"]:
+        built = {row["id"]: row for row in csv.DictReader(fh)
+                 if row["status"] == "BUILT" and (row.get("axis") or "").upper() == "PRUNE"}
+    assert set(built) == {v["id"] for v in variants}
+    for v in variants:
         row = built[v["id"]]
         assert row["sha256"] == v["files"]["nan"]["sha256"]
         assert row["sha256_zeros"] == v["files"]["zeros"]["sha256"]

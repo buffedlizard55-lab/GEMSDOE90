@@ -49,7 +49,7 @@ def main() -> int:
     relief_receipt = json.loads(RELIEF_RECEIPT.read_text(encoding="utf-8"))
     expected_ledger = ledger_hashes()
     recorded_ids = {v["id"] for v in prune_receipt["variants"]} | {v["id"] for v in relief_receipt["variants"]}
-    if set(expected_ledger) != recorded_ids:
+    if not recorded_ids.issubset(expected_ledger):
         raise SystemExit("STOP: ledger BUILT rows and build receipts disagree")
 
     build.verify_manifest_inputs()  # rechecks all 26 pins, aborts on any mismatch
