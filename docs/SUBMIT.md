@@ -12,7 +12,7 @@ Parent for everything here: `h33-h33-2-b2` (R0), 37,654 unit-mass dots, CLAIM 0.
 
 `…-MASSdrop5pct-tail-20261023-ce48329b`, `…-MASSadd5pct-next-20261023-46f0886b`, `…-MASSadd20pct-next-20261023-63954e89`
 (35,771 / 39,537 / 45,185 dots) passed every §6 format gate but are **withdrawn under Hard Constraint #5**
-(IR90-18): the drop deletes an 81-block SE hole and both adds land in northern grid strips. Ledger status
+(IR90-20): the drop deletes an 81-block SE hole and both adds land in northern grid strips. Ledger status
 `WITHDRAWN`; rasters are in `.cache/region_probes/` (out of `releases/`); their `-zeros` twins likewise.
 Receipt (predictions kept as record only): `evidence/mass_dose_ladder_receipt.json`. Do not submit, do not
 slot; a region-even replacement rung is proposed in `SLOT_PLAN.md`.

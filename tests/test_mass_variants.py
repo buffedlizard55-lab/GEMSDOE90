@@ -74,8 +74,8 @@ def test_ledger_append_preserved_prior_rows_and_gate_fields() -> None:
     assert len(mass) == 3
     shas = {r["sha256"] for r in rows if r["sha256"]}
     for r in mass:
-        assert r["status"] == "WITHDRAWN"  # Hard Constraint #5 / IR90-18: region-isolated or patterned
-        assert "IR90-18" in r["notes"] and "do not upload" in r["notes"]
+        assert r["status"] == "WITHDRAWN"  # Hard Constraint #5 / IR90-20: region-isolated or patterned
+        assert "IR90-20" in r["notes"] and "do not upload" in r["notes"]
         assert r["parent"] == "h33-h33-2-b2"
         assert r["receipt"] == "N" and r["receipt_score"] == ""
         assert re.fullmatch(r"[0-9a-f]{64}", r["sha256"])

@@ -30,7 +30,7 @@
 
 Three dose-ladder rungs on the parent's own recorded ranking (`drop5pct-tail`, `add5pct-next`, `add20pct-next`;
 receipt `evidence/mass_dose_ladder_receipt.json`) were built from exact R0 and **withdrawn before submission**
-(Hard Constraint #5, IR90-18): the global FIFO-BFS rank is geographic — the 5 % tail drop empties an 81-block
+(Hard Constraint #5, IR90-20): the global FIFO-BFS rank is geographic — the 5 % tail drop empties an 81-block
 (2,025 km²) SE hole and fails the region-evenness gate on all three clauses, and both add rungs place every cell
 in northern grid strips (y≤101 / y≤288). Rows are kept WITHDRAWN as occupancy guards; rasters are out of
 `releases/`. The ordered plan above is unchanged and remains the next three slots. Do not submit any

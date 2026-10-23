@@ -243,11 +243,11 @@
       "add5pct-next",
       "add20pct-next"
     ],
-    "final_status": "All three built, then WITHDRAWN before submission (IR90-18): the parent's global FIFO-BFS rank is geographic, so rank-tail drops are region-isolated deletions (5% dose: 81-block 2025 km2 SE hole; fails the region-evenness gate of scripts/build_mass_high_dose.py) and rank-head adds are patterned northern-strip files (+5%: all cells y<=101; +20%: y<=288). Rows kept as occupancy guards; rasters moved to .cache/region_probes/; do not upload.",
+    "final_status": "All three built, then WITHDRAWN before submission (IR90-20): the parent's global FIFO-BFS rank is geographic, so rank-tail drops are region-isolated deletions (5% dose: 81-block 2025 km2 SE hole; fails the region-evenness gate of scripts/build_mass_high_dose.py) and rank-head adds are patterned northern-strip files (+5%: all cells y<=101; +20%: y<=288). Rows kept as occupancy guards; rasters moved to .cache/region_probes/; do not upload.",
     "rejected_pairs": {
-      "drop5pct-tail": "region-isolated FIFO tail (IR90-18)",
-      "add5pct-next": "patterned FIFO head (IR90-18)",
-      "add20pct-next": "patterned FIFO head (IR90-18)"
+      "drop5pct-tail": "region-isolated FIFO tail (IR90-20)",
+      "add5pct-next": "patterned FIFO head (IR90-20)",
+      "add20pct-next": "patterned FIFO head (IR90-20)"
     },
     "interpretation": "Any future FIFO-ranked dose rung must pass the region-evenness gate before it is emitted to releases/; a region-even replacement (per-5km-block local rank quotas) is proposed in SLOT_PLAN.md and was not built this session."
   }

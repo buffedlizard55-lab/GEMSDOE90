@@ -644,7 +644,7 @@
   },
   "region_reports": {
     "gate_source": "scripts/build_mass_high_dose.py::region_evenness_gate (merged from origin/main 2026-10-23)",
-    "hard_constraint": "Brief s4 #5: no region-isolated or patterned files; interpreted per IR90-15/IR90-18",
+    "hard_constraint": "Brief s4 #5: no region-isolated or patterned files; interpreted per IR90-15/IR90-20",
     "drop5pct-tail": {
       "statistic": "per-5km-block removal share (blocks >=20 R0 dots)",
       "blocks_with_20plus_dots": 848,
@@ -736,7 +736,7 @@
   },
   "withdrawal": {
     "withdrawn_utc": "2026-10-23",
-    "status": "WITHDRAWN before submission (Hard Constraint #5 / IR90-18)",
+    "status": "WITHDRAWN before submission (Hard Constraint #5 / IR90-20)",
     "variants": [
       "h33-h33-2-b2-MASSdrop5pct-tail-20261023-ce48329b",
       "h33-h33-2-b2-MASSadd5pct-next-20261023-46f0886b",
