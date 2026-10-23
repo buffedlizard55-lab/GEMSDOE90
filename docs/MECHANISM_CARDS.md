@@ -200,12 +200,58 @@ What survives for the entity: the measurement that **any** global-FIFO dose edit
 
 ---
 
+## Session 2026-10-23f — AXIS = MASS, direction = ADD (region-even block budget, placement contrast)
+
+**Shared hypothesis (structural geologist's version).** R0's field was thinned to 37,654 unit-mass dots at the
+lineage's own 2.8 px spacing and then collared at 2 px from mapped traces. If that thinning went past the mass
+optimum, then *adding* unit dots back onto the same corroborated ridge network — following the parent's own regional
+mix, never inside the 3 px collar — should recover new-fault credit that is worth more than the 0.2 each dot costs in
+the denominator. The opposite is equally tellable: if the ridge network is saturated, the added dots earn almost
+nothing and the file loses by exactly the mass penalty.
+
+**Mechanism (why the sign is knowable at all).** With `DTI = T/(0.2T + 0.2(S−M) + 0.8|G|)`, one added dot moves the
+score by `dDTI = [E(D − 0.2T) − 0.2T(1 − c)]/D²`: it pays iff its exclusive truth credit `E` exceeds ≈ 0.056 at the
+claimed 0.2778. `T` is a **max** over dots, so an addition can never remove credit — the failure mode is bounded by
+the mass penalty alone. That asymmetry is the reason an ADD rung is worth a slot: every deletion rung risks a
+credit loss as well as a mass saving.
+
+**Placement (the only things that differ between the two live files).** Eligibility: H19-5 support, in footprint, not
+catalogue, Euclidean `d_cat ≥ 3.0 px`, unoccupied. Quota per 5 km block is proportional to that block's own R0 count,
+capped at +50 %, zero where R0 has no dots. `blocknext` takes the parent's own FIFO-ranked suppressed cells inside
+each quota; `gapmax` takes the cells with the largest remaining `R = 3 px` kernel credit (global coverage updated after
+every pick, so neighbouring blocks see each other). Nothing else changes: 0 dots removed, no moves, no collar edit.
+
+| Variant | Dots | Change | Mean marginal support credit / dot | Predicted (MODEL) | Non-fault confounder | Falsifier |
+|---|---|---|---|---|---|---|
+| ~~`…add10pctGapmax-…98408334`~~ **WITHDRAWN** | 41,419 | +3,765 (10.0 %) | 1.013 | *withdrawn (IR90-24)*: same eligible pool, ranking and quotas as the merged `MASSadd10pctq50`, so it is one experiment expressed twice. | — | — |
+| `…add10pctBlocknext-…89d16c16` | 41,419 | +3,765 (10.0 %) | 0.486 | **+0.0044** (+0.0003 … +0.0107) | Same, plus: the FIFO-ranked suppressed cells sit 1–2.8 px from existing dots, so most of their kernel is already covered — this arm tests the brief's literal recipe, not the best placement. | `Δ ≤ −0.010` while gapmax is positive would mean the "next-ranked" recipe is actively harmful and should be dropped from the brief's defaults. |
+| `…add20pctBlocknext-…260d987e` | 45,185 | +7,531 (20.0 %) | 0.464 | **+0.0084** (+0.0005 … +0.0205) | Same; the deeper dose also pushes into the second ring around each existing dot, where kernel room is thinner. | A null here while the 10 % arm is ≥ +0.010 would mean the add gradient saturates before +20 %. |
+
+**Prediction decomposition.** The point prediction uses support precision 0.20 (the value implied by
+`T ≈ 16.6 k` over 121,131 support px at `mean k ≈ 0.7`) and the point parent fit `(G, M/S) = (65,000, 0.44)`. The
+bracket is the min/max over `G ∈ {60,988, 65,000, 90,000} × M/S ∈ {0.20, 0.44, 0.60} × precision ∈ {0.10, 0.20, 0.35}`;
+it spans zero for both blocknext arms and stays positive for gapmax. The whole spread is worth ~±0.010 — the same
+size as the session's no-evidence band, which is stated openly rather than hidden.
+
+**Region-evenness evidence (Hard Constraint #5).** 5 km blocks: p05 / median / p95 addition share 0.087 / 0.100 / 0.115
+at the 10 % dose, max 0.12; 0 of 848 blocks holding ≥ 20 R0 dots receive nothing; 1,499 blocks receive additions;
+added centroid within 30 px of the parent's. All six files: format gate PASS, zero catalogue mass, min added
+`d_cat = 3.0 px` exactly, 0 added dots below 3 px, inherited R0 collar unchanged (IR90-18).
+
+**Report-only.** SGMC off-catalogue fault coverage rises +39.2 / +73.1 / +53.0 credit units (R0 baseline in
+`evidence/mass_add_receipt.json`) — consistent with the additions landing on independently mapped structure, but SGMC
+over-represents exposed bedrock and standalone SGMC scored 0.0512 CLAIM. Catalogue hide-and-recover is analytically
+zero for this axis (every addition is ≥ 3 px away from every catalogue pixel with a 3 px kernel): a blind spot, not a
+pass. No PROXY ranks these files.
+
+---
+
 ## Session 2026-10-23 (continuity): `AXIS=MASS`, value family = continuity-aware shadow drop (`evidence/mass_continuity_receipt.json`)
 
-**Shared design (written for a structural geologist):** Identical ranking, doses and parent as the recorded shadow ladder — ascending exclusive 300 m kernel credit, deletion-only strict subsets of R0 at exactly 7,531 / 11,296 / 15,062 removals — plus one eligibility rule. In the graph linking R0 dots ≤ 6 px apart (kernel diameter: linked dots' 300 m disks touch or overlap), the 857 components with ≥ 10 dots are treated as ≥ 1 km strands. A strand dot may not be removed while it is an articulation point of its strand (removal would split the trace) nor once its strand is down to 10 dots. Every strand therefore survives as one kernel-continuous trace, where unconstrained shadow-40 keeps 0/857 strands whole at 6 px (0/838 at the legacy 5 px instrument) and random-40 keeps 136 at 5 px. The measured price is small: +2.7% / +5.8% / +7.4% exclusive credit destroyed vs shadow at matched count, and shadowcont-40 (E = 99,483) still destroys less credit than the credit-blind random-40 control (E = 102,441). Right instrument, honest limit: at 5 px linking the 40% arm still reads only 70 strands ≥ 10 dots, because protection permits 5–6 px along-strand gaps that preserve kernel coverage but break the tighter 5 px chain. Axis choice: fresh sibling audit (IR90-21) found all seven axes built with zero receipts and every brief-literal CONCENTRATION-up arm ≤ 0 on GEMSDOE86's SGMC MODEL; this is the unbuilt `CONTINUITY_AWARE_DOSE` rung this repo's `SLOT_PLAN.md` proposed.
+**Shared design (written for a structural geologist):** Identical ranking, doses and parent as the recorded shadow ladder — ascending exclusive 300 m kernel credit, deletion-only strict subsets of R0 at exactly 7,531 / 11,296 / 15,062 removals — plus one eligibility rule. In the graph linking R0 dots ≤ 6 px apart (kernel diameter: linked dots' 300 m disks touch or overlap), the 857 components with ≥ 10 dots are treated as ≥ 1 km strands. A strand dot may not be removed while it is an articulation point of its strand (removal would split the trace) nor once its strand is down to 10 dots. Every strand therefore survives as one kernel-continuous trace, where unconstrained shadow-40 keeps 0/857 strands whole at 6 px (0/838 at the legacy 5 px instrument) and random-40 keeps 136 at 5 px. The measured price is small: +2.7% / +5.8% / +7.4% exclusive credit destroyed vs shadow at matched count, and shadowcont-40 (E = 99,483) still destroys less credit than the credit-blind random-40 control (E = 102,441). Right instrument, honest limit: at 5 px linking the 40% arm still reads only 70 strands ≥ 10 dots, because protection permits 5–6 px along-strand gaps that preserve kernel coverage but break the tighter 5 px chain. Axis choice: fresh sibling audit (IR90-26; convergent in-repo measurement IR90-25) found all seven axes built with zero receipts and every brief-literal CONCENTRATION-up arm ≤ 0 on GEMSDOE86's SGMC MODEL; this is the unbuilt `CONTINUITY_AWARE_DOSE` rung this repo's `SLOT_PLAN.md` proposed.
 
 ### 1. `h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba` (drop 20% = 7,531 dots → 30,123; 20.0005% changed)
-- **Hypothesis:** At the ladder's Slot-2 dose, strand protection is nearly free (+2.7% credit) and keeps every ≥ 1 km trace kernel-continuous (6 px survival 857/857 vs 234/857 unconstrained; 5 px strands ≥10: 196 vs R0's 838, mean NN 4.49 px), so live DTI should match the shadow arm's mass saving without its structural cost.
+- **Hypothesis:** At the ladder's 20% dose, strand protection is nearly free (+2.7% credit) and keeps every ≥ 1 km trace kernel-continuous (6 px survival 857/857 vs 234/857 unconstrained; 5 px strands ≥10: 196 vs R0's 838, mean NN 4.49 px), so live DTI should match the shadow arm's mass saving without its structural cost.
 - **Mechanism:** DTI charges 0.2 per dot but credits T once per truth pixel; R0 samples strands every ~2.8–3 px where ~5–6 px sampling still covers line-like truth (the per-dot bar falls for lines, brief §2). Protection thins strand interiors toward that spacing instead of letting the greedy sever strands at their most shadowed — densest — stretches.
 - **Non-fault process that could mimic it:** ≥ 1 km unfaulted corridors — dikes, hogbacks, drainage divides, Lake Lahontan shoreline berms — are protected with the same force as faults; deleted short fragments may be genuine < 1 km relay tips and step-over splays.
 - **Predicted live change (`MODEL`):** **+0.009 DTI** (point +0.0088; formula bracket +0.001 to +0.048; not a score). The credit model alone ranks it a hair below shadow-20 (+0.009); the continuity term is the unquantified upside.

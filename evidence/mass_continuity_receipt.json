@@ -924,8 +924,8 @@
   "no_live_submission": true,
   "agent_did_not_submit": true,
   "not_committed_to_git": true,
-  "verified_utc": "2026-10-23T23:50:05Z",
-  "verification_git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "verified_utc": "2026-10-23T23:58:11Z",
+  "verification_git_sha": "3c6604212a7f7a860ff74a2174db0c4d9c9541ef",
   "self_check": {
     "variant_files_re_read_and_validated": true,
     "variant_bytes_reproduced_exactly": true,

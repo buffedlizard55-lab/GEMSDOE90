@@ -139,5 +139,52 @@
         }
       }
     ]
+  },
+  "mass_add": {
+    "session": "2026-10-23e",
+    "axis": "MASS",
+    "direction": "ADD",
+    "parent": "h33-h33-2-b2",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16",
+        "tag": "add10pctBlocknext",
+        "value": "tag=add10pctBlocknext; add 3765 dots (+9.999% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "R0 is under-massed, not over-massed, at the margin: 3765 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+          "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the parent's own thinning rank (the cells its d2.8 recipe suppressed, earliest visit first) inside a per-block quota.",
+          "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+          "predicted_live_change": "+0.0044 DTI point (MODEL; bracket +0.0003 to +0.0107; not a score)",
+          "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+          "structural_geologist_note": "Additions are 10.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.087, max 0.120). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e",
+        "tag": "add20pctBlocknext",
+        "value": "tag=add20pctBlocknext; add 7531 dots (+20% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "R0 is under-massed, not over-massed, at the margin: 7531 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+          "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the parent's own thinning rank (the cells its d2.8 recipe suppressed, earliest visit first) inside a per-block quota.",
+          "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+          "predicted_live_change": "+0.0084 DTI point (MODEL; bracket +0.0005 to +0.0205; not a score)",
+          "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+          "structural_geologist_note": "Additions are 20.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.185, max 0.217). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-MASSadd10pctGapmax-20261023-98408334",
+        "tag": "add10pctGapmax",
+        "value": "tag=add10pctGapmax; add 3765 dots (+9.999% of R0) on H19-5; max marginal R=3px kernel credit per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "R0 is under-massed, not over-massed, at the margin: 3765 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+          "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the cells with the largest remaining R=3 px kernel credit inside a per-block quota.",
+          "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+          "predicted_live_change": "+0.0107 DTI point (MODEL; bracket +0.0026 to +0.0226; not a score)",
+          "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+          "structural_geologist_note": "Additions are 10.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.087, max 0.120). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+        }
+      }
+    ]
   }
 }
