@@ -243,3 +243,32 @@ added centroid within 30 px of the parent's. All six files: format gate PASS, ze
 over-represents exposed bedrock and standalone SGMC scored 0.0512 CLAIM. Catalogue hide-and-recover is analytically
 zero for this axis (every addition is ≥ 3 px away from every catalogue pixel with a 3 px kernel): a blind spot, not a
 pass. No PROXY ranks these files.
+
+---
+
+## Session 2026-10-23 (continuity): `AXIS=MASS`, value family = continuity-aware shadow drop (`evidence/mass_continuity_receipt.json`)
+
+**Shared design (written for a structural geologist):** Identical ranking, doses and parent as the recorded shadow ladder — ascending exclusive 300 m kernel credit, deletion-only strict subsets of R0 at exactly 7,531 / 11,296 / 15,062 removals — plus one eligibility rule. In the graph linking R0 dots ≤ 6 px apart (kernel diameter: linked dots' 300 m disks touch or overlap), the 857 components with ≥ 10 dots are treated as ≥ 1 km strands. A strand dot may not be removed while it is an articulation point of its strand (removal would split the trace) nor once its strand is down to 10 dots. Every strand therefore survives as one kernel-continuous trace, where unconstrained shadow-40 keeps 0/857 strands whole at 6 px (0/838 at the legacy 5 px instrument) and random-40 keeps 136 at 5 px. The measured price is small: +2.7% / +5.8% / +7.4% exclusive credit destroyed vs shadow at matched count, and shadowcont-40 (E = 99,483) still destroys less credit than the credit-blind random-40 control (E = 102,441). Right instrument, honest limit: at 5 px linking the 40% arm still reads only 70 strands ≥ 10 dots, because protection permits 5–6 px along-strand gaps that preserve kernel coverage but break the tighter 5 px chain. Axis choice: fresh sibling audit (IR90-26; convergent in-repo measurement IR90-25) found all seven axes built with zero receipts and every brief-literal CONCENTRATION-up arm ≤ 0 on GEMSDOE86's SGMC MODEL; this is the unbuilt `CONTINUITY_AWARE_DOSE` rung this repo's `SLOT_PLAN.md` proposed.
+
+### 1. `h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba` (drop 20% = 7,531 dots → 30,123; 20.0005% changed)
+- **Hypothesis:** At the ladder's 20% dose, strand protection is nearly free (+2.7% credit) and keeps every ≥ 1 km trace kernel-continuous (6 px survival 857/857 vs 234/857 unconstrained; 5 px strands ≥10: 196 vs R0's 838, mean NN 4.49 px), so live DTI should match the shadow arm's mass saving without its structural cost.
+- **Mechanism:** DTI charges 0.2 per dot but credits T once per truth pixel; R0 samples strands every ~2.8–3 px where ~5–6 px sampling still covers line-like truth (the per-dot bar falls for lines, brief §2). Protection thins strand interiors toward that spacing instead of letting the greedy sever strands at their most shadowed — densest — stretches.
+- **Non-fault process that could mimic it:** ≥ 1 km unfaulted corridors — dikes, hogbacks, drainage divides, Lake Lahontan shoreline berms — are protected with the same force as faults; deleted short fragments may be genuine < 1 km relay tips and step-over splays.
+- **Predicted live change (`MODEL`):** **+0.009 DTI** (point +0.0088; formula bracket +0.001 to +0.048; not a score). The credit model alone ranks it a hair below shadow-20 (+0.009); the continuity term is the unquantified upside.
+- **Falsifier:** Paired receipts, |Δ| < 0.010 = no evidence: Δ vs R0 ≤ −0.010 falsifies the dose direction; shadowcont−shadow ≤ −0.010 at matched count abandons protection; ≥ +0.010 adopts it as the ladder ranking.
+
+### 2. `h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee` (drop 30% = 11,296 dots → 26,358; 29.9995% changed)
+- **Hypothesis:** The protected dose-response keeps rising to 30% (+5.8% credit price; 6 px survival 857/857 vs 26/857 unconstrained; 5 px strands ≥10: 105, mean NN 5.16 px).
+- **Mechanism:** As above; at this dose the unconstrained greedy has already fragmented 97% of strands at 6 px, so the pair isolates continuity at mid-dose.
+- **Non-fault process that could mimic it:** As above, stronger: strand interiors approach the 10-dot floor on short strands, so protection increasingly preserves whatever geometry R0 happened to draw, fault or not.
+- **Predicted live change (`MODEL`):** **+0.011 DTI** (point +0.0113; bracket −0.001 to +0.071; not a score), vs shadow-30's recorded +0.012.
+- **Falsifier:** As above, read against shadow-30 and R0 at matched count.
+
+### 3. `h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121` (drop 40% = 15,062 dots → 22,592; 40.0011% changed)
+- **Hypothesis:** At the dose where the strand-destruction finding was measured, protection is the difference between a point cloud (shadow-40: 0 strands whole, mean NN 6.19 px, 100% of dots beyond kernel reach of a neighbour) and a thinned trace set (857/857 whole at 6 px, 70 at 5 px, mean NN 5.67 px) at only +7.4% credit — still less credit destroyed than random-40, which keeps just 136 five-px strands.
+- **Mechanism:** As above; this is the three-way corner (shadow = min credit / no continuity; random = mid credit / accidental continuity; shadowcont = near-min credit / full continuity) that lets one week of receipts order credit vs continuity vs dose.
+- **Non-fault process that could mimic it:** As above; additionally, if test truth is effectively point-like at 100 m sampling (isolated pixels rather than lines), continuity buys nothing and the +7.4% credit penalty is pure loss.
+- **Predicted live change (`MODEL`):** **+0.013 DTI** (point +0.0130; bracket −0.003 to +0.092; not a score), vs shadow-40 +0.014 / random-40 +0.013 recorded.
+- **Falsifier:** As above, plus: if random-40 beats both ranked arms by ≥ 0.010, every exclusive-credit ranking in this repo is wrong, not just this one.
+
+Report-only `PROXY`s for this session (never gates, never used to rank; `evidence/mass_continuity_receipt.json`): catalogue hide-and-recover (38 withheld 20×20 km blocks, n = 13,920 positives, R0 0.0072) Δ = −0.0005 / −0.0010 / −0.0017 with 95% CIs excluding 0, and off-catalogue SGMC (n = 62,122, R0 0.0954) Δ = −0.0111 / −0.0193 / −0.0276 — both dose-monotone negative exactly as expected mechanically for deletion-only subsets scored against fixed positive sets (fewer dots near positives; R0 was pruned against the full catalogue). Leakage canary: not applicable (no feature band read; cf. RELIEF session's 19-band max symmetric AUC 0.5700 on identical inputs).

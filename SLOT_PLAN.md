@@ -28,11 +28,11 @@ least confident. That discount is a judgement, not a measurement (IR90-23).
 | Slot | Candidate | Predicted Δ vs R0 (`MODEL`) | Decision rule from live receipt |
 |---|---|---|---|
 | 1 | `h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c.tif` (+1,883d → 39,537) | **+0.008** (-0.004 to +0.030) | Cheapest decisive sign test of the whole mass axis. `Δ >= +0.010`: the truth is line-like and under-sampled — go to Slot 2 and licence a same-week thinned file. `Δ <= -0.010`: mass behaves as pure penalty, the add direction closes, and Slot 3 becomes `MASSshadow40pct`. `|Δ| < 0.010`: no evidence; Slot 2 becomes `MASSshadow40pct` to test the opposite sign. |
-| 2 | `h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de.tif` (+3,765d → 41,419) | **+0.014** (-0.008 to +0.045) | Slope between two add doses. Rising Δ vs Slot 1 ⇒ under-dosed, take `add20pctq50` in Slot 3. Flat or falling ⇒ the mid-strand deficit is exhausted at ~5 %, and Slot 3 should combine the winning direction with the strongest other axis instead. |
-| 3 | Conditional: `h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4.tif` **or** `h33-h33-2-b2-MASSshadow40pct-20261023-e2546fbe.tif` | **+0.022** / **+0.014** | Take `add20pctq50` only if both add receipts were positive; otherwise take `MASSshadow40pct` so the week still returns a sign test on the mass axis at matched dose magnitude, not a second null. |
+| 2 | Conditional on Slot 1: `h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de.tif` (+3,765d → 41,419) if Slot 1 `Δ >= +0.010`; else `h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba.tif` (20% continuity-aware drop → 30,123d; all 857 ≥1 km strands whole at 6 px; `evidence/mass_continuity_receipt.json`) | **+0.014** (-0.008 to +0.045) / **+0.009** (point +0.0088; +0.001 to +0.048) | Add branch: slope between two add doses — rising Δ vs Slot 1 ⇒ under-dosed, take `add20pctq50` in Slot 3; flat/falling ⇒ deficit exhausted at ~5 %. Drop branch (Slot 1 null/negative): first drop-direction probe with strands intact — `Δ >= +0.010` ⇒ escalate to `MASSshadowcont40pct` vs `MASSshadow40pct`/`MASSrandom40pct` next week; `Δ <= -0.010` ⇒ test `MASSshadow20pct` to separate dose failure from protection failure. |
+| 3 | Conditional: `h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4.tif` **or** `h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121.tif` (→ 22,592d) **or** `h33-h33-2-b2-MASSshadow40pct-20261023-e2546fbe.tif` | **+0.022** / **+0.013** / **+0.014** | Take `add20pctq50` only if both add receipts were positive. If Slot 2 was the drop branch and cleared `+0.010`, take `shadowcont40` (matched-count corner vs the recorded `shadow40`/`random40` pair, which then head next week). Otherwise take `MASSshadow40pct` so the week still returns a sign test on the mass axis at matched dose magnitude, not a second null. |
 
 Retained but not slotted this week: `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadow20pct`
-(+0.009). They stay valid; the add ladder is ordered first because it is the only arm whose sign is genuinely
+(+0.009), `MASSshadowcont30pct` (+0.011; mid-dose continuity rung, held unless the drop branch needs a slope point). They stay valid; the add ladder is ordered first because it is the only arm whose sign is genuinely
 unknown and whose ceiling (1/D per dot) is five times the deletion ceiling.
 
 ## Calendar to deadline (`2026-12-03` UNVERIFIED — human confirms on competition page)
@@ -62,12 +62,32 @@ parent's ranking *budgeted per 5 km block* (each block's next-ranked suppressed 
 *Confounder:* block quotas are an evenness convention, not geology; suppressed cells remain kernel-redundant
 (99.5 % sit <2.8 px from a parent dot). *Falsifier:* paired Δ≤−0.010 vs R0, or failure of the region-evenness gate.
 
+## Session 2026-10-23 result (continuity session, merged): `CONTINUITY_AWARE_DOSE` built as MASS shadowcont 20/30/40%
+
+The previously proposed continuity-aware dose is now built (`src/continuity.py`, receipt
+`evidence/mass_continuity_receipt.json`): shadow ranking unchanged, strand eligibility added (≤ 6 px link
+graph — kernel diameter, a deliberate loosening of the 5 px sketch in the proposal below so along-strand
+thinning to ~5–6 px sampling stays legal; ≥ 10-dot strands; articulation + 10-dot floor). All 857 R0 strands
+survive whole at 6 px at every dose (unconstrained shadow: 234 / 26 / 0 whole at 20/30/40%); on the legacy
+5 px instrument shadowcont-40 still reads only 70 strands ≥ 10 dots (IR90-27), so map review must state its
+link distance. Credit price +2.7/+5.8/+7.4% vs shadow; predictions `MODEL` +0.009 / +0.011 / +0.013. Axis
+choice audit: all seven axes built sibling-side, zero receipts entity-wide, brief-literal CONCENTRATION-up
+≤ 0 on GEMSDOE86's SGMC MODEL at every built dose (IR90-26), converging with this repo's IR90-25
+credit-uniformity measurement — do not spend a slot re-cutting it. In the merged order above, shadowcont-20
+is the first drop-direction probe (Slot 2 drop branch / Slot 3 escalation); it does not displace the
+add-direction sign test that now leads the week.
+
 ## Better axes proposed (all sessions — not built)
 
-- **CONTINUITY_AWARE_DOSE.** Same 40 % dose, but the greedy may not delete a dot whose removal splits a
-  ≥ 1 km strand at 5 px linking. *Mechanism:* keeps the mass saving while preserving the line-like coverage
-  `T` is paid for. *Confounder:* 5 px linking is a geometric choice, not evidence the strand is a fault, so
-  it can preserve false mass. *Falsifier:* paired Δ ≤ −0.010 against `shadow40`.
+- **CONTINUITY_AWARE_DOSE.** ~~Same 40 % dose, but the greedy may not delete a dot whose removal splits a
+  ≥ 1 km strand at 5 px linking.~~ **Built 2026-10-23** as `MASSshadowcont20/30/40pct` at 6 px linking
+  (session result above); kept here as the proposal of record. *Falsifier:* paired Δ ≤ −0.010 against `shadow40`.
+- **TIP_FLOOR (strand floor by length / tip-cone protection).** The built floor counts dots (≥10), so short
+  < 1 km fragments — including genuine relay tips in 0.3–2.5 km along-strike cones ahead of catalogue
+  terminations (Faulds step-over prior, interaction zones only per brief §2) — are unprotected and leave
+  early. *Mechanism:* protect fragments by strand length and tip-cone membership instead of dot count.
+  *Confounder:* fan-head channels at canyon mouths occupy the same cones. *Falsifier:* paired Δ ≤ −0.010
+  against `shadowcont40`.
 - **KERNEL_ORACLE_DOSE.** Re-space survivors to a ~6 px anti-cluster (just outside the kernel, where
   exclusive credit equals the isolated maximum 9.42) instead of deleting. *Mechanism:* maximises ΣE per
   retained dot. *Confounder:* 600 m spacing cannot trace a 300 m-offset strand pair. *Falsifier:* paired

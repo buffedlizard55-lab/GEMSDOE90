@@ -297,5 +297,22 @@
       "tag=add10pctGapmax; add 3765 dots (+9.999% of R0) on H19-5; max marginal R=3px kernel credit per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px"
     ],
     "note": "No prior MASS add row exists in this ledger (the three FIFO add/drop rungs are WITHDRAWN, IR90-20). Sibling GEMSDOE84/86/87 'MASS +10%/+20%' rows use the global FIFO order and are not region-even; these values are string- and mechanism-distinct (per-block quotas propto R0 count). Repeat builds of these (MASS, tag) pairs fail closed. Superseded in part by IR90-24: add10pctGapmax duplicates main's MASSadd10pctq50 and is WITHDRAWN; blocknext tags remain live."
+  },
+  "mass_continuity_20261023": {
+    "checked_utc": "2026-10-23",
+    "scope": "Session 2026-10-23 continuity-aware MASS (branch arena/0e9b3fd9-gemsdoe90). Fresh read-only audit via gh api of ledger/submissions.csv in buffedlizard55-lab/GEMSDOE84-GEMSDOE92 (GEMSDOE93-101 have no ledger file) plus this repo. Axis rows found: PRUNE 68, SNAP 58, MASS 44, CONCENTRATION 33, RELIEF 27, SPACING 16, TRACKB 9; receipt_score values found: 0. No MASS value anywhere carries a continuity, strand, backbone or articulation rule; the string 'shadowcont' appears in no ledger or reservations file before this session.",
+    "selected_values": [
+      "shadowcont-drop 20% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "shadowcont-drop 30% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "shadowcont-drop 40% (exclusive-credit greedy + 6px strand protection, no additions)"
+    ],
+    "ids": [
+      "h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba",
+      "h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee",
+      "h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121"
+    ],
+    "why_new": "Doses deliberately reuse the recorded shadow ladder's exact removal counts (7531/11296/15062) so each file has a matched-count twin; the (AXIS, value) pair differs by ranking (6 px articulation + 10-dot strand-floor eligibility in src/continuity.py), the same distinction this file already records for shadow vs FIFO vs random at identical percentages. Repeat builds fail closed in scripts/build_mass_continuity.py check_reservations().",
+    "also_considered_and_rejected": "Brief-literal CONCENTRATION (lowest-prior -> highest-prior km blocks, 10-20%): already built by siblings at 0.8/1/5 km and 10/50 px blocks and 10/15/20% doses (GEMSDOE84-88, 91), with GEMSDOE86's reconciliation reading every upward arm at <=0 on its SGMC MODEL (-0.0005..-0.0150) and GEMSDOE84 holding its CONCENTRATION files for collar breaches (IR90-26). SNAP: 58 sibling rows, three sessions negative per GEMSDOE86. SPACING: brief lowest priority, built. TRACKB: Phase-2 only, 120-trace dossier already in GEMSDOE86.",
+    "cross_repo_caveat": "Best-effort audit of public owner repositories, not proof of every submission the entity has made (IR90-04/IR90-11)."
   }
 }
