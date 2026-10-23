@@ -7,6 +7,7 @@
 - TOP_PUBLIC: ____ (human fills from leaderboard, with date: ____)
 - Slots left this week: __ / 3 (one entity) · total used: __ · Deadline: 2026-12-03 (UNVERIFIED, human confirms)
 - Session axis (2026-10-23, agent-selected PRUNE): 3 fixed-count variants BUILT locally, not submitted; rasters are gitignored (see docs/SUBMIT.md)
+- Reproducibility (2026-10-23, clean sandbox): all 26 pins re-verified, R0 rebuilt byte-identically (`c55bafc4…`), d2.8 ranking reproduced with 0 px difference, and all 3 candidate pairs re-emitted byte-identically to their recorded SHA-256 — `evidence/releases_restore_receipt.json`. Re-run: `.venv/bin/python scripts/restore_data.py && .venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_r0_variants.py --verify`
 - Next 3 slots (conditional on human quota/receipts): 1) PRUNE dcat<=3.5 px 2) PRUNE dcat<=4.5 px 3) PRUNE dcat<=5.5 px — see SLOT_PLAN.md
 <!-- /CURRENT STATE -->
 

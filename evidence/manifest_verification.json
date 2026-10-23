@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-23T19:29:23Z",
+  "generated_utc": "2026-10-23T21:24:52Z",
   "manifest_path": "registry/data_manifest.json",
   "verified_files_count": 26,
   "all_sha256_matched": true,
   "organizer_authenticated": false,
   "note": "All SHA-256 and byte pins verified against registry/data_manifest.json. Files stored outside Git in .cache/gems_data/ per Hard Constraint #2.",
-  "elapsed_s": 74.33,
+  "elapsed_s": 63.31,
   "files": [
     {
       "id": "training_features",

@@ -12,6 +12,8 @@
 | 2 | `h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217.tif` | +0.000 DTI; same plausible interval | Tests a wider exclusion only if slot 1 leaves the PRUNE question unresolved or is positive. If both are within ±0.010, no evidence: do not promote on a proxy. |
 | 3 | `h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif` | -0.003 DTI; same plausible interval | Wide-collar counterpoint. A Δ≤-0.010 supports retaining nearby predictions and closes widening; Δ≥+0.010 supports a broader collar. |
 
+**Pre-slot step (required).** The candidate rasters are gitignored and do not survive a clone. On 2026-10-23 they were re-emitted from the pinned inputs byte-identically to their recorded hashes (`evidence/releases_restore_receipt.json`); run `scripts/restore_data.py` then `scripts/restore_releases.py` before any upload and match the SHA-256 to the ledger row.
+
 Under the session rule, **any absolute live change below 0.01 is no evidence**; public-chunk effects may not transfer to private chunks. Predictions are deliberately uncertain. Each comparison should use a human-copied submission receipt for R0 and the candidate, preferably in the same rolling week. Upload at most one candidate per available slot. Use only one encoding per slot; `-zeros.tif` is the fallback twin, not a second experiment.
 
 ## Calendar to supplied deadline
