@@ -1,0 +1,33 @@
+{
+  "checked_utc": "2026-10-23",
+  "scope": "Cross-session PRUNE collar values manually checked against the five sibling ledgers available on 2026-10-23. Exact (AXIS, value) reuse prohibited. Numeric cutoff values with any refill policy are treated as occupied, a stricter rule than literal string matching.",
+  "sources": [
+    {
+      "repo": "buffedlizard55-lab/GEMSDOE84",
+      "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE84/blob/main/ledger/submissions.csv",
+      "values_px": [1.0, 1.5, 2.0, 2.5, 3.0, 4.0]
+    },
+    {
+      "repo": "buffedlizard55-lab/GEMSDOE85",
+      "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE85/blob/main/ledger/submissions.csv",
+      "values_px": [2.0, 2.25, 2.85, 3.0, 3.61, 4.0, 5.0]
+    },
+    {
+      "repo": "buffedlizard55-lab/GEMSDOE86",
+      "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE86/blob/main/ledger/submissions.csv",
+      "values_px": [1.0, 2.0, 2.2361, 2.8284, 3.0, 4.0]
+    },
+    {
+      "repo": "buffedlizard55-lab/GEMSDOE87",
+      "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE87/blob/main/ledger/submissions.csv",
+      "values_px": [1.0, 3.0, 4.0]
+    },
+    {
+      "repo": "buffedlizard55-lab/GEMSDOE88",
+      "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE88/blob/main/ledger/submissions.csv",
+      "values_px": [1.0, 2.85, 3.0, 4.0]
+    }
+  ],
+  "available_selected_values_px": [3.5, 4.5, 5.5],
+  "interpretation": "The selected numerical cutoffs are absent from all five fetched ledgers; all three are PRUNE tests with fixed count and the same FIFO-BFS H19-5 refill rule. Existing 3.61/4/5 no-refill and 3.0 refill are distinct values and are not recreated. This is a best-effort owner-repo audit, not proof of every submission ever made by the entity."
+}

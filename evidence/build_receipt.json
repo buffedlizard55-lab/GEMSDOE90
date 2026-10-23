@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T19:41:08Z",
+  "git_sha": "7e61faa83e157a08ff32ced31e74de2c28e0bc37",
+  "axis": "PRUNE",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "verified_count": 26,
+    "all_pins_rechecked": true,
+    "files": {
+      "training_features": {
+        "path": "training_features.tif",
+        "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+        "bytes": 418912844
+      },
+      "labels": {
+        "path": "labels.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "existing_faults": {
+        "path": "existing_faults.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "sample_submission": {
+        "path": "sample_submission.tif",
+        "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "bytes": 1599597
+      },
+      "ext_lidar_scarp_features_u8": {
+        "path": "external/lidar_scarp_features_u8.tif",
+        "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+        "bytes": 36943606
+      },
+      "ext_geodawn_rad_u8": {
+        "path": "external/geodawn_rad_u8.tif",
+        "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+        "bytes": 26612970
+      },
+      "ext_geodawn_extensions_u8": {
+        "path": "external/geodawn_extensions_u8.tif",
+        "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+        "bytes": 27132925
+      },
+      "ext_derived_sgmc_faults_100m_u8": {
+        "path": "external/derived_sgmc_faults_100m_u8.tif",
+        "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+        "bytes": 198602
+      },
+      "ext_gdr_wellspring_in_footprint": {
+        "path": "external/gdr_wellspring_in_footprint.csv",
+        "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+        "bytes": 2146771
+      },
+      "ext_gdr_qfaults_traces": {
+        "path": "external/gdr_qfaults_traces.csv",
+        "sha256": "9702f2e5c382a4f472ae834d22b94990983b059677a37adfafd51c50f75e643c",
+        "bytes": 126177
+      },
+      "ext_gdr_volcanic_vents_in_footprint": {
+        "path": "external/gdr_volcanic_vents_in_footprint.csv",
+        "sha256": "f91bafbaccaaf2754e71d60434fc0f9eb2c7b880c6e714883f4974542ff6a0bf",
+        "bytes": 672
+      },
+      "scored_h19_5": {
+        "path": "scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+        "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+        "bytes": 1712322
+      },
+      "scored_h19_4": {
+        "path": "scored/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+        "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+        "bytes": 1716768
+      },
+      "scored_h16_1": {
+        "path": "scored/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+        "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+        "bytes": 1718028
+      },
+      "scored_d15_scored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+        "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+        "bytes": 1632732
+      },
+      "scored_d28_unscored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+        "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+        "bytes": 1603424
+      },
+      "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou": {
+        "path": "scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+        "bytes": 1706456
+      },
+      "calib_8GEMSDOE_Hedge-v2_submission": {
+        "path": "scored/8GEMSDOE_Hedge-v2_submission.tif",
+        "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+        "bytes": 736494
+      },
+      "calib_gems10-h25-ctx-ridge-20260927T2329477041": {
+        "path": "scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+        "sha256": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+        "bytes": 1772935
+      },
+      "calib_gems10-h28-dotted-ridge-20260928T0202562": {
+        "path": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+        "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+        "bytes": 1620739
+      },
+      "calib_gemsdoe-ens12-adopted-7f00890a": {
+        "path": "scored/gemsdoe-ens12-adopted-7f00890a.tif",
+        "sha256": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15",
+        "bytes": 570890
+      },
+      "calib_gemsdoe9-PLACEHOLDER-2314b599": {
+        "path": "scored/gemsdoe9-PLACEHOLDER-2314b599.tif",
+        "sha256": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+        "bytes": 439456
+      },
+      "scored_gems27_tgc_v2_d15": {
+        "path": "scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+        "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+        "bytes": 1635084
+      },
+      "scored_h27_4_solo_d28": {
+        "path": "scored/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+        "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+        "bytes": 1595850
+      },
+      "parent_r0_zeros": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+        "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+        "bytes": 219065
+      },
+      "parent_r0_nan": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+        "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+        "bytes": 355443
+      }
+    }
+  },
+  "ranking": {
+    "recipe": "8-connected FIFO-BFS visit order over binary H19-5 support; exact d2.8 output reproduced",
+    "is_geological_probability": false,
+    "d28_reproduction_symmetric_difference_px": 0
+  },
+  "proxy_reports": {
+    "catalogue_hide_recover": {
+      "status": "NOT RUN",
+      "reason": "No fold-clean, untouched truth instrument validated for this controlled refill; proxy is never a gate or score."
+    },
+    "leakage_canary": {
+      "status": "REPORT ONLY",
+      "sample": "all 60,988 known catalogue positives plus 250,000 seeded off-catalogue footprint pixels; median-fill finite values after sentinel masking",
+      "seed": 20261023,
+      "max_symmetric_auc": 0.57,
+      "max_feature": "geod_2ndinv",
+      "auc_gt_0_90": false
+    },
+    "sgmc_control": {
+      "status": "NOT RUN",
+      "reason": "No fold-clean SGMC control is validated as calibrated for this collar/refill; not a gate."
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "d_cat<=3.5px; fixed-count FIFO-BFS H19-5 refill; min d_cat>3.5px",
+      "n_dots": 37654,
+      "pct_changed": 14.351728899984066,
+      "removed_dots": 2702,
+      "added_dots": 2702,
+      "retained_dots": 34952,
+      "sha256": "8b96d8913b97b8849f867a212052ef5cf19f71cfc62e4a8a5c44baee471d121e",
+      "sha256_zeros": "0ee15b48805fdb4bb148e8fdb2dee0930c635594836f60f18466caf86edeb3a4",
+      "status": "BUILT",
+      "predicted_change": "+0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE dcat<=3.5px, fixed-count refill; predicted +0.002 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891.tif",
+          "sha256": "8b96d8913b97b8849f867a212052ef5cf19f71cfc62e4a8a5c44baee471d121e",
+          "bytes": 350203,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 3.605551275463989,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891-zeros.tif",
+          "sha256": "0ee15b48805fdb4bb148e8fdb2dee0930c635594836f60f18466caf86edeb3a4",
+          "bytes": 214049,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 3.605551275463989,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 2702,
+        "added_refill": 2702,
+        "retained_parent": 34952,
+        "symmetric_difference_px": 5404,
+        "pct_changed_of_R0": 14.351728899984066
+      },
+      "mechanism_card": {
+        "hypothesis": "At d_cat<=3.5 px, R0's near-catalogue flank dots contain more false-positive mass than new-fault credit; replacing that collar with the same lineage's next-ranked ridge pixels should improve DTI without changing the emitted mass.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly, while a nearby new fault remains scoreable; the PRUNE edit tests whether the empirical 2.0 px collar is too narrow. It drops every parent dot inside the specified radius and replaces the exact count from the H19-5 support, using its recovered FIFO-BFS thinning order, only where d_cat is strictly outside the new collar.",
+        "non_fault_confounder": "H19-5's next-priority pixels may be ridges from lithologic contacts, drainage margins, or topographic lineaments rather than faults; new-fault truth may also cluster beside known traces.",
+        "predicted_live_change": "+0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired, same-week live receipt against R0 with \u0394<=-0.010 falsifies the proposed positive collar effect for this cutoff/refill policy. Any |\u0394|<0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "Interpret this as a positional-uncertainty/collar experiment, not as a claim that faults do not continue near mapped traces. Review both removed flanks and FIFO-ranked refill ridges on geology."
+      },
+      "threshold_px": 3.5
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "d_cat<=4.5px; fixed-count FIFO-BFS H19-5 refill; min d_cat>4.5px",
+      "n_dots": 37654,
+      "pct_changed": 25.7502522972327,
+      "removed_dots": 4848,
+      "added_dots": 4848,
+      "retained_dots": 32806,
+      "sha256": "be7a1217907a8019a9df275c3139be32266e4039b5a8a57a1a801b005b8b615b",
+      "sha256_zeros": "729b02c1aa71bc2fb2e193dd27298fbeab8cb7a35407ece630c56028dcc2813b",
+      "status": "BUILT",
+      "predicted_change": "+0.000 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE dcat<=4.5px, fixed-count refill; predicted +0.000 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217.tif",
+          "sha256": "be7a1217907a8019a9df275c3139be32266e4039b5a8a57a1a801b005b8b615b",
+          "bytes": 345749,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 5.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217-zeros.tif",
+          "sha256": "729b02c1aa71bc2fb2e193dd27298fbeab8cb7a35407ece630c56028dcc2813b",
+          "bytes": 209828,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 5.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 4848,
+        "added_refill": 4848,
+        "retained_parent": 32806,
+        "symmetric_difference_px": 9696,
+        "pct_changed_of_R0": 25.7502522972327
+      },
+      "mechanism_card": {
+        "hypothesis": "At d_cat<=4.5 px, R0's near-catalogue flank dots contain more false-positive mass than new-fault credit; replacing that collar with the same lineage's next-ranked ridge pixels should improve DTI without changing the emitted mass.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly, while a nearby new fault remains scoreable; the PRUNE edit tests whether the empirical 2.0 px collar is too narrow. It drops every parent dot inside the specified radius and replaces the exact count from the H19-5 support, using its recovered FIFO-BFS thinning order, only where d_cat is strictly outside the new collar.",
+        "non_fault_confounder": "H19-5's next-priority pixels may be ridges from lithologic contacts, drainage margins, or topographic lineaments rather than faults; new-fault truth may also cluster beside known traces.",
+        "predicted_live_change": "+0.000 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired, same-week live receipt against R0 with \u0394<=-0.010 falsifies the proposed positive collar effect for this cutoff/refill policy. Any |\u0394|<0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "Interpret this as a positional-uncertainty/collar experiment, not as a claim that faults do not continue near mapped traces. Review both removed flanks and FIFO-ranked refill ridges on geology."
+      },
+      "threshold_px": 4.5
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "d_cat<=5.5px; fixed-count FIFO-BFS H19-5 refill; min d_cat>5.5px",
+      "n_dots": 37654,
+      "pct_changed": 32.559621819726985,
+      "removed_dots": 6130,
+      "added_dots": 6130,
+      "retained_dots": 31524,
+      "sha256": "a69816c73b148933434cb25ea5761cc69158303539974c87d468ecf452f72fd4",
+      "sha256_zeros": "d811f35093f2b076b5bfbb3662703541c731f406ebf443e7976775d5227e5625",
+      "status": "BUILT",
+      "predicted_change": "-0.003 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE dcat<=5.5px, fixed-count refill; predicted -0.003 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif",
+          "sha256": "a69816c73b148933434cb25ea5761cc69158303539974c87d468ecf452f72fd4",
+          "bytes": 343241,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 5.656854249492381,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7-zeros.tif",
+          "sha256": "d811f35093f2b076b5bfbb3662703541c731f406ebf443e7976775d5227e5625",
+          "bytes": 207492,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_px": 5.656854249492381,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 6130,
+        "added_refill": 6130,
+        "retained_parent": 31524,
+        "symmetric_difference_px": 12260,
+        "pct_changed_of_R0": 32.559621819726985
+      },
+      "mechanism_card": {
+        "hypothesis": "At d_cat<=5.5 px, R0's near-catalogue flank dots contain more false-positive mass than new-fault credit; replacing that collar with the same lineage's next-ranked ridge pixels should improve DTI without changing the emitted mass.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly, while a nearby new fault remains scoreable; the PRUNE edit tests whether the empirical 2.0 px collar is too narrow. It drops every parent dot inside the specified radius and replaces the exact count from the H19-5 support, using its recovered FIFO-BFS thinning order, only where d_cat is strictly outside the new collar.",
+        "non_fault_confounder": "H19-5's next-priority pixels may be ridges from lithologic contacts, drainage margins, or topographic lineaments rather than faults; new-fault truth may also cluster beside known traces.",
+        "predicted_live_change": "-0.003 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired, same-week live receipt against R0 with \u0394<=-0.010 falsifies the proposed positive collar effect for this cutoff/refill policy. Any |\u0394|<0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "Interpret this as a positional-uncertainty/collar experiment, not as a claim that faults do not continue near mapped traces. Review both removed flanks and FIFO-ranked refill ridges on geology."
+      },
+      "threshold_px": 5.5
+    }
+  ],
+  "elapsed_s": 26.47,
+  "no_live_submission": true,
+  "verified_utc": "2026-10-23T19:49:19Z",
+  "self_check": {
+    "variant_files_re_read_and_validated": true,
+    "variant_bytes_reproduced_exactly": true,
+    "r0_rebuilt_byte_identically": true,
+    "d28_ranking_reproduced_pixel_exactly": true
+  },
+  "verification_git_sha": "7e61faa83e157a08ff32ced31e74de2c28e0bc37",
+  "generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615"
+}

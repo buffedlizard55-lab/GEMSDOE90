@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "parent": "h33-h33-2-b2",
+  "axis": "PRUNE",
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891",
+      "value": "d_cat<=3.5px; fixed-count FIFO-BFS H19-5 refill; min d_cat>3.5px",
+      "mechanism_card": {
+        "hypothesis": "At d_cat<=3.5 px, R0's near-catalogue flank dots contain more false-positive mass than new-fault credit; replacing that collar with the same lineage's next-ranked ridge pixels should improve DTI without changing the emitted mass.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly, while a nearby new fault remains scoreable; the PRUNE edit tests whether the empirical 2.0 px collar is too narrow. It drops every parent dot inside the specified radius and replaces the exact count from the H19-5 support, using its recovered FIFO-BFS thinning order, only where d_cat is strictly outside the new collar.",
+        "non_fault_confounder": "H19-5's next-priority pixels may be ridges from lithologic contacts, drainage margins, or topographic lineaments rather than faults; new-fault truth may also cluster beside known traces.",
+        "predicted_live_change": "+0.002 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired, same-week live receipt against R0 with \u0394<=-0.010 falsifies the proposed positive collar effect for this cutoff/refill policy. Any |\u0394|<0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "Interpret this as a positional-uncertainty/collar experiment, not as a claim that faults do not continue near mapped traces. Review both removed flanks and FIFO-ranked refill ridges on geology."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217",
+      "value": "d_cat<=4.5px; fixed-count FIFO-BFS H19-5 refill; min d_cat>4.5px",
+      "mechanism_card": {
+        "hypothesis": "At d_cat<=4.5 px, R0's near-catalogue flank dots contain more false-positive mass than new-fault credit; replacing that collar with the same lineage's next-ranked ridge pixels should improve DTI without changing the emitted mass.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly, while a nearby new fault remains scoreable; the PRUNE edit tests whether the empirical 2.0 px collar is too narrow. It drops every parent dot inside the specified radius and replaces the exact count from the H19-5 support, using its recovered FIFO-BFS thinning order, only where d_cat is strictly outside the new collar.",
+        "non_fault_confounder": "H19-5's next-priority pixels may be ridges from lithologic contacts, drainage margins, or topographic lineaments rather than faults; new-fault truth may also cluster beside known traces.",
+        "predicted_live_change": "+0.000 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired, same-week live receipt against R0 with \u0394<=-0.010 falsifies the proposed positive collar effect for this cutoff/refill policy. Any |\u0394|<0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "Interpret this as a positional-uncertainty/collar experiment, not as a claim that faults do not continue near mapped traces. Review both removed flanks and FIFO-ranked refill ridges on geology."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7",
+      "value": "d_cat<=5.5px; fixed-count FIFO-BFS H19-5 refill; min d_cat>5.5px",
+      "mechanism_card": {
+        "hypothesis": "At d_cat<=5.5 px, R0's near-catalogue flank dots contain more false-positive mass than new-fault credit; replacing that collar with the same lineage's next-ranked ridge pixels should improve DTI without changing the emitted mass.",
+        "mechanism": "Known catalogue pixels are masked pixel-exactly, while a nearby new fault remains scoreable; the PRUNE edit tests whether the empirical 2.0 px collar is too narrow. It drops every parent dot inside the specified radius and replaces the exact count from the H19-5 support, using its recovered FIFO-BFS thinning order, only where d_cat is strictly outside the new collar.",
+        "non_fault_confounder": "H19-5's next-priority pixels may be ridges from lithologic contacts, drainage margins, or topographic lineaments rather than faults; new-fault truth may also cluster beside known traces.",
+        "predicted_live_change": "-0.003 DTI (MODEL; plausible interval -0.010 to +0.010; not a score)",
+        "falsifier": "A paired, same-week live receipt against R0 with \u0394<=-0.010 falsifies the proposed positive collar effect for this cutoff/refill policy. Any |\u0394|<0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "Interpret this as a positional-uncertainty/collar experiment, not as a claim that faults do not continue near mapped traces. Review both removed flanks and FIFO-ranked refill ridges on geology."
+      }
+    }
+  ]
+}
