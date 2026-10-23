@@ -1,0 +1,749 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T22:01:56Z",
+  "git_sha": "3ac20c24e6e3800aca17e6dbb9cb4dd515fa9253",
+  "axis": "MASS",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "verified_count": 26,
+    "all_pins_rechecked": true,
+    "files": {
+      "training_features": {
+        "path": "training_features.tif",
+        "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+        "bytes": 418912844
+      },
+      "labels": {
+        "path": "labels.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "existing_faults": {
+        "path": "existing_faults.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830
+      },
+      "sample_submission": {
+        "path": "sample_submission.tif",
+        "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "bytes": 1599597
+      },
+      "ext_lidar_scarp_features_u8": {
+        "path": "external/lidar_scarp_features_u8.tif",
+        "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+        "bytes": 36943606
+      },
+      "ext_geodawn_rad_u8": {
+        "path": "external/geodawn_rad_u8.tif",
+        "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+        "bytes": 26612970
+      },
+      "ext_geodawn_extensions_u8": {
+        "path": "external/geodawn_extensions_u8.tif",
+        "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+        "bytes": 27132925
+      },
+      "ext_derived_sgmc_faults_100m_u8": {
+        "path": "external/derived_sgmc_faults_100m_u8.tif",
+        "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+        "bytes": 198602
+      },
+      "ext_gdr_wellspring_in_footprint": {
+        "path": "external/gdr_wellspring_in_footprint.csv",
+        "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+        "bytes": 2146771
+      },
+      "ext_gdr_qfaults_traces": {
+        "path": "external/gdr_qfaults_traces.csv",
+        "sha256": "9702f2e5c382a4f472ae834d22b94990983b059677a37adfafd51c50f75e643c",
+        "bytes": 126177
+      },
+      "ext_gdr_volcanic_vents_in_footprint": {
+        "path": "external/gdr_volcanic_vents_in_footprint.csv",
+        "sha256": "f91bafbaccaaf2754e71d60434fc0f9eb2c7b880c6e714883f4974542ff6a0bf",
+        "bytes": 672
+      },
+      "scored_h19_5": {
+        "path": "scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+        "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+        "bytes": 1712322
+      },
+      "scored_h19_4": {
+        "path": "scored/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+        "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+        "bytes": 1716768
+      },
+      "scored_h16_1": {
+        "path": "scored/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+        "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+        "bytes": 1718028
+      },
+      "scored_d15_scored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+        "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+        "bytes": 1632732
+      },
+      "scored_d28_unscored": {
+        "path": "scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+        "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+        "bytes": 1603424
+      },
+      "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou": {
+        "path": "scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+        "bytes": 1706456
+      },
+      "calib_8GEMSDOE_Hedge-v2_submission": {
+        "path": "scored/8GEMSDOE_Hedge-v2_submission.tif",
+        "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+        "bytes": 736494
+      },
+      "calib_gems10-h25-ctx-ridge-20260927T2329477041": {
+        "path": "scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+        "sha256": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+        "bytes": 1772935
+      },
+      "calib_gems10-h28-dotted-ridge-20260928T0202562": {
+        "path": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+        "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+        "bytes": 1620739
+      },
+      "calib_gemsdoe-ens12-adopted-7f00890a": {
+        "path": "scored/gemsdoe-ens12-adopted-7f00890a.tif",
+        "sha256": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15",
+        "bytes": 570890
+      },
+      "calib_gemsdoe9-PLACEHOLDER-2314b599": {
+        "path": "scored/gemsdoe9-PLACEHOLDER-2314b599.tif",
+        "sha256": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+        "bytes": 439456
+      },
+      "scored_gems27_tgc_v2_d15": {
+        "path": "scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+        "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+        "bytes": 1635084
+      },
+      "scored_h27_4_solo_d28": {
+        "path": "scored/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+        "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+        "bytes": 1595850
+      },
+      "parent_r0_zeros": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+        "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+        "bytes": 219065
+      },
+      "parent_r0_nan": {
+        "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+        "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+        "bytes": 355443
+      }
+    }
+  },
+  "ranking": {
+    "recipe": "8-connected FIFO-BFS visit order over binary H19-5 support (the parent's recorded d2.8 thinning ranking; pixel-exact reproduction recorded in evidence/r0_rebuild_receipt.json)",
+    "is_geological_probability": false,
+    "drop_rule": "largest visit ranks among R0's dots (lowest-ranked = traversal tail)",
+    "add_rule": "smallest visit ranks among H19-5 support cells not in R0 with d_cat >= 3.0 px (next-ranked cells suppressed by the parent's 2.8 px thinning)",
+    "pool_size_d_cat_ge_3": 62556,
+    "add_pool_frac_within_2p8px_of_r0": 0.996786878956455
+  },
+  "proxy_reports": {
+    "catalogue_hide_recover": {
+      "status": "REPORT ONLY (PROXY)",
+      "description": "Known catalogue pixels are the withheld positives (the builder's hide): every candidate has zero catalogue mass, so this measures kernel credit to known-trace geometry only. Not new-fault truth; historical correlation with live scores -0.87..+0.54 (n=12-14). Never a gate.",
+      "r0": {
+        "dti": 0.006709118968955279,
+        "ci95": [
+          0.006023171459054272,
+          0.00742340030128884
+        ],
+        "n_truth_px": 60988,
+        "n_tiles": 3045,
+        "tile_px": 64,
+        "n_boot": 400,
+        "seed": 20261023,
+        "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+      },
+      "variants": {
+        "drop5pct-tail": {
+          "proxy": {
+            "dti": 0.006382659518777082,
+            "ci95": [
+              0.0056897228662223,
+              0.007053663045330104
+            ],
+            "n_truth_px": 60988,
+            "n_tiles": 3045,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          },
+          "delta_vs_r0": {
+            "delta": -0.0003264594501781971,
+            "ci95": [
+              -0.0005308627122381993,
+              -0.00016227565137330339
+            ],
+            "n_truth_px": 60988,
+            "n_tiles": 3045,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          }
+        },
+        "add5pct-next": {
+          "proxy": {
+            "dti": 0.006664571161180321,
+            "ci95": [
+              0.005983172809397176,
+              0.007374116748598323
+            ],
+            "n_truth_px": 60988,
+            "n_tiles": 3045,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          },
+          "delta_vs_r0": {
+            "delta": -4.454780777495785e-05,
+            "ci95": [
+              -4.92835526905178e-05,
+              -3.999864965709549e-05
+            ],
+            "n_truth_px": 60988,
+            "n_tiles": 3045,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          }
+        },
+        "add20pct-next": {
+          "proxy": {
+            "dti": 0.006534430515768531,
+            "ci95": [
+              0.005866322357645088,
+              0.007230140702084029
+            ],
+            "n_truth_px": 60988,
+            "n_tiles": 3045,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          },
+          "delta_vs_r0": {
+            "delta": -0.00017468845318674778,
+            "ci95": [
+              -0.00019325959920481154,
+              -0.00015684910140918406
+            ],
+            "n_truth_px": 60988,
+            "n_tiles": 3045,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          }
+        }
+      }
+    },
+    "sgmc_control": {
+      "status": "REPORT ONLY (PROXY)",
+      "description": "SGMC-derived geologic-map fault pixels off the known catalogue used as an alternative pseudo-truth; checks whether variant deltas are specific to catalogue-like geometry. Never a gate.",
+      "r0": {
+        "dti": 0.0928930494744682,
+        "ci95": [
+          0.08455229827528214,
+          0.10194496602935016
+        ],
+        "n_truth_px": 79615,
+        "n_tiles": 3046,
+        "tile_px": 64,
+        "n_boot": 400,
+        "seed": 20261023,
+        "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+      },
+      "variants": {
+        "drop5pct-tail": {
+          "proxy": {
+            "dti": 0.08484255282181384,
+            "ci95": [
+              0.0772375068069089,
+              0.09346724158574275
+            ],
+            "n_truth_px": 79615,
+            "n_tiles": 3046,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          },
+          "delta_vs_r0": {
+            "delta": -0.008050496652654365,
+            "ci95": [
+              -0.011074256306705416,
+              -0.00489206049695243
+            ],
+            "n_truth_px": 79615,
+            "n_tiles": 3046,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          }
+        },
+        "add5pct-next": {
+          "proxy": {
+            "dti": 0.09306345032245193,
+            "ci95": [
+              0.08474964290412816,
+              0.10218682653939423
+            ],
+            "n_truth_px": 79615,
+            "n_tiles": 3046,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          },
+          "delta_vs_r0": {
+            "delta": 0.000170400847983726,
+            "ci95": [
+              -0.00010941427556409241,
+              0.0005513416166129705
+            ],
+            "n_truth_px": 79615,
+            "n_tiles": 3046,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          }
+        },
+        "add20pct-next": {
+          "proxy": {
+            "dti": 0.09404380891961156,
+            "ci95": [
+              0.08568886585594503,
+              0.10367459483669034
+            ],
+            "n_truth_px": 79615,
+            "n_tiles": 3046,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          },
+          "delta_vs_r0": {
+            "delta": 0.001150759445143354,
+            "ci95": [
+              0.0003417758441399986,
+              0.002035832152472725
+            ],
+            "n_truth_px": 79615,
+            "n_tiles": 3046,
+            "tile_px": 64,
+            "n_boot": 400,
+            "seed": 20261023,
+            "method": "paired spatial-tile bootstrap on the truth-sum credit term; S and M held fixed"
+          }
+        }
+      }
+    },
+    "leakage_canary": {
+      "status": "REPORT ONLY",
+      "note": "Not re-run this session: identical hash-pinned inputs were canaried on 2026-10-23 (evidence/build_receipt.json, seed 20261023): 19 supplied bands, all 60,988 catalogue positives + 250,000 seeded off-catalogue footprint pixels, median-fill after sentinel masking; max symmetric AUC 0.5700 (geod_2ndinv) < 0.90 trigger."
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-MASSdrop5pct-tail-20261023-ce48329b",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "drop5pct-tail",
+      "n_dots": 35771,
+      "pct_changed": 5.000796728103256,
+      "removed_dots": 1883,
+      "added_dots": 0,
+      "sha256": "ce48329ba2d7a8b16bd8991e667637e0348465be48bec4762e9f83d20eafab79",
+      "sha256_zeros": "8a08796c8e1fccdc9bce28d85cba3f4228d4f72163145ad570a0efe4f8467dfe",
+      "status": "WITHDRAWN",
+      "predicted_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.003; not a score)",
+      "form_note": "h33-h33-2-b2; MASS drop5pct-tail (n=35771); predicted -0.002 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSdrop5pct-tail-20261023-ce48329b.tif",
+          "sha256": "ce48329ba2d7a8b16bd8991e667637e0348465be48bec4762e9f83d20eafab79",
+          "bytes": 346769,
+          "encoding": "nan",
+          "n_dots": 35771,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "new_dots_min_catalogue_distance_px": null,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "new_dots_min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSdrop5pct-tail-20261023-ce48329b-zeros.tif",
+          "sha256": "8a08796c8e1fccdc9bce28d85cba3f4228d4f72163145ad570a0efe4f8467dfe",
+          "bytes": 211011,
+          "encoding": "zeros",
+          "n_dots": 35771,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "new_dots_min_catalogue_distance_px": null,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "new_dots_min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 1883,
+        "added_dots": 0,
+        "retained_parent": 35771,
+        "symmetric_difference_px": 1883,
+        "pct_changed_of_R0": 5.000796728103256,
+        "n_dots": 35771
+      },
+      "mechanism_card": {
+        "hypothesis": "R0's traversal-tail dots (the last 5% of the parent's own FIFO-BFS selection order) still carry unique kernel credit on short late-visited strands, so removing them lowers DTI slightly rather than releasing false-positive mass.",
+        "mechanism": "DTI = T / (0.2T + 0.2(S-M) + 0.8|G|). Dropping a dot removes 1 from S (helping the 0.2(S-M) term) but deletes its max-kernel credit wherever it was the best coverer of a truth pixel (hurting T). The parent's recorded recipe ranks its dots by 8-connected FIFO-BFS traversal of the H19-5 support; the dropped tranche is the lowest-priority tail (visit ranks 114510-121128 of 0-121128, n=1,883 of 37,654).",
+        "non_fault_confounder": "FIFO-BFS order is a raster convention (seeds at the first raster pixel of each 8-connected support component), not geological confidence: tail dots are the far ends of long lineaments and late chips, where drainage divides and lithologic contacts mimic fault strands. The local report-only PROXYs lean the same sign (catalogue hide-and-recover delta -0.0003; SGMC control delta -0.008), but SGMC-mapped faults are not the new-fault truth and neither PROXY is a score.",
+        "predicted_live_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.003; not a score)",
+        "falsifier": "Paired same-week receipt vs R0: delta >= +0.010 confirms the false-positive regime and re-opens the sibling -10/-20% rungs; delta <= -0.010 shows the tail carries unique fault credit and closes the drop direction. |delta| < 0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "Read this as a dose rung on the lineage's own selection order, not as a claim that fault traces end where the traversal ends. Inspect the dropped SE ends and small chips on geology before any slot is spent."
+      },
+      "ranking_stats": {
+        "visit_rank_range": "114510-121128 of 0-121128",
+        "frac_within_2p8px_of_parent": null,
+        "pct_changed": 5.000796728103256
+      },
+      "mass_fraction": -0.05
+    },
+    {
+      "id": "h33-h33-2-b2-MASSadd5pct-next-20261023-46f0886b",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "add5pct-next",
+      "n_dots": 39537,
+      "pct_changed": 5.000796728103256,
+      "removed_dots": 0,
+      "added_dots": 1883,
+      "sha256": "46f0886bd9475ddcf4d432c3688d51ac4ee4b482fe0cc57e64cb3a5f2265c34a",
+      "sha256_zeros": "203118d12738b2c8e0425c031d22103121d8519a7f3b766b5bf3d2d614d2f09d",
+      "status": "WITHDRAWN",
+      "predicted_change": "-0.002 DTI (MODEL; plausible interval -0.009 to +0.005; not a score)",
+      "form_note": "h33-h33-2-b2; MASS add5pct-next (n=39537); predicted -0.002 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSadd5pct-next-20261023-46f0886b.tif",
+          "sha256": "46f0886bd9475ddcf4d432c3688d51ac4ee4b482fe0cc57e64cb3a5f2265c34a",
+          "bytes": 359366,
+          "encoding": "nan",
+          "n_dots": 39537,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "new_dots_min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "new_dots_min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSadd5pct-next-20261023-46f0886b-zeros.tif",
+          "sha256": "203118d12738b2c8e0425c031d22103121d8519a7f3b766b5bf3d2d614d2f09d",
+          "bytes": 223268,
+          "encoding": "zeros",
+          "n_dots": 39537,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "new_dots_min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "new_dots_min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 0,
+        "added_dots": 1883,
+        "retained_parent": 37654,
+        "symmetric_difference_px": 1883,
+        "pct_changed_of_R0": 5.000796728103256,
+        "n_dots": 39537
+      },
+      "mechanism_card": {
+        "hypothesis": "The parent's 2.8 px thinning already suppressed the cells this variant adds; being kernel-redundant with surviving dots, their marginal max-operator credit is near zero while each still pays full false-positive mass, so +5% of them lowers DTI slightly.",
+        "mechanism": "Added cells are the next-ranked suppressed H19-5 support cells in the parent's own FIFO-BFS order. Measured: 99.5% of them lie within 2.8 px of an existing R0 dot (median 1.0 px), i.e. exactly the pixels the parent's greedy 2.8 px rule did not keep. Under the metric algebra a dot pays only if its marginal kernel credit exceeds ~0.2*DTI (about 0.056 at 0.28; lower for line-like truth). Redundant neighbours add S but little T and M.",
+        "non_fault_confounder": "Dense multiscale ridge corridors (drainage divides, lithologic contacts, foliation lineaments) populate H19-5's suppressed cells. The opposite confounder: real fault zones are damage-zone wide and can carry several parallel strands inside the 300 m kernel, so genuinely useful adds look redundant and new-fault truth can sit within 300 m of known traces (organizer forum, 2026-10-22).",
+        "predicted_live_change": "-0.002 DTI (MODEL; plausible interval -0.009 to +0.005; not a score)",
+        "falsifier": "Paired same-week receipt vs R0: delta >= +0.010 falsifies the redundancy picture (line-like truth extends credit along strike) and promotes larger spaced adds; delta <= -0.010 confirms redundancy and closes the add direction. |delta| < 0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "This is a kernel-budget experiment along the parent's own ranking. Review where the added cells double existing strands (damage-zone width vs raster duplication) before spending a slot."
+      },
+      "ranking_stats": {
+        "visit_rank_range": "1-3708",
+        "frac_within_2p8px_of_parent": 0.9946893255443441,
+        "pct_changed": 5.000796728103256
+      },
+      "mass_fraction": 0.05
+    },
+    {
+      "id": "h33-h33-2-b2-MASSadd20pct-next-20261023-63954e89",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "add20pct-next",
+      "n_dots": 45185,
+      "pct_changed": 20.000531152068838,
+      "removed_dots": 0,
+      "added_dots": 7531,
+      "sha256": "63954e89cdbca6ac7bb4f2a0b963d9d9cc99fc37e2cffd61b7bc80cd58b2d540",
+      "sha256_zeros": "efa265cea0a7a0426d7b72ab9d71128ea401e36bccb375b36e2c9948b1dd224f",
+      "status": "WITHDRAWN",
+      "predicted_change": "-0.008 DTI (MODEL; plausible interval -0.020 to +0.004; not a score)",
+      "form_note": "h33-h33-2-b2; MASS add20pct-next (n=45185); predicted -0.008 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSadd20pct-next-20261023-63954e89.tif",
+          "sha256": "63954e89cdbca6ac7bb4f2a0b963d9d9cc99fc37e2cffd61b7bc80cd58b2d540",
+          "bytes": 370520,
+          "encoding": "nan",
+          "n_dots": 45185,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "new_dots_min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "new_dots_min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSadd20pct-next-20261023-63954e89-zeros.tif",
+          "sha256": "efa265cea0a7a0426d7b72ab9d71128ea401e36bccb375b36e2c9948b1dd224f",
+          "bytes": 235040,
+          "encoding": "zeros",
+          "n_dots": 45185,
+          "min_catalogue_distance_px": 2.23606797749979,
+          "new_dots_min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "new_dots_min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      },
+      "parent_diff": {
+        "removed_from_parent": 0,
+        "added_dots": 7531,
+        "retained_parent": 37654,
+        "symmetric_difference_px": 7531,
+        "pct_changed_of_R0": 20.000531152068838,
+        "n_dots": 45185
+      },
+      "mechanism_card": {
+        "hypothesis": "The parent's 2.8 px thinning already suppressed the cells this variant adds; being kernel-redundant with surviving dots, their marginal max-operator credit is near zero while each still pays full false-positive mass, so +20% of them lowers DTI slightly.",
+        "mechanism": "Added cells are the next-ranked suppressed H19-5 support cells in the parent's own FIFO-BFS order. Measured: 99.6% of them lie within 2.8 px of an existing R0 dot (median 1.0 px), i.e. exactly the pixels the parent's greedy 2.8 px rule did not keep. Under the metric algebra a dot pays only if its marginal kernel credit exceeds ~0.2*DTI (about 0.056 at 0.28; lower for line-like truth). Redundant neighbours add S but little T and M.",
+        "non_fault_confounder": "Dense multiscale ridge corridors (drainage divides, lithologic contacts, foliation lineaments) populate H19-5's suppressed cells. The opposite confounder: real fault zones are damage-zone wide and can carry several parallel strands inside the 300 m kernel, so genuinely useful adds look redundant and new-fault truth can sit within 300 m of known traces (organizer forum, 2026-10-22).",
+        "predicted_live_change": "-0.008 DTI (MODEL; plausible interval -0.020 to +0.004; not a score)",
+        "falsifier": "Paired same-week receipt vs R0: delta >= +0.010 falsifies the redundancy picture (line-like truth extends credit along strike) and promotes larger spaced adds; delta <= -0.010 confirms redundancy and closes the add direction. |delta| < 0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "This is a kernel-budget experiment along the parent's own ranking. Review where the added cells double existing strands (damage-zone width vs raster duplication) before spending a slot."
+      },
+      "ranking_stats": {
+        "visit_rank_range": "1-14839",
+        "frac_within_2p8px_of_parent": 0.9964148187491702,
+        "pct_changed": 20.000531152068838
+      },
+      "mass_fraction": 0.2
+    }
+  ],
+  "elapsed_s": 45.67,
+  "no_live_submission": true,
+  "self_check": {
+    "verified_utc": "2026-10-23T22:02:23Z",
+    "git_sha": "3ac20c24e6e3800aca17e6dbb9cb4dd515fa9253",
+    "variant_files_re_read_and_validated": true,
+    "variant_bytes_reproduced_exactly": true,
+    "r0_rebuilt_byte_identically": true,
+    "pair_reservation_check_at_verify": "skipped (rows already recorded)"
+  },
+  "region_reports": {
+    "gate_source": "scripts/build_mass_high_dose.py::region_evenness_gate (merged from origin/main 2026-10-23)",
+    "hard_constraint": "Brief s4 #5: no region-isolated or patterned files; interpreted per IR90-15/IR90-18",
+    "drop5pct-tail": {
+      "statistic": "per-5km-block removal share (blocks >=20 R0 dots)",
+      "blocks_with_20plus_dots": 848,
+      "removed_share_mean": 0.0418,
+      "removed_share_p05": 0.0,
+      "removed_share_p95": 0.0,
+      "removed_share_max": 1.0,
+      "fraction_blocks_90pct_emptied": 0.0389,
+      "emptied_block_clusters": 2,
+      "largest_emptied_cluster_blocks": 81,
+      "largest_emptied_cluster_km2": 2025,
+      "bbox_y": [
+        3166,
+        3726
+      ],
+      "bbox_x": [
+        1464,
+        2298
+      ],
+      "centroid_yx": [
+        3385.5,
+        1906.9
+      ],
+      "r0_centroid_yx": [
+        1273.3,
+        1478.1
+      ],
+      "nominal_dose": 0.05,
+      "passes_region_evenness_gate": false,
+      "failures": [
+        "fraction_blocks_90pct_emptied 0.0389 > 0.02",
+        "removed_share_p05 0.0 < 0.0125 (=0.25*dose)",
+        "largest_emptied_cluster_blocks 81 > 4"
+      ]
+    },
+    "add5pct-next": {
+      "statistic": "per-5km-block addition ratio (added/R0 dots; blocks >=20 R0 dots)",
+      "add_ratio_per_block_mean": 0.0505,
+      "add_ratio_p05": 0.0,
+      "add_ratio_p95": 0.0,
+      "add_ratio_max": 2.3898,
+      "frac_blocks_addratio_ge_0.9": 0.0283,
+      "largest_cluster_addratio_ge_0.9_blocks": 10,
+      "bbox_y": [
+        0,
+        101
+      ],
+      "bbox_x": [
+        621,
+        3281
+      ],
+      "centroid_yx": [
+        33.5,
+        1749.7
+      ],
+      "r0_centroid_yx": [
+        1273.3,
+        1478.1
+      ],
+      "verdict": "PATTERNED FILE: all added cells in northern strip y<=101 (Hard Constraint #5)"
+    },
+    "add20pct-next": {
+      "statistic": "per-5km-block addition ratio (added/R0 dots; blocks >=20 R0 dots)",
+      "add_ratio_per_block_mean": 0.2052,
+      "add_ratio_p05": 0.0,
+      "add_ratio_p95": 1.75,
+      "add_ratio_max": 2.8,
+      "frac_blocks_addratio_ge_0.9": 0.1215,
+      "largest_cluster_addratio_ge_0.9_blocks": 58,
+      "bbox_y": [
+        0,
+        288
+      ],
+      "bbox_x": [
+        331,
+        3288
+      ],
+      "centroid_yx": [
+        119.9,
+        1671.8
+      ],
+      "r0_centroid_yx": [
+        1273.3,
+        1478.1
+      ],
+      "verdict": "PATTERNED FILE: all added cells in northern strip y<=288 (Hard Constraint #5)"
+    },
+    "cause": "Global FIFO-BFS visit order seeds 8-connected components in raster order and BFS depth is spatial, so rank tails are SE components and rank heads are northern components; any pure rank-dose edit on this ranking is geographic (extends IR90-15 to the ADD side)."
+  },
+  "withdrawal": {
+    "withdrawn_utc": "2026-10-23",
+    "status": "WITHDRAWN before submission (Hard Constraint #5 / IR90-18)",
+    "variants": [
+      "h33-h33-2-b2-MASSdrop5pct-tail-20261023-ce48329b",
+      "h33-h33-2-b2-MASSadd5pct-next-20261023-46f0886b",
+      "h33-h33-2-b2-MASSadd20pct-next-20261023-63954e89"
+    ],
+    "ledger_rows_kept_as": "WITHDRAWN (occupancy guards; predictions kept as record only)",
+    "rasters": "moved from releases/ to .cache/region_probes/ (do not upload)",
+    "section6_gates_passed_before_withdrawal": true
+  }
+}

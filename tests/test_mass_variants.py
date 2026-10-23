@@ -15,7 +15,7 @@ import build_mass_variants as build  # noqa: E402
 
 
 def _receipt() -> dict:
-    return json.loads((ROOT / "evidence" / "mass_build_receipt.json").read_text())
+    return json.loads((ROOT / "evidence" / "mass_dose_ladder_receipt.json").read_text())
 
 
 def _ledger_rows() -> list[dict]:
@@ -42,7 +42,7 @@ def test_mass_values_free_of_sibling_occupancy_and_locally_unique() -> None:
         assert v["value"] not in build.SIBLING_OCCUPIED_MASS_VALUES
     pairs = [(r.get("parent"), r.get("axis"), r.get("value")) for r in _ledger_rows()]
     mass_pairs = [p for p in pairs if p[1] == "MASS"]
-    assert len(mass_pairs) == len(set(mass_pairs))
+    assert len(mass_pairs) == len(set(mass_pairs))  # includes sibling-session shadow/random rows
     build.check_pair_reservations  # callable
     try:
         build.check_pair_reservations()
@@ -69,11 +69,13 @@ def test_ledger_append_preserved_prior_rows_and_gate_fields() -> None:
     # prior session rows survive the append
     assert "h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891" in ids
     assert "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros" in ids
-    mass = [r for r in rows if r["axis"] == "MASS"]
+    mine = {"drop5pct-tail", "add5pct-next", "add20pct-next"}
+    mass = [r for r in rows if r["axis"] == "MASS" and (r.get("value") or "") in mine]
     assert len(mass) == 3
     shas = {r["sha256"] for r in rows if r["sha256"]}
     for r in mass:
-        assert r["status"] == "BUILT"
+        assert r["status"] == "WITHDRAWN"  # Hard Constraint #5 / IR90-18: region-isolated or patterned
+        assert "IR90-18" in r["notes"] and "do not upload" in r["notes"]
         assert r["parent"] == "h33-h33-2-b2"
         assert r["receipt"] == "N" and r["receipt_score"] == ""
         assert re.fullmatch(r"[0-9a-f]{64}", r["sha256"])
@@ -93,3 +95,17 @@ def test_receipt_self_check_and_proxy_labels() -> None:
     assert pr["r0"]["ci95"] is not None
     for v in receipt["variants"]:
         assert "delta_vs_r0" in pr["variants"][v["value"]]
+        assert v["status"] == "WITHDRAWN"
+
+
+def test_region_reports_record_the_constraint5_failure() -> None:
+    region = _receipt()["region_reports"]
+    drop = region["drop5pct-tail"]
+    assert drop["passes_region_evenness_gate"] is False
+    assert drop["largest_emptied_cluster_blocks"] == 81
+    assert drop["bbox_y"][0] > 3000  # SE corner deletion
+    for key, ymax in (("add5pct-next", 101), ("add20pct-next", 288)):
+        add = region[key]
+        assert add["bbox_y"][1] == ymax  # northern-strip adds
+        assert "PATTERNED FILE" in add["verdict"]
+    assert _receipt()["withdrawal"]["section6_gates_passed_before_withdrawal"] is True

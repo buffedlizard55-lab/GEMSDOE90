@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """Rebuild R0 byte-for-byte, then build controlled MASS dose-ladder variants.
 
+POST-MERGE VERDICT (2026-10-23, IR90-18): all three rungs were WITHDRAWN before submission.
+The global FIFO-BFS rank is geographic (rank tails = SE components, rank heads = northern
+components), so these pure rank-dose edits are region-isolated/patterned under Hard
+Constraint #5. Ledger rows are kept WITHDRAWN as occupancy guards; the rasters are archived
+under .cache/region_probes/ and must not be uploaded. The reservation guard refuses re-builds.
+
 Session axis: MASS. The only changed quantity is emitted mass (count), edited along the
 parent's own ranking: the deterministic 8-connected FIFO-BFS traversal order recorded in
 the d2.8 thinning recipe (GEMSDOE28@src/gems27/thinning.py), recovered pixel-exact in

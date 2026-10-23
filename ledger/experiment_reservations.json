@@ -1,6 +1,6 @@
 {
   "checked_utc": "2026-10-23",
-  "scope": "Cross-session PRUNE collar values manually checked against the five sibling ledgers available on 2026-10-23. Exact (AXIS, value) reuse prohibited. Numeric cutoff values with any refill policy are treated as occupied, a stricter rule than literal string matching.",
+  "scope": "Cross-session experiment reservations. Exact (AXIS, value) reuse is prohibited. Numeric PRUNE cutoffs with any refill policy are treated as occupied, a stricter rule than literal string matching. The MASS block below lists every MASS value already BUILT by the five sibling sessions that were fetched on 2026-10-23, so the shadow doses stay distinguishable by value and by mechanism.",
   "sources": [
     {
       "repo": "buffedlizard55-lab/GEMSDOE84",
@@ -64,31 +64,165 @@
     4.5,
     5.5
   ],
-  "interpretation": "The selected numerical cutoffs are absent from all five fetched ledgers; all three are PRUNE tests with fixed count and the same FIFO-BFS H19-5 refill rule. Existing 3.61/4/5 no-refill and 3.0 refill are distinct values and are not recreated. This is a best-effort owner-repo audit, not proof of every submission ever made by the entity.",
-  "mass_axis_20261023": {
+  "mass_axis": {
+    "sibling_values": [
+      "GEMSDOE84: +10pct, -10pct, -20pct",
+      "GEMSDOE85: m10e, m10u, p10",
+      "GEMSDOE86: minus10pct, plus10pct",
+      "GEMSDOE87: m10minus, m10plus, m20minus",
+      "GEMSDOE88: m10minus, m10plus, m20minus"
+    ],
+    "selected_values": [
+      "shadow10pct",
+      "shadow20pct",
+      "shadow30pct"
+    ],
+    "why_distinct": "Every sibling MASS value changes the count by a round percentage using the parent's stored 8-connected FIFO-BFS order or a plain 'lowest rank' truncation. The selected values use a different ranking (ascending exclusive 300 m kernel credit, recomputed after each deletion) and are the only MASS doses that delete dots without adding or moving any. The recorded values are exact string labels and do not collide; the 30% dose is also a magnitude no sibling built.",
+    "matched_count_check": "At the same 3,765 removals the shadow order destroys 35% less exclusive kernel credit than the stored FIFO order (see evidence/mass_build_receipt.json ranking.matched_count_comparison_at_10pct). The sibling 10% doses therefore are not the same experiment."
+  },
+  "interpretation": "The selected PRUNE cutoffs are absent from all five fetched ledgers. This is a best-effort owner-repo audit of the five sibling ledgers available on 2026-10-23, not proof of every submission ever made by the entity; other unindexed repositories or private submission history may exist.",
+  "sessions": [
+    {
+      "session": "2026-10-23 aniso-PRUNE (GEMSDOE90)",
+      "axis": "PRUNE",
+      "value_family": "strike-aligned (anisotropic) collar, along held at the parent 2 px, across = A",
+      "values": [
+        {
+          "across_px": 4.0,
+          "along_px": 2.0,
+          "id": "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2",
+          "pct_changed": 13.9799,
+          "sha256": "0bf248e2d69be3068992192d54cbc1fd7e643d3472a3222653e905cf8434de7f",
+          "sha256_zeros": "bdbc0e1865dd7a3f8b981ee5429cbd0282b3764632cc5189e4bfabbf9441fd35"
+        },
+        {
+          "across_px": 5.0,
+          "along_px": 2.0,
+          "id": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061",
+          "pct_changed": 19.4561,
+          "sha256": "15218061d01614f42d5aaf350fad46728a749680dbea3dccc2c15307b77f4ca8",
+          "sha256_zeros": "62e259dad61925e1dc3708507c105208654c6d720fd8cdd0a561f4c8766592a2"
+        },
+        {
+          "across_px": 6.0,
+          "along_px": 2.0,
+          "id": "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3",
+          "pct_changed": 24.5658,
+          "sha256": "72dcdbd314a804b3766c74096562ea9a3d302a903197780d20f81bd525dddab3",
+          "sha256_zeros": "406e38b3d7bae8571d13ea13b28513cbef168c8df32a88af5357f44126292743"
+        }
+      ],
+      "collision_analysis": {
+        "sibling_ledgers_checked": [
+          "buffedlizard55-lab/GEMSDOE84",
+          "GEMSDOE85",
+          "GEMSDOE86",
+          "GEMSDOE87",
+          "GEMSDOE88"
+        ],
+        "isotropic_single_radius_values_seen": [
+          1.0,
+          1.5,
+          2.0,
+          2.25,
+          2.5,
+          2.8284,
+          2.85,
+          3.0,
+          3.2,
+          3.61,
+          3.7,
+          4.0,
+          4.3,
+          5.0
+        ],
+        "anisotropic_pairs_seen": 0,
+        "rule_applied": "the numeric-collision convention in this file governs isotropic single-radius cutoffs; no sibling ledger contains a collar with along != across, so the (A, L=2.0) pair is a new (AXIS, value)",
+        "residual_risk": "if the human applies the stricter numeric rule (any cutoff number already used, regardless of geometry), A=4 collides with PRUNE 4 and A=5 with PRUNE 5; the mechanism, removed set and refill pool still differ. Flagged in IRREGULARITIES.md instead of silently reconciled."
+      }
+    },
+    {
+      "session": "2026-10-23c high-dose MASS (GEMSDOE90)",
+      "axis": "MASS",
+      "value_family": "dose above 30% plus a credit-blind control",
+      "selected_values": [
+        "shadow40pct",
+        "shadow48pct",
+        "rand40pct"
+      ],
+      "rejected_values": [
+        "fifo10pct",
+        "fifo20pct",
+        "fifo40pct",
+        "shadow50pct"
+      ],
+      "why_new": "No indexed repository has a MASS dose above 30% or any credit-blind control. The FIFO-order doses were probed and rejected as region-isolated (IR90-15); the 50% shadow dose was rejected because the greedy starts emptying whole regions (IR90-17)."
+    }
+  ],
+  "mass_high_dose": {
     "checked_utc": "2026-10-23",
-    "scope": "Cross-session MASS dose values checked against sibling ledgers GEMSDOE84-92 (fetched via api.github.com 2026-10-23; GEMSDOE93-101 have no ledger/submissions.csv). Exact (AXIS, value) reuse prohibited; selection policy is part of a value's identity.",
-    "occupied_values": [
+    "scope": "Every MASS row in this repository's ledger plus a read-only audit of the ledger of every public buffedlizard55-lab GEMSDOE* repository reachable on 2026-10-23 (gh api, read-only, no DrivenData access). Exact (AXIS, value) reuse prohibited; a dose at a new percentage is a new pair, a different selection rule at the same percentage is also a new pair.",
+    "in_repo_values": [
+      "shadow10pct",
+      "shadow20pct",
+      "shadow30pct"
+    ],
+    "sibling_values": [
+      "GEMSDOE84: MASS +10pct / -10pct / -20pct (parent FIFO-BFS order, counts 41419 / 33889 / 30123)",
+      "GEMSDOE85: MASS m10e / m10u / p10 (10% each, counts 33889 / 33889 / 41419)",
+      "GEMSDOE86: MASS minus10pct / plus10pct",
+      "GEMSDOE87: MASS m10minus / m10plus / m20minus (10% / 10% / 20%)",
+      "GEMSDOE88: MASS m10minus / m10plus / m20minus (10% / 10% / 20%)",
+      "GEMSDOE89: MASS +10pct / -10pct / -20pct (copy of the GEMSDOE84 block)",
+      "GEMSDOE91: MASS m10minus / m10plus / m20minus (copy)",
+      "GEMSDOE92: MASS_D10 (drop 10% by H19-5 rank) / MASS_A10 (add 10%) / MASS_SWAP10 (swap 10%)",
+      "GEMSDOE93-101: no MASS rows found"
+    ],
+    "selected_values": [
+      "shadow40pct",
+      "shadow48pct",
+      "rand40pct"
+    ],
+    "why_distinct": "No indexed repository has any MASS dose above 30%, and none has a credit-blind control at any dose. 40% and 48% extend the in-repo shadow ladder the way 20% extended 10%; rand40 reuses the 40% dose with a seeded uniform subset so that selection quality is separated from dose for the first time.",
+    "cross_repo_caveat": "This is a best-effort audit of public repositories, not proof of every submission the entity has ever made. If any sibling repository is the same DrivenData entity, the campaign as a whole exceeds the 3-scored-submissions-per-week quota; see IRREGULARITIES IR90-08.",
+    "rejected_values": [
+      "fifo10pct",
+      "fifo20pct",
+      "fifo40pct",
+      "shadow50pct"
+    ],
+    "rejection_reason": "Built/probed once on 2026-10-23 and rejected before any submission, rasters and ledger rows removed: (a) fifo 10/20/40% -- the parent's stored 8-connected FIFO-BFS order deletes one south-east corner; at 40% it empties 41% of 5 km blocks in a single contiguous 632-block hole, i.e. a region-isolated file under Hard Constraint #5 that confounds dose with geography; (b) shadow 50% -- the deepest shadow dose starts emptying whole contiguous regions (largest emptied cluster 17 blocks = 425 km2). The deep arm therefore stops at 48%, the largest shadow dose whose candidate passes the region-evenness gate. The same FIFO defect applies to any sibling MASS dose built with that stored order."
+  },
+  "mass_dose_ladder_20261023": {
+    "checked_utc": "2026-10-23",
+    "scope": "Session arena/307b04fc-gemsdoe90: MASS dose-ladder rungs on the parent's own recorded FIFO-BFS ranking. Cross-session values checked against sibling ledgers GEMSDOE84-92 (api.github.com, 2026-10-23; GEMSDOE93-101 have no ledger file) and, after merging main, against this repository's shadow/random ladder.",
+    "occupied_values_before_build": [
       "+10pct",
       "-10pct",
       "-20pct",
-      "MASS_A10",
-      "MASS_D10",
-      "MASS_SWAP10",
       "m10e",
+      "m10u",
+      "p10",
       "m10minus",
       "m10plus",
-      "m10u",
       "m20minus",
       "minus10pct",
-      "p10",
-      "plus10pct"
+      "plus10pct",
+      "MASS_D10",
+      "MASS_A10",
+      "MASS_SWAP10"
     ],
     "selected_values": [
       "drop5pct-tail",
       "add5pct-next",
       "add20pct-next"
     ],
-    "interpretation": "-10%/+10%/-20% doses (and a 10% swap) are built by GEMSDOE84/85/86/87/88/89/91/92 under several selection policies. The selected rungs fill the missing parts of one dose ladder on the parent's own recorded-recipe ranking (FIFO-BFS traversal): -5% tail drop and +5%/+20% next-ranked adds. Best-effort owner-repo audit, not proof of every submission ever made."
+    "final_status": "All three built, then WITHDRAWN before submission (IR90-18): the parent's global FIFO-BFS rank is geographic, so rank-tail drops are region-isolated deletions (5% dose: 81-block 2025 km2 SE hole; fails the region-evenness gate of scripts/build_mass_high_dose.py) and rank-head adds are patterned northern-strip files (+5%: all cells y<=101; +20%: y<=288). Rows kept as occupancy guards; rasters moved to .cache/region_probes/; do not upload.",
+    "rejected_pairs": {
+      "drop5pct-tail": "region-isolated FIFO tail (IR90-18)",
+      "add5pct-next": "patterned FIFO head (IR90-18)",
+      "add20pct-next": "patterned FIFO head (IR90-18)"
+    },
+    "interpretation": "Any future FIFO-ranked dose rung must pass the region-evenness gate before it is emitted to releases/; a region-even replacement (per-5km-block local rank quotas) is proposed in SLOT_PLAN.md and was not built this session."
   }
 }
