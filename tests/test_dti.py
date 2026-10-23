@@ -74,3 +74,32 @@ def test_extra_dot_on_covered_truth_does_not_double_count_T():
     T, S, M = components_from_arrays(p, g)
     assert T == pytest.approx(1.0)  # max-credit, not summed
     assert S == 2.0
+
+
+def test_binary_exact_matches_sparse_loop() -> None:
+    """The O(N) distance-transform form must equal the per-dot max-plus loop."""
+    import numpy as np
+
+    from src import dti
+
+    rng = np.random.default_rng(20261023)
+    for _ in range(3):
+        dots = rng.random((48, 61)) < 0.025
+        truth = rng.random((48, 61)) < 0.035
+        # Same algebra, different summation order: equal to float64 rounding, not bitwise.
+        assert dti.dti_binary_exact(dots, truth) == pytest.approx(
+            dti.dti_from_arrays(dots.astype(float), truth.astype(int)), rel=1e-12, abs=1e-15
+        )
+
+
+def test_binary_exact_empty_and_full_edge_cases() -> None:
+    import numpy as np
+
+    from src import dti
+
+    empty = np.zeros((10, 10), dtype=bool)
+    some = np.zeros((10, 10), dtype=bool)
+    some[5, 5] = True
+    assert dti.dti_binary_exact(empty, some) == 0.0
+    # A dot exactly on the only truth pixel: T=1, S=1, M=1, |G|=1 -> 1/(0.2+0+0.8)=1
+    assert dti.dti_binary_exact(some, some) == 1.0

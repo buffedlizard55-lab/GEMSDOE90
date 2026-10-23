@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "parent": "h33-h33-2-b2",
+  "axis": "MASS",
+  "collar_policy": {
+    "rule": "hard constraint 4: dots must satisfy d_cat >= 3.0 px",
+    "dots_removed_by_collar": 1611,
+    "min_catalogue_distance_px_after_collar": 3.0,
+    "applies_to": "all three variants identically, so it is not the axis"
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-MASSfifo20-20261023-1be8302f",
+      "value": "fifo20",
+      "mechanism_card": {
+        "hypothesis": "The brief-literal MASS rule: R0 carries mass that does not pay, and the parent's own FIFO-BFS thinning order is an acceptable proxy for 'least useful first'.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|): a dot within 3 px of hidden truth adds up to 1.0 to T and only (1 - max k) to the penalty S-M, while a dot further than 3 px adds nothing to T and a full 1.0 to S-M. Mass is therefore not neutral: every non-paying dot costs 0.2 of denominator, and T is a max-plus quantity, so a dot whose kernel disc is already claimed by a neighbour supplies no unique credit at all. Both variants test that algebra at constant placement and constant collar. Removal order is the reversed H19-5 FIFO-BFS visit rank (the documented d2.8 thinning tie-break). Measured against the parent's own support, the removed dots average 2.04 unique kernel credit versus 2.01 for the dots kept: the FIFO tail is NOT a redundancy ordering, so this file is effectively a spatially arbitrary 20% mass cut. That is the point of pairing it with uniq20 at identical count.",
+        "non_fault_mimic": "Thin, isolated H19-5 support is produced as readily by road/rail corridors, DEM artefacts, lithologic contacts and drainage as by short fault strands, so 'redundant' and 'noise' are not the same set. Removing duplicate dots can equally delete the second strand of a real step-over, which the 3 px kernel cannot distinguish.",
+        "predicted_live_change": "+0.001 DTI (MODEL; interval -0.012 to +0.009)",
+        "model_sensitivity": {
+          "scenarios": {
+            "g20k": {
+              "denominator_assumed": 20529.5,
+              "all_dropped_dots_off_truth": 0.022,
+              "half_dropped_dots_on_truth": -0.0846
+            },
+            "g40k": {
+              "denominator_assumed": 37470.7,
+              "all_dropped_dots_off_truth": 0.0116,
+              "half_dropped_dots_on_truth": -0.0456
+            },
+            "g60k": {
+              "denominator_assumed": 54412.0,
+              "all_dropped_dots_off_truth": 0.0079,
+              "half_dropped_dots_on_truth": -0.0312
+            }
+          },
+          "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+        },
+        "spatial_side_effect": {
+          "support_patches": 26645,
+          "patches_with_no_dot_after": 10311,
+          "support_px_in_emptied_patches": 36369
+        },
+        "falsifier": "Because the dropped set is nearly unbiased in unique credit, a live gain >= +0.01 here would mean mass matters and dot choice does not; a live drop <= -0.01 would mean R0's dots are paying and mass reduction is the wrong direction for every selection rule.",
+        "structural_geologist_note": "Check whether the removed dots concentrate on one structural trend or region; the patch statistics say 10311 of 26645 support patches lose every dot."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSuniq20-20261023-5138de0f",
+      "value": "uniq20",
+      "mechanism_card": {
+        "hypothesis": "R0 carries redundant mass: the dots whose 300 m kernel disc is fully claimed by a neighbour cannot add to T, so removing them is free unless they sit on hidden truth, and each removal pays 0.2/Den of denominator.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|): a dot within 3 px of hidden truth adds up to 1.0 to T and only (1 - max k) to the penalty S-M, while a dot further than 3 px adds nothing to T and a full 1.0 to S-M. Mass is therefore not neutral: every non-paying dot costs 0.2 of denominator, and T is a max-plus quantity, so a dot whose kernel disc is already claimed by a neighbour supplies no unique credit at all. Both variants test that algebra at constant placement and constant collar. Selection is spatially neutral: unique triangular-kernel credit is computed for every dot against the parent's H19-5 support (the field it was thinned from), and only the lowest-credit dots are dropped (dropped mean 1.00 vs kept 2.29 credit per dot). Ties follow the parent's FIFO rank, so the file is reproducible.",
+        "non_fault_mimic": "Thin, isolated H19-5 support is produced as readily by road/rail corridors, DEM artefacts, lithologic contacts and drainage as by short fault strands, so 'redundant' and 'noise' are not the same set. Removing duplicate dots can equally delete the second strand of a real step-over, which the 3 px kernel cannot distinguish.",
+        "predicted_live_change": "+0.005 DTI (MODEL; interval -0.010 to +0.012)",
+        "model_sensitivity": {
+          "scenarios": {
+            "g20k": {
+              "denominator_assumed": 20529.5,
+              "all_dropped_dots_off_truth": 0.022,
+              "half_dropped_dots_on_truth": -0.0846
+            },
+            "g40k": {
+              "denominator_assumed": 37470.7,
+              "all_dropped_dots_off_truth": 0.0116,
+              "half_dropped_dots_on_truth": -0.0456
+            },
+            "g60k": {
+              "denominator_assumed": 54412.0,
+              "all_dropped_dots_off_truth": 0.0079,
+              "half_dropped_dots_on_truth": -0.0312
+            }
+          },
+          "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+        },
+        "spatial_side_effect": {
+          "support_patches": 26645,
+          "patches_with_no_dot_after": 13380,
+          "support_px_in_emptied_patches": 21356
+        },
+        "falsifier": "A live drop <= -0.01 means the removed redundant dots were sitting on hidden truth and carrying T, i.e. the test faults are dense enough that redundancy at 3 px is not waste; a gain >= +0.01 supports pushing mass lower. |change| < 0.01 = no evidence.",
+        "structural_geologist_note": "Check whether the removed dots concentrate on one structural trend or region; the patch statistics say 13380 of 26645 support patches lose every dot."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSuniq30-20261023-56c5f82f",
+      "value": "uniq30",
+      "mechanism_card": {
+        "hypothesis": "R0 carries redundant mass: the dots whose 300 m kernel disc is fully claimed by a neighbour cannot add to T, so removing them is free unless they sit on hidden truth, and each removal pays 0.2/Den of denominator.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|): a dot within 3 px of hidden truth adds up to 1.0 to T and only (1 - max k) to the penalty S-M, while a dot further than 3 px adds nothing to T and a full 1.0 to S-M. Mass is therefore not neutral: every non-paying dot costs 0.2 of denominator, and T is a max-plus quantity, so a dot whose kernel disc is already claimed by a neighbour supplies no unique credit at all. Both variants test that algebra at constant placement and constant collar. Selection is spatially neutral: unique triangular-kernel credit is computed for every dot against the parent's H19-5 support (the field it was thinned from), and only the lowest-credit dots are dropped (dropped mean 1.15 vs kept 2.41 credit per dot). Ties follow the parent's FIFO rank, so the file is reproducible.",
+        "non_fault_mimic": "Thin, isolated H19-5 support is produced as readily by road/rail corridors, DEM artefacts, lithologic contacts and drainage as by short fault strands, so 'redundant' and 'noise' are not the same set. Removing duplicate dots can equally delete the second strand of a real step-over, which the 3 px kernel cannot distinguish.",
+        "predicted_live_change": "+0.007 DTI (MODEL; interval -0.015 to +0.018)",
+        "model_sensitivity": {
+          "scenarios": {
+            "g20k": {
+              "denominator_assumed": 20529.5,
+              "all_dropped_dots_off_truth": 0.0344,
+              "half_dropped_dots_on_truth": -0.1294
+            },
+            "g40k": {
+              "denominator_assumed": 37470.7,
+              "all_dropped_dots_off_truth": 0.0178,
+              "half_dropped_dots_on_truth": -0.0691
+            },
+            "g60k": {
+              "denominator_assumed": 54412.0,
+              "all_dropped_dots_off_truth": 0.012,
+              "half_dropped_dots_on_truth": -0.0471
+            }
+          },
+          "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+        },
+        "spatial_side_effect": {
+          "support_patches": 26645,
+          "patches_with_no_dot_after": 15811,
+          "support_px_in_emptied_patches": 25350
+        },
+        "falsifier": "A live drop <= -0.01 means the removed redundant dots were sitting on hidden truth and carrying T, i.e. the test faults are dense enough that redundancy at 3 px is not waste; a gain >= +0.01 supports pushing mass lower. |change| < 0.01 = no evidence.",
+        "structural_geologist_note": "Check whether the removed dots concentrate on one structural trend or region; the patch statistics say 15811 of 26645 support patches lose every dot."
+      }
+    }
+  ]
+}

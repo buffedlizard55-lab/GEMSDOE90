@@ -71,3 +71,34 @@ def components_from_arrays(p: np.ndarray, g: np.ndarray) -> tuple[float, float, 
 def dti_from_arrays(p: np.ndarray, g: np.ndarray) -> float:
     T, S, M = components_from_arrays(p, g)
     return dti_from_components(T, S, M, int((np.asarray(g) > 0).sum()))
+
+
+def components_binary_exact(dots: np.ndarray, truth: np.ndarray) -> tuple[float, float, float, int]:
+    """Exact (T, S, M, |G|) for a unit-mass BINARY prediction file, in O(N).
+
+    For unit mass A2's max-plus credit collapses to the nearest-dot distance:
+    T = sum_g k(dist(g, nearest dot)) and M = sum_p k(dist(p, nearest truth)).
+    Both are exact distance transforms, so no per-dot loop is needed. This is the
+    same algebra as `components_from_arrays`, only specialised to binary rasters;
+    `tests/test_dti.py::test_binary_exact_matches_sparse_loop` pins that equality.
+    """
+    from scipy.ndimage import distance_transform_edt
+
+    dots = np.asarray(dots) > 0
+    truth = np.asarray(truth) > 0
+    S = float(dots.sum())
+    G = int(truth.sum())
+    if G == 0:
+        return 0.0, S, 0.0, 0
+    if not dots.any():
+        return 0.0, S, 0.0, G
+    d_to_dot = distance_transform_edt(~dots)
+    d_to_truth = distance_transform_edt(~truth)
+    T = float(kernel(d_to_dot[truth]).sum())
+    M = float(kernel(d_to_truth[dots]).sum())
+    return T, S, M, G
+
+
+def dti_binary_exact(dots: np.ndarray, truth: np.ndarray) -> float:
+    T, S, M, G = components_binary_exact(dots, truth)
+    return dti_from_components(T, S, M, G)

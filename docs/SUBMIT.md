@@ -1,41 +1,43 @@
-# Human submission packet — GEMSDOE90 PRUNE candidates
+# Human submission packet — GEMSDOE90 MASS candidates (2026-10-23)
 
-**Agent does not submit.** These local GeoTIFFs are ignored by Git to keep competition rasters out of this public repository and any public release. Only pick one candidate per scored slot; do not submit both encodings.
+**The agent does not submit.** These GeoTIFFs are gitignored (this repo is public; competition rasters must
+never be committed). Pick ONE file per scored slot; never upload both encodings of the same id.
 
-## Files and form notes
+## Files, names and notes
 
-| Candidate | Preferred file (NaN outside footprint) | Fallback twin (zeros outside) | Form note (under 140 chars) |
-|---|---|---|---|
-| PRUNE 3.5 px | `releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891.tif` | `releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=3.5px, fixed-count refill; predicted +0.002 DTI MODEL` |
-| PRUNE 4.5 px | `releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217.tif` | `releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=4.5px, fixed-count refill; predicted +0.000 DTI MODEL` |
-| PRUNE 5.5 px | `releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif` | `releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=5.5px, fixed-count refill; predicted -0.003 DTI MODEL` |
+| # | Preferred file (NaN outside footprint) | Fallback twin (zeros outside) | n_dots | Form note (≤140 chars) |
+|---|---|---|---|---|
+| 1 | `releases/h33-h33-2-b2-MASSuniq20-20261023-5138de0f.tif` | `…-5138de0f-zeros.tif` | 28,512 | `h33-h33-2-b2; MASS uniq20: drop 7,531 least-unique-credit dots + 3px collar; pred +0.005 DTI MODEL` |
+| 2 | `releases/h33-h33-2-b2-MASSuniq30-20261023-56c5f82f.tif` | `…-56c5f82f-zeros.tif` | 24,747 | `h33-h33-2-b2; MASS uniq30: drop 11,296 least-unique-credit dots + 3px collar; pred +0.007 DTI MODEL` |
+| 3 | `releases/h33-h33-2-b2-MASSfifo20-20261023-1be8302f.tif` | `…-1be8302f-zeros.tif` | 28,512 | `h33-h33-2-b2; MASS fifo20: drop 7,531 lowest-FIFO-rank dots + 3px collar; pred +0.001 DTI MODEL` |
 
-SHA-256 and detailed format receipts: `evidence/build_receipt.json`. Parent byte-rebuild receipt: `evidence/r0_rebuild_receipt.json`. Each primary is NaN outside the supplied sample footprint; each `-zeros.tif` fallback has 0 outside. The portal's handling of these encodings is not inferred here; choose the one the human has previously confirmed.
+Full SHA-256, per-file gate results and parent-diff statistics: `evidence/build_receipt_mass.json`.
+Format receipts for the two earlier PRUNE candidates: `evidence/build_receipt.json`.
 
-## Validation summary
+## Gates re-run after writing (all pass, both encodings of all three files)
 
-All three have 37,654 unit-mass pixels (same count as R0), zero catalogue mass, and minimum Euclidean distance to the catalogue greater than 3 px. CRS, dimensions, transform, float32/single band, in-footprint finite/range, outside-footprint encoding, parent diff and file SHA are checked after re-reading from disk. Exact parent R0 hashes and H19-5→d2.8 ranking reproduction are in the receipts. The binary ranking is FIFO-BFS visit order, not a geological confidence score.
+CRS EPSG:32611, shape 3730×3292, transform, float32, single band, values in [0,1], no NaN inside the 5,167,373-px
+footprint, NaN outside (primary) / 0 outside (twin), **zero catalogue mass**, **minimum Euclidean distance to the
+catalogue 3.000 px**, expected mask re-derived and compared after re-reading from disk, SHA-256 not present in any
+other ledger row, and no repeated `(parent, axis, value)` pair.
 
-No candidate has a live score. Predictions in the ledger are **MODEL**, and R0's 0.2778 remains **CLAIM** until a submission-page receipt is supplied. A live change below 0.01 is no evidence. The human must supply: current TOP_PUBLIC and date; weekly/total slots used and remaining; confirmed deadline/cutoff; and submission-page score receipts (R0 plus any candidate). Never submit more than the entity's quota.
-
-## Regenerating the local rasters (do this first on a fresh clone)
-
-`releases/*.tif` is gitignored — this repository is public and competition rasters must not be committed — so the candidate files do **not** travel with the repo. Regenerate them from the pinned inputs, then check the bytes against the recorded hashes:
+## Regenerate on a fresh clone (do this before any upload)
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python scripts/restore_data.py          # 26 pins, SHA-256 verified, -> .cache/gems_data/
-.venv/bin/python scripts/restore_releases.py      # re-emits the 3 pairs; stops on any hash mismatch
-.venv/bin/python scripts/build_r0_variants.py --verify   # independent re-read + re-emit check
-.venv/bin/python -m pytest -q                     # 22 tests
+.venv/bin/python scripts/restore_data.py            # 26 pins, SHA-256 verified -> .cache/gems_data/
+.venv/bin/python scripts/build_mass_variants.py --build    # re-emits and records hashes
+.venv/bin/python scripts/build_mass_variants.py --verify   # re-derives masks, compares on-disk bytes
+.venv/bin/python scripts/write_mass_ledger.py              # refreshes the 3 MASS ledger rows
+.venv/bin/python -m pytest -q                              # 30 tests
 ```
 
-`scripts/restore_releases.py` reproduces the already-recorded (PRUNE, value) pairs; it is not a new experiment, and it refuses to write a file whose SHA-256 differs from `evidence/build_receipt.json` and `ledger/submissions.csv`. `--build` remains blocked by the (AXIS, value) reservation guard.
+The build is deterministic: re-running it must print the same SHA-256 values as the ledger. Confirm the SHA-256
+on disk equals the ledger row before uploading. `-zeros.tif` twins are byte-stable under the same command.
 
-| Candidate | n_dots | % of R0 changed | min distance to catalogue | SHA-256 (NaN encoding) |
-|---|---|---|---|---|
-| PRUNE 3.5 px | 37,654 | 14.352% | 3.606 px | `8b96d8913b97b884…` |
-| PRUNE 4.5 px | 37,654 | 25.750% | 5.000 px | `be7a1217907a8019…` |
-| PRUNE 5.5 px | 37,654 | 32.560% | 5.657 px | `a69816c73b148933…` |
+## What the human must supply
 
-Full hashes and per-file gate results: `evidence/releases_restore_receipt.json`; the zero-catalogue-mass, in-footprint range/finiteness, CRS/shape/transform/dtype and outside-footprint encoding checks were re-run against the files on disk after writing.
+Current TOP_PUBLIC with date; weekly/total slots used and remaining; confirmed deadline/cutoff; and
+submission-page **receipts** for R0 and for each candidate (paste score + date into `ledger/submissions.csv`
+`receipt_score` / `date`, and set `receipt` to Y). R0's 0.2778 remains a **CLAIM** until then. A live change
+below 0.01 is no evidence.

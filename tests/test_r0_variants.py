@@ -57,10 +57,20 @@ def test_submission_notes_are_under_140_chars() -> None:
     assert all(len(row["form_note"]) <= 140 for row in receipt["variants"])
 
 
+def _built_variants():
+    """Every BUILT variant from every session receipt in evidence/."""
+    out = []
+    for name in ("build_receipt.json", "build_receipt_mass.json"):
+        path = ROOT / "evidence" / name
+        if path.is_file():
+            out.extend(json.loads(path.read_text())["variants"])
+    return out
+
+
 def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
     import csv
 
-    receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
+    receipt = {"variants": _built_variants()}
     with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
         built = {row["id"]: row for row in csv.DictReader(fh) if row["status"] == "BUILT"}
     assert set(built) == {v["id"] for v in receipt["variants"]}
@@ -68,14 +78,15 @@ def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
         row = built[v["id"]]
         assert row["sha256"] == v["files"]["nan"]["sha256"]
         assert row["sha256_zeros"] == v["files"]["zeros"]["sha256"]
-        assert float(row["pct_changed"]) == pytest.approx(v["pct_changed"], abs=1e-6)
-        assert 1.0 <= v["pct_changed"] <= 50.0
+        pct = v.get("pct_changed", v.get("pct_changed_vs_r0"))
+        assert float(row["pct_changed"]) == pytest.approx(pct, abs=1e-6)
+        assert 1.0 <= pct <= 50.0
 
 
 def test_built_hashes_are_not_reused_from_any_other_ledger_row() -> None:
     import csv
 
-    receipt = json.loads((ROOT / "evidence" / "build_receipt.json").read_text())
+    receipt = {"variants": _built_variants()}
     with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
     built_ids = {v["id"] for v in receipt["variants"]}

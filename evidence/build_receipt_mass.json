@@ -1,0 +1,425 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T21:41:29Z",
+  "git_sha": "e7452e6792ae4db50527a02529e8bd936e65f0f7",
+  "axis": "MASS",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "dots": 37654,
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "collar_policy": {
+    "rule": "hard constraint 4: dots must satisfy d_cat >= 3.0 px",
+    "dots_removed_by_collar": 1611,
+    "min_catalogue_distance_px_after_collar": 3.0,
+    "applies_to": "all three variants identically, so it is not the axis"
+  },
+  "ranking": {
+    "fifo": "reversed H19-5 FIFO-BFS visit order (documented d2.8 thinning tie-break)",
+    "uniq": "unique triangular-kernel credit vs the parent's own H19-5 support, measured with a nearest-dot distance transform (exact under the metric's max-plus T)",
+    "is_geological_probability": false
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "verified_count": 26,
+    "all_pins_rechecked": true
+  },
+  "generator": {
+    "script": "scripts/build_mass_variants.py",
+    "script_sha256": "f7689f748c8219dcc9d4f6ea9bfac5309ab0eefb5936e1ba6995b6ff59dab6f2",
+    "base_module": "scripts/build_r0_variants.py",
+    "base_module_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615"
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-MASSfifo20-20261023-1be8302f",
+      "value": "fifo20",
+      "label": "20% of R0 by lowest parent FIFO-BFS rank",
+      "n_dots": 28512,
+      "removed_dots": 9142,
+      "collar_dots": 1611,
+      "dose_dots": 7531,
+      "retained_dots": 28512,
+      "added_dots": 0,
+      "pct_changed_vs_r0": 24.278961,
+      "sha256": "1be8302fa428534537c8b50a1250aa889df9c4becf310f108ad18a90a0398669",
+      "sha256_zeros": "b9cb54363f00263a16f7a4a71a6753a76435d7c3ee5f918db31b06d6ef317b33",
+      "min_catalogue_distance_px": 3.0,
+      "dropped_unique_credit_mean": 2.0366,
+      "kept_unique_credit_mean": 2.0143,
+      "dropped_local_support_mean": 2.4565,
+      "kept_local_support_mean": 2.4133,
+      "block1km_density_cv_before": 1.9228,
+      "block1km_density_cv_after": 2.2259,
+      "support_patches": {
+        "support_patches": 26645,
+        "patches_with_no_dot_after": 10311,
+        "support_px_in_emptied_patches": 36369
+      },
+      "predicted_change": "+0.001 DTI (MODEL; interval -0.012 to +0.009)",
+      "model_sensitivity": {
+        "scenarios": {
+          "g20k": {
+            "denominator_assumed": 20529.5,
+            "all_dropped_dots_off_truth": 0.022,
+            "half_dropped_dots_on_truth": -0.0846
+          },
+          "g40k": {
+            "denominator_assumed": 37470.7,
+            "all_dropped_dots_off_truth": 0.0116,
+            "half_dropped_dots_on_truth": -0.0456
+          },
+          "g60k": {
+            "denominator_assumed": 54412.0,
+            "all_dropped_dots_off_truth": 0.0079,
+            "half_dropped_dots_on_truth": -0.0312
+          }
+        },
+        "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+      },
+      "mechanism_card": {
+        "hypothesis": "The brief-literal MASS rule: R0 carries mass that does not pay, and the parent's own FIFO-BFS thinning order is an acceptable proxy for 'least useful first'.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|): a dot within 3 px of hidden truth adds up to 1.0 to T and only (1 - max k) to the penalty S-M, while a dot further than 3 px adds nothing to T and a full 1.0 to S-M. Mass is therefore not neutral: every non-paying dot costs 0.2 of denominator, and T is a max-plus quantity, so a dot whose kernel disc is already claimed by a neighbour supplies no unique credit at all. Both variants test that algebra at constant placement and constant collar. Removal order is the reversed H19-5 FIFO-BFS visit rank (the documented d2.8 thinning tie-break). Measured against the parent's own support, the removed dots average 2.04 unique kernel credit versus 2.01 for the dots kept: the FIFO tail is NOT a redundancy ordering, so this file is effectively a spatially arbitrary 20% mass cut. That is the point of pairing it with uniq20 at identical count.",
+        "non_fault_mimic": "Thin, isolated H19-5 support is produced as readily by road/rail corridors, DEM artefacts, lithologic contacts and drainage as by short fault strands, so 'redundant' and 'noise' are not the same set. Removing duplicate dots can equally delete the second strand of a real step-over, which the 3 px kernel cannot distinguish.",
+        "predicted_live_change": "+0.001 DTI (MODEL; interval -0.012 to +0.009)",
+        "model_sensitivity": {
+          "scenarios": {
+            "g20k": {
+              "denominator_assumed": 20529.5,
+              "all_dropped_dots_off_truth": 0.022,
+              "half_dropped_dots_on_truth": -0.0846
+            },
+            "g40k": {
+              "denominator_assumed": 37470.7,
+              "all_dropped_dots_off_truth": 0.0116,
+              "half_dropped_dots_on_truth": -0.0456
+            },
+            "g60k": {
+              "denominator_assumed": 54412.0,
+              "all_dropped_dots_off_truth": 0.0079,
+              "half_dropped_dots_on_truth": -0.0312
+            }
+          },
+          "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+        },
+        "spatial_side_effect": {
+          "support_patches": 26645,
+          "patches_with_no_dot_after": 10311,
+          "support_px_in_emptied_patches": 36369
+        },
+        "falsifier": "Because the dropped set is nearly unbiased in unique credit, a live gain >= +0.01 here would mean mass matters and dot choice does not; a live drop <= -0.01 would mean R0's dots are paying and mass reduction is the wrong direction for every selection rule.",
+        "structural_geologist_note": "Check whether the removed dots concentrate on one structural trend or region; the patch statistics say 10311 of 26645 support patches lose every dot."
+      },
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSfifo20-20261023-1be8302f.tif",
+          "sha256": "1be8302fa428534537c8b50a1250aa889df9c4becf310f108ad18a90a0398669",
+          "bytes": 314554,
+          "encoding": "nan",
+          "n_dots": 28512,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSfifo20-20261023-1be8302f-zeros.tif",
+          "sha256": "b9cb54363f00263a16f7a4a71a6753a76435d7c3ee5f918db31b06d6ef317b33",
+          "bytes": 180172,
+          "encoding": "zeros",
+          "n_dots": 28512,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSuniq20-20261023-5138de0f",
+      "value": "uniq20",
+      "label": "20% of R0 by lowest unique 300 m kernel credit",
+      "n_dots": 28512,
+      "removed_dots": 9142,
+      "collar_dots": 1611,
+      "dose_dots": 7531,
+      "retained_dots": 28512,
+      "added_dots": 0,
+      "pct_changed_vs_r0": 24.278961,
+      "sha256": "5138de0f96e71596560980b70ca6695e32fef991d125450eb7408492071b4e13",
+      "sha256_zeros": "7bc213f33353cd86d522f248a6b83637e851d435b798467fefe2aaff82612526",
+      "min_catalogue_distance_px": 3.0,
+      "dropped_unique_credit_mean": 1.0,
+      "kept_unique_credit_mean": 2.2881,
+      "dropped_local_support_mean": 1.1378,
+      "kept_local_support_mean": 2.7616,
+      "block1km_density_cv_before": 1.9228,
+      "block1km_density_cv_after": 2.1561,
+      "support_patches": {
+        "support_patches": 26645,
+        "patches_with_no_dot_after": 13380,
+        "support_px_in_emptied_patches": 21356
+      },
+      "predicted_change": "+0.005 DTI (MODEL; interval -0.010 to +0.012)",
+      "model_sensitivity": {
+        "scenarios": {
+          "g20k": {
+            "denominator_assumed": 20529.5,
+            "all_dropped_dots_off_truth": 0.022,
+            "half_dropped_dots_on_truth": -0.0846
+          },
+          "g40k": {
+            "denominator_assumed": 37470.7,
+            "all_dropped_dots_off_truth": 0.0116,
+            "half_dropped_dots_on_truth": -0.0456
+          },
+          "g60k": {
+            "denominator_assumed": 54412.0,
+            "all_dropped_dots_off_truth": 0.0079,
+            "half_dropped_dots_on_truth": -0.0312
+          }
+        },
+        "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+      },
+      "mechanism_card": {
+        "hypothesis": "R0 carries redundant mass: the dots whose 300 m kernel disc is fully claimed by a neighbour cannot add to T, so removing them is free unless they sit on hidden truth, and each removal pays 0.2/Den of denominator.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|): a dot within 3 px of hidden truth adds up to 1.0 to T and only (1 - max k) to the penalty S-M, while a dot further than 3 px adds nothing to T and a full 1.0 to S-M. Mass is therefore not neutral: every non-paying dot costs 0.2 of denominator, and T is a max-plus quantity, so a dot whose kernel disc is already claimed by a neighbour supplies no unique credit at all. Both variants test that algebra at constant placement and constant collar. Selection is spatially neutral: unique triangular-kernel credit is computed for every dot against the parent's H19-5 support (the field it was thinned from), and only the lowest-credit dots are dropped (dropped mean 1.00 vs kept 2.29 credit per dot). Ties follow the parent's FIFO rank, so the file is reproducible.",
+        "non_fault_mimic": "Thin, isolated H19-5 support is produced as readily by road/rail corridors, DEM artefacts, lithologic contacts and drainage as by short fault strands, so 'redundant' and 'noise' are not the same set. Removing duplicate dots can equally delete the second strand of a real step-over, which the 3 px kernel cannot distinguish.",
+        "predicted_live_change": "+0.005 DTI (MODEL; interval -0.010 to +0.012)",
+        "model_sensitivity": {
+          "scenarios": {
+            "g20k": {
+              "denominator_assumed": 20529.5,
+              "all_dropped_dots_off_truth": 0.022,
+              "half_dropped_dots_on_truth": -0.0846
+            },
+            "g40k": {
+              "denominator_assumed": 37470.7,
+              "all_dropped_dots_off_truth": 0.0116,
+              "half_dropped_dots_on_truth": -0.0456
+            },
+            "g60k": {
+              "denominator_assumed": 54412.0,
+              "all_dropped_dots_off_truth": 0.0079,
+              "half_dropped_dots_on_truth": -0.0312
+            }
+          },
+          "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+        },
+        "spatial_side_effect": {
+          "support_patches": 26645,
+          "patches_with_no_dot_after": 13380,
+          "support_px_in_emptied_patches": 21356
+        },
+        "falsifier": "A live drop <= -0.01 means the removed redundant dots were sitting on hidden truth and carrying T, i.e. the test faults are dense enough that redundancy at 3 px is not waste; a gain >= +0.01 supports pushing mass lower. |change| < 0.01 = no evidence.",
+        "structural_geologist_note": "Check whether the removed dots concentrate on one structural trend or region; the patch statistics say 13380 of 26645 support patches lose every dot."
+      },
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSuniq20-20261023-5138de0f.tif",
+          "sha256": "5138de0f96e71596560980b70ca6695e32fef991d125450eb7408492071b4e13",
+          "bytes": 319190,
+          "encoding": "nan",
+          "n_dots": 28512,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSuniq20-20261023-5138de0f-zeros.tif",
+          "sha256": "7bc213f33353cd86d522f248a6b83637e851d435b798467fefe2aaff82612526",
+          "bytes": 182279,
+          "encoding": "zeros",
+          "n_dots": 28512,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSuniq30-20261023-56c5f82f",
+      "value": "uniq30",
+      "label": "30% of R0 by lowest unique 300 m kernel credit",
+      "n_dots": 24747,
+      "removed_dots": 12907,
+      "collar_dots": 1611,
+      "dose_dots": 11296,
+      "retained_dots": 24747,
+      "added_dots": 0,
+      "pct_changed_vs_r0": 34.277899,
+      "sha256": "56c5f82f392f9841933918b36b89423c9db3f3ea64bc6d2adf5436c7a0da9d05",
+      "sha256_zeros": "f99d9e57de24660fae8a72dbd1258fbf1e53e25a364739449d509f0e3edaa2d8",
+      "min_catalogue_distance_px": 3.0,
+      "dropped_unique_credit_mean": 1.1525,
+      "kept_unique_credit_mean": 2.4145,
+      "dropped_local_support_mean": 1.3201,
+      "kept_local_support_mean": 2.9255,
+      "block1km_density_cv_before": 1.9228,
+      "block1km_density_cv_after": 2.2899,
+      "support_patches": {
+        "support_patches": 26645,
+        "patches_with_no_dot_after": 15811,
+        "support_px_in_emptied_patches": 25350
+      },
+      "predicted_change": "+0.007 DTI (MODEL; interval -0.015 to +0.018)",
+      "model_sensitivity": {
+        "scenarios": {
+          "g20k": {
+            "denominator_assumed": 20529.5,
+            "all_dropped_dots_off_truth": 0.0344,
+            "half_dropped_dots_on_truth": -0.1294
+          },
+          "g40k": {
+            "denominator_assumed": 37470.7,
+            "all_dropped_dots_off_truth": 0.0178,
+            "half_dropped_dots_on_truth": -0.0691
+          },
+          "g60k": {
+            "denominator_assumed": 54412.0,
+            "all_dropped_dots_off_truth": 0.012,
+            "half_dropped_dots_on_truth": -0.0471
+          }
+        },
+        "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+      },
+      "mechanism_card": {
+        "hypothesis": "R0 carries redundant mass: the dots whose 300 m kernel disc is fully claimed by a neighbour cannot add to T, so removing them is free unless they sit on hidden truth, and each removal pays 0.2/Den of denominator.",
+        "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|): a dot within 3 px of hidden truth adds up to 1.0 to T and only (1 - max k) to the penalty S-M, while a dot further than 3 px adds nothing to T and a full 1.0 to S-M. Mass is therefore not neutral: every non-paying dot costs 0.2 of denominator, and T is a max-plus quantity, so a dot whose kernel disc is already claimed by a neighbour supplies no unique credit at all. Both variants test that algebra at constant placement and constant collar. Selection is spatially neutral: unique triangular-kernel credit is computed for every dot against the parent's H19-5 support (the field it was thinned from), and only the lowest-credit dots are dropped (dropped mean 1.15 vs kept 2.41 credit per dot). Ties follow the parent's FIFO rank, so the file is reproducible.",
+        "non_fault_mimic": "Thin, isolated H19-5 support is produced as readily by road/rail corridors, DEM artefacts, lithologic contacts and drainage as by short fault strands, so 'redundant' and 'noise' are not the same set. Removing duplicate dots can equally delete the second strand of a real step-over, which the 3 px kernel cannot distinguish.",
+        "predicted_live_change": "+0.007 DTI (MODEL; interval -0.015 to +0.018)",
+        "model_sensitivity": {
+          "scenarios": {
+            "g20k": {
+              "denominator_assumed": 20529.5,
+              "all_dropped_dots_off_truth": 0.0344,
+              "half_dropped_dots_on_truth": -0.1294
+            },
+            "g40k": {
+              "denominator_assumed": 37470.7,
+              "all_dropped_dots_off_truth": 0.0178,
+              "half_dropped_dots_on_truth": -0.0691
+            },
+            "g60k": {
+              "denominator_assumed": 54412.0,
+              "all_dropped_dots_off_truth": 0.012,
+              "half_dropped_dots_on_truth": -0.0471
+            }
+          },
+          "authors_note": "MODEL projection, not a score; |G| and r are hidden."
+        },
+        "spatial_side_effect": {
+          "support_patches": 26645,
+          "patches_with_no_dot_after": 15811,
+          "support_px_in_emptied_patches": 25350
+        },
+        "falsifier": "A live drop <= -0.01 means the removed redundant dots were sitting on hidden truth and carrying T, i.e. the test faults are dense enough that redundancy at 3 px is not waste; a gain >= +0.01 supports pushing mass lower. |change| < 0.01 = no evidence.",
+        "structural_geologist_note": "Check whether the removed dots concentrate on one structural trend or region; the patch statistics say 15811 of 26645 support patches lose every dot."
+      },
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-MASSuniq30-20261023-56c5f82f.tif",
+          "sha256": "56c5f82f392f9841933918b36b89423c9db3f3ea64bc6d2adf5436c7a0da9d05",
+          "bytes": 303247,
+          "encoding": "nan",
+          "n_dots": 24747,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-MASSuniq30-20261023-56c5f82f-zeros.tif",
+          "sha256": "f99d9e57de24660fae8a72dbd1258fbf1e53e25a364739449d509f0e3edaa2d8",
+          "bytes": 166337,
+          "encoding": "zeros",
+          "n_dots": 24747,
+          "min_catalogue_distance_px": 3.0,
+          "checks": {
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_is_nan": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "min_catalogue_distance_ge_3px": true,
+            "file_re_read_from_disk": true
+          }
+        }
+      }
+    }
+  ],
+  "no_live_submission": true,
+  "elapsed_s": 74.37
+}

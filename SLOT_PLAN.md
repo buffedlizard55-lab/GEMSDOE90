@@ -1,34 +1,61 @@
-# SLOT PLAN — R0 PRUNE collar dose (2026-10-23)
+# SLOT PLAN — R0 MASS dose, three files (2026-10-23)
 
-**Agent-selected session axis: PRUNE.** Parent R0 is `h33-h33-2-b2`, 37,654 unit dots. Its `0.2778` live value is a **CLAIM**, not a receipt. Exact R0 rebuild and input hashes are in `evidence/r0_rebuild_receipt.json`; three fixed-count candidates are local under ignored `releases/`. No submission was made. `TOP_PUBLIC`, dated leaderboard target and weekly slots used/remaining are unknown; human confirmation required before allocating any slot.
+**Agent-selected session axis: MASS.** Parent R0 `h33-h33-2-b2`, 37,654 unit dots, live `0.2778` = **CLAIM**
+(no receipt on file). R0 rebuilt byte-identically to both pinned encodings this session
+(`evidence/build_receipt_mass.json`), inputs 26/26 SHA-256 verified.
 
-**Mechanism.** Known-catalogue pixels are masked pixel-exactly; a nearby new fault can still be scored. The PRUNE dose asks whether R0's >2 px catalogue collar is too narrow. At each cutoff, remove all R0 dots at or inside the cutoff and refill the exact count from the H19-5 support, outside the new collar, in its deterministically reconstructed FIFO-BFS d2.8 visit order. That order is a thinning tie-break, not a geological probability. This preserves count and isolates collar radius/refill policy. The candidates all have minimum catalogue distance >3.5 px and zero catalogue mass.
+**Why MASS, and why these three.** The brief's algebra is DTI = T/(0.2T + 0.2(S−M) + 0.8|G|). A dot farther
+than 3 px from hidden truth adds nothing to T and a full 1.0 to (S−M); a dot whose kernel disc is already
+claimed by a neighbour adds nothing to T *and* little to (S−M). Mass is therefore not a neutral knob, and the
+two prior wins from *removing* dots (d1.5→d2.8 +0.012; prune≤2 px +0.007, both CLAIM) point the same way.
+Each file makes one change from R0:
 
-## Next three slots (conditional on human slot count; one entity only)
+| # | File | Change vs R0 | n_dots | % changed | Prediction (MODEL, not a score) |
+|---|---|---|---|---|---|
+| 1 | `MASSuniq20-20261023-5138de0f` | collar d_cat≥3 px (1,611 dots, forced by constraint 4) + 7,531 least-unique-kernel-credit dots | 28,512 | 24.279% | **+0.005**, interval −0.010 to +0.012 |
+| 2 | `MASSfifo20-20261023-1be8302f` | identical collar + 7,531 dots from the bottom of the parent FIFO-BFS rank | 28,512 | 24.279% | **+0.001**, interval −0.012 to +0.009 |
+| 3 | `MASSuniq30-20261023-56c5f82f` | identical collar + 11,296 least-unique-credit dots | 24,747 | 34.278% | **+0.007**, interval −0.015 to +0.018 |
 
-| Order | Candidate | Prediction (MODEL, not a score) | What its receipt changes |
-|---|---|---|---|
-| 1 | `h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891.tif` | +0.002 DTI; plausible -0.010 to +0.010 | A paired live Δ≥+0.010 supports widening just beyond the 3 px kernel collar. Δ≤-0.010 rejects this cutoff/refill policy. |
-| 2 | `h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217.tif` | +0.000 DTI; same plausible interval | Tests a wider exclusion only if slot 1 leaves the PRUNE question unresolved or is positive. If both are within ±0.010, no evidence: do not promote on a proxy. |
-| 3 | `h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif` | -0.003 DTI; same plausible interval | Wide-collar counterpoint. A Δ≤-0.010 supports retaining nearby predictions and closes widening; Δ≥+0.010 supports a broader collar. |
+`uniq20` and `fifo20` have **the same count and the same collar**: slot 1 vs slot 2 isolates *which* dots to
+drop, slot 1 vs slot 3 isolates *how many*. Measured on the parent's own H19-5 support: `uniq20` drops dots
+of mean unique credit 1.00 (kept 2.29) and mean local support 1.14 px (kept 2.76), while `fifo20` drops mean
+credit 2.04 vs 2.02 kept — i.e. the brief-literal FIFO tail is statistically indistinguishable from a random
+20% cut. If a FIFO-style cut scores ≈0 that is evidence about its *selection*, not about mass.
 
-**Pre-slot step (required).** The candidate rasters are gitignored and do not survive a clone. On 2026-10-23 they were re-emitted from the pinned inputs byte-identically to their recorded hashes (`evidence/releases_restore_receipt.json`); run `scripts/restore_data.py` then `scripts/restore_releases.py` before any upload and match the SHA-256 to the ledger row.
+**What each receipt would change.** Δ ≥ +0.010 for `uniq20`/`uniq30` ⇒ mass reduction is real and the uniq
+rule is the keeper; next week push −40% and combine with CONCENTRATION. Δ ≤ −0.010 ⇒ the removed dots were
+carrying T and mass reduction is closed for every rule. `fifo20` − `uniq20` ≥ +0.010 would mean the ordering
+that fits the algebra is *worse* than an arbitrary one and the metric model is wrong. `|Δ| < 0.01` = no
+evidence; do not promote on the proxy (see "Report-only" below).
 
-Under the session rule, **any absolute live change below 0.01 is no evidence**; public-chunk effects may not transfer to private chunks. Predictions are deliberately uncertain. Each comparison should use a human-copied submission receipt for R0 and the candidate, preferably in the same rolling week. Upload at most one candidate per available slot. Use only one encoding per slot; `-zeros.tif` is the fallback twin, not a second experiment.
+**Order of upload (human, one file per scored slot):** 1) `MASSuniq20` 2) `MASSuniq30` 3) `MASSfifo20`.
+Submit 1 and 2 only if two slots are free in the same rolling week; the pair is the informative comparison.
+`-zeros.tif` twins are the zero-outside fallback, not a second experiment. **Nothing here has been
+submitted and no score is claimed.**
 
-## Calendar to supplied deadline
+## Report-only, and why the proxy is unusable here
 
-Deadline `2026-12-03` and the 3-submissions-per-rolling-week rule are supplied by the brief, not freshly checked (automated access to DrivenData is prohibited). Human must confirm exact cutoff and current quota from the official page/rules: https://www.drivendata.org/competitions/306/competition-doe-gems/ and https://docs.nlr.gov/docs/fy26osti/96647.pdf.
+Catalogue hide-and-recover PROXY returns exactly 0.000 for all three files and 0.0044 for R0: the kernel
+radius is exactly 3 px and constraint 4 forbids dots within 3 px of the catalogue, so T on catalogue pixels is
+identically zero. That is construction, not quality — this proxy cannot separate any compliant file
+(`evidence/diagnostics_mass.json`). Leakage canary: max single-feature symmetric AUC 0.5696 (band 4), below the
+0.90 stop threshold. SGMC control not run; not a gate.
 
-- **Weeks 1–2 (Oct 23–Nov 5):** at most the first candidate if a weekly slot is available; request receipt and date.
-- **Weeks 3–4 (Nov 6–19):** consider candidate 2 only if the first receipt is ≥+0.01 or the first result is below the evidence threshold and the collar question remains worth testing.
-- **Weeks 5–6 (Nov 20–Dec 3):** candidate 3 only if earlier receipts warrant it; otherwise preserve slots. Choose the final file and fallback blind, then revalidate both. One final submission only.
+## Calendar to the deadline (2026-12-03, supplied by the brief, not re-verified)
 
-## Report-only diagnostics
+- **Wk of Oct 23:** at most 3 slots; use slots on `uniq20` + `uniq30` (and `fifo20` if a third is free).
+- **Wk of Oct 30:** if Δ ≥ +0.010, build the next uniq dose (−40%) and the best combo axis; if |Δ| < 0.01,
+  mass is flat below 30% and slots go to position/field work instead.
+- **Wk of Nov 6–20:** combine the two best receipted axes only; one change at a time, count fixed.
+- **Wk of Nov 27–Dec 3:** re-validate format of the chosen final file and its fallback twin; choose blind.
 
-Catalogue hide-and-recover PROXY and SGMC control: **not run**; there is no fold-clean, calibrated instrument validated for this refill comparison, and neither is a gate or score. Leakage canary: report-only, 19 supplied feature bands, all 60,988 known-catalogue positives plus a seeded sample of 250,000 off-catalogue footprint pixels; sentinel values median-filled after masking. Maximum symmetric AUC 0.5700 (`geod_2ndinv`), so no single-feature >0.90 trigger. This canary is not evidence of live performance.
+## Better axes proposed, not built this session
 
-## Better axes proposed only (not built)
-
-- **EDGE_COHERENCE:** require multi-scale linear-gradient persistence to favor fault-like edges. *Confounder:* unfaulted lithologic contacts and drainage scarps are also coherent. *Falsifier:* paired live Δ≤-0.010 or no repeatable improvement on untouched spatial folds.
-- **KERNEL_BUDGET:** re-space nearby R0 dots at fixed mass to reduce redundant 300 m kernel coverage. *Confounder:* close parallel strands and step-overs can be real faults. *Falsifier:* paired live Δ≤-0.010.
+- **MASS_RANK_PRIOR:** rank the drop by exact expected DTI marginal loss under a calibrated truth prior
+  (e.g. KDE of catalogue geometry + relief tercile) instead of unique credit. *Confounder:* the prior is
+  itself built from the catalogue the parent already used. *Falsifier:* paired live Δ ≤ −0.010 vs `uniq20`.
+- **COVERAGE_ADD:** the opposite dose — add dots only where a 3 px disc is empty and the field is strong.
+  *Confounder:* each added dot costs 0.2/Den unless it lands on truth, so the arm needs precision > 0.4.
+  *Falsifier:* live Δ ≤ −0.010 while `uniq20` is positive ⇒ coverage, not sparsity, is the binding constraint.
+- **KERNEL_RADIUS audit:** re-space *retained* dots so no two sit < 1.5 px apart (a spacing, not mass, edit).
+  *Confounder:* real parallel strands and step-overs. *Falsifier:* live Δ ≤ −0.010 at matched count.

@@ -2,13 +2,13 @@
 
 <!-- CURRENT STATE (edit only this block) -->
 ## CURRENT STATE
-- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (see evidence/r0_rebuild_receipt.json)
-- Best receipt: none on file. Best CLAIM: 0.2778 (R0, owner-reported, no receipt in ledger/submissions.csv)
+- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically this session from pinned inputs (evidence/build_receipt_mass.json, r0_rebuild_receipt.json)
+- Best receipt: **none on file.** Best CLAIM: 0.2778 (R0, owner-reported, no receipt in ledger/submissions.csv)
 - TOP_PUBLIC: ____ (human fills from leaderboard, with date: ____)
 - Slots left this week: __ / 3 (one entity) · total used: __ · Deadline: 2026-12-03 (UNVERIFIED, human confirms)
-- Session axis (2026-10-23, agent-selected PRUNE): 3 fixed-count variants BUILT locally, not submitted; rasters are gitignored (see docs/SUBMIT.md)
-- Reproducibility (2026-10-23, clean sandbox): all 26 pins re-verified, R0 rebuilt byte-identically (`c55bafc4…`), d2.8 ranking reproduced with 0 px difference, and all 3 candidate pairs re-emitted byte-identically to their recorded SHA-256 — `evidence/releases_restore_receipt.json`. Re-run: `.venv/bin/python scripts/restore_data.py && .venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_r0_variants.py --verify`
-- Next 3 slots (conditional on human quota/receipts): 1) PRUNE dcat<=3.5 px 2) PRUNE dcat<=4.5 px 3) PRUNE dcat<=5.5 px — see SLOT_PLAN.md
+- Session axis (2026-10-23, agent-selected **MASS**): 3 files BUILT, unsubmitted — `MASSuniq20` 28,512 dots (+0.005 MODEL), `MASSuniq30` 24,747 dots (+0.007), `MASSfifo20` 28,512 dots (+0.001); all share the forced d_cat>=3 px collar. Rasters are gitignored; regenerate with `scripts/build_mass_variants.py --build` (see docs/SUBMIT.md).
+- Earlier session (PRUNE 3.5/4.5/5.5 px) built 3 files, also unsubmitted; their hashes are unchanged in ledger/submissions.csv.
+- Next 3 slots: 1) MASSuniq20 2) MASSuniq30 3) MASSfifo20 — see SLOT_PLAN.md
 <!-- /CURRENT STATE -->
 
 Layout: `src/` gated pipeline (manifest verify → exact R0 rebuild → build →

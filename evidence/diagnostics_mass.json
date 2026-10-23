@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-23T21:47:16Z",
+  "labels": "REPORT ONLY - never a gate, never used to rank or select a file",
+  "catalogue_hide_recover_proxy": {
+    "design": "five spatial folds of the 60,988 known catalogue positives ((row//500)*7 + (col//500)) % 5; withheld positives treated as truth",
+    "n_withheld_positives": [
+      15343,
+      14536,
+      11532,
+      9029,
+      10548
+    ],
+    "circularity": "the parent field was built partly from this catalogue, so this is self-consistency against a training target, not hidden-truth accuracy",
+    "degenerate_by_construction": "The kernel radius is exactly 3 px and hard constraint 4 forbids dot within 3 px of the catalogue, so T is identically 0 on catalogue positives for every compliant file: the proxy returns 0.0 and cannot separate the three candidates. R0 scores only because 1,611 of its dots sit inside the collar. Read this diagnostic as unavailable, not as a bad result.",
+    "results": {
+      "R0": {
+        "fold_dti": [
+          0.004271,
+          0.00479,
+          0.003796,
+          0.004721,
+          0.004276
+        ],
+        "mean_dti": 0.004371,
+        "boot95_ci": [
+          0.003995,
+          0.004672
+        ],
+        "delta_vs_r0": 0.0
+      },
+      "fifo20": {
+        "fold_dti": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_dti": 0.0,
+        "boot95_ci": [
+          0.0,
+          0.0
+        ],
+        "delta_vs_r0": -0.004371
+      },
+      "uniq20": {
+        "fold_dti": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_dti": 0.0,
+        "boot95_ci": [
+          0.0,
+          0.0
+        ],
+        "delta_vs_r0": -0.004371
+      },
+      "uniq30": {
+        "fold_dti": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_dti": 0.0,
+        "boot95_ci": [
+          0.0,
+          0.0
+        ],
+        "delta_vs_r0": -0.004371
+      }
+    },
+    "prior_note": "This proxy correlated -0.87 to +0.54 with live scores over 12-14 files (brief s3) and has no power here."
+  },
+  "leakage_canary": {
+    "design": "symmetric single-feature AUC, 60,988 catalogue positives vs 120,000 seeded off-catalogue footprint negatives (seed 20261023); nodata dropped, not filled",
+    "max_auc": 0.5696,
+    "stop_trigger_auc_gt_0_90": false,
+    "bands": [
+      {
+        "band": 1,
+        "symmetric_auc": 0.5088,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 2,
+        "symmetric_auc": 0.5025,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 3,
+        "symmetric_auc": 0.5266,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 4,
+        "symmetric_auc": 0.5696,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 5,
+        "symmetric_auc": 0.5349,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 6,
+        "symmetric_auc": 0.5517,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 7,
+        "symmetric_auc": 0.5686,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 8,
+        "symmetric_auc": 0.5249,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 9,
+        "symmetric_auc": 0.5131,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 10,
+        "symmetric_auc": 0.5501,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 11,
+        "symmetric_auc": 0.5281,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 12,
+        "symmetric_auc": 0.5149,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 13,
+        "symmetric_auc": 0.5394,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 14,
+        "symmetric_auc": 0.5116,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 15,
+        "symmetric_auc": 0.5113,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 16,
+        "symmetric_auc": 0.5682,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 17,
+        "symmetric_auc": 0.5171,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 18,
+        "symmetric_auc": 0.5001,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      },
+      {
+        "band": 19,
+        "symmetric_auc": 0.5577,
+        "pos_finite_frac": 0.9985,
+        "neg_finite_frac": 0.9995
+      }
+    ]
+  },
+  "sgmc_control": {
+    "status": "NOT RUN",
+    "reason": "no fold-clean SGMC control validated for a mass-only edit; not a gate"
+  },
+  "elapsed_s": 83.3
+}
