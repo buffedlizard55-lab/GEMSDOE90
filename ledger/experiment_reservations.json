@@ -5,29 +5,90 @@
     {
       "repo": "buffedlizard55-lab/GEMSDOE84",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE84/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 1.5, 2.0, 2.5, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE85",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE85/blob/main/ledger/submissions.csv",
-      "values_px": [2.0, 2.25, 2.85, 3.0, 3.61, 4.0, 5.0]
+      "values_px": [
+        2.0,
+        2.25,
+        2.85,
+        3.0,
+        3.61,
+        4.0,
+        5.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE86",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE86/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 2.0, 2.2361, 2.8284, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        2.0,
+        2.2361,
+        2.8284,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE87",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE87/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        3.0,
+        4.0
+      ]
     },
     {
       "repo": "buffedlizard55-lab/GEMSDOE88",
       "ledger_url": "https://github.com/buffedlizard55-lab/GEMSDOE88/blob/main/ledger/submissions.csv",
-      "values_px": [1.0, 2.85, 3.0, 4.0]
+      "values_px": [
+        1.0,
+        2.85,
+        3.0,
+        4.0
+      ]
     }
   ],
-  "available_selected_values_px": [3.5, 4.5, 5.5],
-  "interpretation": "The selected numerical cutoffs are absent from all five fetched ledgers; all three are PRUNE tests with fixed count and the same FIFO-BFS H19-5 refill rule. Existing 3.61/4/5 no-refill and 3.0 refill are distinct values and are not recreated. This is a best-effort owner-repo audit, not proof of every submission ever made by the entity."
+  "available_selected_values_px": [
+    3.5,
+    4.5,
+    5.5
+  ],
+  "interpretation": "The selected numerical cutoffs are absent from all five fetched ledgers; all three are PRUNE tests with fixed count and the same FIFO-BFS H19-5 refill rule. Existing 3.61/4/5 no-refill and 3.0 refill are distinct values and are not recreated. This is a best-effort owner-repo audit, not proof of every submission ever made by the entity.",
+  "mass_axis_20261023": {
+    "checked_utc": "2026-10-23",
+    "scope": "Cross-session MASS dose values checked against sibling ledgers GEMSDOE84-92 (fetched via api.github.com 2026-10-23; GEMSDOE93-101 have no ledger/submissions.csv). Exact (AXIS, value) reuse prohibited; selection policy is part of a value's identity.",
+    "occupied_values": [
+      "+10pct",
+      "-10pct",
+      "-20pct",
+      "MASS_A10",
+      "MASS_D10",
+      "MASS_SWAP10",
+      "m10e",
+      "m10minus",
+      "m10plus",
+      "m10u",
+      "m20minus",
+      "minus10pct",
+      "p10",
+      "plus10pct"
+    ],
+    "selected_values": [
+      "drop5pct-tail",
+      "add5pct-next",
+      "add20pct-next"
+    ],
+    "interpretation": "-10%/+10%/-20% doses (and a 10% swap) are built by GEMSDOE84/85/86/87/88/89/91/92 under several selection policies. The selected rungs fill the missing parts of one dose ladder on the parent's own recorded-recipe ranking (FIFO-BFS traversal): -5% tail drop and +5%/+20% next-ranked adds. Best-effort owner-repo audit, not proof of every submission ever made."
+  }
 }

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "session": "arena/307b04fc-gemsdoe90",
+  "parent": "h33-h33-2-b2",
+  "axis": "MASS",
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-MASSdrop5pct-tail-20261023-ce48329b",
+      "value": "drop5pct-tail",
+      "mechanism_card": {
+        "hypothesis": "R0's traversal-tail dots (the last 5% of the parent's own FIFO-BFS selection order) still carry unique kernel credit on short late-visited strands, so removing them lowers DTI slightly rather than releasing false-positive mass.",
+        "mechanism": "DTI = T / (0.2T + 0.2(S-M) + 0.8|G|). Dropping a dot removes 1 from S (helping the 0.2(S-M) term) but deletes its max-kernel credit wherever it was the best coverer of a truth pixel (hurting T). The parent's recorded recipe ranks its dots by 8-connected FIFO-BFS traversal of the H19-5 support; the dropped tranche is the lowest-priority tail (visit ranks 114510-121128 of 0-121128, n=1,883 of 37,654).",
+        "non_fault_confounder": "FIFO-BFS order is a raster convention (seeds at the first raster pixel of each 8-connected support component), not geological confidence: tail dots are the far ends of long lineaments and late chips, where drainage divides and lithologic contacts mimic fault strands. The local report-only PROXYs lean the same sign (catalogue hide-and-recover delta -0.0003; SGMC control delta -0.008), but SGMC-mapped faults are not the new-fault truth and neither PROXY is a score.",
+        "predicted_live_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.003; not a score)",
+        "falsifier": "Paired same-week receipt vs R0: delta >= +0.010 confirms the false-positive regime and re-opens the sibling -10/-20% rungs; delta <= -0.010 shows the tail carries unique fault credit and closes the drop direction. |delta| < 0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "Read this as a dose rung on the lineage's own selection order, not as a claim that fault traces end where the traversal ends. Inspect the dropped SE ends and small chips on geology before any slot is spent."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSadd5pct-next-20261023-46f0886b",
+      "value": "add5pct-next",
+      "mechanism_card": {
+        "hypothesis": "The parent's 2.8 px thinning already suppressed the cells this variant adds; being kernel-redundant with surviving dots, their marginal max-operator credit is near zero while each still pays full false-positive mass, so +5% of them lowers DTI slightly.",
+        "mechanism": "Added cells are the next-ranked suppressed H19-5 support cells in the parent's own FIFO-BFS order. Measured: 99.5% of them lie within 2.8 px of an existing R0 dot (median 1.0 px), i.e. exactly the pixels the parent's greedy 2.8 px rule did not keep. Under the metric algebra a dot pays only if its marginal kernel credit exceeds ~0.2*DTI (about 0.056 at 0.28; lower for line-like truth). Redundant neighbours add S but little T and M.",
+        "non_fault_confounder": "Dense multiscale ridge corridors (drainage divides, lithologic contacts, foliation lineaments) populate H19-5's suppressed cells. The opposite confounder: real fault zones are damage-zone wide and can carry several parallel strands inside the 300 m kernel, so genuinely useful adds look redundant and new-fault truth can sit within 300 m of known traces (organizer forum, 2026-10-22).",
+        "predicted_live_change": "-0.002 DTI (MODEL; plausible interval -0.009 to +0.005; not a score)",
+        "falsifier": "Paired same-week receipt vs R0: delta >= +0.010 falsifies the redundancy picture (line-like truth extends credit along strike) and promotes larger spaced adds; delta <= -0.010 confirms redundancy and closes the add direction. |delta| < 0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "This is a kernel-budget experiment along the parent's own ranking. Review where the added cells double existing strands (damage-zone width vs raster duplication) before spending a slot."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-MASSadd20pct-next-20261023-63954e89",
+      "value": "add20pct-next",
+      "mechanism_card": {
+        "hypothesis": "The parent's 2.8 px thinning already suppressed the cells this variant adds; being kernel-redundant with surviving dots, their marginal max-operator credit is near zero while each still pays full false-positive mass, so +20% of them lowers DTI slightly.",
+        "mechanism": "Added cells are the next-ranked suppressed H19-5 support cells in the parent's own FIFO-BFS order. Measured: 99.6% of them lie within 2.8 px of an existing R0 dot (median 1.0 px), i.e. exactly the pixels the parent's greedy 2.8 px rule did not keep. Under the metric algebra a dot pays only if its marginal kernel credit exceeds ~0.2*DTI (about 0.056 at 0.28; lower for line-like truth). Redundant neighbours add S but little T and M.",
+        "non_fault_confounder": "Dense multiscale ridge corridors (drainage divides, lithologic contacts, foliation lineaments) populate H19-5's suppressed cells. The opposite confounder: real fault zones are damage-zone wide and can carry several parallel strands inside the 300 m kernel, so genuinely useful adds look redundant and new-fault truth can sit within 300 m of known traces (organizer forum, 2026-10-22).",
+        "predicted_live_change": "-0.008 DTI (MODEL; plausible interval -0.020 to +0.004; not a score)",
+        "falsifier": "Paired same-week receipt vs R0: delta >= +0.010 falsifies the redundancy picture (line-like truth extends credit along strike) and promotes larger spaced adds; delta <= -0.010 confirms redundancy and closes the add direction. |delta| < 0.010 is no evidence under the session rule.",
+        "structural_geologist_note": "This is a kernel-budget experiment along the parent's own ranking. Review where the added cells double existing strands (damage-zone width vs raster duplication) before spending a slot."
+      }
+    }
+  ]
+}
