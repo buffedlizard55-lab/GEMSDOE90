@@ -1,38 +1,19 @@
-# SUBMIT — human checklist
+# Human submission packet — GEMSDOE90 PRUNE candidates
 
-**Nothing is submittable yet.** No variant raster exists (IRREGULARITIES #1).
+**Agent does not submit.** These local GeoTIFFs are ignored by Git to keep competition rasters out of this public repository and any public release. Only pick one candidate per scored slot; do not submit both encodings.
 
-## 1. Supply inputs (from your own registered account; never commit them)
-Place in `data/` (gitignored), then pin hashes:
-| file | what |
-|---|---|
-| `data/sample_submission.tif` | official sample (format reference) |
-| `data/h33-h33-2-b2.tif` | R0 exactly as submitted for the 0.2778 CLAIM |
-| `data/catalogue_labels.tif` | USGS/INGENIOUS training-label raster on the sample grid |
-| `data/preprune_dots.tif` | dot raster before the ≤2 px prune (solo-d28 lineage) |
-| `data/ranked_candidates.csv` | `row,col,rank` (1=best): every pre-prune dot + next-best candidates from the parent field |
-| `data/metric_code.py` | official DTI code, if available to competitors |
+## Files and form notes
 
-Also paste: R0's submission receipt into `ledger/raw_paste.txt`; TOP_PUBLIC +
-date and slots-left into README CURRENT STATE; confirm the 2026-12-03 deadline.
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (zeros outside) | Form note (under 140 chars) |
+|---|---|---|---|
+| PRUNE 3.5 px | `releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891.tif` | `releases/h33-h33-2-b2-PRUNE3p5px-20261023-8b96d891-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=3.5px, fixed-count refill; predicted +0.002 DTI MODEL` |
+| PRUNE 4.5 px | `releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217.tif` | `releases/h33-h33-2-b2-PRUNE4p5px-20261023-be7a1217-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=4.5px, fixed-count refill; predicted +0.000 DTI MODEL` |
+| PRUNE 5.5 px | `releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7.tif` | `releases/h33-h33-2-b2-PRUNE5p5px-20261023-a69816c7-zeros.tif` | `h33-h33-2-b2; PRUNE dcat<=5.5px, fixed-count refill; predicted -0.003 DTI MODEL` |
 
-## 2. Build (one command; hard-stops rather than approximating R0)
-```
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python -m src.manifest --fill      # pin sha256 of what you supplied
-.venv/bin/python -m pytest -q                # algebra + gates on synthetic data
-.venv/bin/python -m src.build_prune          # rebuild-check, 3 variants, ledger rows
-.venv/bin/python -m src.validate releases/<id>.tif data/sample_submission.tif --catalogue data/catalogue_labels.tif
-```
-If the rebuild check stops the build, supply the recorded R0 recipe
-(distance definition/dot source) — do not hand-edit around it.
+SHA-256 and detailed format receipts: `evidence/build_receipt.json`. Parent byte-rebuild receipt: `evidence/r0_rebuild_receipt.json`. Each primary is NaN outside the supplied sample footprint; each `-zeros.tif` fallback has 0 outside. The portal's handling of these encodings is not inferred here; choose the one the human has previously confirmed.
 
-## 3. Upload (you, from your account; ONE file per slot — the NaN-outside one)
-Order and form notes (≤140 chars) once ids/hashes exist:
-1. `<id prunele3>.tif` — "parent h33-h33-2-b2; prune<=3px+refill count-held 37654; predicted +0.000..+0.010 MODEL"
-2. `<id prunele1>.tif` — "parent h33-h33-2-b2; prune<=1px count-held (dist-2 ring restored); predicted -0.005..+0.005 MODEL"
-3. `<id prunele3nr>.tif` (only if 1–2 ambiguous) — "parent h33-h33-2-b2; prune<=3px no refill control; predicted -0.005..+0.005 MODEL"
+## Validation summary
 
-Format receipt: recorded per file by `src.build_prune` (validate pass/fail in
-ledger status). Paste each live receipt into `ledger/raw_paste.txt` and fill
-`receipt_score`/`receipt_date`; treat |Δ| < 0.01 as no evidence.
+All three have 37,654 unit-mass pixels (same count as R0), zero catalogue mass, and minimum Euclidean distance to the catalogue greater than 3 px. CRS, dimensions, transform, float32/single band, in-footprint finite/range, outside-footprint encoding, parent diff and file SHA are checked after re-reading from disk. Exact parent R0 hashes and H19-5→d2.8 ranking reproduction are in the receipts. The binary ranking is FIFO-BFS visit order, not a geological confidence score.
+
+No candidate has a live score. Predictions in the ledger are **MODEL**, and R0's 0.2778 remains **CLAIM** until a submission-page receipt is supplied. A live change below 0.01 is no evidence. The human must supply: current TOP_PUBLIC and date; weekly/total slots used and remaining; confirmed deadline/cutoff; and submission-page score receipts (R0 plus any candidate). Never submit more than the entity's quota.

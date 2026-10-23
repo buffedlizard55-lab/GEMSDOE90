@@ -1,55 +1,13 @@
-# Mechanism cards — AXIS=PRUNE (session 2026-10-23, GEMSDOE90)
+# Mechanism cards — AXIS=PRUNE (2026-10-23)
 
-Status: **NOT BUILT** — blocked on pinned inputs (see IRREGULARITIES.md #1).
-Predictions are MODEL. Live changes < 0.01 are no evidence (brief §5).
+Parent R0: `h33-h33-2-b2`, 37,654 unit-mass dots. It was rebuilt byte-identically from the pinned h27-4 solo-d2.8 parent; `evidence/r0_rebuild_receipt.json` records the proof. R0's 0.2778 remains **CLAIM**, not a receipt. These local candidates are **BUILT**, not submitted; predictions are **MODEL**, not scores. Their rasters are local under ignored `releases/` and are not part of this public PR.
 
-Why PRUNE: R0's defining edit (solo-d28 0.2708 → prune ≤2 px 0.2778, both
-CLAIM) gained +0.0070 — below the 0.01 no-evidence bar — and is confounded
-with mass loss (dots were removed; count was not held, per the brief's climb
-description). PRUNE is also the only axis executable without undisclosed
-bands/recipes: MASS needs the parent field's ranking, SNAP needs gradient
-bands, CONCENTRATION/RELIEF need prior/relief rasters — none supplied. A
-count-held ≤1 / ≤2 / ≤3 dose–response from the common pre-prune parent is the
-cheapest experiment that can falsify the incumbent's own last step.
+Shared hypothesis: the incumbent's >2 px catalogue collar may be too narrow. Known pixels are masked pixel-exactly, yet new-fault truth may lie adjacent to known traces; a broader collar can remove true new-fault credit as well as false-positive mass. Each variant removes parent dots at or inside a larger Euclidean-distance threshold, then refills to exactly 37,654 from the H19-5 support outside the threshold. Refill priority is the deterministically rebuilt FIFO-BFS visitation order used by the original 2.8 px thinning recipe. It is an algorithmic tie-break, **not** a geological probability.
 
-Shared mechanism: dots within ~200 m of a mapped trace spend most of their
-300 m triangular kernel on ground whose fault pixels are already captured by
-USGS/INGENIOUS (masked pixel-exactly; scored only against *new*-fault truth).
-A unit dot pays iff its marginal credit beats ~0.2·DTI ≈ 0.056 (brief §2;
-exact recomputation in `src/dti.py`, UNVERIFIED vs official code). The
-non-fault mimic: the parent field was trained/tuned against the catalogue, so
-it concentrates mass near known faults because range fronts, lithologic
-contacts and lineament-friendly terrain correlate with *known*-fault
-environments — not because unmapped fault pixels lie beside every trace.
+| Candidate | Hypothesis / mechanism | Non-fault confounder | Predicted live change (MODEL) | Falsifier |
+|---|---|---|---|---|
+| PRUNE 3.5 px | Extending the collar just beyond the 300 m kernel radius will remove redundant near-catalogue mass while retaining most of the incumbent's high-priority ridge set. 2,702 dots removed and 2,702 refilled. | New mapped fault splays, parallel strands, or geometry extensions can occur within 350 m of known traces; replacement H19-5 lineaments may be contacts or drainage margins. | +0.002 DTI; plausible interval -0.010 to +0.010. | Same-week paired live Δ≤-0.010 falsifies the positive collar hypothesis at this dose; |Δ|<0.010 is no evidence. |
+| PRUNE 4.5 px | A wider uncertainty halo may further reduce false-positive mass, but now sacrifices more near-catalogue truth and more incumbent-priority pixels. 4,848 dots removed/refilled. | Same as above; broadened collar more likely to delete newly mapped faults close to the catalogue. | +0.000 DTI; plausible interval -0.010 to +0.010. | Paired live Δ≤-0.010 rejects this wider collar/refill policy; |Δ|<0.010 is no evidence. |
+| PRUNE 5.5 px | A 550 m halo is likely beyond useful positional uncertainty, so lost adjacent new-fault credit may exceed any false-positive savings. 6,130 dots removed/refilled. | Mapped fault geometry may be displaced from its true trace by survey resolution; very broad pruning can remove legitimate nearby new geometry. | -0.003 DTI; plausible interval -0.010 to +0.010. | Paired live Δ≥+0.010 falsifies the predicted negative direction; |Δ|<0.010 is no evidence. |
 
-## V1 — prune ≤3 px + refill to 37,654 (slot 1)
-- Hypothesis: the 2–3 px ring is still mostly kernel wasted on captured
-  geometry; the highest-ranked far dots earn more credit on genuinely new
-  traces (parallel strands, step-overs, extensions beyond mapped tips).
-- Mimic / risk: "new fault" includes newly mapped geometry of existing
-  systems, and truth can lie within 300 m of known traces — the 3 px ring is
-  exactly where re-mapped geometry would sit, so V1 could delete true credit.
-- Predicted live change (MODEL): +0.000 to +0.010. Small because the ring is
-  a minor share of 37,654 dots and refill dots are by construction marginal.
-- Falsifier: V1 ≤ R0 − 0.01 ⇒ near-catalogue mass was earning real credit;
-  abandon outward prune, test V2 direction instead.
-
-## V2 — prune ≤1 px, count held by dropping lowest-ranked (slot 2)
-- Hypothesis: the dist-2 ring R0 deleted contains re-mappable geometry
-  (fault-zone width, splays, 400 m GeoDAWN line-spacing positional error ≈
-  kernel radius) worth more than the parent field's lowest-ranked far dots.
-- Mimic / risk: dist-2 dots may merely be catalogue-proximity bias of the
-  field (see shared mechanism); restoring them re-imports that bias.
-- Predicted live change (MODEL): −0.005 to +0.005; the value of V2 is the
-  *sign of the slope* across ≤1/≤2/≤3, not its own score.
-- Falsifier: V2 ≥ R0 + 0.01 ⇒ R0's prune was harmful and its +0.007 CLAIM was
-  mass/noise; V2 ≤ R0 − 0.01 with V1 ≥ R0 confirms monotone outward benefit.
-
-## V3 — prune ≤3 px, NO refill (control; build, submit only if V1 ambiguous)
-- Hypothesis: if V1 ≈ V3, refill dots earn ~nothing and any V1 gain is pure
-  mass reduction (a MASS effect wearing PRUNE clothes) — redirect next
-  session to MASS −10% by parent ranking.
-- Predicted live change (MODEL): −0.005 to +0.005 vs R0.
-- Falsifier: V3 ≫ V1 ⇒ the ranking's tail is actively harmful (credit <
-  break-even); V1 ≫ V3 ⇒ refill quality is real and the ranking has signal
-  beyond the current 37,654 — supports a future MASS +10% test.
+The DTI algebra in `tests/test_metric_algebra.py` is unit-tested against synthetic component values. The official competition metric code was not accessed; no candidate was scored on labels or submitted. A local feature leakage canary is report-only; catalogue hide-and-recover and SGMC instruments were not used to rank candidates. Full inputs, exact hashes, parent differences and format receipts are in `evidence/build_receipt.json`.

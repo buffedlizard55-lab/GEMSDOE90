@@ -1,10 +1,11 @@
-"""Pin-and-verify gate for all inputs (brief s4.2, s5).
+"""Verify the commit-pinned raster/data manifest used by this repository.
 
-Usage:
-  python -m src.manifest            # verify: OK / MISSING / MISMATCH / UNPINNED
-  python -m src.manifest --fill     # human-run: record sha256 of files present under data/
-
-No build may proceed unless every file it needs verifies OK.
+The canonical manifest schema is the `files: [...]` array in
+`registry/data_manifest.json`; every entry includes a commit-pinned GitHub source,
+destination, byte length and SHA-256. Inputs are stored only in ignored `.cache/`.
+The older `src.build_prune` interface is retained for compatibility, but its
+human-provided ranked_candidates/metric-code keys are not in the current manifest
+and it therefore stops rather than creating a different/approximate candidate.
 """
 from __future__ import annotations
 
@@ -16,66 +17,90 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "registry" / "data_manifest.json"
+DATA_ROOT = ROOT / ".cache" / "gems_data"
+ALIASES = {
+    "sample_submission": "sample_submission",
+    "r0_raster": "parent_r0_zeros",
+    "catalogue_raster": "existing_faults",
+    "preprune_dots": "scored_h27_4_solo_d28",
+}
 
 
 def sha256_of(path: Path) -> str:
     h = hashlib.sha256()
-    with open(path, "rb") as fh:
+    with path.open("rb") as fh:
         for chunk in iter(lambda: fh.read(1 << 20), b""):
             h.update(chunk)
     return h.hexdigest()
 
 
 def load() -> dict:
-    return json.loads(MANIFEST.read_text())
+    return json.loads(MANIFEST.read_text(encoding="utf-8"))
+
+
+def entries_by_id() -> dict[str, dict]:
+    raw = load().get("files", [])
+    if not isinstance(raw, list):
+        raise ValueError("registry/data_manifest.json files must be a pinned-entry array")
+    return {entry["id"]: entry for entry in raw}
+
+
+def _resolve(key: str) -> tuple[dict | None, Path | None]:
+    ident = ALIASES.get(key, key)
+    entry = entries_by_id().get(ident)
+    if entry is None:
+        return None, None
+    return entry, DATA_ROOT / entry["dest"]
 
 
 def verify(keys: list[str] | None = None) -> dict[str, str]:
-    """Return {key: OK|MISSING|MISMATCH|UNPINNED}. Never raises on missing files."""
-    files = load()["files"]
+    """Return OK/MISSING/MISMATCH statuses; never claims an absent pin is verified."""
+    all_ids = list(entries_by_id())
+    names = list(ALIASES) + [ident for ident in all_ids if ident not in ALIASES.values()]
+    selected = keys if keys is not None else names
     out: dict[str, str] = {}
-    for key, spec in files.items():
-        if keys is not None and key not in keys:
-            continue
-        p = ROOT / spec["path"]
-        if not p.exists():
+    for key in selected:
+        entry, path = _resolve(key)
+        if entry is None or path is None or not path.is_file():
             out[key] = "MISSING"
-        elif not spec.get("sha256"):
+        elif not entry.get("sha256"):
             out[key] = "UNPINNED"
-        elif sha256_of(p) != spec["sha256"]:
+        elif path.stat().st_size != entry["bytes"] or sha256_of(path) != entry["sha256"]:
             out[key] = "MISMATCH"
         else:
             out[key] = "OK"
+    # Historical builder inputs not present in the pinned canonical manifest must remain missing.
+    for key in ("ranked_candidates", "metric_code"):
+        if keys is None or key in selected:
+            out.setdefault(key, "MISSING")
     return out
 
 
 def require(keys: list[str]) -> dict[str, Path]:
-    """Hard stop (SystemExit 2) unless every key verifies OK. Returns paths."""
+    """Hard stop unless every requested key resolves to a pinned, hash-matching file."""
     status = verify(keys)
-    bad = {k: v for k, v in status.items() if v != "OK"}
+    bad = {key: state for key, state in status.items() if state != "OK"}
     if bad:
-        lines = ["STOP: required inputs not verified (brief s5: never approximate the parent):"]
-        files = load()["files"]
-        for k, v in bad.items():
-            lines.append(f"  {k}: {v}  ({files[k]['path']}) -- {files[k]['required_for']}")
+        lines = ["STOP: required inputs are not verified; never approximate R0:"]
+        for key, state in bad.items():
+            entry, path = _resolve(key)
+            detail = str(path) if path else "no matching pinned entry in registry/data_manifest.json"
+            lines.append(f"  {key}: {state} ({detail})")
         print("\n".join(lines), file=sys.stderr)
         raise SystemExit(2)
-    files = load()["files"]
-    return {k: ROOT / files[k]["path"] for k in keys}
+    out = {}
+    for key in keys:
+        _entry, path = _resolve(key)
+        assert path is not None
+        out[key] = path
+    return out
 
 
 def fill() -> None:
-    doc = load()
-    for key, spec in doc["files"].items():
-        p = ROOT / spec["path"]
-        if p.exists():
-            spec["sha256"] = sha256_of(p)
-            spec["status"] = "PINNED"
-            print(f"{key}: pinned {spec['sha256'][:8]}  {spec['path']}")
-        else:
-            spec["status"] = "MISSING"
-            print(f"{key}: still missing  {spec['path']}")
-    MANIFEST.write_text(json.dumps(doc, indent=2) + "\n")
+    """Compatibility no-op: canonical source pins are immutable and never guessed locally."""
+    print("STOP: this manifest is commit-pinned; do not replace source hashes from local files.")
+    print("To restore/reverify inputs, run: .venv/bin/python scripts/restore_data.py")
+    raise SystemExit(2)
 
 
 if __name__ == "__main__":
@@ -84,8 +109,7 @@ if __name__ == "__main__":
     args = ap.parse_args()
     if args.fill:
         fill()
-    else:
-        status = verify()
-        for k, v in status.items():
-            print(f"{k}: {v}")
-        sys.exit(0 if all(v == "OK" for v in status.values()) else 2)
+    status = verify()
+    for key, state in status.items():
+        print(f"{key}: {state}")
+    sys.exit(0 if all(state == "OK" for state in status.values()) else 2)

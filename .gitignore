@@ -1,8 +1,14 @@
 .venv/
 __pycache__/
+*.py[cod]
 .pytest_cache/
-# Competition rasters/data must never enter this PUBLIC repo (brief s4.2).
+.mypy_cache/
+.ruff_cache/
+
+# Competition rasters/data are local only; this repository is public.
+.cache/
 data/
+raw_parts/
 *.tif
 *.tiff
 releases/*.tif

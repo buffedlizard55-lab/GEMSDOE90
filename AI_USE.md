@@ -1,21 +1,7 @@
-# AI_USE — generative-AI disclosure (rules require it; brief §4.6)
+# AI use disclosure — 2026-10-23
 
-Session 2026-10-23 (GEMSDOE90), agent on Arena.ai, branch `arena/68cea96d-gemsdoe90`.
+AI assistance authored the prior blocked pipeline now retained under `src/` and the current reproducibility code (`scripts/restore_data.py`, `scripts/build_r0_variants.py`), unit tests, experiment metadata, mechanism cards, ledger rows derived from the historical owner raw-paste ledger, and planning/submission documentation. AI also performed pinned-file integrity checks, exact R0 rebuild validation, and deterministic PRUNE builds described in `evidence/build_receipt.json`. The earlier pipeline's missing-input blocker is superseded by the complete pinned-manifest workflow; the old `src.build_prune` inputs are not used for these built candidates.
 
-**Written by AI:** all code in `src/` and `tests/`; `registry/data_manifest.json`
-skeleton; `ledger/submissions.csv` skeleton (R0 CLAIM row transcribed from the
-human's brief); `SLOT_PLAN.md`, `docs/MECHANISM_CARDS.md`, `docs/SUBMIT.md`,
-`IRREGULARITIES.md`, CI workflow, README CURRENT STATE block.
+The human's brief supplied the objective, constraints, parent, quota rules, deadline, metric algebra, and allowed experiment axes. The agent selected PRUNE and the unused 3.5 / 4.5 / 5.5 px values after checking the available sibling ledgers; these are not human-approved slot choices. The agent did not contact DrivenData, submit a file, or claim a score. A human must review geology, provide current leaderboard/slot information and any portal receipts, and choose whether to submit.
 
-**Decided by AI (human instructed the agent to pick its own session axis):**
-AXIS=PRUNE and the ≤1/≤3/≤3-no-refill design; predicted changes (MODEL);
-proposed future axes in SLOT_PLAN.md.
-
-**Decided/supplied by the human:** the brief itself, all claimed scores and
-lineage (§1/§3 of the brief), competition facts (§2, taken as given — the
-agent did not and may not re-fetch drivendata.org), and any future data
-files, receipts, TOP_PUBLIC, slot counts, and every actual submission.
-The agent never submits, logs in, or touches credentials.
-
-**No competition data was accessed, generated from memory, or approximated
-in this session.** No variant raster exists yet.
+Competition rasters remain under ignored `.cache/gems_data/` and local ignored `releases/`; they are not included in this public Git diff or any release. The owner-supplied mirror provenance and competition data-use terms have not been independently authenticated.

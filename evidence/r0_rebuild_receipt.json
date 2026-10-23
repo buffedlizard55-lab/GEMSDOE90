@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-10-23T19:57:02Z",
+  "git_sha": "e22b4fa3a7734ec410079135d69196315678f9b0",
+  "generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615",
+  "parent": "h33-h33-2-b2",
+  "method": "reconstruct h33-h33-2-b2 as pinned h27-4 solo-d2.8 & (Euclidean distance to catalogue > 2 px), then re-emit with sample_submission.tif profile",
+  "rebuilt": {
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "dots": 37654,
+    "below_3px": 1611
+  },
+  "expected": {
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "dots": 37654
+  },
+  "all_checks_passed": true,
+  "manifest_verified_count": 26,
+  "no_competition_inputs_added_to_git": true
+}
