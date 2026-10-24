@@ -878,9 +878,9 @@
   "no_live_submission": true,
   "competition_rasters_not_committed": true,
   "rebuild_reserved": true,
-  "verified_utc": "2026-10-24T06:09:30Z",
-  "verification_git_sha": "0172b0f0ca0ededf161751db75e6a4cd34477a86",
-  "generator_script_sha256": "5c2e700228d17e61126ebf4054b929511ae8594fe8a86bd3db415c987e6fd74e",
+  "verified_utc": "2026-10-24T06:22:03Z",
+  "verification_git_sha": "ee38be0403188c5d731157054e605f4669ebd960",
+  "generator_script_sha256": "a4e669aeb15f66fe62967e882115dd09da513e7cbe8b223aade75de0b8945b51",
   "self_check": {
     "all_26_manifest_pins_verified": true,
     "r0_rebuilt_byte_identically": true,
@@ -891,6 +891,6 @@
     "fixed_count_and_per_block_count": true,
     "anti_isolation_gate_passed_all_variants": true
   },
-  "verification_elapsed_s": 294.79,
+  "verification_elapsed_s": 288.23,
   "generator_script": "scripts/build_spacing_kernel_gap.py"
 }
