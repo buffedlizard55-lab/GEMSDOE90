@@ -265,10 +265,35 @@ after `scripts/restore_data.py` (rasters are gitignored, never committed).
 
 The agent does not submit. Upload only one file per slot, from the human's own account, and only
 if the human overrules the HOLD after reading IR90-35.
+## RELIEF basin<->piedmont — 2026-10-24 session (`arena/b5ea0544`), human decides slotting
 
-## 9. `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill (`q50`) Ladder (`2026-10-24`, Session `arena/73f4c306`, Active Slot 2 / Slot 3 `PRUNE` Branch — Resolving `IR90-41`)
+Fixed-count (37,654) reallocation of R0 mass across the SAME pinned equal-area landform terciles as the
+2026-10-23 RELIEF family (Band 12 `det_elev` 0.85 + 3 km-smoothed Band 19 `det_elev_slope` 0.15). A read-only
+`gh api` audit of 8 sibling ledgers (27 RELIEF rows) found basin->piedmont and piedmont->basin unbuilt under any
+naming (IR90-41). Greedy R=3 px marginal-credit drop/add on off-catalogue H19-5 support; 100% of added dots
+enforce d_cat>=3.0 px (untouched R0 dots inherit the 2.236 px floor, IR90-42); zero catalogue mass; donor-tercile
+5 km region-evenness gate passed (largest emptied cluster 0-1 blocks). Predictions are MODEL, frozen before
+proxies; SGMC and catalogue hide/recover numbers are PROXY only. The agent does not submit; one file per slot.
 
-**Why all 9 prior FIFO-refilled `PRUNE` variants (`PRUNE3p5px..5p5px`, `PRUNEanisoA4L2..A6L2`, `PRUNEanisoA5L1p5..L0p5`) are now HELD from live upload slots (`IR90-41`):**
+**Format receipt (all six files):** `src.validate` PASS against `sample_submission.tif` (EPSG:32611, shape,
+transform, float32, one band, values in [0,1], NaN outside for NaN files / zeros outside for fallbacks, no NaN
+inside the footprint, zero catalogue mass); each file re-read from disk and byte-matched via
+`scripts/build_relief_s2_variants.py --verify`. Full stats: `evidence/relief_s2_build_receipt.json`.
+
+| Candidate | Preferred file (NaN outside) | Fallback (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (<=140) |
+|---|---|---|---|---|
+| 12.5% piedmont->basin | `releases/h33-h33-2-b2-RELIEFp2b12p5pct-20261024-758fba08.tif` | `…-758fba08-zeros.tif` | `758fba08e0875279…` / `77182640f57e1d66…` | `h33-h33-2-b2; RELIEF 12.5% (4707d) piedmont->basin; pred +0.003 DTI MODEL` |
+| 15% piedmont->basin | `releases/h33-h33-2-b2-RELIEFp2b15pct-20261024-66718c5c.tif` | `…-66718c5c-zeros.tif` | `66718c5cc56fd65f…` / `b33341507dfff30c…` | `h33-h33-2-b2; RELIEF 15% (5648d) piedmont->basin; pred +0.004 DTI MODEL` |
+| 10% basin->piedmont (direction control) | `releases/h33-h33-2-b2-RELIEFb2p10pct-20261024-aeb8f9a0.tif` | `…-aeb8f9a0-zeros.tif` | `aeb8f9a0dec84725…` / `92fdbcd390255720…` | `h33-h33-2-b2; RELIEF 10% (3766d) basin->piedmont; pred -0.002 DTI MODEL` |
+
+Rasters are NOT committed (public repo). Re-emit with `.venv/bin/python scripts/restore_data.py` then
+`.venv/bin/python scripts/build_relief_s2_variants.py --build`; confirm each SHA-256 against
+`evidence/relief_s2_build_receipt.json` / its ledger row; re-check with `--verify` and the `src.validate` gate.
+Live |Delta|<0.010 vs R0 is no evidence; private chunks and expert-expanded Phase-2 labels may differ.
+
+## 10. `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill (`q50`) Ladder (`2026-10-24`, Session `arena/73f4c306`, Active Slot 2 / Slot 3 `PRUNE` Branch — Resolving `IR90-43`)
+
+**Why all 9 prior FIFO-refilled `PRUNE` variants (`PRUNE3p5px..5p5px`, `PRUNEanisoA4L2..A6L2`, `PRUNEanisoA5L1p5..L0p5`) are now HELD from live upload slots (`IR90-43`):**
 Programmatic audit (`evidence/aniso_q50_refill_receipt.json`) proved that all 9 prior FIFO-refilled `BUILT` `PRUNE` variants refilled their removed collar dots using global `fifo_bfs_visit_rank(h19)`, which places **100% of their 1,333–6,130 refill dots into a northern border strip (`y <= 101..264` of `H = 3,730`, i.e., top `2.73%–7.10%` of grid rows)**, starving `739–822` of the `848` densely populated (`>=20` R0 dots) 5 km blocks (`87.1%–96.9%` starved; `addition_evenness_gate = False`), placing `97.9%–99.5%` of refills within `3 px` of retained northern dots (`median 1.00 px`; `IR90-12`), and allowing refills down to `d_cat = 2.236 px`.
 
 These three `2026-10-24` candidates pair the exact Slot 2 / Slot 3 strike-aligned collar ladder (`across_px = 5.0`, `along_px in {0.5, 1.0, 2.0}`) with **5 km block-stratified exact `R = 3 px` marginal-kernel infill (`q50`, `src/prune_q50.py`)** on `H19-5` outside the collar and a strict **`d_cat >= 3.0 px`** floor on every newly added dot (`0 / 848` dense blocks starved, `addition_evenness_gate = True`, replacement distance `10.30–17.26 px` vs `845.4–917.5 px` FIFO, off-catalogue `H19-5` refill credit `2.12x–2.30x` FIFO, and net outside-collar `H19-5` coverage `+432.8 / +1,249.2 / +2,441.1` vs R0):

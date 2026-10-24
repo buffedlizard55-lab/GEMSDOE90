@@ -435,10 +435,10 @@
     ]
   },
   "aniso_q50_refill": {
-    "generated_utc": "2026-10-24T05:59:54Z",
+    "generated_utc": "2026-10-24T06:23:16Z",
     "axis": "PRUNE",
     "status": "BUILT",
-    "irregularity_resolved": "IR90-41",
+    "irregularity_resolved": "IR90-43",
     "refill_policy": "5 km block-stratified exact R=3 px marginal-kernel infill (q50) on H19-5 with d_cat >= 3.0 px",
     "variants": [
       {

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-24T05:59:54Z",
-  "git_sha": "819b2a894d83bc5ea76e16488c900bc3455138e5",
-  "generator_script_sha256": "a3398aa9ea8fab29339d5db04ecb370afee9ae4003b97021a9f7ed619ef3e46b",
+  "generated_utc": "2026-10-24T06:23:16Z",
+  "git_sha": "f3c79fc56949aacddc5a797dca070fc7c7438038",
+  "generator_script_sha256": "d1c37c0950aa1142680e78359c40c67cfe5cbf8b515915769fbdda470f886212",
   "aniso_module_sha256": "df9fec4ac69cd88d9ce5ece3cc4edee6f51494922edf4c53bee32c236bb444cb",
   "prune_q50_module_sha256": "50be327ada6a3869ce5ed33f7dd7f7cf238d690a36172df5093ee332f6f26f8b",
   "axis": "PRUNE",
   "experiment_family": "strike_aligned_anisotropic_collar_A5_q50_marginal_kernel_refill_ladder",
-  "irregularity_resolved": "IR90-41",
+  "irregularity_resolved": "IR90-43",
   "predictions_frozen_before_proxy": true,
   "compliance": {
     "fixed_count_required_and_satisfied": true,
@@ -184,10 +184,10 @@
       "anisoA5L2q50"
     ],
     "foreign_duplicates": [],
-    "own_reproduction_rows_present": 0
+    "own_reproduction_rows_present": 3
   },
   "prior_prune_fifo_northern_strip_audit": {
-    "irregularity_id": "IR90-41",
+    "irregularity_id": "IR90-43",
     "finding": "All 9 prior BUILT PRUNE variants in GEMSDOE90 refilled via global fifo_bfs_visit_rank(h19), which places 100% of their 1,333-6,130 refill dots in northern grid rows y <= 101..264 (top 2.73%-7.10% of H=3730), starving 739-822 of 848 dense (>=20 dot) 5 km blocks (addition_evenness_gate=False) and placing 97.9%-99.5% of refills within 3 px of retained northern dots.",
     "variants_audited": [
       {
@@ -1470,11 +1470,11 @@
       "evidence_class": "PROXY"
     }
   },
-  "elapsed_s": 136.54,
+  "elapsed_s": 131.89,
   "no_live_submission": true,
   "agent_never_submits": true,
-  "verified_utc": "2026-10-24T06:09:40Z",
-  "verification_git_sha": "819b2a894d83bc5ea76e16488c900bc3455138e5",
+  "verified_utc": "2026-10-24T06:23:35Z",
+  "verification_git_sha": "f3c79fc56949aacddc5a797dca070fc7c7438038",
   "self_check": {
     "all_26_manifest_pins_verified": true,
     "r0_rebuilt_byte_identically": true,

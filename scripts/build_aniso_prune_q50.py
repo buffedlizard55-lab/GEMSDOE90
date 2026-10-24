@@ -465,7 +465,7 @@ def build_all() -> dict[str, Any]:
         "prune_q50_module_sha256": R0.sha256_file(ROOT / "src" / "prune_q50.py"),
         "axis": AXIS,
         "experiment_family": "strike_aligned_anisotropic_collar_A5_q50_marginal_kernel_refill_ladder",
-        "irregularity_resolved": "IR90-41",
+        "irregularity_resolved": "IR90-43",
         "predictions_frozen_before_proxy": True,
         "compliance": {
             "fixed_count_required_and_satisfied": True,
@@ -487,7 +487,7 @@ def build_all() -> dict[str, Any]:
         "r0_exact_rebuild": r0_report,
         "reservation_check": reservation_check,
         "prior_prune_fifo_northern_strip_audit": {
-            "irregularity_id": "IR90-41",
+            "irregularity_id": "IR90-43",
             "finding": (
                 "All 9 prior BUILT PRUNE variants in GEMSDOE90 refilled via global "
                 "fifo_bfs_visit_rank(h19), which places 100% of their 1,333-6,130 refill dots "
@@ -552,7 +552,7 @@ def update_ledger_and_cards(variants: list[dict[str, Any]]) -> None:
                 "date": "",
                 "form_note": v["form_note"],
                 "notes": (
-                    f"IR90-41 fix: fixed 37,654 count; A5/L{l_str} collar + 5km "
+                    f"IR90-43 fix: fixed 37,654 count; A5/L{l_str} collar + 5km "
                     f"block-stratified exact R=3px marginal-kernel refill (q50) at d_cat>=3.0px; "
                     f"passes addition_evenness_gate (0/848 dense blocks starved); agent never submits"
                 ),
@@ -578,7 +578,7 @@ def update_ledger_and_cards(variants: list[dict[str, Any]]) -> None:
         "occupied_values": [v["value"] for v in variants],
         "n_dots": [v["n_dots"] for v in variants],
         "status": "BUILT",
-        "fixes_irregularity": "IR90-41",
+        "fixes_irregularity": "IR90-43",
     }
     RESERVATIONS.write_text(json.dumps(reg, indent=2) + "\n", encoding="utf-8")
 
@@ -590,7 +590,7 @@ def update_ledger_and_cards(variants: list[dict[str, Any]]) -> None:
         "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "axis": AXIS,
         "status": "BUILT",
-        "irregularity_resolved": "IR90-41",
+        "irregularity_resolved": "IR90-43",
         "refill_policy": "5 km block-stratified exact R=3 px marginal-kernel infill (q50) on H19-5 with d_cat >= 3.0 px",
         "variants": [
             {

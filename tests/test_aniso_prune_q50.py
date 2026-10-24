@@ -116,7 +116,7 @@ def test_q50_prune_and_refill_holds_count_spreads_blocks_and_beats_fifo_credit()
 def test_receipt_records_ir90_35_northern_strip_audit_and_three_q50_variants() -> None:
     receipt = json.loads(build.RECEIPT.read_text(encoding="utf-8"))
     assert receipt["axis"] == "PRUNE"
-    assert receipt["irregularity_resolved"] == "IR90-41"
+    assert receipt["irregularity_resolved"] == "IR90-43"
     assert receipt["predictions_frozen_before_proxy"] is True
     assert all(receipt["compliance"].values())
 
