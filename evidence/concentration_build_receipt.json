@@ -867,8 +867,8 @@
   "elapsed_s": 105.95,
   "no_live_submission": true,
   "not_committed_to_git": true,
-  "verified_utc": "2026-10-24T00:06:55Z",
-  "verification_git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "verified_utc": "2026-10-24T00:14:49Z",
+  "verification_git_sha": "c71966e0abf4230dfdb1ef11a69fc89c301d2bf4",
   "self_check": {
     "all_26_manifest_pins_verified": true,
     "r0_rebuilt_byte_identically": true,
@@ -876,5 +876,11 @@
     "variant_bytes_reproduced_exactly": true,
     "region_evenness_gate_pass": true,
     "no_sha256_collision_with_other_ledger_rows": true
+  },
+  "post_merge_slot_decision": {
+    "status": "HELD from next three slots",
+    "reason": "Main advanced past the branch base with IR90-25/26: R0 support credit is nearly uniform; a fixed-count move loses ~0.98 and gains ~0.54 credit per dot; sibling upward-concentration MODELs are non-positive; entity has zero receipts.",
+    "counterevidence": "R0 15 km CV 0.510346 lies inside the brief quoted band and the four-band 15 km prior is string-distinct, but the variants own support-credit balance is negative and their SGMC PROXY deltas are -0.006381/-0.009540/-0.014211.",
+    "next_action": "Retain BUILT rows and rasters as occupancy/dose-response guards; do not spend a scored slot until a live receipt changes the evidence state."
   }
 }

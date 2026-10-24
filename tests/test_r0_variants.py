@@ -66,6 +66,9 @@ def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
     aniso_receipt = ROOT / "evidence" / "build_aniso_receipt.json"
     if aniso_receipt.exists():
         receipts.append(json.loads(aniso_receipt.read_text()))
+    along_receipt = ROOT / "evidence" / "aniso_along_refill_receipt.json"
+    if along_receipt.exists():
+        receipts.append(json.loads(along_receipt.read_text()))
     variants = [v for receipt in receipts for v in receipt["variants"]]
     with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
         built = {row["id"]: row for row in csv.DictReader(fh)

@@ -1,40 +1,41 @@
-# SLOT PLAN — agent-selected `AXIS=CONCENTRATION` (2026-10-23e)
+# SLOT PLAN — integrated MASS-add / continuity / PRUNE; 15 km CONCENTRATION held (2026-10-23)
 
-**Incumbent R0:** `h33-h33-2-b2`, 37,654 unit-mass dots; rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN), 26/26 SHA-256 pins verified. `0.2778` remains **CLAIM** until a portal receipt is filed. `TOP_PUBLIC`, its date, weekly slots left/used, and the `2026-12-03` deadline are **human-supplied / UNVERIFIED**. One entity: 3 scored submissions per rolling week and one blind final (official rules: https://docs.nlr.gov/docs/fy26osti/96647.pdf; metric/spec: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/). Any public-chunk live `|Δ| < 0.010` DTI is **no evidence**. The agent does not submit.
+**R0:** `h33-h33-2-b2` / `GEMSDOE32`, 37,654 dots; 0.2778 is **CLAIM**, not a receipt. Human supplies dated `TOP_PUBLIC`, quota use, and confirms 2026-12-03. ONE entity, 3 scored slots/rolling week, ONE blind final ([rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)). Live `|Δ|<0.010` is **no evidence**; private chunks can differ. Never repeat an exact hash or a `(parent, axis, value)` pair.
 
-**Why this axis:** R0's 15 km block-density CV is `0.5103`, inside the brief's reported `0.51–0.59` best-file band. A read-only audit of 79 public `buffedlizard55-lab/GEMSDOE*` default branches found 33 occupied `CONCENTRATION` values, none at 15 km with this prior. The prior uses only pinned `training_features.tif` bands `tmi_hg`, `geod_2ndinv`, `geod_shearrate`, `iso_grav_anom_hg` (equal absolute-percentile ranks, averaged per 15 km block); no wells, springs, vents or hidden/public truth. Known catalogue pixels are masked pixel-exactly but adjacent new-fault pixels still score: https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516.
+## Next 3 slots (NaN primary only; human decides)
 
-## Built this session (all `MODEL`; fixed count; report-only `PROXY` never gates)
+| Order | Candidate(s), predicted Δ (`MODEL`) | Decision from receipt |
+|---|---|---|
+| **1** | `…MASSadd5pctq50-20261023-c4e6144c.tif` — **+0.008** | `Δ>=+0.010`: add sign pays; Slot 2 = q50-10. `Δ<=-0.010`: close adds for now; Slot 2 = continuity-aware drop **shadowcont20**. `|Δ|<0.010`: no evidence; Slot 2 = orthogonal fixed-count **A5/L1**. |
+| **2** | Add branch: `…MASSadd10pctq50-20261023-5edc84de.tif` — **+0.014**. Negative-add branch: `…MASSshadowcont20pct-20261023-66d961ba.tif` — **+0.009**. Null-add branch: `…PRUNEanisoA5L1-20261023-cd2c60ce.tif` — **+0.005** | Add: rising `Δ` licenses q50-20; flat but positive favors matched-placement blocknext10; negative closes the ladder. Continuity: `Δ>=+0.010` → shadowcont40; `Δ<=-0.010` → shadow20 to separate dose from protection. PRUNE: `Δ>=+0.010` → L0.5; `Δ<=-0.010` → recorded A5/L2; null → shadowcont20. |
+| **3** | Add: `…MASSadd20pctq50-20261023-f94efff4.tif` — **+0.022**, or matched-dose `…MASSadd10pctBlocknext-20261023-89d16c16.tif` — **+0.0044**. Continuity: `…MASSshadowcont40pct-20261023-92be4121.tif` — **+0.013** / `…MASSshadow20pct-20261023-c4ce118b.tif` — **+0.009**. PRUNE: `…PRUNEanisoA5L0p5-20261023-91ff3771.tif` — **+0.003** / recorded **A5/L2** / shadowcont20 | Take exactly one conditional arm. q50-20 requires two positive add receipts and a rising slope; blocknext10 isolates placement at matched dose/geography. L0.5 follows only a positive L1; A5/L2 follows only a negative L1. A null result never licenses a same-axis dose guess. |
 
-| Value / preferred NaN file (`-zeros` twin available) | Moved / diff | 15 km CV | Predicted Δ | New-dot collar / geography |
-|---|---:|---:|---:|---|
-| `CONCENTRATIONb15kmstruct10pct-20261023-8deb8269` | 3,765 / 19.998% | 0.5103→0.5990 | **+0.002** (-0.008..+0.012) | 0 added dots <3 px; no donor block ≥90% emptied |
-| `CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a` | 5,648 / 29.999% | 0.5103→0.6949 | **-0.002** (-0.013..+0.009) | same; max donor removal 70.8% |
-| `CONCENTRATIONb15kmstruct20pct-20261023-bc411adb` | 7,531 / 40.001% | 0.5103→0.7769 | **-0.006** (-0.018..+0.006) | same; max donor removal 80.0% |
+Retained but not slotted first: **A5/L1.5** (+0.004), `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadowcont30pct` (+0.011), `MASSshadow40pct` (+0.014), `MASSrandom40pct` (+0.013). They remain valid single-axis candidates; do not spend a slot on any WITHDRAWN FIFO/gapmax/no-refill row or on infeasible SNAP.
 
-Receipt: `evidence/concentration_build_receipt.json`. Hide/recover `PROXY` (n=13,920, R0 0.007191): Δ +0.000001 / +0.000024 / +0.000011, 95% CIs span zero. SGMC `PROXY` (n=62,122): Δ -0.006381 / -0.009540 / -0.014211 — a physiographic control, not a score. Leakage canary max symmetric AUC **0.574747** (the new prior; <0.90). All six files pass the disk re-read format gate, zero catalogue mass, unique SHA-256. Untouched R0 dots retain the parent's 2.236 px floor (IR90-21); all **added** dots clear ≥3 px.
+## This session: 15 km structural-prior CONCENTRATION — BUILT but HELD (no slot)
 
-## Next 3 slots in order (one entity; upload **one** file per slot, NaN primary unless portal rejects it)
+| Candidate (2026-10-23) | Moved / diff | 15 km CV | MODEL Δ | SGMC PROXY Δ | Decision |
+|---|---:|---:|---:|---:|---|
+| `h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269` | 3,765 / 19.998% | 0.5103 → 0.5990 | **+0.002** | **-0.006381** | HOLD; lowest-dose instrument only. |
+| `h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a` | 5,648 / 29.999% | → 0.6949 | **-0.002** | **-0.009540** | HOLD. |
+| `h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb` | 7,531 / 40.001% | → 0.7769 | **-0.006** | **-0.014211** | HOLD; highest risk. |
 
-| Slot | Candidate | Predicted Δ (`MODEL`) | What the receipt changes |
-|---|---|---:|---|
-| 1 | `h33-h33-2-b2-MASSshadow20pct-20261023-c4ce118b.tif` (30,123 dots) | +0.009 | Strongest orthogonal count probe. `Δ≥+0.010`: next week test `shadow40` and `random40` to separate dose from ranking. `Δ≤-0.010`: stop thinning, hold 37,654. Null: keep orthogonal slots. Re-emit with `scripts/restore_releases.py` (all 18 pairs); inherits R0 collar (IR90-07). |
-| 2 | `h33-h33-2-b2-RELIEFr2p12p5pct-20261023-5e64d01f.tif` (37,654 dots) | +0.004 | Physiographic test. `Δ≥+0.010`: queue `RELIEFr2b10pct`. `Δ≤-0.010`: queue `RELIEFp2r15pct`. Null: hold RELIEF. Restore with `scripts/restore_releases.py`. |
-| 3 | `h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269.tif` (37,654 dots) | +0.002 | Lowest-dose structural-prior probe; CV stays nearest the reported band. `Δ≥+0.010`: queue the 15% arm. `Δ≤-0.010`: reject this prior; pivot to `MASSrandom40pct` control or `PRUNEanisoA4L2`. Null: hold. |
+A concurrent build on the old base, merged after main recorded IR90-25/26. The prior is new and string-distinct (absolute-value rank mean of pinned bands `tmi_hg`, `geod_2ndinv`, `geod_shearrate`, `iso_grav_anom_hg`, 150 px = 15 km blocks, lowest/highest 35% tails), and R0's CV at that block size is `0.510346`, coincidentally inside the brief's quoted band. But the exact support-credit ledger is negative (10%: -4,009.4 lost / +3,036.1 gained; 20%: -10,320.1 / +4,811.5), main independently measured ~0.98 lost vs ~0.54 gained per moved dot, and sibling upward-concentration MODELs are non-positive. **HOLD all three from the next slots.** They remain occupancy/dose-response guards; revisit only after a live receipt changes the evidence state or a downward-dispersion control is justified.
 
-Before any slot: human supplies dated `TOP_PUBLIC`, used/remaining slots, deadline confirmation, and R0 receipt; verifies the chosen SHA-256 was never submitted; confirms data-use terms; restores from pinned inputs (`scripts/restore_data.py`, then `scripts/restore_releases.py`) and re-runs the format gate. Never upload both NaN and zeros twins.
+Report-only diagnostics (`PROXY`, never gates/scores): catalogue hide/recover `n=13,920`, R0 `0.007191`; deltas +1e-06 / +2.4e-05 / +1.1e-05 with 95% CIs spanning 0. SGMC `n=62,122`, R0 `0.095386`; deltas above with CIs excluding 0. Leakage canary max symmetric AUC `0.574747` (<0.90). Predictions were frozen before proxies. Exact hashes, parent diffs and validator output: `evidence/concentration_build_receipt.json`.
 
 ## Calendar to deadline (`2026-12-03` UNVERIFIED — human confirms)
 
-- **Wk1–2 (Oct 23–Nov 5, ≤6 slots):** slots 1–3 above, then the paired `shadow40`/`random40` control or the winning RELIEF/PRUNE branch. Do **not** spend a slot on FIFO-ranked MASS rungs (IR90-20).
-- **Wk3–4 (Nov 6–19, ≤6 slots):** combine only the two axes whose paired receipts clear `Δ≥+0.010`; otherwise spend one slot on the 40% random control and one on collar geometry. Confirm the winner on a fresh re-emission.
-- **Wk5–6 (Nov 20–Dec 3, ≤6 slots + 1 blind final):** choose one primary and one encoding fallback; re-run SHA-256, format, zero-catalogue-mass and conflict-marker checks. Private chunks and expert-expanded Phase 2 labels can reverse public signs (https://community.drivendata.org/t/where-do-you-draw-the-line/11536).
+- **Weeks 1–2 (Oct 23–Nov 5):** obtain R0's receipt if possible; execute the conditional order, then only the strongest orthogonal mechanism.
+- **Weeks 3–4 (Nov 6–Nov 19):** combine only axes with receipts `Δ>=+0.010`; reserve one slot for parent-vs-composite. q50-20 remains available only if the add slope rises.
+- **Weeks 5–6 (Nov 20–Dec 3):** confirm the leader, select ONE blind final plus a `-zeros` fallback, and revalidate both. Account for private chunks and expert-expanded labels ([clarification](https://community.drivendata.org/t/where-do-you-draw-the-line/11536)).
 
 ## Better axes proposed (not built)
 
-- **PRIOR_MISMATCH_SPREAD:** 10% high→low 15 km prior, count fixed. *Mechanism:* direct sign control on the CV band. *Confounder:* low-prior blocks may be blind basin faults. *Falsifier:* live Δ≤-0.010 against the 10% concentration arm.
-- **CONTINUITY_AWARE_DOSE:** same 40% dose, forbid deletions that split ≥1 km strands at 5 px linking. *Confounder:* long dikes/shorelines also link. *Falsifier:* Δ≤-0.010 vs `shadow40`.
-- **KERNEL_ORACLE_DOSE:** re-space survivors to ~6 px instead of deleting. *Confounder:* 600 m gaps miss 300 m-offset strands. *Falsifier:* Δ≤-0.010 vs `shadow48`.
-- **COLLAR_NOREFILL:** strike-aligned collar with mass allowed to fall. *Confounder:* mass and geometry move together. *Falsifier:* gain no larger than isotropic no-refill controls.
+- **TIP_FLOOR:** protect fragments by strand length and tip-cone membership, not dot count. *Falsifier:* paired Δ<=-0.010 vs shadowcont40.
+- **KERNEL_ORACLE_DOSE:** re-space survivors to a ~6 px anti-cluster instead of deleting. *Falsifier:* paired Δ<=-0.010 vs shadow48.
+- **REFILL_RANK:** 5 km-stratified exact marginal-kernel refill at fixed collar/count. *Falsifier:* region-evenness failure or paired Δ<=-0.010.
+- **DISPERSION_CONTROL:** down-concentration (high→low prior) at 15 km, the only sibling CONCENTRATION direction reading positive. *Falsifier:* paired Δ<=-0.010; do not build until the held upward ladder is superseded by a receipt.
+- **WITHDRAWN / DO NOT UPLOAD:** FIFO-ranked MASS, duplicate `MASSadd10pctGapmax`, delete-only `L2nr` PRUNE, and SNAP (IR90-20/24/28/29).
 
-**Evidence labels:** every prediction above is `MODEL`; hide/recover, SGMC and AUC values are `PROXY`/report-only. No agent-generated number is a live score.
+**Reproduce before any upload:** `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scripts/restore_releases.py` (18 core pairs recorded at branch start) → main's `build_mass_infill.py` / `build_mass_add_variants.py` / `build_mass_continuity.py` / `build_aniso_prune_along.py` family builders or verifiers for the slotted candidates → `.venv/bin/python scripts/build_concentration_variants.py --verify` for the held files. Re-read every TIFF from disk, run the format gate, and match SHA-256 to `ledger/submissions.csv` before the human uploads from their own account.

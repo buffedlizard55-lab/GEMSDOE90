@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "note": "Local, gitignored candidate rasters re-emitted from pinned inputs. This is a reproduction of all recorded BUILT (PRUNE, RELIEF, CONCENTRATION and MASS, value) pairs, not a new experiment. Each file must equal the SHA-256 recorded in its build receipt and ledger/submissions.csv.",
+  "note": "Local, gitignored candidate rasters re-emitted from pinned inputs. This is a reproduction of the 18 core recorded BUILT (PRUNE, RELIEF, CONCENTRATION and MASS, value) pairs present when this branch was cut, not a new experiment. Main's later MASS-add, continuity and A5-refill families use their own generators. Each file must equal the SHA-256 recorded in its build receipt and ledger/submissions.csv.",
   "prune_generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615",
   "relief_generator_script_sha256": "4a1ccfe3d0c9e946e9388a502d2fda244080b24b9e0345a3068048f0a35cb3b1",
   "concentration_generator_script_sha256": "439dd26e75515aec8b0733a544796f40f99f36e9ebed53744bb1b30ba61ae574",

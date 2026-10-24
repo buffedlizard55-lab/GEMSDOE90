@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Re-emit every recorded BUILT candidate from pinned inputs, fail-closed.
+"""Re-emit the 18 core BUILT candidates recorded at this branch's start, fail-closed.
 
 Why this exists: `releases/*.tif` is gitignored (this repo is public and the brief
 forbids committing competition rasters), so the built candidates do not survive a
@@ -9,7 +9,8 @@ finish unless every re-emitted file matches the SHA-256 already recorded in
 `evidence/build_receipt.json`, `evidence/relief_build_receipt.json`,
 `evidence/concentration_build_receipt.json`, `evidence/mass_build_receipt.json`,
 `evidence/mass_high_dose_receipt.json`, `evidence/build_aniso_receipt.json`, and
-`ledger/submissions.csv`.
+`ledger/submissions.csv`. Main's later MASS-add, continuity and A5-refill families
+have their own generators/verifiers; run those for the slotted candidates.
 
 The original PRUNE generator `scripts/build_r0_variants.py` is deliberately NOT
 modified: its SHA-256 (06f667c1...) remains pinned in `evidence/r0_rebuild_receipt.json`
@@ -401,9 +402,10 @@ def main() -> int:
     out.write_text(json.dumps({
         "schema_version": 1,
         "note": ("Local, gitignored candidate rasters re-emitted from pinned inputs. This is a "
-                 "reproduction of all recorded BUILT (PRUNE, RELIEF, CONCENTRATION and MASS, value) "
-                 "pairs, not a new experiment. Each file must equal the SHA-256 recorded in its "
-                 "build receipt and ledger/submissions.csv."),
+                 "reproduction of the 18 core recorded BUILT (PRUNE, RELIEF, CONCENTRATION and MASS, "
+                 "value) pairs present when this branch was cut, not a new experiment. Main's later "
+                 "MASS-add, continuity and A5-refill families use their own generators. Each file must "
+                 "equal the SHA-256 recorded in its build receipt and ledger/submissions.csv."),
         "prune_generator_script_sha256": build.sha256_file(ROOT / "scripts" / "build_r0_variants.py"),
         "relief_generator_script_sha256": build.sha256_file(ROOT / "scripts" / "build_relief_variants.py"),
         "concentration_generator_script_sha256": build.sha256_file(ROOT / "scripts" / "build_concentration_variants.py"),
