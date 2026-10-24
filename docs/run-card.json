@@ -1,0 +1,14 @@
+{
+  "hypothesis": "Conditional radiometric alteration discontinuities could identify concealed faults; untested",
+  "mechanism": "Locally detrended K/Th edge conditional on low relief; proposal only",
+  "non_fault_mimic": "Lithologic contact or transported alluvium",
+  "holdout": {"label": "HOLDOUT-DTI", "value": null, "ci95": null, "evaluator_version": null, "withheld_positives": null, "status": "not evaluated; shared evaluator and verified baseline absent"},
+  "registry": {"surface_spearman": null, "final_dot_overlap": null, "status": "not evaluated; complete registry unavailable"},
+  "raster_sha256": null,
+  "validator_output": {"status": "not run on a competition candidate", "no_nan_inside": null, "range_0_1": null, "crs_shape_transform_match": null},
+  "submission_name": "gems90-radiometric-conditional-edge-research-only-20261024",
+  "note": "Research only; no candidate generated. Shared holdout, assigned lane and full registry required before promotion.",
+  "experiments_run": 0,
+  "ready_to_download_and_submit": false,
+  "verdict": "negative"
+}
