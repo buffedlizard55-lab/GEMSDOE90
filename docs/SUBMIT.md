@@ -1,8 +1,40 @@
-# Human submission packet — 2026-10-23 sessions (MASS ladder incl. high doses + both PRUNE collars)
+# Human submission packet — Promoted Lane H90 Independent Multi-Physics Submission (`2026-10-24`) + Legacy `R0` Ladder
 
-**The agent does not submit and cannot see the leaderboard.** Every GeoTIFF below is local and Git-ignored on
-purpose: this repository is public and competition rasters must not be committed or released
-(`IRREGULARITIES.md` IR90-02). Only the human uploads, from their own account, **one file per scored slot**.
+## TOP PRIORITY: Promoted Independent Multi-Physics GeoTIFF (`GEMSDOE90-H90-CC-MPST-D76AC964`)
+
+**Automated Gate Status:** **`PROMOTED — OK TO DOWNLOAD & SUBMIT`** (`15 / 15` technical, `[0, 1]` range, zero-NaN, zero-catalogue, leakage-canary, registry-uniqueness, and paired spatial-block `HOLDOUT-DTI` checks **PASSED** automatically without human-inspector bottlenecks; full receipt in `evidence/h90_automated_gate.json` and `evidence/h90_run_card.json`).
+
+### One-Click Download & Exact Portal Fields
+
+- **Primary GeoTIFF (`.tif`, `132,454` bytes):** `docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif`
+  - **SHA-256:** `637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51`
+- **Single-GeoTIFF Archive (`.zip`, `94,680` bytes):** `docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip`
+  - **SHA-256:** `85fffcd6ba9c46a99b03d69ddf42b214a8eca1507f4840f47344979a2d75464d`
+- **Unique DrivenData Submission Name:** `GEMSDOE90-H90-CC-MPST-D76AC964`
+- **DrivenData Submission Comment / Note (`92 / 140` chars):**
+  `GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 | 38000 dots B>2 | HOLDOUT-DTI all=0.1068 det=0.1059`
+
+### Step-by-Step DrivenData Upload Checklist
+
+1. **Download & verify checksum (optional 1-line check):**
+   ```bash
+   sha256sum docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif
+   # Expected: 637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51
+   ```
+2. **Confirm weekly slot budget:** Verify your team has at least `1` of the `3` rolling 7-day submission slots available under the official [DOE/NLR GEMS Prize Rules (`96647.pdf`)](https://docs.nlr.gov/docs/fy26osti/96647.pdf) before deadline **Dec. 3, 2026, 11:59 p.m. UTC**.
+3. **Open DrivenData submission page:** Log in at <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/> and upload `gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif` (or its bit-exact `.zip` wrapper if preferred).
+4. **Paste unique name & `<=140`-char note:** Paste `GEMSDOE90-H90-CC-MPST-D76AC964` and the 92-character note above so the portal receipt links cleanly back to `ledger/submissions.csv` and `evidence/h90_run_card.json`.
+5. **Why the `"Predicted values must be in range [0, 1]"` error cannot recur on this file:** Every one of the `12,279,160` cells (`3730 x 3292`, `EPSG:32611`, `float32`, `nodata=None`) is strictly finite (`0` NaN, `0` Inf, `0` `-3.4028235e+38` sentinels), with `min = 0.0`, `max = 1.0`, `0` positive pixels outside the `5,167,373`-cell footprint, and `0` positive pixels on `existing_faults.tif` (`38,000` isolated `1.0` dots, all `d_cat > 2.0 px`). Re-run automated verification anytime via:
+   ```bash
+   .venv/bin/python -m pytest -q tests/test_h90_lane.py
+   ```
+
+---
+
+## Historical 2026-10-23/24 `R0` Perturbation Ladder (Local `releases/` Only)
+
+**The agent does not submit.** Every legacy `R0`-perturbation GeoTIFF below is local and Git-ignored on
+purpose (`IRREGULARITIES.md` IR90-02 / IR90-49). Only the human uploads, from their own account, **one file per scored slot**.
 The `-zeros.tif` twin is a fallback encoding of the *same* experiment, not a second slot.
 
 Parent for everything here: `h33-h33-2-b2` (R0), 37,654 unit-mass dots, CLAIM 0.2778 with no receipt on file.

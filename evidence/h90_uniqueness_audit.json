@@ -1,0 +1,176 @@
+{
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "rasters_checked": 20,
+  "ledger_hashes_checked": 92,
+  "ledger_sha256_collision": false,
+  "thresholds": {
+    "max_abs_spearman_rho": 0.9,
+    "max_3px_dot_overlap": 0.7
+  },
+  "pre_placement_surface": {
+    "max_abs_spearman_rho": 0.103688,
+    "signed_spearman_rho": 0.103688,
+    "nearest_submission": "scored_h16_1",
+    "passed": true
+  },
+  "final_dots": {
+    "my_dots": 38000,
+    "max_abs_spearman_rho": 0.030953,
+    "signed_spearman_rho": 0.030953,
+    "nearest_rho_submission": "gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros",
+    "max_mutual_3px_overlap": 0.366403,
+    "nearest_mutual_submission": "gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros",
+    "max_non_lattice_forward_3px_overlap": 0.661211,
+    "nearest_non_lattice_forward_submission": "calib_gems10-h25-ctx-ridge-20260927T2329477041",
+    "literal_all_rasters_max_forward_3px_overlap": 0.999684,
+    "literal_all_rasters_max_forward_submission": "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou",
+    "literal_lattice_probe_note": "calib_13gems_20261001_r13-lattice-s5_v2 is a uniform 5-px geometric lattice (206,895 dots) whose 3-px disks cover 99.872% of all allowed footprint pixels (hypot(2,2)=2.828<=3.0 px); mutual overlap against it is <= 0.20.",
+    "vs_incumbent_r0_h33_b2": {
+      "forward_3px_overlap": 0.359184,
+      "reverse_3px_overlap": 0.219127,
+      "mutual_3px_overlap": 0.219127,
+      "jaccard_exact_dots": 0.01062,
+      "spearman_rho": 0.013798
+    },
+    "byte_unique": true,
+    "pixel_unique": true
+  },
+  "two_phase_summary": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "rasters_checked": 20,
+    "rasters_expected": 20,
+    "scope_note": "Checked against every registry raster whose bytes are present locally (plus any explicitly fetched witnesses). Un-fetched registry entries are a stated scope limitation, never a claim of absence.",
+    "footprint_cells": 5167373,
+    "dense_support_fraction": 0.2,
+    "thresholds": {
+      "rho": 0.9,
+      "forward_overlap": 0.7,
+      "jaccard": 0.5
+    },
+    "literal_reading": {
+      "worst_spearman_full_footprint": 0.03095331839904806,
+      "worst_spearman_submission": "gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros",
+      "worst_forward_overlap": 0.9996842105263158,
+      "worst_overlap_submission": "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou",
+      "forward_overlap_firings": 1,
+      "rho_firings": 0,
+      "duplicate": true,
+      "note": "Keeps the inherited literal support definition. A continuous-surface prior fires on every nonempty candidate, so a firing here is not evidence of duplication; it is reported for completeness."
+    },
+    "like_for_like_reading": {
+      "dot_field_rasters": 20,
+      "continuous_surface_rasters": 0,
+      "worst_forward_overlap_dot_fields": 0.9996842105263158,
+      "worst_forward_overlap_dot_field_submission": "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou",
+      "worst_reverse_overlap": 0.3664030612244898,
+      "worst_reverse_overlap_submission": "gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros",
+      "worst_jaccard": 0.019464912975728284,
+      "worst_jaccard_submission": "gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros",
+      "forward_overlap_firings": 1,
+      "duplicate": true,
+      "note": "Inherited thresholds, applied to dot fields only; rank correlation still applies to every raster including the continuous surfaces."
+    },
+    "literal_firings": [
+      {
+        "submission": "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou",
+        "repo": "buffedlizard55-lab/GEMSDOE24",
+        "representation": "dot_field",
+        "forward_overlap": 0.9996842105263158,
+        "their_dots": 206895
+      }
+    ]
+  },
+  "top10_nearest_non_lattice": [
+    {
+      "submission": "calib_gems10-h25-ctx-ridge-20260927T2329477041",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "their_dots": 174232,
+      "forward_3px_overlap": 0.661211,
+      "reverse_3px_overlap": 0.245426,
+      "mutual_3px_overlap": 0.245426,
+      "spearman_rho": 0.028243
+    },
+    {
+      "submission": "calib_gems10-h28-dotted-ridge-20260928T0202562",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "their_dots": 69281,
+      "forward_3px_overlap": 0.636395,
+      "reverse_3px_overlap": 0.223914,
+      "mutual_3px_overlap": 0.223914,
+      "spearman_rho": 0.0148
+    },
+    {
+      "submission": "calib_8GEMSDOE_Hedge-v2_submission",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "their_dots": 227507,
+      "forward_3px_overlap": 0.499632,
+      "reverse_3px_overlap": 0.15963,
+      "mutual_3px_overlap": 0.15963,
+      "spearman_rho": 0.012034
+    },
+    {
+      "submission": "calib_gemsdoe-ens12-adopted-7f00890a",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "their_dots": 172974,
+      "forward_3px_overlap": 0.488053,
+      "reverse_3px_overlap": 0.20288,
+      "mutual_3px_overlap": 0.20288,
+      "spearman_rho": 0.018775
+    },
+    {
+      "submission": "gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros",
+      "repo": "buffedlizard55-lab/sibling-prior",
+      "their_dots": 39200,
+      "forward_3px_overlap": 0.485079,
+      "reverse_3px_overlap": 0.366403,
+      "mutual_3px_overlap": 0.366403,
+      "spearman_rho": 0.030953
+    },
+    {
+      "submission": "scored_h16_1",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "their_dots": 123939,
+      "forward_3px_overlap": 0.437553,
+      "reverse_3px_overlap": 0.229355,
+      "mutual_3px_overlap": 0.229355,
+      "spearman_rho": 0.023502
+    },
+    {
+      "submission": "scored_h19_4",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "their_dots": 123779,
+      "forward_3px_overlap": 0.431132,
+      "reverse_3px_overlap": 0.229377,
+      "mutual_3px_overlap": 0.229377,
+      "spearman_rho": 0.022824
+    },
+    {
+      "submission": "scored_h19_5",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "their_dots": 121131,
+      "forward_3px_overlap": 0.419763,
+      "reverse_3px_overlap": 0.230263,
+      "mutual_3px_overlap": 0.230263,
+      "spearman_rho": 0.022758
+    },
+    {
+      "submission": "scored_gems27_tgc_v2_d15",
+      "repo": "buffedlizard55-lab/GEMSDOE27",
+      "their_dots": 61328,
+      "forward_3px_overlap": 0.407053,
+      "reverse_3px_overlap": 0.22003,
+      "mutual_3px_overlap": 0.22003,
+      "spearman_rho": 0.015018
+    },
+    {
+      "submission": "scored_d15_scored",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "their_dots": 60069,
+      "forward_3px_overlap": 0.390842,
+      "reverse_3px_overlap": 0.217017,
+      "mutual_3px_overlap": 0.217017,
+      "spearman_rho": 0.014523
+    }
+  ],
+  "passed": true
+}

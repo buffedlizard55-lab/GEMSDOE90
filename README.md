@@ -2,10 +2,18 @@
 
 <!-- CURRENT STATE (edit only this block) -->
 ## CURRENT STATE
-- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN), 26/26 input pins verified by SHA-256 (`evidence/r0_rebuild_receipt.json`).
-- Best receipt: **none on file** (human supplies R0 portal receipt). Best CLAIM: 0.2778 (R0, owner-reported, no receipt in `ledger/submissions.csv`).
-- TOP_PUBLIC: ____ (human fills from leaderboard, with date: ____)
-- Slots left this week: __ / 3 (one entity) · total used: __ · Deadline: 2026-12-03 (UNVERIFIED, human confirms)
+- **PROMOTED INDEPENDENT MULTI-PHYSICS DELIVERABLE (`2026-10-24`, `arena/783b0fc5-gemsdoe90`, `AXIS=DISCOVERY`):**
+  - **Automated Gate Verdict:** **`PROMOTE` (`AUTOMATED GATE: PROMOTED — OK TO DOWNLOAD & SUBMIT`, `15 / 15` portal/format/canary/uniqueness/holdout checks PASSED automatically without human intervention; receipts in `evidence/h90_automated_gate.json` and `evidence/h90_run_card.json`).**
+  - **One-Click GeoTIFF:** `docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif` (`132,454` bytes; single-band `float32`, `3730 x 3292`, `EPSG:32611`, `nodata=None`, `12,279,160 / 12,279,160` cells finite in `[0.0, 1.0]`, `0` NaN, `0` Inf, `0` outside-footprint positives, `0` catalogue positives, `38,000` isolated `1.0` dots all at `d_cat > 2.0 px`).
+  - **SHA-256 (`.tif` / `.zip`):** `637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51` / `85fffcd6ba9c46a99b03d69ddf42b214a8eca1507f4840f47344979a2d75464d`.
+  - **Unique Submission Name:** `GEMSDOE90-H90-CC-MPST-D76AC964`
+  - **Submission Comment / Note (`92 / 140` chars):** `GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 | 38000 dots B>2 | HOLDOUT-DTI all=0.1068 det=0.1059`
+  - **Measured `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `seeds=20+21`):** `mode=all` = **`0.10681 [0.09657, 0.11671]`** (`n=22,641`; paired `Δ` vs `fair-R0` `0.09096` = **`+0.01585 [0.00625, 0.02534]`**; paired `Δ` vs `C0` Random `0.04132` = **`+0.06549 [0.05547, 0.07527]`**; paired `Δ` vs `C1` Classical Ridge `0.04732` = **`+0.05949 [0.04687, 0.07251]`**); `mode=detached` = **`0.10586 [0.09294, 0.11802]`** (`n=22,619`).
+  - **Leakage Canary & Uniqueness Gate:** `38 / 38` features passed single-feature leakage canary (`max_symmetric_auc = 0.626318 <= 0.90`); checked against `20` registry rasters and `92` ledger SHA-256 digests (`surface |ρ| = 0.1037 <= 0.90`, `dots |ρ| = 0.0310 <= 0.90`, `mutual 3-px overlap = 0.3664 <= 0.70`, `non-lattice forward 3-px overlap = 0.6612 <= 0.70`, **`64.08%` of emitted dots sit `>300 m` outside `R0`**, `194.91%` symmetric pixel turnover vs `R0`).
+- **Official Public Competition Facts (verified live `2026-10-24 UTC`):**
+  - **TOP_PUBLIC (`ORGANIZER-CONFIRMED`, `2026-10-24`):** **`0.4413`** (`#1 xiaofanhu`; `#2 cfld__ = 0.3916`; `#3 Batik Shirt Brothers = 0.3904`; `#4 BrandenKMurray = 0.3724`; `#5 No Fault of Our Own = 0.3539` — <https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/>).
+  - **Official Phase-1 Deadline:** **Dec. 3, 2026, 11:59 p.m. UTC** (<https://www.drivendata.org/competitions/306/competition-doe-gems/>; rolling 7-day cap `<= 3` submissions/entity per [DOE/NLR `96647.pdf`](https://docs.nlr.gov/docs/fy26osti/96647.pdf)).
+- Parent (incumbent `R0` reference): `h33-h33-2-b2` (`GEMSDOE32`), 37,654 unit-mass dots; rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN), 26/26 input pins verified by SHA-256 (`evidence/r0_rebuild_receipt.json`). Best `USER-REPORTED` ledger score: `0.2778` (`R0`, owner-reported in `ledger/submissions.csv`).
 - Built and unscored (39 `BUILT` candidates in the ledger, rasters in gitignored `releases/`, none submitted): **CONCENTRATION** — two concurrent families, both HELD from slots (IR90-30/32): 5 km label-agnostic band-4 strain-rate prior `CONCstrain10`/`CONCstrain15`/`CONCstrainAway10` (sign control; `evidence/concentration_strain5km_build_receipt.json`) and the 15 km structural ladder below; **RELIEF** landform-tercile reallocation — 2026-10-23 family (`RELIEFr2p12p5pct` +0.004, `RELIEFr2b10pct` +0.003, `RELIEFp2r15pct` -0.004; `evidence/relief_build_receipt.json`) the 2026-10-24 basin<->piedmont family (`RELIEFp2b12p5pct`/`p2b15pct`/`b2p10pct`; `evidence/relief_s2_build_receipt.json`); **SPACING** local kernel-scale respacing 5/10/15%W15 (HELD; `evidence/spacing_build_receipt.json`); **MASS** shadow ladder 10/20/30/40/48% + random-40% control (`evidence/mass_build_receipt.json`, `evidence/mass_high_dose_receipt.json`), continuity-aware shadowcont 20/30/40% (`evidence/mass_continuity_receipt.json`), add-direction q50 infill 5/10/20% + Blocknext 10/20% (`evidence/mass_infill_receipt.json`, `evidence/mass_add_receipt.json`); **PRUNE** isotropic 3.5/4.5/5.5 px + strike-aligned A4/A5/A6 (`evidence/build_receipt.json`, `evidence/build_aniso_receipt.json`) + fixed-count A5/L1.5/L1/L0.5 (`evidence/aniso_along_refill_receipt.json`) + frontier 3.4 px gapmax collar (`evidence/prune_collar_gapmax_receipt.json`). All predictions are `MODEL`, not scores. Plus WITHDRAWN FIFO-ranked / duplicate-gapmax MASS and delete-only PRUNE rungs (not candidates, see below).
 - Concurrent 2026-10-23e session (this branch, agent-selected `CONCENTRATION`, **HELD from slots**): built three fixed-count 15 km structural-prior moves from byte-identical R0 — `b15kmstruct10pct` (+0.002 MODEL), `b15kmstruct15pct` (-0.002), `b15kmstruct20pct` (-0.006); CV 0.5103→0.5990/0.6949/0.7769, SGMC PROXY -0.0064/-0.0095/-0.0142, receipt `evidence/concentration_build_receipt.json`. Main's IR90-25/26 credit-uniformity and sibling MODEL audit, plus the session's negative support-credit balance, outweigh the 15 km CV coincidence; keep as occupancy/dose-response guards, not next-slot candidates (IR90-30).
 - Concurrent session (`arena/388fea70`, agent-selected `CONCENTRATION`, **HELD from slots**): three fixed-count 5 km label-agnostic band-4 strain-rate-prior moves from byte-identical R0 — `CONCstrain10` (+0.004 MODEL), `CONCstrain15` (+0.001), `CONCstrainAway10` (-0.004 matched-dose sign control); 15 km CV 0.510→0.568/0.622/0.558, prior near-orthogonal to R0 (r=+0.11) and relief-neutral; net support-credit loss and a negative SGMC PROXY (favouring the away arm) match IR90-25/26. Source files renamed to `*_strain5km` to coexist with the 15 km ladder (identical canonical names); kept as string-distinct occupancy guards, the away arm a DIRECTION falsifier only (IR90-32/33/34). Receipt `evidence/concentration_strain5km_build_receipt.json`.
@@ -28,8 +36,77 @@
 - Reproducibility: `scripts/restore_data.py` → `scripts/restore_releases.py` (18 core pairs recorded at branch start) → prior family builders/verifiers for the newer main candidates → `scripts/build_mass_infill.py --verify` → `scripts/build_mass_add_variants.py --verify` → `scripts/build_mass_continuity.py --verify` → `scripts/build_aniso_prune_along.py --build` (if current rasters absent) → `scripts/build_aniso_prune_along.py --verify` → `scripts/build_concentration_strain5km.py --build`/`--verify` (5 km strain-prior pairs; rasters are gitignored, re-emit in a fresh sandbox) → `scripts/build_spacing_variants.py --build`/`--verify` (2026-10-24 SPACING pairs) → `scripts/build_relief_s2_variants.py --build`/`--verify` (2026-10-24 basin<->piedmont RELIEF pairs). All 26 pins verified and R0 byte-identical; full test suite (133 passed, incl. without `.cache`). Human supplies receipts, quota, dated TOP_PUBLIC, deadline confirmation, and upload decisions; adjudicate entity scope (IR90-26/30/32/41) before any slot.
 <!-- /CURRENT STATE -->
 
-Layout: `src/` gated pipeline (manifest verify → exact R0 rebuild → build →
-format gate), `tests/` synthetic unit tests, `ledger/` submission ledger,
-`registry/` pinned-input manifest, `docs/` mechanism cards + submit checklist,
-`releases/` built rasters (gitignored — this repo is PUBLIC; competition
-rasters/data must never be committed, see IRREGULARITIES.md #2).
+Layout: `src/` gated pipeline (`h90_features.py`, `h90_models.py`, `h90_emitter.py`, `auto_validator.py`, plus legacy `R0` operators), `vendor/gems57/` shared holdout evaluator (`gems57-pooled-hide-v2`) & GeoTIFF writer, `tests/` fast CI unit & deliverable-integrity tests, `ledger/` submission ledger, `registry/` pinned-input manifest, `docs/` pre-registered hypotheses + submit checklist + one-click `.tif` deliverable (`docs/downloads/`, `IR90-49`), `index.html` & `executive-summary.html` GitHub Pages scientific portal, and `releases/` legacy local rasters (gitignored alongside `.cache/gems_data/` — raw competition inputs are never committed, see `IRREGULARITIES.md` `IR90-02` & `IR90-49`).
+
+---
+
+## GitHub Pages Portal & One-Click Submission Download
+
+- **Main Scientific Portal & Submission Dashboard:** [`index.html`](./index.html) (`https://buffedlizard55-lab.github.io/GEMSDOE90/`)
+- **Executive Summary & Step-by-Step DrivenData Upload Subpage:** [`executive-summary.html`](./executive-summary.html) (`https://buffedlizard55-lab.github.io/GEMSDOE90/executive-summary.html`)
+- **Direct Validated GeoTIFF Deliverable (`132,454 B`):** [`docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif`](./docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif)
+- **Single-TIFF Archive (`94,680 B`):** [`docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip`](./docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip)
+- **Machine-Readable Run Card & Automated Gate Receipt:** [`evidence/h90_run_card.json`](./evidence/h90_run_card.json) · [`evidence/h90_automated_gate.json`](./evidence/h90_automated_gate.json)
+- **Pre-Registered Hypotheses (`H90-1`–`H90-5`):** [`docs/HYPOTHESES_PREREGISTRATION.md`](./docs/HYPOTHESES_PREREGISTRATION.md)
+
+### End-to-End Autonomous Reproducibility (`Lane H90`)
+
+```bash
+# 1. Create Python 3.11 virtual environment with pinned dependencies
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+
+# 2. Run fast CI unit & deliverable-integrity test suite (works without .cache/)
+.venv/bin/pytest -q
+
+# 3. Restore SHA-256-pinned geophysical/LiDAR/radiometric/GDR inputs into .cache/gems_data/
+.venv/bin/python scripts/restore_data.py
+
+# 4. Run full 7-stage Lane H90 pipeline (features -> canary -> 3-exp LOQO fit -> 16-cell holdout -> uniqueness -> GeoTIFF -> automated gate)
+PYTHONUNBUFFERED=1 .venv/bin/python scripts/run_h90_lane.py
+```
+
+---
+
+## Persistent Reference: Project Prompt & Parallel-Run Protocol
+
+Per project instructions (*"Please put this prompt into your README.md as a persistent reference"*), the complete governing prompt and Parallel-Run Protocol specification are preserved below:
+
+```text
+HIGHEST URGENCY IS TO HAVE A UNIQUE .TIF SUBMISSION FOR THE COMPETITION. NEVER COPY A PREVIOUS SUBMISSION TO SUBMIT AGAIN. IT SHOULD BE OBVIOUS IF IT IS OK TO DOWNLOAD AND SUBMIT A SUBMISSION.
+
+Please review GEMSDOE90, then study, analyze, and explain why and how GEMSDOE32's h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros achieved 0.2778 — the highest score across all of my GEMSDOE sites so far (the current high in the competition overall is 0.3195 [note: verified live 2026-10-24 on DrivenData leaderboard at 0.4413]). At a PhD level, explain whether and how a submission can score higher than 0.2778.
+
+In your executive summary/the very beginning of the GitHub page, please make sure it's easy to download a .tif submission with one click. Also make sure that any inspection and validation for submission is done by the project itself and doesn't require a human inspector to validate the format/submission; we don't want any human bottlenecks. We previously encountered an error when submitting to DrivenData: "Predicted values must be in range [0, 1]". Please ensure your code verifies predictions are strictly in [0, 1] and checks whether NaN values outside the footprint could trigger that error or if DrivenData expects 0.0 everywhere outside the footprint (check sample_submission.tif and scored -zeros files). Also provide a unique submission name and short comment/note (<= 140 chars) for DrivenData.
+
+Core Technical & Scientific Directives:
+1. Hypothesis Generation Before Implementation:
+   Generate 3-5 novel candidate geological hypotheses not yet tried in this repo or siblings. For each hypothesis state:
+   - Specific layer(s) involved (exact band names from the 19-band training_features.tif stack, 3DEP 1m LiDAR scarp bands, GeoDAWN airborne radiometric/magnetic extension bands, OpenEI GDR 1391 geothermal wells/springs/vents, SGMC).
+   - Physical signature / mathematical transform being computed.
+   - Why it catches faults missing from the USGS QFaults / INGENIOUS catalogue.
+   - What named non-fault geological process could mimic that signature.
+   - How it differs from existing implementations in this repo and sibling repos.
+   Rank by expected DTI improvement and implementation cost before coding.
+
+2. Spatially-Blocked Hide-and-Recover Validation:
+   - Partition mapped faults into spatial folds / segments with an erosion buffer (1.2 km / 12 px) so withheld fault segments do not leak across fold boundaries.
+   - Derive any catalogue-dependent features strictly from fold-visible faults only.
+   - Mask fold-visible faults pixel-exactly (matching official DrivenData scoring where known faults are masked pixel-exactly with no buffer, while false positives near known faults still incur full FP_w penalty).
+   - Score with pooled Distance-Weighted Tversky Index (alpha = 0.2, beta = 0.8, 300 m linear triangular distance kernel) and report 95% confidence intervals via spatial block bootstrap.
+   - Run a single-feature holdout leakage canary across all features (stop and investigate if max(AUC, 1 - AUC) > 0.90).
+
+3. Parallel-Run Protocol:
+   - Lane Uniqueness Check: Compare both the pre-placement continuous surface and the final emitted binary dots against the registry of prior submissions: Spearman rank correlation |rho| <= 0.90 and 3-px dot overlap <= 0.70, plus zero SHA-256 hash collision.
+   - Shared Tool Reuse: Reuse shared holdout evaluator (evaluate_holdout.py) and submission writer/validator (submission_writer.py).
+   - Strict Evidence Labeling: Label every number strictly as HOLDOUT-DTI (stating evaluator version, withheld positive pixel count n, and 95% CI) or ORGANIZER-CONFIRMED (with date/source). Never write a model projection as a score.
+   - Experiment Budget: Budget <= 3 experiments in the session; do not tune hyperparameters after inspecting holdout scores.
+   - Slot Discipline: Only promote to a live weekly DrivenData slot (verdict = "promote") if all technical/uniqueness/canary checks pass AND holdout validation beats leak-free baselines and the fair incumbent reference; negative results are valid scientific deliverables and must be clearly badged so scarce weekly slots (3/week cap) are protected.
+   - Run Card Output: End with a single JSON Run Card containing: hypothesis, mechanism, named non-fault mimic, holdout DTI + 95% CI, correlation/overlap vs registry, raster sha256, validator output, submission name + <=140-char note, and verdict ("promote" or "negative").
+
+4. GitHub Pages Site, Executive Summary Subpage, Provenance & Three Verification Passes:
+   - Build a clean, well-organized GitHub Pages site plus an Executive Summary subpage explaining step-by-step how to submit on DrivenData, featuring top-of-page one-click .tif download, obvious automated submission readiness status, auditable tables of historical GEMSDOE scores, verified official data sources with links, limitations, and scientific research on geothermal vents and fault permeability.
+   - Put this prompt into README.md as a persistent reference.
+   - Work autonomously with zero manual input, verify line by line from official trusted sources with links, flag any irregularities, maintain zero hallucinations, execute 3 full passes (Pass 1 implement & verify; Pass 2 review bugs/edge cases/missing items & fix; Pass 3 line-by-line audit), then open a PR and merge onto main.
+```
+

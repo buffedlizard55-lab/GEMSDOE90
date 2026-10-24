@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEMSDOE90 — Concealment-Conditioned Multi-Physics &amp; Coulomb Submodular Fault Discovery (Lane H90)</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --brand: #047857;
+      --brand-dark: #065f46;
+      --brand-soft: #ecfdf5;
+      --accent: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --warn-soft: #fffbeb;
+      --warn-border: #fcd34d;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+      font-size: 15.5px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 0.72rem 1.25rem;
+      border-bottom: 3px solid #10b981;
+      position: sticky;
+      top: 0;
+      z-index: 60;
+    }
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .topbar-title {
+      font-weight: 700;
+      font-size: 0.94rem;
+      letter-spacing: 0.01em;
+    }
+    .topbar-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      font-size: 0.84rem;
+    }
+    .topbar-nav a { color: #cbd5e1; font-weight: 500; }
+    .topbar-nav a:hover, .topbar-nav a.highlight { color: #34d399; text-decoration: none; }
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem 4.5rem;
+    }
+    .gate-hero {
+      background: var(--brand-soft);
+      border: 2px solid #10b981;
+      border-radius: 12px;
+      padding: 1.45rem 1.55rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 4px 16px rgba(15, 118, 110, 0.08);
+    }
+    .gate-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #065f46;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.34rem 0.78rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+    .gate-hero h1 {
+      margin: 0.15rem 0 0.5rem;
+      font-size: 1.65rem;
+      line-height: 1.25;
+      color: #064e3b;
+    }
+    .gate-sub {
+      margin: 0 0 1.15rem;
+      color: #1e293b;
+      font-size: 0.96rem;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.72rem;
+      align-items: center;
+      margin-bottom: 1.15rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #047857;
+      color: #ffffff !important;
+      font-weight: 700;
+      font-size: 0.98rem;
+      padding: 0.78rem 1.3rem;
+      border-radius: 8px;
+      border: 1px solid #065f46;
+      box-shadow: 0 2px 6px rgba(4, 120, 87, 0.25);
+    }
+    .btn-primary:hover { background: #065f46; text-decoration: none; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      background: #ffffff;
+      color: #0f172a !important;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #94a3b8;
+    }
+    .btn-secondary:hover { background: #f1f5f9; text-decoration: none; }
+    .copy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 0.8rem;
+    }
+    .copy-card {
+      background: #ffffff;
+      border: 1px solid #a7f3d0;
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+    }
+    .copy-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #047857;
+      margin-bottom: 0.3rem;
+    }
+    .copy-btn {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+      border-radius: 5px;
+      padding: 0.16rem 0.52rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #d1fae5; }
+    .copy-val {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      word-break: break-all;
+      color: #0f172a;
+      background: #f8fafc;
+      padding: 0.4rem 0.52rem;
+      border-radius: 5px;
+      border: 1px solid #e2e8f0;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+    .kpi {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.8rem 0.95rem;
+    }
+    .kpi .k-label { font-size: 0.74rem; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .kpi .k-val { font-size: 1.24rem; font-weight: 800; color: #0f172a; margin: 0.14rem 0; font-family: var(--mono); }
+    .kpi .k-note { font-size: 0.79rem; color: var(--muted); }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.55rem;
+      margin-bottom: 1.35rem;
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.32rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+      color: #0f172a;
+    }
+    .card h3 {
+      margin-top: 1.15rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.06rem;
+      color: #1e293b;
+    }
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      margin: 0.7rem 0;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 0.5rem 0.62rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    tr.promoted-row td { background: #ecfdf5 !important; font-weight: 600; }
+    code {
+      font-family: var(--mono);
+      font-size: 0.84em;
+      background: #f1f5f9;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 0.95rem 1.05rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.48;
+    }
+    .eq-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #1d4ed8;
+      border-radius: 6px;
+      padding: 0.78rem 1rem;
+      margin: 0.85rem 0;
+      font-family: var(--mono);
+      font-size: 0.86rem;
+      overflow-x: auto;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: var(--mono);
+      white-space: nowrap;
+    }
+    .badge-pass { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+    .badge-holdout { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-org { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+    .badge-claim { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .callout-info {
+      background: var(--accent-soft);
+      border: 1px solid #93c5fd;
+      border-left: 5px solid #1d4ed8;
+      border-radius: 8px;
+      padding: 0.85rem 1.05rem;
+      margin: 0.9rem 0;
+      font-size: 0.92rem;
+    }
+    .callout-warn {
+      background: var(--warn-soft);
+      border: 1px solid var(--warn-border);
+      border-left: 5px solid #f59e0b;
+      border-radius: 8px;
+      padding: 0.85rem 1.05rem;
+      margin: 0.9rem 0;
+      font-size: 0.92rem;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1rem;
+    }
+    .footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">GEMSDOE90 · DOE GEMS Geothermal Fault Discovery — Lane H90 Scientific Portal</div>
+      <nav class="topbar-nav">
+        <a href="./executive-summary.html" class="highlight">Executive Summary &amp; Upload Steps &rarr;</a>
+        <a href="#forensic-02778">1. Why 0.2778 Worked</a>
+        <a href="#hypotheses">2. 5 Hypotheses</a>
+        <a href="#holdout">3. Holdout &amp; Uniqueness</a>
+        <a href="#geothermal">4. Geothermal Research</a>
+        <a href="#ledger">5. Historical Scores</a>
+        <a href="#sources">6. Verified Sources &amp; Limits</a>
+        <a href="#runcard">7. JSON Run Card</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- EXECUTIVE SUMMARY & ONE-CLICK DOWNLOAD HERO -->
+    <section class="gate-hero" id="download">
+      <div class="gate-pill">&#10003; AUTOMATED GATE: PROMOTED &mdash; OK TO DOWNLOAD &amp; SUBMIT (15 / 15 AUTOMATED CHECKS PASSED)</div>
+      <h1>Executive Download: Unique Multi-Physics GeoTIFF (`GEMSDOE90-H90-CC-MPST-D76AC964`)</h1>
+      <p class="gate-sub">
+        <strong>Immediate Readiness Status:</strong> Safe to download and submit with one click. Built completely from scratch by <strong>Lane H90 (`H90-1: CC-MPST-Submod300`)</strong> without copying or reading any prior submission raster (`64.08%` of its `38,000` dots lie `&gt; 300 m` outside `R0` `h33-h33-2-b2`, `194.91%` symmetric pixel turnover, `0` SHA-256 collisions across `20` registry rasters and `92` ledger hashes). Verified automatically by <code>src/auto_validator.py</code> (`15 / 15` format, `[0.0, 1.0]` range, zero-NaN, zero-catalogue, leakage-canary, uniqueness, and paired spatial-block `HOLDOUT-DTI` promotion gates PASSED).
+      </p>
+
+      <div class="cta-row">
+        <a class="btn-primary" href="./docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif" download="gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif">
+          &#11015; One-Click Download `.tif` Submission (132.5 KB)
+        </a>
+        <a class="btn-secondary" href="./executive-summary.html">
+          &#128203; Executive Summary &amp; 5-Step DrivenData Upload Guide
+        </a>
+        <a class="btn-secondary" href="./docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip" download="gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip">
+          &#128230; Download Single-TIFF `.zip` (94.7 KB)
+        </a>
+        <a class="btn-secondary" href="./docs/downloads/h90_run_card.json" download="h90_run_card.json">
+          &#128196; Download JSON Run Card
+        </a>
+      </div>
+
+      <div class="copy-grid">
+        <div class="copy-card">
+          <div class="copy-label">
+            <span>Unique DrivenData Submission Name</span>
+            <button class="copy-btn" onclick="copyText('hero-name', this)">Copy</button>
+          </div>
+          <div class="copy-val" id="hero-name">GEMSDOE90-H90-CC-MPST-D76AC964</div>
+        </div>
+        <div class="copy-card">
+          <div class="copy-label">
+            <span>DrivenData Note / Comment (92 / 140 chars)</span>
+            <button class="copy-btn" onclick="copyText('hero-note', this)">Copy</button>
+          </div>
+          <div class="copy-val" id="hero-note">GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 | 38000 dots B&gt;2 | HOLDOUT-DTI all=0.1068 det=0.1059</div>
+        </div>
+        <div class="copy-card">
+          <div class="copy-label">
+            <span>GeoTIFF SHA-256 (`132,454` bytes)</span>
+            <button class="copy-btn" onclick="copyText('hero-sha', this)">Copy</button>
+          </div>
+          <div class="copy-val" id="hero-sha">637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="k-label">H90-1 `HOLDOUT-DTI` (`mode=all`)</div>
+        <div class="k-val">0.10681</div>
+        <div class="k-note"><span class="badge badge-holdout">HOLDOUT-DTI</span> CI `[0.09657, 0.11671]`, `n=22,641` (`gems57-pooled-hide-v2`)</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">H90-1 `HOLDOUT-DTI` (`detached`)</div>
+        <div class="k-val">0.10586</div>
+        <div class="k-note"><span class="badge badge-holdout">HOLDOUT-DTI</span> CI `[0.09294, 0.11802]`, `n=22,619` (`gems57-pooled-hide-v2`)</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Paired Gain vs `fair-R0` (`0.09096`)</div>
+        <div class="k-val">+0.01585</div>
+        <div class="k-note"><span class="badge badge-holdout">HOLDOUT-DTI</span> 95% CI `[+0.00625, +0.02534]` (excludes `0`)</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">DrivenData Public #1 (`2026-10-24`)</div>
+        <div class="k-val">0.4413</div>
+        <div class="k-note"><span class="badge badge-org">ORGANIZER-CONFIRMED</span> `#1 xiaofanhu` (`#2 cfld__ 0.3916`)</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Best Prior GEMSDOE (`GEMSDOE32`)</div>
+        <div class="k-val">0.2778</div>
+        <div class="k-note"><span class="badge badge-claim">USER-REPORTED</span> `h33-h33-2-b2-...-zeros` (`37,654` dots)</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Portal `[0, 1]` &amp; Uniqueness</div>
+        <div class="k-val">15 / 15 PASS</div>
+        <div class="k-note"><span class="badge badge-pass">VERIFIED</span> `0` NaN, `[0.0, 1.0]`, `64.08%` new dots outside `R0`</div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: PHD FORENSIC DECONSTRUCTION OF 0.2778 -->
+    <section class="card" id="forensic-02778">
+      <h2>1. PhD-Level Forensic Deconstruction: Why &amp; How `GEMSDOE32` (`h33-h33-2-b2`) Achieved `0.2778` — and How Submissions Score Higher</h2>
+      <p>
+        Understanding why <code>GEMSDOE32</code>'s <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code> achieved <code>0.2778</code> (<span class="badge badge-claim">USER-REPORTED</span>, highest across your GEMSDOE repositories) while the live DrivenData public leaderboard reached <code>0.4413</code> (<span class="badge badge-org">ORGANIZER-CONFIRMED</span> <code>2026-10-24</code>, previously noted at <code>0.3195</code>) requires inspecting the exact algebra of DrivenData's scoring operator alongside official organizer clarifications (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/" target="_blank" rel="noopener">Problem Description</a>; Forum Threads <a href="https://community.drivendata.org/t/11516" target="_blank" rel="noopener">#11516</a>, <a href="https://community.drivendata.org/t/11527" target="_blank" rel="noopener">#11527</a>, <a href="https://community.drivendata.org/t/11536" target="_blank" rel="noopener">#11536</a>, <a href="https://community.drivendata.org/t/11550" target="_blank" rel="noopener">#11550</a>, <a href="https://community.drivendata.org/t/11556" target="_blank" rel="noopener">#11556</a>).
+      </p>
+
+      <h3>1.1 Exact Metric Operator: Pooled Distance-Weighted Tversky Index ($\alpha = 0.2, \beta = 0.8, R = 300\text{ m}$)</h3>
+      <p>
+        Let $\Omega \subset \{0,\dots,3729\}\times\{0,\dots,3291\}$ denote the active `5,167,373`-pixel GeoDAWN survey footprint (`100 m` resolution in `EPSG:32611`), $C \subset \Omega$ denote the `60,988`-pixel mapped USGS/INGENIOUS fault catalogue (`existing_faults.tif`), $A = \Omega \setminus C$ denote the `5,106,385` active evaluation pixels (known faults masked <strong>pixel-exactly with zero buffer</strong>), $G \subset A$ denote newly discovered ground-truth faults, and $P: A \to [0, 1]$ denote predicted fault confidence. With linear triangular radial kernel $k(d) = \max(0, 1 - d / 3\text{ px})$ over Euclidean pixel distance $d \le 3\text{ px}$ (`25` integer offsets inside $5 \times 5$):
+      </p>
+      <div class="eq-box">
+        s_G(y) = max_{x in G} k(||y - x||_2), &nbsp;&nbsp; s_P(x) = max_{y in A} [ P(y) * k(||x - y||_2) ]<br>
+        TP_w = sum_{x in G} s_P(x), &nbsp;&nbsp; FN_w = |G| - TP_w, &nbsp;&nbsp; FP_w = sum_{y in A} P(y) * (1 - s_G(y))<br>
+        DTI(P, G) = TP_w / ( TP_w + 0.2 * FP_w + 0.8 * FN_w ) = TP_w / ( 0.8 * |G| + 0.2 * TP_w + 0.2 * FP_w )
+      </div>
+      <p>
+        Three structural properties of this operator govern every empirical jump on the leaderboard:
+      </p>
+      <ol>
+        <li><strong>Non-Additive Max-Plus Coverage on $TP_w$ vs. Additive Linear Penalty on $FP_w$:</strong> Placing two adjacent unit pixels $P(y_1)=P(y_2)=1$ along a ridge increases $FP_w$ <em>linearly</em> (`+2.0` on unrewarded ground), whereas $s_P(x) = \max_y P(y)k(\|x-y\|)$ takes only the <em>pointwise maximum</em> over the 25-pixel disk! Continuous ribbons (`120k–220k` pixels) pay `3x–5x` redundant $FP_w$ for overlapping 300 m disks.</li>
+        <li><strong>Binary $\{0, 1\}$ Optimality Theorem (Subfractional $p \in (0, 1)$ Dominance):</strong> For any pixel $y$, scaling $P(y) = p$ scales its marginal contribution to both $TP_w$ and $FP_w$ linearly in $p$ whenever $p \cdot k$ wins the local `max`, and contributes <em>strictly zero</em> to $TP_w$ while still paying full $0.2\,p$ to $FP_w$ whenever a nearby `1.0` dot dominates it! Thus soft probabilities ($p \in (0.05, 0.8)$) strictly lose to sparse, non-redundant binary $\{0, 1\}$ allocations.</li>
+        <li><strong>Asymmetric Known-Catalogue Flank Penalty ($0 &lt; d(y, C) \le 2\text{ px}$):</strong> As confirmed by organizer <code>chrisk-dd</code> (<a href="https://community.drivendata.org/t/11516" target="_blank" rel="noopener">Thread #11516</a>), $C$ is masked pixel-exactly (`0 px` buffer). Predictions at $1 \le d(y, C) \le 2\text{ px}$ (`100–200 m` parallel to an already-mapped fault) are <em>not</em> masked out and incur full $FP_w = 1.0$ unless a genuinely new splay or unmapped strand lies within 300 m. Because potential-field and topographic ridges naturally halo mapped faults, unpruned flanks hemorrhage $FP_w$.</li>
+      </ol>
+
+      <h3>1.2 Quantitative Four-Step Genealogy of `GEMSDOE32` (`0.1922` &rarr; `0.2600` &rarr; `0.2708` &rarr; `0.2778`)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Lineage Rung</th>
+              <th>Repo &amp; Artifact</th>
+              <th>Positive Pixels</th>
+              <th>Exact Operator Applied</th>
+              <th>Live Score</th>
+              <th>Step Gain &amp; Physical / Metric Mechanism</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Rung 1 (`H19-5`)</strong></td>
+              <td><code>19GEMSDOE</code> · <code>gems19-h19-5-powerlaw-budget-multiline-corroborated</code></td>
+              <td><code>121,131</code> (continuous 1-px ridges)</td>
+              <td>Multi-line corroborated potential-field + topographic ridge skeleton trained across quadrants on the 19-band stack (`d_cat &gt; 0`)</td>
+              <td><code>0.1922</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+              <td>Established high spatial recall across exposed &amp; concealed Great Basin structures (`69.8%` of pixels `&gt; 2 km` from mapped faults), but suffered `~3x` overlapping 300 m kernel $FP_w$ along continuous 1-px skeletons.</td>
+            </tr>
+            <tr>
+              <td><strong>Rung 2 (`D2.8`)</strong></td>
+              <td><code>GEMSDOE24</code> · <code>gems24-h25-1-dotted-h19-5-d2-8</code></td>
+              <td><code>44,090</code> (isolated `1.0` dots)</td>
+              <td>8-connected component FIFO-BFS thinning of `H19-5` at minimum spacing $d_{\min} = 2.8\text{ px}$ (`280 m &lt; R = 300 m`)</td>
+              <td><code>0.2600</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+              <td><strong>`+0.0678` DTI (`+35.3%` relative):</strong> Cut $FP_w$ volume by `63.6%` (`121,131 &rarr; 44,090` pixels) while maintaining unbroken `R = 300 m` triangular kernel bridges (`max` gap midpoint kernel weight $\ge 1 - 1.4/3 = 0.533$).</td>
+            </tr>
+            <tr>
+              <td><strong>Rung 3 (`h27-4`)</strong></td>
+              <td><code>GEMSDOE28</code> · <code>gems28-h27-4-r1-solo-d2-8</code></td>
+              <td><code>40,199</code> (isolated `1.0` dots)</td>
+              <td>Removed `d_cat &le; 1.0 px` immediate catalogue-adjacent pixels + pruned isolated 1-dot noise specks (`solo` filter)</td>
+              <td><code>0.2708</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+              <td><strong>`+0.0108` DTI:</strong> Stripped `3,891` zero-reward immediate catalogue-halo false positives and uncorroborated speckle dots without denting multi-kilometer strand $TP_w$.</td>
+            </tr>
+            <tr>
+              <td><strong>Rung 4 (`R0` / `H33-2-B2`)</strong></td>
+              <td><code>GEMSDOE32</code> · <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code></td>
+              <td><code>37,654</code> (isolated `1.0` dots, `-zeros`)</td>
+              <td>Extended Euclidean catalogue exclusion collar to $d(y, C) &gt; 2.0\text{ px}$ (`min = 2.236 px = sqrt(5)`) with `0.0` outside footprint</td>
+              <td><code>0.2778</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+              <td><strong>`+0.0070` DTI (`+0.0856` total over `H19-5`):</strong> Removed `2,545` residual `100–200 m` parallel-flank $FP_w$ dots while keeping `224–300 m` collar dots eligible to capture genuine off-catalogue splays and tip extensions; `-zeros` encoding prevented portal `[0, 1]` NaN errors.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>1.3 Can a Submission Score Higher Than `0.2778`? Yes — Proof &amp; Four Required Mechanisms</h3>
+      <p>
+        <strong>Empirical Existence Proof:</strong> On <code>2026-10-24 UTC</code>, the official DrivenData public leaderboard (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" target="_blank" rel="noopener">verified live</a>) records five independent teams above <code>0.35</code>, led by <code>xiaofanhu</code> at <strong><code>0.4413</code></strong> (<span class="badge badge-org">ORGANIZER-CONFIRMED</span>) — <strong>`+0.1635` DTI (`+58.9%` relative) above `0.2778`</strong>. Conversely, 24 prior branches in <code>GEMSDOE90</code> proved mathematically (`IR90-25`, `IR90-37`) that rearranging, pruning, or reweighting `R0`'s fixed `37,654` dots has `&lt; 0.003–0.010` DTI headroom because denominator optimization on `H19-5` is saturated: <strong>since $\beta = 0.8 = 4\alpha$, missing a true fault pixel costs $4\times$ as much as emitting a false-positive dot</strong>. Climbing from `0.2778` toward `0.4413` requires increasing numerator $TP_w$ via four concrete geological &amp; algorithmic advances implemented in Lane H90:
+      </p>
+      <div class="two-col">
+        <div class="callout-info" style="margin:0;">
+          <strong>1. Multi-Sensor Observables Missing from `H19-5`:</strong><br>
+          `H19-5` relied on the 100 m 19-band stack alone. Lane H90 fuses <strong>1 m 3DEP LiDAR scarp morphology</strong> (`ext_lidar_scarp_features_u8`, catching `&lt; 1.5 m` Holocene piedmont scarps invisible at 100 m), <strong>GeoDAWN `K/Th/U` airborne gamma-ray spectrometry</strong> (`ext_geodawn_rad_u8` + `ext_geodawn_extensions_u8`, catching illite/adularia potassic alteration along fluid-bearing faults), <strong>upward-continued `TMI_up150` vs drape `RTP`</strong> (isolating shallow hydrothermally demagnetized fault troughs), and <strong>OpenEI GDR 1391 geothermometry</strong> (`27,092` wells/springs).
+        </div>
+        <div class="callout-info" style="margin:0;">
+          <strong>2. Odd-Step Contact Physics + Concealment Conditioning:</strong><br>
+          Classical gradient magnitude (`tmi_hg`, `iso_grav_anom_slope`) responds equally to symmetric dikes/channels (even profile) and dipping fault contacts (anti-symmetric step profile). Lane H90 computes 8-azimuth steerable <strong>odd-over-even step polarity ratios</strong> on `rtp`, `iso_grav_anom`, and `det_elev` conditioned explicitly on `depth_to_base_surf` (`B15`) so intrabasin blind faults are not penalized for zero surface slope.
+        </div>
+        <div class="callout-info" style="margin:0;">
+          <strong>3. Nested Out-of-Quadrant 2D Worms + Off-Axis Coulomb Tip Mechanics:</strong><br>
+          Real faults exhibit multi-kilometer strike persistence (`800 m` &amp; `1.8 km` steerable line integrals) and propagate via off-axis Anderson Mode-II wing-crack lobes ($\theta_0 = \pm 26^\circ$) and releasing en-echelon relay ramps ahead of `&ge; 2.5 km` fault trunks — capturing unmapped extensions and step-overs without isotropic halo overfitting (`IR90-46`, `IR90-48`).
+        </div>
+        <div class="callout-info" style="margin:0;">
+          <strong>4. Exact 25-Offset `R = 300 m` CELF Submodular Dot Allocation:</strong><br>
+          Instead of heuristic `FIFO-BFS` `d = 2.8 px` thinning (which ignores confidence gradients and leaves geographic artifacts, `IR90-15`/`IR90-20`), `src/h90_emitter.py` directly maximizes expected `R = 300 m` max-kernel `TP_w` minus `0.2 FP_w` via Minoux (1978) CELF lazy-greedy submodular optimization (`(1 - 1/e)` guarantee).
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: PRE-REGISTERED HYPOTHESES -->
+    <section class="card" id="hypotheses">
+      <h2>2. Five Pre-Registered Untried Geological Hypotheses (`docs/HYPOTHESES_PREREGISTRATION.md`)</h2>
+      <p>
+        Frozen prior to any model training or holdout evaluation (`2026-10-24T00:00:00Z`), ranked by expected DTI gain vs. CPU implementation cost under a strict `&le; 3`-experiment session budget:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank &amp; ID</th>
+              <th>Specific Input Layers</th>
+              <th>Physical Signature / Mathematical Transform</th>
+              <th>Why Missing from USGS QFaults / INGENIOUS</th>
+              <th>Named Non-Fault Geological Mimic</th>
+              <th>Difference vs Repo &amp; Sibling Lanes</th>
+              <th>Expected Gain / Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="promoted-row">
+              <td><strong>#1 `H90-1`</strong><br><em>(Implemented &amp; Promoted)</em><br><code>CC-MPST-Submod300</code></td>
+              <td>19-band stack (`rtp`, `tmi_hg`, `geod_2ndinv`, `iso_grav_anom_slope`, `tc`, `geod_shearrate`, `geod_dilaterate`, `tmi_vg`, `deq`, `iso_grav_anom_vg`, `det_elev`, `iso_grav_anom`, `depth_to_base_surf`, `ieq`, `cond_surf`, `iso_grav_anom_hg`, `det_elev_slope`) + `ext_geodawn_extensions_u8` (`TMI_up150`, `ThK`, `UK`, `UTh`) + `ext_geodawn_rad_u8` (`K`, `Th`, `U`, `TC`) + `ext_lidar_scarp_features_u8` (B1–B12) + GDR 1391 geothermometers + fold-visible fault tips.</td>
+              <td>8-azimuth odd-step $|\mu_+ - \mu_-|$ vs even-bump $|\mu_+ + \mu_- - 2\mu_0|$ ratio on `rtp`/`iso_grav_anom`/`det_elev`; upward-continued shallow hydrothermal demagnetization deficit $(\widehat{\text{TMI}}_{\text{up150}} - \widehat{\text{RTP}}_0)$ + `K/ThK` + `cond_surf`; nested out-of-quadrant `800 m` &amp; `1.8 km` steerable worms; Anderson Mode-II off-axis ($\pm 26^\circ$) Coulomb wing-crack cones &amp; relay bridges; exact 25-offset `R=300 m` CELF submodular allocation (`38,000` dots, `d_cat &gt; 2 px`).</td>
+              <td>Catches (a) blind intrabasin faults under Quaternary playal/alluvial cover (`depth_to_base_surf &gt; 0`), (b) hydrothermally oxidized/demagnetized geothermal conduits appearing as magnetic <em>lows</em> rather than highs, and (c) subtle `&lt;1.5 m` LiDAR piedmont splays and unmapped relay breaches.</td>
+              <td><strong>Pleistocene Lake Lahontan paleoshoreline beach berms</strong> (in 1 m LiDAR / radiometrics) and <strong>remanently reverse-magnetized Tertiary ash-flow tuff cooling margins / paleochannels</strong>. Mitigated by multi-domain corroboration (`second_best_domain`).</td>
+              <td>First independent surface/discovery model in `GEMSDOE90`. Unlike `19GEMSDOE` (19-band skeleton + BFS), `GEMSDOE70` (SGMC halo / single-stage features without `TMI_up150` demagnetization or odd/even phase discrimination), and `GEMSDOE76` (LiDAR crest-toe focus), `H90-1` unifies odd-step polarity, `TMI_up150` hydrothermal demagnetization, nested 2D worms, and sparse Mode-II Coulomb tip/relay cones.</td>
+              <td><strong>Highest</strong> CPU-tractable / Moderate (`388 s` end-to-end, `&lt; 950 MB` RSS)</td>
+            </tr>
+            <tr>
+              <td><strong>#2 `H90-2`</strong><br>Gallardo–Meju Cross-Gradient Basement Collinearity</td>
+              <td>`rtp` (B2), `tmi_hg` (B3), `iso_grav_anom` (B13), `iso_grav_anom_hg` (B18), `depth_to_base_surf` (B15).</td>
+              <td>Normalized cross-gradient structural collinearity $1 - \|\nabla g_{\text{iso}} \times \nabla m_{\text{RTP}}\| / (\|\nabla g\|\|\nabla m\| + \varepsilon)$ weighted by $\|\nabla g\|\|\nabla m\|$ under deep cover.</td>
+              <td>Intrabasin horst/graben bounding faults beneath Carson Sink and Dixie Valley lack surface scarps (`det_elev_slope ~ 0`) and were missed by aerial-photo QFaults mapping.</td>
+              <td><strong>Unfaulted Mesozoic pluton–wallrock intrusive contact aureoles</strong> where density and susceptibility co-vary without brittle slip.</td>
+              <td>`src/concentration.py` only reweighted existing `R0` dots by scalar `iso_grav_anom_hg`; core collinearity invariant absorbed into `H90-1`'s potential-field domain.</td>
+              <td>Medium-High (concealed basins) / Low-Medium</td>
+            </tr>
+            <tr>
+              <td><strong>#3 `H90-3`</strong><br>Transtensional Dilatational Relay &amp; Clay-Cap Localization</td>
+              <td>`geod_shearrate` (B7), `geod_dilaterate` (B8), `geod_2ndinv` (B4), `cond_surf` (B17), GDR 1391 geothermometers, visible fault-tip strikes.</td>
+              <td>Oblique opening product $z_+(\dot{\varepsilon}_{\text{shear}}) z_+(\dot{\varepsilon}_{\text{dilat}}) \|\nabla \sigma_{\text{surf}}\|$ inside releasing step-overs between opposing fault tips.</td>
+              <td>Walker Lane releasing bends partition slip across `0.5–2.5 km` fracture swarms shorter than regional `1:100k` compilation thresholds.</td>
+              <td><strong>Playa evaporite / hypersaline brine lenses</strong> producing sharp shallow MT conductivity edges inside regional GPS strain belts.</td>
+              <td>`src/concentration_strain5km.py` only modulated `R0` weights by 5 km `geod_2ndinv`; never coupled dilatation sign, MT edges, and relay geometry.</td>
+              <td>Medium (coarse GPS wavelength) / Low-Medium</td>
+            </tr>
+            <tr>
+              <td><strong>#4 `H90-4`</strong><br>Multi-Elevation Tilt-Depth &amp; Up-Dip Projection</td>
+              <td>`rtp` (B2), `tc` (B6), `tmi_hg` (B3), `tmi_vg` (B9), `TMI_up150`, `depth_to_base_surf` (B15).</td>
+              <td>Salem et al. (2007) tilt-depth $z_c = |\nabla \theta|^{-1}_{\theta=0}$ + upward-continuation crest migration vector shifting basement picks up-dip by $z_{\text{cover}} \cot 60^\circ$.</td>
+              <td>For a $60^\circ$ dipping fault buried under $500\text{ m}$ of fill, the basement magnetic edge sits $\sim 290\text{ m}$ (`2.9 px`) downdip of the surface trace—near the edge of the `300 m` DTI kernel.</td>
+              <td><strong>Tilted Tertiary basalt sills or buried lava-flow margins</strong> creating asymmetric upward-continuation migration without faulting.</td>
+              <td>Untried in `GEMSDOE90`; purely geometric phase-shift operator sensitive to unknown dip angle $\delta \in [45^\circ, 75^\circ]$.</td>
+              <td>Low-Medium / Medium</td>
+            </tr>
+            <tr>
+              <td><strong>#5 `H90-5`</strong><br>Rotation-Equivariant 2D U-Net++ / DW-Tversky Surrogate</td>
+              <td>`128 &times; 128` (`12.8 km &times; 12.8 km`) 2D patches of all 19 bands + 12 LiDAR bands + 8 GeoDAWN rad/ext bands.</td>
+              <td>Spatial-quadrant 2D encoder-decoder trained directly on differentiable soft-max `R=300 m` `DW-Tversky(0.2, 0.8)` + flank penalty + CELF submodular post-allocation.</td>
+              <td>Learns `5–12 km` non-local structural context (fan-apex alignments, stream deflections, horse-tail splays) driving the `0.4413` public ceiling.</td>
+              <td><strong>Erosional range-front pediments and resistant hogback strike ridges</strong> mimicking multi-kilometer linear fabrics.</td>
+              <td>Untried in `GEMSDOE90`; multi-fold 2D deep training across `5.17M` pixels requires GPU hardware beyond this 2-vCPU / 3.8 GiB CPU sandbox.</td>
+              <td>Highest GPU ceiling / Prohibitive on 2-vCPU CPU</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 3: HOLDOUT VALIDATION, CANARY & UNIQUENESS -->
+    <section class="card" id="holdout">
+      <h2>3. Spatially-Blocked Hide-and-Recover Validation (`gems57-pooled-hide-v2`), Leakage Canary &amp; Registry Uniqueness</h2>
+      <p>
+        All three pre-registered ablation experiments (`Exp 1`, `Exp 2`, `Exp 3`) and three reference comparators (`C0`, `C1`, `fair-R0`) were evaluated on the unmodified shared evaluator <code>vendor/gems57/evaluate_holdout.py</code> (<code>VERSION = "gems57-pooled-hide-v2"</code>, <code>seeds=(20, 21)</code>, <code>16</code> spatial quadrant &times; mode cells, `12 px = 1.2 km` erosion buffer around withheld segments, pixel-exact fold-visible catalogue mask, runtime assertion `overlap(train, truth) == 0`, and `1,000`-draw paired `20 km` spatial-block bootstrap 95% confidence intervals).
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Experiment / Reference Arm</th>
+              <th>Catalogue Input?</th>
+              <th>Primary `mode=all` (`n = 22,641`)<br><span class="badge badge-holdout">HOLDOUT-DTI</span> + 95% CI</th>
+              <th>Paired $\Delta$ vs `Exp 3` (`mode=all`) + 95% CI</th>
+              <th>Conservative `mode=detached` (`n = 22,619`)<br><span class="badge badge-holdout">HOLDOUT-DTI</span> + 95% CI</th>
+              <th>Pooled `TP_w` / `FP_w` (`mode=all`)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>c0_random_isolated</code> (38k random off-catalogue dots)</td>
+              <td>Mask `d_vis &gt; 2 px` only</td>
+              <td><code>0.04132</code> <code>[0.03765, 0.04464]</code></td>
+              <td><code>+0.06549</code> <code>[+0.05547, +0.07527]</code></td>
+              <td><code>0.04132</code> <code>[0.03749, 0.04498]</code></td>
+              <td><code>1,349.5</code> / <code>71,367.8</code></td>
+            </tr>
+            <tr>
+              <td><code>c1_classical_ridge</code> (unsupervised TMI + gravity + slope ridge, greedy 2.8 px)</td>
+              <td>Mask `d_vis &gt; 2 px` only</td>
+              <td><code>0.04732</code> <code>[0.03840, 0.05592]</code></td>
+              <td><code>+0.05949</code> <code>[+0.04687, +0.07251]</code></td>
+              <td><code>0.04885</code> <code>[0.04032, 0.05693]</code></td>
+              <td><code>1,544.3</code> / <code>71,062.6</code></td>
+            </tr>
+            <tr>
+              <td><strong>Exp 1:</strong> <code>exp1_unsupervised_mpst</code> (zero-label physical operator + CELF 38k)</td>
+              <td>Mask `d_vis &gt; 2 px` only</td>
+              <td><code>0.04222</code> <code>[0.03405, 0.05112]</code></td>
+              <td><code>+0.06459</code> <code>[+0.05143, +0.07692]</code></td>
+              <td><code>0.04348</code> <code>[0.03472, 0.05241]</code></td>
+              <td><code>1,334.8</code> / <code>66,164.2</code></td>
+            </tr>
+            <tr>
+              <td><code>ref_fair_r0_vis_b2</code> (strongest `D2.8 &amp; d_vis &gt; 2 px` `fair-H33` benchmark, `IR90-47`)</td>
+              <td>Fold-visible `d_vis &gt; 2 px` *(+ 19GEMSDOE quad prior)*</td>
+              <td><code>0.09096</code> <code>[0.08106, 0.09955]</code></td>
+              <td><strong><code>+0.01585</code> <code>[+0.00625, +0.02534]</code></strong></td>
+              <td><code>0.09482</code> <code>[0.08388, 0.10669]</code></td>
+              <td><code>3,003.1</code> / <code>71,510.0</code></td>
+            </tr>
+            <tr>
+              <td><strong>Exp 2:</strong> <code>exp2_nested_loqo_blind_worm</code> (100% catalogue-free nested LOQO multi-physics + 2D worms + CELF 38k)</td>
+              <td><strong>ZERO</strong> feature use (`d_vis &gt; 2 px` export collar only)</td>
+              <td><strong><code>0.09930</code></strong> <code>[0.08593, 0.11138]</code></td>
+              <td><code>+0.00751</code> <code>[-0.00379, +0.01905]</code></td>
+              <td><strong><code>0.10062</code></strong> <code>[0.08583, 0.11648]</code></td>
+              <td><code>3,176.4</code> / <code>66,189.1</code></td>
+            </tr>
+            <tr class="promoted-row">
+              <td><strong>Exp 3 (Promoted):</strong> <code>exp3_dual_coulomb_mpst</code> (`Exp 2` + sparse fold-visible Mode-II Coulomb tip cones &amp; relay bridges + CELF 38k)</td>
+              <td>Sparse fold-visible tip/relay cones (`&lt;8%` area)</td>
+              <td><strong><code>0.10681</code></strong> <code>[0.09657, 0.11671]</code></td>
+              <td><em>Reference candidate (`0.00000`)</em></td>
+              <td><strong><code>0.10586</code></strong> <code>[0.09294, 0.11802]</code></td>
+              <td><strong><code>3,458.0</code></strong> / <code>67,853.4</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>3.1 Key Ablation &amp; Integrity Findings (`IR90-46` &ndash; `IR90-48`)</h3>
+      <ul>
+        <li><strong>Catalogue-Free Multi-Physics + 2D Worms Alone Beat `fair-H33`:</strong> Notice that <code>Exp 2</code> (which reads <strong>zero</strong> fault-catalogue coordinates in Stage 1 or Stage 2, relying purely on the `36` multi-physics/LiDAR/radiometric/demagnetization features + `800 m` &amp; `1.8 km` steerable worms) achieves <code>0.09930</code> (`all`) and <code>0.10062</code> (`detached`) — more than <strong>`2.1x` `C1` Classical Ridge (`0.04732`)</strong> and already above `ref_fair_r0_vis_b2` (`0.09096` / `0.09482`)!</li>
+        <li><strong>Pre-Training Rule #4 Leakage Canary (`IR90-46`):</strong> Before fitting any model, our single-feature canary caught that straight-ahead collinear cones (`r &gt; 2 px`) on `mode=all` scored `AUC = 0.9062 &gt; 0.90` due to synthetic `12 px` erosion cuts inside continuous polylines. Restricting tips to true skeleton endpoints on `&ge; 2.5 km` trunks with off-axis Anderson Mode-II wing-crack lobes ($\theta_0 = \pm 26^\circ$, $r &gt; 4.5\text{ px}$) reduced <code>max_symmetric_auc</code> across all `38` features to <strong><code>0.626318 &le; 0.90</code></strong> (<code>evidence/h90_leakage_canary.json</code>).</li>
+        <li><strong>Stage-6 Uniqueness Gate Caught &amp; Eliminated Isotropic Halo Pull (`IR90-48`):</strong> Including scalar `vis_dist_clipped` in an initial Stage-3 trial pushed `70.43%` of dots into the `174,232`-px `calib_gems10-h25-ctx-ridge` catalogue halo (`0.7043 &gt; 0.70`), triggering a fail-closed halt before writing any GeoTIFF. Dropping scalar `vis_dist_clipped` so `Exp 3` fuses `Exp 2` strictly with sparse directional Coulomb wing-crack cones and relay bridges kept `92%+` of the basin governed by `Exp 2`'s multi-physics worm field and passed every uniqueness bound (`max_non_lattice_forward_3px_overlap = 0.661211 &le; 0.70`, `max_mutual_3px_overlap = 0.366403 &le; 0.70`, `surface |rho| = 0.103688 &le; 0.90`, `dots |rho| = 0.030953 &le; 0.90`).</li>
+      </ul>
+
+      <h3>3.2 Parallel-Run Registry Uniqueness Comparison (`20` Rasters + `92` Ledger Hashes)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Prior Registry / Sibling Raster</th>
+              <th>Source Repo</th>
+              <th>Their Dots</th>
+              <th>Forward 3-px Overlap</th>
+              <th>Reverse 3-px Overlap</th>
+              <th>Mutual 3-px Overlap</th>
+              <th>Full-Footprint Spearman $\rho$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code> (<strong>Incumbent `R0` `0.2778`</strong>)</td>
+              <td><code>GEMSDOE32</code></td>
+              <td><code>37,654</code></td>
+              <td><code>0.359184</code> (<strong>`64.08%` new!</strong>)</td>
+              <td><code>0.219127</code></td>
+              <td><code>0.219127</code></td>
+              <td><code>+0.013798</code></td>
+            </tr>
+            <tr>
+              <td><code>gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros</code> (`0.2343`)</td>
+              <td><code>GEMSDOE76</code></td>
+              <td><code>39,200</code></td>
+              <td><code>0.485079</code></td>
+              <td><code>0.366403</code></td>
+              <td><code>0.366403</code> <em>(worst mutual &le; 0.70)</em></td>
+              <td><code>+0.030953</code></td>
+            </tr>
+            <tr>
+              <td><code>scored_h19_5</code> (`H19-5` skeleton `0.1922`)</td>
+              <td><code>19GEMSDOE</code></td>
+              <td><code>121,131</code></td>
+              <td><code>0.419763</code></td>
+              <td><code>0.230263</code></td>
+              <td><code>0.230263</code></td>
+              <td><code>+0.022758</code></td>
+            </tr>
+            <tr>
+              <td><code>calib_gems10-h25-ctx-ridge-20260927T2329477041</code> (dense 174k ridge)</td>
+              <td><code>GEMSDOE24</code></td>
+              <td><code>174,232</code></td>
+              <td><code>0.661211</code> <em>(worst non-lattice fwd &le; 0.70)</em></td>
+              <td><code>0.245426</code></td>
+              <td><code>0.245426</code></td>
+              <td><code>+0.028243</code></td>
+            </tr>
+            <tr>
+              <td><code>calib_13gems_20261001_r13-lattice-s5_v2_nan-outside</code> *(uniform 5-px lattice, `IR90-44`)*</td>
+              <td><code>13GEMSDOE</code></td>
+              <td><code>206,895</code></td>
+              <td><code>0.999684</code> *(covers 99.872% of grid)*</td>
+              <td><code>0.168419</code></td>
+              <td><code>0.168419</code></td>
+              <td><code>+0.000412</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 4: GEOTHERMAL VENTS & FAULT PERMEABILITY RESEARCH -->
+    <section class="card" id="geothermal">
+      <h2>4. Geothermal Vents, Structural Permeability &amp; Hydrothermal Demagnetization in the Great Basin</h2>
+      <p>
+        Approximately <strong>75% of known Great Basin geothermal systems are blind</strong> (lacking active hot springs or fumaroles at the surface; <a href="https://gdr.openei.org/submissions/1391" target="_blank" rel="noopener">INGENIOUS / Faulds et al., 2021</a>). In northwest Nevada's extensional-transtensional transition between the Walker Lane dextral shear belt and the Basin and Range province, convective hydrothermal upflow is localized not along planar mid-segment fault cores (which often seal via clay gouge and silica cementation), but inside specific structural dilatational traps where fracture aperture stays critically stressed:
+      </p>
+      <ol>
+        <li><strong>Horsetail Fault Terminations &amp; Anderson Mode-II Wing-Crack Cones (Curewitz &amp; Karson, 1997; Faulds &amp; Hinz, 2015):</strong> Near the propagating tip of a slipping fault of length $L$, elastic crack-tip tensile stress scales as $\sigma_{\theta\theta}(r, \theta) \propto K_{II}/\sqrt{2\pi r} \cdot (-3\sin\frac{\theta}{2}\cos^2\frac{\theta}{2})$, peaking along oblique dilatational splay fans ($\theta_0 \approx \pm 25^\circ\text{–}35^\circ$) rather than dead-ahead at $0^\circ$. High fracture density in these horsetail damage zones hosts major Great Basin geothermal upflow plumes (e.g., Desert Peak, Bradys, San Emidio).</li>
+        <li><strong>Releasing En-Echelon Step-Overs &amp; Relay Ramps:</strong> Where two sub-parallel normal or oblique-slip faults overlap across a `0.4–2.8 km` step-over, bed rotation and breaching fractures maintain sub-vertical permeability pipes connecting `2–4 km` deep basement reservoirs to shallow aquifers (`vis_relay_bridge` in `H90-1`).</li>
+        <li><strong>Hydrothermal Demagnetization Troughs &amp; Potassic / Clay-Cap Alteration (`TMI_up150 - RTP`, `K/Th`, `cond_surf`):</strong> Ascending $150\text{–}260^\circ\text{C}$ neutral-chloride and steam-heated geothermal fluids oxidize primary ferrimagnetic titanomagnetite ($\text{Fe}_{3-x}\text{Ti}_x\text{O}_4$) in Neogene basalts and ash-flow tuffs into paramagnetic pyrite ($\text{FeS}_2$), hematite ($\text{Fe}_2\text{O}_3$), and smectite-illite-adularia clays. Consequently, active and fossil hydrothermal fault conduits manifest in GeoDAWN's high-resolution drape magnetics as <strong>narrow shallow magnetic lows/troughs</strong> that attenuate rapidly in `150 m` upward-continued `TMI_up150`, accompanied by airborne radiometric <strong>potassium (`K`) / `K/Th` enrichment</strong> along exhumed adularia-sericite footwalls and elevated shallow magnetotelluric conductivity (`cond_surf`, Band 17) over smectite clay caps.</li>
+        <li><strong>Quaternary Volcanic Vents &amp; Silica/Cation Geothermometry (`GDR 1391`):</strong> Within the GeoDAWN footprint, `21` mapped Quaternary-Neogene volcanic vents and `27,092` thermal/groundwater sampling wells (`temp_c`, quartz `geothermquartz_c`, chalcedony `geothermchalc_c`, and Na-K-Ca `geothermcat_c` geothermometers) trace deep crustal magmatic/amagmatic heat flux feeding concealed basin-margin and intrabasin fault conduits.</li>
+      </ol>
+    </section>
+
+    <!-- SECTION 5: HISTORICAL GEMSDOE SCORES & PUBLIC LEADERBOARD -->
+    <section class="card" id="ledger">
+      <h2>5. Auditable Table of Official Public Leaderboard Benchmarks &amp; Historical GEMSDOE Scores</h2>
+      <p>
+        Every number below carries its explicit Protocol Rule #3 provenance class (<span class="badge badge-org">ORGANIZER-CONFIRMED</span> from DrivenData's public leaderboard fetched <code>2026-10-24 UTC</code>, <span class="badge badge-claim">USER-REPORTED</span> from <code>ledger/submissions.csv</code> across historical GEMSDOE sites, or <span class="badge badge-holdout">HOLDOUT-DTI</span> from <code>gems57-pooled-hide-v2</code>). No model projection is ever listed as a score.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Site / Team</th>
+              <th>Submission Name / Identifier</th>
+              <th>Positive Pixels</th>
+              <th>Architecture / Method Summary</th>
+              <th>Score &amp; Provenance Badge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DrivenData #1 (<code>xiaofanhu</code>)</td>
+              <td>Public Leaderboard Rank #1 (verified <code>2026-10-24</code>)</td>
+              <td>Undisclosed</td>
+              <td>Current overall competition high (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" target="_blank" rel="noopener">DrivenData Leaderboard</a>)</td>
+              <td><strong><code>0.4413</code></strong> <span class="badge badge-org">ORGANIZER-CONFIRMED</span></td>
+            </tr>
+            <tr>
+              <td>DrivenData #2 (<code>cfld__</code>)</td>
+              <td>Public Leaderboard Rank #2 (verified <code>2026-10-24</code>)</td>
+              <td>Undisclosed</td>
+              <td>Public leaderboard #2 benchmark</td>
+              <td><strong><code>0.3916</code></strong> <span class="badge badge-org">ORGANIZER-CONFIRMED</span></td>
+            </tr>
+            <tr>
+              <td>DrivenData #3 (<code>Batik Shirt Brothers</code>)</td>
+              <td>Public Leaderboard Rank #3 (verified <code>2026-10-24</code>)</td>
+              <td>Undisclosed</td>
+              <td>Public leaderboard #3 benchmark</td>
+              <td><strong><code>0.3904</code></strong> <span class="badge badge-org">ORGANIZER-CONFIRMED</span></td>
+            </tr>
+            <tr>
+              <td>DrivenData #4 (<code>BrandenKMurray</code>)</td>
+              <td>Public Leaderboard Rank #4 (verified <code>2026-10-24</code>)</td>
+              <td>Undisclosed</td>
+              <td>Public leaderboard #4 benchmark</td>
+              <td><strong><code>0.3724</code></strong> <span class="badge badge-org">ORGANIZER-CONFIRMED</span></td>
+            </tr>
+            <tr>
+              <td>DrivenData #5 (<code>No Fault of Our Own</code>)</td>
+              <td>Public Leaderboard Rank #5 (verified <code>2026-10-24</code>)</td>
+              <td>Undisclosed</td>
+              <td>Public leaderboard #5 benchmark</td>
+              <td><strong><code>0.3539</code></strong> <span class="badge badge-org">ORGANIZER-CONFIRMED</span></td>
+            </tr>
+            <tr class="promoted-row">
+              <td><strong><code>GEMSDOE90</code> (This Repo)</strong></td>
+              <td><code>GEMSDOE90-H90-CC-MPST-D76AC964</code> (<code>...-d76ac964-zeros.tif</code>)</td>
+              <td><code>38,000</code></td>
+              <td>Concealment-conditioned odd-step + `TMI_up150` hydrothermal demag + 1 m LiDAR + nested LOQO 2D worms + Mode-II Coulomb tip/relay + CELF `R=300 m` submodular (`d_cat &gt; 2 px`)</td>
+              <td><code>all=0.10681</code> / <code>det=0.10586</code> <span class="badge badge-holdout">HOLDOUT-DTI</span><br><em>(Awaiting live upload)</em></td>
+            </tr>
+            <tr>
+              <td><strong><code>GEMSDOE32</code> (Incumbent `R0`)</strong></td>
+              <td><code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code></td>
+              <td><code>37,654</code></td>
+              <td>`H19-5` ridge skeleton + `d=2.8 px` FIFO-BFS dots + solo filter + `d_cat &gt; 2.0 px` collar (`-zeros`)</td>
+              <td><strong><code>0.2778</code></strong> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE36</code></td>
+              <td><code>anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros</code></td>
+              <td><code>38,854</code></td>
+              <td>Anderson fault-mechanics physics-informed neural network + sparse binary dots (`-zeros`)</td>
+              <td><code>0.2750</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE28</code></td>
+              <td><code>h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan</code> / <code>h27-4-r1-solo-d2-8</code></td>
+              <td><code>~40,199</code></td>
+              <td>`D2.8` dotted `H19-5` with `B=1 px` catalogue collar + solo speckle removal</td>
+              <td><code>0.2710</code> / <code>0.2708</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE24</code> / <code>GEMSDOE29</code></td>
+              <td><code>gems24-h25-1-dotted-h19-5-d2-8</code> / <code>efd28-repro</code></td>
+              <td><code>44,090</code></td>
+              <td>`d = 2.8 px` greedy spacing on `H19-5` (`d_cat &gt; 0`)</td>
+              <td><code>0.2600</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE70</code></td>
+              <td><code>p8-clean-oof-submod38k</code> / <code>p5-dual-submod300-oof38k</code></td>
+              <td><code>38,000</code></td>
+              <td>Independent OOF multi-sensor GBDT + submodular 300 m emitter (`G70` README)</td>
+              <td><code>0.2478</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE49</code></td>
+              <td><code>gate_ortho_w0.25-40k-20261006T213721Z-nan</code></td>
+              <td><code>40,000</code></td>
+              <td>Orthogonal gated 40k dot ensemble</td>
+              <td><code>0.2376</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE76</code></td>
+              <td><code>gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros</code></td>
+              <td><code>39,200</code></td>
+              <td>Potential-field tilt-worm + LiDAR dipole + submodular 39k (`-zeros`)</td>
+              <td><code>0.2343</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE48</code></td>
+              <td><code>h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8</code></td>
+              <td><code>~38,000</code></td>
+              <td>Dempster–Shafer cover belief modulation of `H33`</td>
+              <td><code>0.2296</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>19GEMSDOE</code></td>
+              <td><code>gems19-h19-5-powerlaw-budget-multiline-corroborated</code></td>
+              <td><code>121,131</code></td>
+              <td>Continuous 1-px corroborated ridge skeleton (`R0` ancestor)</td>
+              <td><code>0.1922</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE82</code></td>
+              <td><code>gems82-h82-3-covaware-submod-20261022-zeros</code></td>
+              <td><code>~38,000</code></td>
+              <td>Coverage-aware submodular emitter with catalogue halo features</td>
+              <td><code>0.1886</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE46</code> / <code>GEMSDOE</code></td>
+              <td><code>r11f-scarp-radiometric-fusion</code> / <code>gems-submission-7f00890a</code></td>
+              <td><code>~60k–173k</code></td>
+              <td>Scarp-radiometric fusion (`0.1589`) &amp; initial ensemble (`0.1563`)</td>
+              <td><code>0.1589</code> / <code>0.1563</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE3</code> / <code>GEMSDOE37</code> / <code>GEMSDOE40</code></td>
+              <td><code>pindrop-v4-nodes</code> / <code>h6-physics-dotted-80k</code> / <code>h45-eulerdepthreadcluster</code></td>
+              <td><code>~35k–80k</code></td>
+              <td>Node pindrop (`0.1193`), 80k physics dots (`0.1193`), Euler depth cluster (`0.0984`)</td>
+              <td><code>0.1193</code> / <code>0.0984</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+            <tr>
+              <td><code>GEMSDOE29</code> (Controls)</td>
+              <td><code>sgmc-off-catalogue-44k</code> / <code>xfit-c0-habitat</code> / <code>repo-c0-habitat-emission</code></td>
+              <td><code>44k</code></td>
+              <td>Off-catalogue SGMC faults (`0.0512`) and label-free habitat random controls (`0.0439` / `0.0041`)</td>
+              <td><code>0.0512</code> / <code>0.0439</code> / <code>0.0041</code> <span class="badge badge-claim">USER-REPORTED</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 6: VERIFIED OFFICIAL SOURCES & LIMITATIONS -->
+    <section class="card" id="sources">
+      <h2>6. Verified Official Data Sources, DOIs, Organizer Clarifications &amp; Limitations</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Official Source / Dataset</th>
+              <th>Verified URL / DOI</th>
+              <th>Exact Role &amp; Verified Facts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DrivenData Competition #306 Overview &amp; Problem Spec</strong></td>
+              <td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/" target="_blank" rel="noopener">drivendata.org/competitions/306/competition-doe-gems/</a> &middot; <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/" target="_blank" rel="noopener">page/967/</a></td>
+              <td>Deadline <code>2026-12-03 23:59 UTC</code>; $300k prize pool; `3730 x 3292` `100 m` grid (`EPSG:32611`); official DW-Tversky metric (`R=300 m`, `alpha=0.2`, `beta=0.8`).</td>
+            </tr>
+            <tr>
+              <td><strong>DOE / NLR Official GEMS Prize Rules (Sept 2026)</strong></td>
+              <td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf" target="_blank" rel="noopener">docs.nlr.gov/docs/fy26osti/96647.pdf</a></td>
+              <td>Confirms <strong>3 submissions per rolling 7-day window</strong> per participating entity and mandatory Phase-2 narrative disclosure of Generative AI tools (<a href="https://github.com/buffedlizard55-lab/GEMSDOE90/blob/main/AI_USE.md" target="_blank" rel="noopener"><code>AI_USE.md</code></a>).</td>
+            </tr>
+            <tr>
+              <td><strong>DrivenData Official Forum Clarifications (`chrisk-dd`)</strong></td>
+              <td>Threads <a href="https://community.drivendata.org/t/11516" target="_blank" rel="noopener">#11516</a>, <a href="https://community.drivendata.org/t/11527" target="_blank" rel="noopener">#11527</a>, <a href="https://community.drivendata.org/t/11536" target="_blank" rel="noopener">#11536</a>, <a href="https://community.drivendata.org/t/11550" target="_blank" rel="noopener">#11550</a>, <a href="https://community.drivendata.org/t/11556" target="_blank" rel="noopener">#11556</a></td>
+              <td>Confirms pixel-exact known-fault mask (`0 px` buffer), full `FP_w` penalty on unrewarded near-catalogue pixels, eligibility of true new splays within 300 m, and pooled pixel-level DTI aggregation.</td>
+            </tr>
+            <tr>
+              <td><strong>Official GEMS Prize Reference Solution</strong></td>
+              <td><a href="https://github.com/drivendataorg/gems-prize-reference-solution" target="_blank" rel="noopener">github.com/drivendataorg/gems-prize-reference-solution</a></td>
+              <td>Organizer benchmark (`ResNet18` U-Net `128x128` patches, `5x` MC dropout, `TverskyLoss(alpha=0.2, beta=0.8)`).</td>
+            </tr>
+            <tr>
+              <td><strong>USGS GeoDAWN Airborne Magnetic &amp; Radiometric Survey</strong></td>
+              <td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and" target="_blank" rel="noopener">USGS Data Release</a> &middot; DOI <a href="https://doi.org/10.5066/P93LGLVQ" target="_blank" rel="noopener"><code>10.5066/P93LGLVQ</code></a> (CC0-1.0)</td>
+              <td>High-resolution NW Great Basin drape magnetics &amp; `K/Th/U/TC` gamma-ray spectrometry (`training_features.tif`, `geodawn_rad_u8.tif`, `geodawn_extensions_u8.tif`).</td>
+            </tr>
+            <tr>
+              <td><strong>DOE INGENIOUS Great Basin Geothermal Dataset (`GDR 1391`)</strong></td>
+              <td><a href="https://gdr.openei.org/submissions/1391" target="_blank" rel="noopener">gdr.openei.org/submissions/1391</a> &middot; DOI <a href="https://doi.org/10.15121/1881483" target="_blank" rel="noopener"><code>10.15121/1881483</code></a> (CC-BY-4.0)</td>
+              <td>Regional gravity, MT `cond_surf`, `depth_to_base_surf`, geodetic strain rates, `27,092` thermal wells/springs, and `21` volcanic vents (`dist_known_fault_px` excluded per `IR90-43`).</td>
+            </tr>
+            <tr>
+              <td><strong>USGS 3DEP 1 m LiDAR &amp; SGMC State Geologic Map Compilation</strong></td>
+              <td><a href="https://www.usgs.gov/3d-elevation-program" target="_blank" rel="noopener">usgs.gov/3d-elevation-program</a> &middot; DOI <a href="https://doi.org/10.3133/ds1052" target="_blank" rel="noopener"><code>10.3133/ds1052</code></a></td>
+              <td>`lidar_scarp_features_u8.tif` covers `75.4%` of active footprint (`NaN` outside valid 1 m tiles); `derived_sgmc_faults_100m_u8.tif` provides `1:500k` bedrock lithologic/fault context.</td>
+            </tr>
+            <tr>
+              <td><strong>Peer-Reviewed Structural Geothermal &amp; Potential-Field Literature</strong></td>
+              <td>Faulds &amp; Hinz (2015, WGC); Curewitz &amp; Karson (1997, <a href="https://doi.org/10.1029/97JB00787" target="_blank" rel="noopener"><code>10.1029/97JB00787</code></a>); Gallardo &amp; Meju (2003, <a href="https://doi.org/10.1029/2003GL017370" target="_blank" rel="noopener"><code>10.1029/2003GL017370</code></a>); Salem et al. (2007, <a href="https://doi.org/10.1190/1.2792921" target="_blank" rel="noopener"><code>10.1190/1.2792921</code></a>)</td>
+              <td>Theoretical basis for horse-tail tip cones, dilatational relay step-overs, cross-gradient basement collinearity, and magnetic tilt-depth scaling.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>6.1 Explicit Scientific &amp; Operational Limitations (`IRREGULARITIES.md`)</h3>
+      <ul>
+        <li><strong>Holdout-to-Leaderboard Domain Shift (`IR90-38`, `IR90-47`):</strong> `gems57-pooled-hide-v2` withholds already-mapped USGS/INGENIOUS segments (biased toward range-front scarps), whereas live DrivenData evaluation scores newly compiled unmapped faults (richer in concealed intrabasin and subtle LiDAR/aeromagnetic structures). Therefore `HOLDOUT-DTI` (`0.10681`) is strictly a paired model-selection statistic, never a numerical forecast of live leaderboard DTI.</li>
+        <li><strong>Incomplete 1 m 3DEP LiDAR Footprint (`75.4%` coverage):</strong> `24.6%` of the GeoDAWN footprint lacks 1 m LiDAR tiles; in those blocks `H90-1` conditions explicitly on `lidar_valid = 0` and shifts weight to `100 m` `det_elev`, `rtp`/`TMI_up150` magnetics, `iso_grav_anom`, and radiometrics.</li>
+        <li><strong>Non-Fault Geological Confounders:</strong> Pleistocene Lake Lahontan beach berms (`~1,330 m` shoreline elevation) and remanently reverse-magnetized Tertiary ash-flow tuff cooling margins can mimic scarp/magnetic-trough signatures; `second_best_domain` corroboration suppresses single-sensor false positives but cannot eliminate multi-sensor volcanic caldera ring margins without seismic reflection data.</li>
+        <li><strong>CPU Sandbox vs. Multi-Scale 2D Vision Backbones:</strong> Training occurred on a 2-vCPU / 3.8 GiB CPU sandbox (`388 s`); closing the remaining gap toward `0.4413` (`H90-5`) will likely benefit from multi-fold GPU 2D ConvNeXt/U-Net++ segmentation trained end-to-end on `DW-Tversky(0.2, 0.8)` patches combined with our CELF `R = 300 m` submodular dot allocator.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 7: EMBEDDED JSON RUN CARD -->
+    <section class="card" id="runcard">
+      <h2>7. Machine-Readable Parallel-Run Protocol Run Card (`evidence/h90_run_card.json`)</h2>
+      <p>
+        Exact JSON Run Card emitted by <code>scripts/run_h90_lane.py</code> (<button class="copy-btn" onclick="copyText('json-runcard', this)">Copy JSON Run Card</button>):
+      </p>
+      <pre id="json-runcard">{
+  "protocol": "PARALLEL-RUN-PROTOCOL-v1",
+  "generated_utc": "2026-10-24T07:59:42Z",
+  "lane_repo": "buffedlizard55-lab/GEMSDOE90",
+  "branch": "arena/783b0fc5-gemsdoe90",
+  "experiments_used": 3,
+  "experiment_budget_limit": 3,
+  "elapsed_seconds": 387.63,
+  "hypothesis": "H90-1 (CC-MPST-Submod300): Concealment-conditioned multi-physics odd-step polarity, upward-continued shallow hydrothermal demagnetization + potassic/MT alteration trough, nested pairwise-LOQO 2D steerable worm persistence, and strictly fold-visible Coulomb forward fault-tip wing-crack &amp; en-echelon relay transfer with exact 25-offset R=300 m CELF submodular dot allocation on d(catalogue) &gt; 2.0 px.",
+  "mechanism": "Separates dipping fault contacts (anti-symmetric cross-strike step in RTP magnetics, isostatic gravity, and detrended elevation/1m LiDAR) from symmetric dikes/channels, pairs TMI_up150-vs-RTP vertical attenuation with K/ThK alteration and MT conductivity to detect hydrothermally demagnetized geothermal conduits beneath basin fill, sharpens traces via 800 m &amp; 1.8 km steerable worms + Coulomb tip/relay cones, and eliminates 300 m kernel FP redundancy via exact CELF lazy-greedy submodular optimization.",
+  "named_non_fault_mimic": "Pleistocene Lake Lahontan paleoshoreline beach ridges (in 1 m LiDAR / radiometrics) and remanently reverse-magnetized Tertiary ash-flow tuff cooling margins / paleochannels (producing shallow magnetic lows and odd magnetic steps without brittle slip).",
+  "leakage_canary": {
+    "features_tested": 38,
+    "max_symmetric_auc": 0.626318,
+    "max_symmetric_auc_feature": "vis_coulomb_tip_cone",
+    "auc_limit": 0.9,
+    "passed": true
+  },
+  "holdout_dti": {
+    "label": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "primary_all_segments_2seed": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.10681102710719666,
+      "ci95": [0.0965726408749567, 0.11671306757368184],
+      "withheld_positive_pixels": 22641,
+      "tpw": 3458.015280685377,
+      "fpw": 67853.37223032866,
+      "fnw": 19182.984719314623
+    },
+    "conservative_detached_segments_2seed": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.10586429276468862,
+      "ci95": [0.09293713734506433, 0.11801700396901571],
+      "withheld_positive_pixels": 22619,
+      "tpw": 3417.185998144141,
+      "fpw": 67501.45939658495,
+      "fnw": 19201.81400185586
+    },
+    "paired_differences_vs_candidate_all": {
+      "c0_random_isolated": { "delta": 0.06548618844789748, "ci95": [0.05546900145381989, 0.07527227170509386], "withheld_positive_pixels": 22641 },
+      "c1_classical_ridge": { "delta": 0.059489066693768175, "ci95": [0.04687463001001812, 0.07251258265124155], "withheld_positive_pixels": 22641 },
+      "exp1_unsupervised_mpst": { "delta": 0.06458788445731196, "ci95": [0.051431431097978465, 0.07691738315008287], "withheld_positive_pixels": 22641 },
+      "exp2_nested_loqo_blind_worm": { "delta": 0.007506173607821687, "ci95": [-0.0037872086584865928, 0.01905412233043795], "withheld_positive_pixels": 22641 },
+      "ref_fair_r0_vis_b2": { "delta": 0.015850057464525696, "ci95": [0.006253390871374447, 0.02533879732805666], "withheld_positive_pixels": 22641 }
+    }
+  },
+  "registry_correlation_and_overlap": {
+    "rasters_checked": 20,
+    "ledger_hashes_checked": 92,
+    "pre_placement_surface_max_abs_spearman": 0.103688,
+    "pre_placement_surface_nearest": "scored_h16_1",
+    "final_dots_max_abs_spearman": 0.030953,
+    "final_dots_max_mutual_3px_overlap": 0.366403,
+    "final_dots_max_non_lattice_forward_3px_overlap": 0.661211,
+    "final_dots_nearest_non_lattice": "calib_gems10-h25-ctx-ridge-20260927T2329477041",
+    "vs_incumbent_r0_h33_b2": {
+      "forward_3px_overlap": 0.359184,
+      "reverse_3px_overlap": 0.219127,
+      "mutual_3px_overlap": 0.219127,
+      "jaccard_exact_dots": 0.01062,
+      "spearman_rho": 0.013798
+    },
+    "passed": true
+  },
+  "raster_sha256": "637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51",
+  "zip_sha256": "85fffcd6ba9c46a99b03d69ddf42b214a8eca1507f4840f47344979a2d75464d",
+  "validator_output": {
+    "all_technical_checks_passed": true,
+    "no_nan_inside_footprint": true,
+    "no_nan_anywhere_in_12279160_cells": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "zero_on_catalogue": true,
+    "zero_outside_footprint": true,
+    "nodata_tag": null,
+    "min": 0.0,
+    "max": 1.0,
+    "emitted_dots": 38000,
+    "tif_file": "docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif",
+    "zip_file": "docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip",
+    "tif_bytes": 132454,
+    "zip_bytes": 94680
+  },
+  "submission_name": "GEMSDOE90-H90-CC-MPST-D76AC964",
+  "submission_note": "GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 | 38000 dots B&gt;2 | HOLDOUT-DTI all=0.1068 det=0.1059",
+  "submission_note_chars": 92,
+  "verdict": "promote",
+  "automated_ui_badge": "AUTOMATED GATE: PROMOTED — OK TO DOWNLOAD &amp; SUBMIT"
+}</pre>
+    </section>
+
+    <footer class="footer">
+      Repository: <a href="https://github.com/buffedlizard55-lab/GEMSDOE90" target="_blank" rel="noopener"><code>buffedlizard55-lab/GEMSDOE90</code></a> &middot;
+      <a href="./executive-summary.html">Executive Summary &amp; Upload Guide</a> &middot;
+      <a href="https://github.com/buffedlizard55-lab/GEMSDOE90/blob/main/docs/HYPOTHESES_PREREGISTRATION.md" target="_blank" rel="noopener">Pre-Registered Hypotheses</a> &middot;
+      <a href="https://github.com/buffedlizard55-lab/GEMSDOE90/blob/main/IRREGULARITIES.md" target="_blank" rel="noopener">Irregularities Log (`IR90-01`&ndash;`IR90-49`)</a> &middot;
+      <a href="https://github.com/buffedlizard55-lab/GEMSDOE90/blob/main/AI_USE.md" target="_blank" rel="noopener">DOE/NLR AI Use Disclosure</a>
+    </footer>
+  </main>
+
+  <script>
+    function copyText(id, btn) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var txt = el.textContent.trim();
+      navigator.clipboard.writeText(txt).then(function () {
+        var prev = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(function () { btn.textContent = prev; }, 1600);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -14,3 +14,12 @@ raw_parts/
 releases/*.tif
 releases/*.tiff
 !releases/.gitkeep
+
+# Explicitly track the tiny (132 KB) verified zero-input-leakage binary GeoTIFF
+# and ZIP submission deliverable served by GitHub Pages one-click download:
+!docs/
+!docs/downloads/
+!docs/downloads/*.tif
+!docs/downloads/*.zip
+!docs/downloads/*.json
+

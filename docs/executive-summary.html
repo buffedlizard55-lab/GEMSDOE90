@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Executive Summary &amp; DrivenData Submission Guide — GEMSDOE90 (Lane H90)</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --brand-soft: #ecfdf5;
+      --brand-border: #6ee7b7;
+      --accent: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --warn: #92400e;
+      --warn-soft: #fffbeb;
+      --warn-border: #fcd34d;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      font-size: 15.5px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 3px solid #10b981;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .topbar-title {
+      font-weight: 700;
+      font-size: 0.96rem;
+      letter-spacing: 0.01em;
+    }
+    .topbar-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.88rem;
+    }
+    .topbar-nav a { color: #cbd5e1; font-weight: 500; }
+    .topbar-nav a:hover, .topbar-nav a.active { color: #34d399; text-decoration: none; }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+    .gate-hero {
+      background: var(--brand-soft);
+      border: 2px solid #10b981;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 16px rgba(15, 118, 110, 0.08);
+    }
+    .gate-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #065f46;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.65rem;
+    }
+    .gate-hero h1 {
+      margin: 0.15rem 0 0.5rem;
+      font-size: 1.65rem;
+      line-height: 1.25;
+      color: #064e3b;
+    }
+    .gate-sub {
+      margin: 0 0 1.15rem;
+      color: #1e293b;
+      font-size: 0.98rem;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #047857;
+      color: #ffffff !important;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.8rem 1.35rem;
+      border-radius: 8px;
+      border: 1px solid #065f46;
+      box-shadow: 0 2px 6px rgba(4, 120, 87, 0.25);
+      transition: background 0.15s ease;
+    }
+    .btn-primary:hover { background: #065f46; text-decoration: none; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #ffffff;
+      color: #0f172a !important;
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 0.72rem 1.05rem;
+      border-radius: 8px;
+      border: 1px solid #94a3b8;
+    }
+    .btn-secondary:hover { background: #f1f5f9; text-decoration: none; }
+    .copy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 0.85rem;
+    }
+    .copy-card {
+      background: #ffffff;
+      border: 1px solid #a7f3d0;
+      border-radius: 8px;
+      padding: 0.8rem 0.95rem;
+    }
+    .copy-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #047857;
+      margin-bottom: 0.35rem;
+    }
+    .copy-btn {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+      border-radius: 5px;
+      padding: 0.18rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #d1fae5; }
+    .copy-val {
+      font-family: var(--mono);
+      font-size: 0.83rem;
+      word-break: break-all;
+      color: #0f172a;
+      background: #f8fafc;
+      padding: 0.42rem 0.55rem;
+      border-radius: 5px;
+      border: 1px solid #e2e8f0;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 1.35rem;
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.28rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+      color: #0f172a;
+    }
+    .card h3 {
+      margin-top: 1.1rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: #1e293b;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.85rem;
+      margin: 1rem 0;
+    }
+    .kpi {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.8rem 0.95rem;
+    }
+    .kpi .k-label { font-size: 0.76rem; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .kpi .k-val { font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.15rem 0; font-family: var(--mono); }
+    .kpi .k-note { font-size: 0.8rem; color: var(--muted); }
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+    .step-item {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 0.85rem;
+      align-items: start;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+    }
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #0f766e;
+      color: #ffffff;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin: 0.75rem 0;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 0.52rem 0.65rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    code {
+      font-family: var(--mono);
+      font-size: 0.84em;
+      background: #f1f5f9;
+      padding: 0.12rem 0.32rem;
+      border-radius: 4px;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.12rem 0.48rem;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-family: var(--mono);
+    }
+    .badge-pass { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+    .badge-holdout { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .badge-org { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+    .badge-claim { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .callout-warn {
+      background: var(--warn-soft);
+      border-left: 4px solid #f59e0b;
+      border: 1px solid var(--warn-border);
+      border-left-width: 5px;
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      margin: 0.9rem 0;
+      font-size: 0.92rem;
+    }
+    .footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">GEMSDOE90 · DOE GEMS Geothermal Fault Discovery — Executive Summary &amp; Upload Guide</div>
+      <nav class="topbar-nav">
+        <a href="./index.html">Main Scientific Portal</a>
+        <a href="./executive-summary.html" class="active">Executive Summary &amp; How to Submit</a>
+        <a href="#steps">5-Step DrivenData Upload</a>
+        <a href="#portal-fix">[0, 1] Portal Fix</a>
+        <a href="#auto-gate">15/15 Automated Gate</a>
+        <a href="#why-02778">Why 0.2778 Worked &amp; How to Beat It</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="gate-hero" aria-label="One-Click Validated GeoTIFF Download">
+      <div class="gate-pill">&#10003; AUTOMATED GATE: PROMOTED &mdash; OK TO DOWNLOAD &amp; SUBMIT (15 / 15 CHECKS PASSED)</div>
+      <h1>One-Click Validated Unique GeoTIFF Submission (`GEMSDOE90-H90-CC-MPST-D76AC964`)</h1>
+      <p class="gate-sub">
+        Generated from scratch by <strong>Lane H90 (`H90-1: CC-MPST-Submod300`)</strong> with <strong>zero</strong> input from any previous submission raster (`64.08%` of its `38,000` dots sit `&gt; 300 m` outside `R0` `h33-h33-2-b2`, `194.91%` symmetric pixel turnover). Validated automatically end-to-end with <strong>zero human-inspector bottlenecks</strong>: single-band `float32`, `3730 &times; 3292`, `EPSG:32611`, `nodata=None`, all `12,279,160` cells strictly finite in `[0.0, 1.0]`, `0` catalogue pixels, leakage canary `max AUC = 0.6263 &le; 0.90`, and statistically significant `HOLDOUT-DTI` gain over leak-free baselines and `fair-H33` (`+0.01585`, 95% CI `[+0.00625, +0.02534]`).
+      </p>
+
+      <div class="cta-row">
+        <a class="btn-primary" href="./downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif" download="gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif">
+          &#11015; Download Validated `.tif` Submission (132.5 KB)
+        </a>
+        <a class="btn-secondary" href="./downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip" download="gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip">
+          &#128230; Download Single-TIFF `.zip` Wrapper (94.7 KB)
+        </a>
+        <a class="btn-secondary" href="./downloads/h90_run_card.json" download="h90_run_card.json">
+          &#128196; Download JSON Run Card (`h90_run_card.json`)
+        </a>
+        <a class="btn-secondary" href="./index.html">
+          &#128300; Full PhD Scientific Report &amp; Score Ledger &rarr;
+        </a>
+      </div>
+
+      <div class="copy-grid">
+        <div class="copy-card">
+          <div class="copy-label">
+            <span>Unique Submission Name (DrivenData)</span>
+            <button class="copy-btn" onclick="copyText('sub-name', this)">Copy</button>
+          </div>
+          <div class="copy-val" id="sub-name">GEMSDOE90-H90-CC-MPST-D76AC964</div>
+        </div>
+        <div class="copy-card">
+          <div class="copy-label">
+            <span>Submission Note / Comment (92 / 140 chars)</span>
+            <button class="copy-btn" onclick="copyText('sub-note', this)">Copy</button>
+          </div>
+          <div class="copy-val" id="sub-note">GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 | 38000 dots B&gt;2 | HOLDOUT-DTI all=0.1068 det=0.1059</div>
+        </div>
+        <div class="copy-card">
+          <div class="copy-label">
+            <span>Verified `.tif` SHA-256 Digest</span>
+            <button class="copy-btn" onclick="copyText('sub-sha', this)">Copy</button>
+          </div>
+          <div class="copy-val" id="sub-sha">637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="k-label">Candidate `HOLDOUT-DTI` (`mode=all`)</div>
+        <div class="k-val">0.10681</div>
+        <div class="k-note"><span class="badge badge-holdout">HOLDOUT-DTI</span> 95% CI `[0.09657, 0.11671]`, `n=22,641` (`gems57-pooled-hide-v2`)</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Paired Gain vs `fair-R0` (`0.09096`)</div>
+        <div class="k-val">+0.01585</div>
+        <div class="k-note"><span class="badge badge-holdout">HOLDOUT-DTI</span> 95% CI `[+0.00625, +0.02534]` (excludes `0`)</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Current Public #1 (`2026-10-24`)</div>
+        <div class="k-val">0.4413</div>
+        <div class="k-note"><span class="badge badge-org">ORGANIZER-CONFIRMED</span> `#1 xiaofanhu` on DrivenData leaderboard</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Best Prior Entity Score (`GEMSDOE32`)</div>
+        <div class="k-val">0.2778</div>
+        <div class="k-note"><span class="badge badge-claim">USER-REPORTED</span> `h33-h33-2-b2-...-zeros` (`37,654` dots)</div>
+      </div>
+      <div class="kpi">
+        <div class="k-label">Single-Feature Leakage Canary</div>
+        <div class="k-val">0.6263 &le; 0.90</div>
+        <div class="k-note"><span class="badge badge-pass">PASS</span> All `38` features tested (`evidence/h90_leakage_canary.json`)</div>
+      </div>
+    </div>
+
+    <section class="card" id="steps">
+      <h2>1. Step-by-Step Guide: How to Submit on DrivenData</h2>
+      <ol class="step-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div>
+            <strong>Click the green Download `.tif` button above</strong> to save <code>gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif</code> (<code>132,454</code> bytes). Optional terminal integrity check:
+            <pre>sha256sum gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif
+# Expected: 637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51</pre>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div>
+            <strong>Check your rolling 7-day submission quota (`&le; 3` per week):</strong> Under the official <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf" target="_blank" rel="noopener">DOE / NLR GEMS Prize Rules (`96647.pdf`, Sept 2026)</a>, each participating team/entity may submit at most <strong>3 entries per rolling 7-day window</strong> prior to the Phase-1 deadline on <strong>December 3, 2026 at 11:59 p.m. UTC</strong>. Never re-upload a previously scored file.
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div>
+            <strong>Open the official DrivenData submission portal:</strong> Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/" target="_blank" rel="noopener">https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/</a> (Competition overview: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/" target="_blank" rel="noopener">DOE GEMS: Geothermal Exploration with Machine Learning</a>).
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div>
+            <strong>Upload the `.tif` file and paste the traceable identifier &amp; `&le;140`-character note:</strong>
+            <ul>
+              <li><strong>File:</strong> <code>gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif</code> (if the browser/form requests a compressed archive, upload the bit-exact single-TIFF <code>gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip</code>).</li>
+              <li><strong>Name / Tag:</strong> <code>GEMSDOE90-H90-CC-MPST-D76AC964</code></li>
+              <li><strong>Comment / Note (<code>92 / 140</code> chars):</strong> <code>GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 | 38000 dots B&gt;2 | HOLDOUT-DTI all=0.1068 det=0.1059</code></li>
+            </ul>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">5</div>
+          <div>
+            <strong>Record the `ORGANIZER-CONFIRMED` receipt &amp; preserve AI disclosure for Phase 2:</strong> Once DrivenData returns a leaderboard score, log the exact score and UTC timestamp in <code>ledger/submissions.csv</code> (`receipt=Y`). Remember that Section 5 of <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf" target="_blank" rel="noopener">DOE/NLR `96647.pdf`</a> permits Generative AI tools provided their role is disclosed in Phase-2 technical narratives (pre-written in <a href="https://github.com/buffedlizard55-lab/GEMSDOE90/blob/main/AI_USE.md" target="_blank" rel="noopener"><code>AI_USE.md</code></a>).
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="card" id="portal-fix">
+      <h2>2. Root-Cause Resolution of DrivenData Error: <code>"Predicted values must be in range [0, 1]"</code></h2>
+      <p>
+        Earlier submissions across sibling runs encountered the DrivenData portal rejection <code>"Predicted values must be in range [0, 1]"</code>. Direct byte-level inspection of <code>sample_submission.tif</code>, <code>training_features.tif</code>, and historically scored <code>-zeros</code> files (<code>h33-h33-2-b2-...-zeros.tif</code> at <code>0.2778</code> and <code>anderson-geothermal-pinn-...-zeros.tif</code> at <code>0.2750</code>) pinpointed three root causes and established a deterministic guarantee (`IR90-45`):
+      </p>
+      <ul>
+        <li><strong>Root Cause A — Unmasked `-3.4028235e+38` Float32 Sentinels Inside the Active Footprint:</strong> In <code>training_features.tif</code> (`19` bands), <strong>`3,061` pixels inside the active `5,167,373`-pixel competition footprint</strong> carry float32 sentinel values <code>-3.4028235e+38</code> rather than <code>NaN</code>. Any linear combination, spatial convolution, or unclipped tree/neural output that ingests those sentinels emits extreme negative or `>1.0` predictions inside the active evaluation mask.</li>
+        <li><strong>Root Cause B — `NaN` vs `0.0` Outside-Footprint Handling &amp; `nodata` Metadata Mismatches:</strong> While <code>sample_submission.tif</code> stores <code>NaN</code> on the `7,111,787` outside-footprint cells (`nodata=NaN`), writing `NaN` without matching tag semantics—or leaking `NaN` into any of the `5,167,373` inside-footprint cells where <code>lidar_scarp_features_u8.tif</code> has `24.6%` missing coverage—triggers range validation failures (`!(x >= 0.0 && x <= 1.0)` evaluates `True` on `NaN`!).</li>
+        <li><strong>Verified Portal-Safe Solution (`-zeros` All-Finite Contract):</strong> Both <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code> (`0.2778`) and <code>anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros</code> (`0.2750`) proved on the live DrivenData scorer that setting <strong>`0.0` outside the footprint with `nodata=None`</strong> passes portal validation cleanly with zero score penalty (DrivenData masks outside-footprint cells via its own footprint mask before scoring). Our pipeline filters `|x| &lt; 1e30` on every band, imputes missing LiDAR cells explicitly via a `lidar_valid` indicator, writes strictly binary `{0.0, 1.0}` `float32` values (`nodata=None`), and re-opens the written GeoTIFF from disk to verify `0` NaN, `0` Inf, `min == 0.0`, and `max == 1.0` across all `12,279,160` pixels.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="auto-gate">
+      <h2>3. Self-Contained 15-Check Automated Validation Gate (Zero Human Bottlenecks)</h2>
+      <p>
+        Every format, range, geodetic, leakage-canary, uniqueness, and holdout-promotion check is executed automatically by <code>src/auto_validator.py</code> and verified in CI by <code>pytest -q</code> (<code>tests/test_h90_lane.py</code>) without requiring any human inspector:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Automated Gate Check</th>
+            <th>Measured Value on Deliverable</th>
+            <th>Requirement</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><code>crs_epsg_32611</code></td><td><code>EPSG:32611</code> (UTM Zone 11N)</td><td>Exact match to <code>sample_submission.tif</code></td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>2</td><td><code>shape_3730x3292</code></td><td><code>1 &times; 3730 &times; 3292</code> (<code>float32</code>)</td><td>Single band, <code>3730</code> rows &times; <code>3292</code> cols</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>3</td><td><code>transform_exact_match</code></td><td><code>[100, 0, 243350, 0, -100, 4508550]</code></td><td>Exact 100 m pixel affine geotransform</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>4</td><td><code>all_12279160_cells_finite</code></td><td><code>n_nan = 0</code>, <code>n_inf = 0</code></td><td>Zero NaN / Inf across all <code>12,279,160</code> cells</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>5</td><td><code>nodata_tag_none</code></td><td><code>nodata = None</code></td><td>No conflicting GDAL nodata sentinel tag</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>6</td><td><code>values_strictly_in_0_1</code></td><td><code>min = 0.0</code>, <code>max = 1.0</code> (binary <code>{0, 1}</code>)</td><td>All cells strictly in <code>[0.0, 1.0]</code></td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>7</td><td><code>zero_positive_outside_footprint</code></td><td><code>0</code> positive cells outside footprint</td><td><code>0.0</code> on all <code>7,111,787</code> outside cells</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>8</td><td><code>zero_positive_on_catalogue</code></td><td><code>0</code> dots on <code>existing_faults.tif</code> (<code>d_cat &gt; 2.0 px</code>)</td><td>Zero mass on mapped USGS/INGENIOUS faults</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>9</td><td><code>native_validate_geotiff_ok</code></td><td><code>src.validate.validate(..., zeros_outside=True)</code></td><td>Native repository format validator PASS</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>10</td><td><code>gems57_validate_all_checks_passed</code></td><td><code>38,000</code> dots (<code>0.7354%</code> of footprint)</td><td>Shared <code>vendor/gems57/validate.py</code> + <code>gates.py</code> PASS</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>11</td><td><code>zip_single_geotiff_bit_exact</code></td><td><code>94,680 B</code> `.zip` == <code>132,454 B</code> `.tif`</td><td>Single GeoTIFF entry matching disk SHA-256</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>12</td><td><code>submission_name_and_note_le_140_chars</code></td><td><code>92</code> chars (<code>&le; 140</code> limit)</td><td>Non-empty unique name &amp; note <code>&le; 140</code> chars</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>13</td><td><code>leakage_canary_all_le_090</code></td><td><code>max_symmetric_auc = 0.626318</code> (<code>38</code> features)</td><td>Every feature single-AUC <code>&le; 0.90</code></td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>14</td><td><code>parallel_run_uniqueness_passed</code></td><td>Surface <code>|&rho;|=0.1037</code>; Dots <code>|&rho;|=0.0310</code>; Mutual <code>0.3664</code>; Non-lat fwd <code>0.6612</code>; <code>0</code> SHA collisions</td><td><code>|&rho;| &le; 0.90</code> &amp; 3-px overlap <code>&le; 0.70</code> across 20 rasters + 92 ledger hashes</td><td><span class="badge badge-pass">PASS</span></td></tr>
+          <tr><td>15</td><td><code>beats_baselines_and_fair_r0_holdout</code></td><td><code>0.10681</code> vs <code>fair-R0 0.09096</code> (<code>&Delta;=+0.01585</code>, CI <code>[+0.00625, +0.02534]</code>)</td><td>95% paired spatial-block bootstrap CI <code>&gt; 0</code></td><td><span class="badge badge-pass">PROMOTED</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card" id="why-02778">
+      <h2>4. Executive Synthesis: Why `GEMSDOE32` Scored `0.2778` &amp; How Higher Scores Are Achieved</h2>
+      <p>
+        Under DrivenData's official <strong>Distance-Weighted Tversky Index</strong> ($\alpha = 0.2$ on false positives $FP_w$, $\beta = 0.8$ on false negatives $FN_w$, $R = 300\text{ m}$ linear triangular kernel $k(d) = \max(0, 1 - d/300\text{ m})$, pixel-exact known-fault masking):
+      </p>
+      <ul>
+        <li><strong>Why `GEMSDOE32` (`h33-h33-2-b2`, `0.2778`) succeeded:</strong> Starting from `19GEMSDOE`'s multi-line corroborated ridge skeleton (`H19-5`, `121,131` px, `0.1922`), greedy `d = 2.8 px` spacing (`D2.8`, `44,090` isolated binary `1.0` dots, `0.2600`, `+0.0678`) exploited the `max` operator inside $TP_w = \sum_{x \in G} \max_y P(y)k(\|x-y\|)$: spacing dots every `~280 m` preserved nearly full 300 m kernel coverage on hidden faults while cutting $FP_w$ by `~63.6%`. Subsequent solo-component cleanup (`h27-4`, `40,199` dots, `0.2708`) and `d(catalogue) &gt; 2.0 px` flank collar pruning (`H33-2-B2`, `37,654` dots, `0.2778`, `+0.0070`) stripped zero-reward false positives sitting within 200 m of already-mapped faults (confirmed by organizer `chrisk-dd` in <a href="https://community.drivendata.org/t/11516" target="_blank" rel="noopener">Forum Thread #11516</a>).</li>
+        <li><strong>Why post-hoc edits of `R0` plateaued (`&lt; 0.010` headroom) while the leaderboard reached `0.4413`:</strong> In-repo credit audits (`IR90-25`, `IR90-37`) proved that re-arranging `R0`'s frozen `37,654` dots yields `&lt; 0.003` DTI because `H19-5` never ingested <strong>1 m 3DEP LiDAR scarps</strong>, <strong>GeoDAWN `K/Th/U` airborne radiometrics</strong>, <strong>`TMI_up150` shallow hydrothermal demagnetization</strong>, <strong>odd-step vs even-bump polarity</strong>, or <strong>Coulomb off-axis fault-tip wing-crack / relay-step mechanics</strong>. Live public #1 `xiaofanhu` (`0.4413`, `ORGANIZER-CONFIRMED` `2026-10-24`) proves that major recall ($TP_w$) gains on unmapped faults—paired with exact 300 m submodular dot allocation—drive scores well beyond `0.2778`.</li>
+        <li><strong>How `GEMSDOE90-H90-CC-MPST-D76AC964` advances discovery:</strong> Fuses `36` multi-physics odd-step, upward-continued hydrothermal demagnetization, 1 m LiDAR, radiometric, and geothermometry features via nested out-of-quadrant 2D steerable worms (`Exp 2`: `0.09930` `HOLDOUT-DTI` completely blind to the fault catalogue!) plus sparse Anderson Mode-II Coulomb fault-tip wing-crack cones and en-echelon relay bridges (`Exp 3`: `0.10681` `all` / `0.10586` `detached`, beating `fair-H33`'s `0.09096` / `0.09482` while placing `64.08%` of its `38,000` dots in brand-new ground `&gt; 300 m` outside `R0`).</li>
+      </ul>
+      <div class="callout-warn">
+        <strong>Strict Evidence Hygiene (Protocol Rule #3):</strong> Holdout DTI (`0.10681` on `gems57-pooled-hide-v2`) and live DrivenData leaderboard DTI (`0.2778` / `0.4413`) measure structurally different prevalence regimes (withheld mapped catalogue segments inside a single quadrant vs. newly interpreted Phase-1 hidden faults across the full basin) and are <strong>never</strong> linearly equated or reported as projected leaderboard scores.
+      </div>
+      <p style="margin-bottom:0;">
+        &rarr; Read the full mathematical derivations, 5 pre-registered hypotheses (`H90-1`&ndash;`H90-5`), historical GEMSDOE score ledger, geothermal vent research synthesis, verified DOIs/links, and embedded JSON Run Card on the <a href="./index.html"><strong>Main Scientific Portal (`index.html`)</strong></a>.
+      </p>
+    </section>
+
+    <footer class="footer">
+      Repository: <a href="https://github.com/buffedlizard55-lab/GEMSDOE90" target="_blank" rel="noopener"><code>buffedlizard55-lab/GEMSDOE90</code></a> &middot;
+      Evaluator: <code>gems57-pooled-hide-v2</code> &middot;
+      Generated &amp; verified automatically: <code>2026-10-24 UTC</code> &middot;
+      Zero projections reported as scores.
+    </footer>
+  </main>
+
+  <script>
+    function copyText(id, btn) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var txt = el.textContent.trim();
+      navigator.clipboard.writeText(txt).then(function () {
+        var prev = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(function () { btn.textContent = prev; }, 1600);
+      });
+    }
+  </script>
+</body>
+</html>

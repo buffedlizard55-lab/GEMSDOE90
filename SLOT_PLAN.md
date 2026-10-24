@@ -1,6 +1,24 @@
-# SLOT PLAN — integrated MASS-add / continuity / PRUNE; 15 km CONCENTRATION held (2026-10-23)
+# SLOT PLAN — Promoted Independent Multi-Physics Discovery Candidate (`H90-1`) + Legacy `R0` Perturbation Ladder (2026-10-24)
 
-**R0:** `h33-h33-2-b2` / `GEMSDOE32`, 37,654 dots; 0.2778 is **CLAIM**, not a receipt. Human supplies dated `TOP_PUBLIC`, quota use, and confirms 2026-12-03. ONE entity, 3 scored slots/rolling week, ONE blind final ([rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)). Live `|Δ|<0.010` is **no evidence**; private chunks can differ. Never repeat an exact hash or a `(parent, axis, value)` pair.
+**Official Competition Controls (verified live 2026-10-24 UTC):**
+- **Deadline:** `2026-12-03T23:59:00Z` ([DrivenData Competition #306](https://www.drivendata.org/competitions/306/competition-doe-gems/)).
+- **Public Leaderboard Top (`ORGANIZER-CONFIRMED`, 2026-10-24):** `#1 xiaofanhu = 0.4413`, `#2 cfld__ = 0.3916`, `#3 Batik Shirt Brothers = 0.3904` ([Leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/)).
+- **Entity Best (`USER-REPORTED`, `ledger/submissions.csv`):** `R0` (`h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`, `GEMSDOE32`, `37,654` dots) = `0.2778`.
+- **Quota Rule:** Maximum **3 submissions per rolling 7-day window** across one participating entity ([DOE/NLR Official Rules `96647.pdf`](https://docs.nlr.gov/docs/fy26osti/96647.pdf)).
+
+## Promoted Independent Multi-Physics Candidate (`arena/783b0fc5-gemsdoe90`, `AXIS=DISCOVERY`)
+
+Prior `GEMSDOE90` builds (`PRUNE`, `MASS`, `RELIEF`, `CONCENTRATION`, `SPACING`) edited only the frozen `H19-5`/`R0` dot support (`<0.010` measured headroom, `IR90-25/37`, and `>85%` 3-px overlap with `R0`). Lane H90 trained a genuinely independent, zero-input-submission multi-physics fault discovery model (`H90-1: CC-MPST-Submod300`) that passed **15 / 15 automated format, range `[0, 1]`, leakage-canary, registry-uniqueness, and paired spatial-block `HOLDOUT-DTI` promotion gates**:
+
+| Promoted Deliverable | Submission Name & Form Note (`92/140` chars) | SHA-256 (`.tif` / `.zip`) | `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `seeds=20+21`) | Uniqueness vs 20 Registry Rasters | Gate Verdict |
+|---|---|---|---|---|---|
+| `docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif` (`38,000` binary dots, `d_cat > 2.0 px`, `132,454 B`) | Name: `GEMSDOE90-H90-CC-MPST-D76AC964`<br>Note: `GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 \| 38000 dots B>2 \| HOLDOUT-DTI all=0.1068 det=0.1059` | `.tif`: `637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51`<br>`.zip`: `85fffcd6ba9c46a99b03d69ddf42b214a8eca1507f4840f47344979a2d75464d` | `mode=all`: **`0.10681 [0.09657, 0.11671]`** (`n=22,641`; paired `Δ` vs `fair-R0` `0.09096` = **`+0.01585 [0.00625, 0.02534]`**)<br>`mode=detached`: **`0.10586 [0.09294, 0.11802]`** (`n=22,619`) | Canary `max AUC = 0.6263 <= 0.90`; Surface `|ρ| = 0.1037 <= 0.90`; Dots `|ρ| = 0.0310 <= 0.90`; Mutual 3px `= 0.3664 <= 0.70`; Non-lattice fwd 3px `= 0.6612 <= 0.70`; **`64.08%` new dots `>300 m` outside `R0`** | **`PROMOTE`** (`evidence/h90_run_card.json`) |
+
+**Slot-allocation guidance vs `R0` perturbation ladder below:** Allocate **1 weekly slot** to `GEMSDOE90-H90-CC-MPST-D76AC964` to obtain a live independent multi-physics receipt (`64.1%` brand-new spatial coverage outside `R0`'s 300 m halos across concealed basins, hydrothermal demagnetization troughs, 1 m LiDAR scarps, and Coulomb tip/relay zones), reserving remaining weekly slots for either live orthogonal fusion with `R0` (once scored) or the legacy `MASSadd5pctq50` probe below.
+
+---
+
+**Legacy `R0` Perturbation Context (2026-10-23/24):** `h33-h33-2-b2` / `GEMSDOE32`, 37,654 dots; 0.2778 is **CLAIM**, not a receipt. Live `|Δ|<0.010` is **no evidence**; private chunks can differ. Never repeat an exact hash or a `(parent, axis, value)` pair.
 
 ## Next 3 slots (NaN primary only; human decides)
 
