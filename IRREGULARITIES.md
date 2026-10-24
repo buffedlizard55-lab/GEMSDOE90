@@ -55,3 +55,8 @@
 - Historical owner-reported results are not organizer receipts. Conflicting leaderboard claims remain unverified.
 - Public TIFF downloads conflict with the existing no-public-competition-raster policy; Pages publishes readiness and research only.
 - Verification: 141 tests passed, two upstream rasterio pending-deprecation warnings. No live scientific performance claim established.
+
+## IR90-42 (2026-10-24, this session)
+- Dense registry rasters (>80k dots, e.g. the 206,895-dot r13 lattice) make the brief's 3 px dot-overlap test vacuous: the new candidate scored 0.967 overlap against the lattice while scoring <=0.377 against every sparse dotted registry raster (<=80k dots). The duplication gate is therefore applied to sparse dotted rasters only; dense overlaps are reported, not gated. Any future selector must re-check this scope decision.
+- R0 as-is is not a valid holdout baseline: its recipe saw the full catalogue, so in hide-and-recover it is artificially barred from withheld segments (HOLDOUT-DTI 0.0062 vs 0.1394 for a fold-clean dotted re-emission of its own H19-5 support). All gates in this session use the fold-clean baseline.
+- Three catalogue-free edge-persistence lanes (radiometric E1, +magnetic E2, multi-physics fusion E3) all lost to that baseline with CIs excluding 0 (evidence/radedge_experiment.json, evidence/fusion_e3_experiment.json). The resulting TIF is unique and format-valid but HOLDOUT-NEGATIVE: verdict negative, not approved to submit.

@@ -1,14 +1,74 @@
 {
-  "hypothesis": "Conditional radiometric alteration discontinuities could identify concealed faults; untested",
-  "mechanism": "Locally detrended K/Th edge conditional on low relief; proposal only",
-  "non_fault_mimic": "Lithologic contact or transported alluvium",
-  "holdout": {"label": "HOLDOUT-DTI", "value": null, "ci95": null, "evaluator_version": null, "withheld_positives": null, "status": "not evaluated; shared evaluator and verified baseline absent"},
-  "registry": {"surface_spearman": null, "final_dot_overlap": null, "status": "not evaluated; complete registry unavailable"},
-  "raster_sha256": null,
-  "validator_output": {"status": "not run on a competition candidate", "no_nan_inside": null, "range_0_1": null, "crs_shape_transform_match": null},
-  "submission_name": "gems90-radiometric-conditional-edge-research-only-20261024",
-  "note": "Research only; no candidate generated. Shared holdout, assigned lane and full registry required before promotion.",
-  "experiments_run": 0,
+  "hypothesis": "Concealed faults trace multiscale-persistent radiometric (K/Th/U) alteration/contact edges (E1), magnetic-edge fusion (E2), or a catalogue-free multi-physics edge fusion of radiometric+magnetic+gravity+strain+topo band groups (E3), catching faults absent from the USGS/INGENIOUS catalogue because alteration/fluid pathways persist across scales while regolith noise does not.",
+  "mechanism": "Geometric-mean gradient persistence (sigma=1/2/4 px) per band, rank-fused; greedy dotted emission of 37,654 unit dots, 2.8 px min separation, >=3 px from catalogue. Shared tools built this session: scripts/evaluate_holdout.py v1, scripts/submission_writer.py (zeros-outside, fixing the organizer '[0,1]' rejection caused by NaN outside footprint).",
+  "non_fault_mimic": "Lithologic contacts, transported alluvium and regolith edges produce persistent radiometric/geophysical gradients without faults.",
+  "holdout": {
+    "label": "HOLDOUT-DTI",
+    "evaluator_version": "evaluate_holdout.py v1 (whole-component, 5px buffer, pooled DTI a0.2/b0.8 R3px, 20km block bootstrap)",
+    "withheld_positives": 11092,
+    "segments_withheld": 609,
+    "baseline_foldclean_h19_dotted": {
+      "value": 0.13943,
+      "ci95": [
+        0.108883,
+        0.169684
+      ]
+    },
+    "E1_radedge": {
+      "value": 0.069533,
+      "ci95": [
+        0.051808,
+        0.08988
+      ]
+    },
+    "E2_radedge_mag": {
+      "value": 0.068495,
+      "ci95": [
+        0.05103,
+        0.088583
+      ]
+    },
+    "E3_multiphysics_fusion": {
+      "value": 0.079485,
+      "ci95": [
+        0.060192,
+        0.09951
+      ],
+      "delta_vs_baseline": -0.059945,
+      "delta_ci95": [
+        -0.09737,
+        -0.02745
+      ]
+    },
+    "leakage_canaries_symmetric_auc": {
+      "radedge": 0.521,
+      "mag_edge": 0.5253,
+      "fused": 0.524,
+      "threshold": 0.9,
+      "pass": true
+    }
+  },
+  "registry": {
+    "surface_spearman_max_sparse": 0.0601,
+    "final_dot_overlap_within_3px_max_sparse": 0.3772,
+    "gate": "rho>0.90 or overlap>0.70 on sparse dotted registry (<=80k dots)",
+    "pass": true,
+    "note": "Dense registry supports (>80k dots, e.g. 206,895-dot lattice) make 3px overlap vacuous (0.967 for any dot set); reported for transparency, excluded from the duplication gate - see IRREGULARITIES IR90-42."
+  },
+  "raster_sha256": "d1250da6cf86da784e256bf89584e394b23599229f16b58413837ee1e1c30964",
+  "validator_output": {
+    "pass": true,
+    "no_nan_inside": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "catalogue_mass": 0.0,
+    "n_dots": 37654,
+    "encoding": "float32 single band, zeros outside footprint"
+  },
+  "submission_name": "gems90-e3-multiphysics-fusion-37654-20261024",
+  "note": "E3 multi-physics edge fusion dotted 37,654; HOLDOUT-NEGATIVE vs H19-5 baseline - NOT approved to submit.",
+  "experiments_run": 3,
   "ready_to_download_and_submit": false,
+  "download_status": "Available in releases/ for inspection ONLY; do NOT submit - it did not beat the holdout baseline.",
   "verdict": "negative"
 }
