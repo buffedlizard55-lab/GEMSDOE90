@@ -95,7 +95,18 @@ not the first choice for a slot.
 
 Count held at **37,654 unit-mass dots** on `H19-5`; zero catalogue mass; **100% of newly added dots enforce `d_cat >= 3.0 px` strictly** (untouched R0 dots inherit R0's `2.236 px` floor without confounding `RELIEF` with `PRUNE`; IR90-18). Full hashes, parent-diff stats, and report-only `PROXY` diagnostics: `evidence/relief_build_receipt.json`. Re-emit and verify via `.venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_relief_variants.py --verify`.
 
-## 5. Fixed-count A5 along-strike PRUNE (current session)
+## 5a. Continuity-aware MASS drops (`AXIS=MASS`, session 2026-10-23 continuity)
+
+Deletion-only strict subsets of R0 at the shadow ladder's exact counts, ranking identical to §§1–1b plus strand protection (≤ 6 px link graph; ≥ 10-dot strands may not be split; `src/continuity.py`). All 857 R0 strands survive whole at 6 px at every dose; credit price vs shadow +2.7% / +5.8% / +7.4%. Zero catalogue mass; inherited 2.236 px collar floor unchanged (no additions). Full hashes, parent-diff, region-gate and report-only `PROXY` stats: `evidence/mass_continuity_receipt.json`. Re-emit and verify via `.venv/bin/python scripts/build_mass_continuity.py --verify` (after `scripts/restore_data.py`).
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (`<=140` chars) |
+|---|---|---|---|---|
+| **shadowcont-drop 20%** (→ 30,123d; 20.0005% diff) | `releases/h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba.tif` | `…-66d961ba-zeros.tif` | `66d961ba325f3830…` / `038844cd73608598…` | `h33-h33-2-b2; MASS shadowcont-drop 20% -> 30123 dots, all >=1km strands kept; predicted +0.009 MODEL` |
+| **shadowcont-drop 30%** (→ 26,358d; 29.9995% diff) | `releases/h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee.tif` | `…-885f6fee-zeros.tif` | `885f6feed41a50b1…` / `c2b21dd19c0b698a…` | `h33-h33-2-b2; MASS shadowcont-drop 30% -> 26358 dots, all >=1km strands kept; predicted +0.011 MODEL` |
+| **shadowcont-drop 40%** (→ 22,592d; 40.0011% diff) | `releases/h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121.tif` | `…-92be4121-zeros.tif` | `92be4121610708eb…` / `dce335c5b91f4f41…` | `h33-h33-2-b2; MASS shadowcont-drop 40% -> 22592 dots, all >=1km strands kept; predicted +0.013 MODEL` |
+
+Slot guidance is in `SLOT_PLAN.md` (merged order): the add-direction ladder leads the week; shadowcont-20 is the first drop-direction probe (Slot-2 branch if the add sign test is negative; a null add test goes to orthogonal A5/L1), shadowcont-40 is the Slot-3 escalation corner, and shadowcont-30 is held unless a mid-dose slope point is needed — never all three in one week pre-receipt. Upload **one** file per slot — NaN primary, `-zeros` only as encoding fallback.
+## 5b. Fixed-count A5 along-strike PRUNE (current session)
 
 | Candidate | Preferred file (NaN outside) | Fallback twin | Form note (`<=140` chars) |
 |---|---|---|---|
@@ -105,7 +116,7 @@ Count held at **37,654 unit-mass dots** on `H19-5`; zero catalogue mass; **100% 
 
 All three hold **37,654 dots**, emit zero catalogue mass, and preserve R0's `d_cat>2 px` baseline on every final dot. Format receipt, full hashes, parent diffs, PROXY CIs and byte self-check: `evidence/aniso_along_refill_receipt.json`. Restore with `scripts/restore_data.py`; if absent, re-emit with `.venv/bin/python scripts/build_aniso_prune_along.py --build`; then run `--verify`. Upload one encoding only.
 
-**WITHDRAWN — do not upload:** `PRUNEanisoA4L2nr`, `PRUNEanisoA5L2nr`, `PRUNEanisoA6L2nr`; delete-only probes violated the fixed-count PRUNE recipe (IR90-27).
+**WITHDRAWN — do not upload:** `PRUNEanisoA4L2nr`, `PRUNEanisoA5L2nr`, `PRUNEanisoA6L2nr`; delete-only probes violated the fixed-count PRUNE recipe (IR90-29).
 
 ## Format gate (every file, re-read from disk after writing)
 

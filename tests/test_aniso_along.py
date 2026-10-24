@@ -65,7 +65,7 @@ def test_reproduction_reservation_and_withdrawn_files_are_separate() -> None:
     assert report["foreign_duplicates"] == []
     assert report["own_reproduction_rows_present"] == 3
     withdrawn = json.loads((ROOT / "evidence" / "aniso_norefill_receipt.json").read_text(encoding="utf-8"))
-    assert withdrawn["withdrawal"]["irregularity"] == "IR90-27"
+    assert withdrawn["withdrawal"]["irregularity"] == "IR90-29"
     for v in withdrawn["variants"]:
         assert v["status"] == "WITHDRAWN"
         assert not (ROOT / v["files"]["nan"]["path"]).exists()
