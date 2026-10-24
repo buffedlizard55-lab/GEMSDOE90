@@ -1,5 +1,13 @@
 # GEMSDOE90
 
+## Project charter — read before every project task
+
+**Objective:** maximize the probability of a scientifically defensible, valid GEMS competition submission; own the outcome end to end. Build a reproducible research workflow for geothermal-fault discovery, source all external data from free official sources, document provenance and limitations, and provide an obvious, easy-to-download single-band GeoTIFF only when it is genuinely validated for submission.
+
+**Non-negotiable workflow:** review this README and the full [project research/validation brief](docs/REVIEW_AND_NEXT_HYPOTHESES.md) before making changes. Reuse shared feature stacks, holdout evaluation, and submission-writing tools; fix shared defects rather than forking. Validate hypotheses with spatially blocked, segment-withheld hide-and-recover evaluation; derive catalogue features only from visible faults; pixel-exactly mask visible faults; use pooled DTI (alpha 0.2, beta 0.8, 300 m triangular kernel); test every feature alone for leakage. Before and after placement, check similarity against registry rasters and stop on the specified correlation/overlap limits. Label numbers as holdout results (including evaluator version, withheld-positive count, and 95% CI) or organizer-confirmed receipts; never represent projections as scores. Enforce the experiment/time budget and do not select or spend a weekly slot without a separate promotion decision. Validate finite in-footprint probabilities in [0,1], exact CRS/shape/transform, and a clear downloadable submission name/note. Record negative results and end experiment reports with the prescribed JSON run card.
+
+**Integrity:** never claim validation, score, source authentication, or submission readiness without evidence. If data, tools, registry rasters, or account receipts are missing, say so and stop before creating a misleading submission. Do not auto-submit. The detailed current review, hypotheses, required work, source links, and status card are in [`docs/REVIEW_AND_NEXT_HYPOTHESES.md`](docs/REVIEW_AND_NEXT_HYPOTHESES.md).
+
 <!-- CURRENT STATE (edit only this block) -->
 ## CURRENT STATE
 - Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN), 26/26 input pins verified by SHA-256 (`evidence/r0_rebuild_receipt.json`).

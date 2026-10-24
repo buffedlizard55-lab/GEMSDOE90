@@ -1,0 +1,57 @@
+# GEMSDOE90 review and next-step research queue
+
+**Review date:** 2026-10-24 (UTC). This is a repository-state review, not an organizer score report.
+
+## Executive finding
+
+The repository is an auditable experiment ledger and raster-construction toolkit, not the complete autonomous competition pipeline described in the project brief. It contains extensive candidate builders, validators, pinned input manifests, evidence receipts, and duplicate reservations. It does **not** contain the requested cached-feature holdout evaluator (`evaluate_holdout.py`) or a submission writer (`submission_writer.py`), and this checkout has no usable `data/`, `.cache/gems_data/`, or built rasters. Consequently, a new TIFF cannot be generated, independently validated, screened against registry rasters, or holdout-scored in this environment. No score claim or submission-ready artifact is made here.
+
+The repository's own README reports the R0 value 0.2778 as an owner-reported claim without a submission receipt. The prompt's different current-leaderboard value (0.3195, and elsewhere 0.4413) is also not verified in this checkout. Neither value is an organizer-confirmed result. A high ranking among the supplied site names is not causal evidence of why a file scored well; the corresponding raster, recipe, holdout design, and receipt are needed to test that explanation.
+
+## Review observations
+
+- **Strong existing controls:** SHA-256-pinned manifests explicitly distinguish owner mirrors from organizer-authenticated data; experiment ledgers/reservations address duplicates; build receipts record format and diagnostics; scripts state they do not submit or access competition accounts.
+- **Critical reproducibility limitation:** manifest pins establish byte integrity of supplied mirrors, not source authenticity. The manifest also records labels and `existing_faults` as byte-identical. Treat this as an explicit provenance irregularity to resolve against the competition's official download before any scientific interpretation.
+- **Validation gap:** current validators are format/geometry and mechanism-specific gates; repository search found no spatially blocked hide-and-recover evaluator implementing whole-segment withholding, buffers, exact visible-fault masking, pooled DTI, and the specified 300 m triangular kernel.
+- **No automated official feed:** nothing in this checkout verifies live leaderboard values or submission-page receipts. It must not invent or imply live status.
+- **Execution check:** `python -m pytest -q` could not start because `pytest` is absent. Installing dependencies system-wide was blocked by the environment's PEP 668 policy. This is a test-environment limitation, not evidence that tests pass or fail.
+- **No new experiment was run:** under the stated lane/cap and missing-data constraints, producing a candidate now would bypass required holdout and duplicate gates. No weekly slot should be spent.
+
+## Candidate hypotheses for the next authorized research cycle
+
+These are **proposals only**, not experiments, score projections, or validated candidates. Cost is relative to the current Python/raster toolkit. Existing feature names are checked against `registry/data_manifest.json` and existing source/docs as far as this checkout permits; exact held-out results and cross-site raster similarity remain unknown until data and registry rasters are actually available.
+
+| Rank | Hypothesis (layers and signature) | Why it might identify uncatalogued fault-related geothermal structure | Difference from this repository | Cost / limitation |
+|---|---|---|---|---|
+| 1 | **Radiometric contact-edge coherence:** GeoDAWN K, eTh, eU and ratios; multiscale gradient magnitude plus orientation-coherent edge persistence across scales. | Alteration, lithologic juxtaposition, and structurally focused fluid pathways can produce aligned radiometric boundaries; persistence may prefer through-going structures over isolated noise. Only a hypothesis: contacts and regolith also make edges. | Manifest has radiometric and ratio grids, but current reviewed mechanism families emphasize relief, density, placement, and catalogue geometry; no radiometric edge-persistence feature was found in the inspected module list. | Medium. No new data if the mirrored extensions are restored and provenance verified. Must leakage-canary each band/transform independently; contact boundaries are the named non-fault confounder. |
+| 2 | **Magnetic analytic-signal/tilt-angle lineaments:** GeoDAWN TMI and upward continuation; analytic-signal amplitude and tilt derivative, tested as multiscale line/edge responses with orientation continuity. | Magnetic source boundaries can expose buried or weakly expressed structures not mapped at surface. Analytic signal reduces sensitivity to magnetization direction, but geology and cultural noise can mimic lineaments. | The manifest lists TMI and upward-continued TMI; an explicit analytic-signal/tilt-angle lineament feature was not found in the inspected code. | Medium–high. Existing layers may suffice. Must compare to current TMI derivatives and exclude training labels from feature derivation in each holdout fold. |
+| 3 | **Hydrothermal water chemistry / temperature point process:** official GDR 1391 well-and-spring records; spatially validated temperature/chemistry anomaly density and distance-to-anomaly, without using label-derived fault-distance columns. | Geothermal discharge and chemically evolved waters can mark active upflow and permeability; this may prioritize fault intersections missed by a surface fault catalogue. | `registry/data_manifest.json` lists an in-footprint GDR wells/springs table, but no corresponding feature builder was found in `src/`. | High. Existing mirrored table should be restored and licensing/provenance checked; sparse and access-biased sampling is a major confounder. Fold all wells/springs by spatial block to avoid point leakage. |
+| 4 | **Relief-conditioned drainage/lineament interaction:** official USGS 3DEP DEM derivatives; channel-network deviation, drainage-alignment discontinuity, and local valley asymmetry measured across multiple scales. | Fault-controlled drainage can reveal recent/weak structures; conditioning on relief and comparing to matched non-fault terrain may isolate discontinuity from ordinary valleys. | `src/relief.py` and `src/spacing.py` exist; no explicitly drainage-network/topographic-diversion interaction feature was identified in the inspected modules. | High. Lidar-derived feature raster appears in the manifest, but DEM tile completeness is described as 706 of 716 in its provenance. Missing coverage and lithology-driven drainage are confounders. Requires official 3DEP gap audit before viability. |
+| 5 | **Fault-system endpoint/stepover geometry conditional on independent geothermal evidence:** INGENIOUS Q-fault trace attributes plus GDR vent/well/spring points; distance and orientation to endpoints/stepovers, evaluated without using withheld catalogue segments. | Permeability can localize at releasing bends and intersections; geothermally supported endpoint regions may prioritize hidden continuations rather than simply copying mapped traces. | The repository has collar and relief families, but no inspected implementation combining endpoint geometry with fold-clean wells/vents. | High. The manifest lists Q-fault attributes and volcanic vents; confirm official source and coverage. The main confounder is cataloguing bias: known endpoints are not independent evidence. Must derive geometries solely from visible faults per fold. |
+
+**Priority recommendation:** start with hypothesis 1 only after restoring the pinned inputs and building the required holdout evaluator. It requires no proposed third-party source beyond the existing radiometric grids. A candidate is viable only if the evaluator can show improvement against the current internal holdout best, all single-feature canaries are below the stipulated leakage threshold (or leakage is resolved), and both raster-level registry-correlation and dot-overlap checks pass. Stop under the brief's experiment/time cap.
+
+## Source links for verification
+
+- Competition overview: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
+- Competition rules: https://www.drivendata.org/competitions/306/competition-doe-gems/
+- Competition data (login may be required): https://www.drivendata.org/competitions/306/competition-doe-gems/data/
+- Official reference solution: https://github.com/drivendataorg/gems-prize-reference-solution
+- Official USGS GeoDAWN release (DOI in local manifest): https://doi.org/10.5066/P93LGLVQ
+- USGS 3DEP: https://www.usgs.gov/3d-elevation-program
+- GDR submission 1391: https://gdr.openei.org/submissions/1391
+- Competition leaderboard: https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/
+
+Links are supplied for source review; this environment did not access or verify their current contents. Data mirrored in this repository is labeled owner-supplied in the local manifest, not organizer-authenticated.
+
+## Required next technical work (in order)
+
+1. Restore official competition files (or explicitly accept manifest-described mirrors), verify every hash and provenance, and resolve the labels/existing_faults identity.
+2. Implement shared `evaluate_holdout.py`: segment-level spatial folds with buffer; fold-only catalogue feature construction; pixel-exact visible-fault masking; pooled DTI with alpha 0.2, beta 0.8, 300 m triangular kernel; bootstrap/appropriate blocked uncertainty intervals; feature-alone leakage canaries.
+3. Add registry raster retrieval or a documented local-only registry input interface. Enforce rank-correlation and 3-pixel dot-overlap stopping checks before placement and on final outputs.
+4. Implement/repair a single `submission_writer.py` that writes only the official template grid, validates CRS/shape/transform, one float band, finite in-footprint values in [0,1], and explicit outside-footprint policy, then emits an unambiguous filename and <=140-character note. Never upload automatically.
+5. Run the five hypotheses as preregistered experiments only within the experiment/time cap; record negative results. Do not promote or use a competition slot without a holdout win and a separate selector decision.
+
+## Run card (this review)
+
+{"hypothesis":"No new candidate raster; review of existing builder/validator repository and prioritization of five untested feature hypotheses.","mechanism":"Inspection only; no feature computation, placement, holdout, or scoring executed.","named_non_fault_mimic":"Lithologic contacts and regolith can mimic radiometric/magnetic edges; ordinary drainage and sampling bias can mimic the other proposed mechanisms.","holdout_dti_ci":"NOT RUN; evaluator absent and required rasters not present.","correlation_overlap_vs_registry":"NOT RUN; registry raster files unavailable in this checkout.","raster_sha256":null,"validator_output":"NOT RUN; no candidate raster exists. No NaN/range/CRS/shape/transform result asserted.","submission_name":"NONE — no TIF generated","submission_note":"No download or submission: holdout evaluator and input rasters unavailable.","verdict":"negative"}
