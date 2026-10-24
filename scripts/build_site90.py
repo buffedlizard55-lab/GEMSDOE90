@@ -25,6 +25,41 @@ DOCS = ROOT / "docs"
 DOWN = DOCS / "downloads"
 
 
+def parallel_lane_section() -> str:
+    """Truthful summary of the parallel edge-persistence lane merged from main
+    (PR #32), generated from its own run card so this page never overclaims it."""
+    rc_path = DOCS / "run-card.json"
+    add_path = EVID / "lane90_crosslane_addendum.json"
+    if not rc_path.is_file():
+        return ""
+    rc = json.loads(rc_path.read_text())
+    h = rc.get("holdout", {})
+    cross = ""
+    if add_path.is_file():
+        a = json.loads(add_path.read_text())
+        cross = (
+            f" Cross-lane uniqueness vs the H1 file above (E3 raster byte-reproduced, "
+            f"Spearman {a['surface_spearman_H1_vs_E3']}, dot overlap "
+            f"{a['H1_dots_within_3px_of_E3_dots']}): <b>distinct lanes, not duplicates</b> "
+            f"(<code>evidence/lane90_crosslane_addendum.json</code>)."
+        )
+    return f"""
+<h2>Parallel lane on main — catalogue-free edge persistence (🔴 NOT approved)</h2>
+<p>A second 2026-10-24 lane (radiometric/magnetic/gravity/strain/topo edge-persistence fusion,
+file <code>gems90-e3-multiphysics-fusion-37654-20261024.tif</code>, SHA-256
+<code>{rc.get('raster_sha256', '')}</code>) is format-valid and unique but <b>lost</b> its
+whole-segment holdout to the fold-clean H19-5 dotted baseline
+(E3 HOLDOUT-DTI {h.get('E3_multiphysics_fusion', {}).get('value')} vs baseline
+{h.get('baseline_foldclean_h19_dotted', {}).get('value')}, {h.get('withheld_positives')} withheld
+positives, {h.get('evaluator_version')}). Verdict: <b>negative — do not submit that file</b>;
+it is not hosted here.{cross}</p>
+<p>Full record: <a href="edge-lane.html">edge-lane dashboard (preserved)</a> ·
+<a href="executive-summary.html">executive summary &amp; submission steps</a> ·
+<a href="run-card.json">edge-lane run card (JSON)</a> ·
+<a href="session-review.md">research audit</a> ·
+<a href="REVIEW_AND_NEXT_HYPOTHESES.md">repository review &amp; next hypotheses</a></p>"""
+
+
 def main() -> int:
     final = json.loads((EVID / "lane90_final_receipt.json").read_text())
     hold = json.loads((EVID / "lane90_holdout_receipt.json").read_text())
@@ -145,6 +180,7 @@ owner-reported CLAIMs unless a submission-page receipt is recorded in the ledger
 .venv/bin/python scripts/run_lane90.py final --arm {final['arm'][0]} --budget {final['n_dots']}
 .venv/bin/python -m src.validate releases/{name} .cache/gems_data/sample_submission.tif --catalogue .cache/gems_data/existing_faults.tif --zeros-outside
 .venv/bin/python scripts/build_site90.py            # regenerates this page from the receipts</pre>
+{parallel_lane_section()}
 <h2>Official sources</h2>
 <ul>
 <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS competition</a> ·

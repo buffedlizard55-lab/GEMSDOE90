@@ -75,6 +75,21 @@ owner-reported CLAIMs unless a submission-page receipt is recorded in the ledger
 .venv/bin/python scripts/run_lane90.py final --arm B --budget 40000
 .venv/bin/python -m src.validate releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif .cache/gems_data/sample_submission.tif --catalogue .cache/gems_data/existing_faults.tif --zeros-outside
 .venv/bin/python scripts/build_site90.py            # regenerates this page from the receipts</pre>
+
+<h2>Parallel lane on main — catalogue-free edge persistence (🔴 NOT approved)</h2>
+<p>A second 2026-10-24 lane (radiometric/magnetic/gravity/strain/topo edge-persistence fusion,
+file <code>gems90-e3-multiphysics-fusion-37654-20261024.tif</code>, SHA-256
+<code>d1250da6cf86da784e256bf89584e394b23599229f16b58413837ee1e1c30964</code>) is format-valid and unique but <b>lost</b> its
+whole-segment holdout to the fold-clean H19-5 dotted baseline
+(E3 HOLDOUT-DTI 0.079485 vs baseline
+0.13943, 11092 withheld
+positives, evaluate_holdout.py v1 (whole-component, 5px buffer, pooled DTI a0.2/b0.8 R3px, 20km block bootstrap)). Verdict: <b>negative — do not submit that file</b>;
+it is not hosted here. Cross-lane uniqueness vs the H1 file above (E3 raster byte-reproduced, Spearman 0.2233, dot overlap 0.1439): <b>distinct lanes, not duplicates</b> (<code>evidence/lane90_crosslane_addendum.json</code>).</p>
+<p>Full record: <a href="edge-lane.html">edge-lane dashboard (preserved)</a> ·
+<a href="executive-summary.html">executive summary &amp; submission steps</a> ·
+<a href="run-card.json">edge-lane run card (JSON)</a> ·
+<a href="session-review.md">research audit</a> ·
+<a href="REVIEW_AND_NEXT_HYPOTHESES.md">repository review &amp; next hypotheses</a></p>
 <h2>Official sources</h2>
 <ul>
 <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS competition</a> ·
