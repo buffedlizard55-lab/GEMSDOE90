@@ -1,45 +1,28 @@
-# SLOT PLAN — one entity, 3 slots/week (last edit 2026-10-23, session `AXIS=MASS` add direction)
+# SLOT PLAN — integrated MASS-add / continuity / fixed-count PRUNE (2026-10-23)
 
-**Incumbent R0:** `h33-h33-2-b2` (37,654 unit-mass dots, rebuilt byte-identically; `0.2778` is **CLAIM** until a portal receipt is logged). `TOP_PUBLIC` (with date) and weekly/total quota used are blank and must be supplied by the human before any upload. Quota is ONE entity at 3 scored submissions/rolling week and ONE blind final submission per official rules (https://docs.nlr.gov/docs/fy26osti/96647.pdf; problem/metric spec: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/). Any public-chunk live `|Δ| < 0.010` DTI is **no evidence**.
+**R0:** `h33-h33-2-b2`, 37,654 dots; 0.2778 is **CLAIM**, not a receipt. Human supplies dated `TOP_PUBLIC`, quota use, and confirms 2026-12-03. ONE entity, 3 scored slots/rolling week, ONE blind final ([rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)). Live `|Δ|<0.010` is **no evidence**; private chunks can differ.
 
-**Why `AXIS=RELIEF` (session 2026-10-23d).** Equal-area landform relief terciles (`0.85·pct(det_elev) + 0.15·pct(gaussian_3km(det_elev_slope))`) show R0 allocates **17.2% Basin / 44.8% Piedmont / 37.9% Range-front**, whereas the USGS/INGENIOUS catalogue sits at **28.2% / 42.6% / 29.2%** (known pixels masked pixel-exactly; adjacent new faults scored: https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516) and off-catalogue USGS SGMC bedrock faults sit at **9.3% / 24.9% / 65.7%**. Undisclosed test sources (https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527) and 400 m GeoDAWN line spacing (https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) make physiographic allocation an orthogonal single-axis lever alongside `MASS` and `PRUNE`, holding count at 37,654 on `H19-5` with `d_cat >= 3.0 px` on 100% of additions.
+## Next 3 slots (NaN primary only; human decides)
 
-## Session 2026-10-23e (this branch): `AXIS=MASS`, ADD direction — the first region-even add rung
+| Order | Candidate(s), predicted Δ (`MODEL`) | Decision from receipt |
+|---|---|---|
+| **1** | `h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c.tif` — **+0.008** | `Δ>=+0.010`: add sign pays; Slot 2 = q50-10. `Δ<=-0.010`: close adds for now; Slot 2 = continuity-aware drop **shadowcont20**. `|Δ|<0.010`: no evidence; Slot 2 = orthogonal fixed-count **A5/L1**. |
+| **2** | Add branch: `…MASSadd10pctq50-20261023-5edc84de.tif` — **+0.014**. Negative-add branch: `…MASSshadowcont20pct-20261023-66d961ba.tif` — **+0.009**. Null-add branch: `…PRUNEanisoA5L1-20261023-cd2c60ce.tif` — **+0.005** | Add: rising `Δ` licenses q50-20; flat but positive favors matched-placement blocknext10; negative closes the ladder. Continuity: `Δ>=+0.010` → shadowcont40; `Δ<=-0.010` → shadow20 to separate dose from protection. PRUNE: `Δ>=+0.010` → L0.5; `Δ<=-0.010` → recorded A5/L2; null → shadowcont20. |
+| **3** | Add: `…MASSadd20pctq50-20261023-f94efff4.tif` — **+0.022**, or matched-dose `…MASSadd10pctBlocknext-20261023-89d16c16.tif` — **+0.0044**. Continuity: `…MASSshadowcont40pct-20261023-92be4121.tif` — **+0.013** / `…MASSshadow20pct-…-c4ce118b.tif` — **+0.009**. PRUNE: `…PRUNEanisoA5L0p5-…-91ff3771.tif` — **+0.003** / recorded **A5/L2** / shadowcont20 | Take exactly one conditional arm. q50-20 requires two positive add receipts and a rising slope; blocknext10 isolates placement at matched dose/geography. L0.5 follows only a positive L1; A5/L2 follows only a negative L1. A null result never licenses a same-axis dose guess. |
 
-Built `MASSadd5pctq50` / `MASSadd10pctq50` / `MASSadd20pctq50` from byte-identical R0: +1,883 / +3,765 / +7,531
-unit dots chosen by **exact marginal kernel credit** on the H19-5 support, apportioned over **5 km blocks in
-proportion to the block's R0 dot count** (largest remainder + water fill), every addition `d_cat >= 3 px`, no
-deletion, no move (`evidence/mass_infill_receipt.json`). Why the add side: the delete side is fully instrumented
-(10/20/30/40/48 % + random control) while every recorded add rung — this repo's withdrawn `add5pct-next` /
-`add20pct-next` and the sibling `plus10pct` family — ranks by the parent's FIFO-BFS order, which IR90-20 measured to
-be geographic. Mechanism: R0's thinning enforces 2.8 px spacing against a 3 px kernel, so a strand pixel midway
-between two dots can reach only ~0.53 credit; the per-dot ceiling is 1/D for an addition versus 0.2/D for a
-deletion. Evenness is preserved: block-density CV 0.726 → 0.728 / 0.726 / 0.730, occupied blocks unchanged at 1,788,
-max 4 / 9 / 18 additions in any one block.
+Retained but not slotted first: **A5/L1.5** (+0.004), `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadowcont30pct` (+0.011), `MASSshadow40pct` (+0.014), and `MASSrandom40pct` (+0.013). They remain valid single-axis candidates; do not spend a slot on any WITHDRAWN FIFO/gapmax/no-refill row or on infeasible SNAP.
 
-**The predictions are MODEL and the raw model is 8-10x larger than the adopted number** (raw +0.07 / +0.13 / +0.22
-DTI). The adopted +0.008 / +0.014 / +0.022 applies a documented 0.10 transfer discount, because the first-order
-model assumes the truth set is an unbiased sample of the H19-5 support, and it is not: the lineage's own thinning and
-collar concentrated coverage where it was most confident, so the residual credit deficit is concentrated where it was
-least confident. That discount is a judgement, not a measurement (IR90-23).
+## Calendar to deadline (`2026-12-03` UNVERIFIED — human confirms)
 
-## Next 3 slots in order (one entity; upload NaN `.tif` primary only, never both twins)
+- **Weeks 1–2 (Oct 23–Nov 5):** obtain R0's receipt if possible; execute the conditional order, then only the strongest orthogonal mechanism. No exact-hash or `(AXIS,value)` repeats.
+- **Weeks 3–4 (Nov 6–Nov 19):** combine only axes with receipts `Δ>=+0.010`; reserve one slot for parent-vs-composite. q50-20 remains available only if the add slope rises.
+- **Weeks 5–6 (Nov 20–Dec 3):** confirm the leader, select ONE blind final plus a `-zeros` fallback, and revalidate both. Account for private chunks and expert-expanded labels ([clarification](https://community.drivendata.org/t/where-do-you-draw-the-line/11536)).
 
-| Slot | Candidate | Predicted Δ vs R0 (`MODEL`) | Decision rule from live receipt |
-|---|---|---|---|
-| 1 | `h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c.tif` (+1,883d → 39,537) | **+0.008** (-0.004 to +0.030) | Cheapest decisive sign test of the whole mass axis. `Δ >= +0.010`: the truth is line-like and under-sampled — go to Slot 2 and licence a same-week thinned file. `Δ <= -0.010`: mass behaves as pure penalty, the add direction closes, and Slot 3 becomes `MASSshadow40pct`. `|Δ| < 0.010`: no evidence; Slot 2 becomes `MASSshadow40pct` to test the opposite sign. |
-| 2 | Conditional on Slot 1: `h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de.tif` (+3,765d → 41,419) if Slot 1 `Δ >= +0.010`; else `h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba.tif` (20% continuity-aware drop → 30,123d; all 857 ≥1 km strands whole at 6 px; `evidence/mass_continuity_receipt.json`) | **+0.014** (-0.008 to +0.045) / **+0.009** (point +0.0088; +0.001 to +0.048) | Add branch: slope between two add doses — rising Δ vs Slot 1 ⇒ under-dosed, take `add20pctq50` in Slot 3; flat/falling ⇒ deficit exhausted at ~5 %. Drop branch (Slot 1 null/negative): first drop-direction probe with strands intact — `Δ >= +0.010` ⇒ escalate to `MASSshadowcont40pct` vs `MASSshadow40pct`/`MASSrandom40pct` next week; `Δ <= -0.010` ⇒ test `MASSshadow20pct` to separate dose failure from protection failure. |
-| 3 | Conditional: `h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4.tif` **or** `h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121.tif` (→ 22,592d) **or** `h33-h33-2-b2-MASSshadow40pct-20261023-e2546fbe.tif` | **+0.022** / **+0.013** / **+0.014** | Take `add20pctq50` only if both add receipts were positive. If Slot 2 was the drop branch and cleared `+0.010`, take `shadowcont40` (matched-count corner vs the recorded `shadow40`/`random40` pair, which then head next week). Otherwise take `MASSshadow40pct` so the week still returns a sign test on the mass axis at matched dose magnitude, not a second null. |
+**PRUNE receipt:** `evidence/aniso_along_refill_receipt.json`; all three candidates hold 37,654 dots and `d_cat>2 px`. Canary max AUC 0.5695; catalogue n=13,920 and SGMC n=62,122 are **PROXY / REPORT ONLY**, with 95% CIs, never gates or scores. Predictions were frozen first.
 
-Retained but not slotted this week: `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadow20pct`
-(+0.009), `MASSshadowcont30pct` (+0.011; mid-dose continuity rung, held unless the drop branch needs a slope point). They stay valid; the add ladder is ordered first because it is the only arm whose sign is genuinely
-unknown and whose ceiling (1/D per dot) is five times the deletion ceiling.
+**Continuity receipt:** `evidence/mass_continuity_receipt.json`; all 857 R0 strands survive whole at 6 px at every dose. State the link distance in geological review (IR90-27).
 
-## Calendar to deadline (`2026-12-03` UNVERIFIED — human confirms on competition page)
-
-- **Weeks 1–2 (Oct 23 – Nov 5, max 6 slots):** Confirm R0 live receipt first if missing; run Slots 1–3 above, then remaining orthogonal single-axis checks (`MASSshadow40pct` vs `MASSrandom40pct`, `PRUNEanisoA4L2` vs `PRUNE3p5px`) without repeating any `(AXIS, value)`.
-- **Weeks 3–4 (Nov 6 – Nov 19, max 6 slots):** Combine the two axes whose live receipts cleared `Δ >= +0.010` (e.g., winning `RELIEF` tercile shift × winning `MASS` thinning or `PRUNE` collar) on exact parent code.
-- **Weeks 5–6 (Nov 20 – Dec 3, max 6 slots + 1 blind final):** Confirm top composite, select ONE blind final `.tif` (accounting for private chunks + Phase 2 expert-expanded faults: https://community.drivendata.org/t/where-do-you-draw-the-line/11536) and its `-zeros.tif` fallback, and re-run `scripts/restore_releases.py` + `src/validate.py` before upload.
+**Future axis, not built — `REFILL_RANK`:** use 5 km-block-stratified exact marginal-kernel refill at fixed collar/count. *Mechanism:* reduce ~98% redundant refill without regional holes. *Confounder:* H19-5 contacts/drainages and quotas are not truth. *Falsifier:* paired live `Δ<=-0.010` or region-evenness failure. `COLLAR_NOREFILL` is withdrawn (IR90-29); cross-strike SNAP is infeasible for 30 dots (IR90-28).
 
 ## Report-only diagnostics (`PROXY` / `REPORT ONLY` — never gates, never scores)
 
@@ -74,7 +57,7 @@ link distance. Credit price +2.7/+5.8/+7.4% vs shadow; predictions `MODEL` +0.00
 choice audit: all seven axes built sibling-side, zero receipts entity-wide, brief-literal CONCENTRATION-up
 ≤ 0 on GEMSDOE86's SGMC MODEL at every built dose (IR90-26), converging with this repo's IR90-25
 credit-uniformity measurement — do not spend a slot re-cutting it. In the merged order above, shadowcont-20
-is the first drop-direction probe (Slot 2 drop branch / Slot 3 escalation); it does not displace the
+is the first drop-direction probe (negative-add Slot 2 branch / Slot 3 escalation); it does not displace the
 add-direction sign test that now leads the week.
 
 ## Better axes proposed (all sessions — not built)
@@ -92,20 +75,19 @@ add-direction sign test that now leads the week.
   exclusive credit equals the isolated maximum 9.42) instead of deleting. *Mechanism:* maximises ΣE per
   retained dot. *Confounder:* 600 m spacing cannot trace a 300 m-offset strand pair. *Falsifier:* paired
   Δ ≤ −0.010 against `shadow48`.
-- **COLLAR_NOREFILL:** strike-aligned collar, mass allowed to fall. *Confounder:* mass and geometry move together.
-  *Falsifier:* paired live Δ ≤ −0.010, or a gain no larger than the isotropic no-refill rungs.
+- **COLLAR_NOREFILL:** **WITHDRAWN (IR90-29)** — A4/A5/A6,L2 probes changed mass as well as geometry and violated this session's fixed-count refill recipe. Do not upload or use as a follow-up.
 - **REDUNDANCY_BUDGET:** drop dots whose 300 m kernel disk is ≥ 90 % covered by neighbours, no refill.
   *Mechanism:* `T` is a max-credit sum, so fully covered mass is pure penalty. *Confounder:* real parallel strands
   legitimately overlap. *Falsifier:* paired live Δ ≤ −0.010.
-- **CROSS_STRIKE_RIDGE_SNAP:** Snap R0 dots `<=2 px` strictly orthogonal to local `H19-5` strike onto high-pass magnetic tilt (`tc`) + `det_elev_slope` ridges (raw `tmi_hg`/`iso_grav_anom_slope` window-max pulls 84–86% of dots off `H19-5` due to multi-km wavelength). *Confounder:* dipping lithologic contacts offset magnetic gradients downdip from surface fault traces. *Falsifier:* paired live `Δ <= -0.010` vs R0.
+- **CROSS_STRIKE_RIDGE_SNAP:** **INFEASIBLE under current constraints (IR90-28)**; do not build unless a constraint changes. Historical proposal: snap R0 dots `<=2 px` strictly orthogonal to local `H19-5` strike onto high-pass magnetic tilt (`tc`) + `det_elev_slope` ridges (raw `tmi_hg`/`iso_grav_anom_slope` window-max pulls 84–86% of dots off `H19-5` due to multi-km wavelength). *Confounder:* dipping lithologic contacts offset magnetic gradients downdip from surface fault traces. *Falsifier:* paired live `Δ <= -0.010` vs R0.
 - **STRAND_CONTINUITY_REBUDGET:** Reallocate or thin R0 dots while preserving `>=1 km` along-strike strand continuity (addressing `MASSshadow40pct` dropping all 838 `>=1 km` strands) by replacing short `<500 m` `H19-5` fragments with `2.8 px`-spaced extensions on multi-km corridors. *Confounder:* long unfaulted dikes, hogbacks, or pluvial shorelines also form multi-km corridors. *Falsifier:* paired live `Δ <= -0.010` vs R0 (or `<= -0.005` vs matched-count `MASSrandom`).
 
 ## Confounds stated, not hidden
 
 - **The count-held refills are dilutive.** 98.7–99.5 % of the collar variants' refill dots land within 3 px of a
   retained dot (median 1.00 px) and replace a dot a median 845–888 px away: mostly penalty, little fresh credit.
-  That is why the collar predictions net to ≈ 0 (IR90-12). If a collar receipt is null, the next test is the same
-  collar **without** refill — not a wider collar.
+  That is why the collar predictions net to ≈ 0 (IR90-12). If a collar receipt is null, the next proposed test is
+  **REFILL_RANK at fixed collar and count**, not a wider collar; delete-only COLLAR_NOREFILL is withdrawn (IR90-29).
 - **Both ladders share one parent and one 2026-10-23 build.** A positive receipt on slot 1 does not validate the
   collar, and vice versa; only the paired receipts compare.
 - **The deep ladder trades continuity for credit.** At 5 px linking `shadow40` keeps 0 of R0's 838 ≥ 1 km

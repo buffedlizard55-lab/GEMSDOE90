@@ -298,6 +298,60 @@
     ],
     "note": "No prior MASS add row exists in this ledger (the three FIFO add/drop rungs are WITHDRAWN, IR90-20). Sibling GEMSDOE84/86/87 'MASS +10%/+20%' rows use the global FIFO order and are not region-even; these values are string- and mechanism-distinct (per-block quotas propto R0 count). Repeat builds of these (MASS, tag) pairs fail closed. Superseded in part by IR90-24: add10pctGapmax duplicates main's MASSadd10pctq50 and is WITHDRAWN; blocknext tags remain live."
   },
+  "aniso_norefill_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "PRUNE",
+    "parent": "h33-h33-2-b2",
+    "occupied_tags": [
+      "anisoA4L2-norefill",
+      "anisoA5L2-norefill",
+      "anisoA6L2-norefill"
+    ],
+    "occupied_values": [
+      "tag=anisoA4L2-norefill; collar across<=4px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag=anisoA5L2-norefill; collar across<=5px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag=anisoA6L2-norefill; collar across<=6px, along<=2px (strike-aligned); strict R0 subset; no refill"
+    ],
+    "sibling_ledgers_checked": [
+      "GEMSDOE84",
+      "GEMSDOE85",
+      "GEMSDOE86",
+      "GEMSDOE87",
+      "GEMSDOE88",
+      "GEMSDOE89",
+      "GEMSDOE90",
+      "GEMSDOE91",
+      "GEMSDOE92"
+    ],
+    "note": "Sibling delete-only collars are isotropic. These three matched anisotropic no-refill pairs are distinct from both those and the existing anisotropic fixed-count refill pairs."
+  },
+  "aniso_along_refill_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "PRUNE",
+    "parent": "h33-h33-2-b2",
+    "occupied_tags": [
+      "anisoA5L1p5",
+      "anisoA5L1",
+      "anisoA5L0p5"
+    ],
+    "occupied_values": [
+      "tag=anisoA5L1p5; collar across<=5px, along<=1.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag=anisoA5L1; collar across<=5px, along<=1px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag=anisoA5L0p5; collar across<=5px, along<=0.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill"
+    ],
+    "sibling_ledgers_checked": [
+      "GEMSDOE84",
+      "GEMSDOE85",
+      "GEMSDOE86",
+      "GEMSDOE87",
+      "GEMSDOE88",
+      "GEMSDOE89",
+      "GEMSDOE90",
+      "GEMSDOE91",
+      "GEMSDOE92"
+    ],
+    "note": "All three pairs hold 37,654 dots. They are distinct from the recorded A4/A5/A6 L=2 family and from all audited sibling isotropic values."
+  },
   "mass_continuity_20261023": {
     "checked_utc": "2026-10-23",
     "scope": "Session 2026-10-23 continuity-aware MASS (branch arena/0e9b3fd9-gemsdoe90). Fresh read-only audit via gh api of ledger/submissions.csv in buffedlizard55-lab/GEMSDOE84-GEMSDOE92 (GEMSDOE93-101 have no ledger file) plus this repo. Axis rows found: PRUNE 68, SNAP 58, MASS 44, CONCENTRATION 33, RELIEF 27, SPACING 16, TRACKB 9; receipt_score values found: 0. No MASS value anywhere carries a continuity, strand, backbone or articulation rule; the string 'shadowcont' appears in no ledger or reservations file before this session.",
