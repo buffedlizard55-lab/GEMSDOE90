@@ -45,7 +45,7 @@ ol li{margin:7px 0}
 <p class="mut">DOE GEMS Prize (DrivenData #306) — credit-efficient hidden-fault discovery,
 auditable end to end.</p>
 <nav><a href="index.html">Submission</a><a href="how-to-submit.html">How to submit</a>
-<a href="method.html">Method &amp; evidence</a>
+<a href="method.html">Method &amp; evidence</a><a href="lane-h90.html">Lane H90</a>
 <a href="https://github.com/buffedlizard55-lab/GEMSDOE90">Repository</a></nav>
 </div></header><div class="wrap">
 <h2 style="margin-top:22px">Executive summary</h2>
@@ -165,6 +165,11 @@ is the one with real score feedback behind it, and this one has only the holdout
 <h2>Format gate (re-read from the written file)</h2>
 <table><tr><th style="width:280px">check</th><th>value</th></tr><tr><td>CRS</td><td>EPSG:32611 (matches sample_submission.tif)</td></tr><tr><td>Shape</td><td>3730 x 3292 @ 100 m</td></tr><tr><td>Bands / dtype</td><td>1 / float32</td></tr><tr><td>Values inside footprint</td><td>min 0.0, max 1.0 — inside [0,1]</td></tr><tr><td>Non-finite pixels (whole raster)</td><td>0 — the upload form rejects NaN</td></tr><tr><td>Outside footprint</td><td>0.0 (all-finite encoding)</td></tr><tr><td>Positive pixels (dots)</td><td>35,000</td></tr><tr><td>Total predicted mass</td><td>35,000</td></tr><tr><td>Mass on catalogued faults</td><td>0 (those pixels are masked from scoring)</td></tr><tr><td>SHA-256</td><td>e1e91be23d763ee184839f38a22aa573d6c957aac8fd0038a680cf6615ef41eb</td></tr><tr><td>File size</td><td>241,734 bytes</td></tr><tr><td>Format gate</td><td>PASS</td></tr></table>
 
+<h2>Other candidates published in this repository</h2>
+<p>Parallel sessions publish their own lanes. Each is a separate experiment with its own receipt;
+only one file may ever be uploaded per weekly slot, and choosing between them is a human decision.</p>
+<table><tr><th>lane / file</th><th>size</th><th>sha256</th><th>page</th></tr><tr><td><a href="downloads/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif" download><code>gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif</code></a></td><td>194 KB</td><td><code>04af0861de0aed0b018f209dfbb453c46af8eb22f0407c7b251c866b9f653f81</code></td><td>gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif<br><a href="lane-h90.html">lane portal</a> &middot; <a href="executive-summary.html">its summary</a></td></tr><tr><td><a href="downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif" download><code>gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif</code></a></td><td>129 KB</td><td><code>637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51</code></td><td>GEMSDOE90-H90-CC-MPST-D76AC964<br><a href="lane-h90.html">lane portal</a> &middot; <a href="executive-summary.html">its summary</a></td></tr></table>
+
 <h2>Official sources</h2>
 <ul>
 <li>Competition &amp; rules: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></li>
@@ -180,7 +185,7 @@ is the one with real score feedback behind it, and this one has only the holdout
  Metric family: <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></li>
 </ul>
 
-<footer>Generated 2026-10-24 08:43 UTC by
+<footer>Generated 2026-10-24 08:50 UTC by
 <code>scripts/build_site.py</code> from the JSON receipts in <code>evidence/</code>.
 Scores copied from the owner's submission list are labelled OWNER-REPORTED; no
 organizer receipt is on file in this repository. Local measurements are labelled

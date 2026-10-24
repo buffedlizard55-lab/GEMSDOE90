@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "automated_without_human_intervention": true,
+  "verdict": "promote",
+  "ui_badge": "AUTOMATED GATE: PROMOTED \u2014 OK TO DOWNLOAD & SUBMIT",
+  "ui_guidance": "All 15 technical/portal/canary/uniqueness checks PASSED AND candidate beat all leak-free baselines plus the fold-fair R0 reference with 95% paired block-bootstrap CI > 0. Cleared for selector consideration within the 3/week DrivenData cap.",
+  "technical_portal_ready": true,
+  "beats_leakfree_baselines": true,
+  "beats_incumbent_holdout_ref": true,
+  "technical_checks": {
+    "native_validate_geotiff_ok": true,
+    "gems57_validate_all_checks_passed": true,
+    "gems57_format_report_ok": true,
+    "crs_epsg_32611": true,
+    "shape_3730x3292": true,
+    "transform_exact_match": true,
+    "all_12279160_cells_finite": true,
+    "nodata_tag_none": true,
+    "values_strictly_in_0_1": true,
+    "zero_positive_outside_footprint": true,
+    "zero_positive_on_catalogue": true,
+    "zip_single_geotiff_bit_exact": true,
+    "submission_name_and_note_le_140_chars": true,
+    "leakage_canary_all_le_090": true,
+    "parallel_run_uniqueness_passed": true
+  },
+  "file": {
+    "tif_name": "gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif",
+    "tif_bytes": 132454,
+    "tif_sha256": "637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51",
+    "zip_name": "gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.zip",
+    "zip_bytes": 94680,
+    "zip_sha256": "85fffcd6ba9c46a99b03d69ddf42b214a8eca1507f4840f47344979a2d75464d",
+    "emitted_dots": 38000,
+    "footprint_fraction": 0.007354,
+    "min": 0.0,
+    "max": 1.0,
+    "n_nan": 0,
+    "nodata": null
+  },
+  "submission_form": {
+    "submission_name": "GEMSDOE90-H90-CC-MPST-D76AC964",
+    "submission_note": "GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 | 38000 dots B>2 | HOLDOUT-DTI all=0.1068 det=0.1059",
+    "submission_note_chars": 92
+  },
+  "holdout_dti_primary_all": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.10681102710719666,
+    "ci95": [
+      0.0965726408749567,
+      0.11671306757368184
+    ],
+    "withheld_positive_pixels": 22641,
+    "tpw": 3458.015280685377,
+    "fpw": 67853.37223032866,
+    "fnw": 19182.984719314623
+  },
+  "holdout_dti_conservative_detached": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.10586429276468862,
+    "ci95": [
+      0.09293713734506433,
+      0.11801700396901571
+    ],
+    "withheld_positive_pixels": 22619,
+    "tpw": 3417.185998144141,
+    "fpw": 67501.45939658495,
+    "fnw": 19201.81400185586
+  },
+  "paired_differences_primary_all": {
+    "c0_random_isolated": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.06548618844789748,
+      "ci95": [
+        0.05546900145381989,
+        0.07527227170509386
+      ],
+      "withheld_positive_pixels": 22641
+    },
+    "c1_classical_ridge": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.059489066693768175,
+      "ci95": [
+        0.04687463001001812,
+        0.07251258265124155
+      ],
+      "withheld_positive_pixels": 22641
+    },
+    "exp1_unsupervised_mpst": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.06458788445731196,
+      "ci95": [
+        0.051431431097978465,
+        0.07691738315008287
+      ],
+      "withheld_positive_pixels": 22641
+    },
+    "exp2_nested_loqo_blind_worm": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.007506173607821687,
+      "ci95": [
+        -0.0037872086584865928,
+        0.01905412233043795
+      ],
+      "withheld_positive_pixels": 22641
+    },
+    "ref_fair_r0_vis_b2": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.015850057464525696,
+      "ci95": [
+        0.006253390871374447,
+        0.02533879732805666
+      ],
+      "withheld_positive_pixels": 22641
+    }
+  }
+}

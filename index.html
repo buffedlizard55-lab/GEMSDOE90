@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEMSDOE90 — submission</title><style>
+:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--fg:#e6edf3;--mut:#9198a1;
+--ok:#2ea043;--warn:#d29922;--bad:#f85149;--acc:#58a6ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,
+"Segoe UI",Helvetica,Arial,sans-serif}
+header{padding:28px 20px 18px;border-bottom:1px solid var(--line);background:#010409}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+h1{margin:0 0 4px;font-size:28px}h2{margin:34px 0 10px;font-size:21px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{margin:22px 0 8px;font-size:17px}
+p,li{color:var(--fg)}.mut{color:var(--mut)}
+a{color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0}
+.ready{border-color:var(--ok);box-shadow:0 0 0 1px rgba(46,160,67,.35)}
+.notready{border-color:var(--bad);box-shadow:0 0 0 1px rgba(248,81,73,.35)}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:700}
+.b-ok{background:rgba(46,160,67,.18);color:#56d364;border:1px solid var(--ok)}
+.b-bad{background:rgba(248,81,73,.15);color:#ff7b72;border:1px solid var(--bad)}
+.b-warn{background:rgba(210,153,34,.15);color:#e3b341;border:1px solid var(--warn)}
+.dl{display:inline-block;background:var(--ok);color:#fff;font-weight:700;font-size:18px;
+padding:14px 26px;border-radius:9px;text-decoration:none;margin:10px 12px 10px 0}
+.dl:hover{filter:brightness(1.1)}
+.dl2{display:inline-block;border:1px solid var(--line);color:var(--fg);padding:13px 20px;
+border-radius:9px;text-decoration:none;margin:10px 0}
+code,kbd{background:#010409;border:1px solid var(--line);border-radius:5px;padding:1px 6px;
+font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
+pre{background:#010409;border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#1c2128}
+tr:nth-child(even) td{background:#12171d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:14px 0}
+.kv{background:#010409;border:1px solid var(--line);border-radius:8px;padding:12px}
+.kv b{display:block;font-size:22px;margin-bottom:2px}
+.kv span{color:var(--mut);font-size:13px}
+nav a{margin-right:18px;font-weight:600}
+footer{margin:46px 0 26px;color:var(--mut);font-size:13px}
+ol li{margin:7px 0}
+</style></head>
+<body><header><div class="wrap">
+<h1>GEMSDOE90</h1>
+<p class="mut">DOE GEMS Prize (DrivenData #306) — credit-efficient hidden-fault discovery,
+auditable end to end.</p>
+<nav><a href="index.html">Submission</a><a href="docs/how-to-submit.html">How to submit</a>
+<a href="docs/method.html">Method &amp; evidence</a><a href="lane-h90.html">Lane H90</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE90">Repository</a></nav>
+</div></header><div class="wrap">
+<h2 style="margin-top:22px">Executive summary</h2>
+<div class="card ready"><span class="badge b-ok">OK TO DOWNLOAD AND SUBMIT</span><p style="margin:10px 0 0">The file below passed every gate: single-band float32 GeoTIFF on the official grid, all values finite and in [0,1], no mass on catalogued faults, and it is not a duplicate of any raster in the registry. Spending a weekly slot on it is still a human decision.</p>
+<h3 style="margin-top:14px">Submission file: <code>gems90-cnc-35000dots-20261024T084324Z.tif</code></h3>
+<p>One click, one file, nothing else to prepare. It is a single-band float32 GeoTIFF on the
+official grid, every pixel finite and inside [0,1] (zeros outside the footprint), so it passes the
+upload form's <em>"Predicted values must be in range [0, 1]"</em> check that rejects NaN-padded files.</p>
+<p><a class="dl" href="docs/downloads/gems90-cnc-35000dots-20261024T084324Z.tif" download>&#11015; Download the submission GeoTIFF (236 KB)</a>
+<a class="dl2" href="docs/how-to-submit.html">Step-by-step submission guide &rarr;</a></p>
+<div class="grid">
+  <div class="kv"><b>35,000</b><span>unit-mass dots — budget set by the measured holdout curve, not by hand</span></div>
+  <div class="kv"><b>0.3019</b><span>HOLDOUT-DTI [0.2834, 0.3208] — local hide-and-recover, not a leaderboard score</span></div>
+  <div class="kv"><b>0.0524</b><span>same holdout, uniform-lattice chance baseline at the same budget</span></div>
+  <div class="kv"><b>+0.40</b><span>largest above-chance dot overlap with any registry raster (limit 0.30 at &gt;70% overlap)</span></div>
+</div>
+<div class="card"><h3 style="margin-top:0">What this file does and does not show</h3>
+<p><b>Shown.</b> On a buffered whole-segment hide-and-recover holdout it recovers withheld fault
+segments far better than chance (0.3019 vs 0.0524, non-overlapping 95% CIs) and far better than a
+fold-honest rebuild of the incumbent collar recipe (0.0044). It is format-valid and it is not a
+copy of anything in the registry.</p>
+<p><b>Not shown.</b> That it beats the incumbent 0.2778 on the real leaderboard. Two independent
+calibration attempts against the 14 owner-reported scores <em>failed</em> (below), and this holdout
+is structurally blind to collar-style files — the incumbent itself scores only
+0.0048 on it. No projected score is claimed anywhere in this repository.</p></div>
+<h3>Paste these into the submission form</h3>
+<table><tr><th style="width:170px">Form field</th><th>Value</th></tr>
+<tr><td>File to submit</td><td><code>gems90-cnc-35000dots-20261024T084324Z.tif</code></td></tr>
+<tr><td>Note (optional, &le;140 chars)</td><td><code>Fold-honest discovery model; greedy DTI-optimal dots at the holdout-optimal budget. Off-catalogue, not a collar file. No score claimed.</code>
+<span class="mut"> (135 characters)</span></td></tr></table>
+<p class="mut">Verdict recorded in the run card: <b>promote-for-human-review</b>. The agent never uploads;
+a human spends the weekly slot.</p>
+
+<h2>Why this file exists (the short version)</h2>
+<p>The official metric is a distance-weighted Tversky index,
+<code>DTI = TP<sub>w</sub> / (TP<sub>w</sub> + 0.2&middot;FP<sub>w</sub> + 0.8&middot;FN<sub>w</sub>)</code>
+with a 300 m triangular kernel. Because <code>FN<sub>w</sub> = |G| - TP<sub>w</sub></code> and
+&alpha;+&beta;=1, it collapses to</p>
+<pre>DTI = T / (0.2&middot;T + 0.2&middot;(S - M) + 0.8&middot;|G|)</pre>
+<p>where <b>T</b> is coverage credit on the hidden faults, <b>S</b> is total predicted mass and
+<b>M</b> is the part of that mass sitting close to truth. <b>0.8&middot;|G|</b> is a constant, so a dot
+helps only if the credit it adds beats
+<code>0.2&theta;/(1-0.2&theta;)</code> &mdash; about
+<b>0.059 credit</b> at &theta;=0.2778. Mass is bang-bang
+(always emit 1.0 or nothing) and the dot budget is therefore a quantity the metric decides, not a
+style choice.</p>
+<p>Inverting that identity against the owner's own scored rasters shows the incumbent family has
+been buying credit at a price barely above break-even: see the table below.</p>
+
+<h2>Inversion of the scored history (OWNER-REPORTED scores)</h2>
+<p>A uniform 5 px lattice covers every pixel equally, so its credit is its mean coverage
+(0.3718) times |G| whatever the hidden faults look like. That single
+blind probe pins <b>|G| &asymp; 12,545</b> hidden-fault pixels
+(0.246% of the 5,106,385-pixel scored domain); the
+independent blind "placeholder" raster lands at lift 0.71, which is the consistency check.</p>
+<table><tr><th>raster</th><th>dots</th><th>score (owner-reported)</th><th>implied T</th>
+<th>lift vs blind</th><th>credit / dot</th></tr><tr><td>R0_h33_b2</td><td>37,654</td><td>0.2778</td><td>5,063</td><td>6.81x</td><td>0.1345</td></tr><tr><td>h27_4_solo</td><td>40,199</td><td>0.2708</td><td>5,074</td><td>6.46x</td><td>0.1262</td></tr><tr><td>d2_8</td><td>44,090</td><td>0.2600</td><td>5,073</td><td>6.05x</td><td>0.1151</td></tr><tr><td>d1_5</td><td>60,069</td><td>0.2477</td><td>5,643</td><td>5.99x</td><td>0.0939</td></tr><tr><td>tgc_v2</td><td>61,328</td><td>0.2449</td><td>5,641</td><td>5.84x</td><td>0.0920</td></tr><tr><td>h19_5</td><td>121,131</td><td>0.1922</td><td>6,754</td><td>6.11x</td><td>0.0558</td></tr><tr><td>h19_4</td><td>123,779</td><td>0.1894</td><td>6,756</td><td>5.90x</td><td>0.0546</td></tr><tr><td>h16_1</td><td>123,939</td><td>0.1855</td><td>6,619</td><td>5.66x</td><td>0.0534</td></tr><tr><td>dotted_ridge</td><td>65,236</td><td>0.1839</td><td>4,349</td><td>3.40x</td><td>0.0667</td></tr><tr><td>hedge_v2</td><td>166,519</td><td>0.1563</td><td>6,914</td><td>4.93x</td><td>0.0415</td></tr><tr><td>ens12</td><td>166,519</td><td>0.1563</td><td>6,914</td><td>4.93x</td><td>0.0415</td></tr><tr><td>ctx_ridge</td><td>161,366</td><td>0.1280</td><td>5,507</td><td>3.56x</td><td>0.0341</td></tr><tr><td>lattice_s5</td><td>204,504</td><td>0.0904</td><td>4,659</td><td>1.00x</td><td>0.0228</td></tr><tr><td>placeholder</td><td>145,610</td><td>0.0107</td><td>420</td><td>0.71x</td><td>0.0029</td></tr></table>
+<p>The incumbent <code>h33-h33-2-b2</code> (0.2778) is <em>not</em> the most accurate file in the
+list &mdash; <code>hedge_v2</code> and <code>h19_5</code> both capture more credit. It wins because it
+captures nearly the same credit with the smallest budget: 0.134 credit per dot against a
+0.059 break-even. Everything above roughly 40k dots in that family
+was being bought at about 0.02 credit per dot, i.e. below cost.</p>
+
+<h2>Calibration: can any model of the hidden field reproduce real scores? (NEGATIVE)</h2>
+<p>Two independent attempts, both constrained to a physically valid occupancy field
+(0 &le; &pi; &le; 1, &Sigma;&pi; = |G| — a pixel either is a hidden-fault pixel or it is not):</p>
+<ol>
+<li><b>Learner field.</b> &pi; &prop; p<sub>model</sub><sup>&gamma;</sup>, &gamma; and |G| fitted.
+Best: &gamma; = 6.00, |G| = 31,362, RMSE <b>0.0609</b>.</li>
+<li><b>Model-free band inversion.</b> &pi; = &rho;<sub>band</sub>·[(1&minus;&eta;) + &eta;·w/w&#772;], with
+&rho; solved by non-negative least squares per distance-to-catalogue band and &eta; measuring how
+much the learner's ranking helps. Best: &eta; = 1.00, |G| = 34,657,
+RMSE <b>0.0853</b>, leave-one-out RMSE 0.1109.</li>
+</ol>
+<p><b>Both fail, in the same direction:</b> every targeted raster is under-predicted by roughly a
+factor of two (the incumbent most of all). Dropping the occupancy cap produces an apparently
+excellent fit (RMSE 0.015) only by letting single pixels carry a density of 70 hidden faults — an
+artefact, not a result. The honest conclusion is that <em>where those dots sit</em> is not explained
+by distance-to-catalogue or by the current 63-feature stack, so no leaderboard projection is made.</p>
+<table><tr><th>raster</th><th>dots</th><th>owner-reported</th><th>learner pred</th><th>resid</th>
+<th>band pred</th><th>resid</th></tr>
+<tr><td>lattice_s5</td><td>204,504</td><td>0.0904</td><td>0.1714</td><td>+0.0810</td><td>0.1788</td><td>+0.0884</td></tr><tr><td>hedge_v2</td><td>166,519</td><td>0.1563</td><td>0.1475</td><td>-0.0088</td><td>0.1425</td><td>-0.0138</td></tr><tr><td>ctx_ridge</td><td>161,366</td><td>0.1280</td><td>0.1206</td><td>-0.0074</td><td>0.2156</td><td>+0.0876</td></tr><tr><td>dotted_ridge</td><td>65,236</td><td>0.1839</td><td>0.1474</td><td>-0.0365</td><td>0.2181</td><td>+0.0342</td></tr><tr><td>h16_1</td><td>123,939</td><td>0.1855</td><td>0.1598</td><td>-0.0257</td><td>0.1497</td><td>-0.0358</td></tr><tr><td>h19_4</td><td>123,779</td><td>0.1894</td><td>0.1572</td><td>-0.0322</td><td>0.1480</td><td>-0.0414</td></tr><tr><td>h19_5</td><td>121,131</td><td>0.1922</td><td>0.1551</td><td>-0.0371</td><td>0.1465</td><td>-0.0457</td></tr><tr><td>d1_5</td><td>60,069</td><td>0.2477</td><td>0.1722</td><td>-0.0755</td><td>0.1593</td><td>-0.0884</td></tr><tr><td>d2_8</td><td>44,090</td><td>0.2600</td><td>0.1678</td><td>-0.0922</td><td>0.1546</td><td>-0.1054</td></tr><tr><td>tgc_v2</td><td>61,328</td><td>0.2449</td><td>0.1733</td><td>-0.0716</td><td>0.1649</td><td>-0.0800</td></tr><tr><td>h27_4_solo</td><td>40,199</td><td>0.2708</td><td>0.1715</td><td>-0.0993</td><td>0.1297</td><td>-0.1411</td></tr><tr><td>ens12</td><td>166,519</td><td>0.1563</td><td>0.1475</td><td>-0.0088</td><td>0.1425</td><td>-0.0138</td></tr><tr><td>placeholder</td><td>145,610</td><td>0.0107</td><td>0.0371</td><td>+0.0264</td><td>0.0337</td><td>+0.0230</td></tr><tr><td>R0_h33_b2</td><td>37,654</td><td>0.2778</td><td>0.1734</td><td>-0.1044</td><td>0.0934</td><td>-0.1844</td></tr></table>
+<p class="mut">Radial profile returned by the band inversion (hidden-fault density by distance to
+the catalogue): 1.5-2.5 px: 0.1734, 2.5-3.5 px: 0.0790, 25.0-1000000000.0 px: 0.0014.</p>
+
+<h2>Holdout: buffered whole-segment hide-and-recover</h2>
+<p>buffered whole-segment hide-and-recover; 4 folds over 3,199 catalogue segments
+grouped by 25 km blocks; buffer 3 px; catalogue-derived features rebuilt from
+visible faults only; visible faults masked pixel-exactly; pooled DTI with a spatial-block bootstrap
+95% CI. Evaluator <code>gems90-holdout-1.0.0</code>.</p>
+<table><tr><th>method</th><th>n = 8,000</th><th>n = 14,000</th><th>n = 20,000</th><th>n = 25,000</th><th>n = 30,000</th><th>n = 35,000</th><th>n = 40,000</th><th>n = 46,000</th><th>n = 52,000</th></tr><tr><td>This candidate&#x27;s method (fold-honest)</td><td>0.2058<br><span class='mut'>[0.1841, 0.2277]</span></td><td>0.2572<br><span class='mut'>[0.2348, 0.2792]</span></td><td>0.2815<br><span class='mut'>[0.2574, 0.3005]</span></td><td>0.2942<br><span class='mut'>[0.2695, 0.3149]</span></td><td>0.2994<br><span class='mut'>[0.2784, 0.3194]</span></td><td style="background:#15311f">0.3019<br><span class='mut'>[0.2834, 0.3208]</span></td><td>0.3018<br><span class='mut'>[0.2806, 0.3196]</span></td><td>0.3002<br><span class='mut'>[0.2776, 0.3166]</span></td><td>0.2978<br><span class='mut'>[0.2756, 0.3138]</span></td></tr><tr><td>Incumbent recipe, rebuilt fold-honestly</td><td>0.0018<br><span class='mut'>[0.0014, 0.0023]</span></td><td>0.0030<br><span class='mut'>[0.0023, 0.0037]</span></td><td>0.0036<br><span class='mut'>[0.0029, 0.0044]</span></td><td>0.0040<br><span class='mut'>[0.0032, 0.0049]</span></td><td>0.0044<br><span class='mut'>[0.0036, 0.0054]</span></td><td>0.0044<br><span class='mut'>[0.0036, 0.0054]</span></td><td>0.0044<br><span class='mut'>[0.0036, 0.0054]</span></td><td>0.0044<br><span class='mut'>[0.0036, 0.0054]</span></td><td>0.0044<br><span class='mut'>[0.0036, 0.0054]</span></td></tr><tr><td>Uniform lattice (chance)</td><td>0.0160<br><span class='mut'>[0.0146, 0.0172]</span></td><td>0.0251<br><span class='mut'>[0.0234, 0.0265]</span></td><td>0.0350<br><span class='mut'>[0.0328, 0.0372]</span></td><td>0.0402<br><span class='mut'>[0.0372, 0.0428]</span></td><td>0.0465<br><span class='mut'>[0.0429, 0.0493]</span></td><td>0.0524<br><span class='mut'>[0.0478, 0.0561]</span></td><td>0.0579<br><span class='mut'>[0.0521, 0.0626]</span></td><td>0.0579<br><span class='mut'>[0.0521, 0.0626]</span></td><td>0.0626<br><span class='mut'>[0.0566, 0.0679]</span></td></tr><tr><td>h33-2-b2 as submitted (oracle-advantaged)</td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td><td>0.0048<br><span class='mut'>[0.0041, 0.0054]</span></td></tr></table>
+<p class="mut">The incumbent raster is scored here for reference only: it was built with the whole
+catalogue visible, including the segments this holdout withholds, so its row is an upper bound and
+not a like-for-like control. The fold-honest rebuild of its recipe ("collar") is the fair control.</p>
+
+<h2>Duplicate / lane screen</h2>
+<p>Dot overlap within 3 px, the overlap a blind placement would get against the same raster
+(chance), the excess over chance, and the Spearman rank correlation of the surfaces. Raw overlap
+alone is not a duplicate test: the 5 px lattice probe covers 98% of the domain within 3 px, so
+everything "overlaps" it. Duplicate = overlap &gt; 0.70 <em>and</em> excess &gt; 0.30, or &rho; &gt; 0.90.</p>
+<table><tr><th>registry raster</th><th>dot overlap &le;3 px</th><th>chance</th><th>excess</th>
+<th>Spearman</th><th>verdict</th></tr>
+<tr><td>hedge_v2</td><td>0.545</td><td>0.237</td><td>+0.404</td><td>+0.011</td><td>distinct</td></tr><tr><td>ens12</td><td>0.545</td><td>0.237</td><td>+0.404</td><td>+0.011</td><td>distinct</td></tr><tr><td>h16_1</td><td>0.493</td><td>0.206</td><td>+0.361</td><td>+0.024</td><td>distinct</td></tr><tr><td>h19_4</td><td>0.486</td><td>0.201</td><td>+0.357</td><td>+0.022</td><td>distinct</td></tr><tr><td>h19_5</td><td>0.473</td><td>0.193</td><td>+0.347</td><td>+0.021</td><td>distinct</td></tr><tr><td>tgc_v2</td><td>0.449</td><td>0.182</td><td>+0.326</td><td>+0.013</td><td>distinct</td></tr><tr><td>d1_5</td><td>0.442</td><td>0.178</td><td>+0.321</td><td>+0.013</td><td>distinct</td></tr><tr><td>R0_h33_b2</td><td>0.424</td><td>0.152</td><td>+0.321</td><td>+0.031</td><td>distinct</td></tr><tr><td>h27_4_solo</td><td>0.425</td><td>0.160</td><td>+0.316</td><td>+0.024</td><td>distinct</td></tr><tr><td>d2_8</td><td>0.426</td><td>0.169</td><td>+0.309</td><td>+0.011</td><td>distinct</td></tr><tr><td>dotted_ridge</td><td>0.419</td><td>0.257</td><td>+0.219</td><td>-0.020</td><td>distinct</td></tr><tr><td>ctx_ridge</td><td>0.406</td><td>0.253</td><td>+0.205</td><td>-0.048</td><td>distinct</td></tr><tr><td>placeholder</td><td>0.079</td><td>0.063</td><td>+0.018</td><td>-0.009</td><td>distinct</td></tr><tr><td>lattice_s5</td><td>0.983</td><td>0.991</td><td>-0.861</td><td>+0.001</td><td>distinct</td></tr></table>
+
+<h2>Where the dots are — this is not a collar file</h2>
+<div class="grid">
+  <div class="kv"><b>39 px</b><span>median distance to the nearest catalogued fault (3.9 km)</span></div>
+  <div class="kv"><b>96.0%</b><span>of dots lie beyond 6 px of the catalogue — the incumbent family sits at 3.4&ndash;4.5 px</span></div>
+  <div class="kv"><b>110</b><span>occupied 25 km blocks; largest single block holds 9.2% of the dots</span></div>
+  <div class="kv"><b>0</b><span>mass on catalogued fault pixels (they are masked from scoring)</span></div>
+</div>
+<p>Every scored raster in the registry is a halo around the existing catalogue. This candidate is
+not: it places 96% of its mass in ground the catalogue does not touch, which is where a
+genuinely <em>undiscovered</em> fault has to be. That is also why it is risky — the collar strategy
+is the one with real score feedback behind it, and this one has only the holdout.</p>
+
+<h2>Format gate (re-read from the written file)</h2>
+<table><tr><th style="width:280px">check</th><th>value</th></tr><tr><td>CRS</td><td>EPSG:32611 (matches sample_submission.tif)</td></tr><tr><td>Shape</td><td>3730 x 3292 @ 100 m</td></tr><tr><td>Bands / dtype</td><td>1 / float32</td></tr><tr><td>Values inside footprint</td><td>min 0.0, max 1.0 — inside [0,1]</td></tr><tr><td>Non-finite pixels (whole raster)</td><td>0 — the upload form rejects NaN</td></tr><tr><td>Outside footprint</td><td>0.0 (all-finite encoding)</td></tr><tr><td>Positive pixels (dots)</td><td>35,000</td></tr><tr><td>Total predicted mass</td><td>35,000</td></tr><tr><td>Mass on catalogued faults</td><td>0 (those pixels are masked from scoring)</td></tr><tr><td>SHA-256</td><td>e1e91be23d763ee184839f38a22aa573d6c957aac8fd0038a680cf6615ef41eb</td></tr><tr><td>File size</td><td>241,734 bytes</td></tr><tr><td>Format gate</td><td>PASS</td></tr></table>
+
+<h2>Other candidates published in this repository</h2>
+<p>Parallel sessions publish their own lanes. Each is a separate experiment with its own receipt;
+only one file may ever be uploaded per weekly slot, and choosing between them is a human decision.</p>
+<table><tr><th>lane / file</th><th>size</th><th>sha256</th><th>page</th></tr><tr><td><a href="docs/downloads/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif" download><code>gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif</code></a></td><td>194 KB</td><td><code>04af0861de0aed0b018f209dfbb453c46af8eb22f0407c7b251c866b9f653f81</code></td><td>gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif<br><a href="lane-h90.html">lane portal</a> &middot; <a href="executive-summary.html">its summary</a></td></tr><tr><td><a href="docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif" download><code>gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif</code></a></td><td>129 KB</td><td><code>637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51</code></td><td>GEMSDOE90-H90-CC-MPST-D76AC964<br><a href="lane-h90.html">lane portal</a> &middot; <a href="executive-summary.html">its summary</a></td></tr></table>
+
+<h2>Official sources</h2>
+<ul>
+<li>Competition &amp; rules: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a></li>
+<li>Problem description &amp; metric: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page/967</a></li>
+<li>Data (login required): <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data tab</a></li>
+<li>Leaderboard: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">public leaderboard</a></li>
+<li>Official reference solution: <a href="https://github.com/drivendataorg/gems-prize-reference-solution">drivendataorg/gems-prize-reference-solution</a></li>
+<li>USGS GeoDAWN release: <a href="https://doi.org/10.5066/P93LGLVQ">doi:10.5066/P93LGLVQ</a>
+ &middot; <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS data page</a></li>
+<li>INGENIOUS / GDR 1391: <a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a>
+ &middot; <a href="https://gbcge.org/current-projects/ingenious/">project page</a></li>
+<li>Grid CRS: <a href="https://epsg.io/32611">EPSG:32611</a> &middot;
+ Metric family: <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></li>
+</ul>
+
+<footer>Generated 2026-10-24 08:50 UTC by
+<code>scripts/build_site.py</code> from the JSON receipts in <code>evidence/</code>.
+Scores copied from the owner's submission list are labelled OWNER-REPORTED; no
+organizer receipt is on file in this repository. Local measurements are labelled
+HOLDOUT-DTI or MODEL and are never presented as leaderboard scores.</footer>
+</div></body></html>

@@ -15,6 +15,17 @@ releases/*.tif
 releases/*.tiff
 !releases/.gitkeep
 
+# Explicitly track derived zero-input-leakage binary GeoTIFF/ZIP submission
+# deliverables served from GitHub Pages one-click download (IR90-44 / IR90-52).
+# Raw competition input data (.cache/gems_data/) and releases/ remain ignored.
+!docs/
+!docs/downloads/
+!docs/downloads/*.tif
+!docs/downloads/*.zip
+!docs/downloads/*.json
+
+# --- DISCOVERY lane additions ---
+
+
 # EXCEPTION: the published candidate prediction is our own output (dots only, no
 # competition input data) and must be downloadable from the Pages site.
-!docs/downloads/*.tif

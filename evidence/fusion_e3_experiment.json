@@ -1,0 +1,39 @@
+{
+  "experiment": "E3_multiphysics_edge_fusion",
+  "holdout": {
+    "evaluator_version": "evaluate_holdout.py v1 (whole-component, 5px buffer, pooled DTI a0.2/b0.8 R3px, 20km block bootstrap)",
+    "label": "HOLDOUT-DTI",
+    "n_withheld_positives": 11092,
+    "n_segments_withheld": 609,
+    "candidates": {
+      "BASE_h19_dotted_foldclean": {
+        "holdout_dti": 0.13943,
+        "ci95": [
+          0.108883,
+          0.169684
+        ],
+        "delta_vs_first": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "n_dots_in_eval": 13585
+      },
+      "E3_multiphysics_fusion": {
+        "holdout_dti": 0.079485,
+        "ci95": [
+          0.060192,
+          0.09951
+        ],
+        "delta_vs_first": -0.059945,
+        "delta_ci95": [
+          -0.09737,
+          -0.02745
+        ],
+        "n_dots_in_eval": 16545
+      }
+    }
+  },
+  "gate_pass_vs_baseline": false,
+  "elapsed_s": 98.4
+}

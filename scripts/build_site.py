@@ -71,7 +71,7 @@ def page(title: str, body: str) -> str:
 <p class="mut">DOE GEMS Prize (DrivenData #306) — credit-efficient hidden-fault discovery,
 auditable end to end.</p>
 <nav><a href="index.html">Submission</a><a href="how-to-submit.html">How to submit</a>
-<a href="method.html">Method &amp; evidence</a>
+<a href="method.html">Method &amp; evidence</a><a href="lane-h90.html">Lane H90</a>
 <a href="https://github.com/buffedlizard55-lab/GEMSDOE90">Repository</a></nav>
 </div></header><div class="wrap">{body}
 <footer>Generated {h(datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC'))} by
@@ -81,6 +81,30 @@ organizer receipt is on file in this repository. Local measurements are labelled
 HOLDOUT-DTI or MODEL and are never presented as leaderboard scores.</footer>
 </div></body></html>
 """
+
+
+def _lane_name(path) -> str:
+    """Submission name recorded by whichever lane published this file.
+
+    Matched on the file's own SHA-256 (exact) or on the file name recorded in a
+    receipt, so it keeps working when a lane renames its artefacts.
+    """
+    import hashlib
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    cards = list(path.parent.glob("*.json")) + list((DOCS / "run-cards").glob("*.json")) + \
+        list(DOCS.glob("run-card*.json")) + list(EV.glob("*receipt*.json"))
+    for cardp in cards:
+        try:
+            c = json.loads(cardp.read_text())
+        except Exception:
+            continue
+        flat = json.dumps(c)
+        if digest in flat or path.name in flat:
+            for key in ("submission_name", "name", "candidate"):
+                v = c.get(key) or (c.get("raster", {}) or {}).get(key)
+                if v:
+                    return str(v)
+    return path.stem
 
 
 def fmt(x, n=4):
@@ -156,6 +180,19 @@ def build() -> None:
         f"<td>{r['score_owner_reported']:.4f}</td><td>{r['T_implied']:,.0f}</td>"
         f"<td>{r['lift_vs_blind']:.2f}x</td><td>{r['credit_per_dot']:.4f}</td></tr>"
         for r in sorted(inv["files"], key=lambda r: -r["score_owner_reported"]))
+
+    others = sorted(x for x in (DOCS / "downloads").glob("*.tif") if x.name != tif)
+    if others:
+        import hashlib
+        other_rows = ("<table><tr><th>lane / file</th><th>size</th><th>sha256</th>"
+                      "<th>page</th></tr>") + "".join(
+            f'<tr><td><a href="downloads/{h(o.name)}" download><code>{h(o.name)}</code></a></td>'
+            f'<td>{o.stat().st_size/1024:.0f} KB</td>'
+            f'<td><code>{hashlib.sha256(o.read_bytes()).hexdigest()}</code></td>'
+            f'<td>{h(_lane_name(o))}<br><a href="lane-h90.html">lane portal</a> &middot; '
+            f'<a href="executive-summary.html">its summary</a></td></tr>' for o in others) + "</table>"
+    else:
+        other_rows = "<p class='mut'>None.</p>"
 
     status = ('<div class="card ready"><span class="badge b-ok">OK TO DOWNLOAD AND SUBMIT</span>'
               '<p style="margin:10px 0 0">The file below passed every gate: single-band float32 '
@@ -283,6 +320,11 @@ is the one with real score feedback behind it, and this one has only the holdout
 
 <h2>Format gate (re-read from the written file)</h2>
 <table><tr><th style="width:280px">check</th><th>value</th></tr>{gate_rows}</table>
+
+<h2>Other candidates published in this repository</h2>
+<p>Parallel sessions publish their own lanes. Each is a separate experiment with its own receipt;
+only one file may ever be uploaded per weekly slot, and choosing between them is a human decision.</p>
+{other_rows}
 
 <h2>Official sources</h2>
 <ul>
@@ -417,7 +459,20 @@ a human on the day.</li>
 </ul>
 """
     (DOCS / "method.html").write_text(page("GEMSDOE90 — method & evidence", method), encoding="utf-8")
-    print("wrote docs/index.html, docs/how-to-submit.html, docs/method.html")
+
+    # GitHub Pages serves this repository from main:/ , so the root page is the
+    # one visitors actually land on.  Same HTML, links rewritten into docs/.
+    root = page("GEMSDOE90 — submission", body)
+    for a, b in (('href="downloads/', 'href="docs/downloads/'),
+                 ('href="how-to-submit.html"', 'href="docs/how-to-submit.html"'),
+                 ('href="method.html"', 'href="docs/method.html"'),
+                 ('href="index.html"', 'href="index.html"'),
+                 ('href="lane-h90.html"', 'href="lane-h90.html"'),
+                 ('href="executive-summary.html"', 'href="executive-summary.html"')):
+        root = root.replace(a, b)
+    (ROOT / "index.html").write_text(root, encoding="utf-8")
+    print("wrote index.html (Pages root), docs/index.html, docs/how-to-submit.html, "
+          "docs/method.html")
 
 
 if __name__ == "__main__":

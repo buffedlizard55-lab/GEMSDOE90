@@ -1,0 +1,52 @@
+{
+  "submission_name": "gems90-e3-multiphysics-fusion-37654-20261024",
+  "sha256": "d1250da6cf86da784e256bf89584e394b23599229f16b58413837ee1e1c30964",
+  "validator": {
+    "file": "releases/gems90-e3-multiphysics-fusion-37654-20261024.tif",
+    "pass": true,
+    "fails": [],
+    "n_dots": 37654,
+    "catalogue_mass": 0.0
+  },
+  "uniqueness_sparse_registry": {
+    "R0_parent": {
+      "spearman": 0.046482037764626886,
+      "dot_overlap_within_3px": 0.3067137621501036,
+      "duplicate": false,
+      "pass": true
+    },
+    "gems10-h28-dotted-ridge-20260928T02025": {
+      "spearman": 0.0402887241656709,
+      "dot_overlap_within_3px": 0.3771710840813725,
+      "duplicate": false,
+      "pass": true
+    },
+    "gems24-h25-1-dotted-h19-5-d1-5-2026100": {
+      "spearman": 0.060053184025512595,
+      "dot_overlap_within_3px": 0.33146544855792215,
+      "duplicate": false,
+      "pass": true
+    },
+    "gems24-h25-1-dotted-h19-5-d2-8-2026100": {
+      "spearman": 0.0509223476701125,
+      "dot_overlap_within_3px": 0.3161417113719658,
+      "duplicate": false,
+      "pass": true
+    },
+    "gems27-topo-gap-closure-t-v2-on-d1-5-2": {
+      "spearman": 0.05925783493972049,
+      "dot_overlap_within_3px": 0.3335634992298295,
+      "duplicate": false,
+      "pass": true
+    },
+    "gems28-h27-4-r1-solo-d2-8-20261003-8ac": {
+      "spearman": 0.04814013816662384,
+      "dot_overlap_within_3px": 0.3116800339937324,
+      "duplicate": false,
+      "pass": true
+    }
+  },
+  "duplicate_vs_sparse_registry": false,
+  "note": "E3 multi-physics edge fusion dotted 37,654; HOLDOUT-NEGATIVE vs H19-5 baseline - NOT approved to submit.",
+  "holdout_label": "HOLDOUT-DTI (evaluate_holdout v1, 11092 withheld positives): E3 0.0795 [0.0602,0.0995] vs fold-clean H19-5 dotted baseline 0.1394 [0.1089,0.1697]; delta -0.0599 [-0.0974,-0.0275]"
+}
