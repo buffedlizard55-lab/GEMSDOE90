@@ -10,7 +10,37 @@
 | **2** | Add branch: `…MASSadd10pctq50-20261023-5edc84de.tif` — **+0.014**. Negative-add branch: `…MASSshadowcont20pct-20261023-66d961ba.tif` — **+0.009**. Null-add branch: `…PRUNEanisoA5L1-20261023-cd2c60ce.tif` — **+0.005** | Add: rising `Δ` licenses q50-20; flat but positive favors matched-placement blocknext10; negative closes the ladder. Continuity: `Δ>=+0.010` → shadowcont40; `Δ<=-0.010` → shadow20 to separate dose from protection. PRUNE: `Δ>=+0.010` → L0.5; `Δ<=-0.010` → recorded A5/L2; null → shadowcont20. |
 | **3** | Add: `…MASSadd20pctq50-20261023-f94efff4.tif` — **+0.022**, or matched-dose `…MASSadd10pctBlocknext-20261023-89d16c16.tif` — **+0.0044**. Continuity: `…MASSshadowcont40pct-20261023-92be4121.tif` — **+0.013** / `…MASSshadow20pct-20261023-c4ce118b.tif` — **+0.009**. PRUNE: `…PRUNEanisoA5L0p5-20261023-91ff3771.tif` — **+0.003** / recorded **A5/L2** / shadowcont20 | Take exactly one conditional arm. q50-20 requires two positive add receipts and a rising slope; blocknext10 isolates placement at matched dose/geography. L0.5 follows only a positive L1; A5/L2 follows only a negative L1. A null result never licenses a same-axis dose guess. |
 
-Retained but not slotted first: **A5/L1.5** (+0.004), `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadowcont30pct` (+0.011), `MASSshadow40pct` (+0.014), `MASSrandom40pct` (+0.013). They remain valid single-axis candidates; do not spend a slot on any WITHDRAWN FIFO/gapmax/no-refill row or on infeasible SNAP.
+Retained but not slotted first: **A5/L1.5** (+0.004), `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadowcont30pct` (+0.011), `MASSshadow40pct` (+0.014), `MASSrandom40pct` (+0.013), and this session's credit-aware-refill trio (see below). They remain valid single-axis candidates; do not spend a slot on any WITHDRAWN FIFO/gapmax/no-refill row or on infeasible SNAP.
+
+## This session (2026-10-24): PRUNE credit-aware refill — BUILT (matched placement contrast)
+
+**Question.** Every recorded PRUNE candidate deletes the R0 dots inside a catalogue collar and restores the exact
+count with the lineage's recovered FIFO-BFS traversal order. That ordering is a tie-break, not the metric:
+98.7–99.5 % of its refill dots land within 3 px of a dot already retained (IR90-12), so the replacement adds the
+`0.2(S−M)` penalty while supplying almost no fresh kernel credit. This session keeps the collar geometry, the pool
+and the count **identical** to the recorded A4/A5/A6 L2 files and changes **only** the refill ordering — to the
+metric's own marginal kernel credit, evaluated truth-free on the pinned H19-5 proxy (`src/prune_refill.py`). Each
+file is a matched placement contrast against its recorded FIFO twin.
+
+| Candidate (2026-10-24) | Collar (across/along) | Moved / diff | Refill n | H19-5 credit cred / fifo | SGMC PROXY Δ | Predicted Δ (MODEL) |
+|---|---|---:|---:|---:|---:|---:|
+| `h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6` | 4 / 2 | 2,632 / 13.980% | 2,632 | 4,054 / 1,215 | −0.00022 | **+0.004** |
+| `h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69` | 5 / 2 | 3,663 / 19.456% | 3,663 | 5,035 / 1,730 | −0.00171 | **+0.005** |
+| `h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3` | 6 / 2 | 4,625 / 24.566% | 4,625 | 5,909 / 2,187 | −0.00322 | **+0.003** |
+
+All three hold **37,654 dots**, emit zero catalogue mass, keep every dot outside its declared collar and preserve
+R0's `d_cat>2 px` floor. The credit-aware refill's own redundancy is 83.4 / 86.5 / 87.2 % within 3 px of a retained
+dot (median 2.0 px), against the FIFO ordering's 98.7–99.5 % (median 1.0 px). Report-only `PROXY`: catalogue
+hide/recover n=16,560, R0 0.005692, all three Δ ≈ −0.0044 (95 % CIs exclude 0; the holdout carries the documented
+collar blind spot); leakage canary max symmetric AUC 0.5699 (<0.90). None is a score or a gate.
+
+**Decision rule.** Spend a slot only as a *pair* with the recorded FIFO twin in the same week:
+`PRUNEanisoA5L2Cred` vs `PRUNEanisoA5L2` isolates the refill ordering at matched collar/count/pool. `Δ ≥ +0.010` →
+the refill ordering pays; apply it to the A4/A6 collars and to any future collar. `Δ ≤ −0.010` → the credit-aware
+refill re-adds the flank mass the collar removed (its targets sit at `d_cat` 2–3 px) and the ordering is rejected.
+`|Δ| < 0.010` → no evidence. A monotone decline A4→A6 also falsifies the mechanism. Receipt
+`evidence/prune_credit_refill_receipt.json`; re-emit/verify with
+`.venv/bin/python scripts/build_prune_credit_refill.py --build` / `--verify` after `scripts/restore_data.py`.
 
 ## This session: 15 km structural-prior CONCENTRATION — BUILT but HELD (no slot)
 

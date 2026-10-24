@@ -387,5 +387,58 @@
       }
     ],
     "post_merge_status": "HELD from slots; distinct value family kept as occupancy guard + matched-dose sign-control falsifier (IR90-25/26 headwind)."
+  },
+  "prune_credit_refill": {
+    "schema_version": 1,
+    "parent": "h33-h33-2-b2",
+    "axis": "PRUNE",
+    "value_family": "strike-aligned collar across in {4,5,6} px, along 2 px; fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6",
+        "axis": "PRUNE",
+        "value": "tag=anisoA4L2Cred; collar across<=4px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+        "mechanism_card": {
+          "hypothesis": "The recorded A4/L2 collar deletes 2,632 near-catalogue R0 dots and then restores the same count with the lineage's FIFO-BFS traversal order, which places 98.7-99.5 % of replacements within 3 px of a dot already retained. That ordering is a tie-break, not the metric: it adds the 0.2*(S-M) penalty while supplying almost no fresh kernel credit. Replacing it with the metric's own marginal kernel credit -- evaluated truth-free on the same H19-5 proxy support -- should put each replacement where it covers currently-uncredited corroborated-ridge pixels, i.e. the pixels the collar deletion orphaned, and therefore recover more coverage per replacement.",
+          "mechanism": "Ellipse (along/2)^2 + (across/4)^2 <= 1 removes the collar dots; the exact 37654 dot count is restored from outside-collar H19-5 support (d_cat>2 px, the parent baseline) by a greedy max-marginal-credit rule with exact local credit updates inside the 300 m kernel. Marginal credit of a candidate q is sum_offsets max(0, k*support[q+off] - credit[q+off]) + own-pixel term, with credit the current best kernel credit from dots already placed. Ties break on flat raster index, so the file is byte-reproducible. Catalogue pixels remain exactly zero mass.",
+          "non_fault_confounder": "The orphaned pixels the credit-aware refill targets are adjacent to mapped traces, where lithologic contacts, drainage divides and shoreline/road alignments mimic faults; a refill that concentrates mass there can simply re-add the false mass the collar removed. H19-5 is also the parent's own support, so 'covering H19-5 pixels' is not the same as covering undisclosed truth, and the H19-5 field itself fires on the known catalogue.",
+          "predicted_live_change": "+0.004 DTI (MODEL; plausible -0.008 to +0.012; not a score)",
+          "prediction_decomposition": "MODEL: the collar term is unchanged from the recorded FIFO twin (same collar, same pool, same count); only the refill term changes. On the H19-5 proxy the credit-aware refill supplies 4054 kernel credit versus 1215 for the FIFO ordering (difference +2840), so the prediction is the recorded twin's collar gain plus a refill term proportional to that difference, discounted because proxy-support credit is not truth credit.",
+          "falsifier": "A paired same-week live receipt against the recorded FIFO twin (h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2) with delta <= -0.010 rejects the refill-ordering mechanism at this collar width; |delta| < 0.010 is no evidence. A monotone decline across A4->A6 would also falsify the mechanism, since the credit-aware refill's advantage should persist while the collar widens.",
+          "structural_geologist_note": "Inspect where the credit-aware refill placed mass relative to the retained strands: the prediction is that it fills the gaps the collar deletion opened beside mapped traces, not that it invents new structures. If the replacements simply re-occupy the deleted flank positions, the collar and the refill are cancelling and the edit is a no-op.",
+          "predicted_short_for_form": "+0.004"
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69",
+        "axis": "PRUNE",
+        "value": "tag=anisoA5L2Cred; collar across<=5px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+        "mechanism_card": {
+          "hypothesis": "The recorded A5/L2 collar deletes 3,663 near-catalogue R0 dots and then restores the same count with the lineage's FIFO-BFS traversal order, which places 98.7-99.5 % of replacements within 3 px of a dot already retained. That ordering is a tie-break, not the metric: it adds the 0.2*(S-M) penalty while supplying almost no fresh kernel credit. Replacing it with the metric's own marginal kernel credit -- evaluated truth-free on the same H19-5 proxy support -- should put each replacement where it covers currently-uncredited corroborated-ridge pixels, i.e. the pixels the collar deletion orphaned, and therefore recover more coverage per replacement.",
+          "mechanism": "Ellipse (along/2)^2 + (across/5)^2 <= 1 removes the collar dots; the exact 37654 dot count is restored from outside-collar H19-5 support (d_cat>2 px, the parent baseline) by a greedy max-marginal-credit rule with exact local credit updates inside the 300 m kernel. Marginal credit of a candidate q is sum_offsets max(0, k*support[q+off] - credit[q+off]) + own-pixel term, with credit the current best kernel credit from dots already placed. Ties break on flat raster index, so the file is byte-reproducible. Catalogue pixels remain exactly zero mass.",
+          "non_fault_confounder": "The orphaned pixels the credit-aware refill targets are adjacent to mapped traces, where lithologic contacts, drainage divides and shoreline/road alignments mimic faults; a refill that concentrates mass there can simply re-add the false mass the collar removed. H19-5 is also the parent's own support, so 'covering H19-5 pixels' is not the same as covering undisclosed truth, and the H19-5 field itself fires on the known catalogue.",
+          "predicted_live_change": "+0.005 DTI (MODEL; plausible -0.008 to +0.014; not a score)",
+          "prediction_decomposition": "MODEL: the collar term is unchanged from the recorded FIFO twin (same collar, same pool, same count); only the refill term changes. On the H19-5 proxy the credit-aware refill supplies 5035 kernel credit versus 1730 for the FIFO ordering (difference +3305), so the prediction is the recorded twin's collar gain plus a refill term proportional to that difference, discounted because proxy-support credit is not truth credit.",
+          "falsifier": "A paired same-week live receipt against the recorded FIFO twin (h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061) with delta <= -0.010 rejects the refill-ordering mechanism at this collar width; |delta| < 0.010 is no evidence. A monotone decline across A4->A6 would also falsify the mechanism, since the credit-aware refill's advantage should persist while the collar widens.",
+          "structural_geologist_note": "Inspect where the credit-aware refill placed mass relative to the retained strands: the prediction is that it fills the gaps the collar deletion opened beside mapped traces, not that it invents new structures. If the replacements simply re-occupy the deleted flank positions, the collar and the refill are cancelling and the edit is a no-op.",
+          "predicted_short_for_form": "+0.005"
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3",
+        "axis": "PRUNE",
+        "value": "tag=anisoA6L2Cred; collar across<=6px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+        "mechanism_card": {
+          "hypothesis": "The recorded A6/L2 collar deletes 4,625 near-catalogue R0 dots and then restores the same count with the lineage's FIFO-BFS traversal order, which places 98.7-99.5 % of replacements within 3 px of a dot already retained. That ordering is a tie-break, not the metric: it adds the 0.2*(S-M) penalty while supplying almost no fresh kernel credit. Replacing it with the metric's own marginal kernel credit -- evaluated truth-free on the same H19-5 proxy support -- should put each replacement where it covers currently-uncredited corroborated-ridge pixels, i.e. the pixels the collar deletion orphaned, and therefore recover more coverage per replacement.",
+          "mechanism": "Ellipse (along/2)^2 + (across/6)^2 <= 1 removes the collar dots; the exact 37654 dot count is restored from outside-collar H19-5 support (d_cat>2 px, the parent baseline) by a greedy max-marginal-credit rule with exact local credit updates inside the 300 m kernel. Marginal credit of a candidate q is sum_offsets max(0, k*support[q+off] - credit[q+off]) + own-pixel term, with credit the current best kernel credit from dots already placed. Ties break on flat raster index, so the file is byte-reproducible. Catalogue pixels remain exactly zero mass.",
+          "non_fault_confounder": "The orphaned pixels the credit-aware refill targets are adjacent to mapped traces, where lithologic contacts, drainage divides and shoreline/road alignments mimic faults; a refill that concentrates mass there can simply re-add the false mass the collar removed. H19-5 is also the parent's own support, so 'covering H19-5 pixels' is not the same as covering undisclosed truth, and the H19-5 field itself fires on the known catalogue.",
+          "predicted_live_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+          "prediction_decomposition": "MODEL: the collar term is unchanged from the recorded FIFO twin (same collar, same pool, same count); only the refill term changes. On the H19-5 proxy the credit-aware refill supplies 5909 kernel credit versus 2187 for the FIFO ordering (difference +3723), so the prediction is the recorded twin's collar gain plus a refill term proportional to that difference, discounted because proxy-support credit is not truth credit.",
+          "falsifier": "A paired same-week live receipt against the recorded FIFO twin (h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3) with delta <= -0.010 rejects the refill-ordering mechanism at this collar width; |delta| < 0.010 is no evidence. A monotone decline across A4->A6 would also falsify the mechanism, since the credit-aware refill's advantage should persist while the collar widens.",
+          "structural_geologist_note": "Inspect where the credit-aware refill placed mass relative to the retained strands: the prediction is that it fills the gaps the collar deletion opened beside mapped traces, not that it invents new structures. If the replacements simply re-occupy the deleted flank positions, the collar and the refill are cancelling and the edit is a no-op.",
+          "predicted_short_for_form": "+0.003"
+        }
+      }
+    ]
   }
 }

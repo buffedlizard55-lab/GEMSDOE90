@@ -8,7 +8,7 @@
   "mass_high_generator_script_sha256": "25f32fe1d2b93249e0e5cd938ae2922a3f45dd6f43e8b4f7c0c3c39a03394fc6",
   "aniso_prune_generator_script_sha256": "17892530fdd02e91a3e45c775005dede75c082521557cc76ae062f109a98f3f4",
   "restore_script_sha256": "be65abc6bd8a76e5febb9291ce8f2e8ac56be47e05e300d33e5d7059acc68c25",
-  "git_sha": "4fa1031a2f236505288ef4840fa1e5fd424c3732",
+  "git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
   "parent": {
     "id": "h33-h33-2-b2",
     "r0_dots": 37654,

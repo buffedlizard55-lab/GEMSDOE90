@@ -127,6 +127,8 @@ def check_reservations() -> dict:
                 value = row.get("value") or ""
                 if "norefill" in value.lower().replace("-", ""):
                     continue  # IR90-29 withdrawn delete-only family is a different value
+                if "credit-aware" in value.lower():
+                    continue  # 2026-10-24 marginal-credit refill family is a different value
                 if not value.startswith("tag=anisoA5L"):
                     continue
                 ident = row.get("id") or ""

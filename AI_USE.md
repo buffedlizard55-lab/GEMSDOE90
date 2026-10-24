@@ -156,3 +156,33 @@ MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.
 - **Merge-aware status:** a parallel session (main PR #20) had built a 15 km structural CONCENTRATION ladder using the SAME four filenames. AI renamed its own files to `src/concentration_strain5km.py`, `scripts/build_concentration_strain5km.py`, `tests/test_concentration_strain5km.py`, `evidence/concentration_strain5km_build_receipt.json` so both designs coexist, resolved all shared-file conflicts by union, and re-verified. Consistent with main IR90-25/26/30 (fixed-count concentration loses net support credit; parallel variants HELD from slots), these three files are kept as distinct `(parent,axis,value)` BUILT occupancy guards and HELD from slots; the away arm is a falsifier instrument only. IR90-32/33/34.
 - **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit any file, or invent any score/quota/target. R0's 0.2778 is CLAIM; every Δ is MODEL; canary/proxies are PROXY. Competition rasters stay in ignored `.cache/gems_data/` and `releases/`; the four *_strain5km source files are the only new tracked code.
 - **Human must decide/supply:** adjudicate whether sibling repos GEMSDOE84–97 are ONE entity (quota risk, IR90-26/30/32), confirm deadline and slot count, supply dated TOP_PUBLIC and portal receipts, decide whether the strain5km occupancy guards add value or should be dropped as a near-duplicate, and choose which single file (if any) to upload from their registered account.
+
+## Session arena/18302384 (2026-10-24, agent-selected `AXIS=PRUNE`, refill-ordering contrast)
+
+- **What AI wrote and executed:** re-verified 26/26 pinned inputs and rebuilt R0 byte-identically
+  (`c55bafc4…` / `baeae321…`, 37,654 dots, d2.8 with 0-pixel difference); authored `src/prune_refill.py`
+  (marginal-kernel-credit refill), `tests/test_prune_refill.py` (7 synthetic tests) and
+  `scripts/build_prune_credit_refill.py`; built three fixed-count 37,654-dot candidates that reuse the recorded
+  A4/A5/A6 L2 strike-aligned collar geometry and refill pool **exactly** and change **only** the refill ordering
+  (`PRUNEanisoA4L2Cred` / `A5L2Cred` / `A6L2Cred`); re-read every raster from disk, ran `src.validate` on all six
+  files, reproduced all six byte-for-byte with `--verify`, and ran the report-only leakage canary, catalogue
+  hide/recover and SGMC controls as `PROXY`. Receipt `evidence/prune_credit_refill_receipt.json`; cards
+  `ledger/mechanism_cards_prune_credit_refill.json`; reservations `ledger/experiment_reservations.json`.
+- **What AI changed in shared files:** one added guard line in `scripts/build_aniso_prune_along.py`
+  (`check_reservations` now skips the distinct credit-aware-refill family, like the IR90-29 no-refill family)
+  because its `tag=anisoA5L*` prefix check mis-flagged the new A5L2Cred row as a duplicate `(PRUNE, value)`. That
+  script was then re-run with `--build` and `--verify`, which reproduced its three pairs byte-identically and
+  re-pinned its generator hash. `tests/test_r0_variants.py` was extended to read the new receipt alongside the
+  three earlier PRUNE receipts.
+- **What AI rejected or withheld:** the credit-aware refill was **not** allowed to change the collar geometry, the
+  pool or the count, so each file is a matched contrast against its recorded FIFO twin; no file was withdrawn and
+  none was submitted. The live prediction is a MODEL; the SGMC PROXY reads −0.0002 / −0.0017 / −0.0032 and the
+  catalogue PROXY ≈ −0.0044, which is reported as a headwind rather than tuned away.
+- **What AI did not do:** contact DrivenData or Dropbox, read the leaderboard, log in, submit a file, invent a
+  live score or a quota/deadline figure. R0's `0.2778` remains a CLAIM; every Δ here is MODEL; canary/proxies are
+  PROXY. Competition rasters stay in ignored `.cache/gems_data/` and `releases/`; nothing competition-derived is in
+  this Git diff or any release.
+- **Human must decide/supply:** dated `TOP_PUBLIC`, weekly slot count, official deadline confirmation, R0 and
+  candidate submission receipts, data-use/terms review, geological review of the refill ridges, whether the
+  inherited `d_cat>2 px` floor is acceptable (IR90-31), and which single file (if any) to upload — ideally as a
+  paired slot with the recorded FIFO twin `PRUNEanisoA5L2` in the same week.

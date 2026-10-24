@@ -373,3 +373,59 @@ loss (~0.98 lost / ~0.54 gained per dot) and a negative SGMC PROXY favouring the
 - **Non-fault confounder:** labels compiled from aseismic historic bedrock maps could make an away move gain — a real confound the sign control is designed to expose (SGMC already favours this arm, IR90-34).
 - **Predicted live change (MODEL):** **−0.004 DTI** (−0.016…+0.008; not a score).
 - **Falsifier:** `strainAway10 >= strain10` on paired receipts falsifies the strain mechanism; `|Δ|<0.010` is no evidence.
+
+## Session 2026-10-24 (`arena/18302384`): `AXIS=PRUNE`, refill ordering — credit-aware refill (`evidence/prune_credit_refill_receipt.json`)
+
+**Design.** Three fixed-count 37,654-dot candidates that keep the recorded A4/A5/A6 L2 strike-aligned collar
+geometry, refill pool and dot count **identical** and change **only** the ordering used to restore the deleted dots:
+the lineage's recovered FIFO-BFS traversal order is replaced by the metric's own marginal kernel credit, evaluated
+truth-free on the pinned `H19-5` proxy (`src/prune_refill.py`, `credit_aware_refill`). Each file is therefore a
+matched placement contrast against its recorded FIFO twin (`PRUNEanisoA4L2` / `A5L2` / `A6L2`, 2026-10-23).
+
+| Candidate | Collar (across / along) | Moved / diff | Refill n | H19-5 credit (credit-aware / FIFO) | SGMC PROXY Δ | Predicted Δ (MODEL) |
+|---|---|---:|---:|---:|---:|---:|
+| `h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6` | 4 / 2 | 2,632 / 13.980 % | 2,632 | 4,054 / 1,215 | −0.00022 | **+0.004** |
+| `h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69` | 5 / 2 | 3,663 / 19.456 % | 3,663 | 5,035 / 1,730 | −0.00171 | **+0.005** |
+| `h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3` | 6 / 2 | 4,625 / 24.566 % | 4,625 | 5,909 / 2,187 | −0.00322 | **+0.003** |
+
+### `h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69` (matched contrast vs `PRUNEanisoA5L2`)
+- **Hypothesis:** If the collar's replacement mass is where DTI lives, the FIFO-BFS tie-break (which puts 99.2 % of
+  its replacement dots within 3 px of a retained dot) is needlessly dilutive, and ranking the same pool by marginal
+  kernel credit recovers the orphaned coverage at no extra collar cost.
+- **Mechanism:** Deletion removes dots whose kernel mass is concentrated on the catalogue and on retained neighbours,
+  leaving short gaps in the H19-5 coverage; an addition that lands inside the R=3 px kernel of such a gap recovers
+  genuinely orphaned coverage, whereas one that lands next to a retained dot mostly duplicates it. The credit-aware
+  refill measures exactly that marginal coverage, so it prefers the orphaned gaps. On the proxy it puts only 86.5 % of
+  its refills within 3 px of a retained dot (median 2.0 px vs FIFO 99.2 % / 1.0 px) and supplies 5,035 kernel credit
+  against the FIFO ordering's 1,730.
+- **Non-fault confounder:** The credit is measured on the pinned H19-5 proxy, not on truth. If the orphaned pixels are
+  not new faults, the extra proxy credit buys nothing and the added `0.2(S−M)` penalty is pure cost. The targets of
+  the refill sit at `d_cat` 2–3 px (the collar's own flank), so a negative live result would mean the refill simply
+  re-added the flank mass the collar removed — it does not carry any new label information.
+- **Predicted live change (MODEL):** **+0.005 DTI** (−0.010…+0.012; not a score).
+- **Falsifier:** paired `Δ <= −0.010` vs `PRUNEanisoA5L2` rejects the ordering (and a monotone decline A4→A6 would
+  falsify the mechanism); `|Δ| < 0.010` is no evidence.
+
+### `h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6` (narrowest collar)
+- **Hypothesis:** As above at the narrowest measured collar: 2,632 deletions leave the smallest coverage gap, so the
+  replacement ordering has the least headroom to matter.
+- **Mechanism:** Same collar/pool/count as `PRUNEanisoA4L2`, ordering by marginal kernel credit. Proxy: 4,054 credit
+  vs FIFO 1,215; redundancy 83.4 % vs 98.7 %.
+- **Non-fault confounder:** A4 carries IR90-13's isotropic-numeric-collision risk (`A=4` has a `PRUNE<=4px`
+  isotropic sibling); A6 is the only free value in the family.
+- **Predicted live change (MODEL):** **+0.004 DTI** (−0.010…+0.010; not a score).
+- **Falsifier:** paired `Δ <= −0.010` vs `PRUNEanisoA4L2`; `|Δ| < 0.010` is no evidence.
+
+### `h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3` (widest collar)
+- **Hypothesis:** The widest collar removes the most flank mass (4,625 dots), so the replacement ordering has the most
+  headroom — and the most opportunity to undo the collar if it targets the same flank.
+- **Mechanism:** Same collar/pool/count as `PRUNEanisoA6L2`, ordering by marginal kernel credit. Proxy: 5,909 credit vs
+  FIFO 2,187; redundancy 87.2 % vs 99.5 %. A monotone decline A4→A6 on paired receipts falsifies the mechanism.
+- **Non-fault confounder:** The refill targets `d_cat` 2–3 px, i.e. the collar's own flank; the SGMC PROXY
+  (−0.00322, the largest headwind of the three) is consistent with re-adding flank mass rather than new coverage.
+- **Predicted live change (MODEL):** **+0.003 DTI** (−0.012…+0.010; not a score).
+- **Falsifier:** paired `Δ <= −0.010` vs `PRUNEanisoA6L2`; `|Δ| < 0.010` is no evidence.
+
+**Instruments.** Leakage canary max symmetric AUC 0.5699 (<0.90, no single feature band; pinned
+`training_features.tif`); catalogue hide/recover n=16,560 bootstrap replicates, R0 0.005692, all three
+Δ ≈ −0.0044; SGMC control Δ −0.0002 / −0.0017 / −0.0032. Every one is REPORT ONLY, never a gate or a live score.

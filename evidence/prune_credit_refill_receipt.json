@@ -1,0 +1,753 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-24T05:38:20Z",
+  "git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
+  "generator_script_sha256": "406e09637bca47224852a57327746567bd2f322021092f93b8b40eedf2e858fc",
+  "prune_refill_module_sha256": "9b70c11d1a26b85a15f2deb99eb25770d27a9aba857af0ee2be69f61d2bc00dd",
+  "axis": "PRUNE",
+  "value_family": "strike-aligned collar across in {4,5,6} px, along 2 px; fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "claimed_live_score": 0.2778,
+    "evidence_class": "CLAIM",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "manifest_sha256": "814a863da01e06ae0a462edef77f309087c4924d2ea4af2a0c9027dea4db2e85",
+    "verified_count": 26,
+    "all_pins_rechecked": true
+  },
+  "reservation": {
+    "local_ledger_checked": true,
+    "sibling_ledgers_checked_2026_10_23": [
+      "GEMSDOE84",
+      "GEMSDOE85",
+      "GEMSDOE86",
+      "GEMSDOE87",
+      "GEMSDOE88",
+      "GEMSDOE89",
+      "GEMSDOE90",
+      "GEMSDOE91",
+      "GEMSDOE92"
+    ],
+    "selected_values": [
+      "tag=anisoA4L2Cred; collar across<=4px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+      "tag=anisoA5L2Cred; collar across<=5px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+      "tag=anisoA6L2Cred; collar across<=6px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill"
+    ],
+    "foreign_duplicates": [],
+    "own_reproduction_rows_present": 0,
+    "distinctness": "No audited sibling ledger contains a strike-aligned collar refilled by marginal kernel credit; every recorded anisotropic PRUNE row refills in the recovered FIFO-BFS thinning order. The collar pair (A, L=2) is the same geometry as the recorded A4/A5/A6 L2 files, so each variant is a matched placement contrast against its recorded FIFO twin.",
+    "matched_control_ids": {
+      "4.0": "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2",
+      "5.0": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061",
+      "6.0": "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3"
+    }
+  },
+  "compliance": {
+    "fixed_count_required_and_satisfied": true,
+    "parent_isotropic_gt_2px_floor_preserved_on_every_final_dot": true,
+    "n_dots_each": 37654,
+    "zero_catalogue_mass": true
+  },
+  "predictions_frozen_before_proxy": true,
+  "proxy_reports": {
+    "leakage_canary": {
+      "status": "REPORT ONLY",
+      "seed": 20261024,
+      "n_positive": 60988,
+      "n_negative_sampled": 250000,
+      "features_tested": 19,
+      "sentinel_handling": "non-finite and <= -1e30 masked out per band before ranking",
+      "max_symmetric_auc": 0.5699,
+      "max_feature_band": 4,
+      "auc_gt_0_90": false,
+      "per_band": [
+        {
+          "band": 1,
+          "auc": 0.4915,
+          "symmetric_auc": 0.5085
+        },
+        {
+          "band": 2,
+          "auc": 0.4974,
+          "symmetric_auc": 0.5026
+        },
+        {
+          "band": 3,
+          "auc": 0.5278,
+          "symmetric_auc": 0.5278
+        },
+        {
+          "band": 4,
+          "auc": 0.5699,
+          "symmetric_auc": 0.5699
+        },
+        {
+          "band": 5,
+          "auc": 0.5338,
+          "symmetric_auc": 0.5338
+        },
+        {
+          "band": 6,
+          "auc": 0.4485,
+          "symmetric_auc": 0.5515
+        },
+        {
+          "band": 7,
+          "auc": 0.5546,
+          "symmetric_auc": 0.5546
+        },
+        {
+          "band": 8,
+          "auc": 0.5244,
+          "symmetric_auc": 0.5244
+        },
+        {
+          "band": 9,
+          "auc": 0.4864,
+          "symmetric_auc": 0.5136
+        },
+        {
+          "band": 10,
+          "auc": 0.5505,
+          "symmetric_auc": 0.5505
+        },
+        {
+          "band": 11,
+          "auc": 0.5265,
+          "symmetric_auc": 0.5265
+        },
+        {
+          "band": 12,
+          "auc": 0.4844,
+          "symmetric_auc": 0.5156
+        },
+        {
+          "band": 13,
+          "auc": 0.4596,
+          "symmetric_auc": 0.5404
+        },
+        {
+          "band": 14,
+          "auc": 0.4892,
+          "symmetric_auc": 0.5108
+        },
+        {
+          "band": 15,
+          "auc": 0.5114,
+          "symmetric_auc": 0.5114
+        },
+        {
+          "band": 16,
+          "auc": 0.5685,
+          "symmetric_auc": 0.5685
+        },
+        {
+          "band": 17,
+          "auc": 0.4828,
+          "symmetric_auc": 0.5172
+        },
+        {
+          "band": 18,
+          "auc": 0.4995,
+          "symmetric_auc": 0.5005
+        },
+        {
+          "band": 19,
+          "auc": 0.5581,
+          "symmetric_auc": 0.5581
+        }
+      ],
+      "note": "Single-feature separability on the known catalogue only; no live-score inference."
+    },
+    "catalogue_hide_recover": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 38,
+      "n_withheld_positives": 16560,
+      "bootstrap_replicates": 1000,
+      "seed": 20261024,
+      "r0_proxy_value": 0.005692,
+      "r0_proxy_ci95": [
+        0.004323,
+        0.007186
+      ],
+      "variants": {
+        "anisoA4L2Cred": {
+          "proxy_value": 0.001337,
+          "proxy_ci95": [
+            0.001005,
+            0.001691
+          ],
+          "delta_vs_r0_proxy": -0.004355,
+          "delta_vs_r0_ci95": [
+            -0.005864,
+            -0.002995
+          ]
+        },
+        "anisoA5L2Cred": {
+          "proxy_value": 0.001244,
+          "proxy_ci95": [
+            0.000927,
+            0.001583
+          ],
+          "delta_vs_r0_proxy": -0.004447,
+          "delta_vs_r0_ci95": [
+            -0.00588,
+            -0.003083
+          ]
+        },
+        "anisoA6L2Cred": {
+          "proxy_value": 0.001285,
+          "proxy_ci95": [
+            0.000925,
+            0.001658
+          ],
+          "delta_vs_r0_proxy": -0.004407,
+          "delta_vs_r0_ci95": [
+            -0.005889,
+            -0.003043
+          ]
+        }
+      },
+      "caveat": "PROXY only: known catalogue labels are live-masked and this holdout has collar blind spots; never a gate or score."
+    },
+    "sgmc_control": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 162,
+      "bootstrap_replicates": 1000,
+      "seed": 20261024,
+      "r0_proxy_value": 0.095386,
+      "r0_proxy_ci95": [
+        0.084323,
+        0.107315
+      ],
+      "variants": {
+        "anisoA4L2Cred": {
+          "proxy_value": 0.095163,
+          "proxy_ci95": [
+            0.084259,
+            0.107048
+          ],
+          "delta_vs_r0_proxy": -0.000224,
+          "delta_vs_r0_ci95": [
+            -0.000772,
+            0.000258
+          ]
+        },
+        "anisoA5L2Cred": {
+          "proxy_value": 0.093676,
+          "proxy_ci95": [
+            0.082848,
+            0.104806
+          ],
+          "delta_vs_r0_proxy": -0.00171,
+          "delta_vs_r0_ci95": [
+            -0.002957,
+            -0.000693
+          ]
+        },
+        "anisoA6L2Cred": {
+          "proxy_value": 0.092163,
+          "proxy_ci95": [
+            0.081523,
+            0.103194
+          ],
+          "delta_vs_r0_proxy": -0.003223,
+          "delta_vs_r0_ci95": [
+            -0.004982,
+            -0.00187
+          ]
+        }
+      },
+      "n_positives_evaluated": 62122,
+      "caveat": "PROXY only: SGMC has bedrock/mapping bias and is not undisclosed test truth; never a gate or score."
+    }
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6",
+      "axis": "PRUNE",
+      "tag": "anisoA4L2Cred",
+      "across_px": 4.0,
+      "along_px": 2.0,
+      "value": "tag=anisoA4L2Cred; collar across<=4px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+      "n_dots": 37654,
+      "pct_changed": 13.979922,
+      "sha256": "f765c9c65a9493c90e73e89bbdc37d93df86184591715529dbca85181a2e6f84",
+      "sha256_zeros": "8953f5d5dc2d2aed7853f7ec2058c778a06d0b2d0c006c5018e34604675afa9a",
+      "status": "BUILT",
+      "predicted_change": "+0.004 DTI (MODEL; plausible -0.008 to +0.012; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE strike-aligned collar across<=4px along<=2px, credit-aware refill; predicted +0.004 DTI MODEL",
+      "matched_fifo_twin_id": "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6.tif",
+          "sha256": "f765c9c65a9493c90e73e89bbdc37d93df86184591715529dbca85181a2e6f84",
+          "bytes": 354223,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6-zeros.tif",
+          "sha256": "8953f5d5dc2d2aed7853f7ec2058c778a06d0b2d0c006c5018e34604675afa9a",
+          "bytes": 218126,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 2632,
+        "n_added": 2632,
+        "n_retained_parent": 35022,
+        "symmetric_difference_px": 5264,
+        "pct_changed_of_parent": 13.97992245179795,
+        "removed_along_abs_median_px": 0.5356935784220695,
+        "removed_across_abs_median_px": 2.803236484527588,
+        "removed_coherence_median": 0.8579442799091339,
+        "removed_dist_median_px": 2.8284271247461903,
+        "removed_dist_max_px": 4.0,
+        "added_dist_median_px": 4.242640687119285,
+        "added_dist_min_px": 2.23606797749979,
+        "removed_to_nearest_added_median_px": 4.242640687119285,
+        "removed_to_nearest_added_max_px": 79.40403012442127,
+        "removed_outside_kernel_of_any_added": 1460
+      },
+      "removed_mask_sha256_packbits": "a04e99d3a21080852466a7447f139430b52b230a0c08e0ffb2368b7bcb68dc4f",
+      "refill_mask_sha256_packbits": "d7418255805409da6f0e1491b0e3a7cc43e244f7826e2455e69ff70ce186ca3c",
+      "collar_diagnostics": {
+        "across_px": 4.0,
+        "along_px": 2.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 2632,
+        "n_inside_coherent_ellipse": 2585,
+        "n_inside_incoherent_fallback": 47,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 4.0,
+        "along_abs_median_inside": 0.5356935784220695,
+        "across_abs_median_inside": 2.803236484527588
+      },
+      "refill": {
+        "n_refill": 2632,
+        "pool_size": 60715,
+        "ordering": "metric marginal kernel credit, greedy, exact local credit updates (src/prune_refill.py)",
+        "pool_rule": "H19-5 support, footprint, d_cat>2px (R0 baseline), outside collar, not retained",
+        "matched_fifo_twin": "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2"
+      },
+      "refill_diagnostics": {
+        "n_refill": 2632,
+        "refill_dist_to_nearest_retained_median_px": 2.0,
+        "refill_dist_to_nearest_retained_max_px": 31.76476034853718,
+        "refill_within_3px_of_retained_pct": 83.3966565349544,
+        "refill_within_kernel_of_retained_pct": 83.3966565349544,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "interpretation": "High 'within 3 px of retained' means refills are largely redundant mass (penalty, little fresh kernel credit). It is a property of the inherited refill policy, not of the collar geometry under test; there is no live score behind it."
+      },
+      "refill_credit_comparison": {
+        "kept_credit": 70802.234375,
+        "credit_aware_refill_credit": 74856.7109375,
+        "fifo_refill_credit": 72016.96875,
+        "credit_aware_marginal_credit": 4054.4765625,
+        "fifo_marginal_credit": 1214.734375,
+        "credit_aware_minus_fifo": 2839.7421875,
+        "note": "REPORT ONLY: total triangular-kernel credit over the pinned H19-5 proxy support. A larger marginal credit means the refill covers more currently-uncredited support pixels; it is not a score and does not rank a file."
+      },
+      "removed_geometry": {
+        "below_3px_removed": 1428,
+        "below_3px_in_final": 473,
+        "note": "PRUNE is the brief's explicit exception to the >=3 px rule; zero catalogue mass remains mandatory."
+      },
+      "mechanism_card": {
+        "hypothesis": "The recorded A4/L2 collar deletes 2,632 near-catalogue R0 dots and then restores the same count with the lineage's FIFO-BFS traversal order, which places 98.7-99.5 % of replacements within 3 px of a dot already retained. That ordering is a tie-break, not the metric: it adds the 0.2*(S-M) penalty while supplying almost no fresh kernel credit. Replacing it with the metric's own marginal kernel credit -- evaluated truth-free on the same H19-5 proxy support -- should put each replacement where it covers currently-uncredited corroborated-ridge pixels, i.e. the pixels the collar deletion orphaned, and therefore recover more coverage per replacement.",
+        "mechanism": "Ellipse (along/2)^2 + (across/4)^2 <= 1 removes the collar dots; the exact 37654 dot count is restored from outside-collar H19-5 support (d_cat>2 px, the parent baseline) by a greedy max-marginal-credit rule with exact local credit updates inside the 300 m kernel. Marginal credit of a candidate q is sum_offsets max(0, k*support[q+off] - credit[q+off]) + own-pixel term, with credit the current best kernel credit from dots already placed. Ties break on flat raster index, so the file is byte-reproducible. Catalogue pixels remain exactly zero mass.",
+        "non_fault_confounder": "The orphaned pixels the credit-aware refill targets are adjacent to mapped traces, where lithologic contacts, drainage divides and shoreline/road alignments mimic faults; a refill that concentrates mass there can simply re-add the false mass the collar removed. H19-5 is also the parent's own support, so 'covering H19-5 pixels' is not the same as covering undisclosed truth, and the H19-5 field itself fires on the known catalogue.",
+        "predicted_live_change": "+0.004 DTI (MODEL; plausible -0.008 to +0.012; not a score)",
+        "prediction_decomposition": "MODEL: the collar term is unchanged from the recorded FIFO twin (same collar, same pool, same count); only the refill term changes. On the H19-5 proxy the credit-aware refill supplies 4054 kernel credit versus 1215 for the FIFO ordering (difference +2840), so the prediction is the recorded twin's collar gain plus a refill term proportional to that difference, discounted because proxy-support credit is not truth credit.",
+        "falsifier": "A paired same-week live receipt against the recorded FIFO twin (h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2) with delta <= -0.010 rejects the refill-ordering mechanism at this collar width; |delta| < 0.010 is no evidence. A monotone decline across A4->A6 would also falsify the mechanism, since the credit-aware refill's advantage should persist while the collar widens.",
+        "structural_geologist_note": "Inspect where the credit-aware refill placed mass relative to the retained strands: the prediction is that it fills the gaps the collar deletion opened beside mapped traces, not that it invents new structures. If the replacements simply re-occupy the deleted flank positions, the collar and the refill are cancelling and the edit is a no-op.",
+        "predicted_short_for_form": "+0.004"
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69",
+      "axis": "PRUNE",
+      "tag": "anisoA5L2Cred",
+      "across_px": 5.0,
+      "along_px": 2.0,
+      "value": "tag=anisoA5L2Cred; collar across<=5px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+      "n_dots": 37654,
+      "pct_changed": 19.4561,
+      "sha256": "17fe2f69483caec5b321a48f95a54f5d3c3af1636c753b0127cd048b842a4ee7",
+      "sha256_zeros": "6126acff962288dcefb2de17f35ed047785aa5f84805b1f0a34f065df6ed2d2a",
+      "status": "BUILT",
+      "predicted_change": "+0.005 DTI (MODEL; plausible -0.008 to +0.014; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE strike-aligned collar across<=5px along<=2px, credit-aware refill; predicted +0.005 DTI MODEL",
+      "matched_fifo_twin_id": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69.tif",
+          "sha256": "17fe2f69483caec5b321a48f95a54f5d3c3af1636c753b0127cd048b842a4ee7",
+          "bytes": 353582,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69-zeros.tif",
+          "sha256": "6126acff962288dcefb2de17f35ed047785aa5f84805b1f0a34f065df6ed2d2a",
+          "bytes": 217449,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 3663,
+        "n_added": 3663,
+        "n_retained_parent": 33991,
+        "symmetric_difference_px": 7326,
+        "pct_changed_of_parent": 19.456100281510597,
+        "removed_along_abs_median_px": 0.5677251219749451,
+        "removed_across_abs_median_px": 2.968604564666748,
+        "removed_coherence_median": 0.8487628102302551,
+        "removed_dist_median_px": 3.0,
+        "removed_dist_max_px": 5.0,
+        "added_dist_median_px": 8.0,
+        "added_dist_min_px": 2.23606797749979,
+        "removed_to_nearest_added_median_px": 5.385164807134504,
+        "removed_to_nearest_added_max_px": 79.30952023559341,
+        "removed_outside_kernel_of_any_added": 2302
+      },
+      "removed_mask_sha256_packbits": "df84a09c5b823c6ab4a9c09d55b5bc8c17456f483cf359b241bdb96ea2e80760",
+      "refill_mask_sha256_packbits": "879c18b88fabedb798ff6d7cb8960b81e72589eb1327413cec4b8a091e08c8d7",
+      "collar_diagnostics": {
+        "across_px": 5.0,
+        "along_px": 2.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 3663,
+        "n_inside_coherent_ellipse": 3588,
+        "n_inside_incoherent_fallback": 75,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 5.0,
+        "along_abs_median_inside": 0.5677251219749451,
+        "across_abs_median_inside": 2.968604564666748
+      },
+      "refill": {
+        "n_refill": 3663,
+        "pool_size": 58759,
+        "ordering": "metric marginal kernel credit, greedy, exact local credit updates (src/prune_refill.py)",
+        "pool_rule": "H19-5 support, footprint, d_cat>2px (R0 baseline), outside collar, not retained",
+        "matched_fifo_twin": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061"
+      },
+      "refill_diagnostics": {
+        "n_refill": 3663,
+        "refill_dist_to_nearest_retained_median_px": 2.0,
+        "refill_dist_to_nearest_retained_max_px": 44.384682042344295,
+        "refill_within_3px_of_retained_pct": 86.48648648648648,
+        "refill_within_kernel_of_retained_pct": 86.48648648648648,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "interpretation": "High 'within 3 px of retained' means refills are largely redundant mass (penalty, little fresh kernel credit). It is a property of the inherited refill policy, not of the collar geometry under test; there is no live score behind it."
+      },
+      "refill_credit_comparison": {
+        "kept_credit": 68625.984375,
+        "credit_aware_refill_credit": 73660.890625,
+        "fifo_refill_credit": 70356.25,
+        "credit_aware_marginal_credit": 5034.90625,
+        "fifo_marginal_credit": 1730.265625,
+        "credit_aware_minus_fifo": 3304.640625,
+        "note": "REPORT ONLY: total triangular-kernel credit over the pinned H19-5 proxy support. A larger marginal credit means the refill covers more currently-uncredited support pixels; it is not a score and does not rank a file."
+      },
+      "removed_geometry": {
+        "below_3px_removed": 1455,
+        "below_3px_in_final": 409,
+        "note": "PRUNE is the brief's explicit exception to the >=3 px rule; zero catalogue mass remains mandatory."
+      },
+      "mechanism_card": {
+        "hypothesis": "The recorded A5/L2 collar deletes 3,663 near-catalogue R0 dots and then restores the same count with the lineage's FIFO-BFS traversal order, which places 98.7-99.5 % of replacements within 3 px of a dot already retained. That ordering is a tie-break, not the metric: it adds the 0.2*(S-M) penalty while supplying almost no fresh kernel credit. Replacing it with the metric's own marginal kernel credit -- evaluated truth-free on the same H19-5 proxy support -- should put each replacement where it covers currently-uncredited corroborated-ridge pixels, i.e. the pixels the collar deletion orphaned, and therefore recover more coverage per replacement.",
+        "mechanism": "Ellipse (along/2)^2 + (across/5)^2 <= 1 removes the collar dots; the exact 37654 dot count is restored from outside-collar H19-5 support (d_cat>2 px, the parent baseline) by a greedy max-marginal-credit rule with exact local credit updates inside the 300 m kernel. Marginal credit of a candidate q is sum_offsets max(0, k*support[q+off] - credit[q+off]) + own-pixel term, with credit the current best kernel credit from dots already placed. Ties break on flat raster index, so the file is byte-reproducible. Catalogue pixels remain exactly zero mass.",
+        "non_fault_confounder": "The orphaned pixels the credit-aware refill targets are adjacent to mapped traces, where lithologic contacts, drainage divides and shoreline/road alignments mimic faults; a refill that concentrates mass there can simply re-add the false mass the collar removed. H19-5 is also the parent's own support, so 'covering H19-5 pixels' is not the same as covering undisclosed truth, and the H19-5 field itself fires on the known catalogue.",
+        "predicted_live_change": "+0.005 DTI (MODEL; plausible -0.008 to +0.014; not a score)",
+        "prediction_decomposition": "MODEL: the collar term is unchanged from the recorded FIFO twin (same collar, same pool, same count); only the refill term changes. On the H19-5 proxy the credit-aware refill supplies 5035 kernel credit versus 1730 for the FIFO ordering (difference +3305), so the prediction is the recorded twin's collar gain plus a refill term proportional to that difference, discounted because proxy-support credit is not truth credit.",
+        "falsifier": "A paired same-week live receipt against the recorded FIFO twin (h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061) with delta <= -0.010 rejects the refill-ordering mechanism at this collar width; |delta| < 0.010 is no evidence. A monotone decline across A4->A6 would also falsify the mechanism, since the credit-aware refill's advantage should persist while the collar widens.",
+        "structural_geologist_note": "Inspect where the credit-aware refill placed mass relative to the retained strands: the prediction is that it fills the gaps the collar deletion opened beside mapped traces, not that it invents new structures. If the replacements simply re-occupy the deleted flank positions, the collar and the refill are cancelling and the edit is a no-op.",
+        "predicted_short_for_form": "+0.005"
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3",
+      "axis": "PRUNE",
+      "tag": "anisoA6L2Cred",
+      "across_px": 6.0,
+      "along_px": 2.0,
+      "value": "tag=anisoA6L2Cred; collar across<=6px, along<=2px (strike-aligned); fixed-count H19-5 credit-aware (max-marginal-kernel-credit) refill",
+      "n_dots": 37654,
+      "pct_changed": 24.565783,
+      "sha256": "a5f086c3cfb9459b98b967a3bbb253a9308e4a2ad336e0b94db1068b7626bcef",
+      "sha256_zeros": "fa17dc8352eaa7423632a4823211ecdf34aac2ffd2f8ffe7cd3585e55a9cf41f",
+      "status": "BUILT",
+      "predicted_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+      "form_note": "h33-h33-2-b2; PRUNE strike-aligned collar across<=6px along<=2px, credit-aware refill; predicted +0.003 DTI MODEL",
+      "matched_fifo_twin_id": "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3.tif",
+          "sha256": "a5f086c3cfb9459b98b967a3bbb253a9308e4a2ad336e0b94db1068b7626bcef",
+          "bytes": 352940,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3-zeros.tif",
+          "sha256": "fa17dc8352eaa7423632a4823211ecdf34aac2ffd2f8ffe7cd3585e55a9cf41f",
+          "bytes": 216879,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 4625,
+        "n_added": 4625,
+        "n_retained_parent": 33029,
+        "symmetric_difference_px": 9250,
+        "pct_changed_of_parent": 24.5657831837255,
+        "removed_along_abs_median_px": 0.5722525715827942,
+        "removed_across_abs_median_px": 3.1573721170425415,
+        "removed_coherence_median": 0.8466607332229614,
+        "removed_dist_median_px": 3.1622776601683795,
+        "removed_dist_max_px": 6.0,
+        "added_dist_median_px": 12.083045973594572,
+        "added_dist_min_px": 2.23606797749979,
+        "removed_to_nearest_added_median_px": 6.0,
+        "removed_to_nearest_added_max_px": 69.00724599634447,
+        "removed_outside_kernel_of_any_added": 3142
+      },
+      "removed_mask_sha256_packbits": "a9380ab14dcdb4e5a0eed10db972668691a2cffb1e342916614e1b58c3a77e41",
+      "refill_mask_sha256_packbits": "82ecc78031d211e993c421db853bb1dc90f8536c97ae984ca6e893a0cfd2414d",
+      "collar_diagnostics": {
+        "across_px": 6.0,
+        "along_px": 2.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 4625,
+        "n_inside_coherent_ellipse": 4525,
+        "n_inside_incoherent_fallback": 100,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 6.0,
+        "along_abs_median_inside": 0.5722525715827942,
+        "across_abs_median_inside": 3.1573721170425415
+      },
+      "refill": {
+        "n_refill": 4625,
+        "pool_size": 57017,
+        "ordering": "metric marginal kernel credit, greedy, exact local credit updates (src/prune_refill.py)",
+        "pool_rule": "H19-5 support, footprint, d_cat>2px (R0 baseline), outside collar, not retained",
+        "matched_fifo_twin": "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3"
+      },
+      "refill_diagnostics": {
+        "n_refill": 4625,
+        "refill_dist_to_nearest_retained_median_px": 2.0,
+        "refill_dist_to_nearest_retained_max_px": 44.384682042344295,
+        "refill_within_3px_of_retained_pct": 87.2,
+        "refill_within_kernel_of_retained_pct": 87.2,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "interpretation": "High 'within 3 px of retained' means refills are largely redundant mass (penalty, little fresh kernel credit). It is a property of the inherited refill policy, not of the collar geometry under test; there is no live score behind it."
+      },
+      "refill_credit_comparison": {
+        "kept_credit": 66628.2578125,
+        "credit_aware_refill_credit": 72537.53125,
+        "fifo_refill_credit": 68814.7890625,
+        "credit_aware_marginal_credit": 5909.2734375,
+        "fifo_marginal_credit": 2186.53125,
+        "credit_aware_minus_fifo": 3722.7421875,
+        "note": "REPORT ONLY: total triangular-kernel credit over the pinned H19-5 proxy support. A larger marginal credit means the refill covers more currently-uncredited support pixels; it is not a score and does not rank a file."
+      },
+      "removed_geometry": {
+        "below_3px_removed": 1461,
+        "below_3px_in_final": 397,
+        "note": "PRUNE is the brief's explicit exception to the >=3 px rule; zero catalogue mass remains mandatory."
+      },
+      "mechanism_card": {
+        "hypothesis": "The recorded A6/L2 collar deletes 4,625 near-catalogue R0 dots and then restores the same count with the lineage's FIFO-BFS traversal order, which places 98.7-99.5 % of replacements within 3 px of a dot already retained. That ordering is a tie-break, not the metric: it adds the 0.2*(S-M) penalty while supplying almost no fresh kernel credit. Replacing it with the metric's own marginal kernel credit -- evaluated truth-free on the same H19-5 proxy support -- should put each replacement where it covers currently-uncredited corroborated-ridge pixels, i.e. the pixels the collar deletion orphaned, and therefore recover more coverage per replacement.",
+        "mechanism": "Ellipse (along/2)^2 + (across/6)^2 <= 1 removes the collar dots; the exact 37654 dot count is restored from outside-collar H19-5 support (d_cat>2 px, the parent baseline) by a greedy max-marginal-credit rule with exact local credit updates inside the 300 m kernel. Marginal credit of a candidate q is sum_offsets max(0, k*support[q+off] - credit[q+off]) + own-pixel term, with credit the current best kernel credit from dots already placed. Ties break on flat raster index, so the file is byte-reproducible. Catalogue pixels remain exactly zero mass.",
+        "non_fault_confounder": "The orphaned pixels the credit-aware refill targets are adjacent to mapped traces, where lithologic contacts, drainage divides and shoreline/road alignments mimic faults; a refill that concentrates mass there can simply re-add the false mass the collar removed. H19-5 is also the parent's own support, so 'covering H19-5 pixels' is not the same as covering undisclosed truth, and the H19-5 field itself fires on the known catalogue.",
+        "predicted_live_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+        "prediction_decomposition": "MODEL: the collar term is unchanged from the recorded FIFO twin (same collar, same pool, same count); only the refill term changes. On the H19-5 proxy the credit-aware refill supplies 5909 kernel credit versus 2187 for the FIFO ordering (difference +3723), so the prediction is the recorded twin's collar gain plus a refill term proportional to that difference, discounted because proxy-support credit is not truth credit.",
+        "falsifier": "A paired same-week live receipt against the recorded FIFO twin (h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3) with delta <= -0.010 rejects the refill-ordering mechanism at this collar width; |delta| < 0.010 is no evidence. A monotone decline across A4->A6 would also falsify the mechanism, since the credit-aware refill's advantage should persist while the collar widens.",
+        "structural_geologist_note": "Inspect where the credit-aware refill placed mass relative to the retained strands: the prediction is that it fills the gaps the collar deletion opened beside mapped traces, not that it invents new structures. If the replacements simply re-occupy the deleted flank positions, the collar and the refill are cancelling and the edit is a no-op.",
+        "predicted_short_for_form": "+0.003"
+      }
+    }
+  ],
+  "elapsed_s": 103.55,
+  "no_live_submission": true,
+  "agent_never_submits": true,
+  "verified_utc": "2026-10-24T05:39:13Z",
+  "verification_git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
+  "self_check": {
+    "all_26_manifest_pins_verified": true,
+    "r0_rebuilt_byte_identically": true,
+    "variant_files_re_read_and_validated": true,
+    "variant_bytes_reproduced_exactly": true,
+    "fixed_37654_dot_count": true,
+    "zero_catalogue_mass": true,
+    "sha256_unique_against_ledger": true
+  }
+}

@@ -127,6 +127,29 @@ All three hold **37,654 dots**, emit zero catalogue mass, and preserve R0's `d_c
 
 **WITHDRAWN — do not upload:** `PRUNEanisoA4L2nr`, `PRUNEanisoA5L2nr`, `PRUNEanisoA6L2nr`; delete-only probes violated the fixed-count PRUNE recipe (IR90-29).
 
+## 5c. Fixed-count credit-aware-refill PRUNE (`AXIS=PRUNE`, session 2026-10-24)
+
+**Matched placement contrast.** Same collar geometry, same refill pool, same 37,654 count as the recorded §2 rungs —
+only the refill ordering changes (FIFO-BFS traversal order → the metric's own marginal kernel credit on the pinned
+H19-5 proxy, truth-free). This is the one axis where a recorded candidate's tie-break was never instrumented (IR90-35).
+Frozen MODEL predictions and the FIFO credit comparison: `evidence/prune_credit_refill_receipt.json`.
+
+| Candidate | Preferred file (NaN outside) | Fallback twin | Form note (<=140 chars) |
+|---|---|---|---|
+| **A4 / L2 credit-aware refill** | `releases/h33-h33-2-b2-PRUNEanisoA4L2Cred-20261024-f765c9c6.tif` | `…-f765c9c6-zeros.tif` | `h33-h33-2-b2; PRUNE strike-aligned collar across<=4px along<=2px, credit-aware refill; predicted +0.004 DTI MODEL` |
+| **A5 / L2 credit-aware refill** | `releases/h33-h33-2-b2-PRUNEanisoA5L2Cred-20261024-17fe2f69.tif` | `…-17fe2f69-zeros.tif` | `h33-h33-2-b2; PRUNE strike-aligned collar across<=5px along<=2px, credit-aware refill; predicted +0.005 DTI MODEL` |
+| **A6 / L2 credit-aware refill** | `releases/h33-h33-2-b2-PRUNEanisoA6L2Cred-20261024-a5f086c3.tif` | `…-a5f086c3-zeros.tif` | `h33-h33-2-b2; PRUNE strike-aligned collar across<=6px along<=2px, credit-aware refill; predicted +0.003 DTI MODEL` |
+
+SHA-256 (NaN / zeros): A4 `f765c9c65a9493c9…` / `8953f5d5dc2d2aed…`; A5 `17fe2f69483caec5…` / `6126acff962288dc…`;
+A6 `a5f086c3cfb9459b…` / `fa17dc8352eaa742…`. All three hold 37,654 dots, emit zero catalogue mass, keep every
+dot outside its declared collar and preserve R0's `d_cat>2 px` floor on every final dot (IR90-14); moved
+2,632 / 3,663 / 4,625 dots (13.980 / 19.456 / 24.566 %). Rebuild with
+`.venv/bin/python scripts/build_prune_credit_refill.py --build` after `scripts/restore_data.py`; re-check with
+`--verify` (re-emits byte-identically). Report-only `PROXY` (never gates, never a live score): leakage canary max
+symmetric AUC 0.5699 (<0.90); SGMC Δ −0.0002 / −0.0017 / −0.0032; catalogue hide/recover R0 0.005692 with all three
+Δ ≈ −0.0044 (the holdout's documented collar blind spot). Upload **one** encoding only, and ideally pair the slot
+with the recorded FIFO twin `PRUNEanisoA5L2` in the same week so the ordering is the only difference.
+
 ## Format gate (every file, re-read from disk after writing)
 
 | Property | Value |
