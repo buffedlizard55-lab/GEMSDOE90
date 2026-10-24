@@ -156,3 +156,32 @@ MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.
 - **Merge-aware status:** a parallel session (main PR #20) had built a 15 km structural CONCENTRATION ladder using the SAME four filenames. AI renamed its own files to `src/concentration_strain5km.py`, `scripts/build_concentration_strain5km.py`, `tests/test_concentration_strain5km.py`, `evidence/concentration_strain5km_build_receipt.json` so both designs coexist, resolved all shared-file conflicts by union, and re-verified. Consistent with main IR90-25/26/30 (fixed-count concentration loses net support credit; parallel variants HELD from slots), these three files are kept as distinct `(parent,axis,value)` BUILT occupancy guards and HELD from slots; the away arm is a falsifier instrument only. IR90-32/33/34.
 - **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit any file, or invent any score/quota/target. R0's 0.2778 is CLAIM; every Δ is MODEL; canary/proxies are PROXY. Competition rasters stay in ignored `.cache/gems_data/` and `releases/`; the four *_strain5km source files are the only new tracked code.
 - **Human must decide/supply:** adjudicate whether sibling repos GEMSDOE84–97 are ONE entity (quota risk, IR90-26/30/32), confirm deadline and slot count, supply dated TOP_PUBLIC and portal receipts, decide whether the strain5km occupancy guards add value or should be dropped as a near-duplicate, and choose which single file (if any) to upload from their registered account.
+
+## Session arena/5d597521 (2026-10-24, agent-selected AXIS=SPACING, GEMSDOE90)
+
+**AI wrote:** `src/spacing.py` (crowding rank, local respacing operator, spacing statistics),
+`scripts/build_spacing_variants.py` (build/verify, ledger/reservation writers, report-only
+diagnostics), `tests/test_spacing.py`, the three ledger rows, the `spacing` mechanism cards in
+`ledger/mechanism_cards.json`, the `spacing_reservations_20261024` block, the receipt
+`evidence/spacing_build_receipt.json`, and the matching sections of `docs/MECHANISM_CARDS.md`,
+`docs/SUBMIT.md`, `SLOT_PLAN.md`, `IRREGULARITIES.md` (IR90-35/36) and this file. AI re-verified
+26/26 pinned inputs by SHA-256, rebuilt R0 byte-identically (zeros `c55bafc4…` / NaN `baeae321…`),
+audited sibling SPACING values read-only via `gh api` (GEMSDOE84-88/91/92), re-read every written
+raster from disk, reproduced the bytes with `--verify`, and ran the full test suite.
+
+**AI decided (agent-selected axis, not assigned):** SPACING, in a local kernel-scale form. The
+brief's global trio (lattice / Poisson-disk / along-strike) and ring-2 micro-moves are already
+built by siblings; MASS, CONCENTRATION, PRUNE and RELIEF ladders are complete in this repo; SNAP
+is proven infeasible (IR90-28). AI set the doses (5/10/15%), the crowding rank, the 15 px window
+and the 2.8 px separation floor, measured the exact support-credit balance (-87/-284/-496) before
+freezing predictions (0.000 / -0.001 / -0.002 MODEL), and held all three files from slots because
+the balance and both PROXYs say local arrangement is exhausted. AI did not contact DrivenData or
+Dropbox, did not read the leaderboard, did not log in, and did not submit. R0's 0.2778 remains a
+CLAIM; every predicted change is a MODEL; canary/hide-recover/SGMC numbers are PROXY.
+
+**Human must decide/supply:** dated `TOP_PUBLIC`, quota used/remaining (one entity, 3/week),
+deadline confirmation (2026-12-03 UNVERIFIED), R0's portal receipt and receipts for any uploaded
+file, a geological review of whether crowded-dot clusters (possible step-overs/intersections) may
+be respaced at all, whether the inherited 2.236 px floor is acceptable (IR90-36), and which single
+file (if any) to upload from their own registered account. The agent's recommendation is to keep
+the SPACING files held and run the MASS-add / continuity / PRUNE order in `SLOT_PLAN.md` first.

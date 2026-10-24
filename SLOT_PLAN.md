@@ -24,6 +24,44 @@ A concurrent build on the old base, merged after main recorded IR90-25/26. The p
 
 Report-only diagnostics (`PROXY`, never gates/scores): catalogue hide/recover `n=13,920`, R0 `0.007191`; deltas +1e-06 / +2.4e-05 / +1.1e-05 with 95% CIs spanning 0. SGMC `n=62,122`, R0 `0.095386`; deltas above with CIs excluding 0. Leakage canary max symmetric AUC `0.574747` (<0.90). Predictions were frozen before proxies. Exact hashes, parent diffs and validator output: `evidence/concentration_build_receipt.json`.
 
+## This session: SPACING local kernel-scale respacing — BUILT but HELD (no slot)
+
+| Candidate (2026-10-24) | Relocated / diff | Mean displacement | Support-credit Δ | MODEL Δ | Decision |
+|---|---:|---:|---:|---:|---|
+| `h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c` | 1,883 / 10.00% | 5.02 px | -87.1 | **0.000** (-0.008…+0.008) | HOLD; lowest-dose arrangement guard. |
+| `h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9` | 3,765 / 20.00% | 3.96 px | -284.3 | **-0.001** (-0.009…+0.007) | HOLD. |
+| `h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec` | 5,648 / 30.00% | 3.63 px | -495.7 | **-0.002** (-0.010…+0.006) | HOLD. |
+
+Agent-selected axis after a fresh sibling audit: the brief's global SPACING trio (lattice /
+Poisson-disk / along-strike) plus ring-2 micro-moves are already built in GEMSDOE86/88/91, so this
+session respaced only the most kernel-crowded dots (summed disk overlap within 6 px) to the
+max-marginal-credit support pixel within 15 px at the parent's 2.8 px separation, count fixed at
+37,654, added d_cat>=3 px, zero catalogue mass. The exact support-credit balance is negative at
+every dose (replacements within 1.5 km cannot reach the far uncovered support; IR90-25/35), both
+report-only PROXYs sit at 1e-4 with opposite signs (hide-recover n=16,560: -0.000008/-0.000057/
+-0.000144; SGMC n=62,122: +0.000221/+0.000413/+0.000373), and the leakage canary peaks at 0.570341
+(< 0.90). **HOLD all three from the next slots**; they close the local-arrangement question so the
+final choice need not spend on it. Receipt `evidence/spacing_build_receipt.json`; builder
+`scripts/build_spacing_variants.py`.
+
+## Better axes proposed this session (not built)
+
+- **WINDOW_DOSE:** hold the dose at 10% and vary only the respacing window (15 px vs 60 px vs
+  unbounded-within-block). *Mechanism:* separates "locality preserves geography" from "locality
+  starves replacements" — this session's 60 px fallbacks (132-237 dots) hint the far support is
+  where any arrangement gain lives. *Confounder:* a wider window becomes CONCENTRATION in
+  disguise (block mix changes), so block quotas must be held as this session held geography.
+  *Falsifier:* paired Δ <= -0.010 for the 60 px arm vs the 15 px arm at matched dose/count.
+  Do not build until a live receipt exists (IR90-35).
+- **FAR_GAP_SWAP:** crowding-ranked removals (as here) with *global* max-marginal-credit
+  replacements on the 13,793 zero-credit support px, under per-5 km-block caps (no block gains
+  > 50%). *Mechanism:* the only arrangement edit that can actually reach uncovered ridge; the
+  fixed count keeps it an arrangement test, not a MASS add. *Confounder:* zero-credit support is
+  the lineage's least-confident ground (cover, contacts, drainage), so proxy gains may not
+  transfer — the same discount the q50 infill applies. *Falsifier:* paired Δ <= -0.010 vs
+  `SPACINGresp10pctW15` at matched dose. Distinct from REFILL_RANK (no collar) and
+  KERNEL_ORACLE_DOSE (no deletion-first step); do not build this session.
+
 ## Calendar to deadline (`2026-12-03` UNVERIFIED — human confirms)
 
 - **Weeks 1–2 (Oct 23–Nov 5):** obtain R0's receipt if possible; execute the conditional order, then only the strongest orthogonal mechanism.
@@ -38,7 +76,7 @@ Report-only diagnostics (`PROXY`, never gates/scores): catalogue hide/recover `n
 - **DISPERSION_CONTROL:** down-concentration (high→low prior) at 15 km, the only sibling CONCENTRATION direction reading positive. *Falsifier:* paired Δ<=-0.010; do not build until the held upward ladder is superseded by a receipt.
 - **WITHDRAWN / DO NOT UPLOAD:** FIFO-ranked MASS, duplicate `MASSadd10pctGapmax`, delete-only `L2nr` PRUNE, and SNAP (IR90-20/24/28/29).
 
-**Reproduce before any upload:** `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scripts/restore_releases.py` (18 core pairs recorded at branch start) → main's `build_mass_infill.py` / `build_mass_add_variants.py` / `build_mass_continuity.py` / `build_aniso_prune_along.py` family builders or verifiers for the slotted candidates → `.venv/bin/python scripts/build_concentration_variants.py --verify` for the held files. Re-read every TIFF from disk, run the format gate, and match SHA-256 to `ledger/submissions.csv` before the human uploads from their own account.
+**Reproduce before any upload:** `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scripts/restore_releases.py` (18 core pairs recorded at branch start) → main's `build_mass_infill.py` / `build_mass_add_variants.py` / `build_mass_continuity.py` / `build_aniso_prune_along.py` family builders or verifiers for the slotted candidates → `.venv/bin/python scripts/build_concentration_variants.py --verify` for the held files. For the held SPACING files: `.venv/bin/python scripts/build_spacing_variants.py --verify`. Re-read every TIFF from disk, run the format gate, and match SHA-256 to `ledger/submissions.csv` before the human uploads from their own account.
 
 ## Concurrent 5 km strain-prior CONCENTRATION — HELD, not slotted (session `arena/388fea70`)
 
