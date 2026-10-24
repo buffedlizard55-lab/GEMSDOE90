@@ -1,0 +1,59 @@
+# Three-pass research review — 2026-10-24
+
+## Decision
+
+**No new candidate GeoTIFF was created. Nothing from this review is safe to download or submit.** This is a negative *promotion* verdict because the required validation chain is unavailable, not a negative measured result for a geological hypothesis.
+
+The repository records the incumbent's high score only as an unreceipted owner claim. No organizer submission receipt or independently verified leaderboard result was found. I therefore cannot confirm the claim, rank it against the conflicting user-cited values, or claim that any alternative improves it. The restored input pins match the repository manifest, but the manifest itself says the mirror is owner-supplied and not organizer-authenticated.
+
+## Three review passes
+
+### Pass one — project aim, score claim, and provenance
+
+- Read the project README, submission notes, irregularities, ledger, data manifest, and the R0 rebuild receipt.
+- R0 was rebuilt byte-identically from its recorded parent recipe and the pinned inputs verify against the local manifest. This establishes reproducibility against the mirror, not organizer provenance or score confirmation.
+- The reported score has no organizer receipt in the reviewed files. The official competition page is login-walled according to the manifest; no official leaderboard, rules page, or receipt was independently fetched in this review.
+- The checked-in R0 evidence says the parent raster uses a catalogue-distance exclusion greater than two pixels; that is not evidence that R0 meets the requested three-pixel exclusion.
+
+### Pass two — candidate-selection and hypothesis screen
+
+**Answer to the `src.reach.py` suggestion: yes, it can choose high-scoring candidate pixels.** `infill_select()` greedily selects pixels from a caller-supplied pool by exact marginal triangular-kernel credit, updating credit after each pick and enforcing per-block quotas. The existing `scripts/build_mass_infill.py` uses it on the H19-5 corroborated-ridge support. Its “score” is marginal coverage of that support proxy, not a geological probability, a holdout score, or proof of fault presence. The repository's own mechanism card names drainage, lithologic contacts, and pluvial shoreline segments as non-fault mimics. Existing MASS-add rasters were not restored to `releases/` in this workspace, and no new raster was built here.
+
+The following is a **research-priority ranking, not a score ranking**. Exact novelty across the entire project is unverified: the reachable sibling audit found that many repositories do not expose a readable `ledger/submissions.csv`, so absence from that partial audit is not proof that a method was never attempted. Expected DTI is unquantified for every item; no numeric improvement prediction is justified without compliant holdout evidence.
+
+| Rank | Geological hypothesis and mechanism | How it could find faults missed by the catalogue | Distinction from methods already inspected | Named non-fault mimic | Expected DTI improvement / cost |
+|---|---|---|---|---|---|
+| **One** | **Hydrothermal mixing-front / geothermometer-discordance corridor.** Use disagreement among quartz, chalcedony, and cation reservoir-temperature estimates, together with the measured spring temperature, as a mixing/dilution signal; test only where an independent structural corridor is present. The local GDR table contains these fields. | A permeable, blind or low-displacement fault can conduct deep fluid but leave little or no surface scarp. A mixing front may locate the upflow path more precisely than a hot-site or point-density prior. | The inspected H33-1 operator uses the maximum reservoir-temperature estimate with a structural lineament; its thermal-preparation function computes thermometer spread, but the H33-1 score does not use that spread as a mixing-front signal. The sibling thermal-concentration experiment uses feature locations, not thermometer discordance. Exact project-wide novelty remains unverified. | **Water–rock interaction in different lithologies** can make geothermometers disagree without any fault; shallow conductive warming and inconsistent sampling can do the same. | **Potentially positive only if discordance aligns with independently withheld faults; magnitude unknown.** Medium cost: the pinned table is present, but a leakage-safe spatial holdout is still required. |
+| **Two** | **Anisotropic shallow-temperature anomaly.** Detect elongated, spatially coherent two-metre temperature residuals and test their orientation against independent structural evidence rather than ranking hot points. | Shallow hydrothermal upflow can be distributed along a concealed permeable fault even where mapped Quaternary scarps are absent. | This uses the geometry of direct shallow-temperature observations rather than maximum reservoir geothermometry or a thermal-feature concentration prior. The inspected shared H33 source lists this resource need but has no completed operator or holdout result; it is previously proposed, not established as novel. | **Solar aspect, land cover, soil moisture, and survey-season effects** can produce elongated temperature patterns without fault-controlled flow. | **Potentially positive but unquantified.** High cost: the data are not in the restored inputs, and live availability/terms of the named resource were not independently checked. Not eligible to build yet. |
+| **Three** | **Paleogeothermal alteration / sinter boundary intersecting a structural corridor.** Test whether the margins and orientation of mapped relic geothermal deposits coincide with independent fault-sensitive structure, rather than using deposit proximity alone. | Persistent, older fluid pathways may preserve evidence of blind or eroded fault corridors that are absent from a young-scarp catalogue. | This is a deposit-boundary/structure interaction, not a current-temperature hotspot or simple thermal-point density. The inspected shared H33 source lists a paleogeothermal resource need but no completed operator or holdout result; it is previously proposed, not established as novel. | **Lithology-controlled sinter/travertine exposure or erosional remnants** can form deposit boundaries unrelated to an active fault. | **Potentially positive but unquantified; likely data-limited.** High cost: resource acquisition, georegistration, age/coverage checks, and a compliant holdout are required. Availability was not independently checked. |
+
+The second and third concepts are **deferred**, not declared available: the shared code names the GDR 1391 resources `2m_temperature_probe_INGENIOUS_regional_data.zip` and `paleo_geothermal_regional.zip`, with URLs `https://gdr.openei.org/files/1391/2m_temperature_probe_INGENIOUS_regional_data.zip` and `https://gdr.openei.org/files/1391/paleo_geothermal_regional.zip`. Those URLs were not fetched from the official host in this environment, so current availability and terms remain unverified. The GDR well/spring table already restored here is an owner-mirrored, hash-pinned copy; its provenance is not organizer authentication.
+
+### Pass three — holdout, duplication, and artifact gate
+
+The selected research priority is the geothermometer-discordance hypothesis, but it was **not implemented or evaluated**. Exact blockers:
+
+- The referenced 35-channel cached feature stack (`feature_stack.npy`) is absent. The available `training_features.tif` is a separate 19-band raster; substituting it would not reproduce the referenced cache receipt.
+- The fault-trace summary CSV contains trace metadata and centroids but no segment geometry or pixel-to-stable-segment mapping. Connected-component holdout exists in a separate shared codebase, but its components have not been verified as whole original fault segments.
+- No verified shared end-to-end evaluator was found that combines visible-fault-only feature construction, pixel-exact masking, whole-segment buffered withholding, pooled DTI under the requested alpha/beta and triangular-kernel settings, and a spatial-block bootstrap 95% CI with evaluator version and withheld-positive count. The inspected shared metric functions are components, not that orchestration; historical H33 output is not the requested pooled DTI/CI.
+- The exact requested `evaluate_holdout.py` and `submission_writer.py` were not found. The shared `GEMSDOE/src/metrics.py` and `src/submission_io.py` do not by themselves certify compatibility with this gate.
+- With no candidate raster, registry-raster rank-correlation and the three-pixel dot-overlap screen are not measurable. No local validator was run on a new candidate.
+
+**Required before continuing:** restore the exact shared feature-cache artifact; provide or locate stable original fault-segment geometries; and identify a versioned shared evaluator/writer implementing the specified pooled holdout and bootstrap CI. Do not replace those with a private evaluator or the H19-5 proxy.
+
+The local automated test suite passes, but that does not validate this holdout or any candidate. No weekly slot was selected, no submission name was assigned, and no candidate TIF is safe to download or submit. The machine-readable negative promotion run card is `evidence/run_card.json`.
+
+## Submission steps if the blockers are resolved
+
+- Restore the exact feature-cache artifact and the stable source geometries for fault segments; record hashes and provenance. Do not substitute the nineteen-band raster or centroids for the missing cache or geometries.
+- Use the shared, versioned evaluator to construct each feature from visible faults only, hide whole buffered segments, mask visible catalogue pixels exactly, and run pooled DTI with the requested α=0.2, β=0.8, 300 m triangular kernel, and spatial-block bootstrap 95% CI. Record evaluator version and withheld-positive count. Treat feature-alone AUC above 0.90 as a leakage alarm, not a win.
+- If and only if the pre-registered hypothesis passes, use the shared writer, then reopen the unique GeoTIFF and verify its footprint, CRS, shape, transform, values in [0,1], no in-footprint NaNs, hash, and zero catalogue mass. Run the registry-raster screen; stop if rank-correlation exceeds 0.90 or if more than 70% of dots fall within 3 px of one registry raster's dots.
+- The user, not this agent, would upload the validated file through the organizer's official portal and preserve the organizer receipt. Only that receipt can establish an ORGANIZER-CONFIRMED score. Do not choose or promote a weekly slot as part of this review.
+
+## Reproducible source pointers
+
+- Repository data pins and provenance: `registry/data_manifest.json`; verification record: `evidence/manifest_verification.json`.
+- Existing pixel selector and candidate builder: `src/reach.py`, `scripts/build_mass_infill.py`, and `evidence/mass_infill_receipt.json`.
+- Shared evaluator components inspected at commit `bb2e070a3659f4f5c16ac927e62606f1f7f495a6`: [block evaluator](https://github.com/buffedlizard55-lab/GEMSDOE/blob/bb2e070a3659f4f5c16ac927e62606f1f7f495a6/scripts/block_holdout_eval.py), [metrics](https://github.com/buffedlizard55-lab/GEMSDOE/blob/bb2e070a3659f4f5c16ac927e62606f1f7f495a6/src/metrics.py), and [submission I/O](https://github.com/buffedlizard55-lab/GEMSDOE/blob/bb2e070a3659f4f5c16ac927e62606f1f7f495a6/src/submission_io.py).
+- Separate component-holdout code inspected at commit `078f3cea1bc75d15beb81b095ab488a912327a5d`: [holdout module](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/078f3cea1bc75d15beb81b095ab488a912327a5d/src/gems32/holdout.py) and [H33 hypothesis code](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/078f3cea1bc75d15beb81b095ab488a912327a5d/src/gems32/hypotheses33.py).
+- The shared source-code links are reproducible references, not official organizer or live GDR availability confirmation.

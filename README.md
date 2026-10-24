@@ -43,3 +43,14 @@ format gate), `tests/` synthetic unit tests, `ledger/` submission ledger,
 `registry/` pinned-input manifest, `docs/` mechanism cards + submit checklist,
 `releases/` built rasters (gitignored — this repo is PUBLIC; competition
 rasters/data must never be committed, see IRREGULARITIES.md #2).
+
+## Project prompt and aim
+
+Investigate the reported high score without treating an owner claim as an organizer receipt; identify geologically distinct explanations for faults missed by the existing catalogue; test a selected hypothesis with a spatially blocked, whole-segment hide-and-recover evaluation; and create a unique submission GeoTIFF only after the requested pooled-DTI confidence interval, duplicate screen, and format checks pass. Keep the experiment budget bounded, do not choose a weekly slot, and make download/submission safety explicit. The goal is a defensible result, including a negative result when evidence is insufficient—not a projected score.
+
+## Review status — 2026-10-24
+
+- `src/reach.py` can select high marginal-kernel-credit pixels, but it ranks coverage on the H19-5 ridge-support proxy; this is not a geological fault-probability model or holdout evaluator. Existing MASS-add builds use it.
+- The R0 score remains an unreceipted owner claim. Restored bytes match the owner-supplied manifest pins, which do not authenticate data or a score with the organizer.
+- The referenced 35-channel feature cache, stable original fault-segment geometries, and a shared evaluator that produces the requested pooled DTI plus spatial-block bootstrap CI are not available in this workspace. The existing 19-band `training_features.tif` is not a substitute for the missing cache.
+- **No new candidate TIF was created. Nothing is safe to download or submit.** No slot was selected. See [`docs/RESEARCH_REVIEW_2026-10-24.md`](docs/RESEARCH_REVIEW_2026-10-24.md) for the three-pass review and [`evidence/run_card.json`](evidence/run_card.json) for the negative promotion run card.

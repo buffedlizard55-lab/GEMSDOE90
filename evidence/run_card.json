@@ -1,0 +1,36 @@
+{
+  "schema_version": "1",
+  "review_date_utc": "2026-10-24",
+  "status": "BLOCKED_BEFORE_EXPERIMENT",
+  "hypothesis": "Hydrothermal mixing-front / geothermometer-discordance corridor, ranked first for future validation; not implemented or tested.",
+  "mechanism": "Deep fluid ascending through a blind or low-displacement permeable fault mixes with cooler shallow water; spatialized disagreement among independent reservoir geothermometers and measured spring temperature may trace the conduit when conditioned on independent structural evidence.",
+  "named_non_fault_mimic": "Water-rock interaction across lithologies can cause geothermometer disagreement without a fault; shallow conductive warming and inconsistent sampling can also mimic the signal.",
+  "holdout_dti": {
+    "evidence_label": "HOLDOUT-DTI",
+    "value": null,
+    "evaluator_version": null,
+    "withheld_positive_count": null,
+    "confidence_interval_95": {
+      "lower": null,
+      "upper": null
+    },
+    "status": "NOT RUN: no verified shared evaluator with the required whole-segment pooled-DTI bootstrap CI."
+  },
+  "registry_correlation_overlap": {
+    "surface_rank_correlation": null,
+    "dot_overlap_within_3_px": null,
+    "status": "NOT MEASURED: no candidate surface or raster was emitted."
+  },
+  "raster_sha256": null,
+  "validator_result": "NOT RUN: no candidate GeoTIFF exists.",
+  "submission": {
+    "name": null,
+    "comment": "NOT CREATED: no compliant holdout/evaluator; no safe download or submission.",
+    "organizer_confirmed_receipt": null
+  },
+  "verdict": {
+    "promote": false,
+    "classification": "NEGATIVE_PROMOTION_VERDICT / BLOCKED",
+    "interpretation": "Do not promote or submit. This is not evidence that the geological hypothesis is false; validation did not run."
+  }
+}
