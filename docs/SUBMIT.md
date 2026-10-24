@@ -1,4 +1,4 @@
-# Human submission packet — 2026-10-23 sessions (MASS ladder incl. high doses + both PRUNE collars)
+# Human submission packet — 2026-10-23 sessions (MASS, PRUNE, RELIEF + 15 km CONCENTRATION)
 
 **The agent does not submit and cannot see the leaderboard.** Every GeoTIFF below is local and Git-ignored on
 purpose: this repository is public and competition rasters must not be committed or released
@@ -7,6 +7,8 @@ The `-zeros.tif` twin is a fallback encoding of the *same* experiment, not a sec
 
 Parent for everything here: `h33-h33-2-b2` (R0), 37,654 unit-mass dots, CLAIM 0.2778 with no receipt on file.
 `SLOT_PLAN.md` gives the order and the decision rule; this file is the upload mechanics.
+
+**Reproduction shortcut (preferred):** after `scripts/restore_data.py`, run `.venv/bin/python scripts/restore_releases.py`. It now re-emits **all 18 BUILT candidate pairs** to their recorded SHA-256 without invoking any session's duplicate-build guard. Older `--build` commands in the sections below are historical recipes; some now intentionally fail closed on `(AXIS, value)` reservations.
 
 ## 0. WITHDRAWN — do not upload (session 2026-10-23d, FIFO-ranked MASS rungs)
 
@@ -26,11 +28,12 @@ slot; a region-even replacement rung is proposed in `SLOT_PLAN.md`.
 | 30 % → 26,358 dots | `releases/h33-h33-2-b2-MASSshadow30pct-20261023-9d64151a.tif` | `…-9d64151a-zeros.tif` | `h33-h33-2-b2; MASS shadow-drop 30% -> 26358 dots; predicted +0.012 MODEL` |
 
 Each file is a strict subset of R0 — no additions, no moves, 10.00 / 20.00 / 30.00 % of R0 removed, zero
-catalogue mass. **These three rasters are not present in this sandbox** (they were built in the MASS session and
-`releases/` is gitignored): re-emit them with `.venv/bin/python scripts/build_mass_shadow.py --build` after
-`scripts/restore_data.py`, and confirm the SHA-256 against `evidence/mass_build_receipt.json` before uploading. SHA-256, checks and parent-diff statistics: `evidence/mass_build_receipt.json`; re-run with
-`.venv/bin/python scripts/build_mass_shadow.py --verify`. These files inherit R0's 2.236 px collar exactly
-(IR90-07): a MASS-only edit must not also move the collar.
+catalogue mass. In a fresh sandbox these rasters are absent because `releases/` is gitignored; the preferred
+restore is `.venv/bin/python scripts/restore_releases.py` after `scripts/restore_data.py`, then confirm each
+SHA-256 against `evidence/mass_build_receipt.json` before uploading. The historical
+`scripts/build_mass_shadow.py --build` may now fail closed on the occupied `(MASS, value)` reservation. Full
+checks and parent-diff statistics: `evidence/mass_build_receipt.json`; byte re-check: `scripts/build_mass_shadow.py --verify`.
+These files inherit R0's 2.236 px collar exactly (IR90-07): a MASS-only edit must not also move the collar.
 
 ## 1b. MASS high-dose arms + credit-blind control (session 2026-10-23c)
 
@@ -42,9 +45,10 @@ catalogue mass. **These three rasters are not present in this sandbox** (they we
 
 Strict subsets of R0 again: 40.0011 / 48.0002 / 40.0011 % of dots removed, no additions, no moves, zero
 catalogue mass, 2.236 px inherited collar (IR90-14). The random arm is `numpy default_rng(20261023)` and is
-**spatially even by construction** (p05 removal share 0.25 per 5 km block). Re-emit with
-`.venv/bin/python scripts/build_mass_high_dose.py --build` after `scripts/restore_data.py`, confirm the
-SHA-256 against `evidence/mass_high_dose_receipt.json`, and re-check with `--verify`.
+**spatially even by construction** (p05 removal share 0.25 per 5 km block). Preferred re-emission is
+`.venv/bin/python scripts/restore_releases.py` after `scripts/restore_data.py`; confirm the SHA-256 against
+`evidence/mass_high_dose_receipt.json`, and re-check with `scripts/build_mass_high_dose.py --verify`.
+The historical `--build` path may now fail closed on the occupied `(MASS, value)` reservation.
 
 **Do not upload** any FIFO-order drop (none was built: the probe is region-isolated, IR90-15) or a 50 %
 shadow drop (region-isolated at depth, IR90-17). The 48 % arm is the deepest spatially uniform dose.
@@ -79,6 +83,18 @@ not the first choice for a slot.
 
 Count held at **37,654 unit-mass dots** on `H19-5`; zero catalogue mass; **100% of newly added dots enforce `d_cat >= 3.0 px` strictly** (untouched R0 dots inherit R0's `2.236 px` floor without confounding `RELIEF` with `PRUNE`; IR90-18). Full hashes, parent-diff stats, and report-only `PROXY` diagnostics: `evidence/relief_build_receipt.json`. Re-emit and verify via `.venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_relief_variants.py --verify`.
 
+## 5. 15 km structural-prior concentration (`AXIS=CONCENTRATION`, session 2026-10-23e)
+
+Prior: equal absolute-percentile ranks of pinned `training_features.tif` bands 3 `tmi_hg`, 4 `geod_2ndinv`, 7 `geod_shearrate` and 18 `iso_grav_anom_hg`, averaged in 15 km blocks. Dots move from the lowest-prior 35% to the highest-prior 35% of blocks; count stays 37,654 on `H19-5`. No thermal wells/springs/vents or hidden/public truth enter the prior. Receipt: `evidence/concentration_build_receipt.json`.
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin | SHA-256 (NaN / zeros) | Form note (`<=140` chars) |
+|---|---|---|---|---|
+| **10%** (3,765d; 19.998% diff; CV 0.5103→0.5990; pred +0.002) | `releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269.tif` | `…-8deb8269-zeros.tif` | `8deb8269da2c7548…` / `c2c7e04bcad1927c…` | `h33-h33-2-b2; CONC 15km structural-prior move 10% low->high; 37654 dots; pred +0.002 MODEL` |
+| **15%** (5,648d; 29.999% diff; CV 0.5103→0.6949; pred -0.002) | `releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a.tif` | `…-fdba3c0a-zeros.tif` | `fdba3c0a6bab3b1c…` / `307e5b1ca0099051…` | `h33-h33-2-b2; CONC 15km structural-prior move 15% low->high; 37654 dots; pred -0.002 MODEL` |
+| **20%** (7,531d; 40.001% diff; CV 0.5103→0.7769; pred -0.006) | `releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb.tif` | `…-bc411adb-zeros.tif` | `bc411adbec7afbde…` / `bc74e6f67b4e545c…` | `h33-h33-2-b2; CONC 15km structural-prior move 20% low->high; 37654 dots; pred -0.006 MODEL` |
+
+Zero catalogue mass; 100% of **newly added** dots are at `d_cat >= 3.0 px`; untouched R0 dots inherit the parent's `2.236 px` minimum rather than turning CONCENTRATION into a PRUNE hybrid (IR90-21). Region-evenness gate passed on every arm (no 15 km donor block loses ≥90%; largest emptied cluster 0). Re-emit/verify with `.venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_concentration_variants.py --verify`. Report-only `PROXY`: catalogue hide/recover n=13,920, Δ ≈ 0 (95% CIs span zero); SGMC Δ -0.0064 / -0.0095 / -0.0142; leakage canary max symmetric AUC 0.574747. None is a score or a gate.
+
 ## Format gate (every file, re-read from disk after writing)
 
 | Property | Value |
@@ -90,8 +106,9 @@ Count held at **37,654 unit-mass dots** on `H19-5`; zero catalogue mass; **100% 
 | catalogue mass | **0.0** on every file |
 | ledger | no sha256 repeated |
 
-Min catalogue distance is inherited from R0 (2.236 px) on every MASS arm and on the aniso collar; the
-isotropic PRUNE files are the only ones whose minimum is ≥ 3 px. Independent re-check (exit 0 = pass):
+Min catalogue distance is inherited from R0 (2.236 px) on every MASS arm, on the aniso collar, and on the
+RELIEF/CONCENTRATION files' untouched parent dots; all newly added RELIEF/CONCENTRATION dots clear ≥3 px. The
+isotropic PRUNE files are the only ones whose all-dot minimum is ≥ 3 px. Independent re-check (exit 0 = pass):
 
 ```
 .venv/bin/python -m src.validate releases/<file>.tif .cache/gems_data/sample_submission.tif \

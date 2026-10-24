@@ -78,3 +78,29 @@ AI authored `scripts/build_mass_variants.py`, the three MASS rungs (`drop5pct-ta
 
 - **What AI wrote and executed:** Selected `AXIS=RELIEF` per the prompt instruction not to prompt the human over axis choice; audited the 19 `training_features.tif` bands; authored `src/relief.py`, `scripts/build_relief_variants.py`, and `tests/test_relief.py`; extended `scripts/restore_releases.py` and `tests/test_r0_variants.py` so both the prior `PRUNE` candidates and the 3 new fixed-count `RELIEF` candidates (`RELIEFr2p12p5pct`, `RELIEFr2b10pct`, `RELIEFp2r15pct`) are reproducibly verified; ran all 26 SHA-256 input checks, byte-identical R0 rebuild (`c55bafc4…` / `baeae321…`), `d2.8` and `d1.5` 0-pixel-diff thinning checks, disk re-read format validation (`src/validate.py`), report-only diagnostics (19-band + `relief_idx` leakage canary, 20×20 km spatial-block catalogue hide-and-recover `PROXY`, and off-catalogue SGMC `PROXY`), and updated `ledger/submissions.csv`, `ledger/experiment_reservations.json`, `ledger/mechanism_cards.json`, `evidence/relief_build_receipt.json`, `evidence/releases_restore_receipt.json`, `README.md` (`CURRENT STATE` block only), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `docs/MECHANISM_CARDS.md`, and `IRREGULARITIES.md`.
 - **What the human decided / must decide:** The human defined the competition brief, parent `h33-h33-2-b2`, constraints, and allowed axes. Before any upload, the human must verify competition data-use terms, confirm the official deadline and entity slot count, supply dated `TOP_PUBLIC` and portal score receipts (for R0 and any uploaded file), review removed/added fault corridors geologically, and choose which single file (if any) to upload from their registered account.
+
+## Session arena/5d4e4978 (2026-10-23e, agent-selected `AXIS=CONCENTRATION`)
+
+**AI wrote and executed:** `src/concentration.py`, `scripts/build_concentration_variants.py`,
+`tests/test_concentration.py`, the three local gitignored candidate rasters and their `-zeros` twins,
+`evidence/concentration_build_receipt.json`, the concentration rows in `ledger/submissions.csv`, the
+`concentration_reservations_20261023` block in `ledger/experiment_reservations.json`, the concentration
+mechanism-card block, and the matching sections of `SLOT_PLAN.md`, `README.md` (CURRENT STATE only),
+`docs/SUBMIT.md`, `docs/MECHANISM_CARDS.md`, `IRREGULARITIES.md` (IR90-21/22) and this disclosure.
+AI also extended `scripts/restore_releases.py` to reproduce all 18 recorded BUILT candidate pairs from pinned inputs without triggering the duplicate-build guards (including the three concentration pairs).
+
+**AI decided (not human-assigned):** selected CONCENTRATION after a read-only `gh api` audit of 79 public
+`buffedlizard55-lab/GEMSDOE*` default branches (9 ledgers, 33 occupied concentration values) and selected
+15 km blocks because the byte-identical R0 has density CV `0.5103`, inside the brief's reported `0.51–0.59`
+band. AI chose the 10/15/20% dose ladder, the four-band pinned structural prior, the lowest/highest 35%
+tails and the region-evenness gate. AI verified all 26 SHA-256 input pins, rebuilt R0 byte-identically
+(`c55bafc4…` / `baeae321…`), re-read and validated all six output files from disk, reproduced their bytes
+with `--verify`, and ran the report-only canary, catalogue hide/recover and SGMC controls as `PROXY` only.
+
+**AI did not:** contact DrivenData or Dropbox, read the leaderboard, log in, submit, invent a live score, or
+use hidden/public test truth. R0's `0.2778` remains a CLAIM; every predicted change is MODEL. Competition
+rasters and data remain in ignored `.cache/gems_data/` and `releases/`, never in the public Git diff or a release.
+
+**Human must decide/supply:** dated `TOP_PUBLIC`, weekly slot count, official deadline confirmation, R0 and
+candidate submission receipts, data-use/terms review, geological review of the moved corridors, whether
+the inherited 2.236 px parent collar is acceptable (IR90-21), and which single file (if any) to upload.
