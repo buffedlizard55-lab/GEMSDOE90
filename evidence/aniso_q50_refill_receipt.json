@@ -1,0 +1,1488 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-24T05:45:38Z",
+  "git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
+  "generator_script_sha256": "5cc1a55a4e7cb7e412ad40db8ed82bb69b5be54fda5bed98fbd6a9c163726f06",
+  "aniso_module_sha256": "df9fec4ac69cd88d9ce5ece3cc4edee6f51494922edf4c53bee32c236bb444cb",
+  "prune_q50_module_sha256": "50be327ada6a3869ce5ed33f7dd7f7cf238d690a36172df5093ee332f6f26f8b",
+  "axis": "PRUNE",
+  "experiment_family": "strike_aligned_anisotropic_collar_A5_q50_marginal_kernel_refill_ladder",
+  "irregularity_resolved": "IR90-35",
+  "predictions_frozen_before_proxy": true,
+  "compliance": {
+    "fixed_count_required_and_satisfied": true,
+    "every_newly_added_refill_dot_ge_3px_from_catalogue": true,
+    "parent_isotropic_gt_2px_floor_preserved_on_every_final_dot": true,
+    "passes_5km_addition_evenness_gate_on_all_variants": true,
+    "zero_dense_20plus_blocks_starved_on_all_variants": true
+  },
+  "strike_field_parameters": {
+    "grad_sigma_px": 1.0,
+    "tensor_sigma_px": 3.0,
+    "coherence_min_for_anisotropy": 0.3,
+    "across_px": 5.0,
+    "along_px_rungs": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "block_px": 50,
+    "min_added_cat_dist_px": 3.0
+  },
+  "manifest_verification": {
+    "training_features": {
+      "path": "training_features.tif",
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "bytes": 418912844
+    },
+    "labels": {
+      "path": "labels.tif",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830
+    },
+    "existing_faults": {
+      "path": "existing_faults.tif",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830
+    },
+    "sample_submission": {
+      "path": "sample_submission.tif",
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597
+    },
+    "ext_lidar_scarp_features_u8": {
+      "path": "external/lidar_scarp_features_u8.tif",
+      "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+      "bytes": 36943606
+    },
+    "ext_geodawn_rad_u8": {
+      "path": "external/geodawn_rad_u8.tif",
+      "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+      "bytes": 26612970
+    },
+    "ext_geodawn_extensions_u8": {
+      "path": "external/geodawn_extensions_u8.tif",
+      "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+      "bytes": 27132925
+    },
+    "ext_derived_sgmc_faults_100m_u8": {
+      "path": "external/derived_sgmc_faults_100m_u8.tif",
+      "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+      "bytes": 198602
+    },
+    "ext_gdr_wellspring_in_footprint": {
+      "path": "external/gdr_wellspring_in_footprint.csv",
+      "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+      "bytes": 2146771
+    },
+    "ext_gdr_qfaults_traces": {
+      "path": "external/gdr_qfaults_traces.csv",
+      "sha256": "9702f2e5c382a4f472ae834d22b94990983b059677a37adfafd51c50f75e643c",
+      "bytes": 126177
+    },
+    "ext_gdr_volcanic_vents_in_footprint": {
+      "path": "external/gdr_volcanic_vents_in_footprint.csv",
+      "sha256": "f91bafbaccaaf2754e71d60434fc0f9eb2c7b880c6e714883f4974542ff6a0bf",
+      "bytes": 672
+    },
+    "scored_h19_5": {
+      "path": "scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+      "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+      "bytes": 1712322
+    },
+    "scored_h19_4": {
+      "path": "scored/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+      "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+      "bytes": 1716768
+    },
+    "scored_h16_1": {
+      "path": "scored/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+      "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+      "bytes": 1718028
+    },
+    "scored_d15_scored": {
+      "path": "scored/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "bytes": 1632732
+    },
+    "scored_d28_unscored": {
+      "path": "scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424
+    },
+    "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou": {
+      "path": "scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "bytes": 1706456
+    },
+    "calib_8GEMSDOE_Hedge-v2_submission": {
+      "path": "scored/8GEMSDOE_Hedge-v2_submission.tif",
+      "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+      "bytes": 736494
+    },
+    "calib_gems10-h25-ctx-ridge-20260927T2329477041": {
+      "path": "scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+      "sha256": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+      "bytes": 1772935
+    },
+    "calib_gems10-h28-dotted-ridge-20260928T0202562": {
+      "path": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+      "bytes": 1620739
+    },
+    "calib_gemsdoe-ens12-adopted-7f00890a": {
+      "path": "scored/gemsdoe-ens12-adopted-7f00890a.tif",
+      "sha256": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15",
+      "bytes": 570890
+    },
+    "calib_gemsdoe9-PLACEHOLDER-2314b599": {
+      "path": "scored/gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "sha256": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+      "bytes": 439456
+    },
+    "scored_gems27_tgc_v2_d15": {
+      "path": "scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "bytes": 1635084
+    },
+    "scored_h27_4_solo_d28": {
+      "path": "scored/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+      "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+      "bytes": 1595850
+    },
+    "parent_r0_zeros": {
+      "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065
+    },
+    "parent_r0_nan": {
+      "path": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "bytes": 355443
+    }
+  },
+  "r0_exact_rebuild": {
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "reservation_check": {
+    "target_values": [
+      "anisoA5L0p5q50",
+      "anisoA5L1q50",
+      "anisoA5L2q50"
+    ],
+    "foreign_duplicates": [],
+    "own_reproduction_rows_present": 0
+  },
+  "prior_prune_fifo_northern_strip_audit": {
+    "irregularity_id": "IR90-35",
+    "finding": "All 9 prior BUILT PRUNE variants in GEMSDOE90 refilled via global fifo_bfs_visit_rank(h19), which places 100% of their 1,333-6,130 refill dots in northern grid rows y <= 101..264 (top 2.73%-7.10% of H=3730), starving 739-822 of 848 dense (>=20 dot) 5 km blocks (addition_evenness_gate=False) and placing 97.9%-99.5% of refills within 3 px of retained northern dots.",
+    "variants_audited": [
+      {
+        "variant_tag": "PRUNE3p5px",
+        "across_px": 3.5,
+        "along_px": null,
+        "n_refill": 2702,
+        "refill_bbox_y": [
+          0,
+          113
+        ],
+        "refill_y_median_px": 49.0,
+        "refill_row_span_fraction": 0.03056,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 86,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 804,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 2.2881,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.99149,
+        "min_catalogue_distance_of_refill_px": 3.6056
+      },
+      {
+        "variant_tag": "PRUNE4p5px",
+        "across_px": 4.5,
+        "along_px": null,
+        "n_refill": 4848,
+        "refill_bbox_y": [
+          0,
+          202
+        ],
+        "refill_y_median_px": 92.0,
+        "refill_row_span_fraction": 0.05442,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 168,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 762,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 2.72,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.98866,
+        "min_catalogue_distance_of_refill_px": 5.0
+      },
+      {
+        "variant_tag": "PRUNE5p5px",
+        "across_px": 5.5,
+        "along_px": null,
+        "n_refill": 6130,
+        "refill_bbox_y": [
+          0,
+          264
+        ],
+        "refill_y_median_px": 117.0,
+        "refill_row_span_fraction": 0.07105,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 219,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 739,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 2.68,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.99119,
+        "min_catalogue_distance_of_refill_px": 5.6569
+      },
+      {
+        "variant_tag": "PRUNEanisoA4L2",
+        "across_px": 4.0,
+        "along_px": 2.0,
+        "n_refill": 2632,
+        "refill_bbox_y": [
+          0,
+          104
+        ],
+        "refill_y_median_px": 48.0,
+        "refill_row_span_fraction": 0.02815,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 86,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 806,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 2.3559,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.9943,
+        "min_catalogue_distance_of_refill_px": 2.2361
+      },
+      {
+        "variant_tag": "PRUNEanisoA5L2",
+        "across_px": 5.0,
+        "along_px": 2.0,
+        "n_refill": 3663,
+        "refill_bbox_y": [
+          0,
+          157
+        ],
+        "refill_y_median_px": 68.0,
+        "refill_row_span_fraction": 0.04236,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 127,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 781,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 2.64,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.98635,
+        "min_catalogue_distance_of_refill_px": 2.2361
+      },
+      {
+        "variant_tag": "PRUNEanisoA6L2",
+        "across_px": 6.0,
+        "along_px": 2.0,
+        "n_refill": 4625,
+        "refill_bbox_y": [
+          0,
+          166
+        ],
+        "refill_y_median_px": 88.0,
+        "refill_row_span_fraction": 0.04477,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 163,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 765,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 2.88,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.98595,
+        "min_catalogue_distance_of_refill_px": 2.2361
+      },
+      {
+        "variant_tag": "PRUNEanisoA5L1p5",
+        "across_px": 5.0,
+        "along_px": 1.5,
+        "n_refill": 3130,
+        "refill_bbox_y": [
+          0,
+          171
+        ],
+        "refill_y_median_px": 57.0,
+        "refill_row_span_fraction": 0.04611,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 106,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 790,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 2.64,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.98211,
+        "min_catalogue_distance_of_refill_px": 2.2361
+      },
+      {
+        "variant_tag": "PRUNEanisoA5L1",
+        "across_px": 5.0,
+        "along_px": 1.0,
+        "n_refill": 2386,
+        "refill_bbox_y": [
+          0,
+          101
+        ],
+        "refill_y_median_px": 42.0,
+        "refill_row_span_fraction": 0.02735,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 83,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 806,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 2.3729,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.97863,
+        "min_catalogue_distance_of_refill_px": 2.2361
+      },
+      {
+        "variant_tag": "PRUNEanisoA5L0p5",
+        "across_px": 5.0,
+        "along_px": 0.5,
+        "n_refill": 1333,
+        "refill_bbox_y": [
+          0,
+          101
+        ],
+        "refill_y_median_px": 23.0,
+        "refill_row_span_fraction": 0.02735,
+        "refill_fraction_in_north_strip_y_le_264": 1.0,
+        "blocks_receiving_additions": 49,
+        "blocks_with_parent_dots": 1788,
+        "blocks_with_zero_additions_among_20plus": 822,
+        "blocks_with_20plus_dots": 848,
+        "add_share_max": 1.9831,
+        "passes_addition_evenness_gate": false,
+        "refill_within_3px_of_retained_fraction": 0.97599,
+        "min_catalogue_distance_of_refill_px": 2.2361
+      }
+    ]
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f",
+      "parent": "h33-h33-2-b2",
+      "parent_repo": "GEMSDOE32",
+      "repo": "GEMSDOE90",
+      "axis": "PRUNE",
+      "value": "anisoA5L0p5q50",
+      "across_px": 5.0,
+      "along_px": 0.5,
+      "status": "BUILT",
+      "n_dots": 37654,
+      "pct_changed": 7.080257,
+      "sha256": "b7f9d99f2e31fdcb454eb6e4a2e66b0cec44dcf86520515888a3601cb65bbad1",
+      "sha256_zeros": "b44a54048f77ad589a4f669102bde03af4431e0c8335f85362b987394c928197",
+      "predicted_change": "+0.005 DTI (MODEL; plausible -0.007 to +0.014; not a score)",
+      "model_bracket": {
+        "low": -0.007,
+        "central": 0.005,
+        "high": 0.014
+      },
+      "form_note": "h33-h33-2-b2; PRUNE A5/L0.5 q50 5km kernel refill; pred +0.005 DTI MODEL",
+      "removed_mask_sha256_packbits": "286170f56c34ef0fd785073b20c861b691ed30b684f65cc62ff0acf1832e6dec",
+      "refill_mask_sha256_packbits": "1d4d63ebb3cb7a17e16219c8955b495d93757afc48d12d94b828544481350b62",
+      "collar_diagnostics": {
+        "across_px": 5.0,
+        "along_px": 0.5,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 1333,
+        "n_inside_coherent_ellipse": 1258,
+        "n_inside_incoherent_fallback": 75,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 5.0,
+        "along_abs_median_inside": 0.1868959665298462,
+        "across_abs_median_inside": 2.9847750663757324
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 1333,
+        "n_added": 1333,
+        "n_retained_parent": 36321,
+        "symmetric_difference_px": 2666,
+        "pct_changed_of_parent": 7.080257077601317,
+        "removed_along_abs_median_px": 0.1868959665298462,
+        "removed_across_abs_median_px": 2.9847750663757324,
+        "removed_coherence_median": 0.8692488074302673,
+        "removed_dist_median_px": 3.0,
+        "removed_dist_max_px": 5.0,
+        "added_dist_median_px": 19.235384061671343,
+        "added_dist_min_px": 3.0,
+        "removed_to_nearest_added_median_px": 17.26267650163207,
+        "removed_to_nearest_added_max_px": 118.72657663724664,
+        "removed_outside_kernel_of_any_added": 1103
+      },
+      "refill_diagnostics": {
+        "refill_policy": "5 km block-stratified exact R=3px marginal-kernel infill (q50) on H19-5 at d_cat>=3.0px",
+        "eligible_pool_size_px": 61117,
+        "n_refill_selected": 1333,
+        "marginal_kernel_gain_sum": 8356.613,
+        "marginal_kernel_gain_mean": 6.269,
+        "marginal_kernel_gain_min": 3.2761,
+        "marginal_kernel_gain_median": 6.2688,
+        "marginal_kernel_gain_max": 9.3803,
+        "min_catalogue_distance_of_refill_px": 3.0,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "q50_spatial_and_shadow_audit": {
+          "n_refill": 1333,
+          "refill_bbox_y": [
+            2,
+            3668
+          ],
+          "refill_bbox_x": [
+            2,
+            3284
+          ],
+          "refill_y_median_px": 904.0,
+          "refill_y_p95_px": 3132.799999999997,
+          "refill_row_span_fraction": 0.9831099195710455,
+          "refill_fraction_in_north_strip_y_le_264": 0.1417854463615904,
+          "north_half_dot_share_parent": 0.7334147766505551,
+          "north_half_dot_share_candidate": 0.7334413342539969,
+          "north_half_dot_share_shift": 2.6557603441834665e-05,
+          "refill_to_retained_min_px": 1.0,
+          "refill_to_retained_median_px": 2.23606797749979,
+          "refill_to_retained_mean_px": 2.6165421172958836,
+          "refill_within_3px_of_retained_count": 1129,
+          "refill_within_3px_of_retained_fraction": 0.8469617404351087,
+          "min_catalogue_distance_of_refill_px": 3.0,
+          "median_catalogue_distance_of_refill_px": 19.235384061671343,
+          "refill_dots_below_3px_catalogue": 0,
+          "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+          "final_dots_below_3px_inherited_only": 1006,
+          "addition_evenness_report": {
+            "block_px": 50,
+            "block_km": 5.0,
+            "nominal_dose": 0.035401,
+            "blocks_with_parent_dots": 1788,
+            "blocks_with_20plus_dots": 848,
+            "blocks_receiving_additions": 1124,
+            "blocks_with_zero_additions_among_20plus": 0,
+            "add_share_p05": 0.0256,
+            "add_share_median": 0.037,
+            "add_share_p95": 0.05,
+            "add_share_max": 0.05,
+            "adds_into_blocks_with_zero_parent_dots": 0,
+            "added_bbox_y": [
+              2,
+              3668
+            ],
+            "added_bbox_x": [
+              2,
+              3284
+            ],
+            "added_centroid_yx": [
+              1257.07,
+              1474.8
+            ],
+            "parent_centroid_yx": [
+              1273.25,
+              1478.13
+            ]
+          },
+          "passes_addition_evenness_gate": true
+        },
+        "paired_fifo_spatial_and_shadow_audit": {
+          "n_refill": 1333,
+          "refill_bbox_y": [
+            0,
+            101
+          ],
+          "refill_bbox_x": [
+            624,
+            3207
+          ],
+          "refill_y_median_px": 23.0,
+          "refill_y_p95_px": 53.399999999999864,
+          "refill_row_span_fraction": 0.027345844504021447,
+          "refill_fraction_in_north_strip_y_le_264": 1.0,
+          "north_half_dot_share_parent": 0.7334147766505551,
+          "north_half_dot_share_candidate": 0.7425240346311149,
+          "north_half_dot_share_shift": 0.009109257980559837,
+          "refill_to_retained_min_px": 1.0,
+          "refill_to_retained_median_px": 1.0,
+          "refill_to_retained_mean_px": 1.4331287804963424,
+          "refill_within_3px_of_retained_count": 1301,
+          "refill_within_3px_of_retained_fraction": 0.9759939984996249,
+          "min_catalogue_distance_of_refill_px": 2.23606797749979,
+          "median_catalogue_distance_of_refill_px": 16.0312195418814,
+          "refill_dots_below_3px_catalogue": 58,
+          "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+          "final_dots_below_3px_inherited_only": 1064,
+          "addition_evenness_report": {
+            "block_px": 50,
+            "block_km": 5.0,
+            "nominal_dose": 0.035401,
+            "blocks_with_parent_dots": 1788,
+            "blocks_with_20plus_dots": 848,
+            "blocks_receiving_additions": 49,
+            "blocks_with_zero_additions_among_20plus": 822,
+            "add_share_p05": 0.0,
+            "add_share_median": 0.0,
+            "add_share_p95": 0.0,
+            "add_share_max": 1.9831,
+            "adds_into_blocks_with_zero_parent_dots": 3,
+            "added_bbox_y": [
+              0,
+              101
+            ],
+            "added_bbox_x": [
+              624,
+              3207
+            ],
+            "added_centroid_yx": [
+              24.47,
+              1773.69
+            ],
+            "parent_centroid_yx": [
+              1273.25,
+              1478.13
+            ]
+          },
+          "passes_addition_evenness_gate": false,
+          "fifo_removed_to_nearest_added_median_px": 898.2633244210742
+        },
+        "support_credit_comparison_vs_fifo": {
+          "off_catalogue_h19_support_px": 121131,
+          "outside_collar_h19_support_px": 108216,
+          "r0_T_all_offcat": 76725.88495626675,
+          "retained_T_all_offcat": 73929.03711941621,
+          "fifo_T_all_offcat": 74584.72031342024,
+          "q50_T_all_offcat": 75433.83481091732,
+          "fifo_refill_recovered_T_all_offcat": 655.6831940040283,
+          "q50_refill_recovered_T_all_offcat": 1504.7976915011095,
+          "q50_vs_fifo_recovered_T_ratio": 2.2950072615279877,
+          "fifo_mean_recovered_T_per_dot": 0.49188536684473244,
+          "q50_mean_recovered_T_per_dot": 1.128880488748019,
+          "r0_T_outside_collar": 73374.79922428148,
+          "retained_T_outside_collar": 72521.32394663704,
+          "fifo_T_outside_collar": 73137.27232849997,
+          "q50_T_outside_collar": 73807.60713329678,
+          "fifo_net_delta_T_outside_collar_vs_r0": -237.5268957815133,
+          "q50_net_delta_T_outside_collar_vs_r0": 432.8079090153042,
+          "fifo_refill_recovered_T_outside_collar": 615.9483818629233,
+          "q50_refill_recovered_T_outside_collar": 1286.2831866597407
+        }
+      },
+      "mechanism_card": {
+        "value": "anisoA5L0p5q50",
+        "across_px": 5.0,
+        "along_px": 0.5,
+        "hypothesis": "Removing R0 dots inside the strike-aligned cross-strike collar (|across|<=5 px = 500 m, |along|<=0.5 px = 50 m; isotropic fallback where coherence<0.3) strips mapped-fault scarp haloes while preserving along-strike tip continuations beyond 0.5 px, AND refilling the exact 1333 removed dots via 5 km block-stratified exact R=3 px marginal-kernel infill (q50, d_cat>=3.0 px) eliminates the IR90-35 northern-strip concentration (y<=101) and IR90-12 kernel-shadow waste of anisoA5L0p5.",
+        "mechanism": "At fixed count S=37,654 (dS=0), collar pruning removes 1333 cross-strike flank dots (median |across|=2.98 px). Instead of global FIFO-BFS refill (anisoA5L0p5, which dumped 100% of 1333 dots into northern rows y in [0, 101], starving 822/848 dense 5 km blocks and placing 97.6% within 3 px of retained dots at median 1.00 px), q50 allocates block quotas across all 1,788 R0-occupied 5 km blocks (1124/1,788 receiving additions, 0/848 dense blocks starved, addition_evenness_gate=True) and greedily selects H19-5 cells at d_cat>=3.0 px that maximize exact R=3 px marginal kernel gain. Off-catalogue H19-5 support credit recovered by refill rises from +655.7 (anisoA5L0p5) to +1504.8 (anisoA5L0p5q50, 2.30x), and net outside-collar H19-5 coverage shifts from -237.5 to +432.8 while cutting median replacement distance from 898.3 px to 17.3 px.",
+        "non_fault_confounder": "100 m DEM hillshade/slope edges parallel to mapped Quaternary fault scarps, piedmont bajada fan-head trenches, and erosional terrace risers within <=500 m across strike of catalogue traces (which trigger H19-5 without an independent unmapped fault), plus mid-strand H19-5 ridge segments on volcanic flow margins or lithologic contacts outside the collar where q50 refills land.",
+        "matched_controls": {
+          "paired_fifo_refill_id": "h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771",
+          "paired_norefill_id": null,
+          "n_removed_matched": 1333,
+          "n_added_matched": 1333,
+          "fixed_count": 37654
+        },
+        "predicted_live_change": "+0.005 DTI (MODEL; plausible -0.007 to +0.014; not a score)",
+        "model_bracket": {
+          "low": -0.007,
+          "central": 0.005,
+          "high": 0.014
+        },
+        "falsifier": "Disconfirmed if live score change vs R0 is <= -0.010 DTI, OR if paired live comparison against FIFO-refilled anisoA5L0p5 (or delete-only A5/L2nr where applicable) shows |Delta| < 0.010 (no evidence above the single-submission noise floor) or favors northern-strip FIFO refill."
+      },
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f.tif",
+          "sha256": "b7f9d99f2e31fdcb454eb6e4a2e66b0cec44dcf86520515888a3601cb65bbad1",
+          "bytes": 354749,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f-zeros.tif",
+          "sha256": "b44a54048f77ad589a4f669102bde03af4431e0c8335f85362b987394c928197",
+          "bytes": 218355,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa",
+      "parent": "h33-h33-2-b2",
+      "parent_repo": "GEMSDOE32",
+      "repo": "GEMSDOE90",
+      "axis": "PRUNE",
+      "value": "anisoA5L1q50",
+      "across_px": 5.0,
+      "along_px": 1.0,
+      "status": "BUILT",
+      "n_dots": 37654,
+      "pct_changed": 12.673288,
+      "sha256": "c41fc4aa73826f33047237fe027f95c025635e9e7d5af599e340f7ee8a46b273",
+      "sha256_zeros": "4d91c5de97a0aa4b9ca5eff2790a418067959b7922ed4adcac9361794d8edc62",
+      "predicted_change": "+0.008 DTI (MODEL; plausible -0.005 to +0.017; not a score)",
+      "model_bracket": {
+        "low": -0.005,
+        "central": 0.008,
+        "high": 0.017
+      },
+      "form_note": "h33-h33-2-b2; PRUNE A5/L1 q50 5km kernel refill; pred +0.008 DTI MODEL",
+      "removed_mask_sha256_packbits": "3e1240ea255f9fdd755c6b4772ec38ae1de7477a40f9fca53eb4654b4cac4df1",
+      "refill_mask_sha256_packbits": "ddaf03daf256a63ecba1e0faf5183dd05b0dea47f5289a015f959f6ae4eb0efc",
+      "collar_diagnostics": {
+        "across_px": 5.0,
+        "along_px": 1.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 2386,
+        "n_inside_coherent_ellipse": 2311,
+        "n_inside_incoherent_fallback": 75,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 5.0,
+        "along_abs_median_inside": 0.35504212975502014,
+        "across_abs_median_inside": 2.9681629836559296
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 2386,
+        "n_added": 2386,
+        "n_retained_parent": 35268,
+        "symmetric_difference_px": 4772,
+        "pct_changed_of_parent": 12.673288362458171,
+        "removed_along_abs_median_px": 0.35504212975502014,
+        "removed_across_abs_median_px": 2.9681629836559296,
+        "removed_coherence_median": 0.872471958398819,
+        "removed_dist_median_px": 3.0,
+        "removed_dist_max_px": 5.0,
+        "added_dist_median_px": 20.174180106827396,
+        "added_dist_min_px": 3.0,
+        "removed_to_nearest_added_median_px": 12.0,
+        "removed_to_nearest_added_max_px": 111.07204868912791,
+        "removed_outside_kernel_of_any_added": 1859
+      },
+      "refill_diagnostics": {
+        "refill_policy": "5 km block-stratified exact R=3px marginal-kernel infill (q50) on H19-5 at d_cat>=3.0px",
+        "eligible_pool_size_px": 59993,
+        "n_refill_selected": 2386,
+        "marginal_kernel_gain_sum": 14453.025,
+        "marginal_kernel_gain_mean": 6.0574,
+        "marginal_kernel_gain_min": 2.5501,
+        "marginal_kernel_gain_median": 5.957,
+        "marginal_kernel_gain_max": 9.3803,
+        "min_catalogue_distance_of_refill_px": 3.0,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "q50_spatial_and_shadow_audit": {
+          "n_refill": 2386,
+          "refill_bbox_y": [
+            0,
+            3699
+          ],
+          "refill_bbox_x": [
+            2,
+            3284
+          ],
+          "refill_y_median_px": 901.0,
+          "refill_y_p95_px": 3171.5,
+          "refill_row_span_fraction": 0.9919571045576407,
+          "refill_fraction_in_north_strip_y_le_264": 0.1454316848281643,
+          "north_half_dot_share_parent": 0.7334147766505551,
+          "north_half_dot_share_candidate": 0.7337865830987411,
+          "north_half_dot_share_shift": 0.0003718064481860184,
+          "refill_to_retained_min_px": 1.0,
+          "refill_to_retained_median_px": 2.23606797749979,
+          "refill_to_retained_mean_px": 2.560638260386876,
+          "refill_within_3px_of_retained_count": 2042,
+          "refill_within_3px_of_retained_fraction": 0.8558256496227996,
+          "min_catalogue_distance_of_refill_px": 3.0,
+          "median_catalogue_distance_of_refill_px": 20.174180106827396,
+          "refill_dots_below_3px_catalogue": 0,
+          "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+          "final_dots_below_3px_inherited_only": 569,
+          "addition_evenness_report": {
+            "block_px": 50,
+            "block_km": 5.0,
+            "nominal_dose": 0.063366,
+            "blocks_with_parent_dots": 1788,
+            "blocks_with_20plus_dots": 848,
+            "blocks_receiving_additions": 1347,
+            "blocks_with_zero_additions_among_20plus": 0,
+            "add_share_p05": 0.0455,
+            "add_share_median": 0.0656,
+            "add_share_p95": 0.0833,
+            "add_share_max": 0.0909,
+            "adds_into_blocks_with_zero_parent_dots": 0,
+            "added_bbox_y": [
+              0,
+              3699
+            ],
+            "added_bbox_x": [
+              2,
+              3284
+            ],
+            "added_centroid_yx": [
+              1263.4,
+              1474.52
+            ],
+            "parent_centroid_yx": [
+              1273.25,
+              1478.13
+            ]
+          },
+          "passes_addition_evenness_gate": true
+        },
+        "paired_fifo_spatial_and_shadow_audit": {
+          "n_refill": 2386,
+          "refill_bbox_y": [
+            0,
+            101
+          ],
+          "refill_bbox_x": [
+            598,
+            3281
+          ],
+          "refill_y_median_px": 42.0,
+          "refill_y_p95_px": 79.0,
+          "refill_row_span_fraction": 0.027345844504021447,
+          "refill_fraction_in_north_strip_y_le_264": 1.0,
+          "north_half_dot_share_parent": 0.7334147766505551,
+          "north_half_dot_share_candidate": 0.7504382004567908,
+          "north_half_dot_share_shift": 0.01702342380623567,
+          "refill_to_retained_min_px": 1.0,
+          "refill_to_retained_median_px": 1.0,
+          "refill_to_retained_mean_px": 1.3725457132451875,
+          "refill_within_3px_of_retained_count": 2335,
+          "refill_within_3px_of_retained_fraction": 0.9786253143336128,
+          "min_catalogue_distance_of_refill_px": 2.23606797749979,
+          "median_catalogue_distance_of_refill_px": 18.439088914585774,
+          "refill_dots_below_3px_catalogue": 54,
+          "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+          "final_dots_below_3px_inherited_only": 623,
+          "addition_evenness_report": {
+            "block_px": 50,
+            "block_km": 5.0,
+            "nominal_dose": 0.063366,
+            "blocks_with_parent_dots": 1788,
+            "blocks_with_20plus_dots": 848,
+            "blocks_receiving_additions": 83,
+            "blocks_with_zero_additions_among_20plus": 806,
+            "add_share_p05": 0.0,
+            "add_share_median": 0.0,
+            "add_share_p95": 0.0,
+            "add_share_max": 2.3729,
+            "adds_into_blocks_with_zero_parent_dots": 0,
+            "added_bbox_y": [
+              0,
+              101
+            ],
+            "added_bbox_x": [
+              598,
+              3281
+            ],
+            "added_centroid_yx": [
+              42.13,
+              1716.6
+            ],
+            "parent_centroid_yx": [
+              1273.25,
+              1478.13
+            ]
+          },
+          "passes_addition_evenness_gate": false,
+          "fifo_removed_to_nearest_added_median_px": 917.4836718938757
+        },
+        "support_credit_comparison_vs_fifo": {
+          "off_catalogue_h19_support_px": 121131,
+          "outside_collar_h19_support_px": 98149,
+          "r0_T_all_offcat": 76725.88495626675,
+          "retained_T_all_offcat": 71562.86646230296,
+          "fifo_T_all_offcat": 72731.08143691705,
+          "q50_T_all_offcat": 74209.7896276309,
+          "fifo_refill_recovered_T_all_offcat": 1168.214974614093,
+          "q50_refill_recovered_T_all_offcat": 2646.923165327942,
+          "q50_vs_fifo_recovered_T_ratio": 2.265784314400116,
+          "fifo_mean_recovered_T_per_dot": 0.48961231123809434,
+          "q50_mean_recovered_T_per_dot": 1.1093558949404618,
+          "r0_T_outside_collar": 70746.79827435444,
+          "retained_T_outside_collar": 69903.28541698828,
+          "fifo_T_outside_collar": 70969.67676374751,
+          "q50_T_outside_collar": 71996.01340308061,
+          "fifo_net_delta_T_outside_collar_vs_r0": 222.8784893930715,
+          "q50_net_delta_T_outside_collar_vs_r0": 1249.2151287261659,
+          "fifo_refill_recovered_T_outside_collar": 1066.3913467592356,
+          "q50_refill_recovered_T_outside_collar": 2092.72798609233
+        }
+      },
+      "mechanism_card": {
+        "value": "anisoA5L1q50",
+        "across_px": 5.0,
+        "along_px": 1.0,
+        "hypothesis": "Removing R0 dots inside the strike-aligned cross-strike collar (|across|<=5 px = 500 m, |along|<=1 px = 100 m; isotropic fallback where coherence<0.3) strips mapped-fault scarp haloes while preserving along-strike tip continuations beyond 1 px, AND refilling the exact 2386 removed dots via 5 km block-stratified exact R=3 px marginal-kernel infill (q50, d_cat>=3.0 px) eliminates the IR90-35 northern-strip concentration (y<=101) and IR90-12 kernel-shadow waste of anisoA5L1.",
+        "mechanism": "At fixed count S=37,654 (dS=0), collar pruning removes 2386 cross-strike flank dots (median |across|=2.97 px). Instead of global FIFO-BFS refill (anisoA5L1, which dumped 100% of 2386 dots into northern rows y in [0, 101], starving 806/848 dense 5 km blocks and placing 97.9% within 3 px of retained dots at median 1.00 px), q50 allocates block quotas across all 1,788 R0-occupied 5 km blocks (1347/1,788 receiving additions, 0/848 dense blocks starved, addition_evenness_gate=True) and greedily selects H19-5 cells at d_cat>=3.0 px that maximize exact R=3 px marginal kernel gain. Off-catalogue H19-5 support credit recovered by refill rises from +1168.2 (anisoA5L1) to +2646.9 (anisoA5L1q50, 2.27x), and net outside-collar H19-5 coverage shifts from +222.9 to +1249.2 while cutting median replacement distance from 917.5 px to 12.0 px.",
+        "non_fault_confounder": "100 m DEM hillshade/slope edges parallel to mapped Quaternary fault scarps, piedmont bajada fan-head trenches, and erosional terrace risers within <=500 m across strike of catalogue traces (which trigger H19-5 without an independent unmapped fault), plus mid-strand H19-5 ridge segments on volcanic flow margins or lithologic contacts outside the collar where q50 refills land.",
+        "matched_controls": {
+          "paired_fifo_refill_id": "h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce",
+          "paired_norefill_id": null,
+          "n_removed_matched": 2386,
+          "n_added_matched": 2386,
+          "fixed_count": 37654
+        },
+        "predicted_live_change": "+0.008 DTI (MODEL; plausible -0.005 to +0.017; not a score)",
+        "model_bracket": {
+          "low": -0.005,
+          "central": 0.008,
+          "high": 0.017
+        },
+        "falsifier": "Disconfirmed if live score change vs R0 is <= -0.010 DTI, OR if paired live comparison against FIFO-refilled anisoA5L1 (or delete-only A5/L2nr where applicable) shows |Delta| < 0.010 (no evidence above the single-submission noise floor) or favors northern-strip FIFO refill."
+      },
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa.tif",
+          "sha256": "c41fc4aa73826f33047237fe027f95c025635e9e7d5af599e340f7ee8a46b273",
+          "bytes": 354240,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa-zeros.tif",
+          "sha256": "4d91c5de97a0aa4b9ca5eff2790a418067959b7922ed4adcac9361794d8edc62",
+          "bytes": 217876,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6",
+      "parent": "h33-h33-2-b2",
+      "parent_repo": "GEMSDOE32",
+      "repo": "GEMSDOE90",
+      "axis": "PRUNE",
+      "value": "anisoA5L2q50",
+      "across_px": 5.0,
+      "along_px": 2.0,
+      "status": "BUILT",
+      "n_dots": 37654,
+      "pct_changed": 19.4561,
+      "sha256": "d54c00e625c18fcf35cc5ae808c4e1a2fed389bd8bb30721a8a810c774f5233d",
+      "sha256_zeros": "4fcb637463211b9bb800481f785695e7a9deeeeed07e909d200421cf82e18133",
+      "predicted_change": "+0.006 DTI (MODEL; plausible -0.008 to +0.016; not a score)",
+      "model_bracket": {
+        "low": -0.008,
+        "central": 0.006,
+        "high": 0.016
+      },
+      "form_note": "h33-h33-2-b2; PRUNE A5/L2 q50 5km kernel refill; pred +0.006 DTI MODEL",
+      "removed_mask_sha256_packbits": "df84a09c5b823c6ab4a9c09d55b5bc8c17456f483cf359b241bdb96ea2e80760",
+      "refill_mask_sha256_packbits": "d2e747170a154d7dd234b8b9523d3d7e112b256872fe4263f5aee5c6c53e9814",
+      "collar_diagnostics": {
+        "across_px": 5.0,
+        "along_px": 2.0,
+        "coherence_min": 0.3,
+        "n_candidates": 37654,
+        "n_inside": 3663,
+        "n_inside_coherent_ellipse": 3588,
+        "n_inside_incoherent_fallback": 75,
+        "n_coherent": 36898,
+        "coherence_median": 0.6844071745872498,
+        "euclid_min_inside": 2.23606797749979,
+        "euclid_max_inside": 5.0,
+        "along_abs_median_inside": 0.5677251219749451,
+        "across_abs_median_inside": 2.968604564666748
+      },
+      "parent_diff": {
+        "n_parent": 37654,
+        "n_candidate": 37654,
+        "n_removed": 3663,
+        "n_added": 3663,
+        "n_retained_parent": 33991,
+        "symmetric_difference_px": 7326,
+        "pct_changed_of_parent": 19.456100281510597,
+        "removed_along_abs_median_px": 0.5677251219749451,
+        "removed_across_abs_median_px": 2.968604564666748,
+        "removed_coherence_median": 0.8487628102302551,
+        "removed_dist_median_px": 3.0,
+        "removed_dist_max_px": 5.0,
+        "added_dist_median_px": 21.213203435596427,
+        "added_dist_min_px": 3.0,
+        "removed_to_nearest_added_median_px": 10.295630140987,
+        "removed_to_nearest_added_max_px": 106.88779163215975,
+        "removed_outside_kernel_of_any_added": 2947
+      },
+      "refill_diagnostics": {
+        "refill_policy": "5 km block-stratified exact R=3px marginal-kernel infill (q50) on H19-5 at d_cat>=3.0px",
+        "eligible_pool_size_px": 58380,
+        "n_refill_selected": 3663,
+        "marginal_kernel_gain_sum": 20804.0,
+        "marginal_kernel_gain_mean": 5.6795,
+        "marginal_kernel_gain_min": 2.1002,
+        "marginal_kernel_gain_median": 5.5665,
+        "marginal_kernel_gain_max": 9.3803,
+        "min_catalogue_distance_of_refill_px": 3.0,
+        "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+        "q50_spatial_and_shadow_audit": {
+          "n_refill": 3663,
+          "refill_bbox_y": [
+            0,
+            3699
+          ],
+          "refill_bbox_x": [
+            2,
+            3285
+          ],
+          "refill_y_median_px": 914.0,
+          "refill_y_p95_px": 3180.499999999998,
+          "refill_row_span_fraction": 0.9919571045576407,
+          "refill_fraction_in_north_strip_y_le_264": 0.14032214032214033,
+          "north_half_dot_share_parent": 0.7334147766505551,
+          "north_half_dot_share_candidate": 0.7338928135125087,
+          "north_half_dot_share_shift": 0.0004780368619535791,
+          "refill_to_retained_min_px": 1.0,
+          "refill_to_retained_median_px": 2.23606797749979,
+          "refill_to_retained_mean_px": 2.3940110334617675,
+          "refill_within_3px_of_retained_count": 3301,
+          "refill_within_3px_of_retained_fraction": 0.9011739011739012,
+          "min_catalogue_distance_of_refill_px": 3.0,
+          "median_catalogue_distance_of_refill_px": 21.213203435596427,
+          "refill_dots_below_3px_catalogue": 0,
+          "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+          "final_dots_below_3px_inherited_only": 156,
+          "addition_evenness_report": {
+            "block_px": 50,
+            "block_km": 5.0,
+            "nominal_dose": 0.097281,
+            "blocks_with_parent_dots": 1788,
+            "blocks_with_20plus_dots": 848,
+            "blocks_receiving_additions": 1476,
+            "blocks_with_zero_additions_among_20plus": 0,
+            "add_share_p05": 0.0672,
+            "add_share_median": 0.1,
+            "add_share_p95": 0.12,
+            "add_share_max": 0.1304,
+            "adds_into_blocks_with_zero_parent_dots": 0,
+            "added_bbox_y": [
+              0,
+              3699
+            ],
+            "added_bbox_x": [
+              2,
+              3285
+            ],
+            "added_centroid_yx": [
+              1271.5,
+              1477.11
+            ],
+            "parent_centroid_yx": [
+              1273.25,
+              1478.13
+            ]
+          },
+          "passes_addition_evenness_gate": true
+        },
+        "paired_fifo_spatial_and_shadow_audit": {
+          "n_refill": 3663,
+          "refill_bbox_y": [
+            0,
+            157
+          ],
+          "refill_bbox_x": [
+            394,
+            3282
+          ],
+          "refill_y_median_px": 68.0,
+          "refill_y_p95_px": 121.0,
+          "refill_row_span_fraction": 0.042359249329758715,
+          "refill_fraction_in_north_strip_y_le_264": 1.0,
+          "north_half_dot_share_parent": 0.7334147766505551,
+          "north_half_dot_share_candidate": 0.7596536888511181,
+          "north_half_dot_share_shift": 0.026238912200562958,
+          "refill_to_retained_min_px": 1.0,
+          "refill_to_retained_median_px": 1.0,
+          "refill_to_retained_mean_px": 1.3368723955561719,
+          "refill_within_3px_of_retained_count": 3613,
+          "refill_within_3px_of_retained_fraction": 0.9863499863499864,
+          "min_catalogue_distance_of_refill_px": 2.23606797749979,
+          "median_catalogue_distance_of_refill_px": 21.213203435596427,
+          "refill_dots_below_3px_catalogue": 21,
+          "min_catalogue_distance_of_final_set_px": 2.23606797749979,
+          "final_dots_below_3px_inherited_only": 177,
+          "addition_evenness_report": {
+            "block_px": 50,
+            "block_km": 5.0,
+            "nominal_dose": 0.097281,
+            "blocks_with_parent_dots": 1788,
+            "blocks_with_20plus_dots": 848,
+            "blocks_receiving_additions": 127,
+            "blocks_with_zero_additions_among_20plus": 781,
+            "add_share_p05": 0.0,
+            "add_share_median": 0.0,
+            "add_share_p95": 1.1054,
+            "add_share_max": 2.64,
+            "adds_into_blocks_with_zero_parent_dots": 0,
+            "added_bbox_y": [
+              0,
+              157
+            ],
+            "added_bbox_x": [
+              394,
+              3282
+            ],
+            "added_centroid_yx": [
+              66.45,
+              1617.59
+            ],
+            "parent_centroid_yx": [
+              1273.25,
+              1478.13
+            ]
+          },
+          "passes_addition_evenness_gate": false,
+          "fifo_removed_to_nearest_added_median_px": 845.4211968007427
+        },
+        "support_credit_comparison_vs_fifo": {
+          "off_catalogue_h19_support_px": 121131,
+          "outside_collar_h19_support_px": 92750,
+          "r0_T_all_offcat": 76725.88495626675,
+          "retained_T_all_offcat": 68625.94341115323,
+          "fifo_T_all_offcat": 70356.21958318588,
+          "q50_T_all_offcat": 72298.90924536862,
+          "fifo_refill_recovered_T_all_offcat": 1730.2761720326525,
+          "q50_refill_recovered_T_all_offcat": 3672.9658342153853,
+          "q50_vs_fifo_recovered_T_ratio": 2.1227627667671953,
+          "fifo_mean_recovered_T_per_dot": 0.47236586733078145,
+          "q50_mean_recovered_T_per_dot": 1.0027206754614757,
+          "r0_T_outside_collar": 67798.02551158993,
+          "retained_T_outside_collar": 67320.74825572871,
+          "fifo_T_outside_collar": 68909.96775096038,
+          "q50_T_outside_collar": 70239.1295182243,
+          "fifo_net_delta_T_outside_collar_vs_r0": 1111.9422393704444,
+          "q50_net_delta_T_outside_collar_vs_r0": 2441.1040066343703,
+          "fifo_refill_recovered_T_outside_collar": 1589.219495231664,
+          "q50_refill_recovered_T_outside_collar": 2918.38126249559
+        }
+      },
+      "mechanism_card": {
+        "value": "anisoA5L2q50",
+        "across_px": 5.0,
+        "along_px": 2.0,
+        "hypothesis": "Removing R0 dots inside the strike-aligned cross-strike collar (|across|<=5 px = 500 m, |along|<=2 px = 200 m; isotropic fallback where coherence<0.3) strips mapped-fault scarp haloes while preserving along-strike tip continuations beyond 2 px, AND refilling the exact 3663 removed dots via 5 km block-stratified exact R=3 px marginal-kernel infill (q50, d_cat>=3.0 px) eliminates the IR90-35 northern-strip concentration (y<=157) and IR90-12 kernel-shadow waste of anisoA5L2.",
+        "mechanism": "At fixed count S=37,654 (dS=0), collar pruning removes 3663 cross-strike flank dots (median |across|=2.97 px). Instead of global FIFO-BFS refill (anisoA5L2, which dumped 100% of 3663 dots into northern rows y in [0, 157], starving 781/848 dense 5 km blocks and placing 98.6% within 3 px of retained dots at median 1.00 px), q50 allocates block quotas across all 1,788 R0-occupied 5 km blocks (1476/1,788 receiving additions, 0/848 dense blocks starved, addition_evenness_gate=True) and greedily selects H19-5 cells at d_cat>=3.0 px that maximize exact R=3 px marginal kernel gain. Off-catalogue H19-5 support credit recovered by refill rises from +1730.3 (anisoA5L2) to +3673.0 (anisoA5L2q50, 2.12x), and net outside-collar H19-5 coverage shifts from +1111.9 to +2441.1 while cutting median replacement distance from 845.4 px to 10.3 px.",
+        "non_fault_confounder": "100 m DEM hillshade/slope edges parallel to mapped Quaternary fault scarps, piedmont bajada fan-head trenches, and erosional terrace risers within <=500 m across strike of catalogue traces (which trigger H19-5 without an independent unmapped fault), plus mid-strand H19-5 ridge segments on volcanic flow margins or lithologic contacts outside the collar where q50 refills land.",
+        "matched_controls": {
+          "paired_fifo_refill_id": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-d1b64234",
+          "paired_norefill_id": "h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8",
+          "n_removed_matched": 3663,
+          "n_added_matched": 3663,
+          "fixed_count": 37654
+        },
+        "predicted_live_change": "+0.006 DTI (MODEL; plausible -0.008 to +0.016; not a score)",
+        "model_bracket": {
+          "low": -0.008,
+          "central": 0.006,
+          "high": 0.016
+        },
+        "falsifier": "Disconfirmed if live score change vs R0 is <= -0.010 DTI, OR if paired live comparison against FIFO-refilled anisoA5L2 (or delete-only A5/L2nr where applicable) shows |Delta| < 0.010 (no evidence above the single-submission noise floor) or favors northern-strip FIFO refill."
+      },
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6.tif",
+          "sha256": "d54c00e625c18fcf35cc5ae808c4e1a2fed389bd8bb30721a8a810c774f5233d",
+          "bytes": 353324,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_nan": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6-zeros.tif",
+          "sha256": "4fcb637463211b9bb800481f785695e7a9deeeeed07e909d200421cf82e18133",
+          "bytes": 217202,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "checks": {
+            "format_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_zeros": true,
+            "mask_matches_expected_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "no_dot_inside_collar": true,
+            "count_held": true
+          },
+          "format_gate": {
+            "file": "/home/user/GEMSDOE90/releases/h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6-zeros.tif",
+            "pass": true,
+            "fails": [],
+            "n_dots": 37654,
+            "catalogue_mass": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "proxy_reports": {
+    "note": "REPORT ONLY (PROXY). Never used as a gate or called a score.",
+    "catalogue_hide_recover": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 38,
+      "n_withheld_positives": 16560,
+      "bootstrap_replicates": 1000,
+      "seed": 20261024,
+      "r0_proxy_value": 0.005692,
+      "r0_proxy_ci95": [
+        0.004323,
+        0.007186
+      ],
+      "variants": {
+        "h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f": {
+          "proxy_value": 0.003326,
+          "proxy_ci95": [
+            0.002398,
+            0.004378
+          ],
+          "delta_vs_r0_proxy": -0.002366,
+          "delta_vs_r0_ci95": [
+            -0.00305,
+            -0.001758
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa": {
+          "proxy_value": 0.001776,
+          "proxy_ci95": [
+            0.001327,
+            0.002197
+          ],
+          "delta_vs_r0_proxy": -0.003916,
+          "delta_vs_r0_ci95": [
+            -0.005128,
+            -0.002818
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6": {
+          "proxy_value": 0.000435,
+          "proxy_ci95": [
+            0.000238,
+            0.000644
+          ],
+          "delta_vs_r0_proxy": -0.005257,
+          "delta_vs_r0_ci95": [
+            -0.006704,
+            -0.003918
+          ]
+        }
+      }
+    },
+    "sgmc_control": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 162,
+      "n_withheld_positives": 62122,
+      "bootstrap_replicates": 1000,
+      "seed": 20261024,
+      "r0_proxy_value": 0.095386,
+      "r0_proxy_ci95": [
+        0.084323,
+        0.107315
+      ],
+      "variants": {
+        "h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f": {
+          "proxy_value": 0.09543,
+          "proxy_ci95": [
+            0.084696,
+            0.106917
+          ],
+          "delta_vs_r0_proxy": 4.4e-05,
+          "delta_vs_r0_ci95": [
+            -0.000902,
+            0.000807
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa": {
+          "proxy_value": 0.095604,
+          "proxy_ci95": [
+            0.084856,
+            0.106712
+          ],
+          "delta_vs_r0_proxy": 0.000218,
+          "delta_vs_r0_ci95": [
+            -0.001158,
+            0.001456
+          ]
+        },
+        "h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6": {
+          "proxy_value": 0.094793,
+          "proxy_ci95": [
+            0.084157,
+            0.1058
+          ],
+          "delta_vs_r0_proxy": -0.000593,
+          "delta_vs_r0_ci95": [
+            -0.002773,
+            0.001142
+          ]
+        }
+      }
+    },
+    "leakage_canary": {
+      "status": "REPORT ONLY",
+      "seed": 20261024,
+      "n_positive": 60988,
+      "n_negative_sampled": 250000,
+      "features_tested": 19,
+      "sentinel_handling": "non-finite and <= -1e30 masked out per band before ranking",
+      "max_symmetric_auc": 0.5699,
+      "max_feature_band": 4,
+      "auc_gt_0_90": false,
+      "per_band": [
+        {
+          "band": 1,
+          "auc": 0.4915,
+          "symmetric_auc": 0.5085
+        },
+        {
+          "band": 2,
+          "auc": 0.4974,
+          "symmetric_auc": 0.5026
+        },
+        {
+          "band": 3,
+          "auc": 0.5278,
+          "symmetric_auc": 0.5278
+        },
+        {
+          "band": 4,
+          "auc": 0.5699,
+          "symmetric_auc": 0.5699
+        },
+        {
+          "band": 5,
+          "auc": 0.5338,
+          "symmetric_auc": 0.5338
+        },
+        {
+          "band": 6,
+          "auc": 0.4485,
+          "symmetric_auc": 0.5515
+        },
+        {
+          "band": 7,
+          "auc": 0.5546,
+          "symmetric_auc": 0.5546
+        },
+        {
+          "band": 8,
+          "auc": 0.5244,
+          "symmetric_auc": 0.5244
+        },
+        {
+          "band": 9,
+          "auc": 0.4864,
+          "symmetric_auc": 0.5136
+        },
+        {
+          "band": 10,
+          "auc": 0.5505,
+          "symmetric_auc": 0.5505
+        },
+        {
+          "band": 11,
+          "auc": 0.5265,
+          "symmetric_auc": 0.5265
+        },
+        {
+          "band": 12,
+          "auc": 0.4844,
+          "symmetric_auc": 0.5156
+        },
+        {
+          "band": 13,
+          "auc": 0.4596,
+          "symmetric_auc": 0.5404
+        },
+        {
+          "band": 14,
+          "auc": 0.4892,
+          "symmetric_auc": 0.5108
+        },
+        {
+          "band": 15,
+          "auc": 0.5114,
+          "symmetric_auc": 0.5114
+        },
+        {
+          "band": 16,
+          "auc": 0.5685,
+          "symmetric_auc": 0.5685
+        },
+        {
+          "band": 17,
+          "auc": 0.4828,
+          "symmetric_auc": 0.5172
+        },
+        {
+          "band": 18,
+          "auc": 0.4995,
+          "symmetric_auc": 0.5005
+        },
+        {
+          "band": 19,
+          "auc": 0.5581,
+          "symmetric_auc": 0.5581
+        }
+      ],
+      "note": "Single-feature separability on the known catalogue only; no live-score inference.",
+      "evidence_class": "PROXY"
+    }
+  },
+  "elapsed_s": 139.95,
+  "no_live_submission": true,
+  "agent_never_submits": true,
+  "verified_utc": "2026-10-24T05:55:53Z",
+  "verification_git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
+  "self_check": {
+    "all_26_manifest_pins_verified": true,
+    "r0_rebuilt_byte_identically": true,
+    "all_6_release_rasters_re_read_and_validated": true,
+    "all_3_candidates_reproduced_pixel_identically": true,
+    "all_3_candidates_pass_5km_addition_evenness_gate": true,
+    "all_newly_added_refill_dots_ge_3px_catalogue": true,
+    "ledger_and_mechanism_cards_consistent": true,
+    "global_sha256_uniqueness_passed": true
+  }
+}

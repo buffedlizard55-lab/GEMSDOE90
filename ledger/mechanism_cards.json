@@ -387,5 +387,101 @@
       }
     ],
     "post_merge_status": "HELD from slots; distinct value family kept as occupancy guard + matched-dose sign-control falsifier (IR90-25/26 headwind)."
+  },
+  "aniso_q50_refill": {
+    "generated_utc": "2026-10-24T05:45:38Z",
+    "axis": "PRUNE",
+    "status": "BUILT",
+    "irregularity_resolved": "IR90-35",
+    "refill_policy": "5 km block-stratified exact R=3 px marginal-kernel infill (q50) on H19-5 with d_cat >= 3.0 px",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f",
+        "value": "anisoA5L0p5q50",
+        "across_px": 5.0,
+        "along_px": 0.5,
+        "status": "BUILT",
+        "n_dots": 37654,
+        "pct_changed": 7.080257,
+        "sha256": "b7f9d99f2e31fdcb454eb6e4a2e66b0cec44dcf86520515888a3601cb65bbad1",
+        "sha256_zeros": "b44a54048f77ad589a4f669102bde03af4431e0c8335f85362b987394c928197",
+        "form_note": "h33-h33-2-b2; PRUNE A5/L0.5 q50 5km kernel refill; pred +0.005 DTI MODEL",
+        "hypothesis": "Removing R0 dots inside the strike-aligned cross-strike collar (|across|<=5 px = 500 m, |along|<=0.5 px = 50 m; isotropic fallback where coherence<0.3) strips mapped-fault scarp haloes while preserving along-strike tip continuations beyond 0.5 px, AND refilling the exact 1333 removed dots via 5 km block-stratified exact R=3 px marginal-kernel infill (q50, d_cat>=3.0 px) eliminates the IR90-35 northern-strip concentration (y<=101) and IR90-12 kernel-shadow waste of anisoA5L0p5.",
+        "mechanism": "At fixed count S=37,654 (dS=0), collar pruning removes 1333 cross-strike flank dots (median |across|=2.98 px). Instead of global FIFO-BFS refill (anisoA5L0p5, which dumped 100% of 1333 dots into northern rows y in [0, 101], starving 822/848 dense 5 km blocks and placing 97.6% within 3 px of retained dots at median 1.00 px), q50 allocates block quotas across all 1,788 R0-occupied 5 km blocks (1124/1,788 receiving additions, 0/848 dense blocks starved, addition_evenness_gate=True) and greedily selects H19-5 cells at d_cat>=3.0 px that maximize exact R=3 px marginal kernel gain. Off-catalogue H19-5 support credit recovered by refill rises from +655.7 (anisoA5L0p5) to +1504.8 (anisoA5L0p5q50, 2.30x), and net outside-collar H19-5 coverage shifts from -237.5 to +432.8 while cutting median replacement distance from 898.3 px to 17.3 px.",
+        "non_fault_confounder": "100 m DEM hillshade/slope edges parallel to mapped Quaternary fault scarps, piedmont bajada fan-head trenches, and erosional terrace risers within <=500 m across strike of catalogue traces (which trigger H19-5 without an independent unmapped fault), plus mid-strand H19-5 ridge segments on volcanic flow margins or lithologic contacts outside the collar where q50 refills land.",
+        "matched_controls": {
+          "paired_fifo_refill_id": "h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771",
+          "paired_norefill_id": null,
+          "n_removed_matched": 1333,
+          "n_added_matched": 1333,
+          "fixed_count": 37654
+        },
+        "predicted_live_change": "+0.005 DTI (MODEL; plausible -0.007 to +0.014; not a score)",
+        "model_bracket": {
+          "low": -0.007,
+          "central": 0.005,
+          "high": 0.014
+        },
+        "falsifier": "Disconfirmed if live score change vs R0 is <= -0.010 DTI, OR if paired live comparison against FIFO-refilled anisoA5L0p5 (or delete-only A5/L2nr where applicable) shows |Delta| < 0.010 (no evidence above the single-submission noise floor) or favors northern-strip FIFO refill."
+      },
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa",
+        "value": "anisoA5L1q50",
+        "across_px": 5.0,
+        "along_px": 1.0,
+        "status": "BUILT",
+        "n_dots": 37654,
+        "pct_changed": 12.673288,
+        "sha256": "c41fc4aa73826f33047237fe027f95c025635e9e7d5af599e340f7ee8a46b273",
+        "sha256_zeros": "4d91c5de97a0aa4b9ca5eff2790a418067959b7922ed4adcac9361794d8edc62",
+        "form_note": "h33-h33-2-b2; PRUNE A5/L1 q50 5km kernel refill; pred +0.008 DTI MODEL",
+        "hypothesis": "Removing R0 dots inside the strike-aligned cross-strike collar (|across|<=5 px = 500 m, |along|<=1 px = 100 m; isotropic fallback where coherence<0.3) strips mapped-fault scarp haloes while preserving along-strike tip continuations beyond 1 px, AND refilling the exact 2386 removed dots via 5 km block-stratified exact R=3 px marginal-kernel infill (q50, d_cat>=3.0 px) eliminates the IR90-35 northern-strip concentration (y<=101) and IR90-12 kernel-shadow waste of anisoA5L1.",
+        "mechanism": "At fixed count S=37,654 (dS=0), collar pruning removes 2386 cross-strike flank dots (median |across|=2.97 px). Instead of global FIFO-BFS refill (anisoA5L1, which dumped 100% of 2386 dots into northern rows y in [0, 101], starving 806/848 dense 5 km blocks and placing 97.9% within 3 px of retained dots at median 1.00 px), q50 allocates block quotas across all 1,788 R0-occupied 5 km blocks (1347/1,788 receiving additions, 0/848 dense blocks starved, addition_evenness_gate=True) and greedily selects H19-5 cells at d_cat>=3.0 px that maximize exact R=3 px marginal kernel gain. Off-catalogue H19-5 support credit recovered by refill rises from +1168.2 (anisoA5L1) to +2646.9 (anisoA5L1q50, 2.27x), and net outside-collar H19-5 coverage shifts from +222.9 to +1249.2 while cutting median replacement distance from 917.5 px to 12.0 px.",
+        "non_fault_confounder": "100 m DEM hillshade/slope edges parallel to mapped Quaternary fault scarps, piedmont bajada fan-head trenches, and erosional terrace risers within <=500 m across strike of catalogue traces (which trigger H19-5 without an independent unmapped fault), plus mid-strand H19-5 ridge segments on volcanic flow margins or lithologic contacts outside the collar where q50 refills land.",
+        "matched_controls": {
+          "paired_fifo_refill_id": "h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce",
+          "paired_norefill_id": null,
+          "n_removed_matched": 2386,
+          "n_added_matched": 2386,
+          "fixed_count": 37654
+        },
+        "predicted_live_change": "+0.008 DTI (MODEL; plausible -0.005 to +0.017; not a score)",
+        "model_bracket": {
+          "low": -0.005,
+          "central": 0.008,
+          "high": 0.017
+        },
+        "falsifier": "Disconfirmed if live score change vs R0 is <= -0.010 DTI, OR if paired live comparison against FIFO-refilled anisoA5L1 (or delete-only A5/L2nr where applicable) shows |Delta| < 0.010 (no evidence above the single-submission noise floor) or favors northern-strip FIFO refill."
+      },
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6",
+        "value": "anisoA5L2q50",
+        "across_px": 5.0,
+        "along_px": 2.0,
+        "status": "BUILT",
+        "n_dots": 37654,
+        "pct_changed": 19.4561,
+        "sha256": "d54c00e625c18fcf35cc5ae808c4e1a2fed389bd8bb30721a8a810c774f5233d",
+        "sha256_zeros": "4fcb637463211b9bb800481f785695e7a9deeeeed07e909d200421cf82e18133",
+        "form_note": "h33-h33-2-b2; PRUNE A5/L2 q50 5km kernel refill; pred +0.006 DTI MODEL",
+        "hypothesis": "Removing R0 dots inside the strike-aligned cross-strike collar (|across|<=5 px = 500 m, |along|<=2 px = 200 m; isotropic fallback where coherence<0.3) strips mapped-fault scarp haloes while preserving along-strike tip continuations beyond 2 px, AND refilling the exact 3663 removed dots via 5 km block-stratified exact R=3 px marginal-kernel infill (q50, d_cat>=3.0 px) eliminates the IR90-35 northern-strip concentration (y<=157) and IR90-12 kernel-shadow waste of anisoA5L2.",
+        "mechanism": "At fixed count S=37,654 (dS=0), collar pruning removes 3663 cross-strike flank dots (median |across|=2.97 px). Instead of global FIFO-BFS refill (anisoA5L2, which dumped 100% of 3663 dots into northern rows y in [0, 157], starving 781/848 dense 5 km blocks and placing 98.6% within 3 px of retained dots at median 1.00 px), q50 allocates block quotas across all 1,788 R0-occupied 5 km blocks (1476/1,788 receiving additions, 0/848 dense blocks starved, addition_evenness_gate=True) and greedily selects H19-5 cells at d_cat>=3.0 px that maximize exact R=3 px marginal kernel gain. Off-catalogue H19-5 support credit recovered by refill rises from +1730.3 (anisoA5L2) to +3673.0 (anisoA5L2q50, 2.12x), and net outside-collar H19-5 coverage shifts from +1111.9 to +2441.1 while cutting median replacement distance from 845.4 px to 10.3 px.",
+        "non_fault_confounder": "100 m DEM hillshade/slope edges parallel to mapped Quaternary fault scarps, piedmont bajada fan-head trenches, and erosional terrace risers within <=500 m across strike of catalogue traces (which trigger H19-5 without an independent unmapped fault), plus mid-strand H19-5 ridge segments on volcanic flow margins or lithologic contacts outside the collar where q50 refills land.",
+        "matched_controls": {
+          "paired_fifo_refill_id": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-d1b64234",
+          "paired_norefill_id": "h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8",
+          "n_removed_matched": 3663,
+          "n_added_matched": 3663,
+          "fixed_count": 37654
+        },
+        "predicted_live_change": "+0.006 DTI (MODEL; plausible -0.008 to +0.016; not a score)",
+        "model_bracket": {
+          "low": -0.008,
+          "central": 0.006,
+          "high": 0.016
+        },
+        "falsifier": "Disconfirmed if live score change vs R0 is <= -0.010 DTI, OR if paired live comparison against FIFO-refilled anisoA5L2 (or delete-only A5/L2nr where applicable) shows |Delta| < 0.010 (no evidence above the single-submission noise floor) or favors northern-strip FIFO refill."
+      }
+    ]
   }
 }
