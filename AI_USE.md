@@ -157,9 +157,62 @@ MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.
 - **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit any file, or invent any score/quota/target. R0's 0.2778 is CLAIM; every Δ is MODEL; canary/proxies are PROXY. Competition rasters stay in ignored `.cache/gems_data/` and `releases/`; the four *_strain5km source files are the only new tracked code.
 - **Human must decide/supply:** adjudicate whether sibling repos GEMSDOE84–97 are ONE entity (quota risk, IR90-26/30/32), confirm deadline and slot count, supply dated TOP_PUBLIC and portal receipts, decide whether the strain5km occupancy guards add value or should be dropped as a near-duplicate, and choose which single file (if any) to upload from their registered account.
 
-## Session `arena/73f4c306` (`2026-10-24`, Agent-Selected `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill `q50`, Resolving `IR90-35`)
+## Session arena/81d9c38f-gemsdoe90 (2026-10-24, agent-selected `AXIS=PRUNE`, one variant)
 
-- **What AI wrote and executed:** Restored `.venv` from `requirements.txt`, restored and SHA-256-verified all 26/26 pinned inputs in `registry/data_manifest.json` (`evidence/manifest_verification.json`), and rebuilt parent R0 (`h33-h33-2-b2`, `37,654` dots) byte-identically (`c55bafc4…` zeros / `baeae321…` NaN). Programmatically audited all 9 prior `BUILT` `PRUNE` variants in `GEMSDOE90` (`PRUNE3p5px..5p5px`, `PRUNEanisoA4L2..A6L2`, `PRUNEanisoA5L1p5..L0p5`), discovering that global `fifo_bfs_visit_rank(h19)` places 100% of their 1,333–6,130 refill dots into a northern border strip (`y <= 101..264` of `H = 3,730`), starving `739–822 / 848` dense (`>=20` dot) 5 km blocks (`addition_evenness_gate = False`), placing `97.9%–99.5%` of refills within `3 px` of retained northern dots (`median 1.00 px`), and allowing refills down to `d_cat = 2.236 px` (`IR90-35`). Authored `src/prune_q50.py`, `scripts/build_aniso_prune_q50.py`, and `tests/test_aniso_prune_q50.py`; built and byte-verified three fixed-count (`37,654` dots) strike-aligned `PRUNE` variants at `across_px = 5.0`, `along_px in {0.5, 1.0, 2.0}` refilled via 5 km block-stratified exact `R = 3 px` marginal-kernel infill (`q50`, `d_cat >= 3.0 px` on all additions, `0 / 848` dense blocks starved): `PRUNEanisoA5L0p5q50` (`b7f9d99f`), `PRUNEanisoA5L1q50` (`c41fc4aa`), and `PRUNEanisoA5L2q50` (`d54c00e6`). Froze `MODEL` predictions before computing report-only `PROXY` diagnostics (`catalogue_hide_recover`, `sgmc_control`, `leakage_canary` max symmetric AUC `0.5699 < 0.90`). Updated `evidence/aniso_q50_refill_receipt.json`, `ledger/submissions.csv`, `ledger/experiment_reservations.json`, `ledger/mechanism_cards.json`, `docs/MECHANISM_CARDS.md`, `IRREGULARITIES.md` (`IR90-35`), `SLOT_PLAN.md`, `README.md` (`CURRENT STATE` block only), `docs/SUBMIT.md`, and `tests/test_r0_variants.py`.
+- **AI wrote and executed:** `src/collar.py` (exclusive max-plus credit, region-even quotas, capacity
+  rebalance, max-marginal refill, two-scenario prediction), `scripts/build_prune_collar_gapmax.py`
+  (`--build` / `--verify`), `tests/test_collar.py` (7 synthetic tests), the local gitignored raster pair
+  `releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` / `…-e69532d5-zeros.tif`,
+  `evidence/prune_collar_gapmax_receipt.json`, one `ledger/submissions.csv` row, the IR90-37/38/39/40 entries,
+  the mechanism card, and the matching sections of `SLOT_PLAN.md`, `README.md` (CURRENT STATE only),
+  `docs/SUBMIT.md` and this disclosure.
+- **AI decided (not human-assigned):** selected PRUNE after a read-only `gh api` audit of sibling ledgers
+  (GEMSDOE84–94) and a byte-identical R0 rebuild; measured that every free arrangement/dose knob has
+  < 0.010 headroom (IR90-37) and therefore built **one** variant instead of three (IR90-40): the smallest
+  unoccupied collar radius (3.4 px) with a max-marginal refill, because that isolates the one quantity the
+  entity has measured live (the collar) and repairs the refill policy that was never measured (FIFO 0.57 vs
+  max-marginal 1.30 support credit per dot). AI verified all 26 SHA-256 pins, rebuilt R0 byte-identically
+  (`c55bafc4…` / `baeae321…`), re-read and validated both rasters from disk, reproduced their bytes with
+  `--verify`, and ran the report-only canary and catalogue hide-and-recover instruments.
+- **AI did not:** contact DrivenData or Dropbox, fetch a competition page, read or scrape the leaderboard,
+  log in, submit, invent any score/quota/target, or use test truth of any kind. R0's `0.2778` is a CLAIM;
+  the prediction is MODEL; both proxies are PROXY; the catalogue hide-and-recover value of 0.0 is a documented
+  structural artefact (IR90-38), not evidence.
+- **Human must decide/supply:** dated `TOP_PUBLIC`, slots used/remaining, official deadline confirmation,
+  R0 and candidate portal receipts, data-use review, whether a 3.4 px collar step is worth a slot at all
+  (IR90-39: the refill measurement is the session's result, not a new dose), and which single file — if any —
+  to upload from their own registered account.
+## Session arena/5d597521 (2026-10-24, agent-selected AXIS=SPACING, GEMSDOE90)
+
+**AI wrote:** `src/spacing.py` (crowding rank, local respacing operator, spacing statistics),
+`scripts/build_spacing_variants.py` (build/verify, ledger/reservation writers, report-only
+diagnostics), `tests/test_spacing.py`, the three ledger rows, the `spacing` mechanism cards in
+`ledger/mechanism_cards.json`, the `spacing_reservations_20261024` block, the receipt
+`evidence/spacing_build_receipt.json`, and the matching sections of `docs/MECHANISM_CARDS.md`,
+`docs/SUBMIT.md`, `SLOT_PLAN.md`, `IRREGULARITIES.md` (IR90-35/36) and this file. AI re-verified
+26/26 pinned inputs by SHA-256, rebuilt R0 byte-identically (zeros `c55bafc4…` / NaN `baeae321…`),
+audited sibling SPACING values read-only via `gh api` (GEMSDOE84-88/91/92), re-read every written
+raster from disk, reproduced the bytes with `--verify`, and ran the full test suite.
+
+**AI decided (agent-selected axis, not assigned):** SPACING, in a local kernel-scale form. The
+brief's global trio (lattice / Poisson-disk / along-strike) and ring-2 micro-moves are already
+built by siblings; MASS, CONCENTRATION, PRUNE and RELIEF ladders are complete in this repo; SNAP
+is proven infeasible (IR90-28). AI set the doses (5/10/15%), the crowding rank, the 15 px window
+and the 2.8 px separation floor, measured the exact support-credit balance (-87/-284/-496) before
+freezing predictions (0.000 / -0.001 / -0.002 MODEL), and held all three files from slots because
+the balance and both PROXYs say local arrangement is exhausted. AI did not contact DrivenData or
+Dropbox, did not read the leaderboard, did not log in, and did not submit. R0's 0.2778 remains a
+CLAIM; every predicted change is a MODEL; canary/hide-recover/SGMC numbers are PROXY.
+
+**Human must decide/supply:** dated `TOP_PUBLIC`, quota used/remaining (one entity, 3/week),
+deadline confirmation (2026-12-03 UNVERIFIED), R0's portal receipt and receipts for any uploaded
+file, a geological review of whether crowded-dot clusters (possible step-overs/intersections) may
+be respaced at all, whether the inherited 2.236 px floor is acceptable (IR90-36), and which single
+file (if any) to upload from their own registered account. The agent's recommendation is to keep
+the SPACING files held and run the MASS-add / continuity / PRUNE order in `SLOT_PLAN.md` first.
+
+## Session `arena/73f4c306` (`2026-10-24`, Agent-Selected `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill `q50`, Resolving `IR90-41`)
+
+- **What AI wrote and executed:** Restored `.venv` from `requirements.txt`, restored and SHA-256-verified all 26/26 pinned inputs in `registry/data_manifest.json` (`evidence/manifest_verification.json`), and rebuilt parent R0 (`h33-h33-2-b2`, `37,654` dots) byte-identically (`c55bafc4…` zeros / `baeae321…` NaN). Programmatically audited all 9 prior FIFO-refilled `BUILT` `PRUNE` variants in `GEMSDOE90` (`PRUNE3p5px..5p5px`, `PRUNEanisoA4L2..A6L2`, `PRUNEanisoA5L1p5..L0p5`), discovering that global `fifo_bfs_visit_rank(h19)` places 100% of their 1,333–6,130 refill dots into a northern border strip (`y <= 101..264` of `H = 3,730`), starving `739–822 / 848` dense (`>=20` dot) 5 km blocks (`addition_evenness_gate = False`), placing `97.9%–99.5%` of refills within `3 px` of retained northern dots (`median 1.00 px`), and allowing refills down to `d_cat = 2.236 px` (`IR90-41`). Authored `src/prune_q50.py`, `scripts/build_aniso_prune_q50.py`, and `tests/test_aniso_prune_q50.py`; built and byte-verified three fixed-count (`37,654` dots) strike-aligned `PRUNE` variants at `across_px = 5.0`, `along_px in {0.5, 1.0, 2.0}` refilled via 5 km block-stratified exact `R = 3 px` marginal-kernel infill (`q50`, `d_cat >= 3.0 px` on all additions, `0 / 848` dense blocks starved): `PRUNEanisoA5L0p5q50` (`b7f9d99f`), `PRUNEanisoA5L1q50` (`c41fc4aa`), and `PRUNEanisoA5L2q50` (`d54c00e6`). Froze `MODEL` predictions before computing report-only `PROXY` diagnostics (`catalogue_hide_recover`, `sgmc_control`, `leakage_canary` max symmetric AUC `0.5699 < 0.90`). Updated `evidence/aniso_q50_refill_receipt.json`, `ledger/submissions.csv`, `ledger/experiment_reservations.json`, `ledger/mechanism_cards.json`, `docs/MECHANISM_CARDS.md`, `IRREGULARITIES.md` (`IR90-41`), `SLOT_PLAN.md`, `README.md` (`CURRENT STATE` block only), `docs/SUBMIT.md`, and `tests/test_r0_variants.py`.
 - **What AI did NOT do:** Did not prompt the human over axis choice; did not contact DrivenData or Dropbox, fetch `drivendata.org` pages, scrape the leaderboard, log in, submit any file, or store/print credentials. R0's `0.2778` remains a `CLAIM`; all predicted changes are `MODEL` (never called scores); all local diagnostics are `PROXY` / report-only (never gates). Competition data and output GeoTIFFs remain in gitignored `.cache/` and `releases/`.
-- **What the human must decide / supply:** Supply dated `TOP_PUBLIC`, weekly/total slot quota state, official deadline confirmation, and live portal `RECEIPT`s (for R0 and any uploaded file); review the removed cross-strike fault collars and 5 km `q50` refill corridors geologically; adjudicate entity scope across `GEMSDOE84–97` (`IR90-26`/`IR90-30`/`IR90-32`/`IR90-35`); and upload at most one chosen `.tif` per live slot from their registered account.
-
+- **What the human must decide / supply:** Supply dated `TOP_PUBLIC`, weekly/total slot quota state, official deadline confirmation, and live portal `RECEIPT`s (for R0 and any uploaded file); review the removed cross-strike fault collars and 5 km `q50` refill corridors geologically; adjudicate entity scope across `GEMSDOE84–97` (`IR90-26`/`IR90-30`/`IR90-32`/`IR90-41`); and upload at most one chosen `.tif` per live slot from their registered account.

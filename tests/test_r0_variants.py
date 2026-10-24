@@ -69,6 +69,9 @@ def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
     along_receipt = ROOT / "evidence" / "aniso_along_refill_receipt.json"
     if along_receipt.exists():
         receipts.append(json.loads(along_receipt.read_text()))
+    collar_receipt = ROOT / "evidence" / "prune_collar_gapmax_receipt.json"
+    if collar_receipt.exists():
+        receipts.append(json.loads(collar_receipt.read_text()))
     q50_receipt = ROOT / "evidence" / "aniso_q50_refill_receipt.json"
     if q50_receipt.exists():
         receipts.append(json.loads(q50_receipt.read_text()))

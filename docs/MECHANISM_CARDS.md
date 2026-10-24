@@ -374,9 +374,92 @@ loss (~0.98 lost / ~0.54 gained per dot) and a negative SGMC PROXY favouring the
 - **Predicted live change (MODEL):** **−0.004 DTI** (−0.016…+0.008; not a score).
 - **Falsifier:** `strainAway10 >= strain10` on paired receipts falsifies the strain mechanism; `|Δ|<0.010` is no evidence.
 
-## Session `arena/73f4c306` (2026-10-24): `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill (`q50`) Across the `A=5 px, L in {0.5, 1.0, 2.0} px` Strike-Aligned Collar Ladder (Resolving `IR90-35`)
+## Session 2026-10-24 (3): AXIS = PRUNE, value = frontier collar 3.4 px with max-marginal refill
 
-Parent R0 `h33-h33-2-b2`, 37,654 unit-mass dots (`0.2778` is a **CLAIM**, not a `RECEIPT`). Programmatic audit (`evidence/aniso_q50_refill_receipt.json`) of all 9 prior `BUILT` `PRUNE` variants in `GEMSDOE90` (`PRUNE3p5px`, `PRUNE4p5px`, `PRUNE5p5px`, `PRUNEanisoA4L2`, `PRUNEanisoA5L2`, `PRUNEanisoA6L2`, `PRUNEanisoA5L1p5`, `PRUNEanisoA5L1`, `PRUNEanisoA5L0p5`) established that global `fifo_bfs_visit_rank(h19)` places **100% of their 1,333–6,130 refill dots into a northern border strip (`y <= 101..264` of `H = 3,730`, i.e., top `2.73%–7.10%` of grid rows)**—the exact FIFO-head northern-strip concentration documented in `IR90-20` (Hard Constraint #5). Across those 9 variants, `739–822` of the `848` densely populated (`>=20` R0 dots) 5 km blocks receive **zero** refills (`87.1%–96.9%` starved; `addition_evenness_gate = False`), northern-strip blocks receive up to `198%–288%` of parent density, `97.9%–99.5%` of refills land within `3 px` of retained northern dots (`median 1.00 px`; `IR90-12`), and anisotropic refill pools admitted new dots down to `d_cat = 2.236 px`. All 9 FIFO-refilled `PRUNE` files are therefore **HELD from live upload slots** (`IR90-35`).
+Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots, isotropic >2 px catalogue collar; 0.2778 is a **CLAIM**.
+File `releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` (+ `-zeros` twin): **BUILT**, format-gated,
+unscored. Prediction **MODEL**: **+0.002** (bracket −0.008…+0.013). Receipt:
+`evidence/prune_collar_gapmax_receipt.json`; builder `scripts/build_prune_collar_gapmax.py`.
+
+**Hypothesis.** R0's 2 px catalogue collar is the only edit in its lineage with a live-positive claim (solo-d28
+0.2708 → pruned 0.2778), so the collar is the one dose-response the entity has actually measured. Extending it by
+1.4 px should keep paying while the removed shell still sits inside the mapped traces' damage zone, and should stop
+paying once the shell reaches ground where a "new" fault is plausible.
+
+**Mechanism.** Known catalogue pixels are masked pixel-exactly: a dot there earns no `T` but still pays the
+`0.2(S−M)` mass term, and a dot beside them is scored only against *new*-fault truth. The edit removes all 2,702
+R0 dots in the 2.236–3.162 px shell (median 2.828 px) and re-places exactly 2,702 dots at the maximum marginal
+R = 3 px kernel credit inside the binary H19-5 support, under region-even 5 km quotas proportional to R0's own
+block counts (largest emptied block share 9.5 %, no 20+-dot block left without an addition, gate passed).
+Count is fixed at 37,654, so emitted mass cannot explain a live change; every final dot is ≥ 3.606 px from the
+catalogue, making this the first candidate in the repository that is stricter than Hard Constraint #4's `≥ 3 px`.
+
+**Why the refill changed too (and why that is the informative part).** At the same collar and count the lineage's
+FIFO-BFS refill buys **0.57** support credit per dot; maximum-marginal placement buys **1.30** (2.3×), measured in
+the same receipt. The removal term is truth-dependent and cannot be settled locally, so the file's prediction is
+reported as two named scenarios rather than one number: **−0.008** if the removed shell is worth what the support
+surrogate says (uniform-truth reading), **+0.013** if the collar's mechanism holds (near-catalogue mass earns
+penalty, not credit). Central +0.002.
+
+**Non-fault processes that could mimic it.** H19-5 is binary {0,1}, so max-marginal placement cannot distinguish a
+fault ridge from a lithologic contact, a drainage line, or a flight-line artefact; and new-fault truth is explicitly
+allowed within 300 m of known traces, so the deleted shell may hold genuine credit. Both confounders push the live
+change **down**.
+
+**Falsifier.** A paired live receipt against R0 with Δ ≤ −0.010 ends the outward collar ladder at this radius (read
+together with the entity's 3.0 px rungs). |Δ| < 0.010 is no evidence and licenses no further dose guess on this axis.
+Note the catalogue hide-and-recover proxy is structurally blind here (IR90-38) and must not be used to veto it.
+
+**Geologist note.** The deleted shell is a 340 m halo around every mapped trace; the added dots are simply the
+least-served parts of the binary H19-5 field, which is not a fault-probability ranking. Read the file as a collar
+test with a repaired refill, never as a claim that new faults avoid mapped traces.
+---
+
+## Session 2026-10-24 (`arena/5d597521`, agent-selected AXIS = SPACING, local kernel-scale respacing) — BUILT, HELD from slots
+
+Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots, rebuilt byte-identically (zeros `c55bafc4…` / NaN
+`baeae321…`); 0.2778 is a **CLAIM** (no receipt). The brief's global SPACING arrangements (lattice /
+Poisson-disk / along-strike) are already built by sibling sessions (GEMSDOE86/88/91 — `lattice`,
+`poisson-disk`, `along-strike`, `pdiskc16`, `latticec16`, `strikec16`, `poisson28`, `lattice4px`,
+`strike`, ring-2 `spread40`/`clump40`/`jitter40`), so this session built the unbuilt arrangement
+question: at fixed count, support and geography, respace the most kernel-crowded dots into the
+nearest uncovered support. Predictions are **MODEL**, frozen before any PROXY ran. Receipt:
+`evidence/spacing_build_receipt.json`.
+
+Shared mechanism, for a structural geologist: R0's dots all sit >= 2.828 px apart (the parent d2.8
+thinning survives), yet 50.5% have a neighbour inside the 300 m metric kernel and the average dot
+shares its 6 px contest zone with 2.82 others. Because kernel credit `T` is a *max* over dots, the
+second and third dots on the same short strand segment pay full mass (the `0.2(S-M)` term) for very
+little extra credit, while 13,793 px of the corroborated H19-5 ridge support receive no credit at
+all. Moving a crowded dot a short distance along its own ridge — median displacement 1.0 px, mean
+3.6-5.0 px, 94% inside the 15 px (1.5 km) primary window — should in principle trade redundant
+overlap for fresh along-strike coverage of line-like truth, the geometry the brief says lowers the
+per-dot pay bar. The measured reality is less kind: replacements gain 4,145.5 / 8,326.8 / 12,564.2
+support-credit units against removal losses of 4,232.6 / 8,611.1 / 13,059.9, i.e. a net **-87 / -284 /
+-496** — local windows cannot reach the far uncovered support, and crowded dots still exclusively
+cover the strand pixels between their neighbours. This is IR90-25's credit uniformity seen from the
+arrangement side.
+
+| Variant | Relocated / symmetric diff | Mean displacement | Support-credit balance | Predicted live change (MODEL) | Non-fault confounder | Falsifier |
+|---|---|---:|---:|---|---|---|
+| `SPACINGresp5pctW15` (`f8bada0c`) | 1,883 / 10.00% | 5.02 px | -87.1 | **0.000** (-0.008 to +0.008; raw centre -0.0003) | Crowded dots mark intersections/step-overs where splays genuinely pack one kernel; respacing deletes exactly that complexity. | Paired Δ <= -0.010 at this lowest dose rejects local respacing outright. |
+| `SPACINGresp10pctW15` (`fdb1bde9`) | 3,765 / 20.00% | 3.96 px | -284.3 | **-0.001** (-0.009 to +0.007) | Uncovered support stretches may be cover/vegetation gaps, contacts or drainages in the H19-5 field, not unmapped fault. | Monotone worsening 5→15% confirms crowded dots carried credit; Δ >= +0.010 anywhere falsifies the headwind. |
+| `SPACINGresp15pctW15` (`08f1daec`) | 5,648 / 30.00% | 3.63 px | -495.7 | **-0.002** (-0.010 to +0.006) | As above, plus: at 15% the edit reaches moderately crowded dots whose overlap was already thin. | As above; \|Δ\| < 0.010 is no evidence at every dose. |
+
+Spacing diagnostics (R0 → resp15): dots with a neighbour within 3 px 50.5% → 45.0%; mean other
+dots within 6 px 2.822 → 2.763; total crowding 32,690 → 31,521; 5 km block-density CV 0.901 →
+0.899 (geography inherited by construction; region-evenness gate PASS, no block emptied, worst
+block loss -33%). Report-only PROXY (never gates/scores): catalogue hide-and-recover (seed
+20261024, n=16,560 withheld) Δ -0.000008 / -0.000057 / -0.000144; SGMC control (n=62,122)
+Δ +0.000221 / +0.000413 / +0.000373 — opposite signs at 1e-4 scale, both consistent with the ~0
+MODEL centre; leakage canary max symmetric AUC 0.570341 (`geod_2ndinv`), crowding-score AUC
+0.503420, no feature > 0.90. **Decision: HOLD from the next slots** (IR90-35); the files are
+arrangement dose-response guards showing kernel-scale arrangement at fixed count is exhausted
+locally — they do not displace the MASS-add / continuity / PRUNE order in `SLOT_PLAN.md`.
+
+## Session `arena/73f4c306` (2026-10-24): `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill (`q50`) Across the `A=5 px, L in {0.5, 1.0, 2.0} px` Strike-Aligned Collar Ladder (Resolving `IR90-41`)
+
+Parent R0 `h33-h33-2-b2`, 37,654 unit-mass dots (`0.2778` is a **CLAIM**, not a `RECEIPT`). Programmatic audit (`evidence/aniso_q50_refill_receipt.json`) of all 9 prior FIFO-refilled `BUILT` `PRUNE` variants in `GEMSDOE90` (`PRUNE3p5px`, `PRUNE4p5px`, `PRUNE5p5px`, `PRUNEanisoA4L2`, `PRUNEanisoA5L2`, `PRUNEanisoA6L2`, `PRUNEanisoA5L1p5`, `PRUNEanisoA5L1`, `PRUNEanisoA5L0p5`) established that global `fifo_bfs_visit_rank(h19)` places **100% of their 1,333–6,130 refill dots into a northern border strip (`y <= 101..264` of `H = 3,730`, i.e., top `2.73%–7.10%` of grid rows)**—the exact FIFO-head northern-strip concentration documented in `IR90-20` (Hard Constraint #5). Across those 9 variants, `739–822` of the `848` densely populated (`>=20` R0 dots) 5 km blocks receive **zero** refills (`87.1%–96.9%` starved; `addition_evenness_gate = False`), northern-strip blocks receive up to `198%–288%` of parent density, `97.9%–99.5%` of refills land within `3 px` of retained northern dots (`median 1.00 px`; `IR90-12`), and anisotropic refill pools admitted new dots down to `d_cat = 2.236 px`. All 9 FIFO-refilled `PRUNE` files are therefore **HELD from live upload slots** (`IR90-41`).
 
 This session builds the 3 repaired fixed-count (`37,654` dots) strike-aligned `PRUNE` candidates at `across_px = 5.0` and `along_px in {0.5, 1.0, 2.0}` refilled via **5 km block-stratified exact `R = 3 px` marginal-kernel infill (`q50`, `src/reach.py` + `src/prune_q50.py`)** on `H19-5` outside the collar with a strict **`d_cat >= 3.0 px`** floor on every newly added dot.
 
@@ -414,4 +497,3 @@ This session builds the 3 repaired fixed-count (`37,654` dots) strike-aligned `P
 - **Falsifier:** Disconfirmed if live score change vs R0 is `<= -0.010 DTI`; if `A5/L2q50` beats `A5/L1q50` by `>= +0.010 DTI`, the hypothesis that `L = 2.0 px` over-prunes genuine along-strike fault tips is falsified.
 
 **Report-only diagnostics (`PROXY`, never a gate or score):** Single-feature leakage canary max symmetric AUC is `0.5699` (band 5, `< 0.90` threshold). Spatial-block (20 km) catalogue hide-and-recover (`n = 13,920` withheld positives; R0 `0.005692` `PROXY`) shifts by `-0.002366` (`A5/L0.5q50`), `-0.003916` (`A5/L1q50`), and `-0.005257` (`A5/L2q50`) because withheld catalogue segments meet retained catalogue traces at tips/junctions inside the collar. Off-catalogue SGMC (`n = 62,122` pixels at `d_cat > 3 px`; R0 `0.095386` `PROXY`) shifts by **`+0.000044`** (`95% CI [-0.000902, +0.000807]`) for `A5/L0.5q50`, **`+0.000218`** (`95% CI [-0.001158, +0.001456]`) for `A5/L1q50`, and `-0.000593` (`95% CI [-0.002773, +0.001142]`) for `A5/L2q50`—improving over the negative SGMC drift of the paired FIFO-refilled arms (`-0.000592`, `-0.000557`, `-0.0014`). Full receipt: `evidence/aniso_q50_refill_receipt.json`.
-

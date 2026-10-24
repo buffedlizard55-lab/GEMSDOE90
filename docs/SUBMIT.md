@@ -222,10 +222,54 @@ Rasters are NOT committed (public repo). Re-emit with `.venv/bin/python scripts/
 does not submit. Even if verified, these are HELD — do not upload without adjudicating entity-scope/quota
 (IR90-26/30/32) and the headwind (IR90-25/34).
 
-## 8. `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill (`q50`) Ladder (`2026-10-24`, Session `arena/73f4c306`, Active Slot 2 / Slot 3 `PRUNE` Branch — Resolving `IR90-35`)
+## 8. Frontier collar 3.4 px with max-marginal refill — FALLBACK, not slot 1–3 (session 2026-10-24)
 
-**Why all 9 prior `PRUNE` variants (`PRUNE3p5px..5p5px`, `PRUNEanisoA4L2..A6L2`, `PRUNEanisoA5L1p5..L0p5`) are now HELD from live upload slots (`IR90-35`):**
-Programmatic audit (`evidence/aniso_q50_refill_receipt.json`) proved that all 9 prior `BUILT` `PRUNE` variants refilled their removed collar dots using global `fifo_bfs_visit_rank(h19)`, which places **100% of their 1,333–6,130 refill dots into a northern border strip (`y <= 101..264` of `H = 3,730`, i.e., top `2.73%–7.10%` of grid rows)**, starving `739–822` of the `848` densely populated (`>=20` R0 dots) 5 km blocks (`87.1%–96.9%` starved; `addition_evenness_gate = False`), placing `97.9%–99.5%` of refills within `3 px` of retained northern dots (`median 1.00 px`; `IR90-12`), and allowing refills down to `d_cat = 2.236 px`.
+One file pair, `AXIS=PRUNE`, built from the byte-identical R0 (zeros `c55bafc4…` / NaN `baeae321…`):
+2,702 dots removed from the 2.236–3.162 px catalogue shell, 2,702 re-placed at the maximum marginal R=3 px
+kernel credit inside region-even 5 km quotas, count held at 37,654, **every final dot ≥ 3.606 px** from the
+catalogue (the only candidate in this repo stricter than the `≥ 3 px` rule), zero catalogue mass.
+
+| Candidate | Preferred file (NaN outside) | Fallback (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (<=140) |
+|---|---|---|---|---|
+| collar 3.4 px + gapmax refill | `releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` | `…-e69532d5-zeros.tif` | `e69532d5c25f101…` / `cc27b807a3c56c2…` | `h33-h33-2-b2; PRUNE collar 3.4px, fixed count, max-marginal refill; pred +0.002 DTI MODEL` |
+
+Prediction `+0.002 DTI (MODEL; bracket −0.008…+0.013)`. The same receipt records the measurement this file exists
+for: at the same collar and count the lineage's FIFO-BFS refill buys 0.57 support credit per dot, maximum-marginal
+placement buys 1.30. **Do not slot it ahead of the MASS-add order** (SLOT_PLAN.md); it is the fallback for a live
+receipt showing the collar gradient is still alive, or a `≥ 3 px`-compliance control.
+
+Reproduce: `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scripts/build_prune_collar_gapmax.py --build`
+(idempotent: a hash-identical ledger row is accepted, a different one stops the build) → `--verify` re-emits both encodings and
+compares SHA-256 → `python -m src.validate <file> .cache/gems_data/sample_submission.tif --catalogue
+.cache/gems_data/existing_faults.tif`. Receipt: `evidence/prune_collar_gapmax_receipt.json`.
+The catalogue hide-and-recover PROXY reads 0.0 for this file **by construction** (its "truth" is the catalogue mask
+itself) — IR90-38; never use it to veto a collar candidate.
+
+## SPACING local respacing — BUILT, HELD from slots (session 2026-10-24, `arena/5d597521`)
+
+Fixed-count (37,654) respacing of R0's most kernel-crowded dots (summed triangular-disk overlap
+within 6 px) to the maximum-marginal-credit H19-5 pixel within 15 px (expanding 30/60 px only when
+a window is empty), minimum separation 2.8 px (the parent's own thinning distance), added dots
+d_cat>=3 px, zero catalogue mass; untouched R0 dots inherit the 2.236 px floor (IR90-36). Nested
+doses from one sequential process. **Status: BUILT, HELD** (IR90-35) — support-credit balance is
+-87/-284/-496 and both PROXYs sit at 1e-4 with opposite signs; do not spend a slot here before the
+MASS-add / continuity / PRUNE receipts exist. Receipt `evidence/spacing_build_receipt.json`;
+re-emit/verify with `.venv/bin/python scripts/build_spacing_variants.py --build` / `--verify`
+after `scripts/restore_data.py` (rasters are gitignored, never committed).
+
+| Candidate | Preferred file (NaN outside) | Fallback (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (<=140) |
+|---|---|---|---|---|
+| respace 5% (1,883d; 10.00% diff) | `releases/h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c.tif` | `…-f8bada0c-zeros.tif` | `f8bada0cef5a…` / `487e6d8983ef…` | `h33-h33-2-b2; SPACING respace 1883d (5%) crowded->gap <1.5km, count fixed; pred -0.000 DTI MODEL` |
+| respace 10% (3,765d; 20.00% diff) | `releases/h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9.tif` | `…-fdb1bde9-zeros.tif` | `fdb1bde9a24c…` / `cec03d8655fb…` | `h33-h33-2-b2; SPACING respace 3765d (10%) crowded->gap <1.5km, count fixed; pred -0.001 DTI MODEL` |
+| respace 15% (5,648d; 29.999% diff) | `releases/h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec.tif` | `…-08f1daec-zeros.tif` | `08f1daecfc6e…` / `9d6f2abf2f15…` | `h33-h33-2-b2; SPACING respace 5648d (15%) crowded->gap <1.5km, count fixed; pred -0.002 DTI MODEL` |
+
+The agent does not submit. Upload only one file per slot, from the human's own account, and only
+if the human overrules the HOLD after reading IR90-35.
+
+## 9. `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill (`q50`) Ladder (`2026-10-24`, Session `arena/73f4c306`, Active Slot 2 / Slot 3 `PRUNE` Branch — Resolving `IR90-41`)
+
+**Why all 9 prior FIFO-refilled `PRUNE` variants (`PRUNE3p5px..5p5px`, `PRUNEanisoA4L2..A6L2`, `PRUNEanisoA5L1p5..L0p5`) are now HELD from live upload slots (`IR90-41`):**
+Programmatic audit (`evidence/aniso_q50_refill_receipt.json`) proved that all 9 prior FIFO-refilled `BUILT` `PRUNE` variants refilled their removed collar dots using global `fifo_bfs_visit_rank(h19)`, which places **100% of their 1,333–6,130 refill dots into a northern border strip (`y <= 101..264` of `H = 3,730`, i.e., top `2.73%–7.10%` of grid rows)**, starving `739–822` of the `848` densely populated (`>=20` R0 dots) 5 km blocks (`87.1%–96.9%` starved; `addition_evenness_gate = False`), placing `97.9%–99.5%` of refills within `3 px` of retained northern dots (`median 1.00 px`; `IR90-12`), and allowing refills down to `d_cat = 2.236 px`.
 
 These three `2026-10-24` candidates pair the exact Slot 2 / Slot 3 strike-aligned collar ladder (`across_px = 5.0`, `along_px in {0.5, 1.0, 2.0}`) with **5 km block-stratified exact `R = 3 px` marginal-kernel infill (`q50`, `src/prune_q50.py`)** on `H19-5` outside the collar and a strict **`d_cat >= 3.0 px`** floor on every newly added dot (`0 / 848` dense blocks starved, `addition_evenness_gate = True`, replacement distance `10.30–17.26 px` vs `845.4–917.5 px` FIFO, off-catalogue `H19-5` refill credit `2.12x–2.30x` FIFO, and net outside-collar `H19-5` coverage `+432.8 / +1,249.2 / +2,441.1` vs R0):
 
@@ -241,4 +285,3 @@ These three `2026-10-24` candidates pair the exact Slot 2 / Slot 3 strike-aligne
 .venv/bin/python scripts/build_aniso_prune_q50.py --build --verify
 ```
 Confirm the SHA-256 of the chosen `.tif` before uploading, upload **only the primary NaN `.tif`** (`-zeros.tif` only if the portal rejects NaNs outside the footprint), and record the returned live portal score in `ledger/submissions.csv` (`receipt = Y`, `receipt_score`, `date`).
-
