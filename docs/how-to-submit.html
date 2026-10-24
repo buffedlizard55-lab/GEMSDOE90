@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEMSDOE90 — how to submit</title><style>
+:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--fg:#e6edf3;--mut:#9198a1;
+--ok:#2ea043;--warn:#d29922;--bad:#f85149;--acc:#58a6ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,
+"Segoe UI",Helvetica,Arial,sans-serif}
+header{padding:28px 20px 18px;border-bottom:1px solid var(--line);background:#010409}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+h1{margin:0 0 4px;font-size:28px}h2{margin:34px 0 10px;font-size:21px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{margin:22px 0 8px;font-size:17px}
+p,li{color:var(--fg)}.mut{color:var(--mut)}
+a{color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0}
+.ready{border-color:var(--ok);box-shadow:0 0 0 1px rgba(46,160,67,.35)}
+.notready{border-color:var(--bad);box-shadow:0 0 0 1px rgba(248,81,73,.35)}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:700}
+.b-ok{background:rgba(46,160,67,.18);color:#56d364;border:1px solid var(--ok)}
+.b-bad{background:rgba(248,81,73,.15);color:#ff7b72;border:1px solid var(--bad)}
+.b-warn{background:rgba(210,153,34,.15);color:#e3b341;border:1px solid var(--warn)}
+.dl{display:inline-block;background:var(--ok);color:#fff;font-weight:700;font-size:18px;
+padding:14px 26px;border-radius:9px;text-decoration:none;margin:10px 12px 10px 0}
+.dl:hover{filter:brightness(1.1)}
+.dl2{display:inline-block;border:1px solid var(--line);color:var(--fg);padding:13px 20px;
+border-radius:9px;text-decoration:none;margin:10px 0}
+code,kbd{background:#010409;border:1px solid var(--line);border-radius:5px;padding:1px 6px;
+font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
+pre{background:#010409;border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow:auto}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#1c2128}
+tr:nth-child(even) td{background:#12171d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:14px 0}
+.kv{background:#010409;border:1px solid var(--line);border-radius:8px;padding:12px}
+.kv b{display:block;font-size:22px;margin-bottom:2px}
+.kv span{color:var(--mut);font-size:13px}
+nav a{margin-right:18px;font-weight:600}
+footer{margin:46px 0 26px;color:var(--mut);font-size:13px}
+ol li{margin:7px 0}
+</style></head>
+<body><header><div class="wrap">
+<h1>GEMSDOE90</h1>
+<p class="mut">DOE GEMS Prize (DrivenData #306) — credit-efficient hidden-fault discovery,
+auditable end to end.</p>
+<nav><a href="index.html">Submission</a><a href="how-to-submit.html">How to submit</a>
+<a href="method.html">Method &amp; evidence</a>
+<a href="https://github.com/buffedlizard55-lab/GEMSDOE90">Repository</a></nav>
+</div></header><div class="wrap">
+<h2>How to make a submission — exact steps</h2>
+<div class="card ready"><b>Summary:</b> download one file, open the submission page, choose the file,
+paste the note, submit. Nothing is renamed, unzipped or converted.</div>
+<ol>
+<li><b>Download the file.</b> <a class="dl" href="downloads/gems90-cnc-35000dots-20261024T084324Z.tif" download>&#11015; gems90-cnc-35000dots-20261024T084324Z.tif</a>
+Keep the name as it is &mdash; it is unique and carries the method, dot count and timestamp.
+Verify it if you like:<br><code>sha256sum gems90-cnc-35000dots-20261024T084324Z.tif</code> &rarr; <code>e1e91be23d763ee184839f38a22aa573d6c957aac8fd0038a680cf6615ef41eb</code></li>
+<li><b>Open</b> <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">
+the competition submission page</a> and sign in. Check the weekly quota shown there
+(the rules allow a limited number of scored submissions per week per team).</li>
+<li><b>"File to submit":</b> choose the downloaded <code>.tif</code>. A single-band GeoTIFF is accepted
+directly; a <code>.zip</code> containing exactly one GeoTIFF is also accepted. Do not upload both.</li>
+<li><b>"Note" (optional, helps you tell submissions apart):</b> paste
+<pre>Fold-honest discovery model; greedy DTI-optimal dots at the holdout-optimal budget. Off-catalogue, not a collar file. No score claimed.</pre>
+(135 characters, within the form's short-comment intent of &le;140.)</li>
+<li><b>Submit</b>, then copy the score the page returns back into
+<code>ledger/submissions.csv</code> as an ORGANIZER-CONFIRMED receipt. Until that is done, every
+number in this repository stays labelled MODEL or HOLDOUT-DTI.</li>
+</ol>
+
+<h2>If the form rejects the file</h2>
+<table>
+<tr><th>message</th><th>cause</th><th>fix</th></tr>
+<tr><td><em>Predicted values must be in range [0, 1]</em></td>
+<td>The raster contains NaN (or a nodata sentinel such as -3.4e38). NaN is not in [0,1], so a
+NaN-outside-footprint file is rejected even though it is otherwise valid.</td>
+<td>Use the file linked above: it is the all-finite encoding (zeros outside the footprint,
+0 non-finite pixels in the whole raster).</td></tr>
+<tr><td><em>CRS / shape / transform mismatch</em></td>
+<td>The raster must be exactly the submission-format grid.</td>
+<td>This file is EPSG:32611, 3730&times;3292 at 100 m, with the sample
+transform; <code>python -m src.submission_writer</code>'s validator re-checks all three from disk.</td></tr>
+<tr><td><em>Multiple bands / wrong dtype</em></td><td>Only one float32 band is accepted.</td>
+<td>This file is single-band float32.</td></tr>
+</table>
+
+<h2>Re-validate the file yourself</h2>
+<pre>python - &lt;&lt;'PY'
+import rasterio, numpy as np
+ds = rasterio.open("gems90-cnc-35000dots-20261024T084324Z.tif")
+a  = ds.read(1)
+print(ds.crs, ds.width, ds.height, ds.count, a.dtype)
+print("finite:", np.isfinite(a).all(), "min:", a.min(), "max:", a.max(), "dots:", int((a>0).sum()))
+PY</pre>
+<p>Expected: <code>EPSG:32611 3292 3730 1 float32</code>,
+<code>finite: True min: 0.0 max: 1.0 dots: 35000</code>.</p>
+
+<h2>What counts as a slot</h2>
+<p>Promotion to a weekly scored slot is a <b>separate human decision</b>. This page only certifies that
+the file is unique, format-valid and holdout-tested; it does not claim a leaderboard position and it
+does not spend a slot. One file per slot &mdash; the repository never offers two encodings of the same
+experiment as two submissions.</p>
+
+<footer>Generated 2026-10-24 08:43 UTC by
+<code>scripts/build_site.py</code> from the JSON receipts in <code>evidence/</code>.
+Scores copied from the owner's submission list are labelled OWNER-REPORTED; no
+organizer receipt is on file in this repository. Local measurements are labelled
+HOLDOUT-DTI or MODEL and are never presented as leaderboard scores.</footer>
+</div></body></html>

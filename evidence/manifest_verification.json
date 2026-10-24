@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-24T06:23:43Z",
+  "generated_utc": "2026-10-24T07:20:51Z",
   "manifest_path": "registry/data_manifest.json",
   "verified_files_count": 26,
   "all_sha256_matched": true,
   "organizer_authenticated": false,
   "note": "All SHA-256 and byte pins verified against registry/data_manifest.json. Files stored outside Git in .cache/gems_data/ per Hard Constraint #2.",
-  "elapsed_s": 26.52,
+  "elapsed_s": 64.67,
   "files": [
     {
       "id": "training_features",
       "dest": "training_features.tif",
       "group": "core",
-      "status": "present_verified",
+      "status": "restored_verified",
       "bytes": 418912844,
       "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5"
     },
@@ -20,7 +20,7 @@
       "id": "labels",
       "dest": "labels.tif",
       "group": "core",
-      "status": "present_verified",
+      "status": "restored_verified",
       "bytes": 425830,
       "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093"
     },
@@ -28,7 +28,7 @@
       "id": "existing_faults",
       "dest": "existing_faults.tif",
       "group": "core",
-      "status": "present_verified",
+      "status": "restored_verified",
       "bytes": 425830,
       "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093"
     },
@@ -36,7 +36,7 @@
       "id": "sample_submission",
       "dest": "sample_submission.tif",
       "group": "core",
-      "status": "present_verified",
+      "status": "restored_verified",
       "bytes": 1599597,
       "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
     },

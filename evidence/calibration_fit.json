@@ -1,0 +1,141 @@
+{
+  "occupancy_capped": true,
+  "pi_max": 1.0,
+  "pi_n_saturated": 20577,
+  "pi_sum": 31362.5078125,
+  "G_anchor": 12545.0,
+  "gamma_anchor": 5.999374264634392,
+  "rmse_anchor": 0.09277962572635622,
+  "G_joint": 31362.5,
+  "gamma_joint": 5.999027900188706,
+  "rmse_joint": 0.06092621830653477,
+  "fit_seconds": 327.9,
+  "files": [
+    {
+      "name": "lattice_s5",
+      "n_dots": 204504,
+      "score_owner_reported": 0.0904,
+      "pred_anchor": 0.08936008506635308,
+      "pred_joint": 0.17142666165648554,
+      "T_joint": 11599.7998046875,
+      "M_joint": 3222.567626953125
+    },
+    {
+      "name": "hedge_v2",
+      "n_dots": 166519,
+      "score_owner_reported": 0.1563,
+      "pred_anchor": 0.08366648661210815,
+      "pred_joint": 0.1475259307938038,
+      "T_joint": 8694.6708984375,
+      "M_joint": 5980.9013671875
+    },
+    {
+      "name": "ctx_ridge",
+      "n_dots": 161366,
+      "score_owner_reported": 0.128,
+      "pred_anchor": 0.07147889481664287,
+      "pred_joint": 0.12063016278273883,
+      "T_joint": 6980.134765625,
+      "M_joint": 4476.5380859375
+    },
+    {
+      "name": "dotted_ridge",
+      "n_dots": 65236,
+      "score_owner_reported": 0.1839,
+      "pred_anchor": 0.10430200913931623,
+      "pred_joint": 0.14743089812898497,
+      "T_joint": 5740.29541015625,
+      "M_joint": 1748.837646484375
+    },
+    {
+      "name": "h16_1",
+      "n_dots": 123939,
+      "score_owner_reported": 0.1855,
+      "pred_anchor": 0.1007353722203394,
+      "pred_joint": 0.1597739586801503,
+      "T_joint": 8058.724609375,
+      "M_joint": 5256.32666015625
+    },
+    {
+      "name": "h19_4",
+      "n_dots": 123779,
+      "score_owner_reported": 0.1894,
+      "pred_anchor": 0.10105453112224894,
+      "pred_joint": 0.15719245248705704,
+      "T_joint": 7921.73193359375,
+      "M_joint": 5175.181640625
+    },
+    {
+      "name": "h19_5",
+      "n_dots": 121131,
+      "score_owner_reported": 0.1922,
+      "pred_anchor": 0.10044181512006217,
+      "pred_joint": 0.1550574214865177,
+      "T_joint": 7728.02978515625,
+      "M_joint": 5110.09619140625
+    },
+    {
+      "name": "d1_5",
+      "n_dots": 60069,
+      "score_owner_reported": 0.2477,
+      "pred_anchor": 0.12994141948948373,
+      "pred_joint": 0.17217803078147406,
+      "T_joint": 6530.86181640625,
+      "M_joint": 2395.56298828125
+    },
+    {
+      "name": "d2_8",
+      "n_dots": 44090,
+      "score_owner_reported": 0.26,
+      "pred_anchor": 0.13551489325419858,
+      "pred_joint": 0.1678036301648006,
+      "T_joint": 5827.3427734375,
+      "M_joint": 1731.596435546875
+    },
+    {
+      "name": "tgc_v2",
+      "n_dots": 61328,
+      "score_owner_reported": 0.2449,
+      "pred_anchor": 0.13106373782844735,
+      "pred_joint": 0.1733221159898608,
+      "T_joint": 6620.09130859375,
+      "M_joint": 2421.59130859375
+    },
+    {
+      "name": "h27_4_solo",
+      "n_dots": 40199,
+      "score_owner_reported": 0.2708,
+      "pred_anchor": 0.14114516975576272,
+      "pred_joint": 0.17149051323192613,
+      "T_joint": 5821.97900390625,
+      "M_joint": 1724.6236572265625
+    },
+    {
+      "name": "ens12",
+      "n_dots": 166519,
+      "score_owner_reported": 0.1563,
+      "pred_anchor": 0.0836664811170443,
+      "pred_joint": 0.1475259148351963,
+      "T_joint": 8694.669921875,
+      "M_joint": 5980.9013671875
+    },
+    {
+      "name": "placeholder",
+      "n_dots": 145610,
+      "score_owner_reported": 0.0107,
+      "pred_anchor": 0.021120854768057345,
+      "pred_joint": 0.03714518443811234,
+      "T_joint": 2007.159912109375,
+      "M_joint": 2889.516357421875
+    },
+    {
+      "name": "R0_h33_b2",
+      "n_dots": 37654,
+      "score_owner_reported": 0.2778,
+      "pred_anchor": 0.14446134961450935,
+      "pred_joint": 0.1734118871538717,
+      "T_joint": 5798.59619140625,
+      "M_joint": 1711.199951171875
+    }
+  ]
+}

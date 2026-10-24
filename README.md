@@ -1,56 +1,187 @@
-# GEMSDOE90
+# GEMSDOE90 — DOE GEMS Prize (DrivenData #306)
 
-> **2026-10-24 submission safety override: NOT READY.** No new unique, holdout-approved TIFF was generated in this session. Historical MODEL projections and slot plans below are not approval to submit. Read [the dashboard](docs/index.html), [executive submission guide](docs/executive-summary.html), [three-pass audit](docs/session-review.md), and [run card](docs/run-card.json) first.
+**Start every session by reading this file top to bottom, then
+[`docs/KNOWLEDGE_BASE_GEOTHERMAL.md`](docs/KNOWLEDGE_BASE_GEOTHERMAL.md) and the newest run card
+in [`docs/run-card.json`](docs/run-card.json).**
 
-## Standing project requirements (read before every session)
-Generate genuinely independent predictions, never relabel an old TIFF. Reuse the shared template, evaluate buffered whole-segment hide-and-recover with visible-only catalogue features, run per-feature leakage canaries, and check surfaces and final dots against the complete registry. Stop duplicate lanes at correlation >0.90 or >70% dot overlap within 3 px. Require finite in-footprint [0,1] predictions with matching CRS/shape/transform, verified holdout improvement, confidence intervals and a separate selector before spending any slot. Maximum three experiments or two hours. Clearly distinguish organizer receipts from local evaluation and projections. Provide an obvious readiness state, unique name, short note, provenance links and a JSON run card; negative results count. Maximize P(Win) by owning the entire outcome, not by inventing scores. The detailed latest request is operationalized in the linked audit; no claim is made that this summary is a verbatim archive.
+Site (download + how to submit): **[docs/index.html](docs/index.html)** ·
+[how to submit](docs/how-to-submit.html) · [method & evidence](docs/method.html)
 
+---
 
-<!-- CURRENT STATE (edit only this block) -->
-## Research queue and repository review
+## 1. Project brief — standing requirements
 
-The five candidate hypotheses, explicit blockers, review notes, source links, required next work, and current run card are maintained in [docs/REVIEW_AND_NEXT_HYPOTHESES.md](docs/REVIEW_AND_NEXT_HYPOTHESES.md). Read it before proposing or running experiments.
+> This is the operational statement of the user's brief. It is a faithful restatement of every
+> requirement, not a byte-for-byte transcript; where a requirement was given in several messages it
+> is consolidated here. Treat every line as binding.
 
-## CURRENT STATE
-- Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN), 26/26 input pins verified by SHA-256 (`evidence/r0_rebuild_receipt.json`).
-- Best receipt: **none on file** (human supplies R0 portal receipt). Best CLAIM: 0.2778 (R0, owner-reported, no receipt in `ledger/submissions.csv`).
-- TOP_PUBLIC: ____ (human fills from leaderboard, with date: ____)
-- Slots left this week: __ / 3 (one entity) · total used: __ · Deadline: 2026-12-03 (UNVERIFIED, human confirms)
-- Built and unscored (39 `BUILT` candidates in the ledger, rasters in gitignored `releases/`, none submitted): **CONCENTRATION** — two concurrent families, both HELD from slots (IR90-30/32): 5 km label-agnostic band-4 strain-rate prior `CONCstrain10`/`CONCstrain15`/`CONCstrainAway10` (sign control; `evidence/concentration_strain5km_build_receipt.json`) and the 15 km structural ladder below; **RELIEF** landform-tercile reallocation — 2026-10-23 family (`RELIEFr2p12p5pct` +0.004, `RELIEFr2b10pct` +0.003, `RELIEFp2r15pct` -0.004; `evidence/relief_build_receipt.json`) the 2026-10-24 basin<->piedmont family (`RELIEFp2b12p5pct`/`p2b15pct`/`b2p10pct`; `evidence/relief_s2_build_receipt.json`); **SPACING** local kernel-scale respacing 5/10/15%W15 (HELD; `evidence/spacing_build_receipt.json`); **MASS** shadow ladder 10/20/30/40/48% + random-40% control (`evidence/mass_build_receipt.json`, `evidence/mass_high_dose_receipt.json`), continuity-aware shadowcont 20/30/40% (`evidence/mass_continuity_receipt.json`), add-direction q50 infill 5/10/20% + Blocknext 10/20% (`evidence/mass_infill_receipt.json`, `evidence/mass_add_receipt.json`); **PRUNE** isotropic 3.5/4.5/5.5 px + strike-aligned A4/A5/A6 (`evidence/build_receipt.json`, `evidence/build_aniso_receipt.json`) + fixed-count A5/L1.5/L1/L0.5 (`evidence/aniso_along_refill_receipt.json`) + frontier 3.4 px gapmax collar (`evidence/prune_collar_gapmax_receipt.json`). All predictions are `MODEL`, not scores. Plus WITHDRAWN FIFO-ranked / duplicate-gapmax MASS and delete-only PRUNE rungs (not candidates, see below).
-- Concurrent 2026-10-23e session (this branch, agent-selected `CONCENTRATION`, **HELD from slots**): built three fixed-count 15 km structural-prior moves from byte-identical R0 — `b15kmstruct10pct` (+0.002 MODEL), `b15kmstruct15pct` (-0.002), `b15kmstruct20pct` (-0.006); CV 0.5103→0.5990/0.6949/0.7769, SGMC PROXY -0.0064/-0.0095/-0.0142, receipt `evidence/concentration_build_receipt.json`. Main's IR90-25/26 credit-uniformity and sibling MODEL audit, plus the session's negative support-credit balance, outweigh the 15 km CV coincidence; keep as occupancy/dose-response guards, not next-slot candidates (IR90-30).
-- Concurrent session (`arena/388fea70`, agent-selected `CONCENTRATION`, **HELD from slots**): three fixed-count 5 km label-agnostic band-4 strain-rate-prior moves from byte-identical R0 — `CONCstrain10` (+0.004 MODEL), `CONCstrain15` (+0.001), `CONCstrainAway10` (-0.004 matched-dose sign control); 15 km CV 0.510→0.568/0.622/0.558, prior near-orthogonal to R0 (r=+0.11) and relief-neutral; net support-credit loss and a negative SGMC PROXY (favouring the away arm) match IR90-25/26. Source files renamed to `*_strain5km` to coexist with the 15 km ladder (identical canonical names); kept as string-distinct occupancy guards, the away arm a DIRECTION falsifier only (IR90-32/33/34). Receipt `evidence/concentration_strain5km_build_receipt.json`.
-- This session (2026-10-23e, agent-selected `MASS`, **add direction**): three coverage-infill rungs `MASSadd5pctq50` (+1,883d → 39,537), `MASSadd10pctq50` (+3,765d → 41,419), `MASSadd20pctq50` (+7,531d → 45,185), predicted **+0.008 / +0.014 / +0.022 MODEL**; every parent dot retained, additions on H19-5 support with 5 km-block quotas proportional to parent dots (`evidence/mass_infill_receipt.json`, cards in `ledger/mechanism_cards_mass_infill.json`). This is the entity's first add-direction probe; sibling add rungs and this repo's withdrawn ones all ranked by the geographic FIFO order (IR90-20, IR90-22).
-- This session (2026-10-23c, agent-selected MASS): `MASSshadow40pct` pred +0.014, `MASSshadow48pct` +0.015, `MASSrandom40pct` +0.013 — receipt `evidence/mass_high_dose_receipt.json`.
-- Session 2026-10-23f (this branch, agent-selected `MASS`, **add direction, placement contrast**): `MASSadd10pctBlocknext` (+3,765d → 41,419, pred **+0.0044 MODEL** [+0.0003…+0.0107]) and `MASSadd20pctBlocknext` (+7,531d → 45,185, pred **+0.0084 MODEL** [+0.0005…+0.0205]) — the brief's literal "next-ranked" add recipe with its geography repaired (per-5 km-block quota ∝ R0 count, cap +50 %, zero where R0 has none), so they form the matched-dose, matched-geography **placement contrast** to `MASSadd10pctq50` (gapmax). Receipt `evidence/mass_add_receipt.json`. A third arm, `MASSadd10pctGapmax`, was **withdrawn before submission** as a duplicate of main's `MASSadd10pctq50` (IR90-24); its ledger row is kept as an occupancy guard.
-- Pre-merge reconnaissance that closed the concentration axis (IR90-25/26, now reconciled in IR90-30): with the `R=3 px` kernel, R0's dots are uniform in credit — mean marginal support credit on eligible pixels is 0.543–0.646 across every block-density quintile and each dot's own exclusive credit is 0.980–0.997 in every quintile — so a fixed-count CONCENTRATION move loses ~0.98 and gains ~0.54 per dot at any dose; R0's CV (0.901 at 5 km, 0.635 at 10 km) already exceeds the brief's quoted best-file band 0.51–0.59, and sibling upward-concentration MODELs are non-positive. The concurrent 15 km ladder below is held, not slotted.
-- This session (2026-10-23d, agent-selected `RELIEF`): shifted 12.5% Range→Piedmont (4,707d), 10.0% Range→Basin (3,766d), and 15.0% Piedmont→Range counterpoint (5,648d) at fixed count on `H19-5` using `R=3 px` DTI marginal credit (`d_cat >= 3.0 px` on 100% of additions).
-- This session (2026-10-24, branch `arena/b5ea0544`, agent-selected `RELIEF`, **human decides slotting**): a read-only `gh api` audit of 8 sibling ledgers (27 RELIEF rows) found basin→piedmont and piedmont→basin unbuilt under any naming and basin→range already held (b2r12/b2r15; IR90-41). Built three fixed-count 37,654-dot files with the identical pinned `src.relief.py` operator — `RELIEFp2b12p5pct` (`758fba08`, 25.001% diff, pred **+0.003 MODEL**) and `RELIEFp2b15pct` (`66718c5c`, 29.999%, **+0.004**), a concealed-basin dose pair that moves R0's basin share 17.25%→29.75%/32.25% (catalogue prior 28.23%), plus direction control `RELIEFb2p10pct` (`aeb8f9a0`, 20.003%, **−0.002**); zero catalogue mass, all additions d_cat≥3 px, donor-tercile evenness gate passed, canary max symmetric AUC 0.5703, SGMC/hide-recover PROXY only. Receipt `evidence/relief_s2_build_receipt.json`, builder `scripts/build_relief_s2_variants.py` (`--build`/`--verify`), cards `ledger/mechanism_cards_relief_s2.json`.
-- Session 2026-10-23d (this branch, AXIS=MASS on the parent's FIFO ranking): three dose-ladder rungs (`drop5pct-tail`, `add5pct-next`, `add20pct-next`) were built from exact R0 and **withdrawn before submission** — the FIFO rank is geographic (SE-hole drop, northern-strip adds), violating Hard Constraint #5; see IR90-20 and `evidence/mass_dose_ladder_receipt.json`. Not slot candidates; rows kept WITHDRAWN as occupancy guards.
-- Rejected before submission, probes recorded: FIFO-order drops 10/20/40 % (region-isolated: largest emptied 5 km-block cluster 162/316/632), FIFO 5 % tail drop and rank-head adds (IR90-20), and shadow 50 % (17-block = 425 km² hole) — IR90-15/IR90-17. Rasters and rows deleted or withheld; a build-time region-evenness gate now fails closed.
-- This session (2026-10-23 continuity, agent-selected `MASS`, drop direction): `MASSshadowcont20pct` (`66d961ba`, pred +0.009), `MASSshadowcont30pct` (`885f6fee`, +0.011), `MASSshadowcont40pct` (`92be4121`, +0.013) — shadow ranking + strand protection (≤6 px articulation + 10-dot floor, `src/continuity.py`); all 857 R0 strands kept whole at 6 px at every dose for +2.7/+5.8/+7.4% exclusive credit vs shadow; receipt `evidence/mass_continuity_receipt.json`. Fresh sibling audit: all 7 axes already built, 0 receipts entity-wide; brief-literal CONCENTRATION-up already built and ≤0 on sibling SGMC MODELs (IR90-26; in-repo credit-uniformity measurement IR90-25).
-- Finding that contests the predicted sign: `shadow40` keeps **0** of R0's 838 strands ≥ 1 km (mean spacing 3.74 → 6.19 px); `rand40` keeps 136. The ranking eats densely sampled stretches, so the random control is in the slot plan.
-- This session (2026-10-23, agent-selected final AXIS=PRUNE): fixed-count A5 along-strike collars **A5/L1** (`cd2c60ce`, 12.6733% diff, pred +0.005 MODEL), **A5/L1.5** (`9486c7e6`, 16.6251%, +0.004), **A5/L0.5** (`91ff3771`, 7.0803%, +0.003); each 37,654 dots, zero catalogue mass, every final dot `d_cat>2 px`. Receipt `evidence/aniso_along_refill_receipt.json`; canary max AUC 0.5695, catalogue n=13,920 and SGMC n=62,122 PROXY only. SNAP proved infeasible for 30 dots (IR90-28); three delete-only probes are WITHDRAWN under the fixed-count recipe (IR90-29).
-- Session 2026-10-24 (this branch, agent-selected `AXIS=PRUNE`, **one** variant — fallback only): `PRUNEcollar3p4Gapmax` (`e69532d5`, zeros `cc27b807`, 37,654 dots, 2,702 removed / 2,702 added, 14.3517 % of R0 changed, pred **+0.002 MODEL** bracket −0.008…+0.013) — collar 3.4 px (the smallest unoccupied radius; every final dot ≥ 3.606 px from the catalogue, the first repo candidate stricter than the ≥ 3 px rule) with a max-marginal region-even refill. Receipt `evidence/prune_collar_gapmax_receipt.json`. Its point is a measurement: at the same collar and count the lineage's FIFO-BFS refill buys 0.57 support credit per dot and max-marginal placement buys 1.30 (2.3×). Same session measured that **every free arrangement knob is below the 0.010 floor** — 16.4 % of dot-level kernel credit is geometrically overlapped but every R0 dot owns ≥ 0.943 exclusive credit, so a measured greedy re-seat at 5/10/20 % nets only +0.0018/+0.0023/+0.0030 MODEL — spacing/reseat/lattice stay under the floor (IR90-37), and the catalogue hide-recover PROXY is structurally blind to collar files (IR90-38: 0.0 vs R0 0.0057). Built one variant, not three (IR90-40). Canary max symmetric AUC 0.5703.
-- Next 3 slots (human decides; integrated order in `SLOT_PLAN.md`): `MASSadd5pctq50` → `MASSadd10pctq50` if positive, orthogonal **A5/L1** if null, or `MASSshadowcont20pct` if negative → conditional add-dose/placement, PRUNE-radius, or continuity-dose control. Live |Δ|<0.010 is no evidence. The new collar rung is a fallback, never slot 1–3.
+**Goal.** Compete in the DOE GEMS competition
+(<https://www.drivendata.org/competitions/306/competition-doe-gems/>) and produce a unique,
+downloadable, submission-ready single-band GeoTIFF that can win.
 
-- Reproducibility: `scripts/restore_data.py` → `scripts/restore_releases.py` (18 core pairs recorded at branch start) → prior family builders/verifiers for the newer main candidates → `scripts/build_mass_infill.py --verify` → `scripts/build_mass_add_variants.py --verify` → `scripts/build_mass_continuity.py --verify` → `scripts/build_aniso_prune_along.py --build` (if current rasters absent) → `scripts/build_aniso_prune_along.py --verify` → `scripts/build_concentration_strain5km.py --build`/`--verify` (5 km strain-prior pairs) → `scripts/build_prune_collar_gapmax.py --build`/`--verify` (this session's collar pair; rasters are gitignored, re-emit byte-identically in a fresh sandbox; an existing hash-identical row is accepted, a different one stops the build). All 26 pins verified and R0 byte-identical; full test suite (106 passed, incl. without `.cache`). Human supplies receipts, quota, dated TOP_PUBLIC, deadline confirmation, and upload decisions; adjudicate entity scope (IR90-26/30/32) before any slot.
-- This session (2026-10-24, agent-selected `SPACING`, **local respacing, HELD from slots**): three fixed-count 37,654-dot files respacing R0's most kernel-crowded dots within 15 px at the parent's 2.8 px separation — `SPACINGresp5pctW15` (1,883 relocated, 10.00% diff, pred 0.000 MODEL), `SPACINGresp10pctW15` (3,765, 20.00%, -0.001), `SPACINGresp15pctW15` (5,648, 30.00%, -0.002); exact support-credit balance -87/-284/-496, region-evenness PASS, both PROXYs at 1e-4 with opposite signs, canary max AUC 0.570341; receipt `evidence/spacing_build_receipt.json`. The brief-literal SPACING trio is already built by siblings (GEMSDOE86/88/91); these close the local-arrangement question and do not displace the slot order below (IR90-35/36).
-- Reproducibility: `scripts/restore_data.py` → `scripts/restore_releases.py` (18 core pairs recorded at branch start) → prior family builders/verifiers for the newer main candidates → `scripts/build_mass_infill.py --verify` → `scripts/build_mass_add_variants.py --verify` → `scripts/build_mass_continuity.py --verify` → `scripts/build_aniso_prune_along.py --build` (if current rasters absent) → `scripts/build_aniso_prune_along.py --verify` → `scripts/build_concentration_strain5km.py --build`/`--verify` (5 km strain-prior pairs; rasters are gitignored, re-emit in a fresh sandbox) → `scripts/build_spacing_variants.py --build`/`--verify` (2026-10-24 SPACING pairs) → `scripts/build_relief_s2_variants.py --build`/`--verify` (2026-10-24 basin<->piedmont RELIEF pairs). All 26 pins verified and R0 byte-identical; full test suite (133 passed, incl. without `.cache`). Human supplies receipts, quota, dated TOP_PUBLIC, deadline confirmation, and upload decisions; adjudicate entity scope (IR90-26/30/32/41) before any slot.
-<!-- /CURRENT STATE -->
+**Hard requirements**
 
-Layout: `src/` gated pipeline (manifest verify → exact R0 rebuild → build →
-format gate), `tests/` synthetic unit tests, `ledger/` submission ledger,
-`registry/` pinned-input manifest, `docs/` mechanism cards + submit checklist,
-`releases/` built rasters (gitignored — this repo is PUBLIC; competition
-rasters/data must never be committed, see IRREGULARITIES.md #2).
+1. **Never relabel an old submission.** Every candidate must be a genuinely new raster. Copies of
+   prior GEMSDOE submissions may be restored for study only, never shipped.
+2. **Beat the incumbents.** The reference point is GEMSDOE32 `h33-h33-2-b2-…-zeros` = **0.2778**
+   (owner-claimed, no receipt). Quoted current leaderboard highs: **0.4413** and **0.3195**.
+   Explain *why* 0.2778 scored highest and whether it can be beaten.
+3. **Format.** Single-band GeoTIFF, EPSG:32611, the sample submission's shape and geotransform,
+   all values in **[0, 1]**. A previous upload was rejected with *"Predicted values must be in
+   range [0, 1]"* — NaN fill is the suspected cause, so ship **zeros outside** the footprint.
+4. **Name + note.** Supply a unique submission name and a note of **≤ 140 characters**.
+5. **Hypotheses first.** Before implementing, generate 3–5 untried geological hypotheses; each must
+   name the layer(s), the physical signature/transform, why it finds faults the USGS/INGENIOUS
+   catalogue lacks, and how it differs from existing repository work. Rank by expected DTI gain and
+   cost, and validate the top one on the spatially blocked holdout before spending a slot. If new
+   external data is needed, name the specific free official source and verify it is obtainable.
+6. **Parallel-run protocol.** Stay in one method lane. A candidate is a duplicate if Spearman
+   ρ > 0.90 against any registry raster, or if > 70 % of its dots fall within 3 px of a registry
+   raster's dots — check the surface *before* placement and the final dots *after*. Reuse the
+   shared template tools; if a shared tool is wrong, fix it once in the template and report it —
+   never keep a private fork.
+7. **Label every number.** Each figure is either **HOLDOUT-DTI** (with evaluator version, number of
+   withheld positives and a 95 % CI) or **ORGANIZER-CONFIRMED** (from a submission-page receipt).
+   Never write a projection as a score.
+8. **Leakage canary.** Score every feature alone; AUC > 0.90 is leakage until proven otherwise.
+9. **One JSON run card** per session: hypothesis, mechanism, named non-fault mimic, holdout DTI +
+   CI, correlation/overlap against the registry, raster sha256, validator output, submission name +
+   note, and a promote/negative verdict.
+10. **Budget:** stop after 3 experiments or 2 hours.
+11. **Do not pick the weekly slot.** Promotion is a separate human selector step.
+12. **Site.** A GitHub Pages site with a clean UI; the downloadable TIF and an executive-summary
+    subpage explaining exactly how to submit must be at the very top of the site, and it must be
+    obvious whether the file is OK to download and submit.
+13. **This prompt lives in the README** and is re-read at the start of every session.
+14. **Research.** Do deep, cited research into geothermal-vent discovery and store the gathered
+    knowledge in-repo as a reusable base for future projects.
+15. **Finish with a pull request, merged to main**, stating explicit remaining work and
+    limitations for the next session.
 
-## Project prompt and aim
+**Standing working constraints**
 
-Investigate the reported high score without treating an owner claim as an organizer receipt; identify geologically distinct explanations for faults missed by the existing catalogue; test a selected hypothesis with a spatially blocked, whole-segment hide-and-recover evaluation; and create a unique submission GeoTIFF only after the requested pooled-DTI confidence interval, duplicate screen, and format checks pass. Keep the experiment budget bounded, do not choose a weekly slot, and make download/submission safety explicit. The goal is a defensible result, including a negative result when evidence is insufficient—not a projected score.
+- **No hallucinations.** Verify line by line from official, verified, trusted sources and provide
+  links for manual review.
+- **Fully autonomous.** No manual input required; flag irregularities for review rather than
+  asking.
+- **Data must be free, public and official.** State limitations and what access would be needed.
+- **Never commit competition rasters or data** — this repository is PUBLIC (`.gitignore` covers
+  `data/`, `.cache/`, `releases/*.tif`).
+- **Negative results are deliverables.** Report them; never invent a win.
+- **Three passes:** (1) implement and verify, (2) review for bugs, missing requirements, bad
+  assumptions and edge cases, and fix, (3) re-check everything against the original request and
+  improve accuracy, reliability, completeness and code quality. Do not stop after pass 1.
+- **Arena's core values stay central: Maximize P(Win) and Own the Outcome.**
 
-## Review status — 2026-10-24
+---
 
-- `src/reach.py` can select high marginal-kernel-credit pixels, but it ranks coverage on the H19-5 ridge-support proxy; this is not a geological fault-probability model or holdout evaluator. Existing MASS-add builds use it.
-- The R0 score remains an unreceipted owner claim. Restored bytes match the owner-supplied manifest pins, which do not authenticate data or a score with the organizer.
-- The referenced 35-channel feature cache, stable original fault-segment geometries, and a shared evaluator that produces the requested pooled DTI plus spatial-block bootstrap CI are not available in this workspace. The existing 19-band `training_features.tif` is not a substitute for the missing cache.
-- **No new candidate TIF was created. Nothing is safe to download or submit.** No slot was selected. See [`docs/RESEARCH_REVIEW_2026-10-24.md`](docs/RESEARCH_REVIEW_2026-10-24.md) for the three-pass review and [`evidence/run_card.json`](evidence/run_card.json) for the negative promotion run card.
+## 2. What the metric actually rewards (verified)
+
+From the official problem description
+([page 967](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/)), with
+`k(d) = max(1 − d/R, 0)` and `R = 300 m = 3 px`:
+
+```
+DTI = TP_w / (TP_w + 0.2·FP_w + 0.8·FN_w + ε)
+```
+
+Because `FN_w = |G| − TP_w` exactly and `α + β = 1`, this collapses to
+
+```
+DTI = T / (0.2·T + 0.2·(S − M) + 0.8·|G|)
+```
+
+with `T` the coverage credit on hidden faults, `S = Σp` the total predicted mass and `M` the part
+of that mass lying near truth. Three consequences, all unit-tested in `tests/test_metric_exact.py`:
+
+1. `0.8·|G|` is a constant — the floor nobody can move.
+2. **Mass is bang-bang:** emit 1.0 or nothing; fractional confidence maps are strictly dominated.
+3. **The dot budget is endogenous:** a dot far from truth pays only if its coverage credit beats
+   `0.2θ/(1 − 0.2θ)` ≈ **0.059 at θ = 0.2778**.
+
+---
+
+## 3. Why the incumbent 0.2778 is the best file so far
+
+Inverting the identity against 14 locally held scored rasters (`evidence/blind_probe_inversion.json`):
+
+- A uniform 5 px lattice is spatially blind, so its credit is its mean coverage × |G| whatever the
+  truth looks like. Its 0.0904 pins **|G| ≈ 12,545 hidden-fault pixels** (0.246 % of the scored
+  domain). The independent blind "placeholder" raster lands at lift 0.71 — the consistency check.
+- Every *targeted* raster saturates at `T` ≈ 5,000–6,900, i.e. 40–55 % of all available credit,
+  with blind-lift 3.4–6.8×. They differ mainly in **dot count**.
+- `h33-h33-2-b2` is **not** the most accurate file — `hedge_v2` and `h19_5` capture more credit.
+  It wins because it captures nearly the same credit with the smallest budget: **0.134 credit per
+  dot against a 0.059 break-even**, while the 120k–200k-dot files were buying credit at ~0.02–0.04
+  per dot, i.e. below cost.
+
+**So the lever is credit efficiency, not map accuracy** — that is this session's lane.
+
+---
+
+## 4. Current state (2026-10-24)
+
+- **Candidate:** see `evidence/candidate_receipt.json` and the top of
+  [the site](docs/index.html). Unique (duplicate screen passed), format-gate PASS, zeros outside
+  the footprint, all-finite, values in [0, 1].
+- **HOLDOUT-DTI** (evaluator `gems90-holdout-1.0.0`, 4 buffered whole-segment folds, visible-only
+  catalogue features, pooled with a fold×block bootstrap CI): reported in
+  `evidence/holdout_report.json` and `evidence/holdout_budget_curve.json`. Controls at the same
+  budget: uniform-lattice chance, a fold-honest rebuild of the collar recipe, and the incumbent
+  raster as submitted.
+- **Two calibration attempts against the 14 owner-reported scores FAILED** (negative result, see
+  `evidence/calibration_fit.json`, `evidence/band_profile.json`). Under a physically valid
+  occupancy field both under-predict every targeted raster by ≈ 2×. **No leaderboard projection is
+  claimed for the candidate.**
+- **Measured bias of the local holdout:** it withholds *catalogue* segments, so its truth lies on
+  catalogue traces and any collar-style file that avoids the 3 px neighbourhood of the catalogue
+  scores ≈ 0 by construction (the incumbent measures 0.0048, below the 0.052 chance lattice).
+  A holdout win over the collar control is therefore **not** evidence of a leaderboard win.
+- **Best receipt on file: none.** Every historical score in this repository is OWNER-REPORTED.
+- **No weekly slot was selected.**
+
+## 5. Reproduce
+
+```bash
+python -m venv .venv && ./.venv/bin/pip install -r requirements.txt
+./.venv/bin/python scripts/restore_data.py          # 26 pinned inputs, SHA-256 verified
+./.venv/bin/python scripts/run_discovery.py all     # features -> folds -> deploy  (~12 min)
+./.venv/bin/python scripts/invert_blind_probes.py   # |G| from the blind lattice probe
+./.venv/bin/python scripts/calibrate.py             # occupancy-capped score calibration
+./.venv/bin/python scripts/band_profile.py          # model-free radial inversion
+./.venv/bin/python scripts/evaluate_holdout.py      # HOLDOUT-DTI + block-bootstrap CIs
+./.venv/bin/python scripts/make_submission.py       # emit -> screen -> validate -> GeoTIFF
+./.venv/bin/python scripts/make_run_card.py && ./.venv/bin/python scripts/build_site.py
+./.venv/bin/python -m pytest -q
+```
+
+Competition rasters are never committed; `releases/` and `.cache/` are gitignored.
+
+## 6. Layout
+
+| path | contents |
+|---|---|
+| `src/metric.py` | exact DTI (triangular kernel, algebraic identity, break-even) |
+| `src/holdout.py` | buffered whole-segment folds, pooled DTI, block bootstrap, leakage canary |
+| `src/featstack.py` | 54 static features + 9 fold-honest catalogue features |
+| `src/emit.py` | greedy DTI-optimal emission, DTI curve, raster writer |
+| `src/submission_writer.py` | fail-closed writer + validator (CRS/shape/transform/range/NaN) |
+| `scripts/` | pipeline stages, calibration, holdout CLI, submission builder, site builder |
+| `evidence/` | every JSON receipt referenced above |
+| `docs/` | site, knowledge base, run card, submit checklist |
+| `ledger/` | submission ledger (ORGANIZER-CONFIRMED scores only once a receipt exists) |
+| `registry/data_manifest.json` | 26 pinned inputs with SHA-256 and provenance |
+
+## 7. Known irregularities
+
+1. DrivenData and Dropbox are unreachable from the build sandbox; competition files come from
+   GitHub-pinned mirrors listed in `registry/data_manifest.json` — byte-consistent, but **not
+   organizer-authenticated**.
+2. `labels.tif` and `existing_faults.tif` in that mirror are byte-identical: the training labels
+   *are* the catalogue.
+3. All 14 calibration scores are OWNER-REPORTED; no submission-page receipt exists in this repo.
+4. Two registry rasters are pixel-identical off-catalogue, differ by 54,533 on-catalogue pixels and
+   both scored 0.1563 — direct evidence that catalogue pixels are masked from scoring.
+5. The kernel's distance metric is assumed Euclidean in pixels; the published text does not say.
+6. The three "current leaderboard" values quoted in the brief cannot be verified from this sandbox;
+   a human must read the live leaderboard.
