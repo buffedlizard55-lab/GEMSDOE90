@@ -117,3 +117,35 @@ AI restored and SHA-256-verified all 26 pinned inputs, rebuilt R0 byte-identical
 For the final three candidates AI authored `scripts/build_aniso_prune_along.py` and `tests/test_aniso_along.py`, generated six local Git-ignored rasters, froze MODEL predictions before running REPORT ONLY proxies, updated the ledger/reservations/mechanism cards, and wrote the slot plan and submission packet. The final files use A5 across strike, L=1.5/1.0/0.5 along strike, exact fixed-count H19-5 FIFO refill, and R0's >2 px baseline on every final dot. AI also retained the withdrawn probe generator, receipt, tests, and occupancy rows so the decision is auditable; those files are explicitly not candidates. AI did not contact DrivenData or Dropbox, read a leaderboard, log in, submit, or claim a score.
 
 **Human decided/supplied:** the brief, R0, constraints, and quota rule. **Human must still supply/decide:** dated TOP_PUBLIC, slots used/remaining and total, official deadline confirmation, portal receipts, data-use review, geological review of retained continuations/refill ridges, whether any candidate is uploaded, and the ONE blind final. All predictions are MODEL; catalogue and SGMC diagnostics are PROXY; no local number is a live score.
+
+## Session arena/5d4e4978 (2026-10-23e, agent-selected `AXIS=CONCENTRATION`)
+
+**AI wrote and executed:** `src/concentration.py`, `scripts/build_concentration_variants.py`,
+`tests/test_concentration.py`, the three local gitignored candidate rasters and their `-zeros` twins,
+`evidence/concentration_build_receipt.json`, the concentration rows in `ledger/submissions.csv`, the
+`concentration_reservations_20261023` block in `ledger/experiment_reservations.json`, the concentration
+mechanism-card block, and the matching sections of `SLOT_PLAN.md`, `README.md` (CURRENT STATE only),
+`docs/SUBMIT.md`, `docs/MECHANISM_CARDS.md`, `IRREGULARITIES.md` (IR90-30/31 after merge) and this disclosure.
+AI also extended `scripts/restore_releases.py` to reproduce the 18 core candidate pairs recorded when this branch was cut (including the three concentration pairs) without triggering the duplicate-build guards; main's later candidates retain their own family builders.
+
+**AI decided (not human-assigned):** selected CONCENTRATION after a read-only `gh api` audit of 79 public
+`buffedlizard55-lab/GEMSDOE*` default branches (9 ledgers, 33 occupied concentration values) and selected
+15 km blocks because the byte-identical R0 has density CV `0.5103`, inside the brief's reported `0.51–0.59`
+band. AI chose the 10/15/20% dose ladder, the four-band pinned structural prior, the lowest/highest 35%
+tails and the region-evenness gate. AI verified all 26 SHA-256 input pins, rebuilt R0 byte-identically
+(`c55bafc4…` / `baeae321…`), re-read and validated all six output files from disk, reproduced their bytes
+with `--verify`, and ran the report-only canary, catalogue hide/recover and SGMC controls as `PROXY` only.
+
+**AI did not:** contact DrivenData or Dropbox, read the leaderboard, log in, submit, invent a live score, or
+use hidden/public test truth. R0's `0.2778` remains a CLAIM; every predicted change is MODEL. Competition
+rasters and data remain in ignored `.cache/gems_data/` and `releases/`, never in the public Git diff or a release.
+
+**Human must decide/supply:** dated `TOP_PUBLIC`, weekly slot count, official deadline confirmation, R0 and
+candidate submission receipts, data-use/terms review, geological review of the moved corridors, whether
+the inherited 2.236 px parent collar is acceptable (IR90-31), and which single file (if any) to upload.
+
+**Post-merge decision:** main advanced past the branch base and recorded IR90-25/26: R0 support credit is
+nearly uniform, a fixed-count CONCENTRATION move loses ~0.98 and gains ~0.54 credit per dot, sibling
+upward-concentration MODELs are non-positive, and the entity has zero receipts. This session's three
+files remain BUILT occupancy/dose-response guards but are HELD from the next three slots; the integrated
+MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.

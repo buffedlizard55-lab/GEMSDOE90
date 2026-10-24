@@ -311,3 +311,34 @@ All three files hold **37,654 dots**, refill from H19-5 with the recovered FIFO-
 **Report-only diagnostics:** leakage canary max symmetric AUC 0.5695. Catalogue hide-and-recover (38 withheld 20 km blocks; n=13,920 positives) and off-catalogue SGMC (n=62,122) have 95% block-bootstrap CIs in `evidence/aniso_along_refill_receipt.json`. Both are PROXY, never gates or scores; the catalogue control is especially blind to collar edits because known pixels are live-masked.
 
 **Compliance stop:** SNAP was withdrawn before raster emission when 30 inherited dots proved to have no >=3 px destination within 2 px (IR90-28). Three delete-only PRUNE probes were then withdrawn before submission because the brief requires fixed-count refill (IR90-29); they are not alternatives to the cards above.
+
+## Session 2026-10-23e: `AXIS=CONCENTRATION` — HELD after merge — 15 km structural-edge / strain prior
+
+Parent R0 has 15 km block-density CV `0.5103`, inside the brief's reported `0.51–0.59` band. The prior is the mean of equal in-footprint absolute-percentile ranks of pinned `tmi_hg`, `geod_2ndinv`, `geod_shearrate` and `iso_grav_anom_hg` per 150 px block; no wells, springs, vents or hidden/public truth are used. Dots are removed from the lowest-prior 35% of blocks by minimum exclusive `R=3 px` kernel credit and added in the highest-prior 35% by maximum marginal credit on H19-5. Count is fixed at 37,654; all additions clear `d_cat >= 3 px`; untouched parent dots retain the 2.236 px floor (IR90-31).
+
+### 1. `h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269`
+- **Hypothesis:** moving 3,765 dots (10%) toward active-deformation / potential-field edge corridors improves hit rate before over-concentration dominates.
+- **Mechanism:** CV 0.5103→0.5990; symmetric parent diff 19.998%; lost/gained H19-5 support credit 4,009.4 / 3,036.1. No donor block loses ≥90%; p05 donor removal share 0.194.
+- **Non-fault mimic:** geodetic strain can follow subsidence/volcanic inflation; potential-field edges can mark dikes, contacts, shorelines or cultural infrastructure.
+- **Predicted live change:** **+0.002 DTI `MODEL`** (plausible -0.008..+0.012).
+- **Falsifier:** paired live Δ≤-0.010 rejects the 10% structural-prior move; |Δ|<0.010 is no evidence.
+
+### 2. `h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a`
+- **Hypothesis:** if the prior is predictive, 15% should beat 10%; if the CV band is causal, redundancy should cancel it.
+- **Mechanism:** 5,648 dots moved; CV 0.5103→0.6949; symmetric diff 29.999%; support credit 6,851.9 lost / 3,923.8 gained; max donor removal 70.8%.
+- **Non-fault mimic:** same as above, amplified by denser mapping and exposed bedrock in high-prior blocks.
+- **Predicted live change:** **-0.002 DTI `MODEL`** (plausible -0.013..+0.009).
+- **Falsifier:** Δ≤-0.010 rejects the middle dose; a positive 10% arm plus negative 15% arm localizes the optimum near the CV band.
+
+### 3. `h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb`
+- **Hypothesis / counterpoint:** 20% is the strong-dose test; overshooting the reported CV band should hurt if concentration is causal.
+- **Mechanism:** 7,531 dots moved; CV 0.5103→0.7769; symmetric diff 40.001%; support credit 10,320.1 lost / 4,811.5 gained; max donor removal 80.0%.
+- **Non-fault mimic:** high-prior corridors may be unfaulted lithologic/cultural edges, while removed low-prior ground may contain blind basin faults.
+- **Predicted live change:** **-0.006 DTI `MODEL`** (plausible -0.018..+0.006).
+- **Falsifier:** Δ≥+0.010 would falsify the CV-band penalty and support strong prior concentration; Δ≤-0.010 confirms the predicted monotonic cost.
+
+**Report only:** hide/recover PROXY n=13,920, R0 0.007191, Δ +0.000001 / +0.000024 / +0.000011 (95% CIs span zero); SGMC PROXY Δ -0.006381 / -0.009540 / -0.014211; leakage canary max symmetric AUC 0.574747. These are not scores and were not gates. Full receipt: `evidence/concentration_build_receipt.json`.
+
+**Post-merge note:** IR90-25/26 show fixed-count concentration has little credit headroom at R0 and
+non-positive sibling MODELs. The 15 km prior is string-distinct and all gates pass, but the files are held
+from slots unless a future live receipt changes the evidence state.
