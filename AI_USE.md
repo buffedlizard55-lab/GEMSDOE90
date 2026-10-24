@@ -235,13 +235,29 @@ the SPACING files held and run the MASS-add / continuity / PRUNE order in `SLOT_
   adjudication across sibling repos (IR90-08/26/35), and which single file (if any) to upload from their
   registered account.
 
+## Session 2026-10-24 (`arena/96081fbe`, lane H1 learned surface)
+
+AI wrote `docs/HYPOTHESES_20261024.md` (5 ranked hypotheses before implementation), `src/holdout.py`,
+`src/features90.py`, `src/emission90.py`, `scripts/run_lane90.py`, `scripts/build_site90.py`,
+`tests/test_holdout90.py`, the generated site (`docs/index.html` + `docs/downloads/`), and the
+`evidence/lane90_*` receipts/run card; it selected hypothesis H1 itself, restored and SHA-256-verified
+all 26 pinned inputs, ran the leakage canary and the 5-fold 25 km-block hide-and-recover evaluation,
+built and format-gated the candidate, and appended the ledger/docs rows. AI decided the 40,000-dot
+budget (declining to extrapolate the holdout budget sweep to 60k, reasoning recorded in
+`evidence/lane90_final_receipt.json`) and the density-baseline treatment of the dot-overlap
+uniqueness rule (IR90-43, all raw numbers published). At the owner's explicit request the team's own
+prediction TIF is committed under `docs/downloads/` for one-click download (IR90-44); competition
+input rasters remain in ignored `.cache/gems_data/` and candidate rasters in ignored `releases/`.
+AI did not contact DrivenData/Dropbox, read the leaderboard, log in, submit, or claim a score:
+0.2778 remains a CLAIM, all new numbers are HOLDOUT-DTI. Human owns slot selection, upload, receipts,
+dated TOP_PUBLIC/quota, deadline confirmation, and data-use review.
+
 ## Session arena/783b0fc5-gemsdoe90 (2026-10-24, Independent Multi-Physics Fault Discovery Lane H90, `AXIS=DISCOVERY`)
 
 - **Official DOE/NLR GEMS Prize AI Disclosure (`https://docs.nlr.gov/docs/fy26osti/96647.pdf`):** Generative AI (Arena.ai Agent Mode) authored `docs/HYPOTHESES_PREREGISTRATION.md`, `src/h90_features.py`, `src/h90_emitter.py`, `src/h90_models.py`, `src/auto_validator.py`, `scripts/run_h90_lane.py`, `tests/test_h90_lane.py`, vendored unmodified `vendor/gems57/*.py` (`gems57-pooled-hide-v2` evaluator + `submission_writer.py`) from sibling `buffedlizard55-lab/GEMSDOE70`, generated `evidence/h90_*.json` and the derived `132,454`-byte binary GeoTIFF deliverable `docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.{tif,zip,json}`, and built the GitHub Pages site (`index.html`, `executive-summary.html`, `docs/index.html`, `docs/executive-summary.html`).
 - **Verified Official Competition Facts (fetched live 2026-10-24 UTC):**
   - Competition overview & evaluation (`https://www.drivendata.org/competitions/306/competition-doe-gems/`): Phase-1 submission deadline **Dec. 3, 2026, 11:59 p.m. UTC**; $300,000 total prize pool; official metric Distance-Weighted Tversky Index (`R = 300 m` linear decay kernel, `alpha = 0.2`, `beta = 0.8`, pixel-exact known-fault masking confirmed by organizer `chrisk-dd` in forum threads `11516`, `11527`, `11536`, `11550`, `11556`).
   - Official public leaderboard (`https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/`, verified 2026-10-24 UTC): `#1 xiaofanhu = 0.4413` (`ORGANIZER-CONFIRMED`), `#2 cfld__ = 0.3916`, `#3 Batik Shirt Brothers = 0.3904`, `#4 BrandenKMurray = 0.3724`, `#5 No Fault of Our Own = 0.3539`.
-- **Scientific & Validation Discipline:** Pre-registered 5 novel geological hypotheses (`H90-1`–`H90-5`) before running any experiment; enforced the 3-experiment budget (`exp1_unsupervised_mpst`, `exp2_nested_loqo_blind_worm`, `exp3_dual_coulomb_mpst`); passed the single-feature holdout leakage canary across all `38` features (`max_symmetric_auc = 0.626318 <= 0.90`, `IR90-46`); passed the Parallel-Run Uniqueness Gate against `20` registry rasters and `92` ledger SHA-256 hashes (`pre-placement surface |rho| = 0.103688 <= 0.90`, `final dots |rho| = 0.030953 <= 0.90`, `mutual 3-px overlap = 0.366403 <= 0.70`, `non-lattice forward 3-px overlap = 0.661211 <= 0.70`, `64.08%` new dots `> 300 m` outside `R0`, `IR90-48`); and achieved `HOLDOUT-DTI = 0.10681 [0.09657, 0.11671]` (`mode=all`, `n=22,641`, paired delta `+0.01585 [0.00625, 0.02534]` over the `D2.8 & d_vis > 2 px` `fair-H33` benchmark `0.09096`, `IR90-47`) and `0.10586 [0.09294, 0.11802]` (`mode=detached`, `n=22,619`).
-- **What AI did NOT do:** Log into DrivenData, upload a submission, or write any projection as a leaderboard score. Every metric is strictly labeled `HOLDOUT-DTI`, `USER-REPORTED (LEDGER)`, or `ORGANIZER-CONFIRMED`. Raw competition inputs remain gitignored in `.cache/gems_data/` (`IR90-49`).
+- **Scientific & Validation Discipline:** Pre-registered 5 novel geological hypotheses (`H90-1`–`H90-5`) before running any experiment; enforced the 3-experiment budget (`exp1_unsupervised_mpst`, `exp2_nested_loqo_blind_worm`, `exp3_dual_coulomb_mpst`); passed the single-feature holdout leakage canary across all `38` features (`max_symmetric_auc = 0.626318 <= 0.90`, `IR90-49`); passed the Parallel-Run Uniqueness Gate against `20` registry rasters + concurrent `H1` and `93` ledger SHA-256 hashes (`pre-placement surface |rho| = 0.103688 <= 0.90`, `final dots |rho| = 0.030953 <= 0.90`, `mutual 3-px overlap = 0.433850 <= 0.70`, `non-lattice forward 3-px overlap = 0.661211 <= 0.70`, `64.08%` new dots `> 300 m` outside `R0`, `IR90-51`); and achieved `HOLDOUT-DTI = 0.10681 [0.09657, 0.11671]` (`mode=all`, `n=22,641`, paired delta `+0.01585 [0.00625, 0.02534]` over the `D2.8 & d_vis > 2 px` `fair-H33` benchmark `0.09096`, `IR90-50`) and `0.10586 [0.09294, 0.11802]` (`mode=detached`, `n=22,619`).
+- **What AI did NOT do:** Log into DrivenData, upload a submission, or write any projection as a leaderboard score. Every metric is strictly labeled `HOLDOUT-DTI`, `USER-REPORTED (LEDGER)`, or `ORGANIZER-CONFIRMED`. Raw competition inputs remain gitignored in `.cache/gems_data/` (`IR90-52`).
 - **Human responsibilities:** Verify entity-wide weekly slot budget (`<= 3` submissions per rolling 7-day window under `DOE/NLR 96647.pdf`), confirm SHA-256 (`637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51`), upload from the registered team account if selected, and include mandatory Generative AI methodology disclosure in Phase-2 technical narratives.
-

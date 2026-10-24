@@ -4,7 +4,7 @@
 
 **Automated Gate Status:** **`PROMOTED — OK TO DOWNLOAD & SUBMIT`** (`15 / 15` technical, `[0, 1]` range, zero-NaN, zero-catalogue, leakage-canary, registry-uniqueness, and paired spatial-block `HOLDOUT-DTI` checks **PASSED** automatically without human-inspector bottlenecks; full receipt in `evidence/h90_automated_gate.json` and `evidence/h90_run_card.json`).
 
-### One-Click Download & Exact Portal Fields
+### One-Click Download & Exact Portal Fields (`Lane H90`)
 
 - **Primary GeoTIFF (`.tif`, `132,454` bytes):** `docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif`
   - **SHA-256:** `637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51`
@@ -26,15 +26,25 @@
 4. **Paste unique name & `<=140`-char note:** Paste `GEMSDOE90-H90-CC-MPST-D76AC964` and the 92-character note above so the portal receipt links cleanly back to `ledger/submissions.csv` and `evidence/h90_run_card.json`.
 5. **Why the `"Predicted values must be in range [0, 1]"` error cannot recur on this file:** Every one of the `12,279,160` cells (`3730 x 3292`, `EPSG:32611`, `float32`, `nodata=None`) is strictly finite (`0` NaN, `0` Inf, `0` `-3.4028235e+38` sentinels), with `min = 0.0`, `max = 1.0`, `0` positive pixels outside the `5,167,373`-cell footprint, and `0` positive pixels on `existing_faults.tif` (`38,000` isolated `1.0` dots, all `d_cat > 2.0 px`). Re-run automated verification anytime via:
    ```bash
-   .venv/bin/python -m pytest -q tests/test_h90_lane.py
+   .venv/bin/python -m src.auto_validator docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif
    ```
+
+---
+
+## 0a. Concurrent Lane H1 (`arena/96081fbe`): alternate learned-surface download
+
+Also available in `docs/downloads/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif`
+(SHA-256 `04af0861de0aed0b018f209dfbb453c46af8eb22f0407c7b251c866b9f653f81`, 40,000 dots;
+Form Note: `H1 learned fault-ness (B) Poisson 40k dots sep2.8 collar>2px; holdout-DTI 0.187`;
+evidence: `evidence/lane90_final_receipt.json`, `evidence/lane90_holdout_receipt.json`).
+Cross-lane audit vs `Lane H90` (`637f067e…`): `Spearman rho = 0.0279`, `mutual 3-px = 0.4339`, `forward 3-px = 0.5101`.
 
 ---
 
 ## Historical 2026-10-23/24 `R0` Perturbation Ladder (Local `releases/` Only)
 
 **The agent does not submit.** Every legacy `R0`-perturbation GeoTIFF below is local and Git-ignored on
-purpose (`IRREGULARITIES.md` IR90-02 / IR90-49). Only the human uploads, from their own account, **one file per scored slot**.
+purpose (`IRREGULARITIES.md` IR90-02 / IR90-44 / IR90-52). Only the human uploads, from their own account, **one file per scored slot**.
 The `-zeros.tif` twin is a fallback encoding of the *same* experiment, not a second slot.
 
 Parent for everything here: `h33-h33-2-b2` (R0), 37,654 unit-mass dots, CLAIM 0.2778 with no receipt on file.

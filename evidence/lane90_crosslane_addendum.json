@@ -1,0 +1,19 @@
+{
+  "generated_utc": "2026-10-24T07:42:13Z",
+  "purpose": "post-merge cross-lane uniqueness vs main's E3 multiphysics candidate (PR #32 lane)",
+  "e3_repro_sha256": "d1250da6cf86da784e256bf89584e394b23599229f16b58413837ee1e1c30964",
+  "e3_recorded_sha256": "d1250da6cf86da784e256bf89584e394b23599229f16b58413837ee1e1c30964",
+  "e3_byte_reproduced": true,
+  "e3_writer_report": {
+    "file": "/tmp/e3_repro.tif",
+    "pass": true,
+    "fails": [],
+    "n_dots": 37654,
+    "catalogue_mass": 0.0
+  },
+  "surface_spearman_H1_vs_E3": 0.2233,
+  "H1_dots_within_3px_of_E3_dots": 0.1439,
+  "E3_dots_within_3px_of_H1_dots": 0.1433,
+  "gate": "duplicate if |spearman|>0.90 or overlap>0.70",
+  "duplicate": false
+}
