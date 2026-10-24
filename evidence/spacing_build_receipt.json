@@ -1,0 +1,716 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-24T05:23:04Z",
+  "git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
+  "generator_script_sha256": "6d0ea3059509b4e23421852d99fdc901c311f69d70e9da49f85e9383d71a3ece",
+  "session_branch": "arena/5d597521-gemsdoe90",
+  "parent": "h33-h33-2-b2",
+  "axis": "SPACING",
+  "operator": "crowding-ranked local respacing: remove most kernel-crowded dots (summed triangular-disk overlap within 6 px), replace each at the max-marginal-credit eligible H19-5 pixel within 15 px (expand 30/60), min-sep 2.8 px, d_cat>=3 px; nested sequential doses 1883/3765/5648; count fixed at 37654",
+  "claimed_parent_dti_used_only_for_prediction": 0.2778,
+  "claimed_parent_dti_evidence_class": "CLAIM (owner-reported, no receipt on file)",
+  "pool_cells": 62556,
+  "support_px": 121131,
+  "footprint_px": 5167373,
+  "predictions_frozen_before_proxies": true,
+  "parent_stats": {
+    "r0_rebuilt_from": "pinned h27-4 solo-d2.8 mask & (Euclidean d_cat > 2 px)",
+    "r0_dots": 37654,
+    "r0_min_d_cat_px": 2.23606797749979,
+    "r0_below_3px": 1611,
+    "r0_zeros_parent_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_nan_parent_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_rebuilt_zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "r0_rebuilt_nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "r0_byte_identity_passed": true,
+    "d28_rebuilt_from_h19_5": true,
+    "d28_dots": 44090,
+    "d28_symmetric_difference_px": 0,
+    "ranking": "H19-5 8-connected FIFO-BFS visitation order (GEMSDOE28/src/gems27/thinning.py)",
+    "ranking_git_source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/d618b648f3ff3b30d04f376dcd6610c3cf28cf28/src/gems27/thinning.py"
+  },
+  "manifest": {
+    "manifest_path": "registry/data_manifest.json",
+    "verified_count": 26,
+    "all_pins_rechecked": true
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c",
+      "tag": "resp5pct",
+      "value": "tag=resp5pct; local kernel-scale respacing of 1883 most crowded R0 dots (5.0%); window 15px (expand 30/60); min-sep 2.8px; fixed count 37654; added d_cat>=3px",
+      "axis": "SPACING",
+      "parent": "h33-h33-2-b2",
+      "n_dots": 37654,
+      "n_relocated": 1883,
+      "pct_changed": 10.001593456206512,
+      "sha256": "f8bada0cef5adb7c27c70ca1681e9d5c787322ca9b93759f69473180f842d377",
+      "sha256_zeros": "487e6d8983efce5f080456f2087cb688c46426b9b49a1a4bbc83f580cdb562c6",
+      "support_credit": {
+        "parent": 76725.890625,
+        "after": 76638.828125,
+        "removal_loss": 4232.609375,
+        "replacement_gain": 4145.546875,
+        "delta": -87.0625
+      },
+      "prediction_model": {
+        "model_delta_by_truth_px": {
+          "20000": -0.000298,
+          "55000": -0.000298,
+          "100000": -0.000298
+        },
+        "discount": 1.0,
+        "adopted": -0.0,
+        "plausible_lo": -0.008,
+        "plausible_hi": 0.008
+      },
+      "predicted_change": "-0.000 DTI (MODEL; plausible interval -0.008 to +0.008; not a score)",
+      "pred_short": "-0.000",
+      "displacement_px": {
+        "mean": 5.024,
+        "median": 1.0,
+        "p95": 36.989,
+        "max": 59.933
+      },
+      "windows_used": {
+        "15": 1710,
+        "30": 41,
+        "60": 132
+      },
+      "spacing_before": {
+        "n_dots": 37654,
+        "nn_min_px": 2.8284271247461903,
+        "nn_median_px": 3.0,
+        "nn_mean_px": 3.7350977393055045,
+        "frac_with_neighbour_within_3px": 0.5049662718436289,
+        "mean_other_dots_within_3px": 0.6300525840548149,
+        "mean_other_dots_within_6px": 2.822435863387688,
+        "mean_crowding": 0.8681736037398667,
+        "total_crowding": 32690.208875220942
+      },
+      "spacing_after": {
+        "n_dots": 37654,
+        "nn_min_px": 2.8284271247461903,
+        "nn_median_px": 3.1622776601683795,
+        "nn_mean_px": 3.7504981654769556,
+        "frac_with_neighbour_within_3px": 0.48714611993413715,
+        "mean_other_dots_within_3px": 0.5986083815796462,
+        "mean_other_dots_within_6px": 2.7808466563977268,
+        "mean_crowding": 0.8495319446353509,
+        "total_crowding": 31988.2758432995
+      },
+      "block_geography_5km": {
+        "block_px": 50,
+        "cv_before": 0.901143,
+        "cv_after": 0.89876,
+        "max_block_gain": 3,
+        "max_block_loss": -3,
+        "worst_block_loss_frac": -0.333333,
+        "emptied_blocks": 0,
+        "pass": true
+      },
+      "form_note": "h33-h33-2-b2; SPACING respace 1883d (5%) crowded->gap <1.5km, count fixed; pred -0.000 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c.tif",
+          "sha256": "f8bada0cef5adb7c27c70ca1681e9d5c787322ca9b93759f69473180f842d377",
+          "bytes": 355575,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "inherited_r0_dots_below_3px": 1600,
+          "added_dots_below_3px": 0,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "file_re_read_from_disk": true,
+            "added_min_dist_to_retained_px": 2.828427,
+            "added_min_dist_to_added_px": 2.828427,
+            "spacing_floor_honoured": true,
+            "all_added_on_h19_support": true,
+            "n_removed_equals_n_added": true,
+            "format_gate_revalidated_from_disk": true
+          },
+          "added_dots": 1883,
+          "removed_dots": 1883
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c-zeros.tif",
+          "sha256": "487e6d8983efce5f080456f2087cb688c46426b9b49a1a4bbc83f580cdb562c6",
+          "bytes": 219130,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "inherited_r0_dots_below_3px": 1600,
+          "added_dots_below_3px": 0,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "file_re_read_from_disk": true,
+            "added_min_dist_to_retained_px": 2.828427,
+            "added_min_dist_to_added_px": 2.828427,
+            "spacing_floor_honoured": true,
+            "all_added_on_h19_support": true,
+            "n_removed_equals_n_added": true,
+            "format_gate_revalidated_from_disk": true
+          },
+          "added_dots": 1883,
+          "removed_dots": 1883
+        }
+      },
+      "mechanism_card": {
+        "id": "h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c",
+        "hypothesis": "Respacing the 1883 most kernel-crowded R0 dots (5% of the field) onto uncovered stretches of the same corroborated ridge within 1.5 km extends along-strike coverage of line-like new faults, which the brief's algebra rewards (a dot pays more cheaply against line-like truth), without changing mass, count or geography.",
+        "mechanism": "Under DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T a max over dots inside the 300 m (3 px) triangular kernel, a dot whose disk is already covered by neighbours pays full mass for almost no credit. Crowding is measured exactly as summed kernel-disk overlap within 6 px; each crowded dot is moved to the eligible support pixel of maximum exact marginal kernel credit at >= 2.8 px (the parent's own thinning distance) from every remaining dot.",
+        "non_fault_mimic": "Crowded dots may be real fault complexity -- intersecting or stepping-over splays (the Faulds-style zones where systems sit) genuinely pack dots into one kernel -- and uncovered support stretches may be cover/vegetation gaps, lithologic contacts or drainage lineaments in the H19-5 field rather than unmapped fault. Either mimic makes the move delete signal and add noise at the same time.",
+        "predicted_change": "-0.000 DTI (MODEL; plausible interval -0.008 to +0.008; not a score)",
+        "predicted_sign_reason": "Exact H19-5 support-credit balance is -87.1 units (removals lose 4232.6, replacements gain 4145.5): local replacements cannot reach the far uncovered support, so the proxy centre is flat-to-negative and the adopted MODEL is -0.000 with no optimism discount (the balance is already negative). Any |live delta| < 0.010 is no evidence by the session rule.",
+        "falsifier": "A paired same-week receipt at the 5% dose with delta <= -0.010 rejects local respacing; monotone worsening across 5/10/15% confirms crowded dots were carrying credit, not redundancy. A delta >= +0.010 at any dose falsifies the credit-uniformity headwind (IR90-25) for arrangement edits and reopens kernel-scale respacing."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9",
+      "tag": "resp10pct",
+      "value": "tag=resp10pct; local kernel-scale respacing of 3765 most crowded R0 dots (10.0%); window 15px (expand 30/60); min-sep 2.8px; fixed count 37654; added d_cat>=3px",
+      "axis": "SPACING",
+      "parent": "h33-h33-2-b2",
+      "n_dots": 37654,
+      "n_relocated": 3765,
+      "pct_changed": 19.99787539172465,
+      "sha256": "fdb1bde9a24ceb1105a3a6b7af2676428b25daaec6fee1bd5d99c23db8b1e876",
+      "sha256_zeros": "cec03d8655fb2f6dc2bfff67e968a36e88099fd07831d26a0c989a9beb06698c",
+      "support_credit": {
+        "parent": 76725.890625,
+        "after": 76441.578125,
+        "removal_loss": 8611.140625,
+        "replacement_gain": 8326.828125,
+        "delta": -284.3125
+      },
+      "prediction_model": {
+        "model_delta_by_truth_px": {
+          "20000": -0.000972,
+          "55000": -0.000972,
+          "100000": -0.000972
+        },
+        "discount": 1.0,
+        "adopted": -0.001,
+        "plausible_lo": -0.009,
+        "plausible_hi": 0.007
+      },
+      "predicted_change": "-0.001 DTI (MODEL; plausible interval -0.009 to +0.007; not a score)",
+      "pred_short": "-0.001",
+      "displacement_px": {
+        "mean": 3.96,
+        "median": 1.0,
+        "p95": 29.069,
+        "max": 59.933
+      },
+      "windows_used": {
+        "15": 3526,
+        "30": 54,
+        "60": 185
+      },
+      "spacing_before": {
+        "n_dots": 37654,
+        "nn_min_px": 2.8284271247461903,
+        "nn_median_px": 3.0,
+        "nn_mean_px": 3.7350977393055045,
+        "frac_with_neighbour_within_3px": 0.5049662718436289,
+        "mean_other_dots_within_3px": 0.6300525840548149,
+        "mean_other_dots_within_6px": 2.822435863387688,
+        "mean_crowding": 0.8681736037398667,
+        "total_crowding": 32690.208875220942
+      },
+      "spacing_after": {
+        "n_dots": 37654,
+        "nn_min_px": 2.8284271247461903,
+        "nn_median_px": 3.1622776601683795,
+        "nn_mean_px": 3.766824690099953,
+        "frac_with_neighbour_within_3px": 0.46890104636957564,
+        "mean_other_dots_within_3px": 0.5721038933446646,
+        "mean_other_dots_within_6px": 2.769480002124608,
+        "mean_crowding": 0.8425941379460956,
+        "total_crowding": 31727.039670222286
+      },
+      "block_geography_5km": {
+        "block_px": 50,
+        "cv_before": 0.901143,
+        "cv_after": 0.898039,
+        "max_block_gain": 3,
+        "max_block_loss": -3,
+        "worst_block_loss_frac": -0.333333,
+        "emptied_blocks": 0,
+        "pass": true
+      },
+      "form_note": "h33-h33-2-b2; SPACING respace 3765d (10%) crowded->gap <1.5km, count fixed; pred -0.001 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9.tif",
+          "sha256": "fdb1bde9a24ceb1105a3a6b7af2676428b25daaec6fee1bd5d99c23db8b1e876",
+          "bytes": 355548,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "inherited_r0_dots_below_3px": 1586,
+          "added_dots_below_3px": 0,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "file_re_read_from_disk": true,
+            "added_min_dist_to_retained_px": 2.828427,
+            "added_min_dist_to_added_px": 2.828427,
+            "spacing_floor_honoured": true,
+            "all_added_on_h19_support": true,
+            "n_removed_equals_n_added": true,
+            "format_gate_revalidated_from_disk": true
+          },
+          "added_dots": 3765,
+          "removed_dots": 3765
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9-zeros.tif",
+          "sha256": "cec03d8655fb2f6dc2bfff67e968a36e88099fd07831d26a0c989a9beb06698c",
+          "bytes": 219171,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "inherited_r0_dots_below_3px": 1586,
+          "added_dots_below_3px": 0,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "file_re_read_from_disk": true,
+            "added_min_dist_to_retained_px": 2.828427,
+            "added_min_dist_to_added_px": 2.828427,
+            "spacing_floor_honoured": true,
+            "all_added_on_h19_support": true,
+            "n_removed_equals_n_added": true,
+            "format_gate_revalidated_from_disk": true
+          },
+          "added_dots": 3765,
+          "removed_dots": 3765
+        }
+      },
+      "mechanism_card": {
+        "id": "h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9",
+        "hypothesis": "Respacing the 3765 most kernel-crowded R0 dots (10% of the field) onto uncovered stretches of the same corroborated ridge within 1.5 km extends along-strike coverage of line-like new faults, which the brief's algebra rewards (a dot pays more cheaply against line-like truth), without changing mass, count or geography.",
+        "mechanism": "Under DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T a max over dots inside the 300 m (3 px) triangular kernel, a dot whose disk is already covered by neighbours pays full mass for almost no credit. Crowding is measured exactly as summed kernel-disk overlap within 6 px; each crowded dot is moved to the eligible support pixel of maximum exact marginal kernel credit at >= 2.8 px (the parent's own thinning distance) from every remaining dot.",
+        "non_fault_mimic": "Crowded dots may be real fault complexity -- intersecting or stepping-over splays (the Faulds-style zones where systems sit) genuinely pack dots into one kernel -- and uncovered support stretches may be cover/vegetation gaps, lithologic contacts or drainage lineaments in the H19-5 field rather than unmapped fault. Either mimic makes the move delete signal and add noise at the same time.",
+        "predicted_change": "-0.001 DTI (MODEL; plausible interval -0.009 to +0.007; not a score)",
+        "predicted_sign_reason": "Exact H19-5 support-credit balance is -284.3 units (removals lose 8611.1, replacements gain 8326.8): local replacements cannot reach the far uncovered support, so the proxy centre is flat-to-negative and the adopted MODEL is -0.001 with no optimism discount (the balance is already negative). Any |live delta| < 0.010 is no evidence by the session rule.",
+        "falsifier": "A paired same-week receipt at the 5% dose with delta <= -0.010 rejects local respacing; monotone worsening across 5/10/15% confirms crowded dots were carrying credit, not redundancy. A delta >= +0.010 at any dose falsifies the credit-uniformity headwind (IR90-25) for arrangement edits and reopens kernel-scale respacing."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec",
+      "tag": "resp15pct",
+      "value": "tag=resp15pct; local kernel-scale respacing of 5648 most crowded R0 dots (15.0%); window 15px (expand 30/60); min-sep 2.8px; fixed count 37654; added d_cat>=3px",
+      "axis": "SPACING",
+      "parent": "h33-h33-2-b2",
+      "n_dots": 37654,
+      "n_relocated": 5648,
+      "pct_changed": 29.999468847931162,
+      "sha256": "08f1daecfc6e70debd5ea45ffc8a0082cefb0e784466554feb8cf7f96a889549",
+      "sha256_zeros": "9d6f2abf2f15462b5f64a0168de0021f8dc462aff9f74aee40e12da98f647f75",
+      "support_credit": {
+        "parent": 76725.890625,
+        "after": 76230.21875,
+        "removal_loss": 13059.890625,
+        "replacement_gain": 12564.21875,
+        "delta": -495.671875
+      },
+      "prediction_model": {
+        "model_delta_by_truth_px": {
+          "20000": -0.001696,
+          "55000": -0.001696,
+          "100000": -0.001696
+        },
+        "discount": 1.0,
+        "adopted": -0.002,
+        "plausible_lo": -0.01,
+        "plausible_hi": 0.006
+      },
+      "predicted_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.006; not a score)",
+      "pred_short": "-0.002",
+      "displacement_px": {
+        "mean": 3.625,
+        "median": 1.0,
+        "p95": 21.438,
+        "max": 59.933
+      },
+      "windows_used": {
+        "15": 5333,
+        "30": 78,
+        "60": 237
+      },
+      "spacing_before": {
+        "n_dots": 37654,
+        "nn_min_px": 2.8284271247461903,
+        "nn_median_px": 3.0,
+        "nn_mean_px": 3.7350977393055045,
+        "frac_with_neighbour_within_3px": 0.5049662718436289,
+        "mean_other_dots_within_3px": 0.6300525840548149,
+        "mean_other_dots_within_6px": 2.822435863387688,
+        "mean_crowding": 0.8681736037398667,
+        "total_crowding": 32690.208875220942
+      },
+      "spacing_after": {
+        "n_dots": 37654,
+        "nn_min_px": 2.8284271247461903,
+        "nn_median_px": 3.1622776601683795,
+        "nn_mean_px": 3.7880013951594855,
+        "frac_with_neighbour_within_3px": 0.45039039677059545,
+        "mean_other_dots_within_3px": 0.546767939661125,
+        "mean_other_dots_within_6px": 2.7628937164710257,
+        "mean_crowding": 0.8371129342339507,
+        "total_crowding": 31520.65042564518
+      },
+      "block_geography_5km": {
+        "block_px": 50,
+        "cv_before": 0.901143,
+        "cv_after": 0.898559,
+        "max_block_gain": 3,
+        "max_block_loss": -3,
+        "worst_block_loss_frac": -0.333333,
+        "emptied_blocks": 0,
+        "pass": true
+      },
+      "form_note": "h33-h33-2-b2; SPACING respace 5648d (15%) crowded->gap <1.5km, count fixed; pred -0.002 DTI MODEL",
+      "files": {
+        "nan": {
+          "path": "releases/h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec.tif",
+          "sha256": "08f1daecfc6e70debd5ea45ffc8a0082cefb0e784466554feb8cf7f96a889549",
+          "bytes": 355751,
+          "encoding": "nan",
+          "n_dots": 37654,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "inherited_r0_dots_below_3px": 1558,
+          "added_dots_below_3px": 0,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "file_re_read_from_disk": true,
+            "added_min_dist_to_retained_px": 2.828427,
+            "added_min_dist_to_added_px": 2.828427,
+            "spacing_floor_honoured": true,
+            "all_added_on_h19_support": true,
+            "n_removed_equals_n_added": true,
+            "format_gate_revalidated_from_disk": true
+          },
+          "added_dots": 5648,
+          "removed_dots": 5648
+        },
+        "zeros": {
+          "path": "releases/h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec-zeros.tif",
+          "sha256": "9d6f2abf2f15462b5f64a0168de0021f8dc462aff9f74aee40e12da98f647f75",
+          "bytes": 219344,
+          "encoding": "zeros",
+          "n_dots": 37654,
+          "min_catalogue_distance_all_dots_px": 2.236068,
+          "min_catalogue_distance_added_dots_px": 3.0,
+          "inherited_r0_dots_below_3px": 1558,
+          "added_dots_below_3px": 0,
+          "checks": {
+            "src_validate_gate_pass": true,
+            "crs_matches_sample": true,
+            "transform_matches_sample": true,
+            "shape_matches_sample": true,
+            "float32_single_band": true,
+            "inside_foot_finite": true,
+            "inside_foot_range_0_1": true,
+            "outside_encoding_valid": true,
+            "exact_expected_mask_after_disk_read": true,
+            "zero_catalogue_mass": true,
+            "added_dots_min_cat_dist_ge_3px": true,
+            "retained_dots_preserve_r0_collar_gt_2px": true,
+            "file_re_read_from_disk": true,
+            "added_min_dist_to_retained_px": 2.828427,
+            "added_min_dist_to_added_px": 2.828427,
+            "spacing_floor_honoured": true,
+            "all_added_on_h19_support": true,
+            "n_removed_equals_n_added": true,
+            "format_gate_revalidated_from_disk": true
+          },
+          "added_dots": 5648,
+          "removed_dots": 5648
+        }
+      },
+      "mechanism_card": {
+        "id": "h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec",
+        "hypothesis": "Respacing the 5648 most kernel-crowded R0 dots (15% of the field) onto uncovered stretches of the same corroborated ridge within 1.5 km extends along-strike coverage of line-like new faults, which the brief's algebra rewards (a dot pays more cheaply against line-like truth), without changing mass, count or geography.",
+        "mechanism": "Under DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T a max over dots inside the 300 m (3 px) triangular kernel, a dot whose disk is already covered by neighbours pays full mass for almost no credit. Crowding is measured exactly as summed kernel-disk overlap within 6 px; each crowded dot is moved to the eligible support pixel of maximum exact marginal kernel credit at >= 2.8 px (the parent's own thinning distance) from every remaining dot.",
+        "non_fault_mimic": "Crowded dots may be real fault complexity -- intersecting or stepping-over splays (the Faulds-style zones where systems sit) genuinely pack dots into one kernel -- and uncovered support stretches may be cover/vegetation gaps, lithologic contacts or drainage lineaments in the H19-5 field rather than unmapped fault. Either mimic makes the move delete signal and add noise at the same time.",
+        "predicted_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.006; not a score)",
+        "predicted_sign_reason": "Exact H19-5 support-credit balance is -495.7 units (removals lose 13059.9, replacements gain 12564.2): local replacements cannot reach the far uncovered support, so the proxy centre is flat-to-negative and the adopted MODEL is -0.002 with no optimism discount (the balance is already negative). Any |live delta| < 0.010 is no evidence by the session rule.",
+        "falsifier": "A paired same-week receipt at the 5% dose with delta <= -0.010 rejects local respacing; monotone worsening across 5/10/15% confirms crowded dots were carrying credit, not redundancy. A delta >= +0.010 at any dose falsifies the credit-uniformity headwind (IR90-25) for arrangement edits and reopens kernel-scale respacing."
+      }
+    }
+  ],
+  "proxy_reports": {
+    "catalogue_hide_recover": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 38,
+      "n_withheld_positives": 16560,
+      "bootstrap_replicates": 1000,
+      "seed": 20261024,
+      "r0_proxy_value": 0.005692,
+      "r0_proxy_ci95": [
+        0.004323,
+        0.007186
+      ],
+      "variants": {
+        "resp5pct": {
+          "proxy_value": 0.005684,
+          "proxy_ci95": [
+            0.004318,
+            0.00717
+          ],
+          "delta_vs_r0_proxy": -8e-06,
+          "delta_vs_r0_ci95": [
+            -1.9e-05,
+            0.0
+          ]
+        },
+        "resp10pct": {
+          "proxy_value": 0.005635,
+          "proxy_ci95": [
+            0.004286,
+            0.007093
+          ],
+          "delta_vs_r0_proxy": -5.7e-05,
+          "delta_vs_r0_ci95": [
+            -0.000111,
+            -1.2e-05
+          ]
+        },
+        "resp15pct": {
+          "proxy_value": 0.005548,
+          "proxy_ci95": [
+            0.00424,
+            0.007034
+          ],
+          "delta_vs_r0_proxy": -0.000144,
+          "delta_vs_r0_ci95": [
+            -0.000231,
+            -5.8e-05
+          ]
+        }
+      },
+      "caveat": "Catalogue hide-and-recover on withheld 20 km blocks. The ledger shows this PROXY correlates -0.87..+0.54 with live scores; REPORT ONLY, never a gate or score."
+    },
+    "leakage_canary": {
+      "status": "REPORT ONLY (never a gate or score)",
+      "seed": 20261024,
+      "n_catalogue_positives": 60988,
+      "n_sampled_off_catalogue_negatives": 250000,
+      "max_feature": "geod_2ndinv",
+      "max_symmetric_auc": 0.570341,
+      "composite_relief_idx_symmetric_auc": 0.50342,
+      "auc_gt_0_90": false,
+      "features": {
+        "mag_anom": {
+          "auc": 0.491538,
+          "symmetric_auc": 0.508462
+        },
+        "rtp": {
+          "auc": 0.497433,
+          "symmetric_auc": 0.502567
+        },
+        "tmi_hg": {
+          "auc": 0.527816,
+          "symmetric_auc": 0.527816
+        },
+        "geod_2ndinv": {
+          "auc": 0.570341,
+          "symmetric_auc": 0.570341
+        },
+        "iso_grav_anom_slope": {
+          "auc": 0.533799,
+          "symmetric_auc": 0.533799
+        },
+        "tc": {
+          "auc": 0.448579,
+          "symmetric_auc": 0.551421
+        },
+        "geod_shearrate": {
+          "auc": 0.569068,
+          "symmetric_auc": 0.569068
+        },
+        "geod_dilaterate": {
+          "auc": 0.525573,
+          "symmetric_auc": 0.525573
+        },
+        "tmi_vg": {
+          "auc": 0.486405,
+          "symmetric_auc": 0.513595
+        },
+        "deq_n100a15": {
+          "auc": 0.550663,
+          "symmetric_auc": 0.550663
+        },
+        "iso_grav_anom_vg": {
+          "auc": 0.526489,
+          "symmetric_auc": 0.526489
+        },
+        "det_elev": {
+          "auc": 0.484486,
+          "symmetric_auc": 0.515514
+        },
+        "iso_grav_anom": {
+          "auc": 0.459681,
+          "symmetric_auc": 0.540319
+        },
+        "tmi": {
+          "auc": 0.48921,
+          "symmetric_auc": 0.51079
+        },
+        "depth_to_base_surf": {
+          "auc": 0.511374,
+          "symmetric_auc": 0.511374
+        },
+        "ieq_n100a15": {
+          "auc": 0.568493,
+          "symmetric_auc": 0.568493
+        },
+        "cond_surf": {
+          "auc": 0.483083,
+          "symmetric_auc": 0.516917
+        },
+        "iso_grav_anom_hg": {
+          "auc": 0.499554,
+          "symmetric_auc": 0.500446
+        },
+        "det_elev_slope": {
+          "auc": 0.558053,
+          "symmetric_auc": 0.558053
+        },
+        "crowding_score_at_dot_pixels": {
+          "auc": 0.49658,
+          "symmetric_auc": 0.50342
+        }
+      },
+      "crowding_score_symmetric_auc": 0.50342
+    },
+    "sgmc_control": {
+      "evidence_class": "PROXY",
+      "status": "REPORT ONLY (never a gate, never a live score)",
+      "block_size_km": 20.0,
+      "n_blocks_evaluated": 162,
+      "n_withheld_positives": 62122,
+      "bootstrap_replicates": 1000,
+      "seed": 20261024,
+      "r0_proxy_value": 0.095386,
+      "r0_proxy_ci95": [
+        0.084323,
+        0.107315
+      ],
+      "variants": {
+        "resp5pct": {
+          "proxy_value": 0.095607,
+          "proxy_ci95": [
+            0.084524,
+            0.107291
+          ],
+          "delta_vs_r0_proxy": 0.000221,
+          "delta_vs_r0_ci95": [
+            -5.7e-05,
+            0.000504
+          ]
+        },
+        "resp10pct": {
+          "proxy_value": 0.095799,
+          "proxy_ci95": [
+            0.084865,
+            0.107199
+          ],
+          "delta_vs_r0_proxy": 0.000413,
+          "delta_vs_r0_ci95": [
+            -8.8e-05,
+            0.000889
+          ]
+        },
+        "resp15pct": {
+          "proxy_value": 0.095759,
+          "proxy_ci95": [
+            0.084935,
+            0.107108
+          ],
+          "delta_vs_r0_proxy": 0.000373,
+          "delta_vs_r0_ci95": [
+            -0.000323,
+            0.001008
+          ]
+        }
+      },
+      "caveat": "Off-catalogue USGS SGMC geologic-map faults; exposed-bedrock biased, not the hidden new-fault labels. PROXY ONLY, never a gate or score."
+    }
+  },
+  "elapsed_s": 94.95,
+  "verified_utc": "2026-10-24T05:23:39Z",
+  "verification_git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
+  "self_check": {
+    "all_26_manifest_pins_verified": true,
+    "r0_rebuilt_byte_identically": true,
+    "variant_files_re_read_and_validated": true,
+    "variant_bytes_reproduced_exactly": true,
+    "region_evenness_gate_pass": true,
+    "no_sha256_collision_with_other_ledger_rows": true
+  }
+}

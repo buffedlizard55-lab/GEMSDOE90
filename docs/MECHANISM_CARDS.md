@@ -408,8 +408,51 @@ change **down**.
 
 **Falsifier.** A paired live receipt against R0 with Δ ≤ −0.010 ends the outward collar ladder at this radius (read
 together with the entity's 3.0 px rungs). |Δ| < 0.010 is no evidence and licenses no further dose guess on this axis.
-Note the catalogue hide-and-recover proxy is structurally blind here (IR90-36) and must not be used to veto it.
+Note the catalogue hide-and-recover proxy is structurally blind here (IR90-38) and must not be used to veto it.
 
 **Geologist note.** The deleted shell is a 340 m halo around every mapped trace; the added dots are simply the
 least-served parts of the binary H19-5 field, which is not a fault-probability ranking. Read the file as a collar
 test with a repaired refill, never as a claim that new faults avoid mapped traces.
+---
+
+## Session 2026-10-24 (`arena/5d597521`, agent-selected AXIS = SPACING, local kernel-scale respacing) — BUILT, HELD from slots
+
+Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots, rebuilt byte-identically (zeros `c55bafc4…` / NaN
+`baeae321…`); 0.2778 is a **CLAIM** (no receipt). The brief's global SPACING arrangements (lattice /
+Poisson-disk / along-strike) are already built by sibling sessions (GEMSDOE86/88/91 — `lattice`,
+`poisson-disk`, `along-strike`, `pdiskc16`, `latticec16`, `strikec16`, `poisson28`, `lattice4px`,
+`strike`, ring-2 `spread40`/`clump40`/`jitter40`), so this session built the unbuilt arrangement
+question: at fixed count, support and geography, respace the most kernel-crowded dots into the
+nearest uncovered support. Predictions are **MODEL**, frozen before any PROXY ran. Receipt:
+`evidence/spacing_build_receipt.json`.
+
+Shared mechanism, for a structural geologist: R0's dots all sit >= 2.828 px apart (the parent d2.8
+thinning survives), yet 50.5% have a neighbour inside the 300 m metric kernel and the average dot
+shares its 6 px contest zone with 2.82 others. Because kernel credit `T` is a *max* over dots, the
+second and third dots on the same short strand segment pay full mass (the `0.2(S-M)` term) for very
+little extra credit, while 13,793 px of the corroborated H19-5 ridge support receive no credit at
+all. Moving a crowded dot a short distance along its own ridge — median displacement 1.0 px, mean
+3.6-5.0 px, 94% inside the 15 px (1.5 km) primary window — should in principle trade redundant
+overlap for fresh along-strike coverage of line-like truth, the geometry the brief says lowers the
+per-dot pay bar. The measured reality is less kind: replacements gain 4,145.5 / 8,326.8 / 12,564.2
+support-credit units against removal losses of 4,232.6 / 8,611.1 / 13,059.9, i.e. a net **-87 / -284 /
+-496** — local windows cannot reach the far uncovered support, and crowded dots still exclusively
+cover the strand pixels between their neighbours. This is IR90-25's credit uniformity seen from the
+arrangement side.
+
+| Variant | Relocated / symmetric diff | Mean displacement | Support-credit balance | Predicted live change (MODEL) | Non-fault confounder | Falsifier |
+|---|---|---:|---:|---|---|---|
+| `SPACINGresp5pctW15` (`f8bada0c`) | 1,883 / 10.00% | 5.02 px | -87.1 | **0.000** (-0.008 to +0.008; raw centre -0.0003) | Crowded dots mark intersections/step-overs where splays genuinely pack one kernel; respacing deletes exactly that complexity. | Paired Δ <= -0.010 at this lowest dose rejects local respacing outright. |
+| `SPACINGresp10pctW15` (`fdb1bde9`) | 3,765 / 20.00% | 3.96 px | -284.3 | **-0.001** (-0.009 to +0.007) | Uncovered support stretches may be cover/vegetation gaps, contacts or drainages in the H19-5 field, not unmapped fault. | Monotone worsening 5→15% confirms crowded dots carried credit; Δ >= +0.010 anywhere falsifies the headwind. |
+| `SPACINGresp15pctW15` (`08f1daec`) | 5,648 / 30.00% | 3.63 px | -495.7 | **-0.002** (-0.010 to +0.006) | As above, plus: at 15% the edit reaches moderately crowded dots whose overlap was already thin. | As above; \|Δ\| < 0.010 is no evidence at every dose. |
+
+Spacing diagnostics (R0 → resp15): dots with a neighbour within 3 px 50.5% → 45.0%; mean other
+dots within 6 px 2.822 → 2.763; total crowding 32,690 → 31,521; 5 km block-density CV 0.901 →
+0.899 (geography inherited by construction; region-evenness gate PASS, no block emptied, worst
+block loss -33%). Report-only PROXY (never gates/scores): catalogue hide-and-recover (seed
+20261024, n=16,560 withheld) Δ -0.000008 / -0.000057 / -0.000144; SGMC control (n=62,122)
+Δ +0.000221 / +0.000413 / +0.000373 — opposite signs at 1e-4 scale, both consistent with the ~0
+MODEL centre; leakage canary max symmetric AUC 0.570341 (`geod_2ndinv`), crowding-score AUC
+0.503420, no feature > 0.90. **Decision: HOLD from the next slots** (IR90-35); the files are
+arrangement dose-response guards showing kernel-scale arrangement at fixed count is exhausted
+locally — they do not displace the MASS-add / continuity / PRUNE order in `SLOT_PLAN.md`.

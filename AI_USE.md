@@ -163,12 +163,12 @@ MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.
   rebalance, max-marginal refill, two-scenario prediction), `scripts/build_prune_collar_gapmax.py`
   (`--build` / `--verify`), `tests/test_collar.py` (7 synthetic tests), the local gitignored raster pair
   `releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` / `…-e69532d5-zeros.tif`,
-  `evidence/prune_collar_gapmax_receipt.json`, one `ledger/submissions.csv` row, the IR90-35/36/37/38 entries,
+  `evidence/prune_collar_gapmax_receipt.json`, one `ledger/submissions.csv` row, the IR90-37/38/39/40 entries,
   the mechanism card, and the matching sections of `SLOT_PLAN.md`, `README.md` (CURRENT STATE only),
   `docs/SUBMIT.md` and this disclosure.
 - **AI decided (not human-assigned):** selected PRUNE after a read-only `gh api` audit of sibling ledgers
   (GEMSDOE84–94) and a byte-identical R0 rebuild; measured that every free arrangement/dose knob has
-  < 0.010 headroom (IR90-35) and therefore built **one** variant instead of three (IR90-38): the smallest
+  < 0.010 headroom (IR90-37) and therefore built **one** variant instead of three (IR90-40): the smallest
   unoccupied collar radius (3.4 px) with a max-marginal refill, because that isolates the one quantity the
   entity has measured live (the collar) and repairs the refill policy that was never measured (FIFO 0.57 vs
   max-marginal 1.30 support credit per dot). AI verified all 26 SHA-256 pins, rebuilt R0 byte-identically
@@ -177,8 +177,36 @@ MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.
 - **AI did not:** contact DrivenData or Dropbox, fetch a competition page, read or scrape the leaderboard,
   log in, submit, invent any score/quota/target, or use test truth of any kind. R0's `0.2778` is a CLAIM;
   the prediction is MODEL; both proxies are PROXY; the catalogue hide-and-recover value of 0.0 is a documented
-  structural artefact (IR90-36), not evidence.
+  structural artefact (IR90-38), not evidence.
 - **Human must decide/supply:** dated `TOP_PUBLIC`, slots used/remaining, official deadline confirmation,
   R0 and candidate portal receipts, data-use review, whether a 3.4 px collar step is worth a slot at all
-  (IR90-37: the refill measurement is the session's result, not a new dose), and which single file — if any —
+  (IR90-39: the refill measurement is the session's result, not a new dose), and which single file — if any —
   to upload from their own registered account.
+## Session arena/5d597521 (2026-10-24, agent-selected AXIS=SPACING, GEMSDOE90)
+
+**AI wrote:** `src/spacing.py` (crowding rank, local respacing operator, spacing statistics),
+`scripts/build_spacing_variants.py` (build/verify, ledger/reservation writers, report-only
+diagnostics), `tests/test_spacing.py`, the three ledger rows, the `spacing` mechanism cards in
+`ledger/mechanism_cards.json`, the `spacing_reservations_20261024` block, the receipt
+`evidence/spacing_build_receipt.json`, and the matching sections of `docs/MECHANISM_CARDS.md`,
+`docs/SUBMIT.md`, `SLOT_PLAN.md`, `IRREGULARITIES.md` (IR90-35/36) and this file. AI re-verified
+26/26 pinned inputs by SHA-256, rebuilt R0 byte-identically (zeros `c55bafc4…` / NaN `baeae321…`),
+audited sibling SPACING values read-only via `gh api` (GEMSDOE84-88/91/92), re-read every written
+raster from disk, reproduced the bytes with `--verify`, and ran the full test suite.
+
+**AI decided (agent-selected axis, not assigned):** SPACING, in a local kernel-scale form. The
+brief's global trio (lattice / Poisson-disk / along-strike) and ring-2 micro-moves are already
+built by siblings; MASS, CONCENTRATION, PRUNE and RELIEF ladders are complete in this repo; SNAP
+is proven infeasible (IR90-28). AI set the doses (5/10/15%), the crowding rank, the 15 px window
+and the 2.8 px separation floor, measured the exact support-credit balance (-87/-284/-496) before
+freezing predictions (0.000 / -0.001 / -0.002 MODEL), and held all three files from slots because
+the balance and both PROXYs say local arrangement is exhausted. AI did not contact DrivenData or
+Dropbox, did not read the leaderboard, did not log in, and did not submit. R0's 0.2778 remains a
+CLAIM; every predicted change is a MODEL; canary/hide-recover/SGMC numbers are PROXY.
+
+**Human must decide/supply:** dated `TOP_PUBLIC`, quota used/remaining (one entity, 3/week),
+deadline confirmation (2026-12-03 UNVERIFIED), R0's portal receipt and receipts for any uploaded
+file, a geological review of whether crowded-dot clusters (possible step-overs/intersections) may
+be respaced at all, whether the inherited 2.236 px floor is acceptable (IR90-36), and which single
+file (if any) to upload from their own registered account. The agent's recommendation is to keep
+the SPACING files held and run the MASS-add / continuity / PRUNE order in `SLOT_PLAN.md` first.

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-24T05:37:08Z",
-  "git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
-  "generator_script_sha256": "1e936f00ee6e7d8c26dc5d0e8c1f3df3b314e270951a154dff2dd51e5ec7d376",
+  "generated_utc": "2026-10-24T05:41:15Z",
+  "git_sha": "75a84318ec1587a7a4b4db788220336e5c40708d",
+  "generator_script_sha256": "987d40d2d2970bb2d145f1e61897e836413eeb827e7f2f4791b4b3e2c356b1df",
   "axis": "PRUNE",
-  "session_note": "One variant, not three: see SLOT_PLAN.md / IRREGULARITIES.md IR90-35. The measured headroom of every other free collar/spacing/dose knob is below the 0.010 evidence floor, so a second and third file would spend the human's attention without buying information.",
+  "session_note": "One variant, not three: see SLOT_PLAN.md / IRREGULARITIES.md IR90-37. The measured headroom of every other free collar/spacing/dose knob is below the 0.010 evidence floor, so a second and third file would spend the human's attention without buying information.",
   "parent": {
     "id": "h33-h33-2-b2",
     "claimed_live_score": 0.2778,
@@ -458,9 +458,9 @@
       "reason": "no calibrated fold-clean SGMC instrument was validated for this collar/refill design"
     }
   },
-  "elapsed_s": 63.4,
-  "verified_utc": "2026-10-24T05:38:06Z",
-  "verification_git_sha": "700c7e213bf5d897c7c73c7d9004ad9af8900f55",
+  "elapsed_s": 63.7,
+  "verified_utc": "2026-10-24T05:42:13Z",
+  "verification_git_sha": "75a84318ec1587a7a4b4db788220336e5c40708d",
   "self_check": {
     "manifest_verified": true,
     "nan_sha256_matches_receipt": true,

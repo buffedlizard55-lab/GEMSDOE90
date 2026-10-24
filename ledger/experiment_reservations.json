@@ -462,5 +462,33 @@
     "value_family": "5km band-4 geodetic strain-rate prior; 50% complementary pools; matched-dose AWAY sign control",
     "coexists_with": "main concentration_reservations_20261023 = 15 km structural strain/edge dose ladder",
     "post_merge_decision": "HELD from the next slots, consistent with main IR90-25/26 and the 15 km ladder decision: fixed-count concentration loses ~0.98/gains ~0.54 support credit per dot and SGMC PROXY is negative. Kept as distinct (parent,axis,value) BUILT occupancy guards; the matched-dose AWAY arm is a falsifier instrument only. No live receipt. Human adjudicates entity-scope/quota before any slot."
+  },
+  "spacing_reservations_20261024": {
+    "checked_utc": "2026-10-24",
+    "axis": "SPACING",
+    "parent": "h33-h33-2-b2",
+    "scope": "Read-only gh api audit of ledger/submissions.csv on default branches of buffedlizard55-lab/GEMSDOE84-88, 91, 92 (2026-10-24).",
+    "cross_repo_occupied_values": [
+      "lattice",
+      "poisson-disk",
+      "along-strike",
+      "pdiskc16",
+      "latticec16",
+      "strikec16",
+      "randomc16",
+      "poisson28",
+      "lattice4px",
+      "strike",
+      "spread40",
+      "clump40",
+      "jitter40"
+    ],
+    "selected_values": [
+      "resp5pct",
+      "resp10pct",
+      "resp15pct"
+    ],
+    "why_distinct": "Sibling SPACING values are global arrangements (lattice/Poisson-disk/along-strike resampling of the whole field, ~37-40% changed) or ring-2 micro-moves at 2.0-2.24 px (spread40/clump40/jitter40). These values respace only the most kernel-crowded dots, each to the max-marginal-credit support pixel within 15 px at the parent's 2.8 px separation -- a local, dose-nested arrangement edit at 10/20/30% symmetric diff. No sibling ledger row uses a crowding rank, a 15 px window, or these tags.",
+    "caveat": "Default-branch public audit is not proof of every private or unindexed entity submission. Human must check any missing entity ledger before spending a slot."
   }
 }

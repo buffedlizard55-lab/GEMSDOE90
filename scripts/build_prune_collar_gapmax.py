@@ -354,7 +354,7 @@ def build(run_proxies: bool = True) -> dict:
         "generator_script_sha256": R0.sha256_file(Path(__file__)),
         "axis": AXIS,
         "session_note": (
-            "One variant, not three: see SLOT_PLAN.md / IRREGULARITIES.md IR90-35. The measured "
+            "One variant, not three: see SLOT_PLAN.md / IRREGULARITIES.md IR90-37. The measured "
             "headroom of every other free collar/spacing/dose knob is below the 0.010 evidence floor, "
             "so a second and third file would spend the human's attention without buying information."
         ),

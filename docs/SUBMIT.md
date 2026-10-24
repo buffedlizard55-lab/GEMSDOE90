@@ -243,4 +243,24 @@ Reproduce: `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scri
 compares SHA-256 → `python -m src.validate <file> .cache/gems_data/sample_submission.tif --catalogue
 .cache/gems_data/existing_faults.tif`. Receipt: `evidence/prune_collar_gapmax_receipt.json`.
 The catalogue hide-and-recover PROXY reads 0.0 for this file **by construction** (its "truth" is the catalogue mask
-itself) — IR90-36; never use it to veto a collar candidate.
+itself) — IR90-38; never use it to veto a collar candidate.
+## SPACING local respacing — BUILT, HELD from slots (session 2026-10-24, `arena/5d597521`)
+
+Fixed-count (37,654) respacing of R0's most kernel-crowded dots (summed triangular-disk overlap
+within 6 px) to the maximum-marginal-credit H19-5 pixel within 15 px (expanding 30/60 px only when
+a window is empty), minimum separation 2.8 px (the parent's own thinning distance), added dots
+d_cat>=3 px, zero catalogue mass; untouched R0 dots inherit the 2.236 px floor (IR90-36). Nested
+doses from one sequential process. **Status: BUILT, HELD** (IR90-35) — support-credit balance is
+-87/-284/-496 and both PROXYs sit at 1e-4 with opposite signs; do not spend a slot here before the
+MASS-add / continuity / PRUNE receipts exist. Receipt `evidence/spacing_build_receipt.json`;
+re-emit/verify with `.venv/bin/python scripts/build_spacing_variants.py --build` / `--verify`
+after `scripts/restore_data.py` (rasters are gitignored, never committed).
+
+| Candidate | Preferred file (NaN outside) | Fallback (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (<=140) |
+|---|---|---|---|---|
+| respace 5% (1,883d; 10.00% diff) | `releases/h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c.tif` | `…-f8bada0c-zeros.tif` | `f8bada0cef5a…` / `487e6d8983ef…` | `h33-h33-2-b2; SPACING respace 1883d (5%) crowded->gap <1.5km, count fixed; pred -0.000 DTI MODEL` |
+| respace 10% (3,765d; 20.00% diff) | `releases/h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9.tif` | `…-fdb1bde9-zeros.tif` | `fdb1bde9a24c…` / `cec03d8655fb…` | `h33-h33-2-b2; SPACING respace 3765d (10%) crowded->gap <1.5km, count fixed; pred -0.001 DTI MODEL` |
+| respace 15% (5,648d; 29.999% diff) | `releases/h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec.tif` | `…-08f1daec-zeros.tif` | `08f1daecfc6e…` / `9d6f2abf2f15…` | `h33-h33-2-b2; SPACING respace 5648d (15%) crowded->gap <1.5km, count fixed; pred -0.002 DTI MODEL` |
+
+The agent does not submit. Upload only one file per slot, from the human's own account, and only
+if the human overrules the HOLD after reading IR90-35.
