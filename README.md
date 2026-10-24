@@ -1,5 +1,11 @@
 # GEMSDOE90
 
+> **2026-10-24 submission safety override: NOT READY.** No new unique, holdout-approved TIFF was generated in this session. Historical MODEL projections and slot plans below are not approval to submit. Read [the dashboard](docs/index.html), [executive submission guide](docs/executive-summary.html), [three-pass audit](docs/session-review.md), and [run card](docs/run-card.json) first.
+
+## Standing project requirements (read before every session)
+Generate genuinely independent predictions, never relabel an old TIFF. Reuse the shared template, evaluate buffered whole-segment hide-and-recover with visible-only catalogue features, run per-feature leakage canaries, and check surfaces and final dots against the complete registry. Stop duplicate lanes at correlation >0.90 or >70% dot overlap within 3 px. Require finite in-footprint [0,1] predictions with matching CRS/shape/transform, verified holdout improvement, confidence intervals and a separate selector before spending any slot. Maximum three experiments or two hours. Clearly distinguish organizer receipts from local evaluation and projections. Provide an obvious readiness state, unique name, short note, provenance links and a JSON run card; negative results count. Maximize P(Win) by owning the entire outcome, not by inventing scores. The detailed latest request is operationalized in the linked audit; no claim is made that this summary is a verbatim archive.
+
+
 <!-- CURRENT STATE (edit only this block) -->
 ## CURRENT STATE
 - Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN), 26/26 input pins verified by SHA-256 (`evidence/r0_rebuild_receipt.json`).

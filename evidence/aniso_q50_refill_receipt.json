@@ -1473,8 +1473,8 @@
   "elapsed_s": 131.89,
   "no_live_submission": true,
   "agent_never_submits": true,
-  "verified_utc": "2026-10-24T06:23:35Z",
-  "verification_git_sha": "f3c79fc56949aacddc5a797dca070fc7c7438038",
+  "verified_utc": "2026-10-24T06:25:25Z",
+  "verification_git_sha": "9e455ac74e9d404cae6aca8c231904d3a5f81f60",
   "self_check": {
     "all_26_manifest_pins_verified": true,
     "r0_rebuilt_byte_identically": true,
