@@ -7,6 +7,10 @@ Generate genuinely independent predictions, never relabel an old TIFF. Reuse the
 
 
 <!-- CURRENT STATE (edit only this block) -->
+## Research queue and repository review
+
+The five candidate hypotheses, explicit blockers, review notes, source links, required next work, and current run card are maintained in [docs/REVIEW_AND_NEXT_HYPOTHESES.md](docs/REVIEW_AND_NEXT_HYPOTHESES.md). Read it before proposing or running experiments.
+
 ## CURRENT STATE
 - Parent (incumbent): h33-h33-2-b2 (GEMSDOE32), 37,654 unit-mass dots; rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN), 26/26 input pins verified by SHA-256 (`evidence/r0_rebuild_receipt.json`).
 - Best receipt: **none on file** (human supplies R0 portal receipt). Best CLAIM: 0.2778 (R0, owner-reported, no receipt in `ledger/submissions.csv`).
