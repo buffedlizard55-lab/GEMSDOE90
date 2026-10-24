@@ -167,6 +167,21 @@
         "r2b10pct",
         "p2r15pct"
       ]
+    },
+    {
+      "session": "2026-10-23e strain-prior CONCENTRATION (GEMSDOE90)",
+      "axis": "CONCENTRATION",
+      "prior": "geodetic strain-rate invariant band 4 (label-agnostic), 5 km blocks",
+      "selected_values": [
+        "strain10",
+        "strain15",
+        "strainAway10"
+      ],
+      "variant_ids": [
+        "h33-h33-2-b2-CONCstrain10-20261023-aa60138c",
+        "h33-h33-2-b2-CONCstrain15-20261023-d3db2957",
+        "h33-h33-2-b2-CONCstrainAway10-20261023-bd514054"
+      ]
     }
   ],
   "mass_high_dose": {
@@ -250,5 +265,29 @@
       "add20pct-next": "patterned FIFO head (IR90-20)"
     },
     "interpretation": "Any future FIFO-ranked dose rung must pass the region-evenness gate before it is emitted to releases/; a region-even replacement (per-5km-block local rank quotas) is proposed in SLOT_PLAN.md and was not built this session."
+  },
+  "concentration_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "CONCENTRATION",
+    "parent": "h33-h33-2-b2",
+    "prior": "geodetic strain-rate invariant (band 4, label-agnostic), 5 km blocks, complementary 50% pools",
+    "occupied_tags": [
+      "strain10",
+      "strain15",
+      "strainAway10"
+    ],
+    "occupied_values": [
+      "tag=strain10; 5km blocks; prior=geodetic strain-rate invariant band4 (label-agnostic); move 10% R0 mass (3765 dots) low->high strain; 50% pool; fixed count 37654; added d_cat>=3px",
+      "tag=strain15; 5km blocks; prior=geodetic strain-rate invariant band4 (label-agnostic); move 15% R0 mass (5648 dots) low->high strain; 50% pool; fixed count 37654; added d_cat>=3px",
+      "tag=strainAway10; 5km blocks; prior=geodetic strain-rate invariant band4 (label-agnostic); move 10% R0 mass (3765 dots) high->low strain (sign control); 50% pool; fixed count 37654; added d_cat>=3px"
+    ],
+    "cross_repo_audit": {
+      "siblings_checked": "GEMSDOE84-97 (gh api read-only, 2026-10-23)",
+      "catalogue_density_prior": "GEMSDOE89 CONC5kmcat10/cat10away/cat20",
+      "h19_5_prior": "GEMSDOE87 CONCc10/c15/c20",
+      "self_density_prior": "GEMSDOE88/91 CONCb10px-m10/m20/b50px-m20; GEMSDOE84/85/86 additional conc/spread",
+      "why_new": "No sibling built a CONCENTRATION on a label-agnostic geodetic strain-rate prior; prior is near-orthogonal to R0 density (r~+0.11) and relief-neutral, and uses no test label/score, so it is orthogonal to all sibling values and to Hard Constraint #5."
+    },
+    "note": "Repeat builds of these (CONCENTRATION, value) pairs fail closed."
   }
 }

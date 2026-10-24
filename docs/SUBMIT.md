@@ -1,4 +1,4 @@
-# Human submission packet — 2026-10-23 sessions (MASS ladder incl. high doses + both PRUNE collars)
+# Human submission packet — 2026-10-23 sessions (CONCENTRATION strain prior + RELIEF + MASS ladder + both PRUNE collars)
 
 **The agent does not submit and cannot see the leaderboard.** Every GeoTIFF below is local and Git-ignored on
 purpose: this repository is public and competition rasters must not be committed or released
@@ -78,6 +78,32 @@ not the first choice for a slot.
 | **15.0% Piedmont→Range** (5,648d; 29.999% diff) | `releases/h33-h33-2-b2-RELIEFp2r15pct-20261023-ad95e30f.tif` | `…-ad95e30f-zeros.tif` | `ad95e30f857011f9…` / `66d1abb217ce9cfb…` | `h33-h33-2-b2; RELIEF 15% (5648d) piedmont->range; pred -0.004 DTI MODEL` |
 
 Count held at **37,654 unit-mass dots** on `H19-5`; zero catalogue mass; **100% of newly added dots enforce `d_cat >= 3.0 px` strictly** (untouched R0 dots inherit R0's `2.236 px` floor without confounding `RELIEF` with `PRUNE`; IR90-18). Full hashes, parent-diff stats, and report-only `PROXY` diagnostics: `evidence/relief_build_receipt.json`. Re-emit and verify via `.venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_relief_variants.py --verify`.
+
+## 5. Strain-prior CONCENTRATION (`AXIS=CONCENTRATION`, session 2026-10-23e — NEW)
+
+Fixed-count (37,654) reallocation of R0's mass across **5 km blocks** ranked by a LABEL-AGNOSTIC
+geodetic strain-rate invariant (band 4 `geod_2ndinv` of the pinned `training_features.tif`): near-orthogonal
+to R0 density (rank r=+0.11), relief-neutral (r=−0.046), no test label/score used. Complementary top/bottom-50%
+strain pools; greedy R=3 px marginal-credit drop/add; **100% of added dots enforce d_cat ≥ 3.0 px** (untouched R0
+dots inherit R0's 2.236 px floor, IR90-07/14/18); zero catalogue mass. `strainAway10` is a matched-dose SIGN
+CONTROL (same ~20% symmetric diff and similar 15 km CV 0.558 vs 0.568, opposite strain alignment) — slot it with
+`strain10` to test whether strain *direction* matters. Regional mass shifts (max 0.049/0.072/0.051) are reported
+diagnostics, not tuned; the anti-isolation gate (largest 5 km emptied cluster 0–1 blocks) passed. IR90-21…23.
+Full hashes, parent-diff stats and report-only PROXY diagnostics: `evidence/concentration_build_receipt.json`.
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (`<=140`) |
+|---|---|---|---|---|
+| **10% low→high strain** (3,765d; 20.0% diff) | `releases/h33-h33-2-b2-CONCstrain10-20261023-aa60138c.tif` | `…-aa60138c-zeros.tif` | `aa60138c3e70317…` / `c1822125a6d8e4f0…` | `h33-h33-2-b2; CONC 10% (3765d) low->high strain; pred +0.004 DTI MODEL` |
+| **15% low→high strain** (5,648d; 30.0% diff) | `releases/h33-h33-2-b2-CONCstrain15-20261023-d3db2957.tif` | `…-d3db2957-zeros.tif` | `d3db2957a079732…` / `45029ddb0db0c24…` | `h33-h33-2-b2; CONC 15% (5648d) low->high strain; pred +0.001 DTI MODEL` |
+| **10% high→low strain (SIGN CONTROL)** (3,765d; 20.0% diff) | `releases/h33-h33-2-b2-CONCstrainAway10-20261023-bd514054.tif` | `…-bd514054-zeros.tif` | `bd5140546ebc481…` / `3d390e97da725d4…` | `h33-h33-2-b2; CONC 10% (3765d) high->low strain; pred -0.004 DTI MODEL` |
+
+**These three rasters are NOT committed** (`releases/` is gitignored — this repo is public). Re-emit them with
+`.venv/bin/python scripts/restore_data.py` then `.venv/bin/python scripts/build_concentration_variants.py --build`,
+confirm each SHA-256 against `evidence/concentration_build_receipt.json` / its ledger row, and re-check with
+`.venv/bin/python scripts/build_concentration_variants.py --verify` and the `src.validate` format gate below before
+uploading. The agent does not submit; the human uploads ONE file per scored slot, from their own account.
+Before spending a slot, adjudicate entity scope (sibling repos GEMSDOE84–97 built the same axes on 2026-10-23 —
+IR90-21) and supply dated TOP_PUBLIC, quota state, deadline confirmation and portal receipts.
 
 ## Format gate (every file, re-read from disk after writing)
 
