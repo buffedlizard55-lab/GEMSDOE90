@@ -20,7 +20,7 @@ def footprint_mask(sample_path: str) -> np.ndarray:
     """Inside-footprint = sample band is finite and not nodata."""
     with rasterio.open(sample_path) as ds:
         a = ds.read(1).astype("float64")
-        inside = np.isfinite(a)
+        inside = np.isfinite(a) & (ds.read_masks(1) > 0)
         if ds.nodata is not None and np.isfinite(ds.nodata):
             inside &= a != ds.nodata
     return inside
@@ -33,6 +33,8 @@ def validate(candidate: str, sample: str, catalogue: str | None = None, zeros_ou
             fails.append(f"band_count={ds.count} != 1")
         if str(ds.dtypes[0]) != "float32":
             fails.append(f"dtype={ds.dtypes[0]} != float32")
+        if ds.crs != ref.crs:
+            fails.append("crs != sample crs")
         if ds.crs is None or ds.crs.to_epsg() != 32611:
             fails.append(f"crs={ds.crs} != EPSG:32611")
         if (ds.height, ds.width) != (ref.height, ref.width):
@@ -40,11 +42,14 @@ def validate(candidate: str, sample: str, catalogue: str | None = None, zeros_ou
         if ds.transform != ref.transform:
             fails.append("transform != sample transform")
         a = ds.read(1).astype("float64")
+        ref_crs, ref_transform = ref.crs, ref.transform
 
     inside = footprint_mask(sample)
     if a.shape != inside.shape:
         fails.append("array shape != footprint shape")
     else:
+        if not np.isfinite(a[inside]).all():
+            fails.append(f"non-finite inside footprint: {int((~np.isfinite(a[inside])).sum())} px")
         if np.isnan(a[inside]).any():
             fails.append(f"NaN inside footprint: {int(np.isnan(a[inside]).sum())} px")
         finite_in = a[inside][np.isfinite(a[inside])]
@@ -62,6 +67,8 @@ def validate(candidate: str, sample: str, catalogue: str | None = None, zeros_ou
     if catalogue is not None:
         with rasterio.open(catalogue) as ds:
             cat = ds.read(1)
+            if ds.crs != ref_crs or ds.transform != ref_transform:
+                fails.append("catalogue CRS/transform != sample")
         if cat.shape != a.shape:
             fails.append("catalogue shape != candidate shape")
         else:
