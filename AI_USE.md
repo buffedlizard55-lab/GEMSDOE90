@@ -210,3 +210,27 @@ file, a geological review of whether crowded-dot clusters (possible step-overs/i
 be respaced at all, whether the inherited 2.236 px floor is acceptable (IR90-36), and which single
 file (if any) to upload from their own registered account. The agent's recommendation is to keep
 the SPACING files held and run the MASS-add / continuity / PRUNE order in `SLOT_PLAN.md` first.
+## Session arena/b5ea0544 (2026-10-24 RELIEF basin<->piedmont, AXIS=RELIEF, GEMSDOE90)
+
+- **What AI wrote and executed:** AI chose the AXIS itself (RELIEF) after reading the ledger, reservations and
+  SLOT_PLAN, and ran a read-only `gh api` audit of every reachable sibling ledger (GEMSDOE84-89, 91, 92; 93-101
+  have no ledger): 27 RELIEF rows covered range->piedmont, range->basin, piedmont->range and basin->range, with
+  ZERO basin->piedmont or piedmont->basin pairs under any naming (IR90-41). AI re-installed the pinned venv,
+  restored and SHA-256-verified all 26 manifest inputs (70.6 s), rebuilt R0 byte-identically
+  (`c55bafc4…` zeros / `baeae321…` NaN), restored the 18 core release pairs with matching hashes, and authored
+  `scripts/build_relief_s2_variants.py` plus `tests/test_relief_s2.py` using the unchanged pinned
+  `src/relief.py` operator. It built three fixed-count 37,654-dot files — `RELIEFp2b12p5pct` (pred +0.003
+  MODEL), `RELIEFp2b15pct` (+0.004), and direction control `RELIEFb2p10pct` (−0.002) — re-read every raster
+  from disk, passed the `src.validate` format gate on all six, ran a byte-reproduction `--verify`, the donor
+  5 km region-evenness gate and the full test suite (120 passed), and ran the report-only leakage canary
+  (max symmetric AUC 0.5703), catalogue hide/recover and SGMC controls as PROXY only. Predictions were frozen
+  in the builder before any proxy ran.
+- **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit
+  any file, use test truth, or invent any score/quota/target. R0's 0.2778 remains a CLAIM; every predicted
+  change is MODEL; canary/proxies are PROXY, never gates or scores. Competition rasters stay in ignored
+  `.cache/gems_data/` and `releases/`; only code, JSON receipts and Markdown are in the Git diff.
+- **Human must decide/supply:** dated TOP_PUBLIC, weekly slot count and total used, deadline confirmation,
+  R0 and any candidate portal receipts, data-use/terms review, geological review of the moved corridors,
+  whether the inherited 2.236 px collar on untouched dots is acceptable (IR90-42), entity-scope/quota
+  adjudication across sibling repos (IR90-08/26/35), and which single file (if any) to upload from their
+  registered account.

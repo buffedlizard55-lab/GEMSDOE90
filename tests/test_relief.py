@@ -147,8 +147,14 @@ def test_relief_receipt_ledger_and_cards_are_consistent_and_collision_free() -> 
     with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
         all_rows = list(csv.DictReader(fh))
 
-    built_relief = {r["id"]: r for r in all_rows if r["status"] == "BUILT" and r["axis"] == "RELIEF"}
-    assert set(built_relief) == {v["id"] for v in receipt["variants"]}
+    # Scoped to this receipt's 2026-10-23 family: later sessions add their own RELIEF rows.
+    receipt_ids = {v["id"] for v in receipt["variants"]}
+    built_relief = {
+        r["id"]: r
+        for r in all_rows
+        if r["status"] == "BUILT" and r["axis"] == "RELIEF" and r["id"] in receipt_ids
+    }
+    assert set(built_relief) == receipt_ids
 
     relief_cards = cards.get("relief", {}).get("variants", cards.get("variants", []))
     card_ids = {c["id"] for c in relief_cards}
