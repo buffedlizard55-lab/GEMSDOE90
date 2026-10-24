@@ -373,3 +373,33 @@ loss (~0.98 lost / ~0.54 gained per dot) and a negative SGMC PROXY favouring the
 - **Non-fault confounder:** labels compiled from aseismic historic bedrock maps could make an away move gain — a real confound the sign control is designed to expose (SGMC already favours this arm, IR90-34).
 - **Predicted live change (MODEL):** **−0.004 DTI** (−0.016…+0.008; not a score).
 - **Falsifier:** `strainAway10 >= strain10` on paired receipts falsifies the strain mechanism; `|Δ|<0.010` is no evidence.
+
+## Session 2026-10-24: AXIS = SPACING, kernel-gap equalization dose ladder — BUILT, HELD
+
+Parent R0 rebuilt byte-identically (`c55bafc4…` zeros / `baeae321…` NaN). All three files hold 37,654 unit-mass dots and hold every 5 km block count fixed, so 5/10/15 km density CV remains 0.9011/0.6353/0.5103. Moved dots stay within their own 5 km block on the pinned off-catalogue H19-5 support; additions satisfy `d_cat>=3 px`; retained parent dots keep R0's 2.236 px floor (IR90-41). Predictions were frozen before REPORT ONLY proxies. These are BUILT occupancy/dose-response guards, **not next-slot candidates**: every point estimate and model-grid bound is inside the brief's `|0.010|` no-evidence band and SGMC PROXY is negative at every dose. 0.2778 is CLAIM; every Δ below is MODEL.
+
+### `h33-h33-2-b2-SPACINGgap5pct-20261024-2c8dd61d`
+- **Edit / parent diff:** move 1,883 dots (5% of R0); symmetric difference 10.0016%. Net H19-5 support credit +376.3 (lost 1,831.1, gained 2,207.3). NN median 3.000→3.000 px.
+- **Hypothesis:** A small, block-local re-spacing fills the deepest 300 m-kernel gaps without dismantling R0's strands.
+- **Mechanism:** Remove the lowest exclusive triangular-kernel credit parent dots and add the highest marginal-credit H19-5 pixels in the same 5 km block. At fixed S and M, only T changes; the exact support-credit ledger is positive.
+- **Non-fault mimic / confounder:** H19-5 also includes drainage, lithologic contacts, shorelines and cultural magnetic edges; equalizing their kernel coverage can manufacture false continuity, while removing low-exclusive-credit dots can break real relay tips.
+- **Predicted live change (MODEL):** **+0.001 DTI**, plausible −0.002 to +0.008; model grid +0.000390 to +0.006170. Not a score.
+- **Falsifier:** Paired receipt vs R0; Δ≤−0.010 falsifies the kernel-gap mechanism. |Δ|<0.010 is no evidence. Gap10/gap20 test dose/saturation.
+
+### `h33-h33-2-b2-SPACINGgap10pct-20261024-51b7375e`
+- **Edit / parent diff:** move 3,765 dots (10% of R0); symmetric difference 19.9979%. Net support credit +282.8 (lost 3,735.6, gained 4,018.4). NN median 3.000→3.000 px.
+- **Hypothesis:** Twice the re-spacing dose isolates whether kernel-gap headroom persists beyond the cheapest moves.
+- **Mechanism:** Same exact paired drop/add operator; block quotas are proportional to eligible donors and capped at 30% of each block's donors, so no region is emptied (max removed share 20%; largest 90%-emptied cluster 0).
+- **Non-fault mimic / confounder:** As above; the extra dose also risks replacing geologically meaningful short tips with mid-strand pixels on the same non-unique support.
+- **Predicted live change (MODEL):** **+0.001 DTI**, plausible −0.002 to +0.007; model grid +0.000293 to +0.004639. Not a score.
+- **Falsifier:** Paired receipt vs R0 and against gap5; a falling live slope with rising dose supports saturation, while Δ≤−0.010 closes the axis. |Δ|<0.010 is no evidence.
+
+### `h33-h33-2-b2-SPACINGgap20pct-20261024-7426cb1f`
+- **Edit / parent diff:** move 7,531 dots (20% of R0); symmetric difference 40.0011%. Net support credit −238.9 (lost 7,853.9, gained 7,615.0). NN median 3.000→2.828 px.
+- **Hypothesis:** At a 20% move dose the fixed support exhausts positive-gain gaps; this is the saturation/sign control.
+- **Mechanism:** Same operator; the exact credit ledger reverses sign because each added dot's mean gain (1.011) falls below each removed dot's mean exclusive loss (1.043).
+- **Non-fault mimic / confounder:** SGMC bedrock faults may penalize the move for geological reasons rather than metric saturation; H19-5 false lineaments can also absorb the added dots.
+- **Predicted live change (MODEL):** **−0.001 DTI**, plausible −0.006 to +0.002; model grid −0.003926 to −0.000248. Not a score.
+- **Falsifier:** Paired receipt vs R0; Δ≥+0.010 falsifies the saturation projection and would reopen SPACING. |Δ|<0.010 is no evidence.
+
+**Report-only PROXYs (`evidence/spacing_kernel_gap_build_receipt.json`, never gates/scores):** catalogue hide/recover n=16,560, R0 0.005692, all deltas 0 with bootstrap 95% CI [0,0] (moved dots are outside the kernel's catalogue reach); off-catalogue SGMC n=62,122, R0 0.095386, deltas −0.001856 / −0.003117 / −0.007965; leakage canary not re-run because no new placement feature entered (prior max symmetric AUC 0.574747 <0.90). Structural review should look at removed tips and added mid-strand cells at 1:24k before any live receipt changes the HOLD decision.

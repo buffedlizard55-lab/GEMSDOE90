@@ -182,6 +182,22 @@
         "h33-h33-2-b2-CONCstrain15-20261023-d3db2957",
         "h33-h33-2-b2-CONCstrainAway10-20261023-bd514054"
       ]
+    },
+    {
+      "session": "2026-10-24 (agent-selected SPACING, GEMSDOE90)",
+      "axis": "SPACING",
+      "parent": "h33-h33-2-b2",
+      "selected_values": [
+        "gap5pct",
+        "gap10pct",
+        "gap20pct"
+      ],
+      "variant_ids": [
+        "h33-h33-2-b2-SPACINGgap5pct-20261024-2c8dd61d",
+        "h33-h33-2-b2-SPACINGgap10pct-20261024-51b7375e",
+        "h33-h33-2-b2-SPACINGgap20pct-20261024-7426cb1f"
+      ],
+      "decision": "BUILT, HELD from slots (predicted change below the no-evidence threshold)"
     }
   ],
   "mass_high_dose": {
@@ -462,5 +478,51 @@
     "value_family": "5km band-4 geodetic strain-rate prior; 50% complementary pools; matched-dose AWAY sign control",
     "coexists_with": "main concentration_reservations_20261023 = 15 km structural strain/edge dose ladder",
     "post_merge_decision": "HELD from the next slots, consistent with main IR90-25/26 and the 15 km ladder decision: fixed-count concentration loses ~0.98/gains ~0.54 support credit per dot and SGMC PROXY is negative. Kept as distinct (parent,axis,value) BUILT occupancy guards; the matched-dose AWAY arm is a falsifier instrument only. No live receipt. Human adjudicates entity-scope/quota before any slot."
+  },
+  "spacing_kernel_gap_20261024": {
+    "checked_utc": "2026-10-24",
+    "axis": "SPACING",
+    "parent": "h33-h33-2-b2",
+    "scope": "Read-only gh api audit of 79 public buffedlizard55-lab/GEMSDOE* default branches (9 ledger CSVs present) plus 7 open GEMSDOE90 PR head ledgers; 16 occupied SPACING values found, before main's concurrent 15px local-respacing session merged. Main's resp5/10/15pct tags were added to the cross-repo occupied list after fetch; this session's gap tags remain distinct.",
+    "value_family": "block-local kernel-gap equalization dose ladder at fixed 5 km block counts",
+    "occupied_tags": [
+      "gap5pct",
+      "gap10pct",
+      "gap20pct"
+    ],
+    "occupied_values": [
+      "tag=gap5pct; kernel-gap equalization: move 1883 parent dots (5%) low-exclusive->high-marginal R=3 credit within the same 5km block; fixed count 37654; added d_cat>=3px",
+      "tag=gap10pct; kernel-gap equalization: move 3765 parent dots (10%) low-exclusive->high-marginal R=3 credit within the same 5km block; fixed count 37654; added d_cat>=3px",
+      "tag=gap20pct; kernel-gap equalization: move 7531 parent dots (20%) low-exclusive->high-marginal R=3 credit within the same 5km block; fixed count 37654; added d_cat>=3px"
+    ],
+    "cross_repo_occupied_values": [
+      "alongstrike",
+      "lattice",
+      "latticec16",
+      "pdiskc16",
+      "poisson",
+      "randomc16",
+      "strikec16",
+      "along-strike",
+      "clump40",
+      "jitter40",
+      "poisson-disk",
+      "spread40",
+      "lattice4px",
+      "poisson28",
+      "strike",
+      "resp5pct",
+      "resp10pct",
+      "resp15pct"
+    ],
+    "selected_values": [
+      "gap5pct",
+      "gap10pct",
+      "gap20pct"
+    ],
+    "why_distinct": "Sibling SPACING values replace the layout globally (lattice/poisson/along-strike), clump/jitter/spread, or use 16-px/4-px/28-px spacing. None holds every 5 km block count fixed while optimizing exact R=3 px exclusive-loss/marginal-gain credit on H19-5.",
+    "decision": "HELD from the next three slots: all point predictions and the entire model grid are inside the brief's |0.010| no-evidence band; 20% has negative measured support credit. Kept as a dose-response/saturation instrument and occupancy guard until a live receipt changes the state.",
+    "caveat": "Public default-branch/PR audit is not proof of every private or unindexed entity submission; the human must adjudicate entity scope and quota before any slot (IR90-26/30).",
+    "note": "Repeat builds of these exact (SPACING, value) pairs fail closed."
   }
 }

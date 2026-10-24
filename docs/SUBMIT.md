@@ -221,3 +221,17 @@ Rasters are NOT committed (public repo). Re-emit with `.venv/bin/python scripts/
 `.venv/bin/python scripts/build_concentration_strain5km.py --verify` and the `src.validate` format gate. The agent
 does not submit. Even if verified, these are HELD — do not upload without adjudicating entity-scope/quota
 (IR90-26/30/32) and the headwind (IR90-25/34).
+
+## 8. HELD — SPACING kernel-gap equalization (`AXIS=SPACING`, session 2026-10-24)
+
+Agent-selected `AXIS=SPACING`. Three fixed-count 37,654-dot variants move 5/10/20% of R0's dots **within their own 5 km block** from lowest exclusive to highest marginal R=3 px H19-5 support credit. Every 5 km block count and the 5/10/15 km density CV are exactly unchanged; additions are `d_cat>=3 px`; zero catalogue mass. Untouched R0 dots retain the parent's 2.236 px floor (IR90-41). **HELD from slots:** all point predictions and the whole model grid are inside `|0.010|`, and SGMC PROXY is negative at every dose. Do not upload before a live receipt changes the evidence state.
+
+| Candidate | Preferred file (NaN outside) | Fallback (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (<=140) |
+|---|---|---|---|---|
+| gap5pct (1,883 moved; 10.002% diff) | `releases/h33-h33-2-b2-SPACINGgap5pct-20261024-2c8dd61d.tif` | `…/h33-h33-2-b2-SPACINGgap5pct-20261024-2c8dd61d-zeros.tif` | `2c8dd61de6a78e45…` / `01892d2ef5e2863e…` | `h33-h33-2-b2; SPACING move 5% (1883d) block-local kernel-gap equalization; pred +0.001 DTI MODEL` |
+| gap10pct (3,765 moved; 19.998% diff) | `releases/h33-h33-2-b2-SPACINGgap10pct-20261024-51b7375e.tif` | `…/h33-h33-2-b2-SPACINGgap10pct-20261024-51b7375e-zeros.tif` | `51b7375ec9506113…` / `74c878c6df4cb632…` | `h33-h33-2-b2; SPACING move 10% (3765d) block-local kernel-gap equalization; pred +0.001 DTI MODEL` |
+| gap20pct (7,531 moved; 40.001% diff) | `releases/h33-h33-2-b2-SPACINGgap20pct-20261024-7426cb1f.tif` | `…/h33-h33-2-b2-SPACINGgap20pct-20261024-7426cb1f-zeros.tif` | `7426cb1f5e2b79d2…` / `956c98be17654320…` | `h33-h33-2-b2; SPACING move 20% (7531d) block-local kernel-gap equalization; pred -0.001 DTI MODEL` |
+
+**Format receipt:** `src.validate` PASS for all six files (EPSG:32611, sample shape/transform, float32, one band, values [0,1] inside footprint, NaN/0 outside, `catalogue_mass=0.0`, `n_dots=37654`); all six files were re-read from disk and re-emitted byte-identically by `scripts/build_spacing_kernel_gap.py --verify`. Report-only PROXY: catalogue hide/recover n=16,560, Δ=0 (95% CI [0,0]); SGMC n=62,122, Δ=−0.001856/−0.003117/−0.007965; leakage canary not re-run (no new placement feature; prior max symmetric AUC 0.574747). Predictions are MODEL; PROXYs are not scores.
+
+**Reproduce in a fresh checkout:** `.venv/bin/python scripts/restore_data.py` then `.venv/bin/python scripts/build_spacing_kernel_gap.py --build --rebuild-reserved` (re-emits these already-reserved hashes and fails on any byte change) and `--verify`. Rasters are gitignored and never committed. The agent does not submit; the human uploads at most one encoding per scored slot.

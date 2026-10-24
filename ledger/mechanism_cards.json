@@ -387,5 +387,357 @@
       }
     ],
     "post_merge_status": "HELD from slots; distinct value family kept as occupancy guard + matched-dose sign-control falsifier (IR90-25/26 headwind)."
+  },
+  "spacing_kernel_gap": {
+    "axis": "SPACING",
+    "session": "2026-10-24 (GEMSDOE90, arena/b5694006-gemsdoe90)",
+    "parent": "h33-h33-2-b2",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-SPACINGgap5pct-20261024-2c8dd61d",
+        "axis": "SPACING",
+        "value": "tag=gap5pct; kernel-gap equalization: move 1883 parent dots (5%) low-exclusive->high-marginal R=3 credit within the same 5km block; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "A small, block-local re-spacing fills the deepest 300 m-kernel gaps without dismantling R0's strands.",
+          "mechanism": "R0's 2.8 px thinning spacing nearly matches the R=3 px kernel. This variant removes 1,883 R0 dots (5% of the parent) with the lowest exclusive triangular-kernel credit and re-emits them as 1,883 highest-marginal-credit dots on the same off-catalogue H19-5 support, paired inside each 5 km block. Fixed count and exactly unchanged per-block counts isolate SPACING from MASS and CONCENTRATION. Exact support-credit ledger: lost 1831.1, gained 2207.3, net +376.3.",
+          "non_fault_confounder": "H19-5 also carries drainage lines, lithologic contacts, pluvial shorelines and cultural magnetic edges. Equalizing their 300 m coverage can manufacture visually continuous but geologically false traces; removing low-exclusive-credit dots can also break real short relay tips at strand ends.",
+          "predicted_live_change": "+0.001 DTI (MODEL; plausible -0.002 to +0.008; not a score; every point estimate is inside the |0.010| no-evidence band)",
+          "model_bracket": "exact fixed-count DTI model grid +0.000390 to +0.006170; point +0.001194; The measured net support credit is positive, but the transferred live effect is projected below the 0.010 no-evidence band.",
+          "falsifier": "Paired same-week receipt vs R0. A positive arm with \u0394<=-0.010 falsifies the kernel-gap mechanism; the 20% arm with \u0394>=+0.010 falsifies the projected saturation. Any |\u0394|<0.010 is no evidence. Comparing gap5/gap10/gap20 tests the dose sign, never a proxy score.",
+          "structural_geologist_note": "Review removed tips and added mid-strand cells at 1:24k on the basement/surficial geology. A win would mean new-fault truth is line-like and R0 was under-sampled in 300 m-kernel coverage; a loss would mean positional error or non-fault support, not that the structures are absent. Every move stays in its own 5 km block."
+        },
+        "diagnostics": {
+          "n_move": 1883,
+          "removed_dots": 1883,
+          "added_dots": 1883,
+          "retained_dots": 35771,
+          "symmetric_difference_px": 3766,
+          "mass_shifted_pct_of_r0": 5.000796728103256,
+          "pct_changed_symmetric": 10.001593456206512,
+          "block_px": 50,
+          "n_eligible_donors": 36043,
+          "n_eligible_pool_px": 62556,
+          "blocks_with_moves": 1292,
+          "max_moves_in_one_block": 4,
+          "move_share_p05": 0.0,
+          "move_share_median": 0.05,
+          "move_share_p95": 0.090909,
+          "move_share_max": 0.111111,
+          "lost_support_credit": 1831.0642,
+          "gained_support_credit": 2207.3184,
+          "net_support_credit": 376.2542,
+          "mean_loss_per_removed": 0.972419,
+          "mean_gain_per_added": 1.172235,
+          "min_added_catalogue_distance_px": 3.0,
+          "support_credit_before": 76725.8906,
+          "support_credit_after": 77102.1328,
+          "block_density_cv_before": {
+            "5km": 0.901143,
+            "10km": 0.635265,
+            "15km": 0.510346
+          },
+          "block_density_cv_after": {
+            "5km": 0.901143,
+            "10km": 0.635265,
+            "15km": 0.510346
+          },
+          "nearest_neighbor_px_before": {
+            "min": 2.828427,
+            "p05": 2.828427,
+            "median": 3.0,
+            "p95": 7.211103
+          },
+          "nearest_neighbor_px_after": {
+            "min": 1.0,
+            "p05": 2.0,
+            "median": 3.0,
+            "p95": 7.211103
+          },
+          "region_shares_before": {
+            "north": 0.733415,
+            "south": 0.266585,
+            "q_NW": 0.47878,
+            "q_NE": 0.254634,
+            "q_SW": 0.127344,
+            "q_SE": 0.139242
+          },
+          "region_shares_after": {
+            "north": 0.733309,
+            "south": 0.266691,
+            "q_NW": 0.478727,
+            "q_NE": 0.254581,
+            "q_SW": 0.127397,
+            "q_SE": 0.139295
+          },
+          "max_region_share_shift": 0.000106,
+          "anti_isolation": {
+            "block_px": 50,
+            "blocks_with_20plus_dots": 848,
+            "fraction_blocks_90pct_emptied": 0.0,
+            "largest_emptied_cluster_blocks": 0,
+            "removed_share_max": 0.111111,
+            "passes_anti_isolation_gate": true
+          },
+          "prediction_model_bracket": {
+            "point": 0.001194,
+            "low": 0.00039,
+            "high": 0.00617,
+            "grid": {
+              "truth_px": [
+                20000,
+                65000,
+                100000
+              ],
+              "mean_mass_credit": [
+                0.2,
+                0.44,
+                0.6
+              ],
+              "support_precision": [
+                0.1,
+                0.2,
+                0.35
+              ],
+              "point": {
+                "truth_px": 65000,
+                "mean_mass_credit": 0.44,
+                "support_precision": 0.2
+              }
+            },
+            "assumption": "S and M fixed; net H19-5 support credit transfers to truth at the stated precision"
+          }
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-SPACINGgap10pct-20261024-51b7375e",
+        "axis": "SPACING",
+        "value": "tag=gap10pct; kernel-gap equalization: move 3765 parent dots (10%) low-exclusive->high-marginal R=3 credit within the same 5km block; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "Twice the re-spacing dose isolates whether kernel-gap headroom persists beyond the cheapest moves.",
+          "mechanism": "R0's 2.8 px thinning spacing nearly matches the R=3 px kernel. This variant removes 3,765 R0 dots (10% of the parent) with the lowest exclusive triangular-kernel credit and re-emits them as 3,765 highest-marginal-credit dots on the same off-catalogue H19-5 support, paired inside each 5 km block. Fixed count and exactly unchanged per-block counts isolate SPACING from MASS and CONCENTRATION. Exact support-credit ledger: lost 3735.6, gained 4018.4, net +282.8.",
+          "non_fault_confounder": "H19-5 also carries drainage lines, lithologic contacts, pluvial shorelines and cultural magnetic edges. Equalizing their 300 m coverage can manufacture visually continuous but geologically false traces; removing low-exclusive-credit dots can also break real short relay tips at strand ends.",
+          "predicted_live_change": "+0.001 DTI (MODEL; plausible -0.002 to +0.007; not a score; every point estimate is inside the |0.010| no-evidence band)",
+          "model_bracket": "exact fixed-count DTI model grid +0.000293 to +0.004639; point +0.000897; The measured net support credit is positive, but the transferred live effect is projected below the 0.010 no-evidence band.",
+          "falsifier": "Paired same-week receipt vs R0. A positive arm with \u0394<=-0.010 falsifies the kernel-gap mechanism; the 20% arm with \u0394>=+0.010 falsifies the projected saturation. Any |\u0394|<0.010 is no evidence. Comparing gap5/gap10/gap20 tests the dose sign, never a proxy score.",
+          "structural_geologist_note": "Review removed tips and added mid-strand cells at 1:24k on the basement/surficial geology. A win would mean new-fault truth is line-like and R0 was under-sampled in 300 m-kernel coverage; a loss would mean positional error or non-fault support, not that the structures are absent. Every move stays in its own 5 km block."
+        },
+        "diagnostics": {
+          "n_move": 3765,
+          "removed_dots": 3765,
+          "added_dots": 3765,
+          "retained_dots": 33889,
+          "symmetric_difference_px": 7530,
+          "mass_shifted_pct_of_r0": 9.998937695862326,
+          "pct_changed_symmetric": 19.99787539172465,
+          "block_px": 50,
+          "n_eligible_donors": 36043,
+          "n_eligible_pool_px": 62556,
+          "blocks_with_moves": 1513,
+          "max_moves_in_one_block": 9,
+          "move_share_p05": 0.0,
+          "move_share_median": 0.103448,
+          "move_share_p95": 0.166667,
+          "move_share_max": 0.2,
+          "lost_support_credit": 3735.5695,
+          "gained_support_credit": 4018.3835,
+          "net_support_credit": 282.814,
+          "mean_loss_per_removed": 0.992183,
+          "mean_gain_per_added": 1.0673,
+          "min_added_catalogue_distance_px": 3.0,
+          "support_credit_before": 76725.8906,
+          "support_credit_after": 77008.7031,
+          "block_density_cv_before": {
+            "5km": 0.901143,
+            "10km": 0.635265,
+            "15km": 0.510346
+          },
+          "block_density_cv_after": {
+            "5km": 0.901143,
+            "10km": 0.635265,
+            "15km": 0.510346
+          },
+          "nearest_neighbor_px_before": {
+            "min": 2.828427,
+            "p05": 2.828427,
+            "median": 3.0,
+            "p95": 7.211103
+          },
+          "nearest_neighbor_px_after": {
+            "min": 1.0,
+            "p05": 1.414214,
+            "median": 3.0,
+            "p95": 7.024874
+          },
+          "region_shares_before": {
+            "north": 0.733415,
+            "south": 0.266585,
+            "q_NW": 0.47878,
+            "q_NE": 0.254634,
+            "q_SW": 0.127344,
+            "q_SE": 0.139242
+          },
+          "region_shares_after": {
+            "north": 0.733255,
+            "south": 0.266745,
+            "q_NW": 0.478701,
+            "q_NE": 0.254555,
+            "q_SW": 0.127503,
+            "q_SE": 0.139242
+          },
+          "max_region_share_shift": 0.00016,
+          "anti_isolation": {
+            "block_px": 50,
+            "blocks_with_20plus_dots": 848,
+            "fraction_blocks_90pct_emptied": 0.0,
+            "largest_emptied_cluster_blocks": 0,
+            "removed_share_max": 0.2,
+            "passes_anti_isolation_gate": true
+          },
+          "prediction_model_bracket": {
+            "point": 0.000897,
+            "low": 0.000293,
+            "high": 0.004639,
+            "grid": {
+              "truth_px": [
+                20000,
+                65000,
+                100000
+              ],
+              "mean_mass_credit": [
+                0.2,
+                0.44,
+                0.6
+              ],
+              "support_precision": [
+                0.1,
+                0.2,
+                0.35
+              ],
+              "point": {
+                "truth_px": 65000,
+                "mean_mass_credit": 0.44,
+                "support_precision": 0.2
+              }
+            },
+            "assumption": "S and M fixed; net H19-5 support credit transfers to truth at the stated precision"
+          }
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-SPACINGgap20pct-20261024-7426cb1f",
+        "axis": "SPACING",
+        "value": "tag=gap20pct; kernel-gap equalization: move 7531 parent dots (20%) low-exclusive->high-marginal R=3 credit within the same 5km block; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "At a 20% move dose the fixed support exhausts its positive-gain gaps, so this arm is the saturation/sign control.",
+          "mechanism": "R0's 2.8 px thinning spacing nearly matches the R=3 px kernel. This variant removes 7,531 R0 dots (20% of the parent) with the lowest exclusive triangular-kernel credit and re-emits them as 7,531 highest-marginal-credit dots on the same off-catalogue H19-5 support, paired inside each 5 km block. Fixed count and exactly unchanged per-block counts isolate SPACING from MASS and CONCENTRATION. Exact support-credit ledger: lost 7853.9, gained 7615.0, net -238.9.",
+          "non_fault_confounder": "H19-5 also carries drainage lines, lithologic contacts, pluvial shorelines and cultural magnetic edges. Equalizing their 300 m coverage can manufacture visually continuous but geologically false traces; removing low-exclusive-credit dots can also break real short relay tips at strand ends.",
+          "predicted_live_change": "-0.001 DTI (MODEL; plausible -0.006 to +0.002; not a score; every point estimate is inside the |0.010| no-evidence band)",
+          "model_bracket": "exact fixed-count DTI model grid -0.003926 to -0.000248; point -0.000758; The measured net support credit is already negative at this dose, so this arm is a saturation/sign control.",
+          "falsifier": "Paired same-week receipt vs R0. A positive arm with \u0394<=-0.010 falsifies the kernel-gap mechanism; the 20% arm with \u0394>=+0.010 falsifies the projected saturation. Any |\u0394|<0.010 is no evidence. Comparing gap5/gap10/gap20 tests the dose sign, never a proxy score.",
+          "structural_geologist_note": "Review removed tips and added mid-strand cells at 1:24k on the basement/surficial geology. A win would mean new-fault truth is line-like and R0 was under-sampled in 300 m-kernel coverage; a loss would mean positional error or non-fault support, not that the structures are absent. Every move stays in its own 5 km block."
+        },
+        "diagnostics": {
+          "n_move": 7531,
+          "removed_dots": 7531,
+          "added_dots": 7531,
+          "retained_dots": 30123,
+          "symmetric_difference_px": 15062,
+          "mass_shifted_pct_of_r0": 20.000531152068838,
+          "pct_changed_symmetric": 40.001062304137676,
+          "block_px": 50,
+          "n_eligible_donors": 36043,
+          "n_eligible_pool_px": 62556,
+          "blocks_with_moves": 1618,
+          "max_moves_in_one_block": 18,
+          "move_share_p05": 0.0,
+          "move_share_median": 0.208333,
+          "move_share_p95": 0.25,
+          "move_share_max": 0.333333,
+          "lost_support_credit": 7853.9469,
+          "gained_support_credit": 7615.0222,
+          "net_support_credit": -238.9247,
+          "mean_loss_per_removed": 1.042882,
+          "mean_gain_per_added": 1.011157,
+          "min_added_catalogue_distance_px": 3.0,
+          "support_credit_before": 76725.8906,
+          "support_credit_after": 76486.9609,
+          "block_density_cv_before": {
+            "5km": 0.901143,
+            "10km": 0.635265,
+            "15km": 0.510346
+          },
+          "block_density_cv_after": {
+            "5km": 0.901143,
+            "10km": 0.635265,
+            "15km": 0.510346
+          },
+          "nearest_neighbor_px_before": {
+            "min": 2.828427,
+            "p05": 2.828427,
+            "median": 3.0,
+            "p95": 7.211103
+          },
+          "nearest_neighbor_px_after": {
+            "min": 1.0,
+            "p05": 1.0,
+            "median": 2.828427,
+            "p95": 6.324555
+          },
+          "region_shares_before": {
+            "north": 0.733415,
+            "south": 0.266585,
+            "q_NW": 0.47878,
+            "q_NE": 0.254634,
+            "q_SW": 0.127344,
+            "q_SE": 0.139242
+          },
+          "region_shares_after": {
+            "north": 0.733521,
+            "south": 0.266479,
+            "q_NW": 0.478887,
+            "q_NE": 0.254634,
+            "q_SW": 0.127158,
+            "q_SE": 0.139321
+          },
+          "max_region_share_shift": 0.000186,
+          "anti_isolation": {
+            "block_px": 50,
+            "blocks_with_20plus_dots": 848,
+            "fraction_blocks_90pct_emptied": 0.0,
+            "largest_emptied_cluster_blocks": 0,
+            "removed_share_max": 0.333333,
+            "passes_anti_isolation_gate": true
+          },
+          "prediction_model_bracket": {
+            "point": -0.000758,
+            "low": -0.003926,
+            "high": -0.000248,
+            "grid": {
+              "truth_px": [
+                20000,
+                65000,
+                100000
+              ],
+              "mean_mass_credit": [
+                0.2,
+                0.44,
+                0.6
+              ],
+              "support_precision": [
+                0.1,
+                0.2,
+                0.35
+              ],
+              "point": {
+                "truth_px": 65000,
+                "mean_mass_credit": 0.44,
+                "support_precision": 0.2
+              }
+            },
+            "assumption": "S and M fixed; net H19-5 support credit transfers to truth at the stated precision"
+          }
+        }
+      }
+    ]
   }
 }
