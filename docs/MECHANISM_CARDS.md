@@ -197,7 +197,122 @@ What survives for the entity: the measurement that **any** global-FIFO dose edit
 - **Predicted live change (`MODEL`):** **-0.004 DTI** (plausible interval `-0.015` to `+0.012`; not a score).
 - **Falsifier:** Uploaded only if down-relief (`r2p12p5pct` or `r2b10pct`) yields `Δ <= -0.010`; if `p2r15pct` also yields `Δ <= -0.010`, monotonic relief reallocation is falsified in both directions.
 
-## Session 2026-10-23e: `AXIS=CONCENTRATION`, strain-rate prior (2026-10-23, `evidence/concentration_build_receipt.json`)
+
+---
+
+## Session 2026-10-23f — AXIS = MASS, direction = ADD (region-even block budget, placement contrast)
+
+**Shared hypothesis (structural geologist's version).** R0's field was thinned to 37,654 unit-mass dots at the
+lineage's own 2.8 px spacing and then collared at 2 px from mapped traces. If that thinning went past the mass
+optimum, then *adding* unit dots back onto the same corroborated ridge network — following the parent's own regional
+mix, never inside the 3 px collar — should recover new-fault credit that is worth more than the 0.2 each dot costs in
+the denominator. The opposite is equally tellable: if the ridge network is saturated, the added dots earn almost
+nothing and the file loses by exactly the mass penalty.
+
+**Mechanism (why the sign is knowable at all).** With `DTI = T/(0.2T + 0.2(S−M) + 0.8|G|)`, one added dot moves the
+score by `dDTI = [E(D − 0.2T) − 0.2T(1 − c)]/D²`: it pays iff its exclusive truth credit `E` exceeds ≈ 0.056 at the
+claimed 0.2778. `T` is a **max** over dots, so an addition can never remove credit — the failure mode is bounded by
+the mass penalty alone. That asymmetry is the reason an ADD rung is worth a slot: every deletion rung risks a
+credit loss as well as a mass saving.
+
+**Placement (the only things that differ between the two live files).** Eligibility: H19-5 support, in footprint, not
+catalogue, Euclidean `d_cat ≥ 3.0 px`, unoccupied. Quota per 5 km block is proportional to that block's own R0 count,
+capped at +50 %, zero where R0 has no dots. `blocknext` takes the parent's own FIFO-ranked suppressed cells inside
+each quota; `gapmax` takes the cells with the largest remaining `R = 3 px` kernel credit (global coverage updated after
+every pick, so neighbouring blocks see each other). Nothing else changes: 0 dots removed, no moves, no collar edit.
+
+| Variant | Dots | Change | Mean marginal support credit / dot | Predicted (MODEL) | Non-fault confounder | Falsifier |
+|---|---|---|---|---|---|---|
+| ~~`…add10pctGapmax-…98408334`~~ **WITHDRAWN** | 41,419 | +3,765 (10.0 %) | 1.013 | *withdrawn (IR90-24)*: same eligible pool, ranking and quotas as the merged `MASSadd10pctq50`, so it is one experiment expressed twice. | — | — |
+| `…add10pctBlocknext-…89d16c16` | 41,419 | +3,765 (10.0 %) | 0.486 | **+0.0044** (+0.0003 … +0.0107) | Same, plus: the FIFO-ranked suppressed cells sit 1–2.8 px from existing dots, so most of their kernel is already covered — this arm tests the brief's literal recipe, not the best placement. | `Δ ≤ −0.010` while gapmax is positive would mean the "next-ranked" recipe is actively harmful and should be dropped from the brief's defaults. |
+| `…add20pctBlocknext-…260d987e` | 45,185 | +7,531 (20.0 %) | 0.464 | **+0.0084** (+0.0005 … +0.0205) | Same; the deeper dose also pushes into the second ring around each existing dot, where kernel room is thinner. | A null here while the 10 % arm is ≥ +0.010 would mean the add gradient saturates before +20 %. |
+
+**Prediction decomposition.** The point prediction uses support precision 0.20 (the value implied by
+`T ≈ 16.6 k` over 121,131 support px at `mean k ≈ 0.7`) and the point parent fit `(G, M/S) = (65,000, 0.44)`. The
+bracket is the min/max over `G ∈ {60,988, 65,000, 90,000} × M/S ∈ {0.20, 0.44, 0.60} × precision ∈ {0.10, 0.20, 0.35}`;
+it spans zero for both blocknext arms and stays positive for gapmax. The whole spread is worth ~±0.010 — the same
+size as the session's no-evidence band, which is stated openly rather than hidden.
+
+**Region-evenness evidence (Hard Constraint #5).** 5 km blocks: p05 / median / p95 addition share 0.087 / 0.100 / 0.115
+at the 10 % dose, max 0.12; 0 of 848 blocks holding ≥ 20 R0 dots receive nothing; 1,499 blocks receive additions;
+added centroid within 30 px of the parent's. All six files: format gate PASS, zero catalogue mass, min added
+`d_cat = 3.0 px` exactly, 0 added dots below 3 px, inherited R0 collar unchanged (IR90-18).
+
+**Report-only.** SGMC off-catalogue fault coverage rises +39.2 / +73.1 / +53.0 credit units (R0 baseline in
+`evidence/mass_add_receipt.json`) — consistent with the additions landing on independently mapped structure, but SGMC
+over-represents exposed bedrock and standalone SGMC scored 0.0512 CLAIM. Catalogue hide-and-recover is analytically
+zero for this axis (every addition is ≥ 3 px away from every catalogue pixel with a 3 px kernel): a blind spot, not a
+pass. No PROXY ranks these files.
+
+---
+
+## Session 2026-10-23 (continuity): `AXIS=MASS`, value family = continuity-aware shadow drop (`evidence/mass_continuity_receipt.json`)
+
+**Shared design (written for a structural geologist):** Identical ranking, doses and parent as the recorded shadow ladder — ascending exclusive 300 m kernel credit, deletion-only strict subsets of R0 at exactly 7,531 / 11,296 / 15,062 removals — plus one eligibility rule. In the graph linking R0 dots ≤ 6 px apart (kernel diameter: linked dots' 300 m disks touch or overlap), the 857 components with ≥ 10 dots are treated as ≥ 1 km strands. A strand dot may not be removed while it is an articulation point of its strand (removal would split the trace) nor once its strand is down to 10 dots. Every strand therefore survives as one kernel-continuous trace, where unconstrained shadow-40 keeps 0/857 strands whole at 6 px (0/838 at the legacy 5 px instrument) and random-40 keeps 136 at 5 px. The measured price is small: +2.7% / +5.8% / +7.4% exclusive credit destroyed vs shadow at matched count, and shadowcont-40 (E = 99,483) still destroys less credit than the credit-blind random-40 control (E = 102,441). Right instrument, honest limit: at 5 px linking the 40% arm still reads only 70 strands ≥ 10 dots, because protection permits 5–6 px along-strand gaps that preserve kernel coverage but break the tighter 5 px chain. Axis choice: fresh sibling audit (IR90-26; convergent in-repo measurement IR90-25) found all seven axes built with zero receipts and every brief-literal CONCENTRATION-up arm ≤ 0 on GEMSDOE86's SGMC MODEL; this is the unbuilt `CONTINUITY_AWARE_DOSE` rung this repo's `SLOT_PLAN.md` proposed.
+
+### 1. `h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba` (drop 20% = 7,531 dots → 30,123; 20.0005% changed)
+- **Hypothesis:** At the ladder's 20% dose, strand protection is nearly free (+2.7% credit) and keeps every ≥ 1 km trace kernel-continuous (6 px survival 857/857 vs 234/857 unconstrained; 5 px strands ≥10: 196 vs R0's 838, mean NN 4.49 px), so live DTI should match the shadow arm's mass saving without its structural cost.
+- **Mechanism:** DTI charges 0.2 per dot but credits T once per truth pixel; R0 samples strands every ~2.8–3 px where ~5–6 px sampling still covers line-like truth (the per-dot bar falls for lines, brief §2). Protection thins strand interiors toward that spacing instead of letting the greedy sever strands at their most shadowed — densest — stretches.
+- **Non-fault process that could mimic it:** ≥ 1 km unfaulted corridors — dikes, hogbacks, drainage divides, Lake Lahontan shoreline berms — are protected with the same force as faults; deleted short fragments may be genuine < 1 km relay tips and step-over splays.
+- **Predicted live change (`MODEL`):** **+0.009 DTI** (point +0.0088; formula bracket +0.001 to +0.048; not a score). The credit model alone ranks it a hair below shadow-20 (+0.009); the continuity term is the unquantified upside.
+- **Falsifier:** Paired receipts, |Δ| < 0.010 = no evidence: Δ vs R0 ≤ −0.010 falsifies the dose direction; shadowcont−shadow ≤ −0.010 at matched count abandons protection; ≥ +0.010 adopts it as the ladder ranking.
+
+### 2. `h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee` (drop 30% = 11,296 dots → 26,358; 29.9995% changed)
+- **Hypothesis:** The protected dose-response keeps rising to 30% (+5.8% credit price; 6 px survival 857/857 vs 26/857 unconstrained; 5 px strands ≥10: 105, mean NN 5.16 px).
+- **Mechanism:** As above; at this dose the unconstrained greedy has already fragmented 97% of strands at 6 px, so the pair isolates continuity at mid-dose.
+- **Non-fault process that could mimic it:** As above, stronger: strand interiors approach the 10-dot floor on short strands, so protection increasingly preserves whatever geometry R0 happened to draw, fault or not.
+- **Predicted live change (`MODEL`):** **+0.011 DTI** (point +0.0113; bracket −0.001 to +0.071; not a score), vs shadow-30's recorded +0.012.
+- **Falsifier:** As above, read against shadow-30 and R0 at matched count.
+
+### 3. `h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121` (drop 40% = 15,062 dots → 22,592; 40.0011% changed)
+- **Hypothesis:** At the dose where the strand-destruction finding was measured, protection is the difference between a point cloud (shadow-40: 0 strands whole, mean NN 6.19 px, 100% of dots beyond kernel reach of a neighbour) and a thinned trace set (857/857 whole at 6 px, 70 at 5 px, mean NN 5.67 px) at only +7.4% credit — still less credit destroyed than random-40, which keeps just 136 five-px strands.
+- **Mechanism:** As above; this is the three-way corner (shadow = min credit / no continuity; random = mid credit / accidental continuity; shadowcont = near-min credit / full continuity) that lets one week of receipts order credit vs continuity vs dose.
+- **Non-fault process that could mimic it:** As above; additionally, if test truth is effectively point-like at 100 m sampling (isolated pixels rather than lines), continuity buys nothing and the +7.4% credit penalty is pure loss.
+- **Predicted live change (`MODEL`):** **+0.013 DTI** (point +0.0130; bracket −0.003 to +0.092; not a score), vs shadow-40 +0.014 / random-40 +0.013 recorded.
+- **Falsifier:** As above, plus: if random-40 beats both ranked arms by ≥ 0.010, every exclusive-credit ranking in this repo is wrong, not just this one.
+
+Report-only `PROXY`s for this session (never gates, never used to rank; `evidence/mass_continuity_receipt.json`): catalogue hide-and-recover (38 withheld 20×20 km blocks, n = 13,920 positives, R0 0.0072) Δ = −0.0005 / −0.0010 / −0.0017 with 95% CIs excluding 0, and off-catalogue SGMC (n = 62,122, R0 0.0954) Δ = −0.0111 / −0.0193 / −0.0276 — both dose-monotone negative exactly as expected mechanically for deletion-only subsets scored against fixed positive sets (fewer dots near positives; R0 was pruned against the full catalogue). Leakage canary: not applicable (no feature band read; cf. RELIEF session's 19-band max symmetric AUC 0.5700 on identical inputs).
+## Session 2026-10-23 (final): AXIS = PRUNE, A5 along-strike ladder, fixed-count refill
+
+Parent R0 is exact (`c55bafc4…` zeros / `baeae321…` NaN). The catalogue mask is pixel-exact and nearby new-fault pixels remain scoreable (organizer clarification: https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516); newly mapped geometry of existing systems is also target geometry (https://community.drivendata.org/t/where-do-you-draw-the-line/11536). GeoDAWN Area 2's 400 m line spacing motivates a positional-uncertainty test, not a claim that every gradient is a fault (https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7).
+
+All three files hold **37,654 dots**, refill from H19-5 with the recovered FIFO-BFS order, preserve R0's `d_cat>2 px` baseline, and emit zero catalogue mass. A5 is fixed across strike; only L changes. Predictions were frozen before REPORT ONLY proxies. These are BUILT, unscored experiments; 0.2778 is CLAIM and every delta below is MODEL.
+
+### `h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6`
+
+- **Edit / parent diff:** A=5 px, L=1.5 px; remove 3,130 and refill 3,130; symmetric difference 6,260 px = **16.6251%** of R0. NaN SHA-256 `9486c7e6e3a1e6cea7c483c4d23f5746f43311432b475747ffba86e624272ad1`; zeros `0daafb5bf2dfc4183409cd69717293eaa7bb55ddbbe91fe4cd10d4a0671608d8`.
+- **Hypothesis:** The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 1.5 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.
+- **Mechanism:** The ellipse removes 3,130 R0 dots where (along/1.5)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.
+- **Non-fault mimic / confounder:** A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.
+- **Predicted live sign and size:** +0.004 DTI (MODEL; plausible -0.008 to +0.012; not a score) Decomposition: MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 98.3% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.
+- **Falsifier:** A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L1.5 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.
+- **Structural review:** Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.
+
+### `h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce`
+
+- **Edit / parent diff:** A=5 px, L=1 px; remove 2,386 and refill 2,386; symmetric difference 4,772 px = **12.6733%** of R0. NaN SHA-256 `cd2c60ce045a914b3421538333a7c5beb3585cf12dbc4aba05d6d42c62fc4cdb`; zeros `fcc218c8e78fc391a863d01041df48754e94e55fe72eaa682e1b782ebb3590dc`.
+- **Hypothesis:** The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 1 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.
+- **Mechanism:** The ellipse removes 2,386 R0 dots where (along/1)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.
+- **Non-fault mimic / confounder:** A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.
+- **Predicted live sign and size:** +0.005 DTI (MODEL; plausible -0.008 to +0.014; not a score) Decomposition: MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 98.0% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.
+- **Falsifier:** A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L1 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.
+- **Structural review:** Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.
+
+### `h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771`
+
+- **Edit / parent diff:** A=5 px, L=0.5 px; remove 1,333 and refill 1,333; symmetric difference 2,666 px = **7.0803%** of R0. NaN SHA-256 `91ff37719b126c9253b1bae0c6c6eb127710c04910a47ab6dd3b93dd89dffa6b`; zeros `d2741f40650fd849c1250c57d9d20fe5fab8166e39f64d421ab220f8ab9013c6`.
+- **Hypothesis:** The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 0.5 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.
+- **Mechanism:** The ellipse removes 1,333 R0 dots where (along/0.5)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.
+- **Non-fault mimic / confounder:** A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.
+- **Predicted live sign and size:** +0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score) Decomposition: MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 97.9% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.
+- **Falsifier:** A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L0.5 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.
+- **Structural review:** Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.
+
+**Report-only diagnostics:** leakage canary max symmetric AUC 0.5695. Catalogue hide-and-recover (38 withheld 20 km blocks; n=13,920 positives) and off-catalogue SGMC (n=62,122) have 95% block-bootstrap CIs in `evidence/aniso_along_refill_receipt.json`. Both are PROXY, never gates or scores; the catalogue control is especially blind to collar edits because known pixels are live-masked.
+
+**Compliance stop:** SNAP was withdrawn before raster emission when 30 inherited dots proved to have no >=3 px destination within 2 px (IR90-28). Three delete-only PRUNE probes were then withdrawn before submission because the brief requires fixed-count refill (IR90-29); they are not alternatives to the cards above.
+
+## Session 2026-10-23 CONC-strain (arena/388fea70): `AXIS=CONCENTRATION`, strain-rate prior (2026-10-23, `evidence/concentration_build_receipt.json`)
 
 Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots, isotropic >2 px catalogue collar; 0.2778 is a **CLAIM** (no
 portal receipt). All three files are **BUILT**, format-gated and unscored; predictions are **MODEL**. Count is held
@@ -224,7 +339,6 @@ blocks, complementary top/bottom-50% strain pools; greedy R=3 px marginal-credit
 ### 3. `h33-h33-2-b2-CONCstrainAway10-20261023-bd514054` (SIGN CONTROL: Move 10% = 3,765 dots: high-strain → low-strain blocks)
 - **Hypothesis:** If strain rate genuinely marks new-fault ground, moving 10% of mass OUT of the highest-strain blocks INTO the lowest-strain blocks must lose; a gain here falsifies the strain prior (or indicates strain maxima are non-tectonic noise, or that undisclosed labels sit in aseismic blocks).
 - **Mechanism:** Identical placement rule and dose as `strain10`, donor/recipient strata reversed — same ~20% symmetric diff and similar 15 km CV (`0.558` vs `0.568`), so the comparison isolates strain DIRECTION from raw concentration. Density–strain correlation `+0.11 -> -0.04`. Regional shift max 0.051; anti-isolation gate passed.
-- **Non-fault process that could mimic it:** If undisclosed test labels were compiled largely from aseismic historic bedrock quadrangle maps, an away-from-strain move could coincidentally gain — a genuine confound, which is exactly why the sign control is slotted (SGMC control already favours the away arm, IR90-23).
+- **Non-fault process that could mimic it:** If undisclosed test labels were compiled largely from aseismic historic bedrock quadrangle maps, an away-from-strain move could coincidentally gain — a genuine confound, which is exactly why the sign control is slotted (SGMC control already favours the away arm, IR90-32).
 - **Predicted live change (`MODEL`):** **-0.004 DTI** (plausible interval `-0.016` to `+0.008`; not a score).
 - **Falsifier:** `strainAway10 >= strain10` on paired live receipts falsifies the strain mechanism; `strainAway10 <= -0.010` confirms it. `|Δ| < 0.010` is no evidence.
-

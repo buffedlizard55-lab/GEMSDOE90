@@ -140,6 +140,159 @@
       }
     ]
   },
+  "mass_add": {
+    "session": "2026-10-23e",
+    "axis": "MASS",
+    "direction": "ADD",
+    "parent": "h33-h33-2-b2",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16",
+        "tag": "add10pctBlocknext",
+        "value": "tag=add10pctBlocknext; add 3765 dots (+9.999% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "R0 is under-massed, not over-massed, at the margin: 3765 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+          "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the parent's own thinning rank (the cells its d2.8 recipe suppressed, earliest visit first) inside a per-block quota.",
+          "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+          "predicted_live_change": "+0.0044 DTI point (MODEL; bracket +0.0003 to +0.0107; not a score)",
+          "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+          "structural_geologist_note": "Additions are 10.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.087, max 0.120). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e",
+        "tag": "add20pctBlocknext",
+        "value": "tag=add20pctBlocknext; add 7531 dots (+20% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "R0 is under-massed, not over-massed, at the margin: 7531 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+          "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the parent's own thinning rank (the cells its d2.8 recipe suppressed, earliest visit first) inside a per-block quota.",
+          "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+          "predicted_live_change": "+0.0084 DTI point (MODEL; bracket +0.0005 to +0.0205; not a score)",
+          "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+          "structural_geologist_note": "Additions are 20.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.185, max 0.217). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-MASSadd10pctGapmax-20261023-98408334",
+        "tag": "add10pctGapmax",
+        "value": "tag=add10pctGapmax; add 3765 dots (+9.999% of R0) on H19-5; max marginal R=3px kernel credit per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "R0 is under-massed, not over-massed, at the margin: 3765 additional unit dots placed on the parent's own H19-5 evidence, following the parent's regional distribution, should add more truth credit T than the 0.2 mass each dot costs, raising DTI.",
+          "mechanism": "DTI = T/(0.2T + 0.2(S-M) + 0.8|G|). For one added unit dot dDTI = [E(D-0.2T) - 0.2T(1-c)]/D^2, so an addition pays iff its exclusive truth credit E exceeds ~0.056 (0.2*DTI at the claimed 0.2778). Additions can never reduce T (T is a max over dots), so unlike a deletion the failure mode is bounded by the mass penalty alone. Placement here is the cells with the largest remaining R=3 px kernel credit inside a per-block quota.",
+          "non_fault_confounder": "The H19-5 field is a topographic/structural-ridge response, not a fault map: ridges from lithologic contacts, erosion-resistant beds, drainage margins and shoreline features carry the same signature, and the parent lineage's 0.2778 CLAIM cannot separate them. If the field is < 11% precise for new faults, the mass penalty dominates and the addition loses; if the belt is largely non-fault ridge, R0 is already over-placed there and the gapmax arm simply re-covers the same ridges more evenly.",
+          "predicted_live_change": "+0.0107 DTI point (MODEL; bracket +0.0026 to +0.0226; not a score)",
+          "falsifier": "Paired same-week live receipt against R0: Delta <= -0.010 falsifies the under-massed hypothesis at this dose and supports the deletion ladder; |Delta| < 0.010 is no evidence under the session rule. The decisive contrast is gapmax10 vs blocknext10 at identical dose and geography: gapmax >= +0.010 with blocknext null means placement (kernel room) matters; both null means the support is saturated.",
+          "structural_geologist_note": "Additions are 10.0% of the parent, all on the corroborated H19-5 ridge support, all >= 3 px from mapped USGS/INGENIOUS traces, quota-proportional to the parent's own 5 km block counts (p05 share 0.087, max 0.120). Read the rendered file as a denser sampling of the same ridge network, not as a new structural interpretation."
+        }
+      }
+    ]
+  },
+  "aniso_along_refill": {
+    "schema_version": 1,
+    "parent": "h33-h33-2-b2",
+    "axis": "PRUNE",
+    "value_family": "A5 fixed across strike; L=1.5/1.0/0.5 along strike; fixed-count H19-5 FIFO refill",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6",
+        "axis": "PRUNE",
+        "value": "tag=anisoA5L1p5; collar across<=5px, along<=1.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+        "mechanism_card": {
+          "hypothesis": "The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 1.5 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.",
+          "mechanism": "The ellipse removes 3,130 R0 dots where (along/1.5)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.",
+          "non_fault_confounder": "A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.",
+          "predicted_live_change": "+0.004 DTI (MODEL; plausible -0.008 to +0.012; not a score)",
+          "prediction_decomposition": "MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 98.3% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.",
+          "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L1.5 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.",
+          "structural_geologist_note": "Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.",
+          "predicted_short_for_form": "+0.004"
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce",
+        "axis": "PRUNE",
+        "value": "tag=anisoA5L1; collar across<=5px, along<=1px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+        "mechanism_card": {
+          "hypothesis": "The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 1 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.",
+          "mechanism": "The ellipse removes 2,386 R0 dots where (along/1)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.",
+          "non_fault_confounder": "A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.",
+          "predicted_live_change": "+0.005 DTI (MODEL; plausible -0.008 to +0.014; not a score)",
+          "prediction_decomposition": "MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 98.0% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.",
+          "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L1 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.",
+          "structural_geologist_note": "Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.",
+          "predicted_short_for_form": "+0.005"
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771",
+        "axis": "PRUNE",
+        "value": "tag=anisoA5L0p5; collar across<=5px, along<=0.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+        "mechanism_card": {
+          "hypothesis": "The recorded A5/L2 collar prunes too far along mapped strike. Narrowing only the along radius to 0.5 px should preserve genuine unmapped continuations and avoid dilutive refill while retaining the across-strike flank cleanup.",
+          "mechanism": "The ellipse removes 1,333 R0 dots where (along/0.5)^2 + (across/5)^2 <= 1 at coherent catalogue traces, then restores exactly 37,654 dots from outside-collar H19-5 support with d_cat>2 px (R0's baseline) in the recovered FIFO-BFS order. Relative to A5/L2, fewer along-strike dots are removed and fewer distant refill dots are needed. Catalogue pixels remain exactly zero mass.",
+          "non_fault_confounder": "A mapped-tip continuation can be a real fault, but an apparently continuous magnetic/topographic lineament can also be a lithologic contact, drainage, shoreline, road, or pipeline. Preserving more along-strike dots can therefore retain false mass; the FIFO refill can also prefer unrelated geographic components rather than fault likelihood.",
+          "predicted_live_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+          "prediction_decomposition": "MODEL: across-strike collar gain approximately held from A5/L2; along-strike continuation loss and refill dilution both decrease. 97.9% of this file's refills sit within 3 px of a retained dot, so the remaining refill still offsets part of the collar gain.",
+          "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies the A5/L0.5 policy; |delta| < 0.010 is no evidence. If A5/L2 outscores the narrower-L files by >=0.010, the hypothesis that L2 over-prunes real continuations is falsified.",
+          "structural_geologist_note": "Inspect retained mapped-tip projections and step-overs, not just across-strike flanks. The collar is a positional-uncertainty experiment, not a geological claim that continuations inside the ellipse are absent.",
+          "predicted_short_for_form": "+0.003"
+        }
+      }
+    ]
+  },
+  "aniso_norefill": {
+    "schema_version": 1,
+    "parent": "h33-h33-2-b2",
+    "axis": "PRUNE",
+    "value_family": "matched strike-aligned A4/A5/A6, L=2 collar; delete only, no refill",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA4L2nr-20261023-9471ac67",
+        "axis": "PRUNE",
+        "value": "tag=anisoA4L2-norefill; collar across<=4px, along<=2px (strike-aligned); strict R0 subset; no refill",
+        "mechanism_card": {
+          "hypothesis": "If the A4/L2 strike-aligned collar mostly removes non-fault flank mass, deleting its 2,632 dots without adding FIFO-refill penalty should raise DTI. The matched refill file provides the controlled comparison.",
+          "mechanism": "Known USGS/INGENIOUS pixels are masked pixel-exactly, while adjacent new-fault pixels remain scoreable. The ellipse removes across-strike flank dots but preserves coherent along-strike continuations. Unlike the matched parent experiment, S (emitted mass) falls to 35,022; no distant H19-5 pixels are introduced, so the measured refill dilution cannot offset the collar gain.",
+          "non_fault_confounder": "Across-strike dots can be real parallel strands, relay splays, step-overs, or offset surface traces of dipping faults. Conversely, unfaulted lithologic contacts, drainage margins, shorelines, and cultural lineaments can occupy the retained off-collar population. Catalogue-strike estimates can also rotate near intersections and terminations.",
+          "predicted_live_change": "+0.005 DTI (MODEL; plausible -0.005 to +0.012; not a score)",
+          "prediction_decomposition": "matched collar term +0.004 to +0.006; refill term removed (prior estimate -0.001 to -0.003); net +0.005",
+          "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies a beneficial A4/L2 delete-only collar; |delta| < 0.010 is no evidence. If the matched refill file outscores this file by >=0.010, the refill-dilution mechanism is falsified even if both beat or lose to R0.",
+          "structural_geologist_note": "Review removed across-strike segments for genuine parallel fault strands and retained mapped-tip continuations for structural consistency. This is not a claim that faults stop at the catalogue collar; it is a test of whether their emitted unit-mass dots earn enough new-fault credit to pay their metric penalty.",
+          "predicted_short_for_form": "+0.005"
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA5L2nr-20261023-dd7761e8",
+        "axis": "PRUNE",
+        "value": "tag=anisoA5L2-norefill; collar across<=5px, along<=2px (strike-aligned); strict R0 subset; no refill",
+        "mechanism_card": {
+          "hypothesis": "If the A5/L2 strike-aligned collar mostly removes non-fault flank mass, deleting its 3,663 dots without adding FIFO-refill penalty should raise DTI. The matched refill file provides the controlled comparison.",
+          "mechanism": "Known USGS/INGENIOUS pixels are masked pixel-exactly, while adjacent new-fault pixels remain scoreable. The ellipse removes across-strike flank dots but preserves coherent along-strike continuations. Unlike the matched parent experiment, S (emitted mass) falls to 33,991; no distant H19-5 pixels are introduced, so the measured refill dilution cannot offset the collar gain.",
+          "non_fault_confounder": "Across-strike dots can be real parallel strands, relay splays, step-overs, or offset surface traces of dipping faults. Conversely, unfaulted lithologic contacts, drainage margins, shorelines, and cultural lineaments can occupy the retained off-collar population. Catalogue-strike estimates can also rotate near intersections and terminations.",
+          "predicted_live_change": "+0.006 DTI (MODEL; plausible -0.006 to +0.014; not a score)",
+          "prediction_decomposition": "matched collar term +0.005 to +0.007; refill term removed (prior estimate -0.002 to -0.004); net +0.006",
+          "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies a beneficial A5/L2 delete-only collar; |delta| < 0.010 is no evidence. If the matched refill file outscores this file by >=0.010, the refill-dilution mechanism is falsified even if both beat or lose to R0.",
+          "structural_geologist_note": "Review removed across-strike segments for genuine parallel fault strands and retained mapped-tip continuations for structural consistency. This is not a claim that faults stop at the catalogue collar; it is a test of whether their emitted unit-mass dots earn enough new-fault credit to pay their metric penalty.",
+          "predicted_short_for_form": "+0.006"
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-PRUNEanisoA6L2nr-20261023-d992f6f6",
+        "axis": "PRUNE",
+        "value": "tag=anisoA6L2-norefill; collar across<=6px, along<=2px (strike-aligned); strict R0 subset; no refill",
+        "mechanism_card": {
+          "hypothesis": "If the A6/L2 strike-aligned collar mostly removes non-fault flank mass, deleting its 4,625 dots without adding FIFO-refill penalty should raise DTI. The matched refill file provides the controlled comparison.",
+          "mechanism": "Known USGS/INGENIOUS pixels are masked pixel-exactly, while adjacent new-fault pixels remain scoreable. The ellipse removes across-strike flank dots but preserves coherent along-strike continuations. Unlike the matched parent experiment, S (emitted mass) falls to 33,029; no distant H19-5 pixels are introduced, so the measured refill dilution cannot offset the collar gain.",
+          "non_fault_confounder": "Across-strike dots can be real parallel strands, relay splays, step-overs, or offset surface traces of dipping faults. Conversely, unfaulted lithologic contacts, drainage margins, shorelines, and cultural lineaments can occupy the retained off-collar population. Catalogue-strike estimates can also rotate near intersections and terminations.",
+          "predicted_live_change": "+0.003 DTI (MODEL; plausible -0.010 to +0.012; not a score)",
+          "prediction_decomposition": "matched collar term +0.006 to +0.008, less genuine adjacent-continuation loss; refill term removed; net +0.003",
+          "falsifier": "A paired live receipt against R0 with delta <= -0.010 falsifies a beneficial A6/L2 delete-only collar; |delta| < 0.010 is no evidence. If the matched refill file outscores this file by >=0.010, the refill-dilution mechanism is falsified even if both beat or lose to R0.",
+          "structural_geologist_note": "Review removed across-strike segments for genuine parallel fault strands and retained mapped-tip continuations for structural consistency. This is not a claim that faults stop at the catalogue collar; it is a test of whether their emitted unit-mass dots earn enough new-fault credit to pay their metric penalty.",
+          "predicted_short_for_form": "+0.003"
+        }
+      }
+    ]
+  },
   "concentration": {
     "axis": "CONCENTRATION",
     "session": "2026-10-23e (GEMSDOE90)",

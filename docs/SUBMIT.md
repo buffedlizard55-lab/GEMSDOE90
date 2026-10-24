@@ -1,4 +1,4 @@
-# Human submission packet — 2026-10-23 sessions (CONCENTRATION strain prior + RELIEF + MASS ladder + both PRUNE collars)
+# Human submission packet — 2026-10-23 sessions (MASS ladder incl. high doses + both PRUNE collars)
 
 **The agent does not submit and cannot see the leaderboard.** Every GeoTIFF below is local and Git-ignored on
 purpose: this repository is public and competition rasters must not be committed or released
@@ -31,6 +31,22 @@ catalogue mass. **These three rasters are not present in this sandbox** (they we
 `scripts/restore_data.py`, and confirm the SHA-256 against `evidence/mass_build_receipt.json` before uploading. SHA-256, checks and parent-diff statistics: `evidence/mass_build_receipt.json`; re-run with
 `.venv/bin/python scripts/build_mass_shadow.py --verify`. These files inherit R0's 2.236 px collar exactly
 (IR90-07): a MASS-only edit must not also move the collar.
+
+## 1c. MASS add-direction infill (session 2026-10-23e, this branch)
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin | Form note (< 140 chars) |
+|---|---|---|---|
+| +5 % → 39,537 dots | `releases/h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c.tif` | `…-c4e6144c-zeros.tif` | `h33-h33-2-b2; MASS add 1883d (5%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.008 DTI MODEL` |
+| +10 % → 41,419 dots | `releases/h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de.tif` | `…-5edc84de-zeros.tif` | `h33-h33-2-b2; MASS add 3765d (10%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.014 DTI MODEL` |
+| +20 % → 45,185 dots | `releases/h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4.tif` | `…-f94efff4-zeros.tif` | `h33-h33-2-b2; MASS add 7531d (20%) kernel-mid-strand infill, 50px-block even quotas, d_cat>=3px; pred +0.022 DTI MODEL` |
+
+Every parent dot is retained; no dot is moved; all values are 1.0; the 1,883 / 3,765 / 7,531 additions sit on
+H19-5 support, are **>= 3 px** from the catalogue (median 2.3 px from an existing dot: this is mid-strand infill,
+not reach into new ground), and are apportioned over 5 km blocks in proportion to the parent's own dot counts.
+Zero catalogue mass. Rebuild with `.venv/bin/python scripts/build_mass_infill.py --build` after
+`scripts/restore_data.py`; check with `--verify` (re-emits byte-identically). Receipt and gates:
+`evidence/mass_infill_receipt.json`. Note these are **supersets** of R0, so they inherit R0's 2.236 px floor on
+untouched dots (IR90-21) and they are the only candidates in this repo that add mass.
 
 ## 1b. MASS high-dose arms + credit-blind control (session 2026-10-23c)
 
@@ -79,31 +95,28 @@ not the first choice for a slot.
 
 Count held at **37,654 unit-mass dots** on `H19-5`; zero catalogue mass; **100% of newly added dots enforce `d_cat >= 3.0 px` strictly** (untouched R0 dots inherit R0's `2.236 px` floor without confounding `RELIEF` with `PRUNE`; IR90-18). Full hashes, parent-diff stats, and report-only `PROXY` diagnostics: `evidence/relief_build_receipt.json`. Re-emit and verify via `.venv/bin/python scripts/restore_releases.py && .venv/bin/python scripts/build_relief_variants.py --verify`.
 
-## 5. Strain-prior CONCENTRATION (`AXIS=CONCENTRATION`, session 2026-10-23e — NEW)
+## 5a. Continuity-aware MASS drops (`AXIS=MASS`, session 2026-10-23 continuity)
 
-Fixed-count (37,654) reallocation of R0's mass across **5 km blocks** ranked by a LABEL-AGNOSTIC
-geodetic strain-rate invariant (band 4 `geod_2ndinv` of the pinned `training_features.tif`): near-orthogonal
-to R0 density (rank r=+0.11), relief-neutral (r=−0.046), no test label/score used. Complementary top/bottom-50%
-strain pools; greedy R=3 px marginal-credit drop/add; **100% of added dots enforce d_cat ≥ 3.0 px** (untouched R0
-dots inherit R0's 2.236 px floor, IR90-07/14/18); zero catalogue mass. `strainAway10` is a matched-dose SIGN
-CONTROL (same ~20% symmetric diff and similar 15 km CV 0.558 vs 0.568, opposite strain alignment) — slot it with
-`strain10` to test whether strain *direction* matters. Regional mass shifts (max 0.049/0.072/0.051) are reported
-diagnostics, not tuned; the anti-isolation gate (largest 5 km emptied cluster 0–1 blocks) passed. IR90-21…23.
-Full hashes, parent-diff stats and report-only PROXY diagnostics: `evidence/concentration_build_receipt.json`.
+Deletion-only strict subsets of R0 at the shadow ladder's exact counts, ranking identical to §§1–1b plus strand protection (≤ 6 px link graph; ≥ 10-dot strands may not be split; `src/continuity.py`). All 857 R0 strands survive whole at 6 px at every dose; credit price vs shadow +2.7% / +5.8% / +7.4%. Zero catalogue mass; inherited 2.236 px collar floor unchanged (no additions). Full hashes, parent-diff, region-gate and report-only `PROXY` stats: `evidence/mass_continuity_receipt.json`. Re-emit and verify via `.venv/bin/python scripts/build_mass_continuity.py --verify` (after `scripts/restore_data.py`).
 
-| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (`<=140`) |
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (`<=140` chars) |
 |---|---|---|---|---|
-| **10% low→high strain** (3,765d; 20.0% diff) | `releases/h33-h33-2-b2-CONCstrain10-20261023-aa60138c.tif` | `…-aa60138c-zeros.tif` | `aa60138c3e70317…` / `c1822125a6d8e4f0…` | `h33-h33-2-b2; CONC 10% (3765d) low->high strain; pred +0.004 DTI MODEL` |
-| **15% low→high strain** (5,648d; 30.0% diff) | `releases/h33-h33-2-b2-CONCstrain15-20261023-d3db2957.tif` | `…-d3db2957-zeros.tif` | `d3db2957a079732…` / `45029ddb0db0c24…` | `h33-h33-2-b2; CONC 15% (5648d) low->high strain; pred +0.001 DTI MODEL` |
-| **10% high→low strain (SIGN CONTROL)** (3,765d; 20.0% diff) | `releases/h33-h33-2-b2-CONCstrainAway10-20261023-bd514054.tif` | `…-bd514054-zeros.tif` | `bd5140546ebc481…` / `3d390e97da725d4…` | `h33-h33-2-b2; CONC 10% (3765d) high->low strain; pred -0.004 DTI MODEL` |
+| **shadowcont-drop 20%** (→ 30,123d; 20.0005% diff) | `releases/h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba.tif` | `…-66d961ba-zeros.tif` | `66d961ba325f3830…` / `038844cd73608598…` | `h33-h33-2-b2; MASS shadowcont-drop 20% -> 30123 dots, all >=1km strands kept; predicted +0.009 MODEL` |
+| **shadowcont-drop 30%** (→ 26,358d; 29.9995% diff) | `releases/h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee.tif` | `…-885f6fee-zeros.tif` | `885f6feed41a50b1…` / `c2b21dd19c0b698a…` | `h33-h33-2-b2; MASS shadowcont-drop 30% -> 26358 dots, all >=1km strands kept; predicted +0.011 MODEL` |
+| **shadowcont-drop 40%** (→ 22,592d; 40.0011% diff) | `releases/h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121.tif` | `…-92be4121-zeros.tif` | `92be4121610708eb…` / `dce335c5b91f4f41…` | `h33-h33-2-b2; MASS shadowcont-drop 40% -> 22592 dots, all >=1km strands kept; predicted +0.013 MODEL` |
 
-**These three rasters are NOT committed** (`releases/` is gitignored — this repo is public). Re-emit them with
-`.venv/bin/python scripts/restore_data.py` then `.venv/bin/python scripts/build_concentration_variants.py --build`,
-confirm each SHA-256 against `evidence/concentration_build_receipt.json` / its ledger row, and re-check with
-`.venv/bin/python scripts/build_concentration_variants.py --verify` and the `src.validate` format gate below before
-uploading. The agent does not submit; the human uploads ONE file per scored slot, from their own account.
-Before spending a slot, adjudicate entity scope (sibling repos GEMSDOE84–97 built the same axes on 2026-10-23 —
-IR90-21) and supply dated TOP_PUBLIC, quota state, deadline confirmation and portal receipts.
+Slot guidance is in `SLOT_PLAN.md` (merged order): the add-direction ladder leads the week; shadowcont-20 is the first drop-direction probe (Slot-2 branch if the add sign test is negative; a null add test goes to orthogonal A5/L1), shadowcont-40 is the Slot-3 escalation corner, and shadowcont-30 is held unless a mid-dose slope point is needed — never all three in one week pre-receipt. Upload **one** file per slot — NaN primary, `-zeros` only as encoding fallback.
+## 5b. Fixed-count A5 along-strike PRUNE (current session)
+
+| Candidate | Preferred file (NaN outside) | Fallback twin | Form note (`<=140` chars) |
+|---|---|---|---|
+| **A5/L1** | `releases/h33-h33-2-b2-PRUNEanisoA5L1-20261023-cd2c60ce.tif` | `…-cd2c60ce-zeros.tif` | `h33-h33-2-b2; PRUNE A5/L1, fixed-count refill; pred +0.005 DTI MODEL` |
+| A5/L1.5 | `releases/h33-h33-2-b2-PRUNEanisoA5L1p5-20261023-9486c7e6.tif` | `…-9486c7e6-zeros.tif` | `h33-h33-2-b2; PRUNE A5/L1.5, fixed-count refill; pred +0.004 DTI MODEL` |
+| A5/L0.5 | `releases/h33-h33-2-b2-PRUNEanisoA5L0p5-20261023-91ff3771.tif` | `…-91ff3771-zeros.tif` | `h33-h33-2-b2; PRUNE A5/L0.5, fixed-count refill; pred +0.003 DTI MODEL` |
+
+All three hold **37,654 dots**, emit zero catalogue mass, and preserve R0's `d_cat>2 px` baseline on every final dot. Format receipt, full hashes, parent diffs, PROXY CIs and byte self-check: `evidence/aniso_along_refill_receipt.json`. Restore with `scripts/restore_data.py`; if absent, re-emit with `.venv/bin/python scripts/build_aniso_prune_along.py --build`; then run `--verify`. Upload one encoding only.
+
+**WITHDRAWN — do not upload:** `PRUNEanisoA4L2nr`, `PRUNEanisoA5L2nr`, `PRUNEanisoA6L2nr`; delete-only probes violated the fixed-count PRUNE recipe (IR90-29).
 
 ## Format gate (every file, re-read from disk after writing)
 
@@ -134,3 +147,52 @@ isotropic PRUNE files are the only ones whose minimum is ≥ 3 px. Independent r
 5. A decision on data-use terms before any of these rasters leave the private workspace, and a check that
    `releases/` was restored from pinned inputs (`scripts/restore_data.py`, `scripts/restore_releases.py`) rather
    than assumed to exist (IR90-10).
+
+## 6. MASS add — placement contrast, `blocknext` (session 2026-10-23f)
+
+Two live files, add-only edits of exact R0, **0 dots removed**, region-even per-5 km-block quotas proportional to the
+parent's own dot count (cap +50 %/block, zero where R0 has none), all on the H19-5 support and all at Euclidean
+`d_cat >= 3.0 px`. They exist to answer one question the gapmax ladder cannot: **does the ranking matter at all?**
+Same doses, same geography, same pool as `MASSadd10pctq50` / `MASSadd20pctq50` — the cells are chosen by the parent's
+own FIFO-BFS rank instead of by kernel credit. Receipt: `evidence/mass_add_receipt.json`.
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | Form note (`<= 140` chars) |
+|---|---|---|---|
+| **blocknext +10 %** (3,765 added; 41,419 dots) | `releases/h33-h33-2-b2-MASSadd10pctBlocknext-20261023-89d16c16.tif` | `…-89d16c16-zeros.tif` | `h33-h33-2-b2; MASS add 10% (3765d) blocknext; pred +0.004 DTI MODEL` |
+| **blocknext +20 %** (7,531 added; 45,185 dots) | `releases/h33-h33-2-b2-MASSadd20pctBlocknext-20261023-260d987e.tif` | `…-260d987e-zeros.tif` | `h33-h33-2-b2; MASS add 20% (7531d) blocknext; pred +0.008 DTI MODEL` |
+
+SHA-256 (NaN / zeros): `89d16c16bcd336f5…` / `6108f696a660ec28…`; `260d987e0a89a945…` / `d59ccf7744eca41e…`.
+Format receipt: `src/validate.py` PASS on all four files, `n_dots` 41,419 / 45,185, `catalogue_mass` 0.0, min distance
+of added dots exactly 3.0 px, 0 added dots below 3 px, inherited R0 collar untouched (1,611 dots at 2.236–3.0 px,
+IR90-21 on main). Re-emit with `.venv/bin/python scripts/build_mass_add_variants.py --build --rebuild-reserved` after
+`scripts/restore_data.py`, confirm the SHA-256, then re-check with `--verify`. Upload **one** encoding.
+
+**WITHDRAWN — do not upload:** `MASSadd10pctGapmax` (`98408334…`). It is the same experiment as the already-merged
+`MASSadd10pctq50` (`5edc84de…`): identical 62,556-px eligible pool, identical gapmax ranking, identical block quotas,
+differing only in tie-breaks. Rasters are in `.cache/withdrawn/`; the ledger row is an occupancy guard (IR90-24).
+
+## Strain-prior CONCENTRATION (`AXIS=CONCENTRATION`, session 2026-10-23e — NEW)
+
+Fixed-count (37,654) reallocation of R0's mass across **5 km blocks** ranked by a LABEL-AGNOSTIC
+geodetic strain-rate invariant (band 4 `geod_2ndinv` of the pinned `training_features.tif`): near-orthogonal
+to R0 density (rank r=+0.11), relief-neutral (r=−0.046), no test label/score used. Complementary top/bottom-50%
+strain pools; greedy R=3 px marginal-credit drop/add; **100% of added dots enforce d_cat ≥ 3.0 px** (untouched R0
+dots inherit R0's 2.236 px floor, IR90-07/14/18); zero catalogue mass. `strainAway10` is a matched-dose SIGN
+CONTROL (same ~20% symmetric diff and similar 15 km CV 0.558 vs 0.568, opposite strain alignment) — slot it with
+`strain10` to test whether strain *direction* matters. Regional mass shifts (max 0.049/0.072/0.051) are reported
+diagnostics, not tuned; the anti-isolation gate (largest 5 km emptied cluster 0–1 blocks) passed. IR90-30…32.
+Full hashes, parent-diff stats and report-only PROXY diagnostics: `evidence/concentration_build_receipt.json`.
+
+| Candidate | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (`<=140`) |
+|---|---|---|---|---|
+| **10% low→high strain** (3,765d; 20.0% diff) | `releases/h33-h33-2-b2-CONCstrain10-20261023-aa60138c.tif` | `…-aa60138c-zeros.tif` | `aa60138c3e70317…` / `c1822125a6d8e4f0…` | `h33-h33-2-b2; CONC 10% (3765d) low->high strain; pred +0.004 DTI MODEL` |
+| **15% low→high strain** (5,648d; 30.0% diff) | `releases/h33-h33-2-b2-CONCstrain15-20261023-d3db2957.tif` | `…-d3db2957-zeros.tif` | `d3db2957a079732…` / `45029ddb0db0c24…` | `h33-h33-2-b2; CONC 15% (5648d) low->high strain; pred +0.001 DTI MODEL` |
+| **10% high→low strain (SIGN CONTROL)** (3,765d; 20.0% diff) | `releases/h33-h33-2-b2-CONCstrainAway10-20261023-bd514054.tif` | `…-bd514054-zeros.tif` | `bd5140546ebc481…` / `3d390e97da725d4…` | `h33-h33-2-b2; CONC 10% (3765d) high->low strain; pred -0.004 DTI MODEL` |
+
+**These three rasters are NOT committed** (`releases/` is gitignored — this repo is public). Re-emit them with
+`.venv/bin/python scripts/restore_data.py` then `.venv/bin/python scripts/build_concentration_variants.py --build`,
+confirm each SHA-256 against `evidence/concentration_build_receipt.json` / its ledger row, and re-check with
+`.venv/bin/python scripts/build_concentration_variants.py --verify` and the `src.validate` format gate below before
+uploading. The agent does not submit; the human uploads ONE file per scored slot, from their own account.
+Before spending a slot, adjudicate entity scope (sibling repos GEMSDOE84–97 built the same axes on 2026-10-23 —
+IR90-30) and supply dated TOP_PUBLIC, quota state, deadline confirmation and portal receipts.

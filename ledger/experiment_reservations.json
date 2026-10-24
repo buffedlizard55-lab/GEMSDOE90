@@ -266,6 +266,124 @@
     },
     "interpretation": "Any future FIFO-ranked dose rung must pass the region-evenness gate before it is emitted to releases/; a region-even replacement (per-5km-block local rank quotas) is proposed in SLOT_PLAN.md and was not built this session."
   },
+  "mass_add_infill_20261023": {
+    "session": "arena/c3061751-gemsdoe90",
+    "axis": "MASS",
+    "value_family": "add-direction coverage infill, per-5 km-block quotas proportional to parent dots",
+    "values": [
+      {
+        "value": "add5pctq50",
+        "n_added": 1883,
+        "id": "h33-h33-2-b2-MASSadd5pctq50-20261023-c4e6144c",
+        "sha256": "c4e6144c202cd5539d008976949a3fa55f364df9a43be554bdf54bdb4b519d2c",
+        "sha256_zeros": "b1faddaae550f34f506b01ba8212eff38f0d7e22b4bdc2ac65b0c67ba09c614e"
+      },
+      {
+        "value": "add10pctq50",
+        "n_added": 3765,
+        "id": "h33-h33-2-b2-MASSadd10pctq50-20261023-5edc84de",
+        "sha256": "5edc84de0ace710765e169b4bd7f06ddc8af30871762fce6586ef31052684d37",
+        "sha256_zeros": "342872ef139c5b0938ce6d2b1ca28c5bdf1785a7d66562e7df9da90123b8464d"
+      },
+      {
+        "value": "add20pctq50",
+        "n_added": 7531,
+        "id": "h33-h33-2-b2-MASSadd20pctq50-20261023-f94efff4",
+        "sha256": "f94efff407086eecc6ef0808d8b3f2a57d8d6f35ef51fe689427b4c1a7aede59",
+        "sha256_zeros": "2d397c3dcfa370858d8f4d2b93f22c03e9f36bf6d4a99bbc29bf567680405238"
+      }
+    ],
+    "why_distinct": "Every recorded MASS add rung (this repo's withdrawn add5pct-next/add20pct-next and the sibling plus10pct family) selects additions by the parent's stored FIFO-BFS traversal rank, which IR90-20 measured to be geographic (rank-head adds land in a northern grid strip). This family selects by exact marginal kernel credit under block-proportional quotas, so it is the first MASS add rung that is region-even by construction.",
+    "checked_utc": "2026-10-23"
+  },
+  "mass_add_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "MASS",
+    "direction": "ADD",
+    "parent": "h33-h33-2-b2",
+    "occupied_tags": [
+      "add10pctBlocknext",
+      "add20pctBlocknext",
+      "add10pctGapmax"
+    ],
+    "occupied_values": [
+      "tag=add10pctBlocknext; add 3765 dots (+9.999% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+      "tag=add20pctBlocknext; add 7531 dots (+20% of R0) on H19-5; parent FIFO rank per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px",
+      "tag=add10pctGapmax; add 3765 dots (+9.999% of R0) on H19-5; max marginal R=3px kernel credit per 5km block quota propto R0 count, cap +50%/block; added d_cat>=3px"
+    ],
+    "note": "No prior MASS add row exists in this ledger (the three FIFO add/drop rungs are WITHDRAWN, IR90-20). Sibling GEMSDOE84/86/87 'MASS +10%/+20%' rows use the global FIFO order and are not region-even; these values are string- and mechanism-distinct (per-block quotas propto R0 count). Repeat builds of these (MASS, tag) pairs fail closed. Superseded in part by IR90-24: add10pctGapmax duplicates main's MASSadd10pctq50 and is WITHDRAWN; blocknext tags remain live."
+  },
+  "aniso_norefill_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "PRUNE",
+    "parent": "h33-h33-2-b2",
+    "occupied_tags": [
+      "anisoA4L2-norefill",
+      "anisoA5L2-norefill",
+      "anisoA6L2-norefill"
+    ],
+    "occupied_values": [
+      "tag=anisoA4L2-norefill; collar across<=4px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag=anisoA5L2-norefill; collar across<=5px, along<=2px (strike-aligned); strict R0 subset; no refill",
+      "tag=anisoA6L2-norefill; collar across<=6px, along<=2px (strike-aligned); strict R0 subset; no refill"
+    ],
+    "sibling_ledgers_checked": [
+      "GEMSDOE84",
+      "GEMSDOE85",
+      "GEMSDOE86",
+      "GEMSDOE87",
+      "GEMSDOE88",
+      "GEMSDOE89",
+      "GEMSDOE90",
+      "GEMSDOE91",
+      "GEMSDOE92"
+    ],
+    "note": "Sibling delete-only collars are isotropic. These three matched anisotropic no-refill pairs are distinct from both those and the existing anisotropic fixed-count refill pairs."
+  },
+  "aniso_along_refill_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "PRUNE",
+    "parent": "h33-h33-2-b2",
+    "occupied_tags": [
+      "anisoA5L1p5",
+      "anisoA5L1",
+      "anisoA5L0p5"
+    ],
+    "occupied_values": [
+      "tag=anisoA5L1p5; collar across<=5px, along<=1.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag=anisoA5L1; collar across<=5px, along<=1px (strike-aligned); fixed-count H19-5 FIFO-BFS refill",
+      "tag=anisoA5L0p5; collar across<=5px, along<=0.5px (strike-aligned); fixed-count H19-5 FIFO-BFS refill"
+    ],
+    "sibling_ledgers_checked": [
+      "GEMSDOE84",
+      "GEMSDOE85",
+      "GEMSDOE86",
+      "GEMSDOE87",
+      "GEMSDOE88",
+      "GEMSDOE89",
+      "GEMSDOE90",
+      "GEMSDOE91",
+      "GEMSDOE92"
+    ],
+    "note": "All three pairs hold 37,654 dots. They are distinct from the recorded A4/A5/A6 L=2 family and from all audited sibling isotropic values."
+  },
+  "mass_continuity_20261023": {
+    "checked_utc": "2026-10-23",
+    "scope": "Session 2026-10-23 continuity-aware MASS (branch arena/0e9b3fd9-gemsdoe90). Fresh read-only audit via gh api of ledger/submissions.csv in buffedlizard55-lab/GEMSDOE84-GEMSDOE92 (GEMSDOE93-101 have no ledger file) plus this repo. Axis rows found: PRUNE 68, SNAP 58, MASS 44, CONCENTRATION 33, RELIEF 27, SPACING 16, TRACKB 9; receipt_score values found: 0. No MASS value anywhere carries a continuity, strand, backbone or articulation rule; the string 'shadowcont' appears in no ledger or reservations file before this session.",
+    "selected_values": [
+      "shadowcont-drop 20% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "shadowcont-drop 30% (exclusive-credit greedy + 6px strand protection, no additions)",
+      "shadowcont-drop 40% (exclusive-credit greedy + 6px strand protection, no additions)"
+    ],
+    "ids": [
+      "h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba",
+      "h33-h33-2-b2-MASSshadowcont30pct-20261023-885f6fee",
+      "h33-h33-2-b2-MASSshadowcont40pct-20261023-92be4121"
+    ],
+    "why_new": "Doses deliberately reuse the recorded shadow ladder's exact removal counts (7531/11296/15062) so each file has a matched-count twin; the (AXIS, value) pair differs by ranking (6 px articulation + 10-dot strand-floor eligibility in src/continuity.py), the same distinction this file already records for shadow vs FIFO vs random at identical percentages. Repeat builds fail closed in scripts/build_mass_continuity.py check_reservations().",
+    "also_considered_and_rejected": "Brief-literal CONCENTRATION (lowest-prior -> highest-prior km blocks, 10-20%): already built by siblings at 0.8/1/5 km and 10/50 px blocks and 10/15/20% doses (GEMSDOE84-88, 91), with GEMSDOE86's reconciliation reading every upward arm at <=0 on its SGMC MODEL (-0.0005..-0.0150) and GEMSDOE84 holding its CONCENTRATION files for collar breaches (IR90-26). SNAP: 58 sibling rows, three sessions negative per GEMSDOE86. SPACING: brief lowest priority, built. TRACKB: Phase-2 only, 120-trace dossier already in GEMSDOE86.",
+    "cross_repo_caveat": "Best-effort audit of public owner repositories, not proof of every submission the entity has made (IR90-04/IR90-11)."
+  },
   "concentration_reservations": {
     "checked_utc": "2026-10-23",
     "axis": "CONCENTRATION",
