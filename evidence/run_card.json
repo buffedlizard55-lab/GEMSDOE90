@@ -1,74 +1,204 @@
 {
-  "hypothesis": "Concealed faults trace multiscale-persistent radiometric (K/Th/U) alteration/contact edges (E1), magnetic-edge fusion (E2), or a catalogue-free multi-physics edge fusion of radiometric+magnetic+gravity+strain+topo band groups (E3), catching faults absent from the USGS/INGENIOUS catalogue because alteration/fluid pathways persist across scales while regolith noise does not.",
-  "mechanism": "Geometric-mean gradient persistence (sigma=1/2/4 px) per band, rank-fused; greedy dotted emission of 37,654 unit dots, 2.8 px min separation, >=3 px from catalogue. Shared tools built this session: scripts/evaluate_holdout.py v1, scripts/submission_writer.py (zeros-outside, fixing the organizer '[0,1]' rejection caused by NaN outside footprint).",
-  "non_fault_mimic": "Lithologic contacts, transported alluvium and regolith edges produce persistent radiometric/geophysical gradients without faults.",
+  "run_card_version": "1.0",
+  "repo": "buffedlizard55-lab/GEMSDOE90",
+  "branch": "arena/2226f0eb-gemsdoe90",
+  "date_utc": "2026-10-24T08:43:36Z",
+  "lane": "credit-efficient adaptive emission",
+  "experiments_run": 3,
+  "hypothesis": "The DOE GEMS metric is won on credit efficiency, not on map accuracy. Because FN_w = |G| - TP_w, the index collapses to T / (0.2T + 0.2(S-M) + 0.8|G|), so each unit-mass dot that is far from truth costs a fixed 0.2 in the denominator and pays only its expected coverage credit. A fold-honest discovery model that ranks pixels by the probability of hosting an unmapped fault trace, emitted greedily until the marginal credit falls below the break-even 0.2*theta/(1-0.2*theta), should therefore beat a fixed-radius collar placed around the existing catalogue at the same budget.",
+  "mechanism": "In the Great Basin >85% of geothermal systems sit in fault interaction zones - step-overs and relay ramps (~32-40%), horsetail terminations (~16-25%), fault intersections (~22-26%) and accommodation zones (~6-9%) - and only ~2% on main range-front segments (Faulds & Hinz 2015; Faulds et al. 2021a, 2026). Unmapped traces are therefore expected as linking strands, splays and cross-faults near but off mapped master traces, where potential-field gradients (magnetic terracing, gravity horizontal gradient over basin-floor steps), radiometric K-enrichment from up-flow alteration, lidar scarp morphometry and geodetic strain all respond. The learner combines 54 such static features with 9 catalogue-geometry features rebuilt per fold.",
+  "named_non_fault_mimic": "Quaternary alluvial-fan toe scarps and shoreline terraces of pluvial Lake Lahontan. Both produce metre-scale, kilometres-long linear breaks in slope with a lidar signature essentially identical to a young fault scarp, and the Lahontan shorelines additionally follow elevation contours around every range front in the scene. They carry no magnetic or gravity offset, which is why the stack keeps potential-field gradients and the scarp morphometry as separate channels rather than fusing them.",
   "holdout": {
-    "label": "HOLDOUT-DTI",
-    "evaluator_version": "evaluate_holdout.py v1 (whole-component, 5px buffer, pooled DTI a0.2/b0.8 R3px, 20km block bootstrap)",
-    "withheld_positives": 11092,
-    "segments_withheld": 609,
-    "baseline_foldclean_h19_dotted": {
-      "value": 0.13943,
-      "ci95": [
-        0.108883,
-        0.169684
-      ]
+    "evaluator_version": "gems90-holdout-1.0.0",
+    "protocol": "buffered whole-segment hide-and-recover",
+    "n_folds": 4,
+    "buffer_px": 3.0,
+    "withheld_positive_px_total": 60823,
+    "budget": 35000,
+    "HOLDOUT_DTI": 0.3018874447744067,
+    "ci95": [
+      0.283441033131584,
+      0.32082238311357225
+    ],
+    "bootstrap": "spatial block x fold resampling, 2000 draws",
+    "controls": {
+      "collar": {
+        "dti": 0.0044311612424503604,
+        "ci95": [
+          0.003579867720791261,
+          0.005395927660702838
+        ]
+      },
+      "chance": {
+        "dti": 0.05237725692640239,
+        "ci95": [
+          0.04780180433019175,
+          0.05613229905312926
+        ]
+      },
+      "R0_oracle": {
+        "dti": 0.004779582732125489,
+        "ci95": [
+          0.004140102917534243,
+          0.0054042925163973535
+        ]
+      }
     },
-    "E1_radedge": {
-      "value": 0.069533,
-      "ci95": [
-        0.051808,
-        0.08988
-      ]
+    "known_bias": "This holdout withholds catalogue segments, so its truth lies ON catalogue traces. Any prediction that deliberately avoids the 3 px neighbourhood of the catalogue - every collar-style submission, including the incumbent - scores near zero here by construction (R0 measured at 0.0048, below the 0.052 lattice chance baseline). The margin over those controls is therefore NOT evidence of a leaderboard win over them."
+  },
+  "leakage_canary": {
+    "rule": "single-feature symmetric AUC > 0.90 = leakage until proven otherwise",
+    "folds": 4,
+    "negatives_per_fold": 150000,
+    "max_auc": 0.7784475457620835,
+    "max_feature": "qfault_sliprate_den",
+    "n_features": 63,
+    "flagged": [],
+    "top_features": {
+      "qfault_sliprate_den": 0.7784,
+      "cat_den_151": 0.7455,
+      "cat_dist": 0.7333,
+      "cat_logdist": 0.7333,
+      "cat_tip_dist": 0.7278,
+      "gd_ieq_n100a15": 0.7174,
+      "vent_dist": 0.6893,
+      "sgmc_den_25": 0.6812,
+      "sgmc_dist": 0.6763,
+      "cat_den_75": 0.6759,
+      "gd_geod_2ndinv": 0.6488,
+      "lid_valid": 0.6369,
+      "gd_geod_dilaterate": 0.6324,
+      "gd_geod_shearrate": 0.6294,
+      "rad_Th": 0.6232
     },
-    "E2_radedge_mag": {
-      "value": 0.068495,
-      "ci95": [
-        0.05103,
-        0.088583
-      ]
-    },
-    "E3_multiphysics_fusion": {
-      "value": 0.079485,
-      "ci95": [
-        0.060192,
-        0.09951
-      ],
-      "delta_vs_baseline": -0.059945,
-      "delta_ci95": [
-        -0.09737,
-        -0.02745
-      ]
-    },
-    "leakage_canaries_symmetric_auc": {
-      "radedge": 0.521,
-      "mag_edge": 0.5253,
-      "fused": 0.524,
-      "threshold": 0.9,
-      "pass": true
+    "all": {
+      "qfault_sliprate_den": 0.7784,
+      "cat_den_151": 0.7455,
+      "cat_dist": 0.7333,
+      "cat_logdist": 0.7333,
+      "cat_tip_dist": 0.7278,
+      "gd_ieq_n100a15": 0.7174,
+      "vent_dist": 0.6893,
+      "sgmc_den_25": 0.6812,
+      "sgmc_dist": 0.6763,
+      "cat_den_75": 0.6759,
+      "gd_geod_2ndinv": 0.6488,
+      "lid_valid": 0.6369,
+      "gd_geod_dilaterate": 0.6324,
+      "gd_geod_shearrate": 0.6294,
+      "rad_Th": 0.6232,
+      "lid_upface_max": 0.6221,
+      "cat_strike_cos": 0.6206,
+      "lid_lappos_max": 0.619,
+      "lid_lapneg_max": 0.6158,
+      "lid_cross_max": 0.6153,
+      "ext_UTh": 0.6148,
+      "gd_deq_n100a15": 0.6147,
+      "lid_ex_max": 0.6136,
+      "lid_downface_max": 0.6127,
+      "lid_step_max": 0.6082,
+      "gd_tc": 0.6081,
+      "lid_ex_mean": 0.6076,
+      "rad_TC": 0.6076,
+      "cat_corridor": 0.606,
+      "ext_ThK": 0.6038,
+      "cat_strike_sin": 0.6008,
+      "gd_iso_grav_anom": 0.5995,
+      "cat_den_25": 0.5993,
+      "lid_relief": 0.5975,
+      "grad_dem": 0.5906,
+      "rad_K": 0.5903,
+      "relief_7": 0.59,
+      "relief_21": 0.5889,
+      "gd_det_elev_slope": 0.5835,
+      "hotwell_dist": 0.5783,
+      "well_den": 0.5778,
+      "hotwell_den": 0.5752,
+      "grad_dbs": 0.575,
+      "grad_cond": 0.5739,
+      "grad_rtp": 0.5667,
+      "wel_tmax_sm": 0.5656,
+      "rad_U": 0.5602,
+      "gd_tmi_hg": 0.5592,
+      "gd_depth_to_base_surf": 0.5572,
+      "gd_iso_grav_anom_slope": 0.5568,
+      "grad_grav": 0.5566,
+      "ext_UK": 0.5556,
+      "lid_strike": 0.5515,
+      "gd_det_elev": 0.5439,
+      "gd_cond_surf": 0.5434,
+      "gd_rtp": 0.5429,
+      "lid_coh100": 0.5415,
+      "ext_TMI_up150": 0.5409,
+      "gd_iso_grav_anom_hg": 0.5395,
+      "gd_iso_grav_anom_vg": 0.5384,
+      "gd_tmi_vg": 0.5328,
+      "gd_tmi": 0.5293,
+      "gd_mag_anom": 0.5195
     }
   },
-  "registry": {
-    "surface_spearman_max_sparse": 0.0601,
-    "final_dot_overlap_within_3px_max_sparse": 0.3772,
-    "gate": "rho>0.90 or overlap>0.70 on sparse dotted registry (<=80k dots)",
-    "pass": true,
-    "note": "Dense registry supports (>80k dots, e.g. 206,895-dot lattice) make 3px overlap vacuous (0.967 for any dot set); reported for transparency, excluded from the duplication gate - see IRREGULARITIES IR90-42."
+  "calibration_against_real_scores": {
+    "G_from_blind_lattice_probe": 12544.868471716261,
+    "break_even_credit_at_0.2778": 0.05882851213417475,
+    "occupancy_capped_fit_rmse": 0.06092621830653477,
+    "band_inversion_rmse": 0.08532167647815504,
+    "band_inversion_loo_rmse": 0.11087280078651597,
+    "verdict": "NEGATIVE. With pi constrained to a valid occupancy field (0<=pi<=1), neither the learner's field nor a model-free band inversion reproduces the 14 owner-reported scores; both under-predict every targeted raster by about a factor of two. No projected leaderboard score is claimed for this candidate."
   },
-  "raster_sha256": "d1250da6cf86da784e256bf89584e394b23599229f16b58413837ee1e1c30964",
+  "candidate_geometry": {
+    "d_to_catalogue_px": {
+      "min": 2.0,
+      "median": 39.05124837953327,
+      "p90": 87.98295289429652,
+      "max": 172.35138525698017
+    },
+    "share_within_3px_of_catalogue": 0.0048,
+    "share_3_to_6px": 0.035314285714285715,
+    "share_beyond_6px": 0.9598857142857142,
+    "occupied_25km_blocks": 110,
+    "max_single_block_share": 0.09182857142857143
+  },
+  "duplicate_screen": {
+    "rule": "duplicate if (dot overlap within 3 px > 0.70 AND excess over chance > 0.30) or Spearman rho > 0.90 against any registry raster",
+    "max_overlap": 0.9832857142857143,
+    "max_excess_over_chance": 0.40371240808722453,
+    "max_spearman": 0.031231793457311623,
+    "duplicate": false
+  },
+  "raster": {
+    "file": "gems90-cnc-35000dots-20261024T084324Z.tif",
+    "sha256": "e1e91be23d763ee184839f38a22aa573d6c957aac8fd0038a680cf6615ef41eb",
+    "bytes": 241734,
+    "n_dots": 35000,
+    "budget_source": "HOLDOUT-DTI curve argmax"
+  },
   "validator_output": {
+    "file": "/home/user/GEMSDOE90/releases/gems90-cnc-35000dots-20261024T084324Z.tif",
     "pass": true,
-    "no_nan_inside": true,
-    "values_in_0_1": true,
-    "crs_shape_transform_match": true,
-    "catalogue_mass": 0.0,
-    "n_dots": 37654,
-    "encoding": "float32 single band, zeros outside footprint"
+    "fails": [],
+    "n_positive_inside": 35000,
+    "mass_inside": 35000.0,
+    "min_inside": 0.0,
+    "max_inside": 1.0,
+    "nonfinite_total": 0,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "catalogue_mass": 0.0
   },
-  "submission_name": "gems90-e3-multiphysics-fusion-37654-20261024",
-  "note": "E3 multi-physics edge fusion dotted 37,654; HOLDOUT-NEGATIVE vs H19-5 baseline - NOT approved to submit.",
-  "experiments_run": 3,
-  "ready_to_download_and_submit": false,
-  "download_status": "Available in releases/ for inspection ONLY; do NOT submit - it did not beat the holdout baseline.",
-  "verdict": "negative"
+  "submission_name": "gems90-cnc-35000dots-20261024T084324Z",
+  "submission_note": "Fold-honest discovery model; greedy DTI-optimal dots at the holdout-optimal budget. Off-catalogue, not a collar file. No score claimed.",
+  "verdict": "promote-for-human-review",
+  "verdict_reason": "The candidate is unique, format-valid and beats both the chance lattice and a fold-honest rebuild of the collar recipe by a wide, CI-separated margin on the hide-and-recover holdout. It is NOT shown to beat the incumbent 0.2778 on the real task: the holdout is structurally blind to collar files, and the score-history calibration failed. Promotion to a weekly slot is a separate human decision.",
+  "budget_spent": {
+    "experiments": [
+      "fold-honest discovery model + greedy emission",
+      "occupancy-capped calibration against 14 owner-reported scores",
+      "model-free band inversion of the hidden-fault radial profile"
+    ],
+    "limit": "3 experiments or 2 hours"
+  },
+  "slot_selected": false
 }

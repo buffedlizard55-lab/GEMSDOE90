@@ -339,10 +339,13 @@ def test_committed_h90_deliverable_receipts_ledger_and_pages():
     # Verify GitHub Pages HTML files & relative link resolution
     assert (ROOT / ".nojekyll").is_file()
     assert (ROOT / "docs" / ".nojekyll").is_file()
+    # 2026-10-24: a later lane took over docs/index.html as the repository front
+    # page, so this lane's portal moved to docs/lane-h90.html.  Same assertions,
+    # retargeted at the file that now holds this lane's page (see IR90-49).
     for html_path in (
-        ROOT / "index.html",
+        ROOT / "lane-h90.html",
         ROOT / "executive-summary.html",
-        ROOT / "docs" / "index.html",
+        ROOT / "docs" / "lane-h90.html",
         ROOT / "docs" / "executive-summary.html",
     ):
         assert html_path.is_file()
@@ -355,7 +358,7 @@ def test_committed_h90_deliverable_receipts_ledger_and_pages():
             assert (target.stat().st_mode & 0o444) == 0o444, f"File not world-readable: {target}"
 
     # Verify embedded JSON Run Card in index.html & docs/index.html parses cleanly and matches evidence
-    for idx_html in (ROOT / "index.html", ROOT / "docs" / "index.html"):
+    for idx_html in (ROOT / "lane-h90.html", ROOT / "docs" / "lane-h90.html"):
         raw_html = idx_html.read_text(encoding="utf-8")
         m = re.search(r'<pre id="json-runcard">(.*?)</pre>', raw_html, flags=re.DOTALL)
         assert m is not None

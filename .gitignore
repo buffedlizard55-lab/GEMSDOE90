@@ -23,3 +23,9 @@ releases/*.tiff
 !docs/downloads/*.tif
 !docs/downloads/*.zip
 !docs/downloads/*.json
+
+# --- DISCOVERY lane additions ---
+
+
+# EXCEPTION: the published candidate prediction is our own output (dots only, no
+# competition input data) and must be downloadable from the Pages site.
