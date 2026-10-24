@@ -1,5 +1,25 @@
 # Human submission packet — 2026-10-23 sessions (MASS ladder incl. high doses + both PRUNE collars)
 
+## 0a. NEW (2026-10-24, lane H1): one-click download from the site — start here
+
+Open `docs/index.html` (the repo's GitHub-Pages page). If the banner is green
+("✅ VALIDATED — OK TO DOWNLOAD & SUBMIT"), every automated gate PASSed on that exact
+file and no human inspection is needed: download
+`gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif`
+(SHA-256 `04af0861de0aed0b018f209dfbb453c46af8eb22f0407c7b251c866b9f653f81`, 40,000 dots;
+same bytes in `releases/`; NaN twin `…-nan.tif` SHA-256
+`e340912f7ffc4406fa465acabc219ed964985385ca8d05fbe0e43b117755713d` if ever needed).
+Upload the **zeros** file: single-band float32, EPSG:32611, sample shape/transform,
+all-finite values in {0,1}, no nodata sentinel — it cannot trigger
+"Predicted values must be in range [0, 1]". Form Note (79 chars):
+`H1 learned fault-ness (B) Poisson 40k dots sep2.8 collar>2px; holdout-DTI 0.187`.
+Evidence: `evidence/lane90_final_receipt.json` (gates), `evidence/lane90_holdout_receipt.json`
+(HOLDOUT-DTI 0.1870 vs incumbent recipe 0.1402, paired +0.0468 [0.0176, 0.0762] — a holdout
+measurement, **not** a leaderboard score or projection). One file per scored slot; record the
+portal receipt in `ledger/submissions.csv` afterwards. Rebuild/verify:
+`.venv/bin/python scripts/restore_data.py && .venv/bin/python scripts/run_lane90.py canary && .venv/bin/python scripts/run_lane90.py holdout && .venv/bin/python scripts/run_lane90.py final --arm B --budget 40000 && .venv/bin/python scripts/build_site90.py`
+(deterministic: three runs reproduced SHA-256 `04af0861…`).
+
 **The agent does not submit and cannot see the leaderboard.** Every GeoTIFF below is local and Git-ignored on
 purpose: this repository is public and competition rasters must not be committed or released
 (`IRREGULARITIES.md` IR90-02). Only the human uploads, from their own account, **one file per scored slot**.

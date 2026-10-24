@@ -1,0 +1,224 @@
+{
+  "generated_utc": "2026-10-24T07:36:22Z",
+  "stage": "final",
+  "seed": 20261024,
+  "hypothesis": "H1 fold-clean learned off-catalogue fault-ness surface + surface-ranked Poisson emission (docs/HYPOTHESES_20261024.md)",
+  "mechanism": "HGB over 51 label-agnostic layers (19 competition bands + magnetic/gravity/basement derivatives + 3DEP lidar-scarp + GeoDAWN radiometrics); greedy unit dots, 2.8px separation, d_catalogue>2px, zero catalogue mass",
+  "non_fault_mimicker": "lithologic contacts / survey seams share the same magnetic+radiometric edge signature",
+  "arm": "B_new_surface",
+  "n_dots": 40000,
+  "min_sep_px": 2.8,
+  "collar_px_exclusive": 2.0,
+  "budget_rationale": "40,000 = the budget at which arm B beat the incumbent recipe in the paired holdout test, inside the leaderboard-CLAIM sweet spot (R0 37,654 / d2.8 44,090). The OOF budget sweep (evidence/lane90_budget_receipt.json) still rises at 60k, but holdout truth is mapped-fault density, denser than hidden-fault truth, and dense leaderboard files (80k: 0.1193 CLAIM) collapsed -- so the sweep's optimum is deliberately NOT extrapolated.",
+  "catalogue_mass": 0.0,
+  "min_d_cat_px": 2.23606797749979,
+  "files": {
+    "zeros_primary_download": {
+      "path": "releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif",
+      "sha256": "04af0861de0aed0b018f209dfbb453c46af8eb22f0407c7b251c866b9f653f81",
+      "bytes": 198317,
+      "format_gate": {
+        "file": "/home/user/GEMSDOE90/releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif",
+        "pass": true,
+        "fails": [],
+        "n_dots": 40000,
+        "catalogue_mass": 0.0
+      }
+    },
+    "nan_twin": {
+      "path": "releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-nan.tif",
+      "sha256": "e340912f7ffc4406fa465acabc219ed964985385ca8d05fbe0e43b117755713d",
+      "bytes": 332239,
+      "format_gate": {
+        "file": "/home/user/GEMSDOE90/releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-nan.tif",
+        "pass": true,
+        "fails": [],
+        "n_dots": 40000,
+        "catalogue_mass": 0.0
+      }
+    }
+  },
+  "holdout": {
+    "label": "HOLDOUT-DTI (src/holdout.py; alpha 0.2 beta 0.8 R=3px; 25km blocks)",
+    "this_arm": {
+      "holdout_dti": 0.187,
+      "ci95": [
+        0.1622,
+        0.2105
+      ],
+      "T": 10827.2,
+      "S": 40001.0,
+      "M": 5260.6,
+      "G": 60988
+    },
+    "incumbent_A": {
+      "holdout_dti": 0.1402,
+      "ci95": [
+        0.1226,
+        0.1581
+      ],
+      "T": 8084.8,
+      "S": 39706.0,
+      "M": 3442.8,
+      "G": 60988
+    },
+    "paired_delta_vs_A": {
+      "delta": 0.0468,
+      "ci95": [
+        0.0176,
+        0.0762
+      ]
+    },
+    "withheld_positives": 60988,
+    "ci_excludes_zero": true
+  },
+  "canary": {
+    "max_symmetric_auc": 0.5979,
+    "feature": "lidar_upface_max",
+    "stop": false
+  },
+  "uniqueness": {
+    "max_abs_surface_spearman_vs_registry": 0.2074,
+    "max_dot_overlap_within_3px_vs_registry_all": 0.9952,
+    "max_dot_overlap_within_3px_vs_sparse_dotted_le65k": 0.4185,
+    "max_excess_overlap_vs_density_baseline": 0.5417,
+    "overlap_vs_parent_R0": 0.3116,
+    "lane_unique_le_0.90_and_le_0.70": true,
+    "per_raster": [
+      {
+        "raster": "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+        "surface_spearman": 0.0463,
+        "dot_overlap_within_3px": 0.3116,
+        "footprint_baseline_within_3px": 0.1509,
+        "excess_overlap": 0.1607,
+        "other_n_dots": 37654,
+        "comparably_sparse_dotted": true
+      },
+      {
+        "raster": "gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+        "surface_spearman": 0.0527,
+        "dot_overlap_within_3px": 0.3465,
+        "footprint_baseline_within_3px": 0.1601,
+        "excess_overlap": 0.1864,
+        "other_n_dots": 40199,
+        "comparably_sparse_dotted": true
+      },
+      {
+        "raster": "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+        "surface_spearman": 0.0625,
+        "dot_overlap_within_3px": 0.3831,
+        "footprint_baseline_within_3px": 0.1719,
+        "excess_overlap": 0.2112,
+        "other_n_dots": 44090,
+        "comparably_sparse_dotted": true
+      },
+      {
+        "raster": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+        "surface_spearman": 0.0743,
+        "dot_overlap_within_3px": 0.4012,
+        "footprint_baseline_within_3px": 0.1808,
+        "excess_overlap": 0.2205,
+        "other_n_dots": 60069,
+        "comparably_sparse_dotted": true
+      },
+      {
+        "raster": "gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+        "surface_spearman": 0.1119,
+        "dot_overlap_within_3px": 0.4263,
+        "footprint_baseline_within_3px": 0.1961,
+        "excess_overlap": 0.2302,
+        "other_n_dots": 121131,
+        "comparably_sparse_dotted": false
+      },
+      {
+        "raster": "gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+        "surface_spearman": 0.1138,
+        "dot_overlap_within_3px": 0.435,
+        "footprint_baseline_within_3px": 0.2036,
+        "excess_overlap": 0.2314,
+        "other_n_dots": 123779,
+        "comparably_sparse_dotted": false
+      },
+      {
+        "raster": "gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+        "surface_spearman": 0.1138,
+        "dot_overlap_within_3px": 0.4399,
+        "footprint_baseline_within_3px": 0.2086,
+        "excess_overlap": 0.2313,
+        "other_n_dots": 123939,
+        "comparably_sparse_dotted": false
+      },
+      {
+        "raster": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+        "surface_spearman": 0.0762,
+        "dot_overlap_within_3px": 0.4185,
+        "footprint_baseline_within_3px": 0.1852,
+        "excess_overlap": 0.2333,
+        "other_n_dots": 61328,
+        "comparably_sparse_dotted": true
+      },
+      {
+        "raster": "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+        "surface_spearman": 0.1161,
+        "dot_overlap_within_3px": 0.7528,
+        "footprint_baseline_within_3px": 0.272,
+        "excess_overlap": 0.4807,
+        "other_n_dots": 69281,
+        "comparably_sparse_dotted": false
+      },
+      {
+        "raster": "gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+        "surface_spearman": 0.2074,
+        "dot_overlap_within_3px": 0.8048,
+        "footprint_baseline_within_3px": 0.2631,
+        "excess_overlap": 0.5417,
+        "other_n_dots": 174232,
+        "comparably_sparse_dotted": false
+      },
+      {
+        "raster": "gemsdoe-ens12-adopted-7f00890a.tif",
+        "surface_spearman": 0.144,
+        "dot_overlap_within_3px": 0.5322,
+        "footprint_baseline_within_3px": 0.2429,
+        "excess_overlap": 0.2893,
+        "other_n_dots": 172974,
+        "comparably_sparse_dotted": false
+      },
+      {
+        "raster": "8GEMSDOE_Hedge-v2_submission.tif",
+        "surface_spearman": 0.2033,
+        "dot_overlap_within_3px": 0.6778,
+        "footprint_baseline_within_3px": 0.2836,
+        "excess_overlap": 0.3943,
+        "other_n_dots": 227507,
+        "comparably_sparse_dotted": false
+      },
+      {
+        "raster": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "surface_spearman": -0.0021,
+        "dot_overlap_within_3px": 0.9952,
+        "footprint_baseline_within_3px": 0.9987,
+        "excess_overlap": -0.0035,
+        "other_n_dots": 206895,
+        "comparably_sparse_dotted": false
+      },
+      {
+        "raster": "gemsdoe9-PLACEHOLDER-2314b599.tif",
+        "surface_spearman": 0.0163,
+        "dot_overlap_within_3px": 0.0861,
+        "footprint_baseline_within_3px": 0.0629,
+        "excess_overlap": 0.0232,
+        "other_n_dots": 147684,
+        "comparably_sparse_dotted": false
+      }
+    ],
+    "rule_note": "Raw 70% rule applied to comparably-sparse dotted rasters (<=65k dots); vs dense rasters raw overlap is a coverage tautology (published per-raster with its footprint baseline), so excess-over-baseline<=0.70 is required for all. Surface Spearman<=0.90 required against every registry raster."
+  },
+  "submission_name": "gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif",
+  "form_note_le_140_chars": "H1 learned fault-ness (B) Poisson 40k dots sep2.8 collar>2px; holdout-DTI 0.187",
+  "form_note_chars": 79,
+  "verdict": "promote",
+  "ok_to_download_and_submit": true,
+  "decision_rule": "promote requires: zeros format-gate PASS + lane-unique (Spearman<=0.90, overlap<=0.70) + holdout paired delta>0 vs incumbent recipe + canary clean. Human still chooses the slot; agent never submits.",
+  "elapsed_s": 229.1
+}

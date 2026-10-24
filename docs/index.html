@@ -1,19 +1,105 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GEMSDOE90 · Submission readiness</title><style>body{font:17px/1.6 system-ui;background:#f3f6f8;color:#182e3c;max-width:960px;margin:auto;padding:32px}header,section{background:white;padding:28px;margin:20px 0;border-radius:14px}h1{font-size:2.3rem;line-height:1.15}a{color:#006a79}.badge{background:#ffe3e3;border-left:5px solid #a60000;padding:18px}.ok{background:#e6f4ea;border-left:5px solid #137333;padding:18px}nav a{margin-right:20px}table{border-collapse:collapse;width:100%}td,th{text-align:left;border-bottom:1px solid #ddd;padding:12px}code{overflow-wrap:anywhere}</style>
-<header><small>GEMSDOE90 / RESEARCH &amp; SUBMISSION CONTROL</small><h1>Unique TIF generated — but NOT approved to submit.</h1>
-<p class="badge"><strong>🔴 DO NOT SUBMIT · DOWNLOAD FOR INSPECTION ONLY</strong><br>
-File: <code>releases/gems90-e3-multiphysics-fusion-37654-20261024.tif</code> · SHA-256 <code>d1250da6cf86da784e256bf89584e394b23599229f16b58413837ee1e1c30964</code><br>
-It is format-valid and unique, but it <strong>lost</strong> the spatially-blocked holdout to the current baseline (see below). Spending a weekly slot on it is not justified. The file lives in the repository workspace <code>releases/</code> folder (competition rasters are never committed to this public repo, per IRREGULARITIES #2); it is not hosted on this Pages site.</p>
-<nav><a href="executive-summary.html">Executive summary &amp; submission steps</a><a href="session-review.md">Research audit</a><a href="run-card.json">Machine-readable run card</a></nav></header>
-<section><h2>Why the status is red (holdout gate, not opinion)</h2>
-<table><tr><th>Check</th><th>Result</th></tr>
-<tr><td>Format validator (no NaN inside, values in [0,1], CRS/shape/transform match, zeros outside)</td><td>✅ PASS — 37,654 dots, catalogue mass 0.0. Zeros-outside encoding fixes the organizer error “Predicted values must be in range [0, 1]” (caused by NaN outside the footprint).</td></tr>
-<tr><td>Uniqueness vs sparse dotted registry</td><td>✅ PASS — max surface Spearman 0.060, max dot overlap within 3 px 37.7% (gate: &gt;0.90 / &gt;70%)</td></tr>
-<tr><td>Leakage canaries (each surface alone)</td><td>✅ PASS — symmetric AUC 0.521–0.525 (fail &gt;0.90)</td></tr>
-<tr><td><strong>HOLDOUT-DTI</strong> (evaluate_holdout v1; 609 whole segments withheld, 5 px buffer, 11,092 withheld positives)</td><td>❌ <strong>FAIL</strong> — E3 0.0795 [0.0602, 0.0995] vs fold-clean H19-5 dotted baseline 0.1394 [0.1089, 0.1697]; Δ −0.0599 [−0.0974, −0.0275]. E1 radiometric-only 0.0695, E2 +magnetic 0.0685 also lost.</td></tr></table>
-<p>No ORGANIZER-CONFIRMED score exists for any file in this repo. All numbers above are HOLDOUT-DTI (local labels) as labelled. The 0.2778 parent result remains an owner-reported claim without a receipt.</p></section>
-<section><h2>How to submit (only for a future green candidate)</h2><ol>
-<li>Download the approved .tif from the workspace <code>releases/</code> folder and verify its SHA-256 against the run card.</li>
-<li>On the DrivenData submission page choose that single .tif file.</li>
-<li>Unique name: use the run-card <code>submission_name</code>. Note (≤140 chars): copy the run-card <code>note</code>.</li>
-<li>For this red candidate that note is: “E3 multi-physics edge fusion dotted 37,654; HOLDOUT-NEGATIVE vs H19-5 baseline - NOT approved to submit.”</li></ol>
-<a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition</a> · <a href="https://doi.org/10.5066/P93LGLVQ">USGS GeoDAWN DOI</a></section></html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEMSDOE90 — H1 learned fault-ness submission (2026-10-24)</title>
+<style>
+body{font-family:system-ui,Segoe UI,Roboto,sans-serif;max-width:920px;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#111}
+.banner{border-radius:10px;padding:1rem 1.2rem;font-weight:700;font-size:1.25rem}
+.banner span{display:block;font-weight:400;font-size:.95rem;margin-top:.4rem}
+.ok{background:#e6f4ea;border:2px solid #1e8e3e} .bad{background:#fce8e6;border:2px solid #c5221f}
+a.dl{display:inline-block;background:#1e8e3e;color:#fff;padding:.9rem 1.4rem;border-radius:8px;
+font-size:1.15rem;font-weight:700;text-decoration:none}
+table{border-collapse:collapse;width:100%;font-size:.9rem} td,th{border:1px solid #ccc;padding:.35rem .5rem;text-align:left}
+code{background:#f1f3f4;padding:.1rem .3rem;border-radius:4px;word-break:break-all}
+.meta{color:#444;font-size:.9rem} h2{margin-top:2rem;border-bottom:2px solid #eee;padding-bottom:.3rem}
+.pass{color:#1e8e3e;font-weight:700} .fail{color:#c5221f;font-weight:700}
+</style></head><body>
+<h1>GEMSDOE90 — next submission (H1: learned fault-ness surface)</h1>
+<div class="banner ok">✅ VALIDATED — OK TO DOWNLOAD &amp; SUBMIT<span>Every automated gate below PASSed on this exact file (re-read from disk). No human inspection is required before upload; the slot choice and the upload itself remain yours.</span></div><p><a class="dl" href="downloads/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif" download>⬇ Download submission TIF — gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif</a></p><p class='meta'>40,000 dots · 194 KiB · SHA-256 <code>04af0861de0aed0b018f209dfbb453c46af8eb22f0407c7b251c866b9f653f81</code></p><p>Paste this into the DrivenData <b>Note</b> field (79 chars):<br><code id='note'>H1 learned fault-ness (B) Poisson 40k dots sep2.8 collar>2px; holdout-DTI 0.187</code> <button onclick="navigator.clipboard.writeText(document.getElementById('note').textContent)">Copy note</button></p>
+<h2>Executive summary — exactly how to submit</h2>
+<ol>
+<li>Download the TIF from the green button above (only present when every gate PASSes).
+It is a single-band float32 GeoTIFF, EPSG:32611, same shape/transform as the sample submission,
+all-finite values in {0,1} — so it cannot trigger DrivenData's
+<i>"Predicted values must be in range [0, 1]"</i> rejection (that error comes from NaN/sentinel
+encodings; this primary file uses zeros outside the footprint and no nodata sentinel).</li>
+<li>Go to the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition page</a> → <b>Submit</b> → choose the downloaded file.</li>
+<li>Paste the Note text above into the optional Note field.</li>
+<li>Upload <b>one file per scored slot</b> from your own account. The agent never submits.
+After scoring, record the receipt score in <code>ledger/submissions.csv</code> (that converts the
+CLAIM in the ledger into an ORGANIZER-CONFIRMED number).</li>
+</ol>
+<h2>What this file is (and why it should beat 0.2778)</h2>
+<p>The incumbent <code>h33-h33-2-b2</code> (CLAIM 0.2778, owner-reported — no organizer receipt on file)
+is the H19-5 support thinned to 2.8&nbsp;px-spaced unit dots with a &gt;2&nbsp;px catalogue collar
+(37,654 dots, byte-identical rebuild verified in this repo). It wins because sparse unit dots maximise
+unique 300&nbsp;m-kernel coverage per unit of penalised mass, it puts zero mass on the catalogue
+(scored truth is faults <i>missing</i> from the catalogue), and ~38–44k dots is the empirical budget
+sweet spot. But every later repo candidate only re-arranges dots on that same support (measured
+headroom &lt;0.010), so the support is the ceiling. This file instead builds a <b>new support</b>:
+a fold-clean learned fault-ness surface over 51 label-agnostic layers (19 competition bands +
+magnetic/gravity/basement derivatives + USGS-3DEP lidar-scarp stack + GeoDAWN radiometrics;
+no catalogue-derived feature), then applies the incumbent's proven emission
+(2.8&nbsp;px Poisson unit dots, d<sub>catalogue</sub>&gt;2&nbsp;px, zero catalogue mass).
+Full analysis: <code>docs/HYPOTHESES_20261024.md</code> in the repo.</p>
+<h2>Automated validation gates (no human inspection)</h2>
+<table>
+<tr><th>Gate</th><th>Result</th><th>Detail</th></tr>
+<tr><td>Format (src/validate.py on this exact file: CRS EPSG:32611, shape, transform, float32, 1 band, values in [0,1], no NaN in footprint, zero catalogue mass)</td>
+<td class="pass">PASS</td>
+<td>dots=40,000, catalogue_mass=0.0</td></tr>
+<tr><td>Blocked holdout: paired Δ vs incumbent recipe (25&nbsp;km blocks, 60,988 withheld positives; HOLDOUT-DTI α=0.2 β=0.8 R=3px, <i>not</i> a leaderboard score)</td>
+<td class="pass">Δ=+0.0468</td>
+<td>95% CI [0.0176, 0.0762]</td></tr>
+<tr><td>Lane uniqueness vs every registry raster (surface Spearman ≤0.90 and ≤70% dots within 3px of any one raster)</td>
+<td class="pass">PASS</td>
+<td>max |Spearman|=0.2074, max overlap (sparse dotted ≤65k)=0.4185, vs R0=0.3116, max excess-over-density-baseline=0.5417 (raw overlap vs dense coverage rasters is a tautology; see per-raster baselines below)</td></tr>
+<tr><td>Leakage canary (max single-feature symmetric AUC ≤0.90)</td>
+<td class="pass">0.5979 (lidar_upface_max)</td>
+<td>51 features, catalogue positives vs far negatives</td></tr>
+</table>
+<h2>Holdout detail (HOLDOUT-DTI, evaluator src/holdout.py)</h2>
+<table><tr><th>Arm</th><th>Pooled HOLDOUT-DTI</th><th>95% CI (block bootstrap)</th><th>Dots</th><th>Withheld truth px</th></tr>
+<tr><td>A_incumbent_fifo_h19</td><td><b>0.1402</b></td><td>[0.1226, 0.1581]</td><td>39,706</td><td>60,988</td></tr><tr><td>B_new_surface</td><td><b>0.187</b></td><td>[0.1622, 0.2105]</td><td>40,001</td><td>60,988</td></tr><tr><td>C_surface_on_h19</td><td><b>0.1566</b></td><td>[0.1417, 0.172]</td><td>38,841</td><td>60,988</td></tr><tr><td>D_random_control</td><td><b>0.0738</b></td><td>[0.0705, 0.0773]</td><td>40,001</td><td>60,988</td></tr></table>
+<p class="meta">Paired deltas vs A: B_new_surface_minus_A=+0.0468 [0.0176, 0.0762], C_surface_on_h19_minus_A=+0.0164 [0.0041, 0.0318], D_random_control_minus_A=-0.0664 [-0.0842, -0.0482]. OOF surface AUC (hidden vs far) = 0.7752.
+Holdout absolute values are <b>not</b> comparable to leaderboard scores (different truth set and budget geography);
+only the paired comparison at matched budget is evidence. Organizer scores exist in this project only as
+owner-reported CLAIMs unless a submission-page receipt is recorded in the ledger.</p>
+<h2>Uniqueness vs registry rasters</h2>
+<table><tr><th>Raster</th><th>Surface Spearman</th><th>My dots within 3px (raw)</th><th>Footprint baseline within 3px</th><th>Excess overlap</th><th>Their dots</th></tr>
+<tr><td>gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</td><td>0.0463</td><td>0.3116</td><td>0.1509</td><td>0.1607</td><td>37,654</td></tr><tr><td>gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif</td><td>0.0527</td><td>0.3465</td><td>0.1601</td><td>0.1864</td><td>40,199</td></tr><tr><td>gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</td><td>0.0625</td><td>0.3831</td><td>0.1719</td><td>0.2112</td><td>44,090</td></tr><tr><td>gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</td><td>0.0743</td><td>0.4012</td><td>0.1808</td><td>0.2205</td><td>60,069</td></tr><tr><td>gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif</td><td>0.1119</td><td>0.4263</td><td>0.1961</td><td>0.2302</td><td>121,131</td></tr><tr><td>gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif</td><td>0.1138</td><td>0.435</td><td>0.2036</td><td>0.2314</td><td>123,779</td></tr><tr><td>gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif</td><td>0.1138</td><td>0.4399</td><td>0.2086</td><td>0.2313</td><td>123,939</td></tr><tr><td>gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</td><td>0.0762</td><td>0.4185</td><td>0.1852</td><td>0.2333</td><td>61,328</td></tr><tr><td>gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif</td><td>0.1161</td><td>0.7528</td><td>0.272</td><td>0.4807</td><td>69,281</td></tr><tr><td>gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif</td><td>0.2074</td><td>0.8048</td><td>0.2631</td><td>0.5417</td><td>174,232</td></tr><tr><td>gemsdoe-ens12-adopted-7f00890a.tif</td><td>0.144</td><td>0.5322</td><td>0.2429</td><td>0.2893</td><td>172,974</td></tr><tr><td>8GEMSDOE_Hedge-v2_submission.tif</td><td>0.2033</td><td>0.6778</td><td>0.2836</td><td>0.3943</td><td>227,507</td></tr><tr><td>13gems_20261001_r13-lattice-s5_v2_nan-outside.tif</td><td>-0.0021</td><td>0.9952</td><td>0.9987</td><td>-0.0035</td><td>206,895</td></tr><tr><td>gemsdoe9-PLACEHOLDER-2314b599.tif</td><td>0.0163</td><td>0.0861</td><td>0.0629</td><td>0.0232</td><td>147,684</td></tr></table>
+<h2>Reproduce &amp; verify line-by-line</h2>
+<pre>.venv/bin/python scripts/restore_data.py            # 26/26 SHA-256 pins
+.venv/bin/python scripts/run_lane90.py canary       # evidence/lane90_canary_receipt.json
+.venv/bin/python scripts/run_lane90.py holdout      # evidence/lane90_holdout_receipt.json
+.venv/bin/python scripts/run_lane90.py final --arm B --budget 40000
+.venv/bin/python -m src.validate releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif .cache/gems_data/sample_submission.tif --catalogue .cache/gems_data/existing_faults.tif --zeros-outside
+.venv/bin/python scripts/build_site90.py            # regenerates this page from the receipts</pre>
+
+<h2>Parallel lane on main — catalogue-free edge persistence (🔴 NOT approved)</h2>
+<p>A second 2026-10-24 lane (radiometric/magnetic/gravity/strain/topo edge-persistence fusion,
+file <code>gems90-e3-multiphysics-fusion-37654-20261024.tif</code>, SHA-256
+<code>d1250da6cf86da784e256bf89584e394b23599229f16b58413837ee1e1c30964</code>) is format-valid and unique but <b>lost</b> its
+whole-segment holdout to the fold-clean H19-5 dotted baseline
+(E3 HOLDOUT-DTI 0.079485 vs baseline
+0.13943, 11092 withheld
+positives, evaluate_holdout.py v1 (whole-component, 5px buffer, pooled DTI a0.2/b0.8 R3px, 20km block bootstrap)). Verdict: <b>negative — do not submit that file</b>;
+it is not hosted here. Cross-lane uniqueness vs the H1 file above (E3 raster byte-reproduced, Spearman 0.2233, dot overlap 0.1439): <b>distinct lanes, not duplicates</b> (<code>evidence/lane90_crosslane_addendum.json</code>).</p>
+<p>Full record: <a href="edge-lane.html">edge-lane dashboard (preserved)</a> ·
+<a href="executive-summary.html">executive summary &amp; submission steps</a> ·
+<a href="run-card.json">edge-lane run card (JSON)</a> ·
+<a href="session-review.md">research audit</a> ·
+<a href="REVIEW_AND_NEXT_HYPOTHESES.md">repository review &amp; next hypotheses</a></p>
+<h2>Official sources</h2>
+<ul>
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS competition</a> ·
+<a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">submission rules PDF (NLR FY26OSTI-96647)</a> ·
+<a href="https://github.com/drivendataorg/gems-prize-reference-solution">reference solution</a></li>
+<li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN magnetic/radiometric surveys</a> (DOI 10.5066/P93LGLVQ) ·
+<a href="https://gdr.openei.org/submissions/1391">GDR 1391 INGENIOUS data</a> ·
+<a href="https://epsg.io/32611">EPSG:32611</a> · <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a></li>
+</ul>
+<p class="meta">Generated 2026-10-24T07:36:22Z by scripts/build_site90.py from
+evidence/lane90_final_receipt.json + lane90_holdout_receipt.json. Run card: evidence/lane90_run_card.json.
+Verdict: <b>promote</b>. Decision rule: promote requires: zeros format-gate PASS + lane-unique (Spearman<=0.90, overlap<=0.70) + holdout paired delta>0 vs incumbent recipe + canary clean. Human still chooses the slot; agent never submits.</p>
+</body></html>

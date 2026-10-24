@@ -1,0 +1,212 @@
+{
+  "generated_utc": "2026-10-24T07:15:27Z",
+  "stage": "holdout",
+  "seed": 20261024,
+  "evaluator": "src/holdout.py pooled DTI alpha=0.2 beta=0.8 triangular R=3px (src/dti.py A1/A2, UNVERIFIED vs official code); 25km blocks, 5px buffer, visible faults masked pixel-exactly, collar d_vis>2px, matched budgets",
+  "label": "HOLDOUT-DTI (not an organizer score)",
+  "withheld_positives_total": 60988,
+  "oof_surface_auc_hidden_vs_far": 0.7752,
+  "budget_global_equivalent": 40000,
+  "folds": [
+    {
+      "fold": 0,
+      "budget": 10161,
+      "withheld_positives": 15333,
+      "train_positives": 44837,
+      "train_negatives": 220000,
+      "arms": {
+        "A_incumbent_fifo_h19": {
+          "n_dots": 10161,
+          "fold_dti": 0.1506
+        },
+        "B_new_surface": {
+          "n_dots": 10161,
+          "fold_dti": 0.1813
+        },
+        "C_surface_on_h19": {
+          "n_dots": 10161,
+          "fold_dti": 0.1701
+        },
+        "D_random_control": {
+          "n_dots": 10161,
+          "fold_dti": 0.0718
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "budget": 7319,
+      "withheld_positives": 10205,
+      "train_positives": 50142,
+      "train_negatives": 220000,
+      "arms": {
+        "A_incumbent_fifo_h19": {
+          "n_dots": 7024,
+          "fold_dti": 0.1551
+        },
+        "B_new_surface": {
+          "n_dots": 7319,
+          "fold_dti": 0.1845
+        },
+        "C_surface_on_h19": {
+          "n_dots": 6471,
+          "fold_dti": 0.1508
+        },
+        "D_random_control": {
+          "n_dots": 7319,
+          "fold_dti": 0.0697
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "budget": 6638,
+      "withheld_positives": 11197,
+      "train_positives": 49076,
+      "train_negatives": 220000,
+      "arms": {
+        "A_incumbent_fifo_h19": {
+          "n_dots": 6638,
+          "fold_dti": 0.1221
+        },
+        "B_new_surface": {
+          "n_dots": 6638,
+          "fold_dti": 0.1823
+        },
+        "C_surface_on_h19": {
+          "n_dots": 6326,
+          "fold_dti": 0.1314
+        },
+        "D_random_control": {
+          "n_dots": 6638,
+          "fold_dti": 0.0736
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "budget": 6769,
+      "withheld_positives": 9793,
+      "train_positives": 50473,
+      "train_negatives": 220000,
+      "arms": {
+        "A_incumbent_fifo_h19": {
+          "n_dots": 6769,
+          "fold_dti": 0.1202
+        },
+        "B_new_surface": {
+          "n_dots": 6769,
+          "fold_dti": 0.1935
+        },
+        "C_surface_on_h19": {
+          "n_dots": 6769,
+          "fold_dti": 0.1543
+        },
+        "D_random_control": {
+          "n_dots": 6769,
+          "fold_dti": 0.0794
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "budget": 9114,
+      "withheld_positives": 14460,
+      "train_positives": 45763,
+      "train_negatives": 220000,
+      "arms": {
+        "A_incumbent_fifo_h19": {
+          "n_dots": 9114,
+          "fold_dti": 0.1461
+        },
+        "B_new_surface": {
+          "n_dots": 9114,
+          "fold_dti": 0.194
+        },
+        "C_surface_on_h19": {
+          "n_dots": 9114,
+          "fold_dti": 0.1672
+        },
+        "D_random_control": {
+          "n_dots": 9114,
+          "fold_dti": 0.0754
+        }
+      }
+    }
+  ],
+  "pooled": {
+    "A_incumbent_fifo_h19": {
+      "holdout_dti": 0.1402,
+      "ci95": [
+        0.1226,
+        0.1581
+      ],
+      "T": 8084.8,
+      "S": 39706.0,
+      "M": 3442.8,
+      "G": 60988
+    },
+    "B_new_surface": {
+      "holdout_dti": 0.187,
+      "ci95": [
+        0.1622,
+        0.2105
+      ],
+      "T": 10827.2,
+      "S": 40001.0,
+      "M": 5260.6,
+      "G": 60988
+    },
+    "C_surface_on_h19": {
+      "holdout_dti": 0.1566,
+      "ci95": [
+        0.1417,
+        0.172
+      ],
+      "T": 9028.4,
+      "S": 38841.0,
+      "M": 3642.2,
+      "G": 60988
+    },
+    "D_random_control": {
+      "holdout_dti": 0.0738,
+      "ci95": [
+        0.0705,
+        0.0773
+      ],
+      "T": 4232.4,
+      "S": 40001.0,
+      "M": 1596.1,
+      "G": 60988
+    }
+  },
+  "paired_vs_incumbent": {
+    "B_new_surface_minus_A": {
+      "delta": 0.0468,
+      "ci95": [
+        0.0176,
+        0.0762
+      ]
+    },
+    "C_surface_on_h19_minus_A": {
+      "delta": 0.0164,
+      "ci95": [
+        0.0041,
+        0.0318
+      ]
+    },
+    "D_random_control_minus_A": {
+      "delta": -0.0664,
+      "ci95": [
+        -0.0842,
+        -0.0482
+      ]
+    }
+  },
+  "elapsed_s": 1222.5,
+  "caveats": [
+    "H19-5 support lineage is owner-supplied; if it was built using the full catalogue, arm A/C holdout values are optimistic -- arm B uses no H19-5 pixels and no catalogue-derived feature.",
+    "Trainer negatives are >10px from *visible* faults only (PU-realistic): some fall on withheld faults, which is label noise shared by all learned arms.",
+    "Bands deq/ieq (earthquake distance/intensity) are organizer-supplied features kept after the canary; seismicity legitimately localises active faults."
+  ]
+}
