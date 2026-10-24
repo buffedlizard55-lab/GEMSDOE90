@@ -387,5 +387,51 @@
       }
     ],
     "post_merge_status": "HELD from slots; distinct value family kept as occupancy guard + matched-dose sign-control falsifier (IR90-25/26 headwind)."
+  },
+  "spacing": {
+    "schema_version": 1,
+    "parent": "h33-h33-2-b2",
+    "axis": "SPACING",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c",
+        "value": "tag=resp5pct; local kernel-scale respacing of 1883 most crowded R0 dots (5.0%); window 15px (expand 30/60); min-sep 2.8px; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "id": "h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c",
+          "hypothesis": "Respacing the 1883 most kernel-crowded R0 dots (5% of the field) onto uncovered stretches of the same corroborated ridge within 1.5 km extends along-strike coverage of line-like new faults, which the brief's algebra rewards (a dot pays more cheaply against line-like truth), without changing mass, count or geography.",
+          "mechanism": "Under DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T a max over dots inside the 300 m (3 px) triangular kernel, a dot whose disk is already covered by neighbours pays full mass for almost no credit. Crowding is measured exactly as summed kernel-disk overlap within 6 px; each crowded dot is moved to the eligible support pixel of maximum exact marginal kernel credit at >= 2.8 px (the parent's own thinning distance) from every remaining dot.",
+          "non_fault_mimic": "Crowded dots may be real fault complexity -- intersecting or stepping-over splays (the Faulds-style zones where systems sit) genuinely pack dots into one kernel -- and uncovered support stretches may be cover/vegetation gaps, lithologic contacts or drainage lineaments in the H19-5 field rather than unmapped fault. Either mimic makes the move delete signal and add noise at the same time.",
+          "predicted_change": "-0.000 DTI (MODEL; plausible interval -0.008 to +0.008; not a score)",
+          "predicted_sign_reason": "Exact H19-5 support-credit balance is -87.1 units (removals lose 4232.6, replacements gain 4145.5): local replacements cannot reach the far uncovered support, so the proxy centre is flat-to-negative and the adopted MODEL is -0.000 with no optimism discount (the balance is already negative). Any |live delta| < 0.010 is no evidence by the session rule.",
+          "falsifier": "A paired same-week receipt at the 5% dose with delta <= -0.010 rejects local respacing; monotone worsening across 5/10/15% confirms crowded dots were carrying credit, not redundancy. A delta >= +0.010 at any dose falsifies the credit-uniformity headwind (IR90-25) for arrangement edits and reopens kernel-scale respacing."
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9",
+        "value": "tag=resp10pct; local kernel-scale respacing of 3765 most crowded R0 dots (10.0%); window 15px (expand 30/60); min-sep 2.8px; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "id": "h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9",
+          "hypothesis": "Respacing the 3765 most kernel-crowded R0 dots (10% of the field) onto uncovered stretches of the same corroborated ridge within 1.5 km extends along-strike coverage of line-like new faults, which the brief's algebra rewards (a dot pays more cheaply against line-like truth), without changing mass, count or geography.",
+          "mechanism": "Under DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T a max over dots inside the 300 m (3 px) triangular kernel, a dot whose disk is already covered by neighbours pays full mass for almost no credit. Crowding is measured exactly as summed kernel-disk overlap within 6 px; each crowded dot is moved to the eligible support pixel of maximum exact marginal kernel credit at >= 2.8 px (the parent's own thinning distance) from every remaining dot.",
+          "non_fault_mimic": "Crowded dots may be real fault complexity -- intersecting or stepping-over splays (the Faulds-style zones where systems sit) genuinely pack dots into one kernel -- and uncovered support stretches may be cover/vegetation gaps, lithologic contacts or drainage lineaments in the H19-5 field rather than unmapped fault. Either mimic makes the move delete signal and add noise at the same time.",
+          "predicted_change": "-0.001 DTI (MODEL; plausible interval -0.009 to +0.007; not a score)",
+          "predicted_sign_reason": "Exact H19-5 support-credit balance is -284.3 units (removals lose 8611.1, replacements gain 8326.8): local replacements cannot reach the far uncovered support, so the proxy centre is flat-to-negative and the adopted MODEL is -0.001 with no optimism discount (the balance is already negative). Any |live delta| < 0.010 is no evidence by the session rule.",
+          "falsifier": "A paired same-week receipt at the 5% dose with delta <= -0.010 rejects local respacing; monotone worsening across 5/10/15% confirms crowded dots were carrying credit, not redundancy. A delta >= +0.010 at any dose falsifies the credit-uniformity headwind (IR90-25) for arrangement edits and reopens kernel-scale respacing."
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec",
+        "value": "tag=resp15pct; local kernel-scale respacing of 5648 most crowded R0 dots (15.0%); window 15px (expand 30/60); min-sep 2.8px; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "id": "h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec",
+          "hypothesis": "Respacing the 5648 most kernel-crowded R0 dots (15% of the field) onto uncovered stretches of the same corroborated ridge within 1.5 km extends along-strike coverage of line-like new faults, which the brief's algebra rewards (a dot pays more cheaply against line-like truth), without changing mass, count or geography.",
+          "mechanism": "Under DTI = T/(0.2T + 0.2(S-M) + 0.8|G|) with T a max over dots inside the 300 m (3 px) triangular kernel, a dot whose disk is already covered by neighbours pays full mass for almost no credit. Crowding is measured exactly as summed kernel-disk overlap within 6 px; each crowded dot is moved to the eligible support pixel of maximum exact marginal kernel credit at >= 2.8 px (the parent's own thinning distance) from every remaining dot.",
+          "non_fault_mimic": "Crowded dots may be real fault complexity -- intersecting or stepping-over splays (the Faulds-style zones where systems sit) genuinely pack dots into one kernel -- and uncovered support stretches may be cover/vegetation gaps, lithologic contacts or drainage lineaments in the H19-5 field rather than unmapped fault. Either mimic makes the move delete signal and add noise at the same time.",
+          "predicted_change": "-0.002 DTI (MODEL; plausible interval -0.010 to +0.006; not a score)",
+          "predicted_sign_reason": "Exact H19-5 support-credit balance is -495.7 units (removals lose 13059.9, replacements gain 12564.2): local replacements cannot reach the far uncovered support, so the proxy centre is flat-to-negative and the adopted MODEL is -0.002 with no optimism discount (the balance is already negative). Any |live delta| < 0.010 is no evidence by the session rule.",
+          "falsifier": "A paired same-week receipt at the 5% dose with delta <= -0.010 rejects local respacing; monotone worsening across 5/10/15% confirms crowded dots were carrying credit, not redundancy. A delta >= +0.010 at any dose falsifies the credit-uniformity headwind (IR90-25) for arrangement edits and reopens kernel-scale respacing."
+        }
+      }
+    ]
   }
 }
