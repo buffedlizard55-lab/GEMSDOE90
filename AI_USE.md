@@ -118,9 +118,41 @@ For the final three candidates AI authored `scripts/build_aniso_prune_along.py` 
 
 **Human decided/supplied:** the brief, R0, constraints, and quota rule. **Human must still supply/decide:** dated TOP_PUBLIC, slots used/remaining and total, official deadline confirmation, portal receipts, data-use review, geological review of retained continuations/refill ridges, whether any candidate is uploaded, and the ONE blind final. All predictions are MODEL; catalogue and SGMC diagnostics are PROXY; no local number is a live score.
 
-## Session arena/388fea70 (CONC-strain/arena-388fea70, AXIS=CONCENTRATION, GEMSDOE90)
+## Session arena/5d4e4978 (2026-10-23e, agent-selected `AXIS=CONCENTRATION`)
 
-- **What AI wrote and executed (agent-selected axis, not assigned):** After a fresh-sandbox reset (no `.venv`, no `.cache`), AI re-created the pinned virtualenv, restored and SHA-256-verified all 26 manifest inputs, and rebuilt R0 byte-identically (zeros `c55bafc4…`, NaN `baeae321…`). It authored `src/concentration.py`, `scripts/build_concentration_variants.py`, `tests/test_concentration.py`, three fixed-count 37,654-dot candidates (`CONCstrain10`, `CONCstrain15`, `CONCstrainAway10`) and their mechanism cards, `evidence/concentration_build_receipt.json`, three ledger rows, the `concentration_reservations` audit block, and this session's text in `README.md` (CURRENT STATE block only), `SLOT_PLAN.md`, `docs/SUBMIT.md`, `AI_USE.md`, and `IRREGULARITIES.md` (IR90-30…32). It re-read every written raster from disk, ran the `--verify` byte-reproduction pass and the full 71-test suite (green), and re-ran the report-only leakage canary (max symmetric AUC 0.570, `geod_2ndinv`, no leakage).
-- **Axis/value choice and why it is new:** AI read-only audited sibling ledgers GEMSDOE84–97 and found every axis saturated, including a 5 km catalogue-DENSITY CONCENTRATION (GEMSDOE89) nearly identical to the obvious design. AI therefore made the CONCENTRATION prior a LABEL-AGNOSTIC geodetic strain-rate invariant (band 4 `geod_2ndinv`): rank r=+0.11 to R0 density (near-orthogonal), relief-neutral (r=−0.046), using no test label/score — so the value is genuinely new and orthogonal to all sibling values and to the RELIEF/PRUNE/MASS axes. `strainAway10` is a matched-dose sign control at similar 15 km CV.
-- **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit any file, or claim any score. R0's 0.2778 remains CLAIM; every predicted change is MODEL; the hide-and-recover and SGMC numbers are PROXY (report-only). Competition rasters stay in ignored `.cache/gems_data/` and `releases/`; none is in this commit or any release.
-- **What the human decided / must decide:** The human set the objective, constraints, parent, quota, deadline and allowed axes. The human must adjudicate whether the sibling GEMSDOE84–97 repos are the same DrivenData entity (IR90-08/11/21 quota risk), confirm the deadline and slot count, supply dated `TOP_PUBLIC` and portal receipts, review the added high-strain segments against GPS/InSAR station density and known geothermal/subsidence/volcanic centres, and choose which single file (if any) to upload from their registered account.
+**AI wrote and executed:** `src/concentration.py`, `scripts/build_concentration_variants.py`,
+`tests/test_concentration.py`, the three local gitignored candidate rasters and their `-zeros` twins,
+`evidence/concentration_build_receipt.json`, the concentration rows in `ledger/submissions.csv`, the
+`concentration_reservations_20261023` block in `ledger/experiment_reservations.json`, the concentration
+mechanism-card block, and the matching sections of `SLOT_PLAN.md`, `README.md` (CURRENT STATE only),
+`docs/SUBMIT.md`, `docs/MECHANISM_CARDS.md`, `IRREGULARITIES.md` (IR90-30/31 after merge) and this disclosure.
+AI also extended `scripts/restore_releases.py` to reproduce the 18 core candidate pairs recorded when this branch was cut (including the three concentration pairs) without triggering the duplicate-build guards; main's later candidates retain their own family builders.
+
+**AI decided (not human-assigned):** selected CONCENTRATION after a read-only `gh api` audit of 79 public
+`buffedlizard55-lab/GEMSDOE*` default branches (9 ledgers, 33 occupied concentration values) and selected
+15 km blocks because the byte-identical R0 has density CV `0.5103`, inside the brief's reported `0.51–0.59`
+band. AI chose the 10/15/20% dose ladder, the four-band pinned structural prior, the lowest/highest 35%
+tails and the region-evenness gate. AI verified all 26 SHA-256 input pins, rebuilt R0 byte-identically
+(`c55bafc4…` / `baeae321…`), re-read and validated all six output files from disk, reproduced their bytes
+with `--verify`, and ran the report-only canary, catalogue hide/recover and SGMC controls as `PROXY` only.
+
+**AI did not:** contact DrivenData or Dropbox, read the leaderboard, log in, submit, invent a live score, or
+use hidden/public test truth. R0's `0.2778` remains a CLAIM; every predicted change is MODEL. Competition
+rasters and data remain in ignored `.cache/gems_data/` and `releases/`, never in the public Git diff or a release.
+
+**Human must decide/supply:** dated `TOP_PUBLIC`, weekly slot count, official deadline confirmation, R0 and
+candidate submission receipts, data-use/terms review, geological review of the moved corridors, whether
+the inherited 2.236 px parent collar is acceptable (IR90-31), and which single file (if any) to upload.
+
+**Post-merge decision:** main advanced past the branch base and recorded IR90-25/26: R0 support credit is
+nearly uniform, a fixed-count CONCENTRATION move loses ~0.98 and gains ~0.54 credit per dot, sibling
+upward-concentration MODELs are non-positive, and the entity has zero receipts. This session's three
+files remain BUILT occupancy/dose-response guards but are HELD from the next three slots; the integrated
+MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.
+
+## Session arena/388fea70 (2026-10-23 CONC-strain, AXIS=CONCENTRATION, GEMSDOE90) — HELD after merge
+
+- **What AI wrote and executed:** After a fresh-sandbox reset, AI re-installed the pinned venv, restored and SHA-256-verified all 26 manifest inputs, and rebuilt R0 byte-identically (zeros `c55bafc4…`, NaN `baeae321…`). It authored three fixed-count 37,654-dot CONCENTRATION variants on a label-agnostic geodetic strain-rate prior (band 4 `geod_2ndinv`, 5 km blocks, complementary 50% pools): `CONCstrain10`, `CONCstrain15`, and a matched-dose sign control `CONCstrainAway10`. It re-read every written raster from disk, ran a byte-reproduction `--verify` pass and the full test suite, and ran report-only diagnostics (leakage canary max symmetric AUC 0.570; catalogue hide-and-recover; SGMC control).
+- **Merge-aware status:** a parallel session (main PR #20) had built a 15 km structural CONCENTRATION ladder using the SAME four filenames. AI renamed its own files to `src/concentration_strain5km.py`, `scripts/build_concentration_strain5km.py`, `tests/test_concentration_strain5km.py`, `evidence/concentration_strain5km_build_receipt.json` so both designs coexist, resolved all shared-file conflicts by union, and re-verified. Consistent with main IR90-25/26/30 (fixed-count concentration loses net support credit; parallel variants HELD from slots), these three files are kept as distinct `(parent,axis,value)` BUILT occupancy guards and HELD from slots; the away arm is a falsifier instrument only. IR90-32/33/34.
+- **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit any file, or invent any score/quota/target. R0's 0.2778 is CLAIM; every Δ is MODEL; canary/proxies are PROXY. Competition rasters stay in ignored `.cache/gems_data/` and `releases/`; the four *_strain5km source files are the only new tracked code.
+- **Human must decide/supply:** adjudicate whether sibling repos GEMSDOE84–97 are ONE entity (quota risk, IR90-26/30/32), confirm deadline and slot count, supply dated TOP_PUBLIC and portal receipts, decide whether the strain5km occupancy guards add value or should be dropped as a near-duplicate, and choose which single file (if any) to upload from their registered account.

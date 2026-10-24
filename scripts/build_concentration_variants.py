@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
-"""Rebuild R0 byte-for-byte, then build and validate 3 controlled AXIS=CONCENTRATION variants.
+"""Build three controlled AXIS=CONCENTRATION variants from byte-identical R0.
 
-Session 2026-10-23e (GEMSDOE90, agent-selected axis). The ONLY changed axis relative to
-R0 (`h33-h33-2-b2`, 37,654 unit-mass dots) is how the fixed 37,654-dot budget is
-concentrated across 5 km blocks ranked by a LABEL-AGNOSTIC structural prior: the
-geodetic strain-rate second invariant (band 4 `geod_2ndinv` of pinned
-training_features.tif). Total count is held strictly fixed; all dots lie on the pinned
-off-catalogue H19-5 support; every newly added dot has Euclidean catalogue distance
->= 3.0 px; zero catalogue mass is emitted. Retained R0 dots keep R0's own 2.236 px
-collar (a CONCENTRATION edit must not also move the PRUNE collar, IR90-07/14/18).
+Session selection: 15 km (150 px) structural-interaction block prior built from
+the pinned competition feature bands 3/4/7/18 (`tmi_hg`, `geod_2ndinv`,
+`geod_shearrate`, `iso_grav_anom_hg`). R0's 15 km block-density CV is 0.5103,
+inside the brief's reported 0.51-0.59 winning band. The three variants move
+10%, 15% and 20% of the 37,654 dots from the lowest-prior 35% of blocks into
+the highest-prior 35%, holding count on H19-5 support. All additions are at
+Euclidean catalogue distance >= 3 px; untouched R0 dots retain the parent's
+2.236 px floor rather than confounding CONCENTRATION with PRUNE.
 
-Why this value family is NEW: sibling repos already built CONCENTRATION on a
-catalogue-fault-DENSITY prior (GEMSDOE89 CONC5kmcat*), an H19-5 prior (GEMSDOE87),
-and a parent self-density prior (GEMSDOE88/91). A geodetic strain-rate prior is
-label-agnostic, near-orthogonal to R0's allocation (rank r ~ +0.11) and relief-neutral,
-so it is orthogonal to every sibling value and to the RELIEF/PRUNE/MASS axes in this
-repo. Audit: ledger/experiment_reservations.json "concentration_reservations".
+This script never contacts DrivenData, never reads a leaderboard, never logs in
+and never submits. Competition rasters remain in ignored `.cache/gems_data/`
+and generated rasters in ignored `releases/`.
 
 Run build:  `.venv/bin/python scripts/build_concentration_variants.py --build`
 Run verify: `.venv/bin/python scripts/build_concentration_variants.py --verify`
@@ -32,437 +29,407 @@ from pathlib import Path
 import numpy as np
 import rasterio
 from scipy import ndimage as ndi
-from scipy.spatial import cKDTree
-from scipy.stats import rankdata
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-import build_r0_variants as base_build  # noqa: E402  exact-R0 rebuild path
-import build_relief_variants as relief_build  # noqa: E402  audited PROXY instruments
-from src.validate import validate as format_validate  # noqa: E402
-from src.relief import (  # noqa: E402
-    block_density_cv,
-    greedy_relief_reallocate,
-    landform_relief_index,
-    relief_terciles,
-)
+import build_r0_variants as base_build  # noqa: E402
+import build_relief_variants as relief_build  # noqa: E402  report-only proxy helpers
 from src.concentration import (  # noqa: E402
-    block_grid,
-    block_prior,
-    concentration_evenness_gate,
-    density_prior_rank_corr,
-    emptied_cluster_report,
-    max_region_share_shift,
-    region_shares,
-    strain_prior_field,
-    strata_masks,
+    BLOCK_PX,
+    MIN_FOOT_FRAC,
+    PRIOR_BANDS,
+    density_cv,
+    region_evenness_report,
+    reallocate_to_high_prior,
+    structural_prior,
 )
+from src.validate import validate as format_validate  # noqa: E402
 
 DATA = ROOT / ".cache" / "gems_data"
 OUT = ROOT / "releases"
 PARENT = "h33-h33-2-b2"
 AXIS = "CONCENTRATION"
-AXIS_TOKEN = "CONC"
 DATE = "20261023"
 SEED = 20261023
 R0_DOTS = 37_654
-BLOCK_PX = 50          # 5 km prior blocks
-POOL_FRAC = 0.50       # complementary halves (donor = bottom half, recipient = top half)
-MIN_ADDED_CAT_DIST = 3.0
-# Anti-isolation gate (Hard Constraint #5), following the MASS region-evenness standard
-# but only the two clauses that apply to a targeted concentration edit.
-MAX_EMPTIED_CLUSTER_BLOCKS = 4
-MAX_FRACTION_BLOCKS_EMPTIED = 0.02
-MAX_REGION_SHARE_SHIFT = 0.10   # loose documented cap; shifts are reported, not tuned
+FEATURE_PATH = DATA / "training_features.tif"
+SGMC_PATH = DATA / "external" / "derived_sgmc_faults_100m_u8.tif"
+RECEIPT_PATH = ROOT / "evidence" / "concentration_build_receipt.json"
+RESERVATIONS_PATH = ROOT / "ledger" / "experiment_reservations.json"
+LEDGER_PATH = ROOT / "ledger" / "submissions.csv"
+CARDS_PATH = ROOT / "ledger" / "mechanism_cards.json"
 
-EXTRA_PINS = {
-    "training_features": "training_features.tif",
-    "sgmc": "external/derived_sgmc_faults_100m_u8.tif",
-}
+# Cross-session audit performed read-only via gh api on 2026-10-23: the default
+# branch of each public buffedlizard55-lab/GEMSDOE* repository; 9 repositories
+# contained a ledger/submissions.csv and 33 CONCENTRATION values were found.
+CROSS_REPO_CONCENTRATION_VALUES = (
+    "10% of dots moved from lowest-prior 0.8km blocks to highest-prior",
+    "15% of dots moved from lowest-prior 0.8km blocks to highest-prior",
+    "20% of dots moved from lowest-prior 0.8km blocks to highest-prior",
+    "5km-t25-move2400",
+    "5km-t50-move3765",
+    "spread5km-move2400",
+    "b1km-move15",
+    "spr15",
+    "dens15",
+    "rand15",
+    "15pct-1km-grad",
+    "b5km-move10",
+    "b5km-move15",
+    "b5km-move20",
+    "b5km-ridge-up4",
+    "b5km-ridge-up8",
+    "b5km-cvband-down4",
+    "c10",
+    "c15",
+    "c20",
+    "b10px-m10",
+    "b10px-m20",
+    "b50px-m20",
+    "gdr25m10",
+    "gdr10m10",
+    "gdr25rm10",
+)
 
 VARIANT_SPECS = (
     {
-        "tag": "strain10",
-        "toward": True,
-        "mass_frac": 0.10,
-        "n_shift": 3_765,   # round(0.10 * 37,654)
-        "pred_short": "+0.004",
-        "predicted_change": "+0.004 DTI (MODEL; plausible interval -0.010 to +0.015; not a score)",
-        "hypothesis": (
-            "New (unmapped) faults preferentially nucleate and slip where the present-day crust is "
-            "actively deforming. Moving 10% of R0's fixed mass budget OUT of the lowest-strain-rate "
-            "5 km blocks INTO the highest-strain-rate blocks raises 300 m-kernel coverage of the "
-            "actively deforming ground most likely to host undiscovered traces, at unchanged total "
-            "mass penalty."
-        ),
-        "mechanism": (
-            "The geodetic second invariant (band 4) is a direct, label-agnostic measure of strain-rate "
-            "magnitude from GPS/InSAR. R0's block density is nearly uncorrelated with it (rank r~+0.11) "
-            "and it is relief-neutral (r~-0.07 to the detrended-elevation tercile index), so this move is "
-            "orthogonal to both the physiographic RELIEF axis and the catalogue-density CONCENTRATION "
-            "built in a sibling session. Within complementary top/bottom-half strain pools we greedily "
-            "drop the lowest-exclusive-credit R0 dots in low-strain blocks and add the highest-marginal-"
-            "credit off-catalogue H19-5 ridge pixels (all d_cat>=3.0 px) in high-strain blocks, holding "
-            "count at 37,654. Block-density CV at 15 km rises 0.510->~0.57, still inside the owner-"
-            "reported 'best files 0.51-0.59' band; the density-strain rank correlation rises +0.11->+0.26."
-        ),
-        "non_fault_confounder": (
-            "Strain-rate model artefacts where GPS/InSAR station spacing is sparse; anthropogenic or "
-            "hydrologic/volcanic transients (groundwater withdrawal, geothermal fluid extraction, magma "
-            "inflation) that raise apparent strain without brittle upper-crustal faulting; and strain "
-            "gradients that localise on ductile shear or magmatic systems rather than seismogenic faults."
-        ),
-        "falsifier": (
-            "A paired live receipt vs R0 with delta <= -0.010 DTI falsifies strain-guided concentration at "
-            "this dose. If the matched-dose sign control `strainAway10` (similar CV, opposite strain "
-            "alignment) scores >= strain10, the strain prior itself is falsified. Any |delta|<0.010 is no evidence."
-        ),
-    },
-    {
-        "tag": "strain15",
-        "toward": True,
-        "mass_frac": 0.15,
-        "n_shift": 5_648,   # round(0.15 * 37,654)
-        "pred_short": "+0.001",
-        "predicted_change": "+0.001 DTI (MODEL; plausible interval -0.013 to +0.013; not a score)",
-        "hypothesis": (
-            "Dose top: if the strain prior is real, a 15% move should extend the 10% gain; but 15 km CV "
-            "rises to ~0.62 (above the reported best band) and the greedy loses more support credit, so "
-            "the net is predicted near zero. This rung measures the concentration dose-response slope."
-        ),
-        "mechanism": (
-            "Identical operator and pools as strain10 with a 15% (5,648-dot) transfer, count fixed at 37,654, "
-            "additions d_cat>=3.0 px. The density-strain correlation rises to ~0.31 and 15 km CV to ~0.62; "
-            "the largest 5 km emptied cluster stays <=1 block (no regional hole)."
-        ),
-        "non_fault_confounder": (
-            "Same geodetic artefacts as strain10, plus over-concentration onto a few strain maxima that may "
-            "be network-spacing artefacts rather than discrete active faults."
-        ),
-        "falsifier": (
-            "A paired live receipt delta <= -0.010 vs strain10 rejects further dose; delta >= +0.010 supports "
-            "pushing the dose higher. Any |delta|<0.010 is no evidence."
-        ),
-    },
-    {
-        "tag": "strainAway10",
-        "toward": False,
+        "tag": "b15km-struct-move10pct",
+        "file_value": "b15kmstruct10pct",
         "mass_frac": 0.10,
         "n_shift": 3_765,
-        "pred_short": "-0.004",
-        "predicted_change": "-0.004 DTI (MODEL; plausible interval -0.016 to +0.008; not a score)",
+        "pred_short": "+0.002",
+        "predicted_change": "+0.002 DTI (MODEL; plausible interval -0.008 to +0.012; not a score)",
         "hypothesis": (
-            "Sign control: move 10% of mass OUT of the highest-strain blocks INTO the lowest-strain blocks. "
-            "If strain rate genuinely marks new-fault ground, this must lose; a gain here falsifies the strain "
-            "prior (or indicates strain maxima are dominated by non-tectonic noise, or that undisclosed labels "
-            "sit in aseismic blocks)."
+            "A 10% shift from the lowest-prior 15 km structural blocks to the highest-prior 15 km blocks "
+            "will move R0 mass toward active-deformation and potential-field edge corridors, where new "
+            "fault pixels are more likely, without yet over-concentrating the point field."
         ),
-        "mechanism": (
-            "Identical placement rule and dose as strain10 with donor/recipient strata reversed, giving the "
-            "same ~20% symmetric change and a similar 15 km CV (~0.56) so the comparison isolates strain "
-            "DIRECTION from the raw concentration level. Density-strain correlation falls from +0.11 to ~-0.04."
+        "predicted_sign_reason": (
+            "At the lowest dose the block-density CV rises only modestly above R0's 0.510; the gain from "
+            "putting dots in higher-prior corridors can outweigh the extra max-kernel redundancy."
         ),
-        "non_fault_confounder": (
-            "If the undisclosed test labels were compiled largely from aseismic historic bedrock quadrangle "
-            "maps, an away-from-strain move could coincidentally gain - a genuine confound, which is exactly "
-            "why the sign control is slotted."
+    },
+    {
+        "tag": "b15km-struct-move15pct",
+        "file_value": "b15kmstruct15pct",
+        "mass_frac": 0.15,
+        "n_shift": 5_648,
+        "pred_short": "-0.002",
+        "predicted_change": "-0.002 DTI (MODEL; plausible interval -0.013 to +0.009; not a score)",
+        "hypothesis": (
+            "If the 15 km structural prior is predictive, doubling most of the way from a 10% to a 15% "
+            "reallocation should improve DTI; if the winning CV band is a hard constraint, redundancy "
+            "will instead make the middle dose neutral-to-negative."
         ),
-        "falsifier": (
-            "strainAway10 >= strain10 on paired live receipts falsifies the strain mechanism; "
-            "strainAway10 <= -0.010 confirms it. Any |delta|<0.010 is no evidence."
+        "predicted_sign_reason": (
+            "The 15 km density CV moves further beyond the reported 0.51-0.59 band and high-prior blocks "
+            "already start denser than low-prior blocks, so the model centre is slightly negative."
+        ),
+    },
+    {
+        "tag": "b15km-struct-move20pct",
+        "file_value": "b15kmstruct20pct",
+        "mass_frac": 0.20,
+        "n_shift": 7_531,
+        "pred_short": "-0.006",
+        "predicted_change": "-0.006 DTI (MODEL; plausible interval -0.018 to +0.006; not a score)",
+        "hypothesis": (
+            "A 20% shift is the strong-dose counterpoint: if the prior is wrong or the 0.51-0.59 "
+            "block-density band is causal, concentrated additions will be redundant under the max "
+            "kernel and the score should fall."
+        ),
+        "predicted_sign_reason": (
+            "At 20% the 15 km CV is expected to overshoot the reported winning band substantially; "
+            "the dose response, not any one projection, is the experiment."
         ),
     },
 )
 
 
 def value_string(spec: dict) -> str:
-    pct = 100.0 * spec["mass_frac"]
-    direction = "low->high strain" if spec["toward"] else "high->low strain (sign control)"
     return (
-        f"tag={spec['tag']}; 5km blocks; prior=geodetic strain-rate invariant band4 (label-agnostic); "
-        f"move {pct:g}% R0 mass ({spec['n_shift']} dots) {direction}; 50% pool; "
+        f"{spec['tag']}; lowest 35% -> highest 35% by equal-rank strain/edge prior on 15km blocks; "
         f"fixed count 37654; added d_cat>=3px"
     )
 
 
-def check_reservations() -> None:
-    """Fail closed if any (CONCENTRATION, tag) or hash already exists (dedupe rule)."""
-    res_path = ROOT / "ledger" / "experiment_reservations.json"
-    if res_path.is_file():
-        res = json.loads(res_path.read_text(encoding="utf-8"))
-        taken = set(res.get("concentration_reservations", {}).get("occupied_tags", []))
-        for spec in VARIANT_SPECS:
-            if spec["tag"] in taken:
-                raise ValueError(f"duplicate experiment reservation: (CONCENTRATION, {spec['tag']}) already reserved")
-    ledger_path = ROOT / "ledger" / "submissions.csv"
-    if ledger_path.is_file():
-        with ledger_path.open(newline="", encoding="utf-8") as fh:
-            for row in csv.DictReader(fh):
-                if (row.get("axis") or "").strip().upper() != AXIS:
-                    continue
-                val = row.get("value") or ""
-                for spec in VARIANT_SPECS:
-                    if f"tag={spec['tag']}" in val:
-                        raise ValueError(f"duplicate experiment in ledger: (CONCENTRATION, {spec['tag']})")
+def check_concentration_reservations() -> None:
+    """Fail closed if any selected (AXIS, value) pair is already occupied."""
+    res = json.loads(RESERVATIONS_PATH.read_text(encoding="utf-8")) if RESERVATIONS_PATH.is_file() else {}
+    block = res.get("concentration_reservations_20261023", {})
+    occupied_tags = set(block.get("occupied_tags", []))
+    occupied_values = set(block.get("occupied_values", [])) | set(block.get("cross_repo_occupied_values", []))
+    for spec in VARIANT_SPECS:
+        if spec["tag"] in occupied_tags:
+            raise ValueError(f"duplicate experiment reservation: (CONCENTRATION, {spec['tag']}) already reserved")
+        val = value_string(spec)
+        if val in occupied_values:
+            raise ValueError(f"duplicate experiment reservation: (CONCENTRATION, {val}) already reserved")
+        if spec["file_value"] in occupied_values:
+            raise ValueError(f"duplicate experiment reservation: (CONCENTRATION, {spec['file_value']}) already reserved")
+
+    with LEDGER_PATH.open(newline="", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            if (row.get("axis") or "").strip().upper() != AXIS:
+                continue
+            val = row.get("value") or ""
+            for spec in VARIANT_SPECS:
+                if spec["tag"] in val or value_string(spec) == val:
+                    raise ValueError(
+                        f"duplicate experiment in ledger/submissions.csv: (CONCENTRATION, {spec['tag']})"
+                    )
 
 
 def existing_ledger_hashes(exclude_ids: set[str] | None = None) -> set[str]:
     exclude = exclude_ids or set()
-    ledger_path = ROOT / "ledger" / "submissions.csv"
     hashes: set[str] = set()
-    if ledger_path.is_file():
-        with ledger_path.open(newline="", encoding="utf-8") as fh:
-            for row in csv.DictReader(fh):
-                if row.get("id") in exclude:
-                    continue
-                for col in ("sha256", "sha256_zeros"):
-                    val = (row.get(col) or "").strip()
-                    if val:
-                        hashes.add(val)
+    with LEDGER_PATH.open(newline="", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            if row.get("id") in exclude:
+                continue
+            for col in ("sha256", "sha256_zeros"):
+                val = (row.get(col) or "").strip()
+                if val:
+                    hashes.add(val)
     return hashes
 
 
-def load_prior_layers(foot: np.ndarray):
-    with rasterio.open(DATA / EXTRA_PINS["training_features"]) as ds:
-        strain_band = ds.read(4)
-        det_elev = ds.read(12)
-        det_elev_slope = ds.read(19)
-    field, meta = strain_prior_field(strain_band, foot)
-    blocks = block_grid(foot, BLOCK_PX)
-    prior = block_prior(field, foot, blocks)
-    meta["n_blocks"] = len(blocks)
-    meta["block_px"] = BLOCK_PX
-    meta["block_km"] = BLOCK_PX * 0.1
-    # Report-only: relief-neutrality of the prior (block-level rank corr with relief tercile index).
-    relief_idx, _ = landform_relief_index(det_elev, det_elev_slope, foot)
-    relief_block = block_prior(relief_idx, foot, blocks)
-    meta["prior_vs_relief_rank_corr"] = round(
-        float(np.corrcoef(rankdata(prior), rankdata(relief_block))[0, 1]), 4)
-    return field, blocks, prior, meta, relief_idx
-
-
-def leakage_canary(foot: np.ndarray, cat: np.ndarray, strain_field: np.ndarray,
-                   seed: int = SEED) -> dict:
-    """Report-only single-feature symmetric ROC-AUC across all 19 bands + strain prior."""
-    report = relief_build.compute_leakage_canary(foot, cat, strain_field, seed=seed)
-    feats = report.get("features", {})
-    if "composite_landform_relief_idx" in feats:
-        feats["strain_prior_band4"] = feats.pop("composite_landform_relief_idx")
-    if "composite_relief_idx_symmetric_auc" in report:
-        report["strain_prior_symmetric_auc"] = report.pop("composite_relief_idx_symmetric_auc")
-    report["note"] = "Prior is a supplied geophysical band (label-agnostic); no catalogue-derived feature included."
-    return report
-
-
-def validate_concentration_file(path: Path, expected_mask: np.ndarray, r0_mask: np.ndarray,
-                                foot: np.ndarray, cat: np.ndarray, dist_cat: np.ndarray,
-                                sample_path: Path, cat_path: Path, sample_profile: dict,
-                                mode: str) -> dict:
-    fmt = format_validate(str(path), str(sample_path), str(cat_path), zeros_outside=(mode == "zeros"))
-    if not fmt["pass"]:
-        raise ValueError(f"src.validate failed for {path.name}: {fmt['fails']}")
-    with rasterio.open(path) as src:
-        a = src.read(1)
-        profile = src.profile
-        crs = src.crs
-        transform = src.transform
-    disk_mask = (a > 0.5) & foot
-    added_mask = disk_mask & ~r0_mask
-    retained_mask = disk_mask & r0_mask
-    checks = {
-        "src_validate_gate_pass": bool(fmt["pass"]),
-        "crs_matches_sample": crs == sample_profile["crs"],
-        "transform_matches_sample": transform == sample_profile["transform"],
-        "shape_matches_sample": a.shape == (sample_profile["height"], sample_profile["width"]),
-        "float32_single_band": profile["dtype"] == "float32" and profile["count"] == 1,
-        "inside_foot_finite": bool(np.isfinite(a[foot]).all()),
-        "inside_foot_range_0_1": bool(np.all((a[foot] >= 0.0) & (a[foot] <= 1.0))),
-        "outside_encoding_valid": bool(np.isnan(a[~foot]).all()) if mode == "nan" else bool(np.all(a[~foot] == 0.0)),
-        "exact_expected_mask_after_disk_read": bool(np.array_equal(disk_mask, expected_mask)),
-        "zero_catalogue_mass": not bool(np.any(disk_mask & cat)),
-        "added_dots_min_cat_dist_ge_3px": bool(float(dist_cat[added_mask].min()) >= MIN_ADDED_CAT_DIST) if added_mask.any() else True,
-        "retained_dots_preserve_r0_collar_gt_2px": bool(float(dist_cat[retained_mask].min()) > 2.0),
-        "file_re_read_from_disk": True,
-    }
-    if not all(checks.values()):
-        raise ValueError(f"concentration validator failed for {path.name}: {[k for k, v in checks.items() if not v]}")
-    return {
-        "path": str(path.relative_to(ROOT)),
-        "sha256": base_build.sha256_file(path),
-        "bytes": path.stat().st_size,
-        "encoding": mode,
-        "n_dots": int(disk_mask.sum()),
-        "min_catalogue_distance_all_dots_px": round(float(dist_cat[disk_mask].min()), 6),
-        "min_catalogue_distance_added_dots_px": round(float(dist_cat[added_mask].min()), 6),
-        "inherited_r0_dots_below_3px": int((retained_mask & (dist_cat < 3.0)).sum()),
-        "added_dots_below_3px": int((added_mask & (dist_cat < 3.0)).sum()),
-        "checks": checks,
-    }
-
-
-def build_all() -> dict:
-    t0 = time.time()
-    check_reservations()
+def load_inputs() -> dict:
     input_receipt = base_build.verify_manifest_inputs()
     template, foot, cat, r0, parent_stats = base_build.exact_parent_rebuild()
+    if parent_stats["r0_rebuilt_zeros_sha256"] != base_build.R0_ZEROS_SHA:
+        raise ValueError("R0 rebuild is not the recorded parent")
+    if parent_stats["r0_rebuilt_nan_sha256"] != base_build.R0_NAN_SHA:
+        raise ValueError("R0 NaN rebuild is not the recorded parent")
     dist_cat = ndi.distance_transform_edt(~cat)
-
-    # Support is the pinned off-catalogue H19-5 ridge mask; R0 must sit entirely on it.
     h19 = base_build.read_binary(DATA / base_build.PIN_PATHS["h19_5"], foot)
     support = h19 & foot & ~cat
-    if not np.all(~r0 | support):
-        raise ValueError("R0 contains pixels outside off-catalogue H19-5 support")
+    prior = structural_prior(str(FEATURE_PATH), foot)
+    return {
+        "input_receipt": input_receipt,
+        "template": template,
+        "foot": foot,
+        "cat": cat,
+        "r0": r0,
+        "parent_stats": parent_stats,
+        "dist_cat": dist_cat,
+        "h19": h19,
+        "support": support,
+        "prior": prior,
+    }
 
-    field, blocks, prior, prior_meta, relief_idx = load_prior_layers(foot)
-    canary = leakage_canary(foot, cat, field, seed=SEED)
 
-    shares_before = region_shares(r0)
-    cv_before = {f"block_density_cv_{int(bp*0.1)}km": round(block_density_cv(r0, foot, bp), 6)
-                 for bp in (50, 100, 150)}
-    corr_before = round(density_prior_rank_corr(r0, foot, blocks, prior), 6)
+def validate_concentration_file(
+    path: Path,
+    expected_mask: np.ndarray,
+    r0: np.ndarray,
+    foot: np.ndarray,
+    cat: np.ndarray,
+    dist_cat: np.ndarray,
+    support: np.ndarray,
+    prior: dict,
+    sample_profile: dict,
+    mode: str,
+) -> dict:
+    audit = relief_build.validate_relief_file(
+        path, expected_mask, r0, foot, cat, dist_cat,
+        DATA / base_build.PIN_PATHS["sample_submission"],
+        DATA / base_build.PIN_PATHS["catalogue"],
+        sample_profile,
+        mode,
+    )
+    with rasterio.open(path) as src:
+        a = src.read(1)
+    disk_mask = (a > 0.5) & foot
+    added = disk_mask & ~r0
+    removed = r0 & ~disk_mask
+    extra = {
+        "all_added_dots_on_h19_support": bool(np.all(support[added])),
+        "all_added_dots_in_high_prior_blocks": bool(np.all(prior["recipient_mask"][added])),
+        "all_removed_dots_in_low_prior_blocks": bool(np.all(prior["donor_mask"][removed])),
+        "inside_foot_values_are_binary": bool(np.all(np.isin(a[foot], (0.0, 1.0)))),
+        "format_gate_revalidated_from_disk": bool(format_validate(
+            str(path), str(DATA / base_build.PIN_PATHS["sample_submission"]),
+            str(DATA / base_build.PIN_PATHS["catalogue"]), zeros_outside=(mode == "zeros")
+        )["pass"]),
+    }
+    if not all(extra.values()):
+        raise ValueError(f"concentration validator failed for {path.name}: {[k for k, v in extra.items() if not v]}")
+    audit["checks"].update(extra)
+    audit["added_dots"] = int(added.sum())
+    audit["removed_dots"] = int(removed.sum())
+    audit["retained_parent_dots"] = int((disk_mask & r0).sum())
+    return audit
 
-    seen_hashes = existing_ledger_hashes()
+
+def mechanism_card(spec: dict, cv_before: float, cv_after: float) -> dict:
+    return {
+        "hypothesis": spec["hypothesis"],
+        "mechanism": (
+            "Block prior = equal mean of in-footprint percentile ranks of |tmi_hg|, |geod_2ndinv|, "
+            "|geod_shearrate| and |iso_grav_anom_hg| from pinned training_features.tif, averaged over "
+            "15 km (150 px) blocks with >=50% footprint. Dots are removed from the lowest-prior 35% "
+            "of blocks by minimum exclusive R=3 px triangular-kernel credit and added in the "
+            f"highest-prior 35% by maximum marginal credit on H19-5. {spec['n_shift']:,} unit-mass "
+            f"dots ({100*spec['mass_frac']:.0f}% of R0) move at fixed count 37,654; "
+            f"15 km density CV {cv_before:.4f}->{cv_after:.4f}."
+        ),
+        "non_fault_confounder": (
+            "Geodetic strain gradients can follow groundwater withdrawal, volcanic inflation or "
+            "basin-edge sediment compaction; magnetic and gravity gradients can mark dikes, resistant "
+            "lithologic contacts, pluvial shorelines, roads or pipelines rather than faults. High-prior "
+            "blocks may also be dense in mapped faults whose exact pixels are masked."
+        ),
+        "predicted_sign_and_size": spec["predicted_change"],
+        "why_this_sign": spec["predicted_sign_reason"],
+        "falsifier": (
+            "A same-week paired live receipt against R0 with Delta <= -0.010 DTI rejects this "
+            "structural-prior concentration dose. If the 10% arm is >= +0.010 but 15/20% are worse, "
+            "the prior has a narrow optimum; if all |Delta| < 0.010, the axis has no evidence."
+        ),
+        "structural_geologist_note": (
+            "Inspect the removed low-prior strands for blind basin faults and the added high-prior "
+            "strands for unfaulted lithologic or cultural edges. The 400 m GeoDAWN line spacing "
+            "(https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) makes the "
+            "potential-field positions uncertain by about one kernel radius; this is a block-allocation "
+            "experiment, not a new fault map."
+        ),
+    }
+
+
+def emit_pair(mask: np.ndarray, foot: np.ndarray, template: dict, slug: str) -> tuple[Path, Path, str, str]:
     OUT.mkdir(parents=True, exist_ok=True)
-    sample_path = DATA / base_build.PIN_PATHS["sample_submission"]
-    cat_path = DATA / base_build.PIN_PATHS["catalogue"]
+    tmp_nan = OUT / f".{slug}-nan.tmp.tif"
+    tmp_zeros = OUT / f".{slug}-zeros.tmp.tif"
+    base_build.emit(mask, foot, template, slug, "nan", tmp_nan)
+    base_build.emit(mask, foot, template, slug, "zeros", tmp_zeros)
+    nan_sha = base_build.sha256_file(tmp_nan)
+    zeros_sha = base_build.sha256_file(tmp_zeros)
+    base = OUT / f"{slug}-{nan_sha[:8]}"
+    nan_path = base.with_suffix(".tif")
+    zeros_path = OUT / f"{base.name}-zeros.tif"
+    tmp_nan.replace(nan_path)
+    tmp_zeros.replace(zeros_path)
+    return nan_path, zeros_path, nan_sha, zeros_sha
 
+
+def build() -> dict:
+    t0 = time.time()
+    check_concentration_reservations()
+    inp = load_inputs()
+    foot, cat, r0 = inp["foot"], inp["cat"], inp["r0"]
+    dist_cat, support, prior = inp["dist_cat"], inp["support"], inp["prior"]
+    template, parent_stats = inp["template"], inp["parent_stats"]
+    cv_before = density_cv(r0, foot)
+    candidate_masks = {"R0": r0}
     variants = []
-    candidate_masks: dict[str, np.ndarray] = {"R0": r0}
 
     for spec in VARIANT_SPECS:
-        donor, recip, strata_meta = strata_masks(r0.shape, blocks, prior, POOL_FRAC, spec["toward"])
-        cand_mask, stats = greedy_relief_reallocate(
-            r0, support, donor, recip, dist_cat, int(spec["n_shift"]), MIN_ADDED_CAT_DIST
+        cand, shift_stats = reallocate_to_high_prior(r0, support, dist_cat, prior, spec["n_shift"])
+        if int(cand.sum()) != R0_DOTS:
+            raise AssertionError("fixed-count invariant failed")
+        added, removed = cand & ~r0, r0 & ~cand
+        if int(added.sum()) != spec["n_shift"] or int(removed.sum()) != spec["n_shift"]:
+            raise AssertionError("moved-dot count invariant failed")
+        pct_changed = 100.0 * float((cand ^ r0).sum()) / float(R0_DOTS)
+        if not 1.0 <= pct_changed <= 50.0:
+            raise ValueError(f"{spec['tag']} changes {pct_changed:.6f}% of R0, outside 1-50%")
+        region = region_evenness_report(r0, cand, prior, spec["mass_frac"])
+        if not region["pass"]:
+            raise ValueError(f"{spec['tag']} fails region-evenness gate: {region['checks']}")
+        cv_after = density_cv(cand, foot)
+        card = mechanism_card(spec, cv_before, cv_after)
+
+        slug = f"{PARENT}-{AXIS}{spec['file_value']}-{DATE}"
+        nan_path, zeros_path, nan_sha, zeros_sha = emit_pair(cand, foot, template, slug)
+        other_hashes = existing_ledger_hashes()
+        if nan_sha in other_hashes or zeros_sha in other_hashes:
+            raise ValueError(f"SHA-256 collision with an existing ledger row for {slug}")
+        nan_audit = validate_concentration_file(
+            nan_path, cand, r0, foot, cat, dist_cat, support, prior, template, "nan"
         )
-        pct_changed = stats["pct_changed_symmetric"]
-        mass_pct = stats["mass_shifted_pct_of_r0"]
-        if not (9.9 <= mass_pct <= 20.1):
-            raise ValueError(f"{spec['tag']} shifted {mass_pct:.4f}% mass (brief requires 10-20%)")
-        if not (1.0 <= pct_changed <= 50.0):
-            raise ValueError(f"{spec['tag']} changed {pct_changed:.4f}% of R0 (required 1-50%)")
+        zeros_audit = validate_concentration_file(
+            zeros_path, cand, r0, foot, cat, dist_cat, support, prior, template, "zeros"
+        )
+        if nan_audit["sha256"] != nan_sha or zeros_audit["sha256"] != zeros_sha:
+            raise ValueError("re-read SHA-256 differs from emitted SHA-256")
+        if nan_audit["added_dots_below_3px"] or zeros_audit["added_dots_below_3px"]:
+            raise ValueError("an added dot violates the 3 px catalogue collar")
 
-        removed = r0 & ~cand_mask
-        evenness = emptied_cluster_report(removed, r0)
-        evenness["passes_anti_isolation_gate"] = concentration_evenness_gate(
-            evenness, MAX_EMPTIED_CLUSTER_BLOCKS, MAX_FRACTION_BLOCKS_EMPTIED)
-        shares_after = region_shares(cand_mask)
-        shift = max_region_share_shift(shares_before, shares_after)
-        if not evenness["passes_anti_isolation_gate"]:
-            raise ValueError(f"{spec['tag']} fails anti-isolation gate: {evenness}")
-        if shift > MAX_REGION_SHARE_SHIFT:
-            raise ValueError(f"{spec['tag']} region share shift {shift:.4f} > {MAX_REGION_SHARE_SHIFT}")
-
-        slug = f"{PARENT}-{AXIS_TOKEN}{spec['tag']}-{DATE}"
-        tmp_nan = OUT / f".{slug}-nan.tmp.tif"
-        tmp_zeros = OUT / f".{slug}-zeros.tmp.tif"
-        base_build.emit(cand_mask, foot, template, slug, "nan", tmp_nan)
-        base_build.emit(cand_mask, foot, template, slug, "zeros", tmp_zeros)
-        nan_sha = base_build.sha256_file(tmp_nan)
-        zeros_sha = base_build.sha256_file(tmp_zeros)
-        if nan_sha in seen_hashes or zeros_sha in seen_hashes or nan_sha == zeros_sha:
-            tmp_nan.unlink(missing_ok=True)
-            tmp_zeros.unlink(missing_ok=True)
-            raise ValueError(f"duplicate SHA-256 detected for {spec['tag']}")
-        seen_hashes.update((nan_sha, zeros_sha))
-
-        sha8 = nan_sha[:8]
-        vid = f"{slug}-{sha8}"
-        nan_path = OUT / f"{vid}.tif"
-        zeros_path = OUT / f"{vid}-zeros.tif"
-        tmp_nan.replace(nan_path)
-        tmp_zeros.replace(zeros_path)
-
-        nan_audit = validate_concentration_file(nan_path, cand_mask, r0, foot, cat, dist_cat,
-                                                sample_path, cat_path, template, "nan")
-        zeros_audit = validate_concentration_file(zeros_path, cand_mask, r0, foot, cat, dist_cat,
-                                                  sample_path, cat_path, template, "zeros")
-
-        pts = np.column_stack(np.nonzero(cand_mask))
-        nn_dists, _ = cKDTree(pts).query(pts, k=2)
-        cv_after = {f"block_density_cv_{int(bp*0.1)}km": round(block_density_cv(cand_mask, foot, bp), 6)
-                    for bp in (50, 100, 150)}
-        corr_after = round(density_prior_rank_corr(cand_mask, foot, blocks, prior), 6)
-
-        note = (f"{PARENT}; CONC {100*spec['mass_frac']:g}% ({spec['n_shift']}d) "
-                f"{'low->high' if spec['toward'] else 'high->low'} strain; pred {spec['pred_short']} DTI MODEL")
+        note = (
+            f"{PARENT}; CONC 15km structural-prior move {100*spec['mass_frac']:.0f}% low->high; "
+            f"37654 dots; pred {spec['pred_short']} MODEL"
+        )
         if len(note) > 140:
-            raise AssertionError(f"form_note exceeds 140 chars ({len(note)}): {note}")
-
-        parent_diff = {
-            **stats,
-            "direction": strata_meta["direction"],
-            "pool_frac": POOL_FRAC,
-            "block_size_km": BLOCK_PX * 0.1,
-            "block_density_cv_before": cv_before,
-            "block_density_cv_after": cv_after,
-            "region_shares_before": shares_before,
-            "region_shares_after": shares_after,
-            "max_region_share_shift": shift,
-            "density_prior_rank_corr_before": corr_before,
-            "density_prior_rank_corr_after": corr_after,
-            "nearest_neighbor_px_min": round(float(nn_dists[:, 1].min()), 6),
-            "nearest_neighbor_px_median": round(float(np.median(nn_dists[:, 1])), 6),
-            "anti_isolation": evenness,
-        }
-        mechanism_card = {
-            "hypothesis": spec["hypothesis"],
-            "mechanism": spec["mechanism"],
-            "non_fault_confounder": spec["non_fault_confounder"],
-            "predicted_live_change": spec["predicted_change"],
-            "falsifier": spec["falsifier"],
-            "structural_geologist_note": (
-                "All 37,654 dots remain on the corroborated H19-5 ridge network; the ranking prior is the "
-                "competition-supplied geodetic strain-rate invariant, NOT a catalogue-derived field, so this "
-                "is a physical-deformation test rather than a label-geography test. Review added high-strain "
-                "segments against GPS/InSAR station density and known geothermal/subsidence/volcanic centres, "
-                "and removed low-strain segments against mapped aseismic bedrock faults."
-            ),
-        }
+            raise AssertionError(f"form note is {len(note)} chars: {note}")
+        base = nan_path.stem
+        candidate_masks[base] = cand
         variants.append({
-            "id": vid,
-            "tag": spec["tag"],
+            "id": base,
             "parent": PARENT,
             "axis": AXIS,
             "value": value_string(spec),
-            "toward_high_prior": bool(spec["toward"]),
-            "mass_frac": spec["mass_frac"],
-            "n_shift": int(spec["n_shift"]),
+            "tag": spec["tag"],
             "n_dots": R0_DOTS,
+            "n_shift": spec["n_shift"],
+            "mass_shifted_pct": 100.0 * spec["n_shift"] / R0_DOTS,
             "pct_changed": pct_changed,
-            "mass_shifted_pct": mass_pct,
-            "removed_dots": stats["removed_dots"],
-            "added_dots": stats["added_dots"],
-            "retained_dots": stats["retained_dots"],
-            "sha256": nan_audit["sha256"],
-            "sha256_zeros": zeros_audit["sha256"],
+            "removed_dots": int(removed.sum()),
+            "added_dots": int(added.sum()),
+            "retained_dots": int((cand & r0).sum()),
+            "sha256": nan_sha,
+            "sha256_zeros": zeros_sha,
             "status": "BUILT",
             "predicted_change": spec["predicted_change"],
             "form_note": note,
             "files": {"nan": nan_audit, "zeros": zeros_audit},
-            "parent_diff": parent_diff,
-            "mechanism_card": mechanism_card,
+            "parent_diff": {
+                "removed_from_parent": int(removed.sum()),
+                "added_to_candidate": int(added.sum()),
+                "retained_from_parent": int((cand & r0).sum()),
+                "symmetric_difference_px": int((cand ^ r0).sum()),
+                "pct_changed_of_R0": pct_changed,
+            },
+            "reallocation": shift_stats,
+            "block_density_cv": {
+                "block_px": BLOCK_PX,
+                "block_km": BLOCK_PX / 10.0,
+                "min_footprint_fraction": MIN_FOOT_FRAC,
+                "before": round(cv_before, 6),
+                "after": round(cv_after, 6),
+                "delta": round(cv_after - cv_before, 6),
+            },
+            "region_evenness": region,
+            "mechanism_card": card,
         })
-        candidate_masks[vid] = cand_mask
 
-    # Report-only PROXY diagnostics (never gates, never scores).
-    with rasterio.open(DATA / EXTRA_PINS["sgmc"]) as ds:
+    # Report-only diagnostics: never gates, never scores, never rank the variants.
+    canary = relief_build.compute_leakage_canary(foot, cat, prior["composite"], seed=SEED)
+    canary["features"]["structural_edge_strain_prior_15km_inputs"] = canary["features"].pop(
+        "composite_landform_relief_idx"
+    )
+    if canary["max_feature"] == "composite_landform_relief_idx":
+        canary["max_feature"] = "structural_edge_strain_prior_15km_inputs"
+    canary["structural_prior_symmetric_auc"] = canary["features"][
+        "structural_edge_strain_prior_15km_inputs"
+    ]["symmetric_auc"]
+    with rasterio.open(SGMC_PATH) as ds:
         sgmc_off = foot & (ds.read(1) > 0) & (dist_cat > 3.0)
-    hide_recover_proxy = relief_build.compute_spatial_block_proxy(
+    hide = relief_build.compute_spatial_block_proxy(
         candidate_masks, foot, cat, holdout_quarter=True, seed=SEED, block_px=200, n_boot=1000
     )
-    hide_recover_proxy["caveat"] = (
-        "R0 pruned d_cat<=2 px across the full catalogue and every newly added CONCENTRATION dot enforces "
-        "d_cat>=3 px, so withheld catalogue positives earn zero credit from added dots; the proxy only measures "
-        "residual 2<d_cat<3 px flank retention. Historical correlation with live DTI is -0.87 to +0.54; PROXY ONLY."
+    hide["caveat"] = (
+        "Known catalogue pixels are masked pixel-exactly; all added dots are >=3 px away and earn zero "
+        "R=3 px kernel credit on withheld catalogue positives. PROXY ONLY, never a gate or score."
     )
-    sgmc_proxy = relief_build.compute_spatial_block_proxy(
+    sgmc = relief_build.compute_spatial_block_proxy(
         candidate_masks, foot, sgmc_off, holdout_quarter=False, seed=SEED, block_px=200, n_boot=1000
     )
-    sgmc_proxy["caveat"] = (
-        "Off-catalogue USGS SGMC geologic-map faults (d_cat>3 px) over-represent exposed range bedrock; standalone "
-        "SGMC scored ~0.05 CLAIM live. PROXY ONLY, never a gate or score."
+    sgmc["caveat"] = (
+        "Off-catalogue USGS SGMC geologic-map faults over-represent exposed bedrock and are not the "
+        "hidden new-fault labels. PROXY ONLY, never a gate or score."
     )
 
     return {
@@ -472,7 +439,11 @@ def build_all() -> dict:
         "generator_script": "scripts/build_concentration_variants.py",
         "generator_script_sha256": base_build.sha256_file(Path(__file__)),
         "axis": AXIS,
-        "session": "2026-10-23e (agent-selected CONCENTRATION, GEMSDOE90)",
+        "session_selection_reason": (
+            "Read-only audit of 79 public buffedlizard55-lab/GEMSDOE* default branches found 33 occupied "
+            "CONCENTRATION values, none at 15 km with this pinned strain/edge prior. R0's 15 km CV "
+            "0.5103 lies in the brief's reported 0.51-0.59 band."
+        ),
         "parent": {
             "id": PARENT,
             "claimed_live_score": 0.2778,
@@ -480,43 +451,31 @@ def build_all() -> dict:
             "zeros_sha256": base_build.R0_ZEROS_SHA,
             "nan_sha256": base_build.R0_NAN_SHA,
             **parent_stats,
-            **cv_before,
-            "region_shares": shares_before,
-            "density_prior_rank_corr": corr_before,
         },
         "prior_definition": {
-            "description": "geodetic strain-rate second invariant (band 4 geod_2ndinv), label-agnostic",
-            **prior_meta,
+            "source": "registry/data_manifest.json:training_features; owner-supplied competition mirror",
+            "bands": list(PRIOR_BANDS),
+            **prior["meta"],
+            "leakage_policy": "no hidden/public test truth; no geothermal wells, springs or vents",
         },
         "reallocation_operator": {
-            "support": "off-catalogue H19-5 corroborated ridge mask (h19_5 & footprint & ~catalogue)",
-            "pool": "complementary top/bottom 50% of 5 km blocks by strain prior",
-            "drop_rule": "greedy minimum R=3 px triangular-kernel exclusive credit loss in donor stratum",
-            "add_rule": "greedy maximum R=3 px triangular-kernel marginal credit gain in recipient stratum, d_cat>=3.0 px",
-            "deterministic_tie_break": "(row, col) ascending; stable argsort on blocks",
+            "support": "off-catalogue H19-5 corroborated ridge mask",
+            "drop_rule": "greedy minimum exclusive R=3 px triangular-kernel credit in low-prior blocks, donor dots restricted to d_cat>=3 px",
+            "add_rule": "greedy maximum marginal R=3 px credit in high-prior blocks, all additions d_cat>=3 px",
+            "deterministic_tie_break": "(row, col) ascending",
             "seed_used_in_variant_construction": None,
-            "count_fixed": R0_DOTS,
-            "inherited_r0_collar_preserved": True,
-        },
-        "hard_gates": {
-            "anti_isolation_max_emptied_cluster_blocks": MAX_EMPTIED_CLUSTER_BLOCKS,
-            "anti_isolation_max_fraction_blocks_emptied": MAX_FRACTION_BLOCKS_EMPTIED,
-            "max_region_share_shift_reported_cap": MAX_REGION_SHARE_SHIFT,
-            "added_dots_min_catalogue_dist_px": MIN_ADDED_CAT_DIST,
-            "note": "CONCENTRATION redistributes mass by design; following the RELIEF precedent, regional "
-                    "share shifts are reported diagnostics, not hard gates. Only region-ISOLATION (contiguous "
-                    "emptied hole/strip) is gated, per Hard Constraint #5. Prior is label-agnostic.",
         },
         "manifest": {
             "manifest_path": "registry/data_manifest.json",
-            "verified_count": len(input_receipt),
+            "verified_count": len(inp["input_receipt"]),
             "all_pins_rechecked": True,
-            "files": input_receipt,
+            "files": inp["input_receipt"],
         },
+        "r0_block_density_cv": round(cv_before, 6),
         "proxy_reports": {
-            "catalogue_hide_recover": hide_recover_proxy,
+            "catalogue_hide_recover": hide,
             "leakage_canary": canary,
-            "sgmc_control": sgmc_proxy,
+            "sgmc_control": sgmc,
         },
         "variants": variants,
         "elapsed_s": round(time.time() - t0, 2),
@@ -526,15 +485,14 @@ def build_all() -> dict:
 
 
 def update_ledgers_and_reservations(result: dict) -> None:
-    ledger_path = ROOT / "ledger" / "submissions.csv"
-    with ledger_path.open(newline="", encoding="utf-8") as fh:
+    with LEDGER_PATH.open(newline="", encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         fields = list(reader.fieldnames or [])
-        existing_rows = list(reader)
-    new_ids = {v["id"] for v in result["variants"]}
-    kept_rows = [r for r in existing_rows if r.get("id") not in new_ids]
+        rows = list(reader)
+    ids = {v["id"] for v in result["variants"]}
+    rows = [r for r in rows if r.get("id") not in ids]
     for v in result["variants"]:
-        kept_rows.append({
+        rows.append({
             "id": v["id"],
             "site": "GEMSDOE90",
             "name": v["id"],
@@ -555,71 +513,60 @@ def update_ledgers_and_reservations(result: dict) -> None:
             "date": "",
             "form_note": v["form_note"],
             "notes": (
-                f"strain-prior CONCENTRATION: mass_shifted={v['mass_shifted_pct']:.2f}% ({v['n_shift']} dots "
-                f"{'low->high' if v['toward_high_prior'] else 'high->low'} strain); 5km blocks; added d_cat>=3px; "
-                f"receipt_score/date filled by human; agent never submits"
+                f"moved={v['n_shift']} dots ({v['mass_shifted_pct']:.3f}%); 15km CV "
+                f"{v['block_density_cv']['before']:.4f}->{v['block_density_cv']['after']:.4f}; "
+                "region-evenness PASS; added d_cat>=3px; receipt_score/date filled by human; agent never submits"
             ),
         })
-    with ledger_path.open("w", newline="", encoding="utf-8") as fh:
+    with LEDGER_PATH.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
-        writer.writerows(kept_rows)
+        writer.writerows(rows)
 
-    res_path = ROOT / "ledger" / "experiment_reservations.json"
-    res = json.loads(res_path.read_text(encoding="utf-8"))
-    res["concentration_reservations"] = {
-        "checked_utc": "2026-10-23",
-        "axis": AXIS,
-        "parent": PARENT,
-        "prior": "geodetic strain-rate invariant (band 4, label-agnostic), 5 km blocks, complementary 50% pools",
-        "occupied_tags": [v["tag"] for v in result["variants"]],
-        "occupied_values": [v["value"] for v in result["variants"]],
-        "cross_repo_audit": {
-            "siblings_checked": "GEMSDOE84-97 (gh api read-only, 2026-10-23)",
-            "catalogue_density_prior": "GEMSDOE89 CONC5kmcat10/cat10away/cat20",
-            "h19_5_prior": "GEMSDOE87 CONCc10/c15/c20",
-            "self_density_prior": "GEMSDOE88/91 CONCb10px-m10/m20/b50px-m20; GEMSDOE84/85/86 additional conc/spread",
-            "why_new": "No sibling built a CONCENTRATION on a label-agnostic geodetic strain-rate prior; "
-                       "prior is near-orthogonal to R0 density (r~+0.11) and relief-neutral, and uses no "
-                       "test label/score, so it is orthogonal to all sibling values and to Hard Constraint #5.",
-        },
-        "note": "Repeat builds of these (CONCENTRATION, value) pairs fail closed.",
-    }
-    res.setdefault("sessions", []).append({
-        "session": "2026-10-23e strain-prior CONCENTRATION (GEMSDOE90)",
-        "axis": AXIS,
-        "prior": "geodetic strain-rate invariant band 4 (label-agnostic), 5 km blocks",
-        "selected_values": [v["tag"] for v in result["variants"]],
-        "variant_ids": [v["id"] for v in result["variants"]],
-    })
-    res_path.write_text(json.dumps(res, indent=2) + "\n", encoding="utf-8")
-
-    cards_path = ROOT / "ledger" / "mechanism_cards.json"
-    cards = json.loads(cards_path.read_text(encoding="utf-8")) if cards_path.is_file() else {}
+    cards = json.loads(CARDS_PATH.read_text(encoding="utf-8"))
+    cards["active_session_axis"] = AXIS
     cards["concentration"] = {
+        "schema_version": 1,
+        "parent": PARENT,
         "axis": AXIS,
-        "session": "2026-10-23e (GEMSDOE90)",
-        "prior": "geodetic strain-rate invariant (band 4 geod_2ndinv), label-agnostic, 5 km blocks",
         "variants": [
-            {"id": v["id"], "axis": AXIS, "value": v["value"], "mechanism_card": v["mechanism_card"]}
+            {"id": v["id"], "value": v["value"], "mechanism_card": v["mechanism_card"]}
             for v in result["variants"]
         ],
     }
-    cards_path.write_text(json.dumps(cards, indent=2) + "\n", encoding="utf-8")
+    CARDS_PATH.write_text(json.dumps(cards, indent=2) + "\n", encoding="utf-8")
+
+    res = json.loads(RESERVATIONS_PATH.read_text(encoding="utf-8"))
+    res["concentration_reservations_20261023"] = {
+        "checked_utc": "2026-10-23",
+        "axis": AXIS,
+        "parent": PARENT,
+        "scope": (
+            "Read-only gh api audit of default-branch ledger/submissions.csv in 79 public "
+            "buffedlizard55-lab/GEMSDOE* repos; 9 files present, 255 axis rows, 33 CONCENTRATION rows."
+        ),
+        "occupied_tags": [v["tag"] for v in result["variants"]],
+        "occupied_values": [v["value"] for v in result["variants"]],
+        "cross_repo_occupied_values": sorted(set(CROSS_REPO_CONCENTRATION_VALUES)),
+        "selected_values": [v["tag"] for v in result["variants"]],
+        "why_distinct": (
+            "No indexed sibling builds a 15 km block prior from the four pinned strain/potential-field "
+            "bands; existing values use 0.8/1/5 km or 10/50 px blocks, thermal/GDR priors, or generic "
+            "density/CV moves. Repeat builds of these exact tags fail closed."
+        ),
+        "caveat": (
+            "Default-branch public repository audit is not proof of every private or unindexed entity "
+            "submission. Human must check any missing entity ledger before spending a scored slot."
+        ),
+    }
+    RESERVATIONS_PATH.write_text(json.dumps(res, indent=2) + "\n", encoding="utf-8")
 
 
 def verify_all() -> int:
-    input_receipt = base_build.verify_manifest_inputs()
-    receipt_path = ROOT / "evidence" / "concentration_build_receipt.json"
-    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
-    template, foot, cat, r0, parent_stats = base_build.exact_parent_rebuild()
-    dist_cat = ndi.distance_transform_edt(~cat)
-    h19 = base_build.read_binary(DATA / base_build.PIN_PATHS["h19_5"], foot)
-    support = h19 & foot & ~cat
-    _field, blocks, prior, _meta, _relief = load_prior_layers(foot)
-
-    sample_path = DATA / base_build.PIN_PATHS["sample_submission"]
-    cat_path = DATA / base_build.PIN_PATHS["catalogue"]
+    inp = load_inputs()
+    receipt = json.loads(RECEIPT_PATH.read_text(encoding="utf-8"))
+    template, foot, cat, r0, parent_stats = inp["template"], inp["foot"], inp["cat"], inp["r0"], inp["parent_stats"]
+    dist_cat, support, prior = inp["dist_cat"], inp["support"], inp["prior"]
     spec_by_tag = {s["tag"]: s for s in VARIANT_SPECS}
     our_ids = {v["id"] for v in receipt["variants"]}
     other_hashes = existing_ledger_hashes(exclude_ids=our_ids)
@@ -628,68 +575,91 @@ def verify_all() -> int:
 
     for v in receipt["variants"]:
         spec = spec_by_tag[v["tag"]]
-        donor, recip, _ = strata_masks(r0.shape, blocks, prior, POOL_FRAC, spec["toward"])
-        expected_mask, stats = greedy_relief_reallocate(
-            r0, support, donor, recip, dist_cat, int(spec["n_shift"]), MIN_ADDED_CAT_DIST)
-        if int(expected_mask.sum()) != R0_DOTS:
-            raise ValueError(f"recomputed {v['id']} dot count != {R0_DOTS}")
-        if abs(stats["pct_changed_symmetric"] - float(v["pct_changed"])) > 1e-6:
-            raise ValueError(f"recomputed {v['id']} pct_changed mismatch")
+        expected, stats = reallocate_to_high_prior(r0, support, dist_cat, prior, spec["n_shift"])
+        if int(expected.sum()) != R0_DOTS:
+            raise ValueError(f"recomputed {v['id']} count != {R0_DOTS}")
+        pct_changed = 100.0 * float((expected ^ r0).sum()) / float(R0_DOTS)
+        if abs(pct_changed - float(v["pct_changed"])) > 1e-6:
+            raise ValueError(f"recomputed {v['id']} parent-diff mismatch")
+        region = region_evenness_report(r0, expected, prior, spec["mass_frac"])
+        if not region["pass"]:
+            raise ValueError(f"recomputed {v['id']} fails region-evenness gate")
         for mode_name in ("nan", "zeros"):
             fpath = ROOT / v["files"][mode_name]["path"]
-            audit = validate_concentration_file(fpath, expected_mask, r0, foot, cat, dist_cat,
-                                                sample_path, cat_path, template, mode_name)
+            audit = validate_concentration_file(
+                fpath, expected, r0, foot, cat, dist_cat, support, prior, template, mode_name
+            )
             if audit["sha256"] != v["files"][mode_name]["sha256"]:
                 raise ValueError(f"disk SHA-256 mismatch for {v['id']} [{mode_name}]")
             if audit["sha256"] in other_hashes:
                 raise ValueError(f"SHA-256 collides with prior ledger entry: {v['id']} [{mode_name}]")
             tmp_file = tmp_dir / f"{v['id']}-{mode_name}.tif"
             try:
-                base_build.emit(expected_mask, foot, template, v["id"], mode_name, tmp_file)
+                base_build.emit(expected, foot, template, v["id"], mode_name, tmp_file)
                 if base_build.sha256_file(tmp_file) != audit["sha256"]:
                     raise ValueError(f"deterministic byte re-emission failed for {v['id']} [{mode_name}]")
             finally:
                 tmp_file.unlink(missing_ok=True)
 
-    receipt["verified_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    verified_utc = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    receipt["verified_utc"] = verified_utc
     receipt["verification_git_sha"] = base_build.git_sha()
     receipt["generator_script_sha256"] = base_build.sha256_file(Path(__file__))
-    receipt["manifest"]["verified_count"] = len(input_receipt)
+    receipt["manifest"]["verified_count"] = len(inp["input_receipt"])
     receipt["manifest"]["all_pins_rechecked"] = True
     receipt["self_check"] = {
         "all_26_manifest_pins_verified": True,
         "r0_rebuilt_byte_identically": bool(parent_stats["r0_byte_identity_passed"]),
         "variant_files_re_read_and_validated": True,
         "variant_bytes_reproduced_exactly": True,
-        "added_dots_strictly_ge_3px_from_catalogue": True,
-        "zero_catalogue_mass": True,
-        "anti_isolation_gate_passed_all_variants": True,
+        "region_evenness_gate_pass": True,
+        "no_sha256_collision_with_other_ledger_rows": True,
     }
-    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
-    print(f"Verified {len(receipt['variants'])} CONCENTRATION variant pairs from disk; "
-          f"R0 byte-identical ({base_build.R0_ZEROS_SHA[:16]}...)")
+    RECEIPT_PATH.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+
+    r0_receipt = {
+        "generated_utc": verified_utc,
+        "git_sha": base_build.git_sha(),
+        "generator_script_sha256": base_build.sha256_file(ROOT / "scripts" / "build_r0_variants.py"),
+        "parent": PARENT,
+        "method": "reconstruct h33-h33-2-b2 as pinned h27-4 solo-d2.8 & (Euclidean distance to catalogue > 2 px), then re-emit with sample_submission.tif profile",
+        "rebuilt": {
+            "zeros_sha256": parent_stats["r0_rebuilt_zeros_sha256"],
+            "nan_sha256": parent_stats["r0_rebuilt_nan_sha256"],
+            "dots": parent_stats["r0_dots"],
+            "below_3px": parent_stats["r0_below_3px"],
+        },
+        "expected": {
+            "zeros_sha256": base_build.R0_ZEROS_SHA,
+            "nan_sha256": base_build.R0_NAN_SHA,
+            "dots": R0_DOTS,
+        },
+        "all_checks_passed": bool(parent_stats["r0_byte_identity_passed"] and parent_stats["d28_symmetric_difference_px"] == 0),
+        "manifest_verified_count": len(inp["input_receipt"]),
+        "no_competition_inputs_added_to_git": True,
+    }
+    (ROOT / "evidence" / "r0_rebuild_receipt.json").write_text(json.dumps(r0_receipt, indent=2) + "\n", encoding="utf-8")
+    print(f"Verified {len(receipt['variants'])} concentration pairs from disk; R0 rebuilt byte-identically")
     return 0
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    grp = ap.add_mutually_exclusive_group(required=True)
-    grp.add_argument("--build", action="store_true")
-    grp.add_argument("--verify", action="store_true")
+    mode = ap.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--build", action="store_true")
+    mode.add_argument("--verify", action="store_true")
     args = ap.parse_args()
     if args.build:
-        result = build_all()
-        receipt_path = ROOT / "evidence" / "concentration_build_receipt.json"
-        receipt_path.parent.mkdir(parents=True, exist_ok=True)
-        receipt_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        result = build()
+        RECEIPT_PATH.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
         update_ledgers_and_reservations(result)
-        print(f"Built {len(result['variants'])} CONCENTRATION variants -> {receipt_path.relative_to(ROOT)}")
+        print(f"Built {len(result['variants'])} CONCENTRATION variants from exact R0; receipt -> {RECEIPT_PATH.relative_to(ROOT)}")
         for v in result["variants"]:
-            pd = v["parent_diff"]
-            print(f"  {v['id']}: {v['n_dots']} dots | mass_shifted={v['mass_shifted_pct']:.2f}% "
-                  f"| sym_changed={v['pct_changed']:.3f}% | CV15km {pd['block_density_cv_before']['block_density_cv_15km']:.3f}"
-                  f"->{pd['block_density_cv_after']['block_density_cv_15km']:.3f} | corr {pd['density_prior_rank_corr_before']:.3f}"
-                  f"->{pd['density_prior_rank_corr_after']:.3f} | maxshift {pd['max_region_share_shift']:.4f} | sha256={v['sha256'][:16]}...")
+            print(
+                f"  {v['id']}: {v['n_dots']} dots, moved {v['n_shift']}, "
+                f"{v['pct_changed']:.3f}% diff, CV {v['block_density_cv']['before']:.4f}->"
+                f"{v['block_density_cv']['after']:.4f}, sha256={v['sha256']}"
+            )
         return 0
     return verify_all()
 

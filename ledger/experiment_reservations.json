@@ -169,7 +169,7 @@
       ]
     },
     {
-      "session": "2026-10-23e strain-prior CONCENTRATION (GEMSDOE90)",
+      "session": "2026-10-23 CONC-strain/arena-388fea70 5km strain sign-control (GEMSDOE90)",
       "axis": "CONCENTRATION",
       "prior": "geodetic strain-rate invariant band 4 (label-agnostic), 5 km blocks",
       "selected_values": [
@@ -384,6 +384,58 @@
     "also_considered_and_rejected": "Brief-literal CONCENTRATION (lowest-prior -> highest-prior km blocks, 10-20%): already built by siblings at 0.8/1/5 km and 10/50 px blocks and 10/15/20% doses (GEMSDOE84-88, 91), with GEMSDOE86's reconciliation reading every upward arm at <=0 on its SGMC MODEL (-0.0005..-0.0150) and GEMSDOE84 holding its CONCENTRATION files for collar breaches (IR90-26). SNAP: 58 sibling rows, three sessions negative per GEMSDOE86. SPACING: brief lowest priority, built. TRACKB: Phase-2 only, 120-trace dossier already in GEMSDOE86.",
     "cross_repo_caveat": "Best-effort audit of public owner repositories, not proof of every submission the entity has made (IR90-04/IR90-11)."
   },
+  "concentration_reservations_20261023": {
+    "checked_utc": "2026-10-23",
+    "axis": "CONCENTRATION",
+    "parent": "h33-h33-2-b2",
+    "scope": "Read-only gh api audit of default-branch ledger/submissions.csv in 79 public buffedlizard55-lab/GEMSDOE* repos; 9 files present, 255 axis rows, 33 CONCENTRATION rows.",
+    "occupied_tags": [
+      "b15km-struct-move10pct",
+      "b15km-struct-move15pct",
+      "b15km-struct-move20pct"
+    ],
+    "occupied_values": [
+      "b15km-struct-move10pct; lowest 35% -> highest 35% by equal-rank strain/edge prior on 15km blocks; fixed count 37654; added d_cat>=3px",
+      "b15km-struct-move15pct; lowest 35% -> highest 35% by equal-rank strain/edge prior on 15km blocks; fixed count 37654; added d_cat>=3px",
+      "b15km-struct-move20pct; lowest 35% -> highest 35% by equal-rank strain/edge prior on 15km blocks; fixed count 37654; added d_cat>=3px"
+    ],
+    "cross_repo_occupied_values": [
+      "10% of dots moved from lowest-prior 0.8km blocks to highest-prior",
+      "15% of dots moved from lowest-prior 0.8km blocks to highest-prior",
+      "15pct-1km-grad",
+      "20% of dots moved from lowest-prior 0.8km blocks to highest-prior",
+      "5km-t25-move2400",
+      "5km-t50-move3765",
+      "b10px-m10",
+      "b10px-m20",
+      "b1km-move15",
+      "b50px-m20",
+      "b5km-cvband-down4",
+      "b5km-move10",
+      "b5km-move15",
+      "b5km-move20",
+      "b5km-ridge-up4",
+      "b5km-ridge-up8",
+      "c10",
+      "c15",
+      "c20",
+      "dens15",
+      "gdr10m10",
+      "gdr25m10",
+      "gdr25rm10",
+      "rand15",
+      "spr15",
+      "spread5km-move2400"
+    ],
+    "selected_values": [
+      "b15km-struct-move10pct",
+      "b15km-struct-move15pct",
+      "b15km-struct-move20pct"
+    ],
+    "why_distinct": "No indexed sibling builds a 15 km block prior from the four pinned strain/potential-field bands; existing values use 0.8/1/5 km or 10/50 px blocks, thermal/GDR priors, or generic density/CV moves. Repeat builds of these exact tags fail closed.",
+    "caveat": "Default-branch public repository audit is not proof of every private or unindexed entity submission. Human must check any missing entity ledger before spending a scored slot.",
+    "post_merge_decision": "After merging main (IR90-25/26), these three 15 km structural-prior files are HELD from the next three slots: exact R0 credit is nearly uniform, a fixed-count move loses ~0.98 and gains ~0.54 support credit per dot, and this session's SGMC PROXY is negative. They remain BUILT occupancy guards and a dose-response instrument only; no live receipt exists."
+  },
   "concentration_reservations": {
     "checked_utc": "2026-10-23",
     "axis": "CONCENTRATION",
@@ -406,6 +458,9 @@
       "self_density_prior": "GEMSDOE88/91 CONCb10px-m10/m20/b50px-m20; GEMSDOE84/85/86 additional conc/spread",
       "why_new": "No sibling built a CONCENTRATION on a label-agnostic geodetic strain-rate prior; prior is near-orthogonal to R0 density (r~+0.11) and relief-neutral, and uses no test label/score, so it is orthogonal to all sibling values and to Hard Constraint #5."
     },
-    "note": "Repeat builds of these (CONCENTRATION, value) pairs fail closed."
+    "note": "Repeat builds of these (CONCENTRATION, value) pairs fail closed.",
+    "value_family": "5km band-4 geodetic strain-rate prior; 50% complementary pools; matched-dose AWAY sign control",
+    "coexists_with": "main concentration_reservations_20261023 = 15 km structural strain/edge dose ladder",
+    "post_merge_decision": "HELD from the next slots, consistent with main IR90-25/26 and the 15 km ladder decision: fixed-count concentration loses ~0.98/gains ~0.54 support credit per dot and SGMC PROXY is negative. Kept as distinct (parent,axis,value) BUILT occupancy guards; the matched-dose AWAY arm is a falsifier instrument only. No live receipt. Human adjudicates entity-scope/quota before any slot."
   }
 }

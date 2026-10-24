@@ -312,33 +312,64 @@ All three files hold **37,654 dots**, refill from H19-5 with the recovered FIFO-
 
 **Compliance stop:** SNAP was withdrawn before raster emission when 30 inherited dots proved to have no >=3 px destination within 2 px (IR90-28). Three delete-only PRUNE probes were then withdrawn before submission because the brief requires fixed-count refill (IR90-29); they are not alternatives to the cards above.
 
-## Session 2026-10-23 CONC-strain (arena/388fea70): `AXIS=CONCENTRATION`, strain-rate prior (2026-10-23, `evidence/concentration_build_receipt.json`)
+## Session 2026-10-23e: `AXIS=CONCENTRATION` — HELD after merge — 15 km structural-edge / strain prior
 
-Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots, isotropic >2 px catalogue collar; 0.2778 is a **CLAIM** (no
-portal receipt). All three files are **BUILT**, format-gated and unscored; predictions are **MODEL**. Count is held
-fixed at 37,654; added dots enforce `d_cat >= 3.0 px`; zero catalogue mass. The ranking prior is the geodetic
-strain-rate invariant (band 4 `geod_2ndinv`), **label-agnostic** — a physical-deformation test, not a catalogue-
-geography test. Sibling GEMSDOE89 already built a 5 km catalogue-DENSITY concentration, so this prior keeps the
-`(CONCENTRATION, value)` genuinely new and orthogonal to R0 density (r=+0.11) and to relief (r=−0.046). 5 km
-blocks, complementary top/bottom-50% strain pools; greedy R=3 px marginal-credit drop/add.
+Parent R0 has 15 km block-density CV `0.5103`, inside the brief's reported `0.51–0.59` band. The prior is the mean of equal in-footprint absolute-percentile ranks of pinned `tmi_hg`, `geod_2ndinv`, `geod_shearrate` and `iso_grav_anom_hg` per 150 px block; no wells, springs, vents or hidden/public truth are used. Dots are removed from the lowest-prior 35% of blocks by minimum exclusive `R=3 px` kernel credit and added in the highest-prior 35% by maximum marginal credit on H19-5. Count is fixed at 37,654; all additions clear `d_cat >= 3 px`; untouched parent dots retain the 2.236 px floor (IR90-31).
 
-### 1. `h33-h33-2-b2-CONCstrain10-20261023-aa60138c` (Move 10% = 3,765 dots: low-strain → high-strain blocks)
-- **Hypothesis:** New (unmapped) faults preferentially nucleate and slip where the present-day crust actively deforms. Concentrating 10% of R0's fixed mass budget into the highest-strain-rate 5 km blocks raises 300 m-kernel coverage of the ground most likely to host undiscovered traces, at unchanged total mass penalty.
-- **Mechanism:** Within complementary strain pools, greedily drop the lowest-exclusive-credit R0 dots in low-strain blocks, add the highest-marginal-credit `H19-5` ridge pixels (`d_cat >= 3.0 px`) in high-strain blocks (`20.0%` symmetric diff). 15 km block-density CV `0.510 -> 0.568` (still inside the reported "best 0.51–0.59" band); density–strain rank correlation `+0.11 -> +0.26`. Regional mass shift (max 0.049) is reported, not tuned; anti-isolation gate passed (largest 5 km emptied cluster 0 blocks).
-- **Non-fault process that could mimic it:** GPS/InSAR station-spacing artefacts, groundwater-withdrawal or geothermal-extraction subsidence, volcanic inflation, and ductile shear can raise apparent strain without brittle upper-crustal faulting.
-- **Predicted live change (`MODEL`):** **+0.004 DTI** (plausible interval `-0.010` to `+0.015`; not a score).
-- **Falsifier:** Paired live receipt vs R0 with `Δ <= -0.010` falsifies strain-guided concentration at this dose. If the matched-dose sign control `strainAway10` scores `>= strain10`, the strain prior itself is falsified. `|Δ| < 0.010` is no evidence.
+### 1. `h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269`
+- **Hypothesis:** moving 3,765 dots (10%) toward active-deformation / potential-field edge corridors improves hit rate before over-concentration dominates.
+- **Mechanism:** CV 0.5103→0.5990; symmetric parent diff 19.998%; lost/gained H19-5 support credit 4,009.4 / 3,036.1. No donor block loses ≥90%; p05 donor removal share 0.194.
+- **Non-fault mimic:** geodetic strain can follow subsidence/volcanic inflation; potential-field edges can mark dikes, contacts, shorelines or cultural infrastructure.
+- **Predicted live change:** **+0.002 DTI `MODEL`** (plausible -0.008..+0.012).
+- **Falsifier:** paired live Δ≤-0.010 rejects the 10% structural-prior move; |Δ|<0.010 is no evidence.
 
-### 2. `h33-h33-2-b2-CONCstrain15-20261023-d3db2957` (Move 15% = 5,648 dots: low-strain → high-strain blocks)
-- **Hypothesis:** Dose top — if the strain prior is real, a 15% move should extend the 10% gain; but 15 km CV rises to ~0.62 (above the reported best band) and the greedy loses more support credit, so the net is predicted near zero. This rung measures the dose-response slope.
-- **Mechanism:** Identical operator/pools as `strain10` at 15% (`30.0%` symmetric diff); density–strain correlation `+0.11 -> +0.31`, 15 km CV `0.510 -> 0.622`; largest 5 km emptied cluster 1 block (no hole). Regional shift max 0.072.
-- **Non-fault process that could mimic it:** Same geodetic artefacts as `strain10`, plus over-concentration onto a few strain maxima that may be network-spacing artefacts rather than discrete active faults.
-- **Predicted live change (`MODEL`):** **+0.001 DTI** (plausible interval `-0.013` to `+0.013`; not a score).
-- **Falsifier:** Paired live `Δ <= -0.010` vs `strain10` rejects further dose; `Δ >= +0.010` supports pushing it. `|Δ| < 0.010` is no evidence.
+### 2. `h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a`
+- **Hypothesis:** if the prior is predictive, 15% should beat 10%; if the CV band is causal, redundancy should cancel it.
+- **Mechanism:** 5,648 dots moved; CV 0.5103→0.6949; symmetric diff 29.999%; support credit 6,851.9 lost / 3,923.8 gained; max donor removal 70.8%.
+- **Non-fault mimic:** same as above, amplified by denser mapping and exposed bedrock in high-prior blocks.
+- **Predicted live change:** **-0.002 DTI `MODEL`** (plausible -0.013..+0.009).
+- **Falsifier:** Δ≤-0.010 rejects the middle dose; a positive 10% arm plus negative 15% arm localizes the optimum near the CV band.
 
-### 3. `h33-h33-2-b2-CONCstrainAway10-20261023-bd514054` (SIGN CONTROL: Move 10% = 3,765 dots: high-strain → low-strain blocks)
-- **Hypothesis:** If strain rate genuinely marks new-fault ground, moving 10% of mass OUT of the highest-strain blocks INTO the lowest-strain blocks must lose; a gain here falsifies the strain prior (or indicates strain maxima are non-tectonic noise, or that undisclosed labels sit in aseismic blocks).
-- **Mechanism:** Identical placement rule and dose as `strain10`, donor/recipient strata reversed — same ~20% symmetric diff and similar 15 km CV (`0.558` vs `0.568`), so the comparison isolates strain DIRECTION from raw concentration. Density–strain correlation `+0.11 -> -0.04`. Regional shift max 0.051; anti-isolation gate passed.
-- **Non-fault process that could mimic it:** If undisclosed test labels were compiled largely from aseismic historic bedrock quadrangle maps, an away-from-strain move could coincidentally gain — a genuine confound, which is exactly why the sign control is slotted (SGMC control already favours the away arm, IR90-32).
-- **Predicted live change (`MODEL`):** **-0.004 DTI** (plausible interval `-0.016` to `+0.008`; not a score).
-- **Falsifier:** `strainAway10 >= strain10` on paired live receipts falsifies the strain mechanism; `strainAway10 <= -0.010` confirms it. `|Δ| < 0.010` is no evidence.
+### 3. `h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb`
+- **Hypothesis / counterpoint:** 20% is the strong-dose test; overshooting the reported CV band should hurt if concentration is causal.
+- **Mechanism:** 7,531 dots moved; CV 0.5103→0.7769; symmetric diff 40.001%; support credit 10,320.1 lost / 4,811.5 gained; max donor removal 80.0%.
+- **Non-fault mimic:** high-prior corridors may be unfaulted lithologic/cultural edges, while removed low-prior ground may contain blind basin faults.
+- **Predicted live change:** **-0.006 DTI `MODEL`** (plausible -0.018..+0.006).
+- **Falsifier:** Δ≥+0.010 would falsify the CV-band penalty and support strong prior concentration; Δ≤-0.010 confirms the predicted monotonic cost.
+
+**Report only:** hide/recover PROXY n=13,920, R0 0.007191, Δ +0.000001 / +0.000024 / +0.000011 (95% CIs span zero); SGMC PROXY Δ -0.006381 / -0.009540 / -0.014211; leakage canary max symmetric AUC 0.574747. These are not scores and were not gates. Full receipt: `evidence/concentration_build_receipt.json`.
+
+**Post-merge note:** IR90-25/26 show fixed-count concentration has little credit headroom at R0 and
+non-positive sibling MODELs. The 15 km prior is string-distinct and all gates pass, but the files are held
+from slots unless a future live receipt changes the evidence state.
+
+## Session `arena/388fea70` (2026-10-23): CONCENTRATION — 5 km band-4 strain-rate prior — HELD from slots
+
+Parent R0 `h33-h33-2-b2`, 37,654 dots; 0.2778 is a **CLAIM**. These three files are **BUILT** (string-distinct
+occupancy guards, renamed `*_strain5km` to coexist with main PR #20's 15 km ladder, IR90-32) and **HELD from
+slots** (IR90-25/26/30/34). Predictions are **MODEL**. Count fixed at 37,654; added dots d_cat≥3 px; zero
+catalogue mass. Prior = label-agnostic geodetic strain-rate second invariant (band 4 `geod_2ndinv`), 5 km blocks,
+complementary top/bottom-50% strain pools, greedy R=3 px marginal-credit drop/add. Headwind: net support-credit
+loss (~0.98 lost / ~0.54 gained per dot) and a negative SGMC PROXY favouring the AWAY arm. Receipt
+`evidence/concentration_strain5km_build_receipt.json`.
+
+### 1. `h33-h33-2-b2-CONCstrain10-20261023-aa60138c` (Move 10% = 3,765 dots: low→high strain)
+- **Hypothesis:** New unmapped faults preferentially nucleate/slip where the crust actively deforms; concentrating 10% of R0's fixed mass into the highest-strain 5 km blocks raises 300 m-kernel coverage of likely-undiscovered-fault ground at unchanged total penalty.
+- **Mechanism:** Drop lowest-exclusive-credit R0 dots in low-strain blocks, add highest-marginal-credit H19-5 pixels (d_cat≥3 px) in high-strain blocks (20.0% symmetric diff); 15 km CV 0.510→0.568, density–strain rank r +0.11→+0.26; anti-isolation cluster 0.
+- **Non-fault confounder:** GPS/InSAR station-spacing artefacts, groundwater/geothermal/volcanic subsidence, ductile shear.
+- **Predicted live change (MODEL):** **+0.004 DTI** (−0.010…+0.015; not a score).
+- **Falsifier:** paired live `Δ<=-0.010` rejects it; if `strainAway10 >= strain10`, the strain prior is falsified. `|Δ|<0.010` is no evidence.
+
+### 2. `h33-h33-2-b2-CONCstrain15-20261023-d3db2957` (Move 15% = 5,648 dots: low→high strain)
+- **Hypothesis:** Dose-response top of the same prior; net predicted ~0 (CV rises to ~0.62, above the quoted best band, and more support credit is lost).
+- **Mechanism:** Identical operator at 15% (30.0% diff); r +0.11→+0.31, CV 0.510→0.622; emptied cluster 1 (no hole).
+- **Non-fault confounder:** over-concentration onto a few strain maxima that are network artefacts, not discrete faults.
+- **Predicted live change (MODEL):** **+0.001 DTI** (−0.013…+0.013; not a score).
+- **Falsifier:** paired `Δ<=-0.010` vs strain10 rejects further dose; `|Δ|<0.010` is no evidence.
+
+### 3. `h33-h33-2-b2-CONCstrainAway10-20261023-bd514054` (SIGN CONTROL: Move 10% = 3,765 dots: high→low strain)
+- **Hypothesis:** If strain rate marks new-fault ground, moving 10% of mass OUT of high-strain blocks must lose; a gain here falsifies the prior (or shows undisclosed labels sit in aseismic blocks).
+- **Mechanism:** Same placement rule/dose as strain10, donor/recipient reversed — same ~20% diff and similar CV (0.558 vs 0.568), isolating strain DIRECTION; r +0.11→−0.04.
+- **Non-fault confounder:** labels compiled from aseismic historic bedrock maps could make an away move gain — a real confound the sign control is designed to expose (SGMC already favours this arm, IR90-34).
+- **Predicted live change (MODEL):** **−0.004 DTI** (−0.016…+0.008; not a score).
+- **Falsifier:** `strainAway10 >= strain10` on paired receipts falsifies the strain mechanism; `|Δ|<0.010` is no evidence.

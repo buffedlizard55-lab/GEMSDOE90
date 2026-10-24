@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-10-23T23:37:05Z",
-  "git_sha": "feaa6d46d3cbcf5e679f5886c0571cdec1fd7e2d",
+  "generated_utc": "2026-10-24T00:14:49Z",
+  "git_sha": "c71966e0abf4230dfdb1ef11a69fc89c301d2bf4",
   "generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615",
   "parent": "h33-h33-2-b2",
   "method": "reconstruct h33-h33-2-b2 as pinned h27-4 solo-d2.8 & (Euclidean distance to catalogue > 2 px), then re-emit with sample_submission.tif profile",

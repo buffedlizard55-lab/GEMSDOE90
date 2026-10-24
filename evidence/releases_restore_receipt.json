@@ -1,10 +1,14 @@
 {
   "schema_version": 1,
-  "note": "Local, gitignored candidate rasters re-emitted from pinned inputs. This is a reproduction of already-recorded (PRUNE, value) and (RELIEF, value) pairs, not a new experiment. Each file must equal the SHA-256 recorded in its build receipt and ledger/submissions.csv.",
+  "note": "Local, gitignored candidate rasters re-emitted from pinned inputs. This is a reproduction of the 18 core recorded BUILT (PRUNE, RELIEF, CONCENTRATION and MASS, value) pairs present when this branch was cut, not a new experiment. Main's later MASS-add, continuity and A5-refill families use their own generators. Each file must equal the SHA-256 recorded in its build receipt and ledger/submissions.csv.",
   "prune_generator_script_sha256": "06f667c10f33f3b9d4f8e1b5c57929b7634e85e055f87a04f5532a113f47d615",
   "relief_generator_script_sha256": "4a1ccfe3d0c9e946e9388a502d2fda244080b24b9e0345a3068048f0a35cb3b1",
-  "restore_script_sha256": "c35e82e7d94ac53cfb79c4280551a247ca4a7a0e81bb0732c8c9bcc3e1d43ae7",
-  "git_sha": "04e6374a4c3b3bf9de1e41b4a90d477170b62aa1",
+  "concentration_generator_script_sha256": "439dd26e75515aec8b0733a544796f40f99f36e9ebed53744bb1b30ba61ae574",
+  "mass_generator_script_sha256": "fd6122dc052728216f2449d54883a13a005f8822ece374a371e5b4cfa4eb5702",
+  "mass_high_generator_script_sha256": "25f32fe1d2b93249e0e5cd938ae2922a3f45dd6f43e8b4f7c0c3c39a03394fc6",
+  "aniso_prune_generator_script_sha256": "17892530fdd02e91a3e45c775005dede75c082521557cc76ae062f109a98f3f4",
+  "restore_script_sha256": "be65abc6bd8a76e5febb9291ce8f2e8ac56be47e05e300d33e5d7059acc68c25",
+  "git_sha": "4fa1031a2f236505288ef4840fa1e5fd424c3732",
   "parent": {
     "id": "h33-h33-2-b2",
     "r0_dots": 37654,
@@ -112,6 +116,213 @@
       "paths": [
         "releases/h33-h33-2-b2-RELIEFp2r15pct-20261023-ad95e30f.tif",
         "releases/h33-h33-2-b2-RELIEFp2r15pct-20261023-ad95e30f-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269",
+      "axis": "CONCENTRATION",
+      "tag": "b15km-struct-move10pct",
+      "n_dots": 37654,
+      "pct_changed": 19.997875,
+      "block_density_cv_before": 0.510346,
+      "block_density_cv_after": 0.599037,
+      "min_catalogue_distance_all_dots_px": 2.236068,
+      "min_catalogue_distance_added_dots_px": 3.0,
+      "sha256": "8deb8269da2c7548c97a7f7601ae78c437a479a1f54fc7e67361d7b7fa8114b6",
+      "sha256_zeros": "c2c7e04bcad1927cd4516e11c2af5bed224a734ea2f37a61d14c7a85a4db993e",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269.tif",
+        "releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a",
+      "axis": "CONCENTRATION",
+      "tag": "b15km-struct-move15pct",
+      "n_dots": 37654,
+      "pct_changed": 29.999469,
+      "block_density_cv_before": 0.510346,
+      "block_density_cv_after": 0.694868,
+      "min_catalogue_distance_all_dots_px": 2.236068,
+      "min_catalogue_distance_added_dots_px": 3.0,
+      "sha256": "fdba3c0a6bab3b1c198996559c99f4f90e74f816df2b24158d4c7031034e3550",
+      "sha256_zeros": "307e5b1ca00990512e023cb7302ae309d9d4943d442ff51610c798913c824d6b",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a.tif",
+        "releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb",
+      "axis": "CONCENTRATION",
+      "tag": "b15km-struct-move20pct",
+      "n_dots": 37654,
+      "pct_changed": 40.001062,
+      "block_density_cv_before": 0.510346,
+      "block_density_cv_after": 0.7769,
+      "min_catalogue_distance_all_dots_px": 2.236068,
+      "min_catalogue_distance_added_dots_px": 3.0,
+      "sha256": "bc411adbec7afbde1b402602b6795ee7add9016c981afa34552e2c3d1af4d5fe",
+      "sha256_zeros": "bc74e6f67b4e545c8b35d469b643d1c99e30d1437200c6117c48d5a9a27794e7",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb.tif",
+        "releases/h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-MASSshadow10pct-20261023-e2e518d5",
+      "axis": "MASS",
+      "dose_pct": 10,
+      "n_dots": 33889,
+      "pct_changed": 9.998938,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "sha256": "e2e518d51d1db518bc96c0c57a931e864790d8bc59d23ca394c7bf94fdd65534",
+      "sha256_zeros": "0146324949a0231cc75658f68f8a599a2f273e58bf2f29c765af2a2b6921027b",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-MASSshadow10pct-20261023-e2e518d5.tif",
+        "releases/h33-h33-2-b2-MASSshadow10pct-20261023-e2e518d5-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-MASSshadow20pct-20261023-c4ce118b",
+      "axis": "MASS",
+      "dose_pct": 20,
+      "n_dots": 30123,
+      "pct_changed": 20.000531,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "sha256": "c4ce118b499bac1b806a2e953efb335b71593e5b382e911c917311184bf65876",
+      "sha256_zeros": "a680bedcaa7d0ac5d0a7ed36ed6f8236f273e6238792e96096a7d0657d357992",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-MASSshadow20pct-20261023-c4ce118b.tif",
+        "releases/h33-h33-2-b2-MASSshadow20pct-20261023-c4ce118b-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-MASSshadow30pct-20261023-9d64151a",
+      "axis": "MASS",
+      "dose_pct": 30,
+      "n_dots": 26358,
+      "pct_changed": 29.999469,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "sha256": "9d64151a4d322c48e9da51892d8e84eba014f5a46c586c89a96b3dd4f8313724",
+      "sha256_zeros": "e25cecf6ae4e57c4bcaedb2cc8232a73edc4200912048c31fb7bea89f0ffa950",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-MASSshadow30pct-20261023-9d64151a.tif",
+        "releases/h33-h33-2-b2-MASSshadow30pct-20261023-9d64151a-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-MASSshadow40pct-20261023-e2546fbe",
+      "axis": "MASS",
+      "selection_rule": "shadow",
+      "dose_pct": 40,
+      "n_dots": 22592,
+      "pct_changed": 40.001062,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "sha256": "e2546fbe5b3b81b3afaea501b05da939230ca45194cd3491a1943602ee25e6e6",
+      "sha256_zeros": "bc60ddb85e900ea0644e25e3675d8be8cbdf32469c34bf1a11a0f392d539f01d",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-MASSshadow40pct-20261023-e2546fbe.tif",
+        "releases/h33-h33-2-b2-MASSshadow40pct-20261023-e2546fbe-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-MASSshadow48pct-20261023-88a2e8cc",
+      "axis": "MASS",
+      "selection_rule": "shadow",
+      "dose_pct": 48,
+      "n_dots": 19580,
+      "pct_changed": 48.000212,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "sha256": "88a2e8cc2588fa697b4e4aa36099ea3e9128b9ddbe89bf4a5d94272faf6faf63",
+      "sha256_zeros": "caff523ae33625b927dc520437fd455262b5d4a6b5b02c78e8cabfadc4dfc493",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-MASSshadow48pct-20261023-88a2e8cc.tif",
+        "releases/h33-h33-2-b2-MASSshadow48pct-20261023-88a2e8cc-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-MASSrandom40pct-20261023-894b5b4a",
+      "axis": "MASS",
+      "selection_rule": "random",
+      "dose_pct": 40,
+      "n_dots": 22592,
+      "pct_changed": 40.001062,
+      "min_catalogue_distance_px": 2.23606797749979,
+      "sha256": "894b5b4abfdb5e9085b9c6e83b4e1b0faf3076c8a788b13741801eed1c5fe08d",
+      "sha256_zeros": "b85920f3566e84ed822fa94e73fae67999d4e7516d1c576815a33adf1b06a28b",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-MASSrandom40pct-20261023-894b5b4a.tif",
+        "releases/h33-h33-2-b2-MASSrandom40pct-20261023-894b5b4a-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2",
+      "axis": "PRUNE",
+      "value_family": "strike-aligned collar",
+      "across_px": 4.0,
+      "along_px": 2.0,
+      "n_dots": 37654,
+      "pct_changed": 13.979922,
+      "sha256": "0bf248e2d69be3068992192d54cbc1fd7e643d3472a3222653e905cf8434de7f",
+      "sha256_zeros": "bdbc0e1865dd7a3f8b981ee5429cbd0282b3764632cc5189e4bfabbf9441fd35",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2.tif",
+        "releases/h33-h33-2-b2-PRUNEanisoA4L2-20261023-0bf248e2-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061",
+      "axis": "PRUNE",
+      "value_family": "strike-aligned collar",
+      "across_px": 5.0,
+      "along_px": 2.0,
+      "n_dots": 37654,
+      "pct_changed": 19.4561,
+      "sha256": "15218061d01614f42d5aaf350fad46728a749680dbea3dccc2c15307b77f4ca8",
+      "sha256_zeros": "62e259dad61925e1dc3708507c105208654c6d720fd8cdd0a561f4c8766592a2",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061.tif",
+        "releases/h33-h33-2-b2-PRUNEanisoA5L2-20261023-15218061-zeros.tif"
+      ]
+    },
+    {
+      "id": "h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3",
+      "axis": "PRUNE",
+      "value_family": "strike-aligned collar",
+      "across_px": 6.0,
+      "along_px": 2.0,
+      "n_dots": 37654,
+      "pct_changed": 24.565783,
+      "sha256": "72dcdbd314a804b3766c74096562ea9a3d302a903197780d20f81bd525dddab3",
+      "sha256_zeros": "406e38b3d7bae8571d13ea13b28513cbef168c8df32a88af5357f44126292743",
+      "bytes_match_recorded": true,
+      "all_gate_checks": true,
+      "paths": [
+        "releases/h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3.tif",
+        "releases/h33-h33-2-b2-PRUNEanisoA6L2-20261023-72dcdbd3-zeros.tif"
       ]
     }
   ],

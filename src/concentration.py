@@ -1,205 +1,269 @@
-"""AXIS=CONCENTRATION core operations: strain-rate structural prior and diagnostics.
+"""AXIS=CONCENTRATION: 15 km active-deformation / edge block prior.
 
-Session 2026-10-23e (GEMSDOE90). The ONLY changed axis relative to R0
-(`h33-h33-2-b2`, 37,654 unit-mass dots) is the concentration of the fixed
-37,654-dot budget onto high- vs low-prior 5 km blocks, at fixed total count.
+The prior is built ONLY from the pinned competition feature raster
+`training_features.tif`. It deliberately excludes temperature, wells, vents and
+geothermal-site layers: the metric scores fault pixels, not heat. Four bands
+enter with equal weight after an in-footprint percentile transform of their
+absolute value:
 
-PRIOR (deliberately label-agnostic, unlike a sibling session's catalogue-density
-concentration): the geodetic second invariant of the strain-rate tensor, band 4
-`geod_2ndinv` of the pinned `training_features.tif` (a non-negative magnitude,
-measured strictly >= 1.2 in-footprint). It is a direct physical proxy for present-day
-crustal deformation -> where undiscovered/new faults most likely nucleate or slip.
-R0's block density is nearly uncorrelated with it (rank r ~ +0.11) and it is
-relief-neutral (r ~ -0.07 to the detrended-elevation tercile index), so this move is
-orthogonal to both the physiographic RELIEF axis and the catalogue-density
-CONCENTRATION already built in sibling repo GEMSDOE89. Because the prior uses a
-supplied geophysical band and NO test label, score, or submission feedback, the edit
-is not label probing (Hard Constraint #5); regional mass shifts are REPORTED, and the
-only hard spatial gate is anti-isolation (no contiguous emptied hole/strip).
+  * band  3: `tmi_hg`                -- magnetic horizontal gradient
+  * band  4: `geod_2ndinv`           -- geodetic strain-rate second invariant
+  * band  7: `geod_shearrate`        -- geodetic shear rate
+  * band 18: `iso_grav_anom_hg`      -- isostatic-gravity horizontal gradient
 
-Placement reuses the audited `src.relief.greedy_relief_reallocate`: within the donor
-stratum, drop the lowest-exclusive-credit R0 dots; within the recipient stratum, add
-the highest-marginal-credit off-catalogue H19-5 ridge pixels (all d_cat >= 3.0 px).
-All functions here are pure numpy and operate on pixel-centre coordinates.
+A block score is the mean composite rank of its in-footprint pixels. 15 km
+(150 px) is selected because the exact R0 rebuild has block-density CV
+0.5103 at that scale with `min_foot_frac=0.5`, inside the session brief's
+reported 0.51-0.59 band. The prior is a regional structural-interaction
+prior, not a label-probing instrument: it never reads the hidden/public test
+truth and only the public, pinned feature values set the block ranking.
+
+The reallocation operator itself is imported from `src.relief`: it drops dots
+by minimum exclusive R=3 px kernel credit and adds dots by maximum marginal
+credit on H19-5 support, with all additions at d_cat >= 3 px. Only the donor
+and recipient block masks differ from the RELIEF axis.
 """
 from __future__ import annotations
 
 import numpy as np
+import rasterio
 from scipy import ndimage as ndi
 from scipy.stats import rankdata
 
-from src.relief import block_density_cv, clean_band_median_fill  # re-export audited helpers
+from src.relief import SENTINEL_ABS, block_density_cv, greedy_relief_reallocate
 
-SENTINEL_ABS = 1e30
+PRIOR_BANDS = (3, 4, 7, 18)
+PRIOR_BAND_NAMES = (
+    "tmi_hg",
+    "geod_2ndinv",
+    "geod_shearrate",
+    "iso_grav_anom_hg",
+)
+BLOCK_PX = 150
+BLOCK_KM = 15.0
+MIN_FOOT_FRAC = 0.5
+TAIL_FRAC = 0.35
 
 
-def strain_prior_field(strain_band: np.ndarray, footprint: np.ndarray,
-                       clip_pct: tuple[float, float] = (1.0, 99.0)) -> tuple[np.ndarray, dict]:
-    """Clean (median-fill non-finite/sentinel), then winsorise the strain magnitude.
-
-    Returns the in-footprint field (NaN outside) and a small metadata dict. The band
-    is a non-negative strain-rate magnitude, so no absolute value is applied; clipping
-    only guards against single-pixel outliers dominating a 5 km block mean.
-    """
+def _rank_abs_band(band: np.ndarray, footprint: np.ndarray) -> np.ndarray:
+    """Return in-footprint percentile ranks of |band|, median-filling sentinels."""
     foot = np.asarray(footprint, dtype=bool)
-    cleaned, missing = clean_band_median_fill(strain_band, foot)
-    lo, hi = (float(x) for x in np.percentile(cleaned[foot], list(clip_pct)))
-    clipped = np.clip(cleaned, lo, hi)
-    clipped[~foot] = np.nan
-    meta = {
-        "band": "Band 4: geod_2ndinv (geodetic second invariant / strain-rate magnitude)",
-        "label_agnostic": True,
-        "missing_in_foot_filled_px": missing,
-        "clip_percentiles": list(clip_pct),
-        "clip_values": [round(lo, 6), round(hi, 6)],
-    }
-    return clipped, meta
-
-
-def block_grid(footprint: np.ndarray, block_px: int = 50,
-               min_foot_frac: float = 0.5) -> list[tuple[int, int, int, int]]:
-    """Row-major list of in-play blocks (r0, r1, c0, c1) with >= min_foot_frac footprint."""
-    foot = np.asarray(footprint, dtype=bool)
-    H, W = foot.shape
-    out: list[tuple[int, int, int, int]] = []
-    for r0 in range(0, H, block_px):
-        r1 = min(H, r0 + block_px)
-        for c0 in range(0, W, block_px):
-            c1 = min(W, c0 + block_px)
-            if foot[r0:r1, c0:c1].sum() >= min_foot_frac * block_px * block_px:
-                out.append((r0, r1, c0, c1))
+    arr = np.asarray(band, dtype=np.float64)
+    vals = np.abs(arr[foot])
+    valid = np.isfinite(vals) & (vals < SENTINEL_ABS)
+    if not valid.any():
+        raise ValueError("prior band has no finite in-footprint values")
+    filled = np.where(valid, vals, float(np.median(vals[valid])))
+    ranks = rankdata(filled, method="average") / float(len(filled) + 1)
+    out = np.zeros(foot.shape, dtype=np.float64)
+    out[foot] = ranks
     return out
 
 
-def block_prior(field: np.ndarray, footprint: np.ndarray,
-                blocks: list[tuple[int, int, int, int]]) -> np.ndarray:
-    """Mean of `field` over the footprint portion of each block."""
-    f = np.asarray(field, dtype=np.float64)
+def structural_prior(
+    feature_path: str,
+    footprint: np.ndarray,
+    block_px: int = BLOCK_PX,
+    min_foot_frac: float = MIN_FOOT_FRAC,
+    tail_frac: float = TAIL_FRAC,
+    bands: tuple[int, ...] = PRIOR_BANDS,
+) -> dict:
+    """Compute the block structural prior and donor/recipient block id arrays."""
     foot = np.asarray(footprint, dtype=bool)
-    return np.array([f[r0:r1, c0:c1][foot[r0:r1, c0:c1]].mean()
-                     for (r0, r1, c0, c1) in blocks], dtype=np.float64)
+    if not 0 < tail_frac < 0.5:
+        raise ValueError("tail_frac must lie in (0, 0.5)")
+    if block_px <= 0 or not 0 < min_foot_frac <= 1:
+        raise ValueError("invalid block_px or min_foot_frac")
 
+    composite = np.zeros(foot.shape, dtype=np.float64)
+    band_meta = []
+    with rasterio.open(feature_path) as ds:
+        descriptions = list(ds.descriptions)
+        for b in bands:
+            raw = ds.read(b)
+            name = (descriptions[b - 1] or f"band_{b}").split(" - ")[0].strip()
+            composite += _rank_abs_band(raw, foot)
+            band_meta.append({"band": int(b), "name": name})
+    composite /= float(len(bands))
+    composite[~foot] = np.nan
 
-def strata_masks(shape: tuple[int, int], blocks: list[tuple[int, int, int, int]],
-                 prior: np.ndarray, pool_frac: float = 0.5,
-                 toward: bool = True) -> tuple[np.ndarray, np.ndarray, dict]:
-    """Build donor/recipient block masks from the prior ranking.
+    H, W = foot.shape
+    n_by = (H + block_px - 1) // block_px
+    n_bx = (W + block_px - 1) // block_px
+    block_id = np.full((H, W), -1, dtype=np.int32)
+    scores: list[float] = []
+    foot_counts: list[int] = []
+    block_boxes: list[tuple[int, int, int, int]] = []
+    bid = 0
+    for bi in range(n_by):
+        for bj in range(n_bx):
+            y0, y1 = bi * block_px, min(H, (bi + 1) * block_px)
+            x0, x1 = bj * block_px, min(W, (bj + 1) * block_px)
+            f = foot[y0:y1, x0:x1]
+            n_f = int(f.sum())
+            min_px = max(1, int(np.ceil(min_foot_frac * f.size)))
+            if n_f < min_px:
+                continue
+            block_id[y0:y1, x0:x1] = bid
+            scores.append(float(np.mean(composite[y0:y1, x0:x1][f])))
+            foot_counts.append(n_f)
+            block_boxes.append((y0, y1, x0, x1))
+            bid += 1
+    if bid < 8:
+        raise ValueError(f"only {bid} eligible blocks; cannot form prior tails")
 
-    `toward=True`: donor = lowest-prior pool_frac blocks, recipient = highest-prior
-    pool_frac blocks (concentrate onto high prior). `toward=False` swaps the strata
-    (sign control: move mass AWAY from high prior). Ranking is a stable descending
-    argsort so ties break by row-major block order (deterministic). With pool_frac
-    <= 0.5 the two pools are disjoint.
-    """
-    if not 0.0 < pool_frac <= 0.5:
-        raise ValueError("pool_frac must be in (0, 0.5]")
-    prior = np.asarray(prior, dtype=np.float64)
-    n = len(blocks)
-    if prior.shape[0] != n:
-        raise ValueError("prior length != number of blocks")
-    k = int(pool_frac * n)
-    order = np.argsort(-prior, kind="stable")
-    high = order[:k].tolist()
-    low = order[-k:].tolist()
-    if set(high) & set(low):
-        raise ValueError("donor and recipient pools overlap")
-    H, W = shape
-    donor = np.zeros((H, W), dtype=bool)
-    recip = np.zeros((H, W), dtype=bool)
-    donor_blocks, recip_blocks = (low, high) if toward else (high, low)
-    for i in donor_blocks:
-        r0, r1, c0, c1 = blocks[i]
-        donor[r0:r1, c0:c1] = True
-    for i in recip_blocks:
-        r0, r1, c0, c1 = blocks[i]
-        recip[r0:r1, c0:c1] = True
-    if np.any(donor & recip):
-        raise ValueError("donor and recipient masks overlap")
+    score_arr = np.asarray(scores, dtype=np.float64)
+    low_cut, high_cut = (float(x) for x in np.quantile(score_arr, [tail_frac, 1.0 - tail_frac]))
+    donor_ids = np.flatnonzero(score_arr <= low_cut)
+    recipient_ids = np.flatnonzero(score_arr >= high_cut)
+    if not len(donor_ids) or not len(recipient_ids):
+        raise ValueError("empty donor or recipient block tail")
+
+    donor_mask = np.isin(block_id, donor_ids)
+    recipient_mask = np.isin(block_id, recipient_ids)
+    if np.any(donor_mask & recipient_mask):
+        raise AssertionError("donor and recipient tail blocks overlap")
+
     meta = {
-        "pool_frac": pool_frac,
-        "direction": "toward_high_prior" if toward else "away_from_high_prior",
-        "n_blocks": n,
-        "n_donor_blocks": k,
-        "n_recipient_blocks": k,
-        "prior_min": round(float(prior.min()), 6),
-        "prior_max": round(float(prior.max()), 6),
+        "block_px": int(block_px),
+        "block_km": round(block_px * 0.1, 3),
+        "min_footprint_fraction": float(min_foot_frac),
+        "tail_fraction": float(tail_frac),
+        "bands": band_meta,
+        "weighting": "equal arithmetic mean of absolute-value in-footprint percentile ranks",
+        "aggregation": "mean composite rank over each eligible block's in-footprint pixels",
+        "n_blocks_total": int(bid),
+        "n_donor_blocks": int(len(donor_ids)),
+        "n_recipient_blocks": int(len(recipient_ids)),
+        "low_prior_cut": round(low_cut, 8),
+        "high_prior_cut": round(high_cut, 8),
+        "score_min": round(float(score_arr.min()), 8),
+        "score_median": round(float(np.median(score_arr)), 8),
+        "score_max": round(float(score_arr.max()), 8),
     }
-    return donor, recip, meta
-
-
-def region_shares(mask: np.ndarray) -> dict:
-    """Fraction of dots in the N half and the four quadrants (report-only diagnostic)."""
-    m = np.asarray(mask, dtype=bool)
-    n = float(m.sum())
-    H, W = m.shape
-    if n <= 0:
-        raise ValueError("empty mask")
     return {
-        "north": round(float(m[: H // 2, :].sum()) / n, 6),
-        "south": round(float(m[H // 2:, :].sum()) / n, 6),
-        "q_NW": round(float(m[: H // 2, : W // 2].sum()) / n, 6),
-        "q_NE": round(float(m[: H // 2, W // 2:].sum()) / n, 6),
-        "q_SW": round(float(m[H // 2:, : W // 2].sum()) / n, 6),
-        "q_SE": round(float(m[H // 2:, W // 2:].sum()) / n, 6),
+        "composite": composite,
+        "block_id": block_id,
+        "scores": score_arr,
+        "foot_counts": np.asarray(foot_counts, dtype=np.int64),
+        "boxes": block_boxes,
+        "donor_ids": donor_ids,
+        "recipient_ids": recipient_ids,
+        "donor_mask": donor_mask,
+        "recipient_mask": recipient_mask,
+        "meta": meta,
     }
 
 
-def max_region_share_shift(shares_before: dict, shares_after: dict) -> float:
-    """Largest absolute change across the 5 reported region fractions (N + 4 quadrants)."""
-    keys = ("north", "q_NW", "q_NE", "q_SW", "q_SE")
-    return round(max(abs(shares_after[k] - shares_before[k]) for k in keys), 6)
+def reallocate_to_high_prior(
+    parent_mask: np.ndarray,
+    support_mask: np.ndarray,
+    dist_cat: np.ndarray,
+    prior: dict,
+    n_shift: int,
+    min_added_cat_dist_px: float = 3.0,
+) -> tuple[np.ndarray, dict]:
+    """Move n_shift dots from low- to high-prior blocks at fixed count."""
+    r0 = np.asarray(parent_mask, dtype=bool)
+    # Restrict donor dots to R0's >=3 px collar so CONCENTRATION is not silently
+    # confounded with PRUNE; untouched R0 dots at 2..3 px remain on the parent.
+    donor = np.asarray(prior["donor_mask"], dtype=bool) & (np.asarray(dist_cat) >= 3.0)
+    recipient = np.asarray(prior["recipient_mask"], dtype=bool)
+    out, stats = greedy_relief_reallocate(
+        parent_mask=r0,
+        support_mask=np.asarray(support_mask, dtype=bool),
+        donor_mask=donor,
+        recipient_mask=recipient,
+        dist_cat=np.asarray(dist_cat, dtype=np.float64),
+        n_shift=int(n_shift),
+        min_added_cat_dist_px=float(min_added_cat_dist_px),
+    )
+    added = out & ~r0
+    removed = r0 & ~out
+    if not np.all(prior["donor_mask"][removed]):
+        raise AssertionError("a removed dot lies outside the declared low-prior blocks")
+    if not np.all(prior["recipient_mask"][added]):
+        raise AssertionError("an added dot lies outside the declared high-prior blocks")
+    if float(dist_cat[added].min()) < min_added_cat_dist_px:
+        raise AssertionError("an added dot violates the 3 px catalogue collar")
+    stats = dict(stats)
+    stats["min_added_catalogue_distance_px"] = round(float(dist_cat[added].min()), 6)
+    stats["added_dots_below_3px"] = int((added & (dist_cat < 3.0)).sum())
+    return out, stats
 
 
-def density_prior_rank_corr(mask: np.ndarray, footprint: np.ndarray,
-                            blocks: list[tuple[int, int, int, int]],
-                            prior: np.ndarray) -> float:
-    """Spearman correlation between per-block dot density and the block prior."""
-    foot = np.asarray(footprint, dtype=bool)
-    m = np.asarray(mask, dtype=bool)
-    dens = np.array([m[r0:r1, c0:c1].sum() / foot[r0:r1, c0:c1].sum()
-                     for (r0, r1, c0, c1) in blocks], dtype=np.float64)
-    return float(np.corrcoef(rankdata(dens), rankdata(np.asarray(prior, float)))[0, 1])
+def region_evenness_report(
+    parent_mask: np.ndarray,
+    candidate_mask: np.ndarray,
+    prior: dict,
+    nominal_shift_frac: float,
+    near_empty_threshold: float = 0.90,
+) -> dict:
+    """Fail-closed geographic guard: no contiguous low-prior hole may be emptied."""
+    r0 = np.asarray(parent_mask, dtype=bool)
+    cand = np.asarray(candidate_mask, dtype=bool)
+    bid = prior["block_id"]
+    scores = prior["scores"]
+    donor_set = set(int(x) for x in prior["donor_ids"])
+    recipient_set = set(int(x) for x in prior["recipient_ids"])
 
+    removed_share: dict[int, float] = {}
+    added_share: dict[int, float] = {}
+    for k, (y0, y1, x0, x1) in enumerate(prior["boxes"]):
+        before = int(r0[y0:y1, x0:x1].sum())
+        after = int(cand[y0:y1, x0:x1].sum())
+        if k in donor_set and before:
+            removed_share[k] = (before - after) / float(before)
+        if k in recipient_set and before:
+            added_share[k] = (after - before) / float(before)
 
-def emptied_cluster_report(removed_mask: np.ndarray, parent_mask: np.ndarray,
-                           block_px: int = 50, dot_threshold: int = 5,
-                           share_threshold: float = 0.9) -> dict:
-    """Anti-isolation statistic: are removals forming a contiguous regional hole?
-
-    Mirrors the MASS region-evenness instrument (scripts/build_mass_high_dose.py) but
-    reports only the two clauses that matter for a targeted CONCENTRATION edit: the
-    largest 8-connected cluster of >=90%-emptied blocks, and the fraction of
-    well-populated (>=20 dot) blocks that are >=90% emptied. The 'p05 uniform-share'
-    clause of the MASS gate is intentionally NOT used: a concentration edit is
-    *supposed* to remove dots only from donor blocks, so uniform removal would be a
-    contradiction, not a safety property.
-    """
-    parent = np.asarray(parent_mask, dtype=bool)
-    removed = np.asarray(removed_mask, dtype=bool)
-    H, W = parent.shape
-    gy, gx = H // block_px + 2, W // block_px + 2
-    ys, xs = np.nonzero(parent)
-    yr, xr = np.nonzero(removed)
-    tot = np.zeros((gy, gx), dtype=np.float64)
-    rem = np.zeros_like(tot)
-    np.add.at(tot, (ys // block_px, xs // block_px), 1)
-    np.add.at(rem, (yr // block_px, xr // block_px), 1)
-    share = np.divide(rem, tot, out=np.zeros_like(rem), where=tot > 0)
-    blown = (tot >= dot_threshold) & (share >= share_threshold)
-    lab, n_clusters = ndi.label(blown, structure=np.ones((3, 3), np.uint8))
-    sizes = np.bincount(lab.ravel())[1:] if n_clusters else np.zeros(0, dtype=int)
-    well = share[tot >= 20]
-    return {
-        "block_px": block_px,
-        "blocks_with_20plus_dots": int((tot >= 20).sum()),
-        "fraction_blocks_90pct_emptied": round(float((well >= share_threshold).mean()), 6) if well.size else 0.0,
-        "largest_emptied_cluster_blocks": int(sizes.max()) if sizes.size else 0,
-        "removed_share_max": round(float(share.max()), 6) if share.size else 0.0,
+    bp = int(prior["meta"]["block_px"])
+    n_by = max(box[0] for box in prior["boxes"]) // bp + 1
+    n_bx = max(box[2] for box in prior["boxes"]) // bp + 1
+    near_empty = np.zeros((n_by, n_bx), dtype=bool)
+    for k, share in removed_share.items():
+        y0, _y1, x0, _x1 = prior["boxes"][k]
+        if share >= near_empty_threshold:
+            near_empty[y0 // bp, x0 // bp] = True
+    _lab, n_clusters = ndi.label(near_empty, structure=np.ones((3, 3), dtype=np.uint8))
+    sizes = np.bincount(_lab.ravel())[1:] if n_clusters else np.zeros(0, dtype=int)
+    rem = np.asarray(list(removed_share.values()), dtype=np.float64)
+    add = np.asarray(list(added_share.values()), dtype=np.float64)
+    report = {
+        "block_px": int(prior["meta"]["block_px"]),
+        "near_empty_threshold": float(near_empty_threshold),
+        "donor_blocks_with_parent_dots": int(len(rem)),
+        "recipient_blocks_with_parent_dots": int(len(add)),
+        "donor_removed_share_mean": round(float(rem.mean()), 6),
+        "donor_removed_share_p05": round(float(np.percentile(rem, 5)), 6),
+        "donor_removed_share_p95": round(float(np.percentile(rem, 95)), 6),
+        "donor_removed_share_max": round(float(rem.max()), 6),
+        "recipient_added_share_mean": round(float(add.mean()), 6),
+        "recipient_added_share_max": round(float(add.max()), 6),
+        "fraction_donor_blocks_near_emptied": round(float((rem >= near_empty_threshold).mean()), 6),
+        "largest_near_emptied_cluster_blocks": int(sizes.max()) if sizes.size else 0,
+        "nominal_shift_fraction": round(float(nominal_shift_frac), 6),
+        "donor_block_prior_mean": round(float(scores[prior["donor_ids"]].mean()), 6),
+        "recipient_block_prior_mean": round(float(scores[prior["recipient_ids"]].mean()), 6),
     }
+    # A low-prior tail is expected to lose more than average, but no 15 km block
+    # may be erased and no contiguous >=90%-empty cluster may form.
+    checks = {
+        "no_donor_block_90pct_emptied": report["fraction_donor_blocks_near_emptied"] == 0.0,
+        "largest_near_emptied_cluster_le_4_blocks": report["largest_near_emptied_cluster_blocks"] <= 4,
+        "p05_donor_removal_share_at_least_quarter_dose": (
+            report["donor_removed_share_p05"] >= 0.25 * report["nominal_shift_fraction"]
+        ),
+        "recipient_prior_strictly_higher": (
+            report["recipient_block_prior_mean"] > report["donor_block_prior_mean"]
+        ),
+    }
+    report["checks"] = checks
+    report["pass"] = all(checks.values())
+    return report
 
 
-def concentration_evenness_gate(report: dict, max_cluster: int = 4,
-                                max_frac_emptied: float = 0.02) -> bool:
-    """Anti-isolation gate (Hard Constraint #5) for a CONCENTRATION edit."""
-    return (report["largest_emptied_cluster_blocks"] <= max_cluster
-            and report["fraction_blocks_90pct_emptied"] <= max_frac_emptied)
+def density_cv(mask: np.ndarray, footprint: np.ndarray, block_px: int = BLOCK_PX,
+               min_foot_frac: float = MIN_FOOT_FRAC) -> float:
+    """CV of dots per footprint pixel over exactly the prior's 15 km block grid."""
+    return float(block_density_cv(mask, footprint, block_px=block_px, min_foot_frac=min_foot_frac))

@@ -294,8 +294,56 @@
     ]
   },
   "concentration": {
+    "schema_version": 1,
+    "parent": "h33-h33-2-b2",
     "axis": "CONCENTRATION",
-    "session": "2026-10-23e (GEMSDOE90)",
+    "variants": [
+      {
+        "id": "h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269",
+        "value": "b15km-struct-move10pct; lowest 35% -> highest 35% by equal-rank strain/edge prior on 15km blocks; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "A 10% shift from the lowest-prior 15 km structural blocks to the highest-prior 15 km blocks will move R0 mass toward active-deformation and potential-field edge corridors, where new fault pixels are more likely, without yet over-concentrating the point field.",
+          "mechanism": "Block prior = equal mean of in-footprint percentile ranks of |tmi_hg|, |geod_2ndinv|, |geod_shearrate| and |iso_grav_anom_hg| from pinned training_features.tif, averaged over 15 km (150 px) blocks with >=50% footprint. Dots are removed from the lowest-prior 35% of blocks by minimum exclusive R=3 px triangular-kernel credit and added in the highest-prior 35% by maximum marginal credit on H19-5. 3,765 unit-mass dots (10% of R0) move at fixed count 37,654; 15 km density CV 0.5103->0.5990.",
+          "non_fault_confounder": "Geodetic strain gradients can follow groundwater withdrawal, volcanic inflation or basin-edge sediment compaction; magnetic and gravity gradients can mark dikes, resistant lithologic contacts, pluvial shorelines, roads or pipelines rather than faults. High-prior blocks may also be dense in mapped faults whose exact pixels are masked.",
+          "predicted_sign_and_size": "+0.002 DTI (MODEL; plausible interval -0.008 to +0.012; not a score)",
+          "why_this_sign": "At the lowest dose the block-density CV rises only modestly above R0's 0.510; the gain from putting dots in higher-prior corridors can outweigh the extra max-kernel redundancy.",
+          "falsifier": "A same-week paired live receipt against R0 with Delta <= -0.010 DTI rejects this structural-prior concentration dose. If the 10% arm is >= +0.010 but 15/20% are worse, the prior has a narrow optimum; if all |Delta| < 0.010, the axis has no evidence.",
+          "structural_geologist_note": "Inspect the removed low-prior strands for blind basin faults and the added high-prior strands for unfaulted lithologic or cultural edges. The 400 m GeoDAWN line spacing (https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) makes the potential-field positions uncertain by about one kernel radius; this is a block-allocation experiment, not a new fault map."
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a",
+        "value": "b15km-struct-move15pct; lowest 35% -> highest 35% by equal-rank strain/edge prior on 15km blocks; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "If the 15 km structural prior is predictive, doubling most of the way from a 10% to a 15% reallocation should improve DTI; if the winning CV band is a hard constraint, redundancy will instead make the middle dose neutral-to-negative.",
+          "mechanism": "Block prior = equal mean of in-footprint percentile ranks of |tmi_hg|, |geod_2ndinv|, |geod_shearrate| and |iso_grav_anom_hg| from pinned training_features.tif, averaged over 15 km (150 px) blocks with >=50% footprint. Dots are removed from the lowest-prior 35% of blocks by minimum exclusive R=3 px triangular-kernel credit and added in the highest-prior 35% by maximum marginal credit on H19-5. 5,648 unit-mass dots (15% of R0) move at fixed count 37,654; 15 km density CV 0.5103->0.6949.",
+          "non_fault_confounder": "Geodetic strain gradients can follow groundwater withdrawal, volcanic inflation or basin-edge sediment compaction; magnetic and gravity gradients can mark dikes, resistant lithologic contacts, pluvial shorelines, roads or pipelines rather than faults. High-prior blocks may also be dense in mapped faults whose exact pixels are masked.",
+          "predicted_sign_and_size": "-0.002 DTI (MODEL; plausible interval -0.013 to +0.009; not a score)",
+          "why_this_sign": "The 15 km density CV moves further beyond the reported 0.51-0.59 band and high-prior blocks already start denser than low-prior blocks, so the model centre is slightly negative.",
+          "falsifier": "A same-week paired live receipt against R0 with Delta <= -0.010 DTI rejects this structural-prior concentration dose. If the 10% arm is >= +0.010 but 15/20% are worse, the prior has a narrow optimum; if all |Delta| < 0.010, the axis has no evidence.",
+          "structural_geologist_note": "Inspect the removed low-prior strands for blind basin faults and the added high-prior strands for unfaulted lithologic or cultural edges. The 400 m GeoDAWN line spacing (https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) makes the potential-field positions uncertain by about one kernel radius; this is a block-allocation experiment, not a new fault map."
+        }
+      },
+      {
+        "id": "h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb",
+        "value": "b15km-struct-move20pct; lowest 35% -> highest 35% by equal-rank strain/edge prior on 15km blocks; fixed count 37654; added d_cat>=3px",
+        "mechanism_card": {
+          "hypothesis": "A 20% shift is the strong-dose counterpoint: if the prior is wrong or the 0.51-0.59 block-density band is causal, concentrated additions will be redundant under the max kernel and the score should fall.",
+          "mechanism": "Block prior = equal mean of in-footprint percentile ranks of |tmi_hg|, |geod_2ndinv|, |geod_shearrate| and |iso_grav_anom_hg| from pinned training_features.tif, averaged over 15 km (150 px) blocks with >=50% footprint. Dots are removed from the lowest-prior 35% of blocks by minimum exclusive R=3 px triangular-kernel credit and added in the highest-prior 35% by maximum marginal credit on H19-5. 7,531 unit-mass dots (20% of R0) move at fixed count 37,654; 15 km density CV 0.5103->0.7769.",
+          "non_fault_confounder": "Geodetic strain gradients can follow groundwater withdrawal, volcanic inflation or basin-edge sediment compaction; magnetic and gravity gradients can mark dikes, resistant lithologic contacts, pluvial shorelines, roads or pipelines rather than faults. High-prior blocks may also be dense in mapped faults whose exact pixels are masked.",
+          "predicted_sign_and_size": "-0.006 DTI (MODEL; plausible interval -0.018 to +0.006; not a score)",
+          "why_this_sign": "At 20% the 15 km CV is expected to overshoot the reported winning band substantially; the dose response, not any one projection, is the experiment.",
+          "falsifier": "A same-week paired live receipt against R0 with Delta <= -0.010 DTI rejects this structural-prior concentration dose. If the 10% arm is >= +0.010 but 15/20% are worse, the prior has a narrow optimum; if all |Delta| < 0.010, the axis has no evidence.",
+          "structural_geologist_note": "Inspect the removed low-prior strands for blind basin faults and the added high-prior strands for unfaulted lithologic or cultural edges. The 400 m GeoDAWN line spacing (https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7) makes the potential-field positions uncertain by about one kernel radius; this is a block-allocation experiment, not a new fault map."
+        }
+      }
+    ],
+    "slot_decision": "HELD after merge; see IR90-30. All gates pass, but credit arithmetic and SGMC PROXY argue against a slot."
+  },
+  "active_session_axis": "CONCENTRATION (built, HELD from slots after merge)",
+  "concentration_strain5km": {
+    "axis": "CONCENTRATION",
+    "session": "2026-10-23 CONC-strain/arena-388fea70 (5km band-4 strain sign control)",
     "prior": "geodetic strain-rate invariant (band 4 geod_2ndinv), label-agnostic, 5 km blocks",
     "variants": [
       {
@@ -337,6 +385,7 @@
           "structural_geologist_note": "All 37,654 dots remain on the corroborated H19-5 ridge network; the ranking prior is the competition-supplied geodetic strain-rate invariant, NOT a catalogue-derived field, so this is a physical-deformation test rather than a label-geography test. Review added high-strain segments against GPS/InSAR station density and known geothermal/subsidence/volcanic centres, and removed low-strain segments against mapped aseismic bedrock faults."
         }
       }
-    ]
+    ],
+    "post_merge_status": "HELD from slots; distinct value family kept as occupancy guard + matched-dose sign-control falsifier (IR90-25/26 headwind)."
   }
 }
