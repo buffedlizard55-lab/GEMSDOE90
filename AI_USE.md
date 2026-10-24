@@ -156,3 +156,28 @@ MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.
 - **Merge-aware status:** a parallel session (main PR #20) had built a 15 km structural CONCENTRATION ladder using the SAME four filenames. AI renamed its own files to `src/concentration_strain5km.py`, `scripts/build_concentration_strain5km.py`, `tests/test_concentration_strain5km.py`, `evidence/concentration_strain5km_build_receipt.json` so both designs coexist, resolved all shared-file conflicts by union, and re-verified. Consistent with main IR90-25/26/30 (fixed-count concentration loses net support credit; parallel variants HELD from slots), these three files are kept as distinct `(parent,axis,value)` BUILT occupancy guards and HELD from slots; the away arm is a falsifier instrument only. IR90-32/33/34.
 - **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit any file, or invent any score/quota/target. R0's 0.2778 is CLAIM; every Δ is MODEL; canary/proxies are PROXY. Competition rasters stay in ignored `.cache/gems_data/` and `releases/`; the four *_strain5km source files are the only new tracked code.
 - **Human must decide/supply:** adjudicate whether sibling repos GEMSDOE84–97 are ONE entity (quota risk, IR90-26/30/32), confirm deadline and slot count, supply dated TOP_PUBLIC and portal receipts, decide whether the strain5km occupancy guards add value or should be dropped as a near-duplicate, and choose which single file (if any) to upload from their registered account.
+
+## Session arena/b5ea0544 (2026-10-24 RELIEF basin<->piedmont, AXIS=RELIEF, GEMSDOE90)
+
+- **What AI wrote and executed:** AI chose the AXIS itself (RELIEF) after reading the ledger, reservations and
+  SLOT_PLAN, and ran a read-only `gh api` audit of every reachable sibling ledger (GEMSDOE84-89, 91, 92; 93-101
+  have no ledger): 27 RELIEF rows covered range->piedmont, range->basin, piedmont->range and basin->range, with
+  ZERO basin->piedmont or piedmont->basin pairs under any naming (IR90-35). AI re-installed the pinned venv,
+  restored and SHA-256-verified all 26 manifest inputs (70.6 s), rebuilt R0 byte-identically
+  (`c55bafc4…` zeros / `baeae321…` NaN), restored the 18 core release pairs with matching hashes, and authored
+  `scripts/build_relief_s2_variants.py` plus `tests/test_relief_s2.py` using the unchanged pinned
+  `src/relief.py` operator. It built three fixed-count 37,654-dot files — `RELIEFp2b12p5pct` (pred +0.003
+  MODEL), `RELIEFp2b15pct` (+0.004), and direction control `RELIEFb2p10pct` (−0.002) — re-read every raster
+  from disk, passed the `src.validate` format gate on all six, ran a byte-reproduction `--verify`, the donor
+  5 km region-evenness gate and the full test suite (120 passed), and ran the report-only leakage canary
+  (max symmetric AUC 0.5703), catalogue hide/recover and SGMC controls as PROXY only. Predictions were frozen
+  in the builder before any proxy ran.
+- **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit
+  any file, use test truth, or invent any score/quota/target. R0's 0.2778 remains a CLAIM; every predicted
+  change is MODEL; canary/proxies are PROXY, never gates or scores. Competition rasters stay in ignored
+  `.cache/gems_data/` and `releases/`; only code, JSON receipts and Markdown are in the Git diff.
+- **Human must decide/supply:** dated TOP_PUBLIC, weekly slot count and total used, deadline confirmation,
+  R0 and any candidate portal receipts, data-use/terms review, geological review of the moved corridors,
+  whether the inherited 2.236 px collar on untouched dots is acceptable (IR90-36), entity-scope/quota
+  adjudication across sibling repos (IR90-08/26/35), and which single file (if any) to upload from their
+  registered account.

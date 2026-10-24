@@ -373,3 +373,34 @@ loss (~0.98 lost / ~0.54 gained per dot) and a negative SGMC PROXY favouring the
 - **Non-fault confounder:** labels compiled from aseismic historic bedrock maps could make an away move gain — a real confound the sign control is designed to expose (SGMC already favours this arm, IR90-34).
 - **Predicted live change (MODEL):** **−0.004 DTI** (−0.016…+0.008; not a score).
 - **Falsifier:** `strainAway10 >= strain10` on paired receipts falsifies the strain mechanism; `|Δ|<0.010` is no evidence.
+
+## Session 2026-10-24 (`arena/b5ea0544`): AXIS = RELIEF, basin<->piedmont directed pairs (`evidence/relief_s2_build_receipt.json`)
+
+Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots; 0.2778 is a **CLAIM**. All three files are fixed-count
+37,654-dot reallocations with the identical pinned `src.relief.py` recipe used on 2026-10-23: equal-area
+landform terciles from Band 12 `det_elev` (0.85) and 3 km-smoothed Band 19 `det_elev_slope` (0.15); greedy
+minimum exclusive R=3 px kernel-credit drops in the donor tercile; greedy maximum marginal-credit adds on
+off-catalogue H19-5 support in the recipient tercile, every addition at d_cat>=3.0 px; zero catalogue mass.
+A read-only `gh api` audit of 8 sibling ledgers (27 RELIEF rows) found these two directions unbuilt under any
+naming (IR90-35). Predictions are **MODEL**, frozen before proxies; `|Δ|<0.010` is no evidence.
+
+### 1. `h33-h33-2-b2-RELIEFp2b12p5pct-20261024-758fba08` (piedmont -> basin, 4,707 dots = 12.5%; 25.001% diff)
+- **Hypothesis:** R0 under-weights basin floors (17.25% of dots vs 28.23% of catalogue fault pixels in T1). Densifying kernel coverage over concealed intrabasin graben and blind relay/step-over faults buried under Plio-Quaternary alluvium raises expected credit on newly mapped basin truth; funding from the largest tercile (piedmont, 16,871 dots) minimises collateral damage. After the move R0's basin share is 29.75%, nearly matching the catalogue prior.
+- **Mechanism:** 4,707 lowest-exclusive-credit T2 dots dropped, 4,707 highest-marginal-credit T1 H19-5 pixels added (eligible pool 11,437; lost/gained support credit 4,988.9 / 2,789.9 — the IR90-25 fixed-count headwind applies). GeoDAWN Area 2's 400 m line spacing leaves ~kernel-radius position uncertainty on concealed lineaments.
+- **Non-fault confounder:** Lake Lahontan shoreline berms, axial channels, buried basaltic sills/flows, playa hydrology and valley-floor roads/railways/pipelines form non-fault T1 ridges.
+- **Predicted live change (MODEL):** **+0.003 DTI** (−0.010…+0.015; not a score).
+- **Falsifier:** paired live Δ<=−0.010 vs R0 falsifies piedmont-funded basin enrichment at this dose; `|Δ|<0.010` is no evidence.
+
+### 2. `h33-h33-2-b2-RELIEFp2b15pct-20261024-66718c5c` (piedmont -> basin, 5,648 dots = 15.0%; 29.999% diff)
+- **Hypothesis:** Deeper dose of the same mechanism, giving its dose-response slope; basin share reaches 32.25%, just past the catalogue prior, and the recipient pool does not saturate.
+- **Mechanism:** Identical operator at n_shift=5,648 (lost/gained 6,272.5 / 3,128.9); deterministic, no seed in construction; evenness gate passed (zero emptied blocks).
+- **Non-fault confounder:** same basin confounders, reached earlier in the add order so any non-fault contamination costs more than at 12.5%.
+- **Predicted live change (MODEL):** **+0.004 DTI** (−0.012…+0.018; not a score).
+- **Falsifier:** Δ<=−0.010, or a receipt ≥0.010 below the 12.5% arm, falsifies the deeper dose (pool saturation near the first increment).
+
+### 3. `h33-h33-2-b2-RELIEFb2p10pct-20261024-aeb8f9a0` (basin -> piedmont, 3,766 dots = 10.0%; 20.003% diff; DIRECTION CONTROL)
+- **Hypothesis:** If basin H19-5 pixels are mostly non-fault cultural/stratigraphic ridges and new truth concentrates in exposed piedmont corridors (off-catalogue SGMC: 24.94% T2 vs 9.33% T1), moving mass out of T1 should gain. Under the primary concealed-basin hypothesis it is predicted slightly negative; with `p2b12p5` it forms a matched direction test at similar dose.
+- **Mechanism:** 3,766 minimum-loss T1 drops (58.0% of R0's 6,495 basin dots; no regional hole — largest emptied cluster 1 block) then 3,766 maximum-gain T2 adds at d_cat>=3 px (pool 28,861; lost/gained 5,242.7 / 3,470.9).
+- **Non-fault confounder:** alluvial-fan incised channels, terrace risers, highstand shorelines and piedmont road/pipeline magnetic anomalies mimic the target faults.
+- **Predicted live change (MODEL):** **−0.002 DTI** (−0.014…+0.012; not a score).
+- **Falsifier:** live Δ>=+0.010 here while the p2b arms are null/negative falsifies concealed-basin enrichment (basin mass was dead weight); Δ<=−0.010 corroborates the basin-deficit view.

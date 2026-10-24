@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "parent": "h33-h33-2-b2",
+  "session": "2026-10-24 arena/b5ea0544-gemsdoe90",
+  "axis": "RELIEF",
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-RELIEFp2b12p5pct-20261024-758fba08",
+      "axis": "RELIEF",
+      "value": "tag=p2b12p5pct; shift 12.5% R0 mass (4707 dots) piedmont->basin; fixed count 37654; added d_cat>=3px",
+      "mechanism_card": {
+        "hypothesis": "R0 carries only 17.25% of its dots in Basin terciles while 28.23% of known USGS/INGENIOUS catalogue fault pixels sit there, an 11-point concealed-terrain deficit. Shifting 12.5% of R0 mass (4,707 dots) from Piedmont (T2, the largest tercile, 16,871 dots) into Basin (T1) densifies R=3 px kernel coverage over concealed intrabasin graben and blind relay/step-over faults buried under Plio-Quaternary alluvium, whose H19-5 geophysical ridges have little surface expression. Funding the move from the largest tercile minimises collateral damage to well-sampled piedmont corridors.",
+        "mechanism": "Equal-area landform terciles are the pinned src.relief partition from det_elev (0.85 percentile weight) and 3 km Gaussian-smoothed det_elev_slope (0.15). The 4,707 lowest-exclusive-kernel-credit R0 dots in T2 are dropped greedily, then 4,707 highest-marginal-credit off-catalogue H19-5 pixels in T1 are added greedily, every addition at Euclidean d_cat >= 3.0 px; count is held at 37,654. GeoDAWN Area 2 was flown at 400 m line spacing 150-200 m above terrain, so concealed lineament positions are uncertain by roughly the kernel radius and a denser basin coverage raises expected credit on newly mapped basin truth.",
+        "non_fault_confounder": "Lake Lahontan pluvial shoreline berms, axial fluvial channels, buried basaltic sills/flows, playa hydrologic patterns and valley-floor cultural lineaments (roads, railways, pipelines) generate non-fault magnetic/topographic ridges in T1.",
+        "predicted_live_change": "+0.003 DTI (MODEL; plausible interval -0.010 to +0.015; not a score)",
+        "falsifier": "A paired live receipt against R0 with Delta <= -0.010 DTI falsifies piedmont-funded basin enrichment at this dose (basin H19-5 ridges would then be predominantly non-fault). Any |Delta| < 0.010 is no evidence; private chunks may differ from the public chunks.",
+        "structural_geologist_note": "All 37,654 dots remain on the corroborated H19-5 geophysical/topographic ridge network with zero catalogue mass; no external lidar or non-lineage field was substituted. Review removed donor segments against buried/Quaternary cover and added recipient basin segments against shorelines, channels and cultural lineaments."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-RELIEFp2b15pct-20261024-66718c5c",
+      "axis": "RELIEF",
+      "value": "tag=p2b15pct; shift 15% R0 mass (5648 dots) piedmont->basin; fixed count 37654; added d_cat>=3px",
+      "mechanism_card": {
+        "hypothesis": "Deeper 15.0% dose (5,648 dots) of the same piedmont->basin mechanism, giving the dose-response slope of concealed-basin enrichment: if basin truth is under-covered, the second increment should pay at least as well as the first because R0's basin share (17.25%) remains far below the catalogue basin share (28.23%) even after the 12.5% move. The recipient eligible pool (about 11.4k H19-5 pixels at d_cat>=3 px) is large enough that the greedy add order does not saturate.",
+        "mechanism": "Identical operator and terciles as p2b12p5pct with n_shift=5,648: greedy minimum R=3 px triangular-kernel exclusive-credit loss drops in T2, greedy maximum marginal-credit adds in T1 on off-catalogue H19-5 support, all additions d_cat >= 3.0 px, fixed count 37,654, deterministic (row, col) tie-breaks, no random seed in variant construction.",
+        "non_fault_confounder": "Same basin confounders as p2b12p5pct (shorelines, channels, buried sills, cultural lineaments); at the deeper dose, lower-ranked basin ridges are reached first, so any non-fault contamination costs more than at 12.5%.",
+        "predicted_live_change": "+0.004 DTI (MODEL; plausible interval -0.012 to +0.018; not a score)",
+        "falsifier": "A live Delta <= -0.010, or a receipt at least 0.010 below the p2b12p5pct receipt, falsifies the deeper dose and indicates the basin recipient pool saturates near the first increment. |Delta| < 0.010 is no evidence.",
+        "structural_geologist_note": "All 37,654 dots remain on the corroborated H19-5 geophysical/topographic ridge network with zero catalogue mass; no external lidar or non-lineage field was substituted. Review removed donor segments against buried/Quaternary cover and added recipient basin segments against shorelines, channels and cultural lineaments."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-RELIEFb2p10pct-20261024-aeb8f9a0",
+      "axis": "RELIEF",
+      "value": "tag=b2p10pct; shift 10% R0 mass (3766 dots) basin->piedmont; fixed count 37654; added d_cat>=3px",
+      "mechanism_card": {
+        "hypothesis": "Direction control for the two piedmont->basin arms: if basin-floor H19-5 pixels are mostly non-fault cultural/stratigraphic ridges and new-fault truth instead concentrates in exposed piedmont range-bounding corridors (off-catalogue SGMC map faults sit 24.94% in T2 vs 9.33% in T1), moving 10.0% of R0 mass (3,766 dots) out of Basin into Piedmont should raise DTI. Under the primary concealed-basin hypothesis this arm is predicted slightly negative because it widens R0's basin deficit. The pair (b2p10 vs p2b12p5) is a matched direction test at similar dose.",
+        "mechanism": "Same pinned terciles and greedy R=3 px kernel operator: 3,766 minimum-loss drops inside T1 (58.0% of R0's 6,495 basin dots; the region-evenness report below checks that no contiguous regional hole opens), then 3,766 maximum-gain adds on T2 off-catalogue H19-5 support at d_cat >= 3.0 px; fixed count 37,654.",
+        "non_fault_confounder": "Coalescing alluvial-fan incised channels, terrace risers, Lake Lahontan highstand shorelines and piedmont road/pipeline magnetic anomalies can mimic piedmont fault lineaments and would be credited exactly as the intended targets.",
+        "predicted_live_change": "-0.002 DTI (MODEL; plausible interval -0.014 to +0.012; not a score)",
+        "falsifier": "A live Delta >= +0.010 here while the p2b arms are null/negative falsifies the concealed-basin enrichment hypothesis (basin mass was dead weight; piedmont enrichment is the winning direction). Delta <= -0.010 corroborates the basin-deficit view. |Delta| < 0.010 is no evidence.",
+        "structural_geologist_note": "All 37,654 dots remain on the corroborated H19-5 geophysical/topographic ridge network with zero catalogue mass; no external lidar or non-lineage field was substituted. Review removed donor segments against buried/Quaternary cover and added recipient basin segments against shorelines, channels and cultural lineaments."
+      }
+    }
+  ]
+}

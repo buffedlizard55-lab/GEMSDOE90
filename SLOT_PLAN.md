@@ -12,6 +12,29 @@
 
 Retained but not slotted first: **A5/L1.5** (+0.004), `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadowcont30pct` (+0.011), `MASSshadow40pct` (+0.014), `MASSrandom40pct` (+0.013). They remain valid single-axis candidates; do not spend a slot on any WITHDRAWN FIFO/gapmax/no-refill row or on infeasible SNAP.
 
+## This session (2026-10-24, `arena/b5ea0544`, agent-selected **RELIEF**): basin<->piedmont directed pairs — BUILT, human decides slotting
+
+Read-only `gh api` audit of 8 reachable sibling ledgers (27 RELIEF rows) found **zero** basin->piedmont or
+piedmont->basin pairs under any naming; basin->range was already held by siblings (b2r12/b2r15), so it was not
+rebuilt (IR90-35). Same pinned `src.relief.py` terciles/operator as the 2026-10-23 family; fixed 37,654 dots;
+all additions d_cat>=3 px; zero catalogue mass; donor-tercile 5 km evenness gate passed (largest emptied
+cluster 0-1 blocks); receipt `evidence/relief_s2_build_receipt.json`.
+
+| Candidate (2026-10-24) | Shift / sym-diff | Tercile share after (B/P/R, %) | lost/gained support credit | MODEL Δ | SGMC PROXY Δ (report only) |
+|---|---:|---:|---:|---:|---:|
+| `…RELIEFp2b12p5pct-…-758fba08` | 4,707d piedmont->basin / 25.001% | 29.75 / 32.30 / 37.95 | 4,988.9 / 2,789.9 | **+0.003** [−0.010, +0.015] | −0.00567 [CI excludes 0] |
+| `…RELIEFp2b15pct-…-66718c5c` | 5,648d piedmont->basin / 29.999% | 32.25 / 29.81 / 37.95 | 6,272.5 / 3,128.9 | **+0.004** [−0.012, +0.018] | −0.00677 [CI excludes 0] |
+| `…RELIEFb2p10pct-…-aeb8f9a0` | 3,766d basin->piedmont / 20.003% | 7.25 / 54.81 / 37.95 | 5,242.7 / 3,470.9 | **−0.002** [−0.014, +0.012] | −0.00254 (least negative) |
+
+R0 starts at 17.25% basin vs 28.23% of catalogue faults; `p2b12p5` lands at 29.75% basin, nearly matching the
+catalogue prior. All three lose net H19-5 support credit (IR90-25 headwind), so signs are geomorphic-prior
+MODELs, not measurements; SGMC is structurally biased against basin enrichment (9.3% of SGMC faults are T1),
+treat its negative deltas as expected, not evidence. Catalogue hide/recover deltas are ~−3e-4 (CIs narrow but
+the proxy is near-blind here: added dots carry zero catalogue credit by construction). Leakage canary max
+symmetric AUC 0.5703 (<0.90). These are single-axis swap-ins for any RELIEF slot, not insertions ahead of the
+human-controlled order above; `b2p10` is the matched direction control — a live `b2p10` >= +0.010 with null/
+negative p2b arms falsifies the concealed-basin hypothesis.
+
 ## This session: 15 km structural-prior CONCENTRATION — BUILT but HELD (no slot)
 
 | Candidate (2026-10-23) | Moved / diff | 15 km CV | MODEL Δ | SGMC PROXY Δ | Decision |
@@ -36,6 +59,7 @@ Report-only diagnostics (`PROXY`, never gates/scores): catalogue hide/recover `n
 - **KERNEL_ORACLE_DOSE:** re-space survivors to a ~6 px anti-cluster instead of deleting. *Falsifier:* paired Δ<=-0.010 vs shadow48.
 - **REFILL_RANK:** 5 km-stratified exact marginal-kernel refill at fixed collar/count. *Falsifier:* region-evenness failure or paired Δ<=-0.010.
 - **DISPERSION_CONTROL:** down-concentration (high→low prior) at 15 km, the only sibling CONCENTRATION direction reading positive. *Falsifier:* paired Δ<=-0.010; do not build until the held upward ladder is superseded by a receipt.
+- **RELIEF_DONOR_MATCH (2026-10-24 proposal):** same basin recipient at one matched 3,766-dot dose, funded once from range (`r2b10`, exists) and once from piedmont (a new `p2b10`), isolating donor quality at fixed recipient/dose with the pinned `src.relief.py` operator. *Mechanism:* piedmont is R0's largest tercile so minimum-loss drops there should cost less exclusive credit. *Confounder:* tercile composition shifts differ, so credit per drop, not geography alone, decides. *Falsifier:* paired live Δ<=-0.010 between the two donors, or any |Δ|<0.010 (no evidence).
 - **WITHDRAWN / DO NOT UPLOAD:** FIFO-ranked MASS, duplicate `MASSadd10pctGapmax`, delete-only `L2nr` PRUNE, and SNAP (IR90-20/24/28/29).
 
 **Reproduce before any upload:** `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scripts/restore_releases.py` (18 core pairs recorded at branch start) → main's `build_mass_infill.py` / `build_mass_add_variants.py` / `build_mass_continuity.py` / `build_aniso_prune_along.py` family builders or verifiers for the slotted candidates → `.venv/bin/python scripts/build_concentration_variants.py --verify` for the held files. Re-read every TIFF from disk, run the format gate, and match SHA-256 to `ledger/submissions.csv` before the human uploads from their own account.
