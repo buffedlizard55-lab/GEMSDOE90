@@ -1,0 +1,357 @@
+{
+  "protocol_rule": "Rule 4 single-feature holdout leakage canary",
+  "evaluator_version": "gems57-pooled-hide-v2 (draw20 primary 4-quadrant split)",
+  "n_withheld_positives_tested": 11318,
+  "n_active_negatives_sampled": 250000,
+  "auc_limit": 0.9,
+  "features_tested": 38,
+  "max_symmetric_auc": 0.626318,
+  "max_symmetric_auc_feature": "vis_coulomb_tip_cone",
+  "failed_features": [],
+  "all_passed": true,
+  "ir90_46_preflight_note": "Initial pre-training canary flagged collinear r>2.0 px cut-end tip cone at AUC=0.906243 due to synthetic 12-px segment holes in mode='all'; replaced before any model training with off-axis r>4.5 px Mode-II wing-crack lobes on major trunks (>=2.5 km).",
+  "features": [
+    {
+      "feature": "b02_rtp_hp8",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.491064,
+      "symmetric_auc": 0.508936,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b03_tmi_hg_log",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.534504,
+      "symmetric_auc": 0.534504,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b06_tc_zero_prox",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.564047,
+      "symmetric_auc": 0.564047,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b09_tmi_vg_signed",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.482893,
+      "symmetric_auc": 0.517107,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b05_grav_slope_log",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.52604,
+      "symmetric_auc": 0.52604,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b11_grav_vg_signed",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.52282,
+      "symmetric_auc": 0.52282,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b13_grav_hp8",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.526722,
+      "symmetric_auc": 0.526722,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b18_grav_hg_log",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.531769,
+      "symmetric_auc": 0.531769,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b15_depth_base_log",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.519542,
+      "symmetric_auc": 0.519542,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b15_basement_grad",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.539251,
+      "symmetric_auc": 0.539251,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "rtp_odd_step_ratio",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.535131,
+      "symmetric_auc": 0.535131,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "grav_odd_step_ratio",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.526138,
+      "symmetric_auc": 0.526138,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "gallardo_crossgrad_collin",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.524582,
+      "symmetric_auc": 0.524582,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "analytic_sig_scale_ratio",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.493248,
+      "symmetric_auc": 0.506752,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "cover_potfield_coupling",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.505754,
+      "symmetric_auc": 0.505754,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b12_det_elev_hp6",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.413053,
+      "symmetric_auc": 0.586947,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b19_det_elev_slope",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.560878,
+      "symmetric_auc": 0.560878,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "elev_odd_step_ratio",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.573111,
+      "symmetric_auc": 0.573111,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "elev_lap_dipole",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.54456,
+      "symmetric_auc": 0.54456,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "lid_valid",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.514807,
+      "symmetric_auc": 0.514807,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "lid_step_max",
+      "group": "static_multiphysics",
+      "n_valid_eval": 200141,
+      "auc": 0.574131,
+      "symmetric_auc": 0.574131,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "lid_scarp_dipole",
+      "group": "static_multiphysics",
+      "n_valid_eval": 200141,
+      "auc": 0.581513,
+      "symmetric_auc": 0.581513,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "lid_face_asymmetry",
+      "group": "static_multiphysics",
+      "n_valid_eval": 200141,
+      "auc": 0.56541,
+      "symmetric_auc": 0.56541,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "lid_coh100",
+      "group": "static_multiphysics",
+      "n_valid_eval": 200141,
+      "auc": 0.469964,
+      "symmetric_auc": 0.530036,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "lid_ex_ratio",
+      "group": "static_multiphysics",
+      "n_valid_eval": 200141,
+      "auc": 0.518293,
+      "symmetric_auc": 0.518293,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "lid_tect_vs_fluv",
+      "group": "static_multiphysics",
+      "n_valid_eval": 200141,
+      "auc": 0.483828,
+      "symmetric_auc": 0.516172,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "demag_up150_deficit",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.496277,
+      "symmetric_auc": 0.503723,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "rad_k_th_alteration",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.464821,
+      "symmetric_auc": 0.535179,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "rad_alteration_grad",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.500276,
+      "symmetric_auc": 0.500276,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b17_cond_surf",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.496655,
+      "symmetric_auc": 0.503345,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b17_cond_grad",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.515582,
+      "symmetric_auc": 0.515582,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "gdr_geotherm_halo_near",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.512902,
+      "symmetric_auc": 0.512902,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "gdr_geotherm_halo_meso",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.507925,
+      "symmetric_auc": 0.507925,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "b04_strain_2ndinv",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.547581,
+      "symmetric_auc": 0.547581,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "transtension_index",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.536852,
+      "symmetric_auc": 0.536852,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "seismicity_aniso",
+      "group": "static_multiphysics",
+      "n_valid_eval": 261318,
+      "auc": 0.520731,
+      "symmetric_auc": 0.520731,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "vis_coulomb_tip_cone",
+      "group": "fold_visible_coulomb",
+      "n_valid_eval": 261318,
+      "auc": 0.626318,
+      "symmetric_auc": 0.626318,
+      "limit": 0.9,
+      "passed": true
+    },
+    {
+      "feature": "vis_relay_bridge",
+      "group": "fold_visible_coulomb",
+      "n_valid_eval": 261318,
+      "auc": 0.538762,
+      "symmetric_auc": 0.538762,
+      "limit": 0.9,
+      "passed": true
+    }
+  ]
+}

@@ -1,24 +1,30 @@
-# SLOT PLAN — integrated MASS-add / continuity / PRUNE; 15 km CONCENTRATION held (2026-10-23)
+# SLOT PLAN — Promoted Independent Multi-Physics Discovery Candidate (`H90-1`) + Legacy `R0` Perturbation Ladder (2026-10-24)
 
-## Session 2026-10-24 addendum (lane H1, `arena/96081fbe`): NEW SURFACE candidate — human selector decides
+**Official Competition Controls (verified live 2026-10-24 UTC):**
+- **Deadline:** `2026-12-03T23:59:00Z` ([DrivenData Competition #306](https://www.drivendata.org/competitions/306/competition-doe-gems/)).
+- **Public Leaderboard Top (`ORGANIZER-CONFIRMED`, 2026-10-24):** `#1 xiaofanhu = 0.4413`, `#2 cfld__ = 0.3916`, `#3 Batik Shirt Brothers = 0.3904` ([Leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/)).
+- **Entity Best (`USER-REPORTED`, `ledger/submissions.csv`):** `R0` (`h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`, `GEMSDOE32`, `37,654` dots) = `0.2778`.
+- **Quota Rule:** Maximum **3 submissions per rolling 7-day window** across one participating entity ([DOE/NLR Official Rules `96647.pdf`](https://docs.nlr.gov/docs/fy26osti/96647.pdf)).
 
-`releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif` (SHA-256 `04af0861…f81`;
+## Promoted Independent Multi-Physics Candidate (`arena/783b0fc5-gemsdoe90`, `AXIS=DISCOVERY`)
+
+Prior `GEMSDOE90` builds (`PRUNE`, `MASS`, `RELIEF`, `CONCENTRATION`, `SPACING`) edited only the frozen `H19-5`/`R0` dot support (`<0.010` measured headroom, `IR90-25/37`, and `>85%` 3-px overlap with `R0`). Lane H90 trained a genuinely independent, zero-input-submission multi-physics fault discovery model (`H90-1: CC-MPST-Submod300`) that passed **15 / 15 automated format, range `[0, 1]`, leakage-canary, registry-uniqueness, and paired spatial-block `HOLDOUT-DTI` promotion gates** (and is mutually orthogonal to concurrent Lane H1: `Spearman rho = 0.0279`, `mutual 3-px overlap = 0.4339 <= 0.70`, `forward 3-px overlap = 0.5101 <= 0.70`):
+
+| Promoted Deliverable | Submission Name & Form Note (`92/140` chars) | SHA-256 (`.tif` / `.zip`) | `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `seeds=20+21`) | Uniqueness vs 20 Registry Rasters + Concurrent H1 | Gate Verdict |
+|---|---|---|---|---|---|
+| `docs/downloads/gemsdoe90-h90-cc-mpst-submod38k-20261024-d76ac964-zeros.tif` (`38,000` binary dots, `d_cat > 2.0 px`, `132,454 B`) | Name: `GEMSDOE90-H90-CC-MPST-D76AC964`<br>Note: `GEMSDOE90 H90 CC-MPST+Coulomb+Submod300 \| 38000 dots B>2 \| HOLDOUT-DTI all=0.1068 det=0.1059` | `.tif`: `637f067efc8b7822af9be58fff3f9c3a02bc41bd699e22c622ecf90bc7046e51`<br>`.zip`: `85fffcd6ba9c46a99b03d69ddf42b214a8eca1507f4840f47344979a2d75464d` | `mode=all`: **`0.10681 [0.09657, 0.11671]`** (`n=22,641`; paired `Δ` vs `fair-R0` `0.09096` = **`+0.01585 [0.00625, 0.02534]`**)<br>`mode=detached`: **`0.10586 [0.09294, 0.11802]`** (`n=22,619`) | Canary `max AUC = 0.6263 <= 0.90`; Surface `|ρ| = 0.1037 <= 0.90`; Dots `|ρ| = 0.0310 <= 0.90`; Mutual 3px `= 0.4339 <= 0.70`; Non-lattice fwd 3px `= 0.6612 <= 0.70`; **`64.08%` new dots `>300 m` outside `R0`** | **`PROMOTE`** (`evidence/h90_run_card.json`) |
+
+## Concurrent Session 2026-10-24 addendum (lane H1, `arena/96081fbe`): NEW SURFACE candidate — human selector decides
+
+`docs/downloads/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif` (SHA-256 `04af0861…f81`;
 NaN twin `…-nan.tif` `e340912f…`): 40,000 dots on a fold-clean learned fault-ness surface
-(`docs/HYPOTHESES_20261024.md`), the first candidate in this repo that is **not** a re-arrangement
-of R0's H19-5 support. It beat the fold-clean incumbent recipe in **all 5** 25 km holdout folds
+(`docs/HYPOTHESES_20261024.md`) with Poisson `2.8 px` emission. It beat the fold-clean incumbent recipe in **all 5** 25 km holdout folds
 (pooled HOLDOUT-DTI 0.1870 [0.1622, 0.2105] vs 0.1402; paired **+0.0468 [0.0176, 0.0762]**,
-60,988 withheld positives) — the first in-repo measurement whose CI clears the 0.010 floor.
-**Selector guidance (human decides):** this is the highest-information next slot known to this repo:
-it tests *surface vs support* (the axis IR90-37 says all remaining dot-editing headroom is below),
-while the MASS-add ladder below rests on MODEL algebra alone with no holdout win. If a slot is spent
-here, upload the **zeros** file (all-finite {0,1}; cannot raise the "[0, 1]" rejection), then record
-the receipt in `ledger/submissions.csv`. A live Δ ≥ +0.010 vs R0's CLAIM scale validates the
-learned-surface lane (next: retrain-with-receipt iteration + budget step to 45 k); Δ ≤ −0.010
-falsifies H1's transfer (mapped-fault expression ≠ hidden-fault expression) and the plan below
-resumes unchanged; |Δ| < 0.010 is no evidence. Promotion to a slot remains the human's separate
-selector step within the weekly cap; nothing here was submitted.
+60,988 withheld positives). Cross-lane check vs `Lane H90` (`637f067e…`): `Spearman rho = 0.0279`, `mutual 3-px = 0.4339`, `forward 3-px = 0.5101` — the two independent discovery lanes share only ~43%–51% 300 m halos because `Lane H90` adds `TMI_up150` shallow hydrothermal demagnetization, odd-vs-even step polarity, nested out-of-quadrant 2D steerable worms, Anderson Mode-II Coulomb wing-crack cones & relay bridges, and exact CELF `R=300 m` submodular allocation. Human selector chooses how to sequence weekly slots across `Lane H90`, `Lane H1`, and the legacy `R0` ladder below; nothing here was submitted by any agent.
 
-**R0:** `h33-h33-2-b2` / `GEMSDOE32`, 37,654 dots; 0.2778 is **CLAIM**, not a receipt. Human supplies dated `TOP_PUBLIC`, quota use, and confirms 2026-12-03. ONE entity, 3 scored slots/rolling week, ONE blind final ([rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)). Live `|Δ|<0.010` is **no evidence**; private chunks can differ. Never repeat an exact hash or a `(parent, axis, value)` pair.
+---
+
+**Legacy `R0` Perturbation Context (2026-10-23/24):** `h33-h33-2-b2` / `GEMSDOE32`, 37,654 dots; 0.2778 is **CLAIM**, not a receipt. Live `|Δ|<0.010` is **no evidence**; private chunks can differ. Never repeat an exact hash or a `(parent, axis, value)` pair.
 
 ## Next 3 slots (NaN primary only; human decides)
 

@@ -15,8 +15,11 @@ releases/*.tif
 releases/*.tiff
 !releases/.gitkeep
 
-# Owner-requested exception (2026-10-24, IR90-44): the team's OWN generated
-# prediction TIF served from the GitHub-Pages download page. Competition
-# input data and releases/ remain ignored above.
+# Explicitly track derived zero-input-leakage binary GeoTIFF/ZIP submission
+# deliverables served from GitHub Pages one-click download (IR90-44 / IR90-52).
+# Raw competition input data (.cache/gems_data/) and releases/ remain ignored.
+!docs/
 !docs/downloads/
 !docs/downloads/*.tif
+!docs/downloads/*.zip
+!docs/downloads/*.json
