@@ -234,3 +234,20 @@ the SPACING files held and run the MASS-add / continuity / PRUNE order in `SLOT_
   whether the inherited 2.236 px collar on untouched dots is acceptable (IR90-42), entity-scope/quota
   adjudication across sibling repos (IR90-08/26/35), and which single file (if any) to upload from their
   registered account.
+
+## Session 2026-10-24 (`arena/96081fbe`, lane H1 learned surface)
+
+AI wrote `docs/HYPOTHESES_20261024.md` (5 ranked hypotheses before implementation), `src/holdout.py`,
+`src/features90.py`, `src/emission90.py`, `scripts/run_lane90.py`, `scripts/build_site90.py`,
+`tests/test_holdout90.py`, the generated site (`docs/index.html` + `docs/downloads/`), and the
+`evidence/lane90_*` receipts/run card; it selected hypothesis H1 itself, restored and SHA-256-verified
+all 26 pinned inputs, ran the leakage canary and the 5-fold 25 km-block hide-and-recover evaluation,
+built and format-gated the candidate, and appended the ledger/docs rows. AI decided the 40,000-dot
+budget (declining to extrapolate the holdout budget sweep to 60k, reasoning recorded in
+`evidence/lane90_final_receipt.json`) and the density-baseline treatment of the dot-overlap
+uniqueness rule (IR90-43, all raw numbers published). At the owner's explicit request the team's own
+prediction TIF is committed under `docs/downloads/` for one-click download (IR90-44); competition
+input rasters remain in ignored `.cache/gems_data/` and candidate rasters in ignored `releases/`.
+AI did not contact DrivenData/Dropbox, read the leaderboard, log in, submit, or claim a score:
+0.2778 remains a CLAIM, all new numbers are HOLDOUT-DTI. Human owns slot selection, upload, receipts,
+dated TOP_PUBLIC/quota, deadline confirmation, and data-use review.

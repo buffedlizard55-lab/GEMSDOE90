@@ -14,3 +14,9 @@ raw_parts/
 releases/*.tif
 releases/*.tiff
 !releases/.gitkeep
+
+# Owner-requested exception (2026-10-24, IR90-44): the team's OWN generated
+# prediction TIF served from the GitHub-Pages download page. Competition
+# input data and releases/ remain ignored above.
+!docs/downloads/
+!docs/downloads/*.tif

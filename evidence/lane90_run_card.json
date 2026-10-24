@@ -1,0 +1,36 @@
+{
+  "hypothesis": "H1 fold-clean learned off-catalogue fault-ness surface + surface-ranked Poisson emission (docs/HYPOTHESES_20261024.md)",
+  "mechanism": "HGB over 51 label-agnostic layers (19 competition bands + magnetic/gravity/basement derivatives + 3DEP lidar-scarp + GeoDAWN radiometrics); greedy unit dots, 2.8px separation, d_catalogue>2px, zero catalogue mass",
+  "non_fault_mimicker": "lithologic contacts / survey seams share the same magnetic+radiometric edge signature",
+  "holdout_dti": 0.187,
+  "holdout_ci95": [
+    0.1622,
+    0.2105
+  ],
+  "holdout_withheld_positives": 60988,
+  "paired_delta_vs_incumbent_recipe": {
+    "delta": 0.0468,
+    "ci95": [
+      0.0176,
+      0.0762
+    ]
+  },
+  "correlation_overlap_vs_registry": {
+    "max_abs_spearman": 0.2074,
+    "max_overlap_3px_sparse_dotted": 0.4185,
+    "max_overlap_3px_all_raw": 0.9952,
+    "max_excess_overlap": 0.5417,
+    "overlap_vs_parent_R0": 0.3116
+  },
+  "raster_sha256": "04af0861de0aed0b018f209dfbb453c46af8eb22f0407c7b251c866b9f653f81",
+  "validator": {
+    "file": "/home/user/GEMSDOE90/releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif",
+    "pass": true,
+    "fails": [],
+    "n_dots": 40000,
+    "catalogue_mass": 0.0
+  },
+  "submission_name": "gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif",
+  "form_note": "H1 learned fault-ness (B) Poisson 40k dots sep2.8 collar>2px; holdout-DTI 0.187",
+  "verdict": "promote"
+}

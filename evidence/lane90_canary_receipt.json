@@ -1,0 +1,217 @@
+{
+  "generated_utc": "2026-10-24T06:28:27Z",
+  "stage": "canary",
+  "seed": 20261024,
+  "protocol": "single-feature ROC-AUC, positives=all 60,988 catalogue px, negatives=250k footprint px with d_catalogue>10px (evaluation only; AUC>0.90 symmetric = leakage until proven otherwise)",
+  "n_pos": 60988,
+  "n_neg": 250000,
+  "max_symmetric_auc_feature": "lidar_upface_max",
+  "max_symmetric_auc": 0.5979,
+  "leakage_stop_triggered": false,
+  "per_feature": {
+    "feat_mag_anom": {
+      "auc": 0.4932,
+      "symmetric_auc": 0.5068
+    },
+    "feat_rtp": {
+      "auc": 0.5002,
+      "symmetric_auc": 0.5002
+    },
+    "feat_tmi_hg": {
+      "auc": 0.5323,
+      "symmetric_auc": 0.5323
+    },
+    "feat_geod_2ndinv": {
+      "auc": 0.5841,
+      "symmetric_auc": 0.5841
+    },
+    "feat_iso_grav_anom_slope": {
+      "auc": 0.5426,
+      "symmetric_auc": 0.5426
+    },
+    "feat_tc": {
+      "auc": 0.4338,
+      "symmetric_auc": 0.5662
+    },
+    "feat_geod_shearrate": {
+      "auc": 0.5814,
+      "symmetric_auc": 0.5814
+    },
+    "feat_geod_dilaterate": {
+      "auc": 0.5329,
+      "symmetric_auc": 0.5329
+    },
+    "feat_tmi_vg": {
+      "auc": 0.485,
+      "symmetric_auc": 0.515
+    },
+    "feat_deq_n100a15": {
+      "auc": 0.5598,
+      "symmetric_auc": 0.5598
+    },
+    "feat_iso_grav_anom_vg": {
+      "auc": 0.5351,
+      "symmetric_auc": 0.5351
+    },
+    "feat_det_elev": {
+      "auc": 0.4843,
+      "symmetric_auc": 0.5157
+    },
+    "feat_iso_grav_anom": {
+      "auc": 0.4549,
+      "symmetric_auc": 0.5451
+    },
+    "feat_tmi": {
+      "auc": 0.4897,
+      "symmetric_auc": 0.5103
+    },
+    "feat_depth_to_base_surf": {
+      "auc": 0.5126,
+      "symmetric_auc": 0.5126
+    },
+    "feat_ieq_n100a15": {
+      "auc": 0.5836,
+      "symmetric_auc": 0.5836
+    },
+    "feat_cond_surf": {
+      "auc": 0.4793,
+      "symmetric_auc": 0.5207
+    },
+    "feat_iso_grav_anom_hg": {
+      "auc": 0.5027,
+      "symmetric_auc": 0.5027
+    },
+    "feat_det_elev_slope": {
+      "auc": 0.5676,
+      "symmetric_auc": 0.5676
+    },
+    "grad_tmi": {
+      "auc": 0.5343,
+      "symmetric_auc": 0.5343
+    },
+    "grad_rtp": {
+      "auc": 0.5397,
+      "symmetric_auc": 0.5397
+    },
+    "grad_grav": {
+      "auc": 0.547,
+      "symmetric_auc": 0.547
+    },
+    "grad_basement": {
+      "auc": 0.5398,
+      "symmetric_auc": 0.5398
+    },
+    "grad_detelev": {
+      "auc": 0.5852,
+      "symmetric_auc": 0.5852
+    },
+    "grad_cond": {
+      "auc": 0.5044,
+      "symmetric_auc": 0.5044
+    },
+    "lapabs_basement": {
+      "auc": 0.5165,
+      "symmetric_auc": 0.5165
+    },
+    "lapabs_tmi": {
+      "auc": 0.5287,
+      "symmetric_auc": 0.5287
+    },
+    "smooth3_tmi_hg": {
+      "auc": 0.5325,
+      "symmetric_auc": 0.5325
+    },
+    "smooth3_detelev_slope": {
+      "auc": 0.5574,
+      "symmetric_auc": 0.5574
+    },
+    "smooth3_grav_hg": {
+      "auc": 0.5033,
+      "symmetric_auc": 0.5033
+    },
+    "grad_tmi_highpass": {
+      "auc": 0.5328,
+      "symmetric_auc": 0.5328
+    },
+    "lidar_ex_max": {
+      "auc": 0.5752,
+      "symmetric_auc": 0.5752
+    },
+    "lidar_ex_mean": {
+      "auc": 0.5618,
+      "symmetric_auc": 0.5618
+    },
+    "lidar_step_max": {
+      "auc": 0.5767,
+      "symmetric_auc": 0.5767
+    },
+    "lidar_lapneg_max": {
+      "auc": 0.5819,
+      "symmetric_auc": 0.5819
+    },
+    "lidar_lappos_max": {
+      "auc": 0.5887,
+      "symmetric_auc": 0.5887
+    },
+    "lidar_downface_max": {
+      "auc": 0.5886,
+      "symmetric_auc": 0.5886
+    },
+    "lidar_upface_max": {
+      "auc": 0.5979,
+      "symmetric_auc": 0.5979
+    },
+    "lidar_cross_max": {
+      "auc": 0.5868,
+      "symmetric_auc": 0.5868
+    },
+    "lidar_relief": {
+      "auc": 0.5892,
+      "symmetric_auc": 0.5892
+    },
+    "lidar_coh100": {
+      "auc": 0.4839,
+      "symmetric_auc": 0.5161
+    },
+    "lidar_strike": {
+      "auc": 0.5147,
+      "symmetric_auc": 0.5147
+    },
+    "lidar_valid": {
+      "auc": 0.5262,
+      "symmetric_auc": 0.5262
+    },
+    "rad_K": {
+      "auc": 0.425,
+      "symmetric_auc": 0.575
+    },
+    "rad_Th": {
+      "auc": 0.4379,
+      "symmetric_auc": 0.5621
+    },
+    "rad_U": {
+      "auc": 0.4696,
+      "symmetric_auc": 0.5304
+    },
+    "rad_TC": {
+      "auc": 0.4338,
+      "symmetric_auc": 0.5662
+    },
+    "radext_ThK": {
+      "auc": 0.4804,
+      "symmetric_auc": 0.5196
+    },
+    "radext_UK": {
+      "auc": 0.543,
+      "symmetric_auc": 0.543
+    },
+    "radext_UTh": {
+      "auc": 0.5509,
+      "symmetric_auc": 0.5509
+    },
+    "radext_TMI_up150": {
+      "auc": 0.4907,
+      "symmetric_auc": 0.5093
+    }
+  }
+}

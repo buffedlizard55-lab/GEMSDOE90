@@ -1,5 +1,23 @@
 # SLOT PLAN — integrated MASS-add / continuity / PRUNE; 15 km CONCENTRATION held (2026-10-23)
 
+## Session 2026-10-24 addendum (lane H1, `arena/96081fbe`): NEW SURFACE candidate — human selector decides
+
+`releases/gems90-h1learnedb-poisson40k-20261024T073540Z-04af0861-zeros.tif` (SHA-256 `04af0861…f81`;
+NaN twin `…-nan.tif` `e340912f…`): 40,000 dots on a fold-clean learned fault-ness surface
+(`docs/HYPOTHESES_20261024.md`), the first candidate in this repo that is **not** a re-arrangement
+of R0's H19-5 support. It beat the fold-clean incumbent recipe in **all 5** 25 km holdout folds
+(pooled HOLDOUT-DTI 0.1870 [0.1622, 0.2105] vs 0.1402; paired **+0.0468 [0.0176, 0.0762]**,
+60,988 withheld positives) — the first in-repo measurement whose CI clears the 0.010 floor.
+**Selector guidance (human decides):** this is the highest-information next slot known to this repo:
+it tests *surface vs support* (the axis IR90-37 says all remaining dot-editing headroom is below),
+while the MASS-add ladder below rests on MODEL algebra alone with no holdout win. If a slot is spent
+here, upload the **zeros** file (all-finite {0,1}; cannot raise the "[0, 1]" rejection), then record
+the receipt in `ledger/submissions.csv`. A live Δ ≥ +0.010 vs R0's CLAIM scale validates the
+learned-surface lane (next: retrain-with-receipt iteration + budget step to 45 k); Δ ≤ −0.010
+falsifies H1's transfer (mapped-fault expression ≠ hidden-fault expression) and the plan below
+resumes unchanged; |Δ| < 0.010 is no evidence. Promotion to a slot remains the human's separate
+selector step within the weekly cap; nothing here was submitted.
+
 **R0:** `h33-h33-2-b2` / `GEMSDOE32`, 37,654 dots; 0.2778 is **CLAIM**, not a receipt. Human supplies dated `TOP_PUBLIC`, quota use, and confirms 2026-12-03. ONE entity, 3 scored slots/rolling week, ONE blind final ([rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)). Live `|Δ|<0.010` is **no evidence**; private chunks can differ. Never repeat an exact hash or a `(parent, axis, value)` pair.
 
 ## Next 3 slots (NaN primary only; human decides)
