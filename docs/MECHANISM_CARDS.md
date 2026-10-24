@@ -374,6 +374,88 @@ loss (~0.98 lost / ~0.54 gained per dot) and a negative SGMC PROXY favouring the
 - **Predicted live change (MODEL):** **−0.004 DTI** (−0.016…+0.008; not a score).
 - **Falsifier:** `strainAway10 >= strain10` on paired receipts falsifies the strain mechanism; `|Δ|<0.010` is no evidence.
 
+## Session 2026-10-24 (3): AXIS = PRUNE, value = frontier collar 3.4 px with max-marginal refill
+
+Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots, isotropic >2 px catalogue collar; 0.2778 is a **CLAIM**.
+File `releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` (+ `-zeros` twin): **BUILT**, format-gated,
+unscored. Prediction **MODEL**: **+0.002** (bracket −0.008…+0.013). Receipt:
+`evidence/prune_collar_gapmax_receipt.json`; builder `scripts/build_prune_collar_gapmax.py`.
+
+**Hypothesis.** R0's 2 px catalogue collar is the only edit in its lineage with a live-positive claim (solo-d28
+0.2708 → pruned 0.2778), so the collar is the one dose-response the entity has actually measured. Extending it by
+1.4 px should keep paying while the removed shell still sits inside the mapped traces' damage zone, and should stop
+paying once the shell reaches ground where a "new" fault is plausible.
+
+**Mechanism.** Known catalogue pixels are masked pixel-exactly: a dot there earns no `T` but still pays the
+`0.2(S−M)` mass term, and a dot beside them is scored only against *new*-fault truth. The edit removes all 2,702
+R0 dots in the 2.236–3.162 px shell (median 2.828 px) and re-places exactly 2,702 dots at the maximum marginal
+R = 3 px kernel credit inside the binary H19-5 support, under region-even 5 km quotas proportional to R0's own
+block counts (largest emptied block share 9.5 %, no 20+-dot block left without an addition, gate passed).
+Count is fixed at 37,654, so emitted mass cannot explain a live change; every final dot is ≥ 3.606 px from the
+catalogue, making this the first candidate in the repository that is stricter than Hard Constraint #4's `≥ 3 px`.
+
+**Why the refill changed too (and why that is the informative part).** At the same collar and count the lineage's
+FIFO-BFS refill buys **0.57** support credit per dot; maximum-marginal placement buys **1.30** (2.3×), measured in
+the same receipt. The removal term is truth-dependent and cannot be settled locally, so the file's prediction is
+reported as two named scenarios rather than one number: **−0.008** if the removed shell is worth what the support
+surrogate says (uniform-truth reading), **+0.013** if the collar's mechanism holds (near-catalogue mass earns
+penalty, not credit). Central +0.002.
+
+**Non-fault processes that could mimic it.** H19-5 is binary {0,1}, so max-marginal placement cannot distinguish a
+fault ridge from a lithologic contact, a drainage line, or a flight-line artefact; and new-fault truth is explicitly
+allowed within 300 m of known traces, so the deleted shell may hold genuine credit. Both confounders push the live
+change **down**.
+
+**Falsifier.** A paired live receipt against R0 with Δ ≤ −0.010 ends the outward collar ladder at this radius (read
+together with the entity's 3.0 px rungs). |Δ| < 0.010 is no evidence and licenses no further dose guess on this axis.
+Note the catalogue hide-and-recover proxy is structurally blind here (IR90-38) and must not be used to veto it.
+
+**Geologist note.** The deleted shell is a 340 m halo around every mapped trace; the added dots are simply the
+least-served parts of the binary H19-5 field, which is not a fault-probability ranking. Read the file as a collar
+test with a repaired refill, never as a claim that new faults avoid mapped traces.
+---
+
+## Session 2026-10-24 (`arena/5d597521`, agent-selected AXIS = SPACING, local kernel-scale respacing) — BUILT, HELD from slots
+
+Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots, rebuilt byte-identically (zeros `c55bafc4…` / NaN
+`baeae321…`); 0.2778 is a **CLAIM** (no receipt). The brief's global SPACING arrangements (lattice /
+Poisson-disk / along-strike) are already built by sibling sessions (GEMSDOE86/88/91 — `lattice`,
+`poisson-disk`, `along-strike`, `pdiskc16`, `latticec16`, `strikec16`, `poisson28`, `lattice4px`,
+`strike`, ring-2 `spread40`/`clump40`/`jitter40`), so this session built the unbuilt arrangement
+question: at fixed count, support and geography, respace the most kernel-crowded dots into the
+nearest uncovered support. Predictions are **MODEL**, frozen before any PROXY ran. Receipt:
+`evidence/spacing_build_receipt.json`.
+
+Shared mechanism, for a structural geologist: R0's dots all sit >= 2.828 px apart (the parent d2.8
+thinning survives), yet 50.5% have a neighbour inside the 300 m metric kernel and the average dot
+shares its 6 px contest zone with 2.82 others. Because kernel credit `T` is a *max* over dots, the
+second and third dots on the same short strand segment pay full mass (the `0.2(S-M)` term) for very
+little extra credit, while 13,793 px of the corroborated H19-5 ridge support receive no credit at
+all. Moving a crowded dot a short distance along its own ridge — median displacement 1.0 px, mean
+3.6-5.0 px, 94% inside the 15 px (1.5 km) primary window — should in principle trade redundant
+overlap for fresh along-strike coverage of line-like truth, the geometry the brief says lowers the
+per-dot pay bar. The measured reality is less kind: replacements gain 4,145.5 / 8,326.8 / 12,564.2
+support-credit units against removal losses of 4,232.6 / 8,611.1 / 13,059.9, i.e. a net **-87 / -284 /
+-496** — local windows cannot reach the far uncovered support, and crowded dots still exclusively
+cover the strand pixels between their neighbours. This is IR90-25's credit uniformity seen from the
+arrangement side.
+
+| Variant | Relocated / symmetric diff | Mean displacement | Support-credit balance | Predicted live change (MODEL) | Non-fault confounder | Falsifier |
+|---|---|---:|---:|---|---|---|
+| `SPACINGresp5pctW15` (`f8bada0c`) | 1,883 / 10.00% | 5.02 px | -87.1 | **0.000** (-0.008 to +0.008; raw centre -0.0003) | Crowded dots mark intersections/step-overs where splays genuinely pack one kernel; respacing deletes exactly that complexity. | Paired Δ <= -0.010 at this lowest dose rejects local respacing outright. |
+| `SPACINGresp10pctW15` (`fdb1bde9`) | 3,765 / 20.00% | 3.96 px | -284.3 | **-0.001** (-0.009 to +0.007) | Uncovered support stretches may be cover/vegetation gaps, contacts or drainages in the H19-5 field, not unmapped fault. | Monotone worsening 5→15% confirms crowded dots carried credit; Δ >= +0.010 anywhere falsifies the headwind. |
+| `SPACINGresp15pctW15` (`08f1daec`) | 5,648 / 30.00% | 3.63 px | -495.7 | **-0.002** (-0.010 to +0.006) | As above, plus: at 15% the edit reaches moderately crowded dots whose overlap was already thin. | As above; \|Δ\| < 0.010 is no evidence at every dose. |
+
+Spacing diagnostics (R0 → resp15): dots with a neighbour within 3 px 50.5% → 45.0%; mean other
+dots within 6 px 2.822 → 2.763; total crowding 32,690 → 31,521; 5 km block-density CV 0.901 →
+0.899 (geography inherited by construction; region-evenness gate PASS, no block emptied, worst
+block loss -33%). Report-only PROXY (never gates/scores): catalogue hide-and-recover (seed
+20261024, n=16,560 withheld) Δ -0.000008 / -0.000057 / -0.000144; SGMC control (n=62,122)
+Δ +0.000221 / +0.000413 / +0.000373 — opposite signs at 1e-4 scale, both consistent with the ~0
+MODEL centre; leakage canary max symmetric AUC 0.570341 (`geod_2ndinv`), crowding-score AUC
+0.503420, no feature > 0.90. **Decision: HOLD from the next slots** (IR90-35); the files are
+arrangement dose-response guards showing kernel-scale arrangement at fixed count is exhausted
+locally — they do not displace the MASS-add / continuity / PRUNE order in `SLOT_PLAN.md`.
 ## Session 2026-10-24 (`arena/b5ea0544`): AXIS = RELIEF, basin<->piedmont directed pairs (`evidence/relief_s2_build_receipt.json`)
 
 Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots; 0.2778 is a **CLAIM**. All three files are fixed-count
@@ -382,7 +464,7 @@ landform terciles from Band 12 `det_elev` (0.85) and 3 km-smoothed Band 19 `det_
 minimum exclusive R=3 px kernel-credit drops in the donor tercile; greedy maximum marginal-credit adds on
 off-catalogue H19-5 support in the recipient tercile, every addition at d_cat>=3.0 px; zero catalogue mass.
 A read-only `gh api` audit of 8 sibling ledgers (27 RELIEF rows) found these two directions unbuilt under any
-naming (IR90-35). Predictions are **MODEL**, frozen before proxies; `|Δ|<0.010` is no evidence.
+naming (IR90-41). Predictions are **MODEL**, frozen before proxies; `|Δ|<0.010` is no evidence.
 
 ### 1. `h33-h33-2-b2-RELIEFp2b12p5pct-20261024-758fba08` (piedmont -> basin, 4,707 dots = 12.5%; 25.001% diff)
 - **Hypothesis:** R0 under-weights basin floors (17.25% of dots vs 28.23% of catalogue fault pixels in T1). Densifying kernel coverage over concealed intrabasin graben and blind relay/step-over faults buried under Plio-Quaternary alluvium raises expected credit on newly mapped basin truth; funding from the largest tercile (piedmont, 16,871 dots) minimises collateral damage. After the move R0's basin share is 29.75%, nearly matching the catalogue prior.

@@ -18,7 +18,7 @@ basin->piedmont or piedmont->basin directed pairs under any naming. The three va
 here are the two unbuilt directions, with a 12.5/15% dose pair on the primary
 (piedmont->basin, concealed-basin enrichment) and a 10% direction control
 (basin->piedmont). See `ledger/experiment_reservations.json` key
-`relief_s2_reservations_20261024` and IR90-35.
+`relief_s2_reservations_20261024` and IR90-41.
 
 Run build:  `.venv/bin/python scripts/build_relief_s2_variants.py --build`
 Run verify: `.venv/bin/python scripts/build_relief_s2_variants.py --verify`
