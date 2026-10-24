@@ -1,147 +1,35 @@
-# SLOT PLAN — integrated MASS-add / continuity / PRUNE; 15 km CONCENTRATION held (2026-10-23)
+# Slot Plan — GEMSDOE90 (`<= 1 page`)
 
-**R0:** `h33-h33-2-b2` / `GEMSDOE32`, 37,654 dots; 0.2778 is **CLAIM**, not a receipt. Human supplies dated `TOP_PUBLIC`, quota use, and confirms 2026-12-03. ONE entity, 3 scored slots/rolling week, ONE blind final ([rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf)). Live `|Δ|<0.010` is **no evidence**; private chunks can differ. Never repeat an exact hash or a `(parent, axis, value)` pair.
+**Parent R0:** `h33-h33-2-b2` (`GEMSDOE32`; **37,654** unit-mass dots; claimed `0.2778` DTI = `CLAIM`, not a `RECEIPT`). Exact rebuild verified (`c55bafc4…` zeros / `baeae321…` NaN). **Rule:** upload primary NaN `.tif` first (`-zeros.tif` only if scorer rejects NaNs); treat live `|Δ| < 0.010` vs R0 as **no evidence**; agent never submits.
 
-## Next 3 slots (NaN primary only; human decides)
+## Next 3 Slots (Conditional Decision Tree; 42 `BUILT` in-repo, 0 `RECEIPT`s)
 
-| Order | Candidate(s), predicted Δ (`MODEL`) | Decision from receipt |
-|---|---|---|
-| **1** | `…MASSadd5pctq50-20261023-c4e6144c.tif` — **+0.008** | `Δ>=+0.010`: add sign pays; Slot 2 = q50-10. `Δ<=-0.010`: close adds for now; Slot 2 = continuity-aware drop **shadowcont20**. `|Δ|<0.010`: no evidence; Slot 2 = orthogonal fixed-count **A5/L1**. |
-| **2** | Add branch: `…MASSadd10pctq50-20261023-5edc84de.tif` — **+0.014**. Negative-add branch: `…MASSshadowcont20pct-20261023-66d961ba.tif` — **+0.009**. Null-add branch: `…PRUNEanisoA5L1-20261023-cd2c60ce.tif` — **+0.005** | Add: rising `Δ` licenses q50-20; flat but positive favors matched-placement blocknext10; negative closes the ladder. Continuity: `Δ>=+0.010` → shadowcont40; `Δ<=-0.010` → shadow20 to separate dose from protection. PRUNE: `Δ>=+0.010` → L0.5; `Δ<=-0.010` → recorded A5/L2; null → shadowcont20. |
-| **3** | Add: `…MASSadd20pctq50-20261023-f94efff4.tif` — **+0.022**, or matched-dose `…MASSadd10pctBlocknext-20261023-89d16c16.tif` — **+0.0044**. Continuity: `…MASSshadowcont40pct-20261023-92be4121.tif` — **+0.013** / `…MASSshadow20pct-20261023-c4ce118b.tif` — **+0.009**. PRUNE: `…PRUNEanisoA5L0p5-20261023-91ff3771.tif` — **+0.003** / recorded **A5/L2** / shadowcont20 | Take exactly one conditional arm. q50-20 requires two positive add receipts and a rising slope; blocknext10 isolates placement at matched dose/geography. L0.5 follows only a positive L1; A5/L2 follows only a negative L1. A null result never licenses a same-axis dose guess. |
+1. **Slot 1 — `releases/h33-h33-2-b2-MASSadd5pctq50-20261023-4ef8cf75.tif`** (`MASS`, `+5%` = `+1,883` -> `39,537` dots, `5.00%` diff; `MODEL` **+0.007 DTI**, bracket `-0.004..+0.025`). Sha256 `4ef8cf75…` (`-zeros` `217c42d3…`). Tests whether `H19-5` mid-strand kernel gaps are under-covered on live truth before any destructive edit.
+2. **Slot 2 (branched on Slot 1 live receipt vs R0):**
+   - **Add branch (`Δ >= +0.010`):** **`releases/h33-h33-2-b2-MASSadd10pctq50-20261023-29a6f1cc.tif`** (`41,419` dots, `10.00%` diff; `MODEL` **+0.013 DTI**; sha256 `29a6f1cc…`).
+   - **Drop branch (`Δ <= -0.010`):** **`releases/h33-h33-2-b2-MASSshadowcont20pct-20261023-66d961ba.tif`** (`30,123` dots, `20.00%` diff; `MODEL` **+0.009 DTI**; sha256 `66d961ba…`; 857/857 `>=1 km` strands preserved at 6 px).
+   - **Null-add branch (`|Δ| < 0.010`):** **`releases/h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa.tif`** (`PRUNE`, `A=5, L=1.0 px`, `37,654` dots held, `12.67%` diff; `MODEL` **+0.008 DTI**, `-0.005..+0.017`; sha256 `c41fc4aa…`, `-zeros` `4d91c5de…`). Replaces northern-strip FIFO-refilled `PRUNEanisoA5L1` (`IR90-43`).
+3. **Slot 3 (branched on Slot 2 receipt):**
+   - **Add continues (`Slot 2 >= Slot 1 + 0.010`):** `MASSadd20pctq50` (`278df996…`) or placement control `MASSadd10pctBlocknext` (`16b3df25…`).
+   - **Drop continues (`Slot 2 >= R0 + 0.010` on shadowcont20):** `MASSshadowcont30pct` (`885f6fee…`; `26,358` dots; `MODEL` **+0.011 DTI**), else un-protected `MASSshadow20pct` (`0c70426a…`).
+   - **PRUNE follow-up:** if `A5/L1q50 >= R0 + 0.010`, test tip-preserving **`releases/h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f.tif`** (`7.08%` diff; `MODEL` **+0.005 DTI**; sha256 `b7f9d99f…`); if `|Δ| < 0.010`, test wider along-strike **`releases/h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6.tif`** (`19.46%` diff; `MODEL` **+0.006 DTI**; sha256 `d54c00e6…`), isotropic 3px-clean fallback `PRUNEcollar3p4Gapmax` (`e69532d5…`; `MODEL` **+0.002 DTI**), or `RELIEFr2p12p5pct` (`3288894c…`) / `RELIEFp2b15pct` (`66718c5c…`).
 
-## Session 2026-10-24 (agent-selected `AXIS=PRUNE`): ONE frontier collar rung — BUILT, fallback only
+## Session `2026-10-24` (`arena/73f4c306`): `AXIS=PRUNE` `q50` Marginal-Kernel Refill Cards (`IR90-43` Fix)
 
-`releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` (+ `-zeros`): 37,654 dots, 2,702 removed
-(2.236–3.162 px shell) / 2,702 added, 14.35 % of R0 changed, **+0.002 MODEL (−0.008…+0.013)**, every final dot
-≥ 3.606 px from the catalogue (the first repo candidate stricter than the `≥ 3 px` rule). **Do not spend slot 1–3
-on it**: the slotted add ladder predicts more, and this file's new content is a *measurement*, not a dose —
-at the same collar and count the lineage's FIFO refill buys 0.57 support credit per dot and max-marginal placement
-buys 1.30 (2.3×, same receipt). It becomes the right slot only if a live receipt first shows the collar gradient is
-still alive at 3 px, or as a format/`≥ 3 px` control. The session also measured that **every free arrangement knob
-is below the 0.010 floor**: although 16.4 % of dot-level kernel credit is geometrically overlapped, every R0 dot is the argmax
-somewhere (exclusive credit ≥ 0.943), so a measured greedy re-seat at 5/10/20 % nets only +0.0018/+0.0023/+0.0030
-MODEL — spacing/reseat/lattice cannot reach the 0.010 floor (IR90-37).
+All 9 prior FIFO-refilled `BUILT` `PRUNE` files (`PRUNE3p5px..5p5px`, `PRUNEanisoA4L2..A6L2`, `PRUNEanisoA5L1p5..L0p5`) used global `fifo_bfs_visit_rank(h19)`, dumping **100% of their 1,333–6,130 refills into `y <= 101..264`** (`87%–97%` of dense 5 km blocks starved, `addition_evenness_gate=False`, `97.9%–99.5%` within `3 px` of retained dots, and `min d_cat = 2.236 px`; `IR90-43`). All 9 are **HELD from slots**. The 3 new `20261024` `q50` files hold `37,654` dots, enforce `d_cat >= 3.0 px` on every added dot, pass `addition_evenness_gate=True` (`0/848` dense blocks starved across `y in [0, 3699]`), cut median replacement distance from `845–917 px` to `10.3–17.3 px`, and raise off-catalogue `H19-5` refill credit `2.12x–2.30x` (`evidence/aniso_q50_refill_receipt.json`):
 
-Retained but not slotted first: **A5/L1.5** (+0.004), `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadowcont30pct` (+0.011), `MASSshadow40pct` (+0.014), `MASSrandom40pct` (+0.013). They remain valid single-axis candidates; do not spend a slot on any WITHDRAWN FIFO/gapmax/no-refill row or on infeasible SNAP.
+| ID (`20261024`) | `(A, L)` / Turnover | Hypothesis & Mechanism (`S = 37,654`, `d_cat >= 3 px` on adds) | Non-Fault Mimic / Confounder | `MODEL` (not a score) & Falsifier |
+| :--- | :--- | :--- | :--- | :--- |
+| `…PRUNEanisoA5L0p5q50-20261024-b7f9d99f` | `5.0, 0.5 px` `1,333` (`7.08%`) | Strips `<=500 m` cross-strike scarp haloes while keeping tips `>50 m`; 5 km `q50` refill (`1,124/1,788` blocks) lifts refill `dT` `+655.7 -> +1,504.8` and flips outside-collar `H19-5` `ΔT` from `-237.5` to **`+432.8`**. | Parallel DEM slope steps / fan-head trenches `<500 m` of faults; volcanic/lithologic edges on outside-collar `H19-5`. | **`+0.005 DTI`** (`-0.007..+0.014`). Falsified if live `Δ <= -0.010` vs R0. |
+| `…PRUNEanisoA5L1q50-20261024-c41fc4aa` | `5.0, 1.0 px` `2,386` (`12.67%`) | Balances `500 m` flank cleanup against `>100 m` tip retention; 5 km `q50` refill (`1,347/1,788` blocks, med dist `12.0 px`) lifts refill `dT` `+1,168.2 -> +2,646.9` (`2.27x`) and outside-collar `ΔT` `+222.9 -> +1,249.2`. | Same flank/contact mimics; if tip errors exceed `100 m`, `L=1` leaves some catalogue-tip haloes unpruned vs `L=2`. | **`+0.008 DTI`** (`-0.005..+0.017`). Falsified if live `Δ <= -0.010` vs R0. |
+| `…PRUNEanisoA5L2q50-20261024-d54c00e6` | `5.0, 2.0 px` `3,663` (`19.46%`) | Holds R0's `200 m` along-strike collar with `500 m` cross-strike cleanup; 5 km `q50` refill (`1,476/1,788` blocks, med dist `10.3 px`) lifts refill `dT` `+1,730.3 -> +3,673.0` (`2.12x`) and outside-collar `ΔT` `+1,111.9 -> +2,441.1`. | En-echelon step-overs and real fault tips at `100–200 m` along strike are pruned under `L=2.0 px`. | **`+0.006 DTI`** (`-0.008..+0.016`). Falsified if live `Δ <= -0.010` vs R0. |
 
-## This session (2026-10-24, `arena/b5ea0544`, agent-selected **RELIEF**): basin<->piedmont directed pairs — BUILT, human decides slotting
+## Held / Withdrawn Summary, Calendar (`2026-12-03` UNVERIFIED), & Better Axes Proposed (Not Built)
 
-Read-only `gh api` audit of 8 reachable sibling ledgers (27 RELIEF rows) found **zero** basin->piedmont or
-piedmont->basin pairs under any naming; basin->range was already held by siblings (b2r12/b2r15), so it was not
-rebuilt (IR90-41). Same pinned `src.relief.py` terciles/operator as the 2026-10-23 family; fixed 37,654 dots;
-all additions d_cat>=3 px; zero catalogue mass; donor-tercile 5 km evenness gate passed (largest emptied
-cluster 0-1 blocks); receipt `evidence/relief_s2_build_receipt.json`.
-
-| Candidate (2026-10-24) | Shift / sym-diff | Tercile share after (B/P/R, %) | lost/gained support credit | MODEL Δ | SGMC PROXY Δ (report only) |
-|---|---:|---:|---:|---:|---:|
-| `…RELIEFp2b12p5pct-…-758fba08` | 4,707d piedmont->basin / 25.001% | 29.75 / 32.30 / 37.95 | 4,988.9 / 2,789.9 | **+0.003** [−0.010, +0.015] | −0.00567 [CI excludes 0] |
-| `…RELIEFp2b15pct-…-66718c5c` | 5,648d piedmont->basin / 29.999% | 32.25 / 29.81 / 37.95 | 6,272.5 / 3,128.9 | **+0.004** [−0.012, +0.018] | −0.00677 [CI excludes 0] |
-| `…RELIEFb2p10pct-…-aeb8f9a0` | 3,766d basin->piedmont / 20.003% | 7.25 / 54.81 / 37.95 | 5,242.7 / 3,470.9 | **−0.002** [−0.014, +0.012] | −0.00254 (least negative) |
-
-R0 starts at 17.25% basin vs 28.23% of catalogue faults; `p2b12p5` lands at 29.75% basin, nearly matching the
-catalogue prior. All three lose net H19-5 support credit (IR90-25 headwind), so signs are geomorphic-prior
-MODELs, not measurements; SGMC is structurally biased against basin enrichment (9.3% of SGMC faults are T1),
-treat its negative deltas as expected, not evidence. Catalogue hide/recover deltas are ~−3e-4 (CIs narrow but
-the proxy is near-blind here: added dots carry zero catalogue credit by construction). Leakage canary max
-symmetric AUC 0.5703 (<0.90). These are single-axis swap-ins for any RELIEF slot, not insertions ahead of the
-human-controlled order above; `b2p10` is the matched direction control — a live `b2p10` >= +0.010 with null/
-negative p2b arms falsifies the concealed-basin hypothesis.
-
-## This session: 15 km structural-prior CONCENTRATION — BUILT but HELD (no slot)
-
-| Candidate (2026-10-23) | Moved / diff | 15 km CV | MODEL Δ | SGMC PROXY Δ | Decision |
-|---|---:|---:|---:|---:|---|
-| `h33-h33-2-b2-CONCENTRATIONb15kmstruct10pct-20261023-8deb8269` | 3,765 / 19.998% | 0.5103 → 0.5990 | **+0.002** | **-0.006381** | HOLD; lowest-dose instrument only. |
-| `h33-h33-2-b2-CONCENTRATIONb15kmstruct15pct-20261023-fdba3c0a` | 5,648 / 29.999% | → 0.6949 | **-0.002** | **-0.009540** | HOLD. |
-| `h33-h33-2-b2-CONCENTRATIONb15kmstruct20pct-20261023-bc411adb` | 7,531 / 40.001% | → 0.7769 | **-0.006** | **-0.014211** | HOLD; highest risk. |
-
-A concurrent build on the old base, merged after main recorded IR90-25/26. The prior is new and string-distinct (absolute-value rank mean of pinned bands `tmi_hg`, `geod_2ndinv`, `geod_shearrate`, `iso_grav_anom_hg`, 150 px = 15 km blocks, lowest/highest 35% tails), and R0's CV at that block size is `0.510346`, coincidentally inside the brief's quoted band. But the exact support-credit ledger is negative (10%: -4,009.4 lost / +3,036.1 gained; 20%: -10,320.1 / +4,811.5), main independently measured ~0.98 lost vs ~0.54 gained per moved dot, and sibling upward-concentration MODELs are non-positive. **HOLD all three from the next slots.** They remain occupancy/dose-response guards; revisit only after a live receipt changes the evidence state or a downward-dispersion control is justified.
-
-Report-only diagnostics (`PROXY`, never gates/scores): catalogue hide/recover `n=13,920`, R0 `0.007191`; deltas +1e-06 / +2.4e-05 / +1.1e-05 with 95% CIs spanning 0. SGMC `n=62,122`, R0 `0.095386`; deltas above with CIs excluding 0. Leakage canary max symmetric AUC `0.574747` (<0.90). Predictions were frozen before proxies. Exact hashes, parent diffs and validator output: `evidence/concentration_build_receipt.json`.
-
-## This session: SPACING local kernel-scale respacing — BUILT but HELD (no slot)
-
-| Candidate (2026-10-24) | Relocated / diff | Mean displacement | Support-credit Δ | MODEL Δ | Decision |
-|---|---:|---:|---:|---:|---|
-| `h33-h33-2-b2-SPACINGresp5pctW15-20261024-f8bada0c` | 1,883 / 10.00% | 5.02 px | -87.1 | **0.000** (-0.008…+0.008) | HOLD; lowest-dose arrangement guard. |
-| `h33-h33-2-b2-SPACINGresp10pctW15-20261024-fdb1bde9` | 3,765 / 20.00% | 3.96 px | -284.3 | **-0.001** (-0.009…+0.007) | HOLD. |
-| `h33-h33-2-b2-SPACINGresp15pctW15-20261024-08f1daec` | 5,648 / 30.00% | 3.63 px | -495.7 | **-0.002** (-0.010…+0.006) | HOLD. |
-
-Agent-selected axis after a fresh sibling audit: the brief's global SPACING trio (lattice /
-Poisson-disk / along-strike) plus ring-2 micro-moves are already built in GEMSDOE86/88/91, so this
-session respaced only the most kernel-crowded dots (summed disk overlap within 6 px) to the
-max-marginal-credit support pixel within 15 px at the parent's 2.8 px separation, count fixed at
-37,654, added d_cat>=3 px, zero catalogue mass. The exact support-credit balance is negative at
-every dose (replacements within 1.5 km cannot reach the far uncovered support; IR90-25/35), both
-report-only PROXYs sit at 1e-4 with opposite signs (hide-recover n=16,560: -0.000008/-0.000057/
--0.000144; SGMC n=62,122: +0.000221/+0.000413/+0.000373), and the leakage canary peaks at 0.570341
-(< 0.90). **HOLD all three from the next slots**; they close the local-arrangement question so the
-final choice need not spend on it. Receipt `evidence/spacing_build_receipt.json`; builder
-`scripts/build_spacing_variants.py`.
-
-## Better axes proposed this session (not built)
-
-- **WINDOW_DOSE:** hold the dose at 10% and vary only the respacing window (15 px vs 60 px vs
-  unbounded-within-block). *Mechanism:* separates "locality preserves geography" from "locality
-  starves replacements" — this session's 60 px fallbacks (132-237 dots) hint the far support is
-  where any arrangement gain lives. *Confounder:* a wider window becomes CONCENTRATION in
-  disguise (block mix changes), so block quotas must be held as this session held geography.
-  *Falsifier:* paired Δ <= -0.010 for the 60 px arm vs the 15 px arm at matched dose/count.
-  Do not build until a live receipt exists (IR90-35).
-- **FAR_GAP_SWAP:** crowding-ranked removals (as here) with *global* max-marginal-credit
-  replacements on the 13,793 zero-credit support px, under per-5 km-block caps (no block gains
-  > 50%). *Mechanism:* the only arrangement edit that can actually reach uncovered ridge; the
-  fixed count keeps it an arrangement test, not a MASS add. *Confounder:* zero-credit support is
-  the lineage's least-confident ground (cover, contacts, drainage), so proxy gains may not
-  transfer — the same discount the q50 infill applies. *Falsifier:* paired Δ <= -0.010 vs
-  `SPACINGresp10pctW15` at matched dose. Distinct from REFILL_RANK (no collar) and
-  KERNEL_ORACLE_DOSE (no deletion-first step); do not build this session.
-
-## Calendar to deadline (`2026-12-03` UNVERIFIED — human confirms)
-
-- **Weeks 1–2 (Oct 23–Nov 5):** obtain R0's receipt if possible; execute the conditional order, then only the strongest orthogonal mechanism.
-- **Weeks 3–4 (Nov 6–Nov 19):** combine only axes with receipts `Δ>=+0.010`; reserve one slot for parent-vs-composite. q50-20 remains available only if the add slope rises.
-- **Weeks 5–6 (Nov 20–Dec 3):** confirm the leader, select ONE blind final plus a `-zeros` fallback, and revalidate both. Account for private chunks and expert-expanded labels ([clarification](https://community.drivendata.org/t/where-do-you-draw-the-line/11536)).
-
-## Better axes proposed (not built)
-
-- **TIP_CONDITIONAL_COLLAR (highest priority):** keep the 3 px collar *except* in the along-strike cone beyond a
-  catalogue trace's mapped endpoint (≤ 8 px beyond, ±30° of local strike), where the organiser's own definition of
-  "new fault" most plausibly applies. Mechanism: new geometry of existing systems; confounder: mask-boundary
-  artefacts create spurious endpoints in the fragmentary catalogue raster. Falsifier: paired Δ ≤ −0.010 vs the
-  3.4 px rung; skip if endpoint extraction cannot be validated on the catalogue mask alone.
-- **REFILL_POLICY_PAIR:** slot `PRUNEcollar3p0-FIFO` (sibling-built) and `PRUNEcollar3p4Gapmax` in the same week to
-  convert the 2.3× refill measurement into a live paired receipt. Falsifier: |Δ| < 0.010 in both, which would say
-  refill placement is irrelevant and retire the whole refill-repair line.
-- **TIP_FLOOR:** protect fragments by strand length and tip-cone membership, not dot count. *Falsifier:* paired Δ<=-0.010 vs shadowcont40.
-- **KERNEL_ORACLE_DOSE:** re-space survivors to a ~6 px anti-cluster instead of deleting. *Falsifier:* paired Δ<=-0.010 vs shadow48.
-- **REFILL_RANK:** 5 km-stratified exact marginal-kernel refill at fixed collar/count. *Falsifier:* region-evenness failure or paired Δ<=-0.010.
-- **DISPERSION_CONTROL:** down-concentration (high→low prior) at 15 km, the only sibling CONCENTRATION direction reading positive. *Falsifier:* paired Δ<=-0.010; do not build until the held upward ladder is superseded by a receipt.
-- **RELIEF_DONOR_MATCH (2026-10-24 proposal):** same basin recipient at one matched 3,766-dot dose, funded once from range (`r2b10`, exists) and once from piedmont (a new `p2b10`), isolating donor quality at fixed recipient/dose with the pinned `src.relief.py` operator. *Mechanism:* piedmont is R0's largest tercile so minimum-loss drops there should cost less exclusive credit. *Confounder:* tercile composition shifts differ, so credit per drop, not geography alone, decides. *Falsifier:* paired live Δ<=-0.010 between the two donors, or any |Δ|<0.010 (no evidence).
-- **WITHDRAWN / DO NOT UPLOAD:** FIFO-ranked MASS, duplicate `MASSadd10pctGapmax`, delete-only `L2nr` PRUNE, and SNAP (IR90-20/24/28/29).
-
-**Reproduce before any upload:** `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scripts/restore_releases.py` (18 core pairs recorded at branch start) → main's `build_mass_infill.py` / `build_mass_add_variants.py` / `build_mass_continuity.py` / `build_aniso_prune_along.py` family builders or verifiers for the slotted candidates → `.venv/bin/python scripts/build_concentration_variants.py --verify` for the held files. For the held SPACING files: `.venv/bin/python scripts/build_spacing_variants.py --verify`. Re-read every TIFF from disk, run the format gate, and match SHA-256 to `ledger/submissions.csv` before the human uploads from their own account.
-
-## Concurrent 5 km strain-prior CONCENTRATION — HELD, not slotted (session `arena/388fea70`)
-
-A second concurrent CONCENTRATION session built three fixed-count 37,654-dot files on a label-agnostic
-geodetic strain-rate prior (band 4 `geod_2ndinv`, 5 km blocks, complementary 50% pools, added d_cat≥3 px,
-zero catalogue mass). It used the SAME canonical filenames as the 15 km ladder above, so its files were renamed
-`*_strain5km` to coexist (IR90-32). Values and hashes are distinct from the 15 km ladder and from sibling
-0.8/1/5 km values; kept as string-distinct BUILT occupancy guards under the strict dedup rule.
-
-| Candidate (all HELD) | move | CV 15 km | corr(density,strain) | Δ (MODEL) |
-|---|---|---|---|---|
-| `CONCstrain10` | 10% low→high strain (20.0% diff) | 0.510→0.568 | 0.110→0.256 | +0.004 (−0.010…+0.015) |
-| `CONCstrain15` | 15% low→high strain (30.0% diff) | 0.510→0.622 | 0.110→0.313 | +0.001 (−0.013…+0.013) |
-| `CONCstrainAway10` | 10% high→low strain (SIGN CONTROL, 20.0% diff) | 0.510→0.558 | 0.110→−0.037 | −0.004 (−0.016…+0.008) |
-
-**Decision: HOLD from the next slots, consistent with IR90-25/26/30.** A fixed-count move loses ~0.98 and gains
-~0.54 support credit per dot (this session: net −370/−1629/−409 lost−gained), and the SGMC PROXY favours the
-AWAY arm (−0.0022 vs −0.0060/−0.0087). The one genuinely novel item is the matched-dose **sign control**: if the
-human ever spends slots here, pair `strain10` vs `strainAway10` (similar CV, opposite strain alignment) to test
-strain DIRECTION — a live paired receipt, not any proxy, decides. Until entity-scope/quota is adjudicated
-(IR90-26/30/32), the next three slots remain the integrated MASS-add / conditional continuity / fixed-count
-PRUNE order above. Predictions are MODEL; proxies REPORT ONLY. Receipt
-`evidence/concentration_strain5km_build_receipt.json`; builder `scripts/build_concentration_strain5km.py`.
+- **HELD / fallback:** all 9 FIFO-refilled `PRUNE` files (`IR90-43`), `CONCENTRATIONb15kmstruct10/15/20pct` (`IR90-30`), `CONCstrain10/15/Away10` (`IR90-32`/`IR90-34`), and `SPACINGresp5/10/15pctW15` (`IR90-35`). Fallback/swap-in: isotropic `PRUNEcollar3p4Gapmax` (`IR90-39`) and `RELIEFp2b12p5pct/p2b15pct/b2p10pct` (`IR90-41`).
+- **WITHDRAWN (do not upload):** `MASSdrop5pct-tail`, `MASSadd5pct-next`, `MASSadd20pct-next` (`IR90-20`), `MASSadd10pctGapmax` (`IR90-24`), `PRUNEanisoA4/5/6L2nr` (`IR90-29`), and `SNAP` (`IR90-28`).
+- **Calendar:** Weeks 1–2 (Oct 23–Nov 5): execute Slots 1–3 above and obtain receipts; Weeks 3–4 (Nov 6–Nov 19): combine only axes with live `Δ >= +0.010`; Weeks 5–6 (Nov 20–Dec 3): confirm leader and pick ONE blind final + `-zeros` fallback.
+- **Better axes proposed (not built):**
+  1. **`LOCAL_CORRIDOR_REFILL`:** Refill pruned collar dots within the same `<=1.5 km` fault-corridor neighborhood (`3.0 < d_cat <= 15.0 px`) by marginal kernel credit rather than 5 km footprint-wide quotas. *Falsifier:* paired live `|Δ| < 0.010` vs `PRUNEanisoA5L1q50` or local pool saturation.
+  2. **`TIP_CONDITIONAL_COLLAR`:** Keep the `>=3 px` collar everywhere except in the `<=8 px`, `±30 deg` along-strike cone beyond mapped trace endpoints. *Falsifier:* paired live `Δ <= -0.010` vs `PRUNEanisoA5L0p5q50` or `PRUNEcollar3p4Gapmax`.
+  3. **`CURVATURE_GATED_CONTINUITY`:** Weight `6 px` strand-articulation protection by local strike-angle bend (`<= 25 deg`) so sharp drainage/road kinks are not protected as fault strands. *Falsifier:* paired live `Δ <= -0.010` vs `MASSshadowcont20pct`.

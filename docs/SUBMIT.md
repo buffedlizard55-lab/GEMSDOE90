@@ -244,6 +244,7 @@ compares SHA-256 → `python -m src.validate <file> .cache/gems_data/sample_subm
 .cache/gems_data/existing_faults.tif`. Receipt: `evidence/prune_collar_gapmax_receipt.json`.
 The catalogue hide-and-recover PROXY reads 0.0 for this file **by construction** (its "truth" is the catalogue mask
 itself) — IR90-38; never use it to veto a collar candidate.
+
 ## SPACING local respacing — BUILT, HELD from slots (session 2026-10-24, `arena/5d597521`)
 
 Fixed-count (37,654) respacing of R0's most kernel-crowded dots (summed triangular-disk overlap
@@ -289,3 +290,23 @@ Rasters are NOT committed (public repo). Re-emit with `.venv/bin/python scripts/
 `.venv/bin/python scripts/build_relief_s2_variants.py --build`; confirm each SHA-256 against
 `evidence/relief_s2_build_receipt.json` / its ledger row; re-check with `--verify` and the `src.validate` gate.
 Live |Delta|<0.010 vs R0 is no evidence; private chunks and expert-expanded Phase-2 labels may differ.
+
+## 10. `AXIS=PRUNE` — 5 km Block-Stratified Marginal-Kernel Refill (`q50`) Ladder (`2026-10-24`, Session `arena/73f4c306`, Active Slot 2 / Slot 3 `PRUNE` Branch — Resolving `IR90-43`)
+
+**Why all 9 prior FIFO-refilled `PRUNE` variants (`PRUNE3p5px..5p5px`, `PRUNEanisoA4L2..A6L2`, `PRUNEanisoA5L1p5..L0p5`) are now HELD from live upload slots (`IR90-43`):**
+Programmatic audit (`evidence/aniso_q50_refill_receipt.json`) proved that all 9 prior FIFO-refilled `BUILT` `PRUNE` variants refilled their removed collar dots using global `fifo_bfs_visit_rank(h19)`, which places **100% of their 1,333–6,130 refill dots into a northern border strip (`y <= 101..264` of `H = 3,730`, i.e., top `2.73%–7.10%` of grid rows)**, starving `739–822` of the `848` densely populated (`>=20` R0 dots) 5 km blocks (`87.1%–96.9%` starved; `addition_evenness_gate = False`), placing `97.9%–99.5%` of refills within `3 px` of retained northern dots (`median 1.00 px`; `IR90-12`), and allowing refills down to `d_cat = 2.236 px`.
+
+These three `2026-10-24` candidates pair the exact Slot 2 / Slot 3 strike-aligned collar ladder (`across_px = 5.0`, `along_px in {0.5, 1.0, 2.0}`) with **5 km block-stratified exact `R = 3 px` marginal-kernel infill (`q50`, `src/prune_q50.py`)** on `H19-5` outside the collar and a strict **`d_cat >= 3.0 px`** floor on every newly added dot (`0 / 848` dense blocks starved, `addition_evenness_gate = True`, replacement distance `10.30–17.26 px` vs `845.4–917.5 px` FIFO, off-catalogue `H19-5` refill credit `2.12x–2.30x` FIFO, and net outside-collar `H19-5` coverage `+432.8 / +1,249.2 / +2,441.1` vs R0):
+
+| Candidate (`37,654` dots held) | Preferred file (NaN outside footprint) | Fallback twin (`-zeros.tif`) | SHA-256 (NaN / `-zeros`) | Form note (`<= 140` chars) |
+| :--- | :--- | :--- | :--- | :--- |
+| **`anisoA5L1q50` (Slot 2 null-add candidate)**<br>`A=5.0, L=1.0 px`; `-2,386 / +2,386` (`12.6733%` diff); pred **`+0.008 DTI MODEL`** (`-0.005..+0.017`) | `releases/h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa.tif` | `releases/h33-h33-2-b2-PRUNEanisoA5L1q50-20261024-c41fc4aa-zeros.tif` | `c41fc4aa73826f33047237fe027f95c025635e9e7d5af599e340f7ee8a46b273`<br>`4d91c5de97a0aa4b9ca5eff2790a418067959b7922ed4adcac9361794d8edc62` | `h33-h33-2-b2; PRUNE A5/L1 q50 5km kernel refill; pred +0.008 DTI MODEL` |
+| **`anisoA5L0p5q50` (Slot 3 tip-preserving PRUNE)**<br>`A=5.0, L=0.5 px`; `-1,333 / +1,333` (`7.0803%` diff); pred **`+0.005 DTI MODEL`** (`-0.007..+0.014`) | `releases/h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f.tif` | `releases/h33-h33-2-b2-PRUNEanisoA5L0p5q50-20261024-b7f9d99f-zeros.tif` | `b7f9d99f2e31fdcb454eb6e4a2e66b0cec44dcf86520515888a3601cb65bbad1`<br>`b44a54048f77ad589a4f669102bde03af4431e0c8335f85362b987394c928197` | `h33-h33-2-b2; PRUNE A5/L0.5 q50 5km kernel refill; pred +0.005 DTI MODEL` |
+| **`anisoA5L2q50` (Slot 3 wider along-strike PRUNE)**<br>`A=5.0, L=2.0 px`; `-3,663 / +3,663` (`19.4561%` diff); pred **`+0.006 DTI MODEL`** (`-0.008..+0.016`) | `releases/h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6.tif` | `releases/h33-h33-2-b2-PRUNEanisoA5L2q50-20261024-d54c00e6-zeros.tif` | `d54c00e625c18fcf35cc5ae808c4e1a2fed389bd8bb30721a8a810c774f5233d`<br>`4fcb637463211b9bb800481f785695e7a9deeeeed07e909d200421cf82e18133` | `h33-h33-2-b2; PRUNE A5/L2 q50 5km kernel refill; pred +0.006 DTI MODEL` |
+
+**Re-emission and verification in a fresh checkout:**
+```bash
+.venv/bin/python scripts/restore_data.py
+.venv/bin/python scripts/build_aniso_prune_q50.py --build --verify
+```
+Confirm the SHA-256 of the chosen `.tif` before uploading, upload **only the primary NaN `.tif`** (`-zeros.tif` only if the portal rejects NaNs outside the footprint), and record the returned live portal score in `ledger/submissions.csv` (`receipt = Y`, `receipt_score`, `date`).

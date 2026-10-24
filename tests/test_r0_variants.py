@@ -72,6 +72,9 @@ def test_ledger_and_build_receipt_agree_on_every_built_hash() -> None:
     collar_receipt = ROOT / "evidence" / "prune_collar_gapmax_receipt.json"
     if collar_receipt.exists():
         receipts.append(json.loads(collar_receipt.read_text()))
+    q50_receipt = ROOT / "evidence" / "aniso_q50_refill_receipt.json"
+    if q50_receipt.exists():
+        receipts.append(json.loads(q50_receipt.read_text()))
     variants = [v for receipt in receipts for v in receipt["variants"]]
     with (ROOT / "ledger" / "submissions.csv").open(newline="", encoding="utf-8") as fh:
         built = {row["id"]: row for row in csv.DictReader(fh)

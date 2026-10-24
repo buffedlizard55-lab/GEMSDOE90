@@ -512,5 +512,29 @@
     ],
     "why_distinct": "Sibling SPACING values are global arrangements (lattice/Poisson-disk/along-strike resampling of the whole field, ~37-40% changed) or ring-2 micro-moves at 2.0-2.24 px (spread40/clump40/jitter40). These values respace only the most kernel-crowded dots, each to the max-marginal-credit support pixel within 15 px at the parent's 2.8 px separation -- a local, dose-nested arrangement edit at 10/20/30% symmetric diff. No sibling ledger row uses a crowding rank, a 15 px window, or these tags.",
     "caveat": "Default-branch public audit is not proof of every private or unindexed entity submission. Human must check any missing entity ledger before spending a slot."
+  },
+  "anisotropic_q50_refill_reservations": {
+    "repo": "GEMSDOE90",
+    "parent": "h33-h33-2-b2",
+    "axis": "PRUNE",
+    "Selection": "Strike-aligned collar A=5.0 px with along_px in {0.5, 1.0, 2.0} px + 5 km block-stratified exact R=3 px marginal-kernel refill (q50) at d_cat >= 3.0 px",
+    "across_px": 5.0,
+    "along_px_values": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "occupied_values": [
+      "anisoA5L0p5q50",
+      "anisoA5L1q50",
+      "anisoA5L2q50"
+    ],
+    "n_dots": [
+      37654,
+      37654,
+      37654
+    ],
+    "status": "BUILT",
+    "fixes_irregularity": "IR90-43"
   }
 }
