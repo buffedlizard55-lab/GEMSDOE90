@@ -1,0 +1,77 @@
+{
+  "hypothesis": "Concealed faults trace multiscale-persistent GeoDAWN radiometric (K/Th/U) alteration/contact edges; magnetic-edge fusion (E2) may add buried-structure signal.",
+  "mechanism": "Geometric-mean gradient persistence sigma=1/2/4 px, rank-fused; greedy dotted emission 37,654 dots, 2.8px min sep, >=3px off catalogue.",
+  "non_fault_mimic": "Lithologic contacts, transported alluvium and regolith edges produce persistent radiometric gradients without faults.",
+  "evaluator_version": "evaluate_holdout.py v1 (whole-component, 5px buffer, pooled DTI a0.2/b0.8 R3px, 20km block bootstrap)",
+  "canaries_symmetric_auc": {
+    "radedge_surface": 0.521,
+    "mag_edge_surface": 0.5253,
+    "fused_surface": 0.524
+  },
+  "holdout": {
+    "evaluator_version": "evaluate_holdout.py v1 (whole-component, 5px buffer, pooled DTI a0.2/b0.8 R3px, 20km block bootstrap)",
+    "label": "HOLDOUT-DTI",
+    "n_withheld_positives": 11092,
+    "n_segments_withheld": 609,
+    "candidates": {
+      "BASE_h19_dotted_foldclean": {
+        "holdout_dti": 0.13943,
+        "ci95": [
+          0.108883,
+          0.169684
+        ],
+        "delta_vs_first": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "n_dots_in_eval": 13585
+      },
+      "R0_asis_leakageflagged": {
+        "holdout_dti": 0.006167,
+        "ci95": [
+          0.004711,
+          0.007824
+        ],
+        "delta_vs_first": -0.133263,
+        "delta_ci95": [
+          -0.16324,
+          -0.103786
+        ],
+        "n_dots_in_eval": 13886
+      },
+      "E1_radedge": {
+        "holdout_dti": 0.069533,
+        "ci95": [
+          0.051808,
+          0.08988
+        ],
+        "delta_vs_first": -0.069897,
+        "delta_ci95": [
+          -0.104582,
+          -0.03681
+        ],
+        "n_dots_in_eval": 15354
+      },
+      "E2_radedge_mag": {
+        "holdout_dti": 0.068495,
+        "ci95": [
+          0.05103,
+          0.088583
+        ],
+        "delta_vs_first": -0.070935,
+        "delta_ci95": [
+          -0.109519,
+          -0.035204
+        ],
+        "n_dots_in_eval": 15837
+      }
+    }
+  },
+  "best_candidate": "E1_radedge",
+  "gate_pass_vs_R0": false,
+  "experiments_run": 2,
+  "elapsed_s": 46.3,
+  "verdict": "negative",
+  "raster_sha256": null
+}
