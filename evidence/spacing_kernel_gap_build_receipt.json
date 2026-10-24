@@ -891,5 +891,6 @@
     "fixed_count_and_per_block_count": true,
     "anti_isolation_gate_passed_all_variants": true
   },
-  "verification_elapsed_s": 293.3
+  "verification_elapsed_s": 293.3,
+  "generator_script": "scripts/build_spacing_kernel_gap.py"
 }
