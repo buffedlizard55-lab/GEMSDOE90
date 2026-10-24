@@ -156,3 +156,29 @@ MASS-add / continuity / PRUNE slot order in `SLOT_PLAN.md` is retained.
 - **Merge-aware status:** a parallel session (main PR #20) had built a 15 km structural CONCENTRATION ladder using the SAME four filenames. AI renamed its own files to `src/concentration_strain5km.py`, `scripts/build_concentration_strain5km.py`, `tests/test_concentration_strain5km.py`, `evidence/concentration_strain5km_build_receipt.json` so both designs coexist, resolved all shared-file conflicts by union, and re-verified. Consistent with main IR90-25/26/30 (fixed-count concentration loses net support credit; parallel variants HELD from slots), these three files are kept as distinct `(parent,axis,value)` BUILT occupancy guards and HELD from slots; the away arm is a falsifier instrument only. IR90-32/33/34.
 - **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit any file, or invent any score/quota/target. R0's 0.2778 is CLAIM; every Δ is MODEL; canary/proxies are PROXY. Competition rasters stay in ignored `.cache/gems_data/` and `releases/`; the four *_strain5km source files are the only new tracked code.
 - **Human must decide/supply:** adjudicate whether sibling repos GEMSDOE84–97 are ONE entity (quota risk, IR90-26/30/32), confirm deadline and slot count, supply dated TOP_PUBLIC and portal receipts, decide whether the strain5km occupancy guards add value or should be dropped as a near-duplicate, and choose which single file (if any) to upload from their registered account.
+
+## Session arena/81d9c38f-gemsdoe90 (2026-10-24, agent-selected `AXIS=PRUNE`, one variant)
+
+- **AI wrote and executed:** `src/collar.py` (exclusive max-plus credit, region-even quotas, capacity
+  rebalance, max-marginal refill, two-scenario prediction), `scripts/build_prune_collar_gapmax.py`
+  (`--build` / `--verify`), `tests/test_collar.py` (7 synthetic tests), the local gitignored raster pair
+  `releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` / `…-e69532d5-zeros.tif`,
+  `evidence/prune_collar_gapmax_receipt.json`, one `ledger/submissions.csv` row, the IR90-35/36/37/38 entries,
+  the mechanism card, and the matching sections of `SLOT_PLAN.md`, `README.md` (CURRENT STATE only),
+  `docs/SUBMIT.md` and this disclosure.
+- **AI decided (not human-assigned):** selected PRUNE after a read-only `gh api` audit of sibling ledgers
+  (GEMSDOE84–94) and a byte-identical R0 rebuild; measured that every free arrangement/dose knob has
+  < 0.010 headroom (IR90-35) and therefore built **one** variant instead of three (IR90-38): the smallest
+  unoccupied collar radius (3.4 px) with a max-marginal refill, because that isolates the one quantity the
+  entity has measured live (the collar) and repairs the refill policy that was never measured (FIFO 0.57 vs
+  max-marginal 1.30 support credit per dot). AI verified all 26 SHA-256 pins, rebuilt R0 byte-identically
+  (`c55bafc4…` / `baeae321…`), re-read and validated both rasters from disk, reproduced their bytes with
+  `--verify`, and ran the report-only canary and catalogue hide-and-recover instruments.
+- **AI did not:** contact DrivenData or Dropbox, fetch a competition page, read or scrape the leaderboard,
+  log in, submit, invent any score/quota/target, or use test truth of any kind. R0's `0.2778` is a CLAIM;
+  the prediction is MODEL; both proxies are PROXY; the catalogue hide-and-recover value of 0.0 is a documented
+  structural artefact (IR90-36), not evidence.
+- **Human must decide/supply:** dated `TOP_PUBLIC`, slots used/remaining, official deadline confirmation,
+  R0 and candidate portal receipts, data-use review, whether a 3.4 px collar step is worth a slot at all
+  (IR90-37: the refill measurement is the session's result, not a new dose), and which single file — if any —
+  to upload from their own registered account.

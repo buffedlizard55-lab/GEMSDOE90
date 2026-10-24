@@ -10,6 +10,19 @@
 | **2** | Add branch: `…MASSadd10pctq50-20261023-5edc84de.tif` — **+0.014**. Negative-add branch: `…MASSshadowcont20pct-20261023-66d961ba.tif` — **+0.009**. Null-add branch: `…PRUNEanisoA5L1-20261023-cd2c60ce.tif` — **+0.005** | Add: rising `Δ` licenses q50-20; flat but positive favors matched-placement blocknext10; negative closes the ladder. Continuity: `Δ>=+0.010` → shadowcont40; `Δ<=-0.010` → shadow20 to separate dose from protection. PRUNE: `Δ>=+0.010` → L0.5; `Δ<=-0.010` → recorded A5/L2; null → shadowcont20. |
 | **3** | Add: `…MASSadd20pctq50-20261023-f94efff4.tif` — **+0.022**, or matched-dose `…MASSadd10pctBlocknext-20261023-89d16c16.tif` — **+0.0044**. Continuity: `…MASSshadowcont40pct-20261023-92be4121.tif` — **+0.013** / `…MASSshadow20pct-20261023-c4ce118b.tif` — **+0.009**. PRUNE: `…PRUNEanisoA5L0p5-20261023-91ff3771.tif` — **+0.003** / recorded **A5/L2** / shadowcont20 | Take exactly one conditional arm. q50-20 requires two positive add receipts and a rising slope; blocknext10 isolates placement at matched dose/geography. L0.5 follows only a positive L1; A5/L2 follows only a negative L1. A null result never licenses a same-axis dose guess. |
 
+## Session 2026-10-24 (agent-selected `AXIS=PRUNE`): ONE frontier collar rung — BUILT, fallback only
+
+`releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` (+ `-zeros`): 37,654 dots, 2,702 removed
+(2.236–3.162 px shell) / 2,702 added, 14.35 % of R0 changed, **+0.002 MODEL (−0.008…+0.013)**, every final dot
+≥ 3.606 px from the catalogue (the first repo candidate stricter than the `≥ 3 px` rule). **Do not spend slot 1–3
+on it**: the slotted add ladder predicts more, and this file's new content is a *measurement*, not a dose —
+at the same collar and count the lineage's FIFO refill buys 0.57 support credit per dot and max-marginal placement
+buys 1.30 (2.3×, same receipt). It becomes the right slot only if a live receipt first shows the collar gradient is
+still alive at 3 px, or as a format/`≥ 3 px` control. The session also measured that **every free arrangement knob
+is below the 0.010 floor**: although 16.4 % of dot-level kernel credit is geometrically overlapped, every R0 dot is the argmax
+somewhere (exclusive credit ≥ 0.943), so a measured greedy re-seat at 5/10/20 % nets only +0.0018/+0.0023/+0.0030
+MODEL — spacing/reseat/lattice cannot reach the 0.010 floor (IR90-35).
+
 Retained but not slotted first: **A5/L1.5** (+0.004), `RELIEFr2p12p5pct` (+0.004), `PRUNEanisoA4L2` (+0.003), `MASSshadowcont30pct` (+0.011), `MASSshadow40pct` (+0.014), `MASSrandom40pct` (+0.013). They remain valid single-axis candidates; do not spend a slot on any WITHDRAWN FIFO/gapmax/no-refill row or on infeasible SNAP.
 
 ## This session: 15 km structural-prior CONCENTRATION — BUILT but HELD (no slot)
@@ -32,6 +45,14 @@ Report-only diagnostics (`PROXY`, never gates/scores): catalogue hide/recover `n
 
 ## Better axes proposed (not built)
 
+- **TIP_CONDITIONAL_COLLAR (highest priority):** keep the 3 px collar *except* in the along-strike cone beyond a
+  catalogue trace's mapped endpoint (≤ 8 px beyond, ±30° of local strike), where the organiser's own definition of
+  "new fault" most plausibly applies. Mechanism: new geometry of existing systems; confounder: mask-boundary
+  artefacts create spurious endpoints in the fragmentary catalogue raster. Falsifier: paired Δ ≤ −0.010 vs the
+  3.4 px rung; skip if endpoint extraction cannot be validated on the catalogue mask alone.
+- **REFILL_POLICY_PAIR:** slot `PRUNEcollar3p0-FIFO` (sibling-built) and `PRUNEcollar3p4Gapmax` in the same week to
+  convert the 2.3× refill measurement into a live paired receipt. Falsifier: |Δ| < 0.010 in both, which would say
+  refill placement is irrelevant and retire the whole refill-repair line.
 - **TIP_FLOOR:** protect fragments by strand length and tip-cone membership, not dot count. *Falsifier:* paired Δ<=-0.010 vs shadowcont40.
 - **KERNEL_ORACLE_DOSE:** re-space survivors to a ~6 px anti-cluster instead of deleting. *Falsifier:* paired Δ<=-0.010 vs shadow48.
 - **REFILL_RANK:** 5 km-stratified exact marginal-kernel refill at fixed collar/count. *Falsifier:* region-evenness failure or paired Δ<=-0.010.

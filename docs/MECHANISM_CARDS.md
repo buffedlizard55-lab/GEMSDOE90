@@ -373,3 +373,43 @@ loss (~0.98 lost / ~0.54 gained per dot) and a negative SGMC PROXY favouring the
 - **Non-fault confounder:** labels compiled from aseismic historic bedrock maps could make an away move gain — a real confound the sign control is designed to expose (SGMC already favours this arm, IR90-34).
 - **Predicted live change (MODEL):** **−0.004 DTI** (−0.016…+0.008; not a score).
 - **Falsifier:** `strainAway10 >= strain10` on paired receipts falsifies the strain mechanism; `|Δ|<0.010` is no evidence.
+
+## Session 2026-10-24 (3): AXIS = PRUNE, value = frontier collar 3.4 px with max-marginal refill
+
+Parent R0 `h33-h33-2-b2`: 37,654 unit-mass dots, isotropic >2 px catalogue collar; 0.2778 is a **CLAIM**.
+File `releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` (+ `-zeros` twin): **BUILT**, format-gated,
+unscored. Prediction **MODEL**: **+0.002** (bracket −0.008…+0.013). Receipt:
+`evidence/prune_collar_gapmax_receipt.json`; builder `scripts/build_prune_collar_gapmax.py`.
+
+**Hypothesis.** R0's 2 px catalogue collar is the only edit in its lineage with a live-positive claim (solo-d28
+0.2708 → pruned 0.2778), so the collar is the one dose-response the entity has actually measured. Extending it by
+1.4 px should keep paying while the removed shell still sits inside the mapped traces' damage zone, and should stop
+paying once the shell reaches ground where a "new" fault is plausible.
+
+**Mechanism.** Known catalogue pixels are masked pixel-exactly: a dot there earns no `T` but still pays the
+`0.2(S−M)` mass term, and a dot beside them is scored only against *new*-fault truth. The edit removes all 2,702
+R0 dots in the 2.236–3.162 px shell (median 2.828 px) and re-places exactly 2,702 dots at the maximum marginal
+R = 3 px kernel credit inside the binary H19-5 support, under region-even 5 km quotas proportional to R0's own
+block counts (largest emptied block share 9.5 %, no 20+-dot block left without an addition, gate passed).
+Count is fixed at 37,654, so emitted mass cannot explain a live change; every final dot is ≥ 3.606 px from the
+catalogue, making this the first candidate in the repository that is stricter than Hard Constraint #4's `≥ 3 px`.
+
+**Why the refill changed too (and why that is the informative part).** At the same collar and count the lineage's
+FIFO-BFS refill buys **0.57** support credit per dot; maximum-marginal placement buys **1.30** (2.3×), measured in
+the same receipt. The removal term is truth-dependent and cannot be settled locally, so the file's prediction is
+reported as two named scenarios rather than one number: **−0.008** if the removed shell is worth what the support
+surrogate says (uniform-truth reading), **+0.013** if the collar's mechanism holds (near-catalogue mass earns
+penalty, not credit). Central +0.002.
+
+**Non-fault processes that could mimic it.** H19-5 is binary {0,1}, so max-marginal placement cannot distinguish a
+fault ridge from a lithologic contact, a drainage line, or a flight-line artefact; and new-fault truth is explicitly
+allowed within 300 m of known traces, so the deleted shell may hold genuine credit. Both confounders push the live
+change **down**.
+
+**Falsifier.** A paired live receipt against R0 with Δ ≤ −0.010 ends the outward collar ladder at this radius (read
+together with the entity's 3.0 px rungs). |Δ| < 0.010 is no evidence and licenses no further dose guess on this axis.
+Note the catalogue hide-and-recover proxy is structurally blind here (IR90-36) and must not be used to veto it.
+
+**Geologist note.** The deleted shell is a 340 m halo around every mapped trace; the added dots are simply the
+least-served parts of the binary H19-5 field, which is not a fault-probability ranking. Read the file as a collar
+test with a repaired refill, never as a claim that new faults avoid mapped traces.
