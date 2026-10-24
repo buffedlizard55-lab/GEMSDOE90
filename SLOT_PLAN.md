@@ -39,3 +39,26 @@ Report-only diagnostics (`PROXY`, never gates/scores): catalogue hide/recover `n
 - **WITHDRAWN / DO NOT UPLOAD:** FIFO-ranked MASS, duplicate `MASSadd10pctGapmax`, delete-only `L2nr` PRUNE, and SNAP (IR90-20/24/28/29).
 
 **Reproduce before any upload:** `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scripts/restore_releases.py` (18 core pairs recorded at branch start) → main's `build_mass_infill.py` / `build_mass_add_variants.py` / `build_mass_continuity.py` / `build_aniso_prune_along.py` family builders or verifiers for the slotted candidates → `.venv/bin/python scripts/build_concentration_variants.py --verify` for the held files. Re-read every TIFF from disk, run the format gate, and match SHA-256 to `ledger/submissions.csv` before the human uploads from their own account.
+
+## Concurrent 5 km strain-prior CONCENTRATION — HELD, not slotted (session `arena/388fea70`)
+
+A second concurrent CONCENTRATION session built three fixed-count 37,654-dot files on a label-agnostic
+geodetic strain-rate prior (band 4 `geod_2ndinv`, 5 km blocks, complementary 50% pools, added d_cat≥3 px,
+zero catalogue mass). It used the SAME canonical filenames as the 15 km ladder above, so its files were renamed
+`*_strain5km` to coexist (IR90-32). Values and hashes are distinct from the 15 km ladder and from sibling
+0.8/1/5 km values; kept as string-distinct BUILT occupancy guards under the strict dedup rule.
+
+| Candidate (all HELD) | move | CV 15 km | corr(density,strain) | Δ (MODEL) |
+|---|---|---|---|---|
+| `CONCstrain10` | 10% low→high strain (20.0% diff) | 0.510→0.568 | 0.110→0.256 | +0.004 (−0.010…+0.015) |
+| `CONCstrain15` | 15% low→high strain (30.0% diff) | 0.510→0.622 | 0.110→0.313 | +0.001 (−0.013…+0.013) |
+| `CONCstrainAway10` | 10% high→low strain (SIGN CONTROL, 20.0% diff) | 0.510→0.558 | 0.110→−0.037 | −0.004 (−0.016…+0.008) |
+
+**Decision: HOLD from the next slots, consistent with IR90-25/26/30.** A fixed-count move loses ~0.98 and gains
+~0.54 support credit per dot (this session: net −370/−1629/−409 lost−gained), and the SGMC PROXY favours the
+AWAY arm (−0.0022 vs −0.0060/−0.0087). The one genuinely novel item is the matched-dose **sign control**: if the
+human ever spends slots here, pair `strain10` vs `strainAway10` (similar CV, opposite strain alignment) to test
+strain DIRECTION — a live paired receipt, not any proxy, decides. Until entity-scope/quota is adjudicated
+(IR90-26/30/32), the next three slots remain the integrated MASS-add / conditional continuity / fixed-count
+PRUNE order above. Predictions are MODEL; proxies REPORT ONLY. Receipt
+`evidence/concentration_strain5km_build_receipt.json`; builder `scripts/build_concentration_strain5km.py`.

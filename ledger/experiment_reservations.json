@@ -167,6 +167,21 @@
         "r2b10pct",
         "p2r15pct"
       ]
+    },
+    {
+      "session": "2026-10-23 CONC-strain/arena-388fea70 5km strain sign-control (GEMSDOE90)",
+      "axis": "CONCENTRATION",
+      "prior": "geodetic strain-rate invariant band 4 (label-agnostic), 5 km blocks",
+      "selected_values": [
+        "strain10",
+        "strain15",
+        "strainAway10"
+      ],
+      "variant_ids": [
+        "h33-h33-2-b2-CONCstrain10-20261023-aa60138c",
+        "h33-h33-2-b2-CONCstrain15-20261023-d3db2957",
+        "h33-h33-2-b2-CONCstrainAway10-20261023-bd514054"
+      ]
     }
   ],
   "mass_high_dose": {
@@ -420,5 +435,32 @@
     "why_distinct": "No indexed sibling builds a 15 km block prior from the four pinned strain/potential-field bands; existing values use 0.8/1/5 km or 10/50 px blocks, thermal/GDR priors, or generic density/CV moves. Repeat builds of these exact tags fail closed.",
     "caveat": "Default-branch public repository audit is not proof of every private or unindexed entity submission. Human must check any missing entity ledger before spending a scored slot.",
     "post_merge_decision": "After merging main (IR90-25/26), these three 15 km structural-prior files are HELD from the next three slots: exact R0 credit is nearly uniform, a fixed-count move loses ~0.98 and gains ~0.54 support credit per dot, and this session's SGMC PROXY is negative. They remain BUILT occupancy guards and a dose-response instrument only; no live receipt exists."
+  },
+  "concentration_reservations": {
+    "checked_utc": "2026-10-23",
+    "axis": "CONCENTRATION",
+    "parent": "h33-h33-2-b2",
+    "prior": "geodetic strain-rate invariant (band 4, label-agnostic), 5 km blocks, complementary 50% pools",
+    "occupied_tags": [
+      "strain10",
+      "strain15",
+      "strainAway10"
+    ],
+    "occupied_values": [
+      "tag=strain10; 5km blocks; prior=geodetic strain-rate invariant band4 (label-agnostic); move 10% R0 mass (3765 dots) low->high strain; 50% pool; fixed count 37654; added d_cat>=3px",
+      "tag=strain15; 5km blocks; prior=geodetic strain-rate invariant band4 (label-agnostic); move 15% R0 mass (5648 dots) low->high strain; 50% pool; fixed count 37654; added d_cat>=3px",
+      "tag=strainAway10; 5km blocks; prior=geodetic strain-rate invariant band4 (label-agnostic); move 10% R0 mass (3765 dots) high->low strain (sign control); 50% pool; fixed count 37654; added d_cat>=3px"
+    ],
+    "cross_repo_audit": {
+      "siblings_checked": "GEMSDOE84-97 (gh api read-only, 2026-10-23)",
+      "catalogue_density_prior": "GEMSDOE89 CONC5kmcat10/cat10away/cat20",
+      "h19_5_prior": "GEMSDOE87 CONCc10/c15/c20",
+      "self_density_prior": "GEMSDOE88/91 CONCb10px-m10/m20/b50px-m20; GEMSDOE84/85/86 additional conc/spread",
+      "why_new": "No sibling built a CONCENTRATION on a label-agnostic geodetic strain-rate prior; prior is near-orthogonal to R0 density (r~+0.11) and relief-neutral, and uses no test label/score, so it is orthogonal to all sibling values and to Hard Constraint #5."
+    },
+    "note": "Repeat builds of these (CONCENTRATION, value) pairs fail closed.",
+    "value_family": "5km band-4 geodetic strain-rate prior; 50% complementary pools; matched-dose AWAY sign control",
+    "coexists_with": "main concentration_reservations_20261023 = 15 km structural strain/edge dose ladder",
+    "post_merge_decision": "HELD from the next slots, consistent with main IR90-25/26 and the 15 km ladder decision: fixed-count concentration loses ~0.98/gains ~0.54 support credit per dot and SGMC PROXY is negative. Kept as distinct (parent,axis,value) BUILT occupancy guards; the matched-dose AWAY arm is a falsifier instrument only. No live receipt. Human adjudicates entity-scope/quota before any slot."
   }
 }

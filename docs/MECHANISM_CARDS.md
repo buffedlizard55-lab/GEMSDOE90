@@ -342,3 +342,34 @@ Parent R0 has 15 km block-density CV `0.5103`, inside the brief's reported `0.51
 **Post-merge note:** IR90-25/26 show fixed-count concentration has little credit headroom at R0 and
 non-positive sibling MODELs. The 15 km prior is string-distinct and all gates pass, but the files are held
 from slots unless a future live receipt changes the evidence state.
+
+## Session `arena/388fea70` (2026-10-23): CONCENTRATION — 5 km band-4 strain-rate prior — HELD from slots
+
+Parent R0 `h33-h33-2-b2`, 37,654 dots; 0.2778 is a **CLAIM**. These three files are **BUILT** (string-distinct
+occupancy guards, renamed `*_strain5km` to coexist with main PR #20's 15 km ladder, IR90-32) and **HELD from
+slots** (IR90-25/26/30/34). Predictions are **MODEL**. Count fixed at 37,654; added dots d_cat≥3 px; zero
+catalogue mass. Prior = label-agnostic geodetic strain-rate second invariant (band 4 `geod_2ndinv`), 5 km blocks,
+complementary top/bottom-50% strain pools, greedy R=3 px marginal-credit drop/add. Headwind: net support-credit
+loss (~0.98 lost / ~0.54 gained per dot) and a negative SGMC PROXY favouring the AWAY arm. Receipt
+`evidence/concentration_strain5km_build_receipt.json`.
+
+### 1. `h33-h33-2-b2-CONCstrain10-20261023-aa60138c` (Move 10% = 3,765 dots: low→high strain)
+- **Hypothesis:** New unmapped faults preferentially nucleate/slip where the crust actively deforms; concentrating 10% of R0's fixed mass into the highest-strain 5 km blocks raises 300 m-kernel coverage of likely-undiscovered-fault ground at unchanged total penalty.
+- **Mechanism:** Drop lowest-exclusive-credit R0 dots in low-strain blocks, add highest-marginal-credit H19-5 pixels (d_cat≥3 px) in high-strain blocks (20.0% symmetric diff); 15 km CV 0.510→0.568, density–strain rank r +0.11→+0.26; anti-isolation cluster 0.
+- **Non-fault confounder:** GPS/InSAR station-spacing artefacts, groundwater/geothermal/volcanic subsidence, ductile shear.
+- **Predicted live change (MODEL):** **+0.004 DTI** (−0.010…+0.015; not a score).
+- **Falsifier:** paired live `Δ<=-0.010` rejects it; if `strainAway10 >= strain10`, the strain prior is falsified. `|Δ|<0.010` is no evidence.
+
+### 2. `h33-h33-2-b2-CONCstrain15-20261023-d3db2957` (Move 15% = 5,648 dots: low→high strain)
+- **Hypothesis:** Dose-response top of the same prior; net predicted ~0 (CV rises to ~0.62, above the quoted best band, and more support credit is lost).
+- **Mechanism:** Identical operator at 15% (30.0% diff); r +0.11→+0.31, CV 0.510→0.622; emptied cluster 1 (no hole).
+- **Non-fault confounder:** over-concentration onto a few strain maxima that are network artefacts, not discrete faults.
+- **Predicted live change (MODEL):** **+0.001 DTI** (−0.013…+0.013; not a score).
+- **Falsifier:** paired `Δ<=-0.010` vs strain10 rejects further dose; `|Δ|<0.010` is no evidence.
+
+### 3. `h33-h33-2-b2-CONCstrainAway10-20261023-bd514054` (SIGN CONTROL: Move 10% = 3,765 dots: high→low strain)
+- **Hypothesis:** If strain rate marks new-fault ground, moving 10% of mass OUT of high-strain blocks must lose; a gain here falsifies the prior (or shows undisclosed labels sit in aseismic blocks).
+- **Mechanism:** Same placement rule/dose as strain10, donor/recipient reversed — same ~20% diff and similar CV (0.558 vs 0.568), isolating strain DIRECTION; r +0.11→−0.04.
+- **Non-fault confounder:** labels compiled from aseismic historic bedrock maps could make an away move gain — a real confound the sign control is designed to expose (SGMC already favours this arm, IR90-34).
+- **Predicted live change (MODEL):** **−0.004 DTI** (−0.016…+0.008; not a score).
+- **Falsifier:** `strainAway10 >= strain10` on paired receipts falsifies the strain mechanism; `|Δ|<0.010` is no evidence.

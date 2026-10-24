@@ -196,3 +196,28 @@ Zero catalogue mass; 100% of **newly added** dots are at `d_cat >= 3.0 px`; unto
 session's negative support-credit balance and SGMC PROXY, outweigh the 15 km CV coincidence. Do not spend one
 of the next three slots here; use the integrated order at the top of `SLOT_PLAN.md`. These files remain
 reproducible occupancy/dose-response guards only.
+
+## Strain-prior CONCENTRATION — 5 km band-4 strain, HELD from slots (session `arena/388fea70`)
+
+Fixed-count (37,654) reallocation of R0 mass across 5 km blocks ranked by a LABEL-AGNOSTIC geodetic strain-rate
+invariant (band 4 `geod_2ndinv` of pinned `training_features.tif`): near-orthogonal to R0 density (r=+0.11),
+relief-neutral (r=−0.046), no test label/score. Complementary top/bottom-50% strain pools; greedy R=3 px
+marginal-credit drop/add; 100% of added dots enforce d_cat≥3.0 px (untouched R0 dots inherit R0's 2.236 px floor,
+IR90-07/18/33); zero catalogue mass; anti-isolation gate passed. `strainAway10` is a matched-dose SIGN CONTROL.
+These source files were renamed `*_strain5km` to coexist with main PR #20's 15 km ladder, which owns the canonical
+`concentration.py` / `build_concentration_variants.py` / `concentration_build_receipt.json` (IR90-32).
+**Status: BUILT, HELD from slots** (IR90-25/26/30/34) — string-distinct occupancy guards, not next-slot candidates.
+Full hashes/stats/PROXY diagnostics: `evidence/concentration_strain5km_build_receipt.json`.
+
+| Candidate | Preferred file (NaN outside) | Fallback (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (<=140) |
+|---|---|---|---|---|
+| 10% low→high strain | `releases/h33-h33-2-b2-CONCstrain10-20261023-aa60138c.tif` | `…-aa60138c-zeros.tif` | `aa60138c3e70317…` / `c1822125a6d8e4f0…` | `h33-h33-2-b2; CONC 10% (3765d) low->high strain; pred +0.004 DTI MODEL` |
+| 15% low→high strain | `releases/h33-h33-2-b2-CONCstrain15-20261023-d3db2957.tif` | `…-d3db2957-zeros.tif` | `d3db2957a079732…` / `45029ddb0db0c24…` | `h33-h33-2-b2; CONC 15% (5648d) low->high strain; pred +0.001 DTI MODEL` |
+| 10% high→low strain (SIGN CONTROL) | `releases/h33-h33-2-b2-CONCstrainAway10-20261023-bd514054.tif` | `…-bd514054-zeros.tif` | `bd5140546ebc481…` / `3d390e97da725d4…` | `h33-h33-2-b2; CONC 10% (3765d) high->low strain; pred -0.004 DTI MODEL` |
+
+Rasters are NOT committed (public repo). Re-emit with `.venv/bin/python scripts/restore_data.py` then
+`.venv/bin/python scripts/build_concentration_strain5km.py --build`; confirm each SHA-256 against
+`evidence/concentration_strain5km_build_receipt.json` / its ledger row; re-check with
+`.venv/bin/python scripts/build_concentration_strain5km.py --verify` and the `src.validate` format gate. The agent
+does not submit. Even if verified, these are HELD — do not upload without adjudicating entity-scope/quota
+(IR90-26/30/32) and the headwind (IR90-25/34).

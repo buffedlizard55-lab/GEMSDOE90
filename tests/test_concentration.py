@@ -155,9 +155,13 @@ def test_receipt_ledger_cards_and_reservations_are_consistent() -> None:
     with conc_build.LEDGER_PATH.open(newline="", encoding="utf-8") as fh:
         all_rows = list(csv.DictReader(fh))
     built = {r["id"]: r for r in all_rows if r["status"] == "BUILT" and r["axis"] == "CONCENTRATION"}
-    assert set(built) == {v["id"] for v in receipt["variants"]}
+    # Multiple concurrent CONCENTRATION sessions (this 15 km ladder and the distinct
+    # 5 km band-4 strain sign-control occupancy guards) may coexist in the shared ledger,
+    # each as a string-distinct (parent,axis,value). Assert THIS receipt's variants are a
+    # subset of the BUILT rows and that THIS session's cards cover exactly THIS receipt.
+    assert {v["id"] for v in receipt["variants"]} <= set(built)
     card_ids = {c["id"] for c in cards["concentration"]["variants"]}
-    assert card_ids == set(built)
+    assert card_ids == {v["id"] for v in receipt["variants"]}
     tags = [v["tag"] for v in receipt["variants"]]
     assert tags == reservations["concentration_reservations_20261023"]["occupied_tags"]
 
