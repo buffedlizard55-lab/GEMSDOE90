@@ -6,7 +6,7 @@ Each rung moves 5 / 10 / 20 % of R0's dots *within their own 5 km block* from
 lowest exclusive R=3 px support credit to highest marginal support credit on
 the pinned H19-5 support.  Dot count and per-5 km-block counts are unchanged;
 only spacing changes.  Added dots satisfy d_cat >= 3 px; untouched R0 dots keep
-the parent's inherited 2.236 px floor (IR90-07/18/21; see IR90-41).
+the parent's inherited 2.236 px floor (IR90-07/18/21; see IR90-43).
 
 Run build:  .venv/bin/python scripts/build_spacing_kernel_gap.py --build
 Run verify: .venv/bin/python scripts/build_spacing_kernel_gap.py --verify

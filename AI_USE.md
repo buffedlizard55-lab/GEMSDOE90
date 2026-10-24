@@ -210,10 +210,34 @@ file, a geological review of whether crowded-dot clusters (possible step-overs/i
 be respaced at all, whether the inherited 2.236 px floor is acceptable (IR90-36), and which single
 file (if any) to upload from their own registered account. The agent's recommendation is to keep
 the SPACING files held and run the MASS-add / continuity / PRUNE order in `SLOT_PLAN.md` first.
+## Session arena/b5ea0544 (2026-10-24 RELIEF basin<->piedmont, AXIS=RELIEF, GEMSDOE90)
+
+- **What AI wrote and executed:** AI chose the AXIS itself (RELIEF) after reading the ledger, reservations and
+  SLOT_PLAN, and ran a read-only `gh api` audit of every reachable sibling ledger (GEMSDOE84-89, 91, 92; 93-101
+  have no ledger): 27 RELIEF rows covered range->piedmont, range->basin, piedmont->range and basin->range, with
+  ZERO basin->piedmont or piedmont->basin pairs under any naming (IR90-41). AI re-installed the pinned venv,
+  restored and SHA-256-verified all 26 manifest inputs (70.6 s), rebuilt R0 byte-identically
+  (`c55bafc4…` zeros / `baeae321…` NaN), restored the 18 core release pairs with matching hashes, and authored
+  `scripts/build_relief_s2_variants.py` plus `tests/test_relief_s2.py` using the unchanged pinned
+  `src/relief.py` operator. It built three fixed-count 37,654-dot files — `RELIEFp2b12p5pct` (pred +0.003
+  MODEL), `RELIEFp2b15pct` (+0.004), and direction control `RELIEFb2p10pct` (−0.002) — re-read every raster
+  from disk, passed the `src.validate` format gate on all six, ran a byte-reproduction `--verify`, the donor
+  5 km region-evenness gate and the full test suite (120 passed), and ran the report-only leakage canary
+  (max symmetric AUC 0.5703), catalogue hide/recover and SGMC controls as PROXY only. Predictions were frozen
+  in the builder before any proxy ran.
+- **What AI did NOT do:** contact DrivenData or Dropbox, read the leaderboard, scrape scores, log in, submit
+  any file, use test truth, or invent any score/quota/target. R0's 0.2778 remains a CLAIM; every predicted
+  change is MODEL; canary/proxies are PROXY, never gates or scores. Competition rasters stay in ignored
+  `.cache/gems_data/` and `releases/`; only code, JSON receipts and Markdown are in the Git diff.
+- **Human must decide/supply:** dated TOP_PUBLIC, weekly slot count and total used, deadline confirmation,
+  R0 and any candidate portal receipts, data-use/terms review, geological review of the moved corridors,
+  whether the inherited 2.236 px collar on untouched dots is acceptable (IR90-42), entity-scope/quota
+  adjudication across sibling repos (IR90-08/26/35), and which single file (if any) to upload from their
+  registered account.
 
 ## Session `arena/b5694006-gemsdoe90` (2026-10-24, agent-selected `AXIS=SPACING`)
 
-**AI wrote and executed:** `src/spacing_kernel_gap.py` (block-local exact R=3 px exclusive-loss/marginal-gain re-spacing, quota allocation, fixed-count DTI model bracket), `scripts/build_spacing_kernel_gap.py` (manifest re-verification, byte-identical R0 rebuild, reservation guard, three candidate pairs, dual-encoding format gate, REPORT ONLY proxies, `--verify` and `--build --rebuild-reserved` byte-reproduction paths), `tests/test_spacing_kernel_gap.py`, `evidence/spacing_kernel_gap_build_receipt.json`, three `BUILT` rows in `ledger/submissions.csv`, the `spacing_kernel_gap_20261024` reservation block, mechanism cards in `ledger/mechanism_cards.json` and `docs/MECHANISM_CARDS.md`, the `SLOT_PLAN.md` rewrite, README CURRENT STATE edits, `docs/SUBMIT.md` §8, IR90-41, and this disclosure. AI also refreshed `evidence/manifest_verification.json` (26/26 pins) and `evidence/r0_rebuild_receipt.json` (both parent hashes exact). It built six local gitignored TIFFs: `2c8dd61d`, `51b7375e`, `7426cb1f` plus their `-zeros` twins.
+**AI wrote and executed:** `src/spacing_kernel_gap.py` (block-local exact R=3 px exclusive-loss/marginal-gain re-spacing, quota allocation, fixed-count DTI model bracket), `scripts/build_spacing_kernel_gap.py` (manifest re-verification, byte-identical R0 rebuild, reservation guard, three candidate pairs, dual-encoding format gate, REPORT ONLY proxies, `--verify` and `--build --rebuild-reserved` byte-reproduction paths), `tests/test_spacing_kernel_gap.py`, `evidence/spacing_kernel_gap_build_receipt.json`, three `BUILT` rows in `ledger/submissions.csv`, the `spacing_kernel_gap_20261024` reservation block, mechanism cards in `ledger/mechanism_cards.json` and `docs/MECHANISM_CARDS.md`, the `SLOT_PLAN.md` rewrite, README CURRENT STATE edits, `docs/SUBMIT.md` §9, IR90-43, and this disclosure. AI also refreshed `evidence/manifest_verification.json` (26/26 pins) and `evidence/r0_rebuild_receipt.json` (both parent hashes exact). It built six local gitignored TIFFs: `2c8dd61d`, `51b7375e`, `7426cb1f` plus their `-zeros` twins.
 
 **AI decided (under the human's explicit delegation to pick the axis):** selected SPACING after a read-only `gh api` audit of 79 public `buffedlizard55-lab/GEMSDOE*` default branches (9 ledger CSVs) and 7 open GEMSDOE90 PR head ledgers. Generic SPACING values (lattice, Poisson-disk, along-strike, clump/jitter/spread) were occupied, so AI chose a genuinely distinct fixed-count, 5 km block-local kernel-gap equalization dose ladder at 5/10/20%. It chose to HOLD all three from slots after their exact support-credit ledger and frozen MODEL grid showed every plausible live delta inside the brief's `|0.010|` no-evidence band; SGMC PROXY was negative at every dose and was treated as REPORT ONLY, never a gate. Use of a `--build --rebuild-reserved` hash-locked path keeps the ignored rasters reproducible in a fresh checkout without creating a fourth experiment.
 
