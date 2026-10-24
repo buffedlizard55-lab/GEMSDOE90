@@ -222,6 +222,28 @@ Rasters are NOT committed (public repo). Re-emit with `.venv/bin/python scripts/
 does not submit. Even if verified, these are HELD — do not upload without adjudicating entity-scope/quota
 (IR90-26/30/32) and the headwind (IR90-25/34).
 
+## 8. Frontier collar 3.4 px with max-marginal refill — FALLBACK, not slot 1–3 (session 2026-10-24)
+
+One file pair, `AXIS=PRUNE`, built from the byte-identical R0 (zeros `c55bafc4…` / NaN `baeae321…`):
+2,702 dots removed from the 2.236–3.162 px catalogue shell, 2,702 re-placed at the maximum marginal R=3 px
+kernel credit inside region-even 5 km quotas, count held at 37,654, **every final dot ≥ 3.606 px** from the
+catalogue (the only candidate in this repo stricter than the `≥ 3 px` rule), zero catalogue mass.
+
+| Candidate | Preferred file (NaN outside) | Fallback (`-zeros.tif`) | SHA-256 (NaN / zeros) | Form note (<=140) |
+|---|---|---|---|---|
+| collar 3.4 px + gapmax refill | `releases/h33-h33-2-b2-PRUNEcollar3p4Gapmax-20261024-e69532d5.tif` | `…-e69532d5-zeros.tif` | `e69532d5c25f101…` / `cc27b807a3c56c2…` | `h33-h33-2-b2; PRUNE collar 3.4px, fixed count, max-marginal refill; pred +0.002 DTI MODEL` |
+
+Prediction `+0.002 DTI (MODEL; bracket −0.008…+0.013)`. The same receipt records the measurement this file exists
+for: at the same collar and count the lineage's FIFO-BFS refill buys 0.57 support credit per dot, maximum-marginal
+placement buys 1.30. **Do not slot it ahead of the MASS-add order** (SLOT_PLAN.md); it is the fallback for a live
+receipt showing the collar gradient is still alive, or a `≥ 3 px`-compliance control.
+
+Reproduce: `.venv/bin/python scripts/restore_data.py` → `.venv/bin/python scripts/build_prune_collar_gapmax.py --build`
+(idempotent: a hash-identical ledger row is accepted, a different one stops the build) → `--verify` re-emits both encodings and
+compares SHA-256 → `python -m src.validate <file> .cache/gems_data/sample_submission.tif --catalogue
+.cache/gems_data/existing_faults.tif`. Receipt: `evidence/prune_collar_gapmax_receipt.json`.
+The catalogue hide-and-recover PROXY reads 0.0 for this file **by construction** (its "truth" is the catalogue mask
+itself) — IR90-38; never use it to veto a collar candidate.
 ## SPACING local respacing — BUILT, HELD from slots (session 2026-10-24, `arena/5d597521`)
 
 Fixed-count (37,654) respacing of R0's most kernel-crowded dots (summed triangular-disk overlap
